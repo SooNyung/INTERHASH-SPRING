@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+            http://www.springframework.org/schema/aop 
+            http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+            http://www.springframework.org/schema/context 
+            http://www.springframework.org/schema/context/spring-context-4.2.xsd
+            http://www.springframework.org/schema/util 
+            http://www.springframework.org/schema/util/spring-util-4.2.xsd
+            http://www.springframework.org/schema/task 
+            http://www.springframework.org/schema/task/spring-task-4.2.xsd">
+
+	<context:annotation-config />
+	<context:component-scan base-package="spring.controller"></context:component-scan>
+	
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" />
+		<property name="username" value="scott" />
+		<property name="password" value="tiger" />
+	</bean>
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="dataSource" p:mapperLocations="classpath:sql/*.xml" />
+
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+    	<constructor-arg ref="sqlSessionFactory"/>
+    </bean>
+   
+    <bean  class="mybatis.UserInfoDAO">
+		<property name="session" ref="sqlSession"/>
+	</bean>
+	<bean  class="mybatis.ZipcodeDAO">
+		<property name="session" ref="sqlSession"/>
+	</bean>
+	<bean  class="mybatis.BoardDAO">
+		<property name="session" ref="sqlSession"/>
+	</bean>
+	 
+	<bean id="tilesviewResolver"
+		class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" />
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tilesdef/tilesdef.xml</value>
+			</list>
+		</property>
+		<!-- 패키지명.클래스명 -->
+<!-- 		<property name="preparerFactoryClass"
+			value="org.springframework.web.servlet.view.tiles3.SimpleSpringPreparerFactory">
+		</property> -->
+		<!-- 클래스명 -->
+		<property name="preparerFactoryClass"
+			value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory">
+		</property>
+	</bean>
+		<bean id="beanNameResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	<!-- <bean id="menuPreparer" class="spring.tiles.MenuPreparer" /> -->
+	
+	
+	
+	<bean id="pageRanks" class="spring.view.PageRanksView" />
+	
+</beans>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<definition name="base_layout"
+		template="/WEB-INF/tilesview/layout.jsp">
+		
+		<!-- preparer="menuPreparer"> -->
+		<!-- (위) servlet의 bean id로 등록 -->
+		
+		<!-- SimpleSpringPreparerFactory 방식으로 패키지명.클래스명 -->
+		<!-- preparer="spring.tiles.MenuPreparer"> -->
+		<put-attribute name="header"
+			value="/WEB-INF/tilesview/header.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/tilesview/footer.jsp" />
+	</definition>
+
+	<definition name="view/TEST" extends="base_layout">
+		<put-attribute name="title" value="메인페이지" />
+		<put-attribute name="body"
+			value="/WEB-INF/view/TEST.jsp" />
+	</definition>
+	<definition name="view/LoginForm" extends="base_layout">
+		<put-attribute name="title" value="로그인폼" />
+		<put-attribute name="body"
+			value="/WEB-INF/view/LoginForm.jsp" />
+	</definition>
+	<definition name="view/FindPasswordForm" extends="base_layout">
+		<put-attribute name="title" value="비밀번호찾기" />
+		<put-attribute name="body"
+			value="/WEB-INF/view/FindPasswordForm.jsp" />
+	</definition>
+	<definition name="view/UserModifyForm" extends="base_layout">
+		<put-attribute name="title" value="정보 수정" />
+		<put-attribute name="body"
+			value="/WEB-INF/view/UserModifyForm.jsp" />
+	</definition>
+	<definition name="view/UserInsertForm" extends="base_layout">
+		<put-attribute name="title" value="회원가입" />
+		<put-attribute name="body"
+			value="/WEB-INF/view/UserInsertForm.jsp" />
+	</definition>
+</tiles-definitions>

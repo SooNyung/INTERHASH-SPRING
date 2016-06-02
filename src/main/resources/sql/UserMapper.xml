@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserInfo">
+	
+	<select id="selectAll" resultType="spring.model.UserInfoCommand">
+		select * from userinfo
+	</select>
+	<select id="selectUserInfo" parameterType="String" resultType="spring.model.UserInfoCommand">
+		select * from userinfo where email=#{email}
+	</select>
+	<insert id="insertUserInfo" parameterType="spring.model.UserInfoCommand">
+		insert into userinfo values	(#{email},#{password},#{age},#{phonenumber},sysdate,#{address},#{zipcode})
+	</insert>
+	<select id="login" parameterType="spring.model.UserInfoCommand" resultType="int">
+		select count(*) from userinfo where email=#{email} and password=#{password}
+	</select>
+	<update id="modifyUserInfo" parameterType="spring.model.UserInfoCommand">
+		update userinfo set password=#{password}, age=#{age}, phonenumber=#{phonenumber} where email=#{email}
+	</update>
+	<delete id="withdrawal" parameterType="String">
+		delete from userinfo where email=#{email}
+	</delete>
+	<select id="findPassword" parameterType="spring.model.UserInfoCommand" resultType="String">
+		select password from userinfo where email=#{email}
+	</select>
+</mapper>
