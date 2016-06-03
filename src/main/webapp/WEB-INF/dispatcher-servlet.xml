@@ -16,7 +16,7 @@
 
 	<context:annotation-config />
 	<context:component-scan base-package="spring.controller"></context:component-scan>
-	
+ 	<context:component-scan base-package="mybatis"></context:component-scan>
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
@@ -30,17 +30,17 @@
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
     	<constructor-arg ref="sqlSessionFactory"/>
     </bean>
-   
+<!--  
     <bean  class="mybatis.UserInfoDAO">
 		<property name="session" ref="sqlSession"/>
 	</bean>
 	<bean  class="mybatis.ZipcodeDAO">
 		<property name="session" ref="sqlSession"/>
 	</bean>
-	<bean  class="mybatis.BoardDAO">
+ 	<bean  class="mybatis.BoardDAO">
 		<property name="session" ref="sqlSession"/>
 	</bean>
-	 
+ -->
 	<bean id="tilesviewResolver"
 		class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" />
 	<bean id="tilesConfigurer"

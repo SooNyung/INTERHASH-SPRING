@@ -37,6 +37,11 @@ public class ZipcodeCommand {
 	public void setArea4(String area4) {
 		this.area4 = area4;
 	}
+	@Override
+	public String toString() {
+		return "ZipcodeCommand [zipcode=" + zipcode + ", area1=" + area1 + ", area2=" + area2 + ", area3=" + area3
+				+ ", area4=" + area4 + "]";
+	}
 	
 	
 
