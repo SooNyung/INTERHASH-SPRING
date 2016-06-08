@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Comment">
+
+	<select id="getComment" parameterType="integer" resultType="spring.comment.CommentDto">
+		select * from commenttable where connum = #{connum} order by commodifieddate desc
+	</select>
+	
+	<insert id="insertComment" parameterType="spring.comment.CommentDto">
+		insert into COMMENTTABLE values(COMMENTTABLE_seq.NEXTVAL,#{comnick},#{comcontent},sysdate,sysdate,0,'0',#{connum},#{email},#{comip})
+	</insert>
+
+	<delete id="deleteComment" parameterType="integer">
+		delete from commenttable where comnum=#{comnum}
+	</delete>
+
+	<select id="selectComment" parameterType="integer" resultType="spring.comment.CommentDto">
+		select * from commenttable where comnum = #{comnum}
+	</select>
+	
+	<update id="updateComment" parameterType="spring.comment.CommentDto">
+		update commenttable set comcontent=#{comcontent}, commodifieddate=sysdate where comnum = #{comnum}
+	</update>
+	
+	<select id="commentcount" parameterType="integer" resultType="integer">
+		select count(*) from commenttable where connum = #{connum}
+	</select>
+
+</mapper>

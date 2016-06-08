@@ -6,13 +6,9 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.web.servlet.view.document.AbstractXlsView;
-
-import spring.model.UserInfoCommand;
 
 	
 public class PageRanksView extends AbstractXlsView {
@@ -24,7 +20,7 @@ public class PageRanksView extends AbstractXlsView {
 			HttpServletResponse response) throws Exception {
 		
 		response.setHeader("Content-Disposition", "attachment; filename=\"userinfolist.xls\";");
-		
+/*		
 		Sheet sheet = createFirstSheet(workbook);
 		createColumnLabel(sheet);
 	
@@ -32,9 +28,9 @@ public class PageRanksView extends AbstractXlsView {
 		int rowNum = 1;
 		for (UserInfoCommand rank : pageRanks) {
 			createPageRankRow(sheet, rank, rowNum++);
-		}
+		}*/
 	}
-	
+	/*
 	private Sheet createFirstSheet(Workbook workbook) {
 		Sheet sheet = workbook.createSheet();
 		workbook.setSheetName(0, "유저 목록");
@@ -72,5 +68,5 @@ public class PageRanksView extends AbstractXlsView {
 		cell = row.createCell(4);
 		cell.setCellValue(rank.getJoindate().toString());
 	}
-	
+	*/
 }

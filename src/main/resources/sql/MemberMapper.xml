@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+
+	<insert id="insert" parameterType="jinkyoung.member.MemberCommand">
+		insert into usertable
+		values
+		(#{email},#{nickname},#{passwd},#{hash},#{age},sysdate,sysdate,#{ip},0,0)
+	</insert>
+
+	<select id="selectMember" parameterType="String"
+		resultType="jinkyoung.member.MemberCommand">
+		select * from usertable where email=#{email}
+	</select>
+
+	<update id="updateMember" parameterType="jinkyoung.member.MemberCommand">
+		update usertable set
+		email=#{email}, nickname=#{nickname}, passwd=#{passwd}, hash=#{hash},
+		age=#{age} where email=#{email}
+	</update>
+
+	<delete id="delete" parameterType="String">
+		delete from usertable where email=#{email}
+	</delete>
+	
+	<select id="checkdelete" parameterType="String" resultType="String">
+	select passwd from usertable where email=#{email}
+	</select>
+
+</mapper>
