@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% response.sendRedirect("index.hash"); %>
+<% response.sendRedirect("Main.hash"); %>
 </body>
 </html>
 
