@@ -6,13 +6,32 @@
 	<select id="getContent" resultType="spring.model.ContentCommand">
 		select * from contents order by conmodifieddate desc
 	</select>
-	<select id="getContentByHash" parameterType="String" resultType="spring.model.ContentCommand">
-		select * from contents where conhash like '%' || #{hash} || '%' order by conmodifieddate desc
+	<select id="getContentByHash" parameterType="String"
+		resultType="spring.model.ContentCommand">
+		select * from contents where conhash like '%' || #{hash} ||
+		'%' order by conmodifieddate desc
 	</select>
-	<insert id = "insertContent" parameterType="spring.model.ContentCommand">
-		insert into contents values (connum_seq.nextval, #{content},  #{conhash}, #{concreateddate}, #{conmodifieddate},#{conip},0,'0',#{email},#{connickname},0) 
+	<insert id="insertContent" parameterType="spring.model.ContentCommand">
+		insert into contents
+		values (connum_seq.nextval, #{content}, #{conhash}, #{concreateddate},
+		#{conmodifieddate},#{conip},0,'0',#{email},#{connickname},0)
 	</insert>
-	<insert id = "insertPhoto" parameterType="spring.model.PhotoCommand">
-		insert into photo values(photo_seq.nextval, #{photoname},#{realpath}, #{photosize},connum_seq.currval,#{email},#{serverpath})
+	
+	<insert id="insertPhoto" parameterType="spring.model.PhotoCommand">
+		insert into photo
+		values(photo_seq.nextval, #{photoname},#{realpath},
+		#{photosize},connum_seq.currval,#{email},#{serverpath})
 	</insert>
+
+	<select id="selectPhoto" parameterType="int" resultType="spring.model.PhotoCommand">
+		select * from photo where connum=#{connum}
+	</select>
+	
+	<select id="getContentone" parameterType="integer" resultType="spring.model.ContentCommand">
+		select * from contents where connum = #{connum}
+	</select>
+	
 </mapper>
+
+
+

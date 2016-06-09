@@ -23,16 +23,16 @@ public class LoginController {
 	}
 
 	// 로그인폼
-	@RequestMapping("/LoginForm.do")
+	@RequestMapping("/LoginForm.hash")
 	private String login() {
-		return "login/LoginForm";
+		return "userpage/LoginForm";
 	}
 
 	
 	// 로그인동작
-	@RequestMapping(value = "/LoginPro.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/LoginPro.hash", method = RequestMethod.POST)
 	private String login(@ModelAttribute("logininfo") MemberCommand info, HttpSession session) {
-		ModelAndView mv = new ModelAndView("login/LoginMain");
+		ModelAndView mv = new ModelAndView("/LoginMain");
 		// result가 1이면 로그인 성공 0이면 실패
 
 		System.out.println("login :: info.getEmail() :: " + info.getEmail());
