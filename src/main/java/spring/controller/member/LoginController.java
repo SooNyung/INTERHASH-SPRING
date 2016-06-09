@@ -25,14 +25,14 @@ public class LoginController {
 	// 로그인폼
 	@RequestMapping("/LoginForm.do")
 	private String login() {
-		return "login/LoginForm";
+		return "userpage/LoginForm";
 	}
 
 	
 	// 로그인동작
 	@RequestMapping(value = "/LoginPro.do", method = RequestMethod.POST)
 	private String login(@ModelAttribute("logininfo") MemberCommand info, HttpSession session) {
-		ModelAndView mv = new ModelAndView("login/LoginMain");
+		ModelAndView mv = new ModelAndView("userpage/LoginMain");
 		// result가 1이면 로그인 성공 0이면 실패
 
 		System.out.println("login :: info.getEmail() :: " + info.getEmail());
@@ -46,11 +46,11 @@ public class LoginController {
 			session.setAttribute("memId", info.getEmail());
 			session.setAttribute("password", info.getPasswd());
 
-			return "login/LoginMain";
+			return "userpage/LoginMain";
 		} else {
 			session.setAttribute("memId", null);
 
-			return "login/LoginFail";
+			return "userpage/LoginFail";
 		}
 	}
 
@@ -58,7 +58,7 @@ public class LoginController {
 	@RequestMapping(value = "/LoginPro.do", method = RequestMethod.GET)
 	private String login1(MemberCommand info, HttpSession session) {
 
-		return "login/LoginMain";
+		return "userpage/LoginMain";
 
 		/*
 		 * System.out.println("login1 :: info.getEmail() :: "+info.getEmail());
@@ -74,13 +74,13 @@ public class LoginController {
 	// 로그인실패
 	@RequestMapping("LoginFail.do")
 	private String intpu() {
-		return "login/LoginFail";
+		return "userpage/LoginFail";
 	}
 
 	// 로그인 새창띄우기
 	@RequestMapping("LoginNew.do")
 	private String input() {
-		return "login/LoginNew";
+		return "userpage/LoginNew";
 	}
 
 	// 로그아웃
@@ -100,7 +100,7 @@ public class LoginController {
 
 	@RequestMapping("/FindPasswordPro.do")
 	private ModelAndView find(@ModelAttribute("userinfo") MemberCommand info) {
-		ModelAndView mv = new ModelAndView("login/FindPasswordForm");
+		ModelAndView mv = new ModelAndView("userpage/FindPasswordForm");
 
 		String email = info.getEmail();
 		System.out.println("info.getEmail() :: " + info.getEmail());
