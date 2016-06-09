@@ -15,7 +15,6 @@ import spring.model.ReportCommand;
 @Controller
 public class ReportController {
 
-	@Autowired
 	private ReportDAO reportdao;
 
 	public void setReportdao(ReportDAO reportdao) {

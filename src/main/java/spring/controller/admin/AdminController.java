@@ -22,13 +22,10 @@ import spring.model.WithdrawalCommand;
 @Controller
 public class AdminController {
 	
-	/*@Autowired
 	AdminDAO dao;
 	
-	@Autowired
 	WithdrawalDAO wdao;
 	
-	@Autowired
 	LogonDAO ldao;
 	
 	
@@ -45,7 +42,6 @@ public class AdminController {
 	public void setLdao(LogonDAO ldao) {
 		this.ldao = ldao;
 	}
-*/
 
 	@RequestMapping(value="/ManagerPage.hash", method=RequestMethod.GET)
 	private String adminPage(){	

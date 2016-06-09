@@ -167,7 +167,7 @@
     <div id="jb-container">
       <div id="jb-header">
       	<div id="jb-logo">
-	      	<img alt="로고" src="./userpage/logo/logo.jpg" onclick="window.location.href='Board.hash'">
+	      	<img alt="로고" src='<c:url value="/image/logo/logo.jpg" />' onclick="window.location.href='Board.hash'">
       	</div>
       	<div id="jb_search">
       		<form method="post" action="Board.hash">

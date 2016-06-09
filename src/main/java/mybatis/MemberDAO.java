@@ -1,35 +1,42 @@
 package mybatis;
 
+import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import spring.model.MemberCommand;
 
 @Repository
-public class MemberDAO extends SqlSessionDaoSupport{
-	
+public class MemberDAO {
+	@Autowired
+	SqlSession session;
+
+	public void setSession(SqlSession session) {
+		this.session = session;
+	}
 	
 	public int insertMember(MemberCommand command){
-		return getSqlSession().insert("member.insert", command);
+		return session.insert("member.insert", command);
 	}
 	
 	public MemberCommand modify(String email){
-		return getSqlSession().selectOne("member.selectMember", email);
+		return session.selectOne("member.selectMember", email);
 		
 	}
 	
 	public int modifyPro(MemberCommand command){
-		return getSqlSession().update("member.updateMember", command);
+		return session.update("member.updateMember", command);
 	}
 	
 	public int deleteMember(String email){
-		return getSqlSession().delete("member.delete", email);
+		return session.delete("member.delete", email);
 	}
 	
 	public String checkDelete(String email){
-		return getSqlSession().selectOne("logon.checkdelete",email);
+		return session.selectOne("logon.checkdelete",email);
 	}
 	public String findPassword(MemberCommand info){
-		return getSqlSession().selectOne("UserInfo.findPassword",info);
+		return session.selectOne("UserInfo.findPassword",info);
 	}
 }

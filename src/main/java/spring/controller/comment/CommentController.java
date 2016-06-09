@@ -21,7 +21,6 @@ import spring.model.CommentCommand;
 @Controller
 public class CommentController {
 	
-	@Autowired
 	private CommentDAO dao;
 
 	public void setDao(CommentDAO dao) {

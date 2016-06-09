@@ -301,7 +301,7 @@ $(function(){
 			<div style="clear: both;"></div>
 			<div id="sub">
 				<span id="imageon" style="width: 100px; float: left;"> 
-				 <img src="image.JPG" onclick="$('.fileData:last').click();" /> 
+				 <img src='<c:url value="/image/logo/camera.jpg" />' onclick="$('.fileData:last').click();" /> 
 				
 				</span> 
 				<span id="taglist" style="width: 300px; float: left;">

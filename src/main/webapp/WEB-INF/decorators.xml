@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<decorators defaultdir="/WEB-INF/decorator">
+	<decorator name="main" page="/WEB-INF/decorator/decorator.jsp">
+		<!-- <pattern>/sitemesh/hello.jsp</pattern> -->
+		<pattern>/*</pattern>
+		<pattern>*.hash</pattern>
+	</decorator>
+ 
+	<excludes>
+	 	<pattern>/ReportForm.hash*</pattern>
+		<pattern>/UpdateComment.hash*</pattern>
+		<pattern>/ReportForm.hash*</pattern>
+		<pattern>/ConfirmNickname.hash*</pattern>
+		<pattern>/ConfirmKey.hash*</pattern>
+		<pattern>/ReportForm.hash</pattern>
+		<pattern>/ConfirmEmail.hash*</pattern>
+		<pattern>/Main.hash</pattern>
+		<pattern>/SignupForm.hash*</pattern>
+		<pattern>/SendEmail.hash*</pattern>
+		
+		<pattern>/Logout.hash</pattern> 
+	</excludes>
+ 
+</decorators>

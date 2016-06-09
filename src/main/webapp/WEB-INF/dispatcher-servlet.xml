@@ -19,7 +19,7 @@
 	<context:component-scan base-package="spring.controller.comment"></context:component-scan>
 	<context:component-scan base-package="spring.controller.content"></context:component-scan>
 	<context:component-scan base-package="spring.controller.member"></context:component-scan>
-	<context:component-scan base-package="spring.controller.model"></context:component-scan>
+	<context:component-scan base-package="spring.model"></context:component-scan>
  	<context:component-scan base-package="mybatis"></context:component-scan>
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
@@ -35,7 +35,7 @@
     	<constructor-arg ref="sqlSessionFactory"/>
     </bean>
   
-    <bean  class="mybatis.AdminDAO">
+    <!-- <bean  class="mybatis.AdminDAO">
 		<property name="session" ref="sqlSession"/>
 	</bean>
 	<bean  class="mybatis.CommentDAO">
@@ -47,8 +47,23 @@
 	<bean  class="mybatis.ContentDAO">
 		<property name="session" ref="sqlSession"/>
 	</bean>
+	<bean  class="mybatis.LogonDAO">
+		<property name="session" ref="sqlSession"/>
+	</bean>
+	<bean  class="mybatis.MemberDAO">
+		<property name="session" ref="sqlSession"/>
+	</bean>
+	<bean  class="mybatis.PhotoDAO">
+		<property name="session" ref="sqlSession"/>
+	</bean>
+	<bean  class="mybatis.ReportDAO">
+		<property name="session" ref="sqlSession"/>
+	</bean>
+	<bean  class="mybatis.WithdrawalDAO">
+		<property name="session" ref="sqlSession"/>
+	</bean> -->
 
-	<bean id="tilesviewResolver"
+	<!-- <bean id="tilesviewResolver"
 		class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" />
 	<bean id="tilesConfigurer"
 		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
@@ -57,15 +72,15 @@
 				<value>/WEB-INF/tilesdef/tilesdef.xml</value>
 			</list>
 		</property>
-		<!-- 패키지명.클래스명 -->
-<!-- 		<property name="preparerFactoryClass"
+		패키지명.클래스명
+		<property name="preparerFactoryClass"
 			value="org.springframework.web.servlet.view.tiles3.SimpleSpringPreparerFactory">
-		</property> -->
-		<!-- 클래스명 -->
+		</property>
+		클래스명
 		<property name="preparerFactoryClass"
 			value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory">
 		</property>
-	</bean>
+	</bean> -->
 		<bean id="beanNameResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver" />
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
