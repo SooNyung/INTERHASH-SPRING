@@ -65,7 +65,7 @@ function confirmnickname() {
 }
 
 window.onload=function checkHash(){
-	var hasharr = "${gethash}"; //hasharr에 저장됨
+	var hasharr = "${c.hash}"; //hasharr에 저장됨
 	var hash=document.getElementsByName("hash"); //해쉬체크박스 배열 가져옴
 
 	
@@ -83,7 +83,7 @@ window.onload=function checkHash(){
 <table>
 <tr>
 <td>email</td>
-<td><input type="text" name="email" value="${c.getEmail()}" readonly/></td>
+<td><input type="text" name="email" value="${c.email}" readonly/></td>
 </tr>
 <tr>
 <td>password</td>
@@ -98,12 +98,12 @@ window.onload=function checkHash(){
 
 <tr>
 <td>닉네임</td>
-<td><input type="text" name="nickname" value="${c.getNickname()}"/></td>
+<td><input type="text" name="nickname" value="${c.nickname}"/></td>
 <td><input type="button" value="중복검사" onClick="confirmnickname()"/></td>
 </tr>
 <tr>
 <td>나이</td>
-<td><input type="text" name="age" value="${c.getAge()}"/></td>
+<td><input type="text" name="age" value="${c.age}"/></td>
 </tr>
 <tr>
 <td>favorite</td>
