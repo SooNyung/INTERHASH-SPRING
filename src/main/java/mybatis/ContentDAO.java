@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import spring.model.ContentCommand;
 import spring.model.PhotoCommand;
 
-@Component
+@Repository
 public class ContentDAO {
 	@Autowired
 	SqlSession session;

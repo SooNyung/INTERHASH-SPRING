@@ -3,11 +3,11 @@
 
 <mapper namespace="Comment">
 
-	<select id="getComment" parameterType="integer" resultType="spring.comment.CommentDto">
+	<select id="getComment" parameterType="integer" resultType="spring.model.CommentCommand">
 		select * from commenttable where connum = #{connum} order by commodifieddate desc
 	</select>
 	
-	<insert id="insertComment" parameterType="spring.comment.CommentDto">
+	<insert id="insertComment" parameterType="spring.model.CommentCommand">
 		insert into COMMENTTABLE values(COMMENTTABLE_seq.NEXTVAL,#{comnick},#{comcontent},sysdate,sysdate,0,'0',#{connum},#{email},#{comip})
 	</insert>
 
@@ -15,11 +15,11 @@
 		delete from commenttable where comnum=#{comnum}
 	</delete>
 
-	<select id="selectComment" parameterType="integer" resultType="spring.comment.CommentDto">
+	<select id="selectComment" parameterType="integer" resultType="spring.model.CommentCommand">
 		select * from commenttable where comnum = #{comnum}
 	</select>
 	
-	<update id="updateComment" parameterType="spring.comment.CommentDto">
+	<update id="updateComment" parameterType="spring.model.CommentCommand">
 		update commenttable set comcontent=#{comcontent}, commodifieddate=sysdate where comnum = #{comnum}
 	</update>
 	

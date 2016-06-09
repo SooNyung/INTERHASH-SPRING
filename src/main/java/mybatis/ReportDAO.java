@@ -1,11 +1,14 @@
 package mybatis;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import spring.model.ReportCommand;
 
+@Repository
 public class ReportDAO {
-	
+	@Autowired
 	SqlSession session;
 
 	public void setSession(SqlSession session) {

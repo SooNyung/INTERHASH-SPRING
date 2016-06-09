@@ -15,7 +15,11 @@
             http://www.springframework.org/schema/task/spring-task-4.2.xsd">
 
 	<context:annotation-config />
-	<context:component-scan base-package="spring.controller"></context:component-scan>
+	<context:component-scan base-package="spring.controller.admin"></context:component-scan>
+	<context:component-scan base-package="spring.controller.comment"></context:component-scan>
+	<context:component-scan base-package="spring.controller.content"></context:component-scan>
+	<context:component-scan base-package="spring.controller.member"></context:component-scan>
+	<context:component-scan base-package="spring.controller.model"></context:component-scan>
  	<context:component-scan base-package="mybatis"></context:component-scan>
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
@@ -30,17 +34,20 @@
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
     	<constructor-arg ref="sqlSessionFactory"/>
     </bean>
-<!--  
-    <bean  class="mybatis.UserInfoDAO">
+  
+    <bean  class="mybatis.AdminDAO">
 		<property name="session" ref="sqlSession"/>
 	</bean>
-	<bean  class="mybatis.ZipcodeDAO">
+	<bean  class="mybatis.CommentDAO">
 		<property name="session" ref="sqlSession"/>
 	</bean>
- 	<bean  class="mybatis.BoardDAO">
+ 	<bean  class="mybatis.ConfirmDAO">
 		<property name="session" ref="sqlSession"/>
 	</bean>
- -->
+	<bean  class="mybatis.ContentDAO">
+		<property name="session" ref="sqlSession"/>
+	</bean>
+
 	<bean id="tilesviewResolver"
 		class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" />
 	<bean id="tilesConfigurer"

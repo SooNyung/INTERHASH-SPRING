@@ -7,16 +7,17 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class PhotoDAO {
 
-	private static PhotoDAO instance = new PhotoDAO();
-
-	public static PhotoDAO getInstance() {
-		return instance;
-	}
-
-	private PhotoDAO() {
+	@Autowired
+	SqlSession session;
+	
+	public void setSession(SqlSession session){
+		this.session=session;
 	}
 
 	private static SqlSessionFactory getFactory() throws Exception {

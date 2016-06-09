@@ -1,10 +1,14 @@
 package mybatis;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
+import org.springframework.stereotype.Repository;
 
 import spring.model.MemberCommand;
 
+@Repository
 public class MemberDAO extends SqlSessionDaoSupport{
+	
+	
 	public int insertMember(MemberCommand command){
 		return getSqlSession().insert("member.insert", command);
 	}

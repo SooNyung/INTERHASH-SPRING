@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ContentViewAction {
 
+	@RequestMapping("/index.hash")
+	private String mainview(){
+		return "fixpage/boardDiv";
+	}
 	@RequestMapping("/ContentView.hash")
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		request.setCharacterEncoding("UTF-8");

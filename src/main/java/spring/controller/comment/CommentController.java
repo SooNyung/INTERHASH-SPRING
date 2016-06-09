@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import mybatis.CommentDao;
+import mybatis.CommentDAO;
 import spring.model.CommentCommand;
 
 
@@ -22,9 +22,9 @@ import spring.model.CommentCommand;
 public class CommentController {
 	
 	@Autowired
-	private CommentDao dao;
+	private CommentDAO dao;
 
-	public void setDao(CommentDao dao) {
+	public void setDao(CommentDAO dao) {
 		this.dao = dao;
 	}
 	

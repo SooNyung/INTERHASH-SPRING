@@ -20,7 +20,7 @@ public class ConfirmController {
 		this.Dao = Dao;
 	}
 	
-	@RequestMapping(value="/ConfirmEmail.hash", method=RequestMethod.GET)
+	@RequestMapping(value="/ConfirmEmail.hash", method=RequestMethod.GET )
 	private String email(HttpServletRequest request ,HttpSession session){
 		String email = request.getParameter("email");
 		System.out.println(email+"이메일확인");

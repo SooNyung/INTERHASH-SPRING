@@ -30,7 +30,7 @@
 
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
-		<url-pattern>*.do</url-pattern>
+		<url-pattern>*.hash</url-pattern>
 	</servlet-mapping>
 	
 
