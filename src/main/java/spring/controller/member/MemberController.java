@@ -2,6 +2,7 @@ package spring.controller.member;
 
 import java.util.Arrays;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,16 +30,17 @@ public class MemberController {
 		return new MemberCommand();
 	}
 	
-	@RequestMapping("/jinkyoung-member/SignupForm.do")
+	@RequestMapping("/SignupForm.hash")
 	public String SignupForm(){
-		return "jinkyoung-member/SignupForm";
+		return "userpage/SignupForm";
 	}
 	
-	@RequestMapping("/jinkyoung-member/SignupPro.do")
-	public ModelAndView SignupPro(MemberCommand memberCommand, @RequestParam("hash")String[] hash) {
-		ModelAndView mv = new ModelAndView("jinkyoung-member/SignupPro");
+	@RequestMapping("/SignupPro.hash")
+	public ModelAndView SignupPro(MemberCommand memberCommand, @RequestParam("hash")String[] hash, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView("userpage/SignupPro");
 		memberCommand.setHash(Arrays.toString(hash));
 		System.out.println("hash태그 :: " + Arrays.toString(hash));
+		memberCommand.setIp(request.getRemoteAddr());
 		int a = dao.insertMember(memberCommand);
 		System.out.println("회원가입 성공? :: " + a);
 		mv.addObject("member", memberCommand);		
@@ -46,30 +48,30 @@ public class MemberController {
 		
 	}
 	
-	@RequestMapping("/jinkyoung-member/UserInfoModifyForm.do")
+	@RequestMapping("/UserInfoModifyForm.hash")
 	public ModelAndView ModifyForm(HttpSession session){
-		ModelAndView mv = new ModelAndView("jinkyoung-member/UserInfoModifyForm");
+		ModelAndView mv = new ModelAndView("userpage/UserInfoModifyForm");
 		String email = (String)session.getAttribute("memId");
 		MemberCommand command = dao.modify(email);
 		mv.addObject("c", command);
 		return mv;
 	}
 	
-	@RequestMapping("/jinkyoung-member/UserInfoModifyPro.do")
+	@RequestMapping("/UserInfoModifyPro.hash")
 	public String ModifyPro(@ModelAttribute("command")MemberCommand command){
 		int a = dao.modifyPro(command);
 		System.out.println("회원정보 수정완료? " + a);
-		return "jinkyoung-member/UserInfoModifyPro";
+		return "userpage/UserInfoModifyPro";
 	}
 	
-	@RequestMapping("/jinkyoung-member/WithdrawalForm.do")
+	@RequestMapping("/WithdrawalForm.hash")
 	public String deleteMember(){
-		return "jinkyoung-member/WithdrawalForm";
+		return "userpage/WithdrawalForm";
 	}
 	
-	@RequestMapping("/jinkyoung-member/WithdrawalPro.do")
+	@RequestMapping("/WithdrawalPro.hash")
 	public ModelAndView deleteMemberPro(String passwd, HttpSession session){
-		ModelAndView mv = new ModelAndView("jinkyoung-member/WithdrawalPro");
+		ModelAndView mv = new ModelAndView("userpage/WithdrawalPro");
 		String email = (String)session.getAttribute("memId");
 		String id = (String)session.getAttribute("memId");
 		String passwd1 = dao.checkDelete(id);
