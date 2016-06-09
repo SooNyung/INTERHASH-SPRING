@@ -25,6 +25,10 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 		<property name="url" value="jdbc:oracle:thin:@192.168.50.43:1521:XE" />
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5bb0f6d3ba428c7185ef805ca6ecc7945394f3f1
 		<property name="username" value="interhash" />
 		<property name="password" value="inter11" />
 	</bean>

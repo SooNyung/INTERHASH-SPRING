@@ -53,6 +53,10 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView("userpage/UserInfoModifyForm");
 		String email = (String)session.getAttribute("memId");
 		MemberCommand command = dao.modify(email);
+		String gethash = command.getHash();
+		gethash = gethash.substring(1, gethash.length()-1);
+		System.out.println("gethash ::" + gethash);
+		command.setHash(gethash);	
 		mv.addObject("c", command);
 		return mv;
 	}
@@ -65,22 +69,25 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/WithdrawalForm.hash")
-	public String deleteMember(){
-		return "userpage/WithdrawalForm";
+	public ModelAndView deleteMember(@ModelAttribute("command")MemberCommand command){
+		ModelAndView mv = new ModelAndView("userpage/WithdrawalForm");
+		mv.addObject("c", command);
+		
+		
+		return mv;
 	}
 	
 	@RequestMapping("/WithdrawalPro.hash")
 	public ModelAndView deleteMemberPro(String passwd, HttpSession session){
 		ModelAndView mv = new ModelAndView("userpage/WithdrawalPro");
 		String email = (String)session.getAttribute("memId");
-		String id = (String)session.getAttribute("memId");
-		String passwd1 = dao.checkDelete(id);
+		String passwd1 = dao.checkDelete(email);
 		System.out.println("가져온 passwd : " + passwd);
 		System.out.println("select한 passwd :: " + passwd1);
 		int check=1;
 		
 		if(passwd.equals(passwd1)) {
-			int a = dao.deleteMember(id);
+			int a = dao.deleteMember(email);
 			System.out.println("delete성공여부  :" + a);
 			session.invalidate();
 		}

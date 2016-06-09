@@ -23,7 +23,7 @@ function checkIt() {
 <table>
 <tr>
 <td>email</td>
-<td><input type="text" name="email" value="${c.getEmail()}" readonly/></td>
+<td><input type="text" name="email" value="${c.email}" readonly/></td>
 </tr>
 <tr>
 <td>비밀번호</td>
