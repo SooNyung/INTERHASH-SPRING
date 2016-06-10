@@ -2,6 +2,7 @@ package spring.controller.member;
 
 import java.util.Arrays;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +36,15 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/SignupPro.hash")
+<<<<<<< HEAD
 	public ModelAndView SignupPro(MemberCommand memberCommand, @RequestParam("hash")String[] hash) {
+=======
+	public ModelAndView SignupPro(MemberCommand memberCommand, @RequestParam("hash")String[] hash, HttpServletRequest request) {
+>>>>>>> 4c773d317b2498f457fdfdb6cd5b06eabf6a85c1
 		ModelAndView mv = new ModelAndView("userpage/SignupPro");
 		memberCommand.setHash(Arrays.toString(hash));
 		System.out.println("hash태그 :: " + Arrays.toString(hash));
+		memberCommand.setIp(request.getRemoteAddr());
 		int a = dao.insertMember(memberCommand);
 		System.out.println("회원가입 성공? :: " + a);
 		mv.addObject("member", memberCommand);		
@@ -51,6 +57,10 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView("userpage/UserInfoModifyForm");
 		String email = (String)session.getAttribute("memId");
 		MemberCommand command = dao.modify(email);
+		String gethash = command.getHash();
+		gethash = gethash.substring(1, gethash.length()-1);
+		System.out.println("gethash ::" + gethash);
+		command.setHash(gethash);	
 		mv.addObject("c", command);
 		return mv;
 	}
@@ -63,22 +73,30 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/WithdrawalForm.hash")
+<<<<<<< HEAD
 	public String deleteMember(){
 		return "userpage/WithdrawalForm";
+=======
+	public ModelAndView deleteMember(@ModelAttribute("command")MemberCommand command){
+		ModelAndView mv = new ModelAndView("userpage/WithdrawalForm");
+		mv.addObject("c", command);
+		
+		
+		return mv;
+>>>>>>> 4c773d317b2498f457fdfdb6cd5b06eabf6a85c1
 	}
 	
 	@RequestMapping("/WithdrawalPro.hash")
 	public ModelAndView deleteMemberPro(String passwd, HttpSession session){
 		ModelAndView mv = new ModelAndView("userpage/WithdrawalPro");
 		String email = (String)session.getAttribute("memId");
-		String id = (String)session.getAttribute("memId");
-		String passwd1 = dao.checkDelete(id);
+		String passwd1 = dao.checkDelete(email);
 		System.out.println("가져온 passwd : " + passwd);
 		System.out.println("select한 passwd :: " + passwd1);
 		int check=1;
 		
 		if(passwd.equals(passwd1)) {
-			int a = dao.deleteMember(id);
+			int a = dao.deleteMember(email);
 			System.out.println("delete성공여부  :" + a);
 			session.invalidate();
 		}

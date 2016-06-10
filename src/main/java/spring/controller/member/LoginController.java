@@ -32,7 +32,11 @@ public class LoginController {
 	// 로그인동작
 	@RequestMapping(value = "/LoginPro.hash", method = RequestMethod.POST)
 	private String login(@ModelAttribute("logininfo") MemberCommand info, HttpSession session) {
-		ModelAndView mv = new ModelAndView("login/LoginMain");
+<<<<<<< HEAD
+		ModelAndView mv = new ModelAndView("/LoginMain");
+=======
+		ModelAndView mv = new ModelAndView("userpage/LoginMain");
+>>>>>>> 5bb0f6d3ba428c7185ef805ca6ecc7945394f3f1
 		// result가 1이면 로그인 성공 0이면 실패
 
 		System.out.println("login :: info.getEmail() :: " + info.getEmail());

@@ -11,8 +11,8 @@ email : ${member.email}<br>
 password : ${member.passwd}<br>
 age : ${member.age}<br>
 nickname : ${member.nickname}<br>
-reg_date : ${member.reg_date}<br>
-hashtag : ${member.hashtag}<br>
+reg_date : ${member.createddate}<br>
+hashtag : ${member.hash}<br>
 
 
 </body>

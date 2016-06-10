@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insert" parameterType="spring.model.MemberCommand">
 		insert into usertable
 		values
-		(#{email},#{nickname},#{passwd},#{hash},#{age},sysdate,sysdate,#{ip},0,0)
+		(#{email},#{nickname},#{passwd},#{hash},#{age},sysdate,sysdate,0,0,#{ip})
 	</insert>
 
 	<select id="selectMember" parameterType="String" resultType="spring.model.MemberCommand">

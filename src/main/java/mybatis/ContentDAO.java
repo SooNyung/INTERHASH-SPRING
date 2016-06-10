@@ -61,9 +61,18 @@ public class ContentDAO {
 		session.commit();
 		return array;
 	}
-
-	public ContentCommand getContent(int connum) throws Exception {
+	
+	public ContentCommand getContent(int connum){
 		ContentCommand content = null;
+		ArrayList photo = (ArrayList) session.selectList("writecontent.selectPhoto",connum);
+		content = session.selectOne("writecontent.getContentone",connum);
+		content.setPhotolist(photo);
+		return content;
+	}
+
+/*	public ContentCommand getContent(int connum) throws Exception {
+		ContentCommand content = null;
+		
 		ArrayList photo = (ArrayList) session.selectList("photo.selectPhoto", connum); 
 		content = session.selectOne("comment.content", connum);
 		
@@ -77,7 +86,8 @@ public class ContentDAO {
 
 		session.commit();
 		return check;
-	}
+	}*/
+
 
 	/*
 	 * public ContentCommand updatecontent(int connum)throws Exception{

@@ -34,7 +34,7 @@ public class MemberDAO {
 	}
 	
 	public String checkDelete(String email){
-		return session.selectOne("logon.checkdelete",email);
+		return session.selectOne("member.checkdelete",email);
 	}
 	public String findPassword(MemberCommand info){
 		return session.selectOne("UserInfo.findPassword",info);
