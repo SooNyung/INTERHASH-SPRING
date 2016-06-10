@@ -23,14 +23,14 @@ public class LoginController {
 	}
 
 	// 로그인폼
-	@RequestMapping("/LoginForm.do")
+	@RequestMapping("/LoginForm.hash")
 	private String login() {
-		return "login/LoginForm";
+		return "userpage/LoginForm";
 	}
 
 	
 	// 로그인동작
-	@RequestMapping(value = "/LoginPro.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/LoginPro.hash", method = RequestMethod.POST)
 	private String login(@ModelAttribute("logininfo") MemberCommand info, HttpSession session) {
 		ModelAndView mv = new ModelAndView("login/LoginMain");
 		// result가 1이면 로그인 성공 0이면 실패
@@ -46,19 +46,19 @@ public class LoginController {
 			session.setAttribute("memId", info.getEmail());
 			session.setAttribute("password", info.getPasswd());
 
-			return "login/LoginMain";
+			return "userpage/LoginMain";
 		} else {
 			session.setAttribute("memId", null);
 
-			return "login/LoginFail";
+			return "userpage/LoginFail";
 		}
 	}
 
 	// 새창에서 로그인 동작?
-	@RequestMapping(value = "/LoginPro.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/LoginPro.hash", method = RequestMethod.GET)
 	private String login1(MemberCommand info, HttpSession session) {
 
-		return "login/LoginMain";
+		return "userpage/LoginMain";
 
 		/*
 		 * System.out.println("login1 :: info.getEmail() :: "+info.getEmail());
@@ -72,19 +72,19 @@ public class LoginController {
 	}
 
 	// 로그인실패
-	@RequestMapping("LoginFail.do")
+	@RequestMapping("LoginFail.hash")
 	private String intpu() {
-		return "login/LoginFail";
+		return "userpage/LoginFail";
 	}
 
 	// 로그인 새창띄우기
-	@RequestMapping("LoginNew.do")
+	@RequestMapping("LoginNew.hash")
 	private String input() {
-		return "login/LoginNew";
+		return "userpage/LoginNew";
 	}
 
 	// 로그아웃
-	@RequestMapping("/LogOut.do")
+	@RequestMapping("/LogOut.hash")
 	private ModelAndView logout(HttpSession session) {
 		ModelAndView mv = new ModelAndView("MAIN"); // ("TEST");
 		session.setAttribute("memId", null);
@@ -93,14 +93,14 @@ public class LoginController {
 	}
 
 	// 패스워드 찾기
-	@RequestMapping("/FindPasswordForm.do")
+	@RequestMapping("/FindPasswordForm.hash")
 	private String find() {
-		return "login/FindPasswordForm";
+		return "userpage/FindPasswordForm";
 	}
 
-	@RequestMapping("/FindPasswordPro.do")
+	@RequestMapping("/FindPasswordPro.hash")
 	private ModelAndView find(@ModelAttribute("userinfo") MemberCommand info) {
-		ModelAndView mv = new ModelAndView("login/FindPasswordForm");
+		ModelAndView mv = new ModelAndView("userpage/FindPasswordForm");
 
 		String email = info.getEmail();
 		System.out.println("info.getEmail() :: " + info.getEmail());

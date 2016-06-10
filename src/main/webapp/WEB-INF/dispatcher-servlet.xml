@@ -25,8 +25,8 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" />
-		<property name="username" value="scott" />
-		<property name="password" value="tiger" />
+		<property name="username" value="interhash" />
+		<property name="password" value="inter11" />
 	</bean>
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
 		p:dataSource-ref="dataSource" p:mapperLocations="classpath:sql/*.xml" />
@@ -35,7 +35,7 @@
     	<constructor-arg ref="sqlSessionFactory"/>
     </bean>
   
-    <!-- <bean  class="mybatis.AdminDAO">
+ <!--   <bean  class="mybatis.AdminDAO">
 		<property name="session" ref="sqlSession"/>
 	</bean>
 	<bean  class="mybatis.CommentDAO">
@@ -43,7 +43,7 @@
 	</bean>
  	<bean  class="mybatis.ConfirmDAO">
 		<property name="session" ref="sqlSession"/>
-	</bean>
+	</bean> 
 	<bean  class="mybatis.ContentDAO">
 		<property name="session" ref="sqlSession"/>
 	</bean>
@@ -61,7 +61,7 @@
 	</bean>
 	<bean  class="mybatis.WithdrawalDAO">
 		<property name="session" ref="sqlSession"/>
-	</bean> -->
+	</bean>  -->
 
 	<!-- <bean id="tilesviewResolver"
 		class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" />
@@ -88,7 +88,7 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
-	<!-- <bean id="menuPreparer" class="spring.tiles.MenuPreparer" /> -->
+	 <bean id="menuPreparer" class="spring.tiles.MenuPreparer" /> 
 	
 	
 	

@@ -29,7 +29,7 @@ public class ConfirmController {
 		
 		session.setAttribute("email", email);
 		session.setAttribute("check", check);
-		return "view/member/ConfirmEmail";
+		return "confirm/ConfirmEmail";
 	}
 	
 	@RequestMapping(value="/ConfirmKey.hash")
@@ -40,7 +40,7 @@ public class ConfirmController {
 		if(inputkey.equals(key)){
 			session.setAttribute("key", "success");
 		}
-		return "view/member/ConfirmSuccess";
+		return "confirm/ConfirmSuccess";
 	}
 	
 	@RequestMapping(value="/ConfirmNickname.hash")
@@ -54,6 +54,6 @@ public class ConfirmController {
 		session.setAttribute("nickname", nickname);
 		session.setAttribute("check", check);
 		
-		return "view/member/ConfirmNickname";
+		return "confirm/ConfirmNickname";
 	}
 }

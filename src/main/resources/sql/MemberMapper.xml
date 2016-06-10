@@ -14,6 +14,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from usertable where email=#{email}
 	</select>
 
+	<select id="selectAll" parameterType="spring.model.MemberCommand" resultType="spring.model.MemberCommand">
+		select * from usertable
+	</select>
+	
 	<update id="updateMember" parameterType="spring.model.MemberCommand">
 		update usertable set
 		email=#{email}, nickname=#{nickname}, passwd=#{passwd}, hash=#{hash},
