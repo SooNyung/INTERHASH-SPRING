@@ -36,11 +36,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/SignupPro.hash")
-<<<<<<< HEAD
-	public ModelAndView SignupPro(MemberCommand memberCommand, @RequestParam("hash")String[] hash) {
-=======
 	public ModelAndView SignupPro(MemberCommand memberCommand, @RequestParam("hash")String[] hash, HttpServletRequest request) {
->>>>>>> 4c773d317b2498f457fdfdb6cd5b06eabf6a85c1
 		ModelAndView mv = new ModelAndView("userpage/SignupPro");
 		memberCommand.setHash(Arrays.toString(hash));
 		System.out.println("hashÅÂ±× :: " + Arrays.toString(hash));
@@ -73,17 +69,12 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/WithdrawalForm.hash")
-<<<<<<< HEAD
-	public String deleteMember(){
-		return "userpage/WithdrawalForm";
-=======
 	public ModelAndView deleteMember(@ModelAttribute("command")MemberCommand command){
 		ModelAndView mv = new ModelAndView("userpage/WithdrawalForm");
 		mv.addObject("c", command);
 		
 		
 		return mv;
->>>>>>> 4c773d317b2498f457fdfdb6cd5b06eabf6a85c1
 	}
 	
 	@RequestMapping("/WithdrawalPro.hash")
