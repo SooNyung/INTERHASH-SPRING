@@ -1,5 +1,6 @@
 package spring.controller.content;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.sql.Timestamp;
@@ -10,8 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartRequest;
 
 import spring.model.ContentCommand;
+import spring.model.PhotoCommand;
 
 
 @Controller
@@ -23,7 +28,7 @@ public class ContentInput {
 
 		return "/userpage/ContentInputForm.jsp";
 	}
-	
+/*	
 	@RequestMapping("/ContentInputPro.hash")
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		 request.setCharacterEncoding("UTF-8");
@@ -61,7 +66,7 @@ public class ContentInput {
 		    String ip="";
 		    try{
 		 
-		   /*     MultipartRequest multi = new MultipartRequest(request, root+savePath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
+		        MultipartRequest multi = new MultipartRequest(request, root+savePath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
 		         System.out.println("저장경로 : " +root+ savePath);
 		        // 전송받은 parameter의 한글깨짐 방지
 		        content = multi.getParameter("content");
@@ -110,7 +115,6 @@ public class ContentInput {
 		            fout.close();
 		            //oldFile.delete();
 		       // }   
-		            */
 		           ContentCommand content_obj = new ContentCommand();
 		           content_obj.setContent(content);
 		           content_obj.setConip(request.getRemoteAddr());
@@ -120,8 +124,7 @@ public class ContentInput {
 		           content_obj.setConcreateddate(new Timestamp(System.currentTimeMillis()));
 		           content_obj.setConmodifieddate(new Timestamp(System.currentTimeMillis()));
 		           
-		     /*      
-		           PhotoDataBean photo_obj = new PhotoDataBean();
+		           PhotoCommand photo_obj = new PhotoCommand();
 		           
 		           photo_obj.setEmail((String)request.getSession().getAttribute("memId"));
 		           photo_obj.setPhotoname(uploadFile);
@@ -133,7 +136,6 @@ public class ContentInput {
 		           
 		           ContentDBBean bean =  ContentDBBean.getInstance();
 		           bean.insertContent(content_obj, photo_obj);
-		 */
 		    }catch(Exception e){
 		        e.printStackTrace();
 		    }
@@ -142,4 +144,49 @@ public class ContentInput {
 		return "Board.hash";
 	}
 	
+	public String file_upload(@RequestParam("file1") MultipartFile info, HttpServletRequest request) {
+		System.out.println("여긴 들어오나?");
+		try {
+			request.setAttribute("list", list());
+			request.setAttribute("file1",upload(info,request));
+			request.setAttribute("real_name", real_name);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "fileupload/upload_list";
+	}
+	String real_name;
+	private String upload(MultipartFile info,HttpServletRequest request) throws Exception{
+		//학원 경로
+		String path = "C://Users//user2//Documents//workspace-sts-3.7.3.RELEASE//Gradle_webmvc//src//main//webapp//img//";
+		//String path = "C://Users//user2//Documents//workspace-sts-3.7.3.RELEASE//Gradle_webmvc//src//main//webapp//WEB-INF//views//fileupload//img//";
+		//노트북 경로
+		//String path = "C://Users//jin_notebook//Documents//workspace-sts-3.7.3.RELEASE//Gradle_webmvc//src//main//webapp//img//";
+		String name = info.getOriginalFilename();
+		real_name= System.currentTimeMillis()+name;
+		String real_path= path+real_name;
+		int size = info.getInputStream().available();
+		
+		PhotoCommand fileinfo = new PhotoCommand();
+		fileinfo.setName(name);
+		fileinfo.setPath(real_path);
+		fileinfo.setFilesize(size);
+		
+		AbstractApplicationContext context = new GenericXmlApplicationContext("mybatis.xml");
+		FileInfoDAO dao = (FileInfoDAO)context.getBean("dao");
+		System.out.println("여기가 에런가??");
+		int result = dao.insertFileInfo(fileinfo);
+		System.out.println("real_path :: "+real_path);
+		System.out.println("insert result :: "+result);
+		
+		File f = new File(real_path);
+		String tmp_path = "C://Users//user2//Downloads//spring-tool-suite-3.7.3.RELEASE-e4.6-win32-x86_64//sts-bundle//pivotal-tc-server-developer-3.1.3.SR1//base-instance//wtpwebapps//Gradle_webmvc//img//";
+		File f1 = new File(tmp_path+real_name);
+		System.out.println("f1:: "+request.getSession().getServletContext().getRealPath("/")+"//"+real_name);
+		info.transferTo(f);
+		info.transferTo(f1);
+//		context.close();
+		return name;
+	}
+	*/
 }
