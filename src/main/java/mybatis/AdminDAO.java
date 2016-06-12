@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import spring.model.AdminCommand;
+import spring.model.MemberCommand;
 import spring.model.WithdrawalCommand;
 
 @Repository
@@ -32,6 +33,9 @@ public class AdminDAO {
 		}
 	}
 	
+	public List<MemberCommand> selectMember(){
+		return session.selectList("member.selectAll");
+	}
 	
 	public void adminInsert(String value){
 		String [] tmp = value.substring(1, value.length()-1).trim().split(",");
@@ -45,5 +49,7 @@ public class AdminDAO {
 		return session.insert("admin.withinsert", members);
 	}
 	
-	
+	public List<WithdrawalCommand> selectWithdrawal(){
+		return session.selectList("admin.withselect");
+	}
 }

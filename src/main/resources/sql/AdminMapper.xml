@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admin">
+<select id="admincount" resultType="spring.model.AdminCommand">
+		select * from ADMINHASH
+</select>
+
+<delete id="deleteMember" parameterType="String">
+delete from usertable where email=#{email}
+</delete>
+
+<insert id="admininsert" parameterType="String">
+insert into withdrawal
+values(num_seq.nextval, #{drawalemail}, '관리자에 의한 강제탈퇴', sysdate)
+</insert>
+
+<select id="withselect" resultType="spring.model.WithdrawalCommand">
+select * from WITHDRAWAL
+</select>
+
+<insert id="withinsert" parameterType="spring.model.WithdrawalCommand">
+insert into withdrawal
+values(num_seq.nextval, #{drawalemail}, #{drawalcause}, sysdate)
+</insert>
+</mapper>
