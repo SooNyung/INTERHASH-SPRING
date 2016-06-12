@@ -2,6 +2,7 @@ package spring.controller.content;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.sun.org.apache.xml.internal.dtm.DTMDOMException;
 
 import mybatis.CommentDAO;
 import mybatis.ContentDAO;
@@ -30,7 +33,7 @@ public class ContentViewAction {
 
 	@Autowired
 	private CommentDAO commentdao;
-
+	
 	public void setContentdao(ContentDAO contentdao) {
 		this.contentdao = contentdao;
 	}
@@ -39,38 +42,37 @@ public class ContentViewAction {
 		this.commentdao = commentdao;
 	}
 
-	@ModelAttribute("contentdao")
+	@ModelAttribute("contentdto")
 	public ContentCommand content() {
 		return new ContentCommand();
 	}
 
-	@ModelAttribute("commentdao")
+	@ModelAttribute("commentdto")
 	public CommentCommand comment() {
 		return new CommentCommand();
 	}
 
 	@RequestMapping("/ContentView.hash")
 	public ModelAndView contentView(@ModelAttribute("contentdao") ContentCommand content,
-			@ModelAttribute("commentdao") CommentCommand comment, HttpServletRequest request) throws Exception {
+			@ModelAttribute("commentdto") CommentCommand comment, HttpServletRequest request) throws Exception {
 		ModelAndView mav = new ModelAndView("content/ContentView");
 		/*int connum = Integer.parseInt(request.getParameter("connum"));*/
 		int connum = 82;
-		System.out.println("connum"+connum);
+		
+		request.getSession().setAttribute("memId", "test");
+		request.getSession().setAttribute("nickName", "testnick");
+
+
 		SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:mm");
 		content = contentdao.getContent(connum);
-		System.out.println("123123123123123123123123");
 		String conhash = content.getConhash();
-		System.out.println("123123123123123123123123");
 		conhash = conhash.replaceAll(",", "");
 		content.setConhash(conhash);
-		System.out.println("123123123123123123123123");
-		ArrayList array = (ArrayList) commentdao.getComments(connum);
-		System.out.println("123123123123123123123123");
+		ArrayList<CommentCommand> array = (ArrayList) commentdao.getComments(connum);
 		int count = commentdao.commentcount(connum);
-		System.out.println("123123123123123123123123");
+		
 		mav.addObject("content", content);
 		mav.addObject("sdf", sdf);
-
 		mav.addObject("comment", array);
 		mav.addObject("conhash", conhash);
 		mav.addObject("count", count);
