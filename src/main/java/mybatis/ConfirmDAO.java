@@ -17,7 +17,7 @@ public class ConfirmDAO {
 		return session.selectOne("Confirm.existEmail",email);
 	}
 	public int existNickname(String nickname){
-		return session.selectOne("Confirm.existName",nickname);
+		return session.selectOne("Confirm.existNickname",nickname);
 	}
 }
 
