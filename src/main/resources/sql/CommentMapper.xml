@@ -8,7 +8,7 @@
 	</select>
 	
 	<insert id="insertComment" parameterType="spring.model.CommentCommand">
-		insert into COMMENTTABLE values(COMMENTTABLE_seq.NEXTVAL,#{comnick},#{comcontent},sysdate,sysdate,0,'0',#{connum},#{email},#{comip})
+		insert into COMMENTTABLE values(COMMENTTABLE_SEQ.NEXTVAL,#{comnick},#{comcontent},sysdate,sysdate,0,'0',#{connum},#{email},#{comip})
 	</insert>
 
 	<delete id="deleteComment" parameterType="integer">
@@ -28,3 +28,4 @@
 	</select>
 
 </mapper>
+

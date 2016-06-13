@@ -8,7 +8,7 @@
  
 	<excludes>
 	 	<pattern>/ReportForm.hash*</pattern>
-		<pattern>/UpdateComment.hash*</pattern>
+		<pattern>/updateCommentForm.hash*</pattern>
 		<pattern>/ReportForm.hash*</pattern>
 		<pattern>/ConfirmNickname.hash*</pattern>
 		<pattern>/ConfirmKey.hash*</pattern>
@@ -17,6 +17,7 @@
 		<pattern>/Main.hash</pattern>
 		<pattern>/SignupForm.hash*</pattern>
 		<pattern>/SendEmail.hash*</pattern>
+	
 		
 		<pattern>/Logout.hash</pattern> 
 	</excludes>

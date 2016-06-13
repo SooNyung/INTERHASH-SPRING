@@ -28,7 +28,6 @@ public class LoginController {
 		return "userpage/LoginForm";
 	}
 
-	
 	// 로그인동작
 	@RequestMapping(value = "/LoginPro.hash", method = RequestMethod.POST)
 	private String login(@ModelAttribute("logininfo") MemberCommand info, HttpSession session) {
@@ -52,6 +51,34 @@ public class LoginController {
 
 			return "userpage/LoginFail";
 		}
+
+	@RequestMapping("/LoginPro.hash")
+	private ModelAndView login(@ModelAttribute("userinput") MemberCommand info, HttpSession session) {
+		ModelAndView mv = new ModelAndView("userpage/Board");
+		// result가 1이면 로그인 성공 0이면 실패
+
+		// MemberCommand info = new MemberCommand();
+
+		System.out.println("passwd :: " + info.getPasswd() + info.getEmail());
+
+		String result = dao.login(info);
+
+		System.out.println("dao.login('info') :: " + result);
+		// int result = 1;
+
+		if (result.equals(info.getPasswd())) {
+			session.setAttribute("memId", info);
+
+			System.out.println("요기 들어오나~");
+			return mv;
+		} else {
+			session.setAttribute("memId", null);
+			// session.setAttribute("passwd", null);
+
+			mv.setViewName("main");
+
+			return mv;
+		}
 	}
 
 	// 새창에서 로그인 동작?
@@ -74,7 +101,7 @@ public class LoginController {
 	// 로그인실패
 	@RequestMapping("LoginFail.hash")
 	private String intpu() {
-		return "userpage/LoginFail";
+		return "main";
 	}
 
 	// 로그인 새창띄우기
@@ -86,7 +113,7 @@ public class LoginController {
 	// 로그아웃
 	@RequestMapping("/LogOut.hash")
 	private ModelAndView logout(HttpSession session) {
-		ModelAndView mv = new ModelAndView("MAIN"); // ("TEST");
+		ModelAndView mv = new ModelAndView("main"); // ("TEST");
 		session.setAttribute("memId", null);
 		session.setAttribute("password", null);
 		return mv;

@@ -1,5 +1,6 @@
 package spring.controller.comment;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -13,57 +14,98 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
+
 import mybatis.CommentDAO;
+import mybatis.ContentDAO;
 import spring.model.CommentCommand;
+import spring.model.ContentCommand;
 
 
 
 @Controller
 public class CommentController {
-	
-	private CommentDAO dao;
+	@Autowired
+	private CommentDAO commentdao;
 
-	public void setDao(CommentDAO dao) {
-		this.dao = dao;
+	@Autowired
+	private ContentDAO contentdao;
+
+	
+	public void setDao(CommentDAO commentdao) {
+		this.commentdao = commentdao;
 	}
 	
-	@ModelAttribute("dto")
-	public CommentCommand dto(){
+	public void setContentdao(ContentDAO contentdao) {
+		this.contentdao = contentdao;
+	}
+	
+	@ModelAttribute("commentdto")
+	public CommentCommand commentdto(){
 		return new CommentCommand();
 	}
 	
-	@RequestMapping("/Comment/insertComment.hash")
-	public ModelAndView InsertComment(@ModelAttribute("dto") CommentCommand dto,HttpServletRequest request, HttpSession session){
-		ModelAndView mav = new ModelAndView("ContentView");
+	@ModelAttribute("contentdto")
+	public ContentCommand contentdto(){
+		return new ContentCommand();
+	}
+	
+	
+	
+	
+	@RequestMapping("/InsertComment.hash")
+	public ModelAndView InsertComment(@ModelAttribute("commentdto") CommentCommand commentdto,
+			@ModelAttribute("contentdao") ContentCommand contentdto,
+			HttpServletRequest request, HttpSession session){
+		ModelAndView mav = new ModelAndView("content/ContentView");
 		
 		int connum = Integer.parseInt(request.getParameter("connum"));
+
+		
 		SimpleDateFormat sdf1 = new SimpleDateFormat("YY-MM-dd HH:mm");
-		String comnick = (String) request.getSession().getAttribute("nickname");
+		
+		String comnick = (String) request.getSession().getAttribute("nickName");
+
 		String comcontent = request.getParameter("comcontent");
+
 		Timestamp comcreateddate; 
 		Timestamp commodifieddate;
 		String comip = request.getRemoteAddr();
 		String email = (String) request.getSession().getAttribute("memId");
 		
-		dao.insertComment(dto);
+		commentdto.setComnick(comnick);
+		commentdto.setComcontent(comcontent);
+		commentdto.setEmail(email);
+		commentdto.setComip(comip);
 		
-		ArrayList<CommentCommand> array = (ArrayList<CommentCommand>) dao.getComments(connum);
-		String comsdf = sdf1.format(dto.getCommodifieddate());
+		int result = commentdao.insertComment(commentdto);
 		
+		/*contentdao.getContent(connum);*/
+		contentdto = contentdao.getContent(connum);
+	
+
+		
+		
+		
+		ArrayList<CommentCommand> array = (ArrayList<CommentCommand>) commentdao.getComments(connum);
+		
+		String comsdf = sdf1.format(commentdto.getCommodifieddate());
+
 		mav.addObject("comment",array);
+		mav.addObject("content",contentdto);
 		mav.addObject("comsdf",comsdf);
 
 		return mav;
 	}
 	
-	@RequestMapping("/Comment/deleteComment.hash")
-	public ModelAndView DeleteComment(@ModelAttribute("dto") CommentCommand dto,HttpServletRequest request){
+	@RequestMapping("/deleteComment.hash")
+	public ModelAndView DeleteComment(@ModelAttribute("commentdto") CommentCommand commentdto,HttpServletRequest request){
 		
-		ModelAndView mav = new ModelAndView("ContentView");
+		ModelAndView mav = new ModelAndView("content/ContentView");
 		
 		int comnum = Integer.parseInt(request.getParameter("comnum"));
 		int connum = Integer.parseInt(request.getParameter("connum"));
-		int check = dao.deleteComment(comnum);
+		int check = commentdao.deleteComment(comnum);
 		
 		//게시글을 가져오기 위한 변수 
 		//ContentDataBean content = dbpro.getContent(connum);
@@ -74,34 +116,37 @@ public class CommentController {
 		return mav;
 	}
 	
-	@RequestMapping("/Comment/updateCommentForm.hash")
-	public ModelAndView UpdateCommentForm(@ModelAttribute("dto") CommentCommand dto,HttpServletRequest request){
-		ModelAndView mav = new ModelAndView("Comment/updateComment");
+	
+	@RequestMapping("/updateCommentForm.hash")
+	public ModelAndView UpdateCommentForm(@ModelAttribute("dto") CommentCommand commentdto,HttpServletRequest request){
+		ModelAndView mav = new ModelAndView("content/UpdateComment");
 		
 		int connum = Integer.parseInt(request.getParameter("connum"));
 		int comnum = Integer.parseInt(request.getParameter("comnum"));
 		
-		CommentCommand article = dao.selectComment(comnum);
+		CommentCommand article = commentdao.selectComment(comnum);
 		
 		mav.addObject("article",article);
 		mav.addObject("connum",connum);
 		
 		return mav;
 	}
-	
-	@RequestMapping("/Comment/updateCommentPro.hash")
-	public ModelAndView UpdateCommentPro(@ModelAttribute("dto") CommentCommand dto,HttpServletRequest request){
-		ModelAndView mav = new ModelAndView("Comment/updateCommentPro");
+
+	@RequestMapping("/updateCommentPro.hash")
+	public ModelAndView UpdateCommentPro(@ModelAttribute("commentdto") CommentCommand commentdto, HttpServletRequest request){
+		ModelAndView mav = new ModelAndView("content/UpdateCommentPro");
 		
 		int comnum = Integer.parseInt(request.getParameter("comnum"));
 		int connum = Integer.parseInt(request.getParameter("connum"));
+		
 		Timestamp commodifieddate;
 		
-		int check = dao.updateComment(comnum);
+		
+		int check = commentdao.updateComment(commentdto);
 		
 		request.setAttribute("connum", connum);
 		request.setAttribute("check", check);
-
+		
 		return mav;
 	}
 }
