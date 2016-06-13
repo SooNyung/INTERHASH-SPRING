@@ -28,7 +28,6 @@ public class LoginController {
 		return "userpage/LoginForm";
 	}
 
-
 	//로그인
 	@RequestMapping("/LoginPro.hash")
 	private ModelAndView login(@ModelAttribute("userinput")MemberCommand info,  HttpSession session) 
@@ -63,9 +62,9 @@ public class LoginController {
 			mv.setViewName("main");
 
 			return mv;
-
 		}
 	}
+			
 
 	// 새창에서 로그인 동작?
 	@RequestMapping(value = "/LoginPro.hash", method = RequestMethod.GET)
