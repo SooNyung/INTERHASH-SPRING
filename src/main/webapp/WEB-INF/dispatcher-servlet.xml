@@ -92,8 +92,6 @@
 	
 	 <bean id="menuPreparer" class="spring.tiles.MenuPreparer" /> 
 	
-	
-	
-	<bean id="pageRanks" class="spring.view.PageRanksView" />
-	
+	<bean id="excelView" class="spring.controller.admin.ExcelBuilder" />
+	<bean id="withdrawl" class="spring.controller.admin.withdrawlMember" />
 </beans>

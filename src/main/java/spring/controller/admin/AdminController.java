@@ -1,9 +1,13 @@
 package spring.controller.admin;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import mybatis.AdminDAO;
 import mybatis.LogonDAO;
 import mybatis.WithdrawalDAO;
-import spring.model.AdminCommand;
+
 import spring.model.MemberCommand;
 import spring.model.WithdrawalCommand;
 
@@ -89,22 +93,23 @@ public class AdminController {
 		return mv;
 	}
 	
-	//占쎄슈�뜝�뜾逾놂옙�봿�겱�뤆�룊�삕 �뜝�럩�뤂�뜝�럩�쐸占쎄슈�뜝�뜾逾놂옙�뿫由��뜝�럥裕� �뜝�럥�쓡�뜝�럩逾좂춯�쉻�삕 �뜝�럩�걦占쎈쇀�뜝占�
-	@RequestMapping(value="/ManagerPageMemberPro.hash", method=RequestMethod.GET)
-	private ModelAndView adminMemberPro(@RequestParam("members") WithdrawalCommand members,HttpServletRequest request){
+	//회원삭제하기
+	@RequestMapping(value="/ManagerPageMemberPro.hash", method=RequestMethod.POST)
+	private ModelAndView adminMemberPro(HttpServletRequest request){
 		ModelAndView mv = new ModelAndView("adminpage/ManagerPageMemberPro");
 		
-	/*	String check[] = request.getParameterValues("delete");
+		String check[] = request.getParameterValues("delete");
 		System.out.println("delete::" + Arrays.toString(check));
 		String member =  Arrays.toString(check);
 		
+		/*WithdrawalCommand members = new WithdrawalCommand();
 		members.setDrawalemail(member);
-		dao.adminInsert(member);
-		
-		MemberCommand a = new MemberCommand();
+		dao.adminInsert(member);//탈퇴한 회원이 탈퇴회원관리에 저장됨
+*/		
+		MemberCommand a = new MemberCommand();//회원관리
 		a.setEmail(member);
 		dao.deleteMember(member);
-		 */
+		
 		return mv;
 	}
 	
@@ -114,7 +119,6 @@ public class AdminController {
 	private ModelAndView adminDeleteMember(HttpServletRequest request){
 		ModelAndView mv = new ModelAndView("adminpage/ManagerPageDeleteMember");
 
-		
 	//	WithdrawalCommand bean = (WithdrawalCommand)list.get(0);//?
 	
 		request.setAttribute("array", wdao.selectMember());
@@ -122,5 +126,22 @@ public class AdminController {
 	
 		return mv;
 	}
+	
+	@RequestMapping(value = "/toExcel.hash", method = RequestMethod.GET)
+	 public ModelAndView toExcel(HttpServletRequest req, HttpSession session) {
+	ModelAndView result = new ModelAndView();
+	
+	List<MemberCommand> list = dao.selectMember(); //쿼리
+	
+	return new ModelAndView("excelView", "member", list);
+	}
+	
+	@RequestMapping(value = "/toExcelWithdrawl.hash", method = RequestMethod.GET)
+	 public ModelAndView withdrawl(HttpServletRequest req, HttpSession session) {
+	ModelAndView result = new ModelAndView();
+	
+	List<WithdrawalCommand> list = wdao.selectMember(); //쿼리
 
+	return new ModelAndView("withdrawl", "Withdrawal", list);
+	}
 }

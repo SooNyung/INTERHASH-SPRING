@@ -40,6 +40,7 @@ ${member.drawalcause}
 </c:forEach>
 </table>
 <input type="button" value="°ü¸®ÀÚÆäÀÌÁö" onclick="javascript:window.location='ManagerPage.hash'">
-
+<br>
+<a href="toExcelWithdrawl.hash"><img src='<c:url value="/image/logo/¿¢¼¿.PNG" ></c:url>' width='50' height="50"></a>
 </body>
 </html>
