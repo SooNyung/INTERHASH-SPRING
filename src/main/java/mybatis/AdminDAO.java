@@ -26,11 +26,12 @@ public class AdminDAO {
 	}
 	
 	public void deleteMember(String value){
-		
-	String [] tmp = value.substring(1, value.length()-1).trim().split(",");
+
+		String [] tmp = value.substring(1, value.length()-1).trim().split(",");
 		for (int i = 0 ; i < tmp.length;i++){	
 			session.delete("admin.deleteMember",tmp[i]);
 		}
+
 	}
 	
 	public List<MemberCommand> selectMember(){
@@ -40,7 +41,7 @@ public class AdminDAO {
 	public void adminInsert(String value){
 		String [] tmp = value.substring(1, value.length()-1).trim().split(",");
 		for (int i = 0 ; i < tmp.length;i++){	
-			session.insert("Board.insert_content", tmp[i]);
+			session.insert("admin.insert_content", tmp[i]);
 		}
 	}
 	

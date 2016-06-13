@@ -14,7 +14,7 @@ color:#7A7A7A;
 <body>
 회원삭제가 완료되었습니다.
 잠시후 관리자페이지로 이동합니다.
-<meta http-equiv="Refresh" content="2;url=/INTERHASH/ManagerPage.hash" >
+<meta http-equiv="Refresh" content="2;url=/INTERHASH-SPRING/ManagerPage.hash" >
 
 </body>
 </html>

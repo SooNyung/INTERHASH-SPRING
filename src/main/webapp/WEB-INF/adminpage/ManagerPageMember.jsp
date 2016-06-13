@@ -1,10 +1,10 @@
-<%@ page contentType="text/html; charset=EUC-KR"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 <head>
-<title>°ü¸®ÀÚ</title>
+<title>ê´€ë¦¬ì</title>
 <style>
 *{
 color:#7A7A7A;
@@ -16,20 +16,21 @@ padding:3px;
 width:100px; 
 } */
 </style>
+
 </head>
 <body>
+
 <center>
-<h3>È¸¿ø°ü¸®</h3>
+<h3>íšŒì›ê´€ë¦¬</h3>
 <hr/>
 <form method="post" action="ManagerPageMemberPro.hash">
 <table border="1">
 <tr>
 <td><b>email</b></td>
 <td><b>nickname</b></td>
-<td><b>½Å°íÈ½¼ö</b></td>
-<td><b>È¸¿ø»èÁ¦</b></td>
+<td><b>ì‹ ê³ íšŸìˆ˜</b></td>
+<td><b>íšŒì›ì‚­ì œ</b></td>
 </tr>
-
 <c:forEach var="member" items="${array}">
 <tr>
 <td>
@@ -45,8 +46,12 @@ ${member.reportcount}
 </tr>
 </c:forEach>
 </table>
-<div align="center"><input type="submit" value="È¸¿ø»èÁ¦"></div>
+<div align="center"><input type="submit" value="íšŒì›ì‚­ì œ"></div>
 </form>
-<input type="button" value="°ü¸®ÀÚÆäÀÌÁö" onclick="javascript:window.location='ManagerPage.hash'">
+
+<input type="button" value="ê´€ë¦¬ìí˜ì´ì§€" onclick="javascript:window.location='ManagerPage.hash'">
+<br>
+<!-- <button type="button" onclick="exportToExcel();">ì—‘ì…€ì¶œë ¥</button> -->
+<a href="toExcel.hash"><img src='<c:url value="/image/logo/ì—‘ì…€.PNG" ></c:url>' width='50' height="50"></a>
 </body>
 </html>
