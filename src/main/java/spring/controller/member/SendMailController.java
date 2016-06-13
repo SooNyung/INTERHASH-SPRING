@@ -3,6 +3,12 @@ package spring.controller.member;
 import java.util.Properties;
 import java.util.Random;
 
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -22,7 +28,7 @@ public class SendMailController {
 		request.getSession().setAttribute("key",key);
 		
 		sendmail(email,key);
-		return "view/member/SendEmail";
+		return "userpage/SendEmail";
 	}
 		
 	public String makeKey(){
@@ -55,7 +61,7 @@ public class SendMailController {
 		props.setProperty("mail.smtp.port", "465");
 		props.setProperty("mail.smtp.socketFactory.port", "465");
 
-	/*	Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
 				return new PasswordAuthentication(username, password);
 			}
@@ -79,7 +85,7 @@ public class SendMailController {
 		}
 		finally{
 			key="";
-		}*/
+		}
 	}
 
 }

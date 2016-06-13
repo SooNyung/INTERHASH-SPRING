@@ -36,14 +36,14 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/SignupPro.hash")
-	public ModelAndView SignupPro(MemberCommand memberCommand, @RequestParam("hash")String[] hash, HttpServletRequest request) {
+	public ModelAndView SignupPro(MemberCommand memberCommand, @RequestParam("hash")String[] hash, HttpServletRequest request, HttpSession session) {
 		ModelAndView mv = new ModelAndView("userpage/SignupPro");
 		memberCommand.setHash(Arrays.toString(hash));
 		System.out.println("hash태그 :: " + Arrays.toString(hash));
 		memberCommand.setIp(request.getRemoteAddr());
 		int a = dao.insertMember(memberCommand);
 		System.out.println("회원가입 성공? :: " + a);
-		mv.addObject("member", memberCommand);		
+		mv.addObject("member", memberCommand);
 		return mv;
 		
 	}

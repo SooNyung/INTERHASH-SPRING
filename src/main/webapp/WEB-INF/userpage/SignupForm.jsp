@@ -77,7 +77,7 @@ padding:10px;
 			alert("닉네임을 입력해 주세요");
 			return false;
 		}
-		url="/INTERHASH/ConfirmNickname.hash?nickname=" + userinput.nickname.value;
+		url="/INTERHASH-SPRING/ConfirmNickname.hash?nickname=" + userinput.nickname.value;
 		open(url, "confirmnik", "toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
 		checkNickname=true;
 	}
@@ -88,12 +88,12 @@ padding:10px;
 			alert("Email을 입력해주세요");
 			return false;
 		}
-		url="/INTERHASH/ConfirmEmail.hash?email=" + userinput.email.value;
+		url="/INTERHASH-SPRING/ConfirmEmail.hash?email=" + userinput.email.value;
 		open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
 		checkEmail=true;
 	}
 	function keyCheck(){
-		url="/INTERHASH/ConfirmKey.hash?inputkey=" + userinput.emailnumber.value;
+		url="/INTERHASH-SPRING/ConfirmKey.hash?inputkey=" + userinput.emailnumber.value;
 		open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
 		checkEmailNum=true;
 	}
