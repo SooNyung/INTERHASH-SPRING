@@ -28,6 +28,7 @@ public class LoginController {
 		return "userpage/LoginForm";
 	}
 
+
 	//·Î±×ÀÎ
 	@RequestMapping("/LoginPro.hash")
 	private ModelAndView login(@ModelAttribute("userinput")MemberCommand info,  HttpSession session) 
