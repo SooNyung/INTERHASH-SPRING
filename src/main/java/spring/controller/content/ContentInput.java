@@ -144,6 +144,7 @@ public class ContentInput {
 		return "Board.hash";
 	}
 	
+	@RequestMapping("/ContentInputPro.hash")
 	public String file_upload(@RequestParam("file1") MultipartFile info, HttpServletRequest request) {
 		System.out.println("여긴 들어오나?");
 		try {

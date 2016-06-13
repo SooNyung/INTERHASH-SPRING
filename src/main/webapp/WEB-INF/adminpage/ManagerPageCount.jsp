@@ -31,7 +31,7 @@ text-align:center;
 <td><b>좋아요 수</b></td>
 <td><b>게시글 수</b></td>
 </tr>
-<c:forEach var="hash" items="${array}">
+<c:forEach var="hash" items="${content}">
 <tr>
 <td>
 ${hash.hashName}

@@ -35,7 +35,7 @@
     	<constructor-arg ref="sqlSessionFactory"/>
     </bean>
   
-    <!-- <bean  class="mybatis.AdminDAO">
+ <!--   <bean  class="mybatis.AdminDAO">
 		<property name="session" ref="sqlSession"/>
 	</bean>
 	<bean  class="mybatis.CommentDAO">
@@ -43,7 +43,7 @@
 	</bean>
  	<bean  class="mybatis.ConfirmDAO">
 		<property name="session" ref="sqlSession"/>
-	</bean>
+	</bean> 
 	<bean  class="mybatis.ContentDAO">
 		<property name="session" ref="sqlSession"/>
 	</bean>
@@ -61,7 +61,7 @@
 	</bean>
 	<bean  class="mybatis.WithdrawalDAO">
 		<property name="session" ref="sqlSession"/>
-	</bean> -->
+	</bean>  -->
 
 	<!-- <bean id="tilesviewResolver"
 		class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" />
@@ -81,14 +81,16 @@
 			value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory">
 		</property>
 	</bean> -->
-		<bean id="beanNameResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+	<bean id="beanNameResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver" />
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
-	<!-- <bean id="menuPreparer" class="spring.tiles.MenuPreparer" /> -->
+	 <bean id="menuPreparer" class="spring.tiles.MenuPreparer" /> 
 	
 	
 	

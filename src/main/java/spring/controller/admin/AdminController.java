@@ -21,11 +21,13 @@ import spring.model.WithdrawalCommand;
 
 @Controller
 public class AdminController {
-	
+	@Autowired
 	AdminDAO dao;
 	
+	@Autowired
 	WithdrawalDAO wdao;
 	
+	@Autowired
 	LogonDAO ldao;
 	
 	
@@ -45,52 +47,52 @@ public class AdminController {
 
 	@RequestMapping(value="/ManagerPage.hash", method=RequestMethod.GET)
 	private String adminPage(){	
-		return "view/Admin/ManagerPage";
+		return "adminpage/ManagerPage";
 	}
 	
 	@RequestMapping(value="/ManagerPageCount.hash",method=RequestMethod.GET)
-	private ModelAndView adminCount(@RequestParam("HashName") AdminCommand HashName, HttpServletRequest request){
-		ModelAndView mv = new ModelAndView("view/Admin/ManagerPageCount");
+	private ModelAndView adminCount(HttpServletRequest request){
+		ModelAndView mv = new ModelAndView("adminpage/ManagerPageCount");
 
-		request.setAttribute("hashname", HashName);
-		/*
-		List<AdminCommand> list = (List<AdminCommand>)dao.selectHash();
-		AdminCommand bean = (AdminCommand)list.get(5);//?
-		System.out.println("array�뜝�떛紐뚯삕:::"+list);
+		//request.setAttribute("hashname", HashName);
 	
-		mv.addObject("content",list);*/
+		//AdminCommand bean = (AdminCommand)list.get(5);//?
+	
+	
+		mv.addObject("content",dao.selectHash());
 		
 		return mv;
 	}
 	
-	//占쎈뻿�⑥쥒苡띰옙�뻻�눧占� 占쎈읂占쎌뵠筌욑옙
+	//�뜝�럥六울옙�뫁伊믦떋�씛�삕占쎈뻣占쎈닱�뜝占� �뜝�럥�쓡�뜝�럩逾좂춯�쉻�삕
 	@RequestMapping(value="/ManagerPageReport.hash", method=RequestMethod.GET)
 	private ModelAndView adminReport(HttpServletRequest request){
 		
-		ModelAndView mv = new ModelAndView("view/Admin/ManagerPageReport");
+		ModelAndView mv = new ModelAndView("adminpage/ManagerPageReport");
 
-		String nickname = request.getParameter("connickname");//???
+		//String nickname = request.getParameter("connickname");//???
 		
+		request.setAttribute("array", dao.selectMember());
 		return mv;
 	}
 	
-	//�꽴占썹뵳�딆쁽揶쏉옙 占쎌돳占쎌뜚�꽴占썹뵳�뗫릭占쎈뮉 占쎈읂占쎌뵠筌욑옙
+	//占쎄슈�뜝�뜾逾놂옙�봿�겱�뤆�룊�삕 �뜝�럩�뤂�뜝�럩�쐸占쎄슈�뜝�뜾逾놂옙�뿫由��뜝�럥裕� �뜝�럥�쓡�뜝�럩逾좂춯�쉻�삕
 	@RequestMapping(value="/ManagerPageMember.hash", method=RequestMethod.GET)
 	private ModelAndView adminMember(HttpServletRequest request){
-		ModelAndView mv = new ModelAndView("view/Admin/ManagerPageMember");
+		ModelAndView mv = new ModelAndView("adminpage/ManagerPageMember");
 
-		/*List<MemberCommand> list = (List<MemberCommand>)ldao.selectMember();
-		MemberCommand bean = (MemberCommand)list.get(0);
-		System.out.println("�뜝�뙇�냲�삕�뜝�룞�삕::" + bean.getEmail());
-		request.setAttribute("array", list);
-		System.out.println("array�뜝�떛紐뚯삕:::"+list);*/
+		
+		//MemberCommand bean = (MemberCommand)list.get(0);
+
+		request.setAttribute("array", dao.selectMember());
+
 		return mv;
 	}
 	
-	//�꽴占썹뵳�딆쁽揶쏉옙 占쎌돳占쎌뜚�꽴占썹뵳�뗫릭占쎈뮉 占쎈읂占쎌뵠筌욑옙 占쎌끏�뙴占�
+	//占쎄슈�뜝�뜾逾놂옙�봿�겱�뤆�룊�삕 �뜝�럩�뤂�뜝�럩�쐸占쎄슈�뜝�뜾逾놂옙�뿫由��뜝�럥裕� �뜝�럥�쓡�뜝�럩逾좂춯�쉻�삕 �뜝�럩�걦占쎈쇀�뜝占�
 	@RequestMapping(value="/ManagerPageMemberPro.hash", method=RequestMethod.GET)
 	private ModelAndView adminMemberPro(@RequestParam("members") WithdrawalCommand members,HttpServletRequest request){
-		ModelAndView mv = new ModelAndView("view/Admin/ManagerPageMemberPro");
+		ModelAndView mv = new ModelAndView("adminpage/ManagerPageMemberPro");
 		
 	/*	String check[] = request.getParameterValues("delete");
 		System.out.println("delete::" + Arrays.toString(check));
@@ -107,17 +109,17 @@ public class AdminController {
 	}
 	
 
-	//�꽴占썹뵳�딆쁽揶쏉옙 占쎄퉱占쎈닚占쎌넅占쎌뜚�꽴占썹뵳�뗫릭占쎈뮉 占쎈읂占쎌뵠筌욑옙
+	//占쎄슈�뜝�뜾逾놂옙�봿�겱�뤆�룊�삕 �뜝�럡�돮�뜝�럥�떄�뜝�럩�꼨�뜝�럩�쐸占쎄슈�뜝�뜾逾놂옙�뿫由��뜝�럥裕� �뜝�럥�쓡�뜝�럩逾좂춯�쉻�삕
 	@RequestMapping(value="/ManagerPageDeleteMember.hash", method=RequestMethod.GET)
 	private ModelAndView adminDeleteMember(HttpServletRequest request){
-		ModelAndView mv = new ModelAndView("view/Admin/ManagerPageDeleteMember");
-/*
-		List<WithdrawalCommand> list = wdao.selectMember();
-		WithdrawalCommand bean = (WithdrawalCommand)list.get(0);//?
-		System.out.println("�뜝�뙇�냲�삕�뜝�룞�삕::" + bean.getDrawalemail());
-		request.setAttribute("array", list);
-		System.out.println("array�뜝�떛紐뚯삕:::"+ list);
-*/		
+		ModelAndView mv = new ModelAndView("adminpage/ManagerPageDeleteMember");
+
+		
+	//	WithdrawalCommand bean = (WithdrawalCommand)list.get(0);//?
+	
+		request.setAttribute("array", wdao.selectMember());
+	
+	
 		return mv;
 	}
 
