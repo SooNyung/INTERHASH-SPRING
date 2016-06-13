@@ -37,6 +37,13 @@ public class MemberDAO {
 		return session.selectOne("member.checkdelete",email);
 	}
 	public String findPassword(MemberCommand info){
-		return session.selectOne("UserInfo.findPassword",info);
+		return session.selectOne("member.findPassword",info);
+	}
+	
+	public String login(MemberCommand info){
+		System.out.println(info.getEmail() + info.getPasswd());
+		String s= session.selectOne("member.login", info);
+		System.out.println("s:::"+s);
+		return s;
 	}
 }
