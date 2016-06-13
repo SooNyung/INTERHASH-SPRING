@@ -3,18 +3,20 @@ package spring.model;
 import java.sql.Timestamp;
 
 public class CommentCommand{
+	
 	int comnum;
 	String comnick;
 	String comcontent;
 	Timestamp comcreateddate;
 	Timestamp commodifieddate;
-	String comip;
 	int comreportcount;
 	String comblind;
 	int connum;
 	String email;
+	String comip;
 	
 	public CommentCommand() {}
+	
 	public int getComnum() {
 		return comnum;
 	}

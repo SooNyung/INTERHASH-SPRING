@@ -134,7 +134,7 @@ function modifycon(connum){
 }
 
  function modify(comnum,connum){
-	url="/INTERHASH/UpdateComment.hash?check=y&&comnum="+comnum+"&&connum="+connum;
+	url="updateCommentForm.hash?check=y&&comnum="+comnum+"&&connum="+connum;
 	
 	window.open(url,"post","toolbar=no ,width=500 ,height=250,directories=no,status=yes,menubar=no,scrollbars=no");
 } 
@@ -161,7 +161,7 @@ function report(){
 
 	<c:if test="${sessionScope.memId==content.email}">
 	<div id="left_mod_del_rep">
-		<span id="align_right">/<a href="/INTERHASH/ContentDelete.hash?connum=${content.connum}">삭제하기</a></span>
+		<span id="align_right">/<a href="/ContentDelete.hash?connum=${content.connum}">삭제하기</a></span>
 		<<span id="align_right"><a href="/INTERHASH/ContentUpdate.hash?connum=${content.connum}">수정하기 </a></span>
 		
 	</div>
@@ -196,6 +196,7 @@ function report(){
 
 	<form method=post action="InsertComment.hash">
 	<input type=hidden name=connum value="${content.connum}">
+	<input type=hidden name=comnick value="${sessionScope.nickName}">
 	<div id="right_nick">
 		<span id ="align_left">${sessionScope.nickName}님</span>
 	</div>
@@ -204,7 +205,8 @@ function report(){
 	</div>
 	
 	<div id="comment_submit">
-		<span id="align_right"><input type="submit" value="개시"></span>
+		<span id="align_right">
+		<input type="submit" value="개시"></span>
 	</div>
 	</form>
 	
@@ -219,7 +221,7 @@ function report(){
 	
 	<span id="align_right">
 		<c:if test="${sessionScope.memId==comment.email}">
-		<a href="/INTERHASH/DeleteComment.hash?comnum=${comment.comnum}&&connum=${comment.connum}">삭제</a>
+		<a href="deleteComment.hash?comnum=${comment.comnum}&&connum=${comment.connum}">삭제</a>
 		<a onclick="modify(${comment.comnum},${comment.connum})">수정</a>
  
 		</c:if	>
@@ -232,7 +234,6 @@ function report(){
 	
 	<div id="test">${comment.comcontent}</div>
 	</c:forEach>
-
 	</div>
 	
 

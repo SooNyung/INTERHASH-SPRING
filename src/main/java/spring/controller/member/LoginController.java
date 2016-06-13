@@ -30,6 +30,31 @@ public class LoginController {
 
 	
 	// 로그인동작
+<<<<<<< HEAD
+	@RequestMapping(value = "/LoginPro.hash", method = RequestMethod.POST)
+	private String login(@ModelAttribute("logininfo") MemberCommand info, HttpSession session) {
+
+		ModelAndView mv = new ModelAndView("userpage/LoginMain");
+
+		// result가 1이면 로그인 성공 0이면 실패
+
+		System.out.println("login :: info.getEmail() :: " + info.getEmail());
+
+		// System.out.println("info.equals(session.getAttribute('email')) :: " +
+		// info.equals(session.getAttribute("email")));
+
+		//int result = dao.login(info);
+		int result = 0;
+		if (result == 1) {
+			session.setAttribute("memId", info.getEmail());
+			session.setAttribute("password", info.getPasswd());
+
+			return "userpage/LoginMain";
+		} else {
+			session.setAttribute("memId", null);
+
+			return "userpage/LoginFail";
+=======
 		@RequestMapping("/LoginPro.hash")
 		private ModelAndView login(@ModelAttribute("userinput")MemberCommand info,  HttpSession session) {
 			ModelAndView mv = new ModelAndView("userpage/Board");
@@ -59,6 +84,7 @@ public class LoginController {
 				
 				return mv;
 			}
+>>>>>>> 5d630cbde1fc1458f020d3eb65ec30d0e7bff908
 		}
 
 	// 새창에서 로그인 동작?
