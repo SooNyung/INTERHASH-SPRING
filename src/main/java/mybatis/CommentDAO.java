@@ -17,6 +17,7 @@ public class CommentDAO {
 	}
 	
 	public int insertComment(CommentCommand dto){
+		System.out.println("::::::::::::::::::::::::::");
 		return session.insert("Comment.insertComment",dto);
 	}
 	
@@ -32,8 +33,8 @@ public class CommentDAO {
 		return session.selectOne("Comment.selectComment",comnum);
 		}
 	
-	public int updateComment(int comnum){
-		return session.update("Comment.updateComment", comnum);
+	public int updateComment(CommentCommand dto){
+		return session.update("Comment.updateComment", dto);
 	}
 	
 	public int commentcount(int connum){

@@ -13,7 +13,7 @@ hash : ${hash}<br>
 session.memID : ${sessionScope.memId}<br>
 session.nickName : ${sessionScope.nickName}<br>
 <input type="button" value="글쓰기" onClick="window.location.href='ContentInputForm.hash';"/><br>
-<input type="button" value="로그아웃" onClick="window.location.replace('Logout.hash')"/><br>
+<input type="button" value="로그아웃" onClick="window.location.href='LogOut.hash';"/><br> <%-- replace('Logout.hash')" --%>
 <input type="button" value="정보수정" onClick="window.location.href='UserInfoModifyForm.hash';"/><br>
 <input type="button" value="글보기" onClick="window.location.href='ContentView.hash';"/><br>
 </body>
