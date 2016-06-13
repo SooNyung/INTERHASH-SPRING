@@ -28,42 +28,42 @@ public class LoginController {
 		return "userpage/LoginForm";
 	}
 
-	
-		//로그인
-		@RequestMapping("/LoginPro.hash")
-		private ModelAndView login(@ModelAttribute("userinput")MemberCommand info,  HttpSession session) {
-			ModelAndView mv = new ModelAndView("fixpage/boardDiv");
-			// result가 1이면 로그인 성공 0이면 실패
-			
-			//MemberCommand info = new MemberCommand();
-			
-			System.out.println("passwd :: "+ info.getPasswd()+" ::: "+info.getEmail());
-			
-			int result = dao.login(info);
-			
-			System.out.println("dao.login('info') :: " + result);
-			// int result = 1;
-			
-			//if(result != null && result.equals(info.getPasswd()) )
-			if(result == 1)
-			{
-				session.setAttribute("memId", info.getEmail());
-				
-				System.out.println("요기 들어오나~");	
-				return mv;		
-			} 
-			else
-			{
-				session.setAttribute("memId", null);
+	//로그인
+	@RequestMapping("/LoginPro.hash")
+	private ModelAndView login(@ModelAttribute("userinput")MemberCommand info,  HttpSession session) 
+	{
+		ModelAndView mv = new ModelAndView("fixpage/boardDiv");
+		// result가 1이면 로그인 성공 0이면 실패
+
+		//MemberCommand info = new MemberCommand();
+
+		System.out.println("passwd :: "+ info.getPasswd()+" ::: "+info.getEmail());
+
+		int result = dao.login(info);
+
+		System.out.println("dao.login('info') :: " + result);
+		// int result = 1;
+
+		//if(result != null && result.equals(info.getPasswd()) )
+		if(result == 1)
+		{
+			session.setAttribute("memId", info.getEmail());
+
+			System.out.println("요기 들어오나~");	
+			return mv;		
+		} 
+		else
+		{
+			session.setAttribute("memId", null);
 			//	session.setAttribute("passwd", null);
-				
-				System.out.println("로그인 실패");
-				
-				mv.setViewName("main");
-				
-				return mv;
-			}
+
+			System.out.println("로그인 실패");
+
+			mv.setViewName("main");
+
+			return mv;
 		}
+	}
 
 	// 새창에서 로그인 동작?
 	@RequestMapping(value = "/LoginPro.hash", method = RequestMethod.GET)
