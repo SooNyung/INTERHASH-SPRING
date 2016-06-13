@@ -81,7 +81,7 @@ public class LoginController {
 	// 로그인실패
 	@RequestMapping("LoginFail.hash")
 	private String intpu() {
-		return "userpage/LoginFail";
+		return "main";
 	}
 
 	// 로그인 새창띄우기
@@ -93,7 +93,7 @@ public class LoginController {
 	// 로그아웃
 	@RequestMapping("/LogOut.hash")
 	private ModelAndView logout(HttpSession session) {
-		ModelAndView mv = new ModelAndView("MAIN"); // ("TEST");
+		ModelAndView mv = new ModelAndView("main"); // ("TEST");
 		session.setAttribute("memId", null);
 		session.setAttribute("password", null);
 		return mv;
