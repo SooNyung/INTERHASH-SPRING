@@ -50,7 +50,7 @@ public class LoginController {
 				System.out.println("요기 들어오나~");	
 				return mv;
 			} 
-			else 
+			else
 			{
 				session.setAttribute("memId", null);
 			//	session.setAttribute("passwd", null);
