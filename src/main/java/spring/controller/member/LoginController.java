@@ -30,29 +30,36 @@ public class LoginController {
 
 	
 	// 로그인동작
-	@RequestMapping(value = "/LoginPro.hash", method = RequestMethod.POST)
-	private String login(@ModelAttribute("logininfo") MemberCommand info, HttpSession session) {
-		ModelAndView mv = new ModelAndView("userpage/LoginMain");
-		// result가 1이면 로그인 성공 0이면 실패
-
-		System.out.println("login :: info.getEmail() :: " + info.getEmail());
-
-		// System.out.println("info.equals(session.getAttribute('email')) :: " +
-		// info.equals(session.getAttribute("email")));
-
-		//int result = dao.login(info);
-		int result = 0;
-		if (result == 1) {
-			session.setAttribute("memId", info.getEmail());
-			session.setAttribute("password", info.getPasswd());
-
-			return "userpage/LoginMain";
-		} else {
-			session.setAttribute("memId", null);
-
-			return "userpage/LoginFail";
+		@RequestMapping("/LoginPro.hash")
+		private ModelAndView login(@ModelAttribute("userinput")MemberCommand info,  HttpSession session) {
+			ModelAndView mv = new ModelAndView("userpage/Board");
+			// result가 1이면 로그인 성공 0이면 실패
+			
+			//MemberCommand info = new MemberCommand();
+			
+			System.out.println("passwd :: "+ info.getPasswd()+info.getEmail());
+			
+			String result = dao.login(info);
+			
+			System.out.println("dao.login('info') :: " + result);
+			// int result = 1;
+			
+			if (result.equals(info.getPasswd())) {
+				session.setAttribute("memId", info);
+				
+				System.out.println("요기 들어오나~");	
+				return mv;
+			} 
+			else 
+			{
+				session.setAttribute("memId", null);
+			//	session.setAttribute("passwd", null);
+				
+				mv.setViewName("main");
+				
+				return mv;
+			}
 		}
-	}
 
 	// 새창에서 로그인 동작?
 	@RequestMapping(value = "/LoginPro.hash", method = RequestMethod.GET)
