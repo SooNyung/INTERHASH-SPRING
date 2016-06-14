@@ -156,11 +156,11 @@
 		}
 	}
 	
-	function tagCheck() {
+/* 	function tagCheck() {
 
-		url = "/INTERHASH/userpage/TagCheck.jsp?check=y";
+		url = "TagCheck.hash?check=y";
 		newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
-	}
+	} */
     </script>
  
   </head>

@@ -2,15 +2,20 @@ package spring.controller.content;
 
 import java.io.File;
 import java.sql.Timestamp;
+import java.util.Iterator;
+import java.util.Properties;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import mybatis.ContentDAO;
 import mybatis.PhotoDAO;
 import spring.model.ContentCommand;
 import spring.model.PhotoCommand;
@@ -142,19 +147,28 @@ public class ContentInput {
 	}
 */	
 	@Autowired
-	PhotoDAO dao;
+	PhotoDAO pdao;
 	
-	public void setDao(PhotoDAO dao) {
-		this.dao = dao;
+	public void setDao(PhotoDAO pdao) {
+		this.pdao = pdao;
 	}
 	
+	@Autowired
+	ContentDAO cdao;
+	
+	public void setPdao(PhotoDAO pdao) {
+		this.pdao = pdao;
+	}
+	@RequestMapping("/TagCheck.hash")
+	private String tag_check(@RequestParam("check") String check,Model model){
+		model.addAttribute("check","y");
+		return "userpage/TagCheck";
+	}
 	@RequestMapping("/ContentInputPro.hash")
 	public String file_upload(@RequestParam("conphoto") MultipartFile conphoto,@RequestParam("content") String content ,
 			@RequestParam("tag") String tag ,HttpServletRequest request) {
-		//@RequestParam(file1) FileForm info)
-		System.out.println("여긴 들어오나?");
+		
 		try {
-			//request.setAttribute("list", list());
 			request.setAttribute("file1",upload(conphoto,request,content,tag));
 			request.setAttribute("real_name", real_name);
 		} catch (Exception e) {
@@ -164,25 +178,40 @@ public class ContentInput {
 	}
 	String real_name;
 	private String upload(MultipartFile info,HttpServletRequest request,String content,String tag) throws Exception{
-		String workspace_dir= (String)System.getProperties().get("user.dir");
+		
+/*		Properties prop = System.getProperties();
+		Set set = prop.keySet();
+		Iterator iter = set.iterator();
+		while(iter.hasNext()){
+			String key=(String)iter.next();
+			System.out.println(key + " :: "+prop.getProperty(key));
+			
+		}
+		System.out.println("절취선 --------------------------------");
+		*/
+		//String workspace_dir= (String)System.getProperties().get("user.dir");
+		String workspace_dir= (String)System.getProperties().get("user.home");
+		
 		String workspace_into_dir = "\\src\\main\\webapp\\upload\\";
-		String tmp_dir = request.getSession().getServletContext().getRealPath("/");
+		//String tmp_dir = request.getSession().getServletContext().getRealPath("/");
+		String tmp_dir = (String)System.getProperties().get("wtp.deploy");
+		String email = (String)request.getSession().getAttribute("memId");
 		//workspace 경로
 		System.out.println("workspace 경로  :: "+ workspace_dir);
 		//서버 경로
 		System.out.println("서버 경로 :: "+tmp_dir);
-		String path = workspace_dir+workspace_into_dir;
-		String tmp_path = tmp_dir + "\\upload\\";
+		String upload_workspace = workspace_dir+workspace_into_dir;
+		String upload_tmp_path = tmp_dir + "spring_interhash\\upload\\";
 		String name = info.getOriginalFilename();
 		real_name= System.currentTimeMillis()+name;
-		String real_path= path+real_name;
+		
 		int size = info.getInputStream().available();
-	
+		System.out.println("email : "+request.getSession().getAttribute("memId"));
 		ContentCommand content_obj = new ContentCommand();
         content_obj.setContent(content);
         content_obj.setConip(request.getRemoteAddr());
         content_obj.setConnickname((String)request.getSession().getAttribute("nickName"));
-        content_obj.setEmail((String)request.getSession().getAttribute("memId"));
+        content_obj.setEmail(email);
         content_obj.setConhash(tag);
         content_obj.setConcreateddate(new Timestamp(System.currentTimeMillis()));
         content_obj.setConmodifieddate(new Timestamp(System.currentTimeMillis()));	
@@ -190,20 +219,20 @@ public class ContentInput {
 		
 		PhotoCommand fileinfo = new PhotoCommand();
 		fileinfo.setPhotoname(name);
-		fileinfo.setRealpath(real_path);
+		fileinfo.setRealpath("test");
 		fileinfo.setPhotosize(size+"");
-		
+		fileinfo.setEmail(email);
+		fileinfo.setServerpath("");
 		//AbstractApplicationContext context = new GenericXmlApplicationContext("mybatis.xml");
 		//FileInfoDAO dao = (FileInfoDAO)context.getBean("dao");
 		System.out.println("여기가 에런가??");
-		int result = dao.insertPhoto(fileinfo);
-		System.out.println("real_path :: "+real_path);
-		System.out.println("insert result :: "+result);
+		cdao.insertContent(content_obj, fileinfo);
+	//	int result = pdao.insertPhoto();
 		
-		File f = new File(real_path);
-		
-		File f1 = new File(tmp_path+real_name);
-		System.out.println("f1:: "+request.getSession().getServletContext().getRealPath("/")+"//"+real_name);
+		File f = new File(upload_workspace+real_name);
+		File f1 = new File(upload_tmp_path+real_name);
+		System.out.println("workspace : \n"+upload_workspace+real_name);
+		System.out.println("tmp_dir : \n"+upload_tmp_path+real_name);
 		info.transferTo(f);
 		info.transferTo(f1);
 //		context.close();

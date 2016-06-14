@@ -81,6 +81,11 @@ function fileUploadPreview(thisObj, preViewer) {
 		}
 	}
 }
+function tagCheck() {
+
+	url = "TagCheck.hash?check=y";
+	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+}
 </script>
 <style type="text/css">
 	#board_div{

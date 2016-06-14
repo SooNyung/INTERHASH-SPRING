@@ -21,7 +21,6 @@ public class ContentDAO {
 	public void insertContent(ContentCommand bean, PhotoCommand photo) throws Exception {
 		session.insert("writecontent.insertContent", bean);
 		session.insert("writecontent.insertPhoto", photo);
-		session.commit();
 	}
 
 	public ArrayList getContent() throws Exception {
