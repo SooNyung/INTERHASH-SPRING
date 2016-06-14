@@ -149,11 +149,12 @@ public class ContentInput {
 	}
 	
 	@RequestMapping("/ContentInputPro.hash")
-	public String file_upload(@RequestParam("file1") MultipartFile info, HttpServletRequest request) {
+	public String file_upload(@RequestParam("conphoto") MultipartFile conphoto, HttpServletRequest request) {
+		//@RequestParam(file1) FileForm info)
 		System.out.println("여긴 들어오나?");
 		try {
 			//request.setAttribute("list", list());
-			request.setAttribute("file1",upload(info,request));
+			request.setAttribute("file1",upload(conphoto,request));
 			request.setAttribute("real_name", real_name);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -162,15 +163,15 @@ public class ContentInput {
 	}
 	String real_name;
 	private String upload(MultipartFile info,HttpServletRequest request) throws Exception{
-		
+		String workspace_dir= (String)System.getProperties().get("user.dir");
+		String workspace_into_dir = "\\src\\main\\webapp\\upload\\";
+		String tmp_dir = request.getSession().getServletContext().getRealPath("/");
 		//workspace 경로
-		System.out.println("workspace 경로  :: "+ System.getProperties().get("user.dir"));
+		System.out.println("workspace 경로  :: "+ workspace_dir);
 		//서버 경로
-		System.out.println("서버 경로 :: "+request.getSession().getServletContext().getRealPath("/"));
-		String path = "C://Users//user2//Documents//workspace-sts-3.7.3.RELEASE//Gradle_webmvc//src//main//webapp//img//";
-		//String path = "C://Users//user2//Documents//workspace-sts-3.7.3.RELEASE//Gradle_webmvc//src//main//webapp//WEB-INF//views//fileupload//img//";
-		//노트북 경로
-		//String path = "C://Users//jin_notebook//Documents//workspace-sts-3.7.3.RELEASE//Gradle_webmvc//src//main//webapp//img//";
+		System.out.println("서버 경로 :: "+tmp_dir);
+		String path = workspace_dir+workspace_into_dir;
+		String tmp_path = tmp_dir + "\\upload\\";
 		String name = info.getOriginalFilename();
 		real_name= System.currentTimeMillis()+name;
 		String real_path= path+real_name;
@@ -200,7 +201,7 @@ public class ContentInput {
 		System.out.println("insert result :: "+result);
 		
 		File f = new File(real_path);
-		String tmp_path = "C://Users//user2//Downloads//spring-tool-suite-3.7.3.RELEASE-e4.6-win32-x86_64//sts-bundle//pivotal-tc-server-developer-3.1.3.SR1//base-instance//wtpwebapps//Gradle_webmvc//img//";
+		
 		File f1 = new File(tmp_path+real_name);
 		System.out.println("f1:: "+request.getSession().getServletContext().getRealPath("/")+"//"+real_name);
 		info.transferTo(f);
