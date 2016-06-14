@@ -1,20 +1,17 @@
 package spring.controller.content;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartRequest;
 
+import mybatis.PhotoDAO;
 import spring.model.ContentCommand;
 import spring.model.PhotoCommand;
 
@@ -143,12 +140,19 @@ public class ContentInput {
 		
 		return "Board.hash";
 	}
+*/	
+	@Autowired
+	PhotoDAO dao;
+	
+	public void setDao(PhotoDAO dao) {
+		this.dao = dao;
+	}
 	
 	@RequestMapping("/ContentInputPro.hash")
 	public String file_upload(@RequestParam("file1") MultipartFile info, HttpServletRequest request) {
 		System.out.println("여긴 들어오나?");
 		try {
-			request.setAttribute("list", list());
+			//request.setAttribute("list", list());
 			request.setAttribute("file1",upload(info,request));
 			request.setAttribute("real_name", real_name);
 		} catch (Exception e) {
@@ -158,7 +162,11 @@ public class ContentInput {
 	}
 	String real_name;
 	private String upload(MultipartFile info,HttpServletRequest request) throws Exception{
-		//학원 경로
+		
+		//workspace 경로
+		System.out.println("workspace 경로  :: "+ System.getProperties().get("user.dir"));
+		//서버 경로
+		System.out.println("서버 경로 :: "+request.getSession().getServletContext().getRealPath("/"));
 		String path = "C://Users//user2//Documents//workspace-sts-3.7.3.RELEASE//Gradle_webmvc//src//main//webapp//img//";
 		//String path = "C://Users//user2//Documents//workspace-sts-3.7.3.RELEASE//Gradle_webmvc//src//main//webapp//WEB-INF//views//fileupload//img//";
 		//노트북 경로
@@ -167,16 +175,27 @@ public class ContentInput {
 		real_name= System.currentTimeMillis()+name;
 		String real_path= path+real_name;
 		int size = info.getInputStream().available();
+/*	
+		ContentCommand content_obj = new ContentCommand();
+        content_obj.setContent(content);
+        content_obj.setConip(request.getRemoteAddr());
+        content_obj.setConnickname(nickname);
+        content_obj.setEmail(email);
+        content_obj.setConhash(conhash);
+        content_obj.setConcreateddate(new Timestamp(System.currentTimeMillis()));
+        content_obj.setConmodifieddate(new Timestamp(System.currentTimeMillis()));
+	*/	
+		
 		
 		PhotoCommand fileinfo = new PhotoCommand();
-		fileinfo.setName(name);
-		fileinfo.setPath(real_path);
-		fileinfo.setFilesize(size);
+		fileinfo.setPhotoname(name);
+		fileinfo.setRealpath(real_path);
+		fileinfo.setPhotosize(size+"");
 		
-		AbstractApplicationContext context = new GenericXmlApplicationContext("mybatis.xml");
-		FileInfoDAO dao = (FileInfoDAO)context.getBean("dao");
+		//AbstractApplicationContext context = new GenericXmlApplicationContext("mybatis.xml");
+		//FileInfoDAO dao = (FileInfoDAO)context.getBean("dao");
 		System.out.println("여기가 에런가??");
-		int result = dao.insertFileInfo(fileinfo);
+		int result = dao.insertPhoto(fileinfo);
 		System.out.println("real_path :: "+real_path);
 		System.out.println("insert result :: "+result);
 		
@@ -189,5 +208,5 @@ public class ContentInput {
 //		context.close();
 		return name;
 	}
-	*/
+	
 }
