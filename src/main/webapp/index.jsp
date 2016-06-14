@@ -2,6 +2,7 @@
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+
 <html>
 <<<<<<< HEAD
 
@@ -18,6 +19,7 @@
 =======
 >>>>>>> 9df730dd8b53c86a6c0b4afe2aee237d7c97d34a
 </head>
+
 <body>
 <% response.sendRedirect("Main.hash"); %>
 </body>
@@ -29,5 +31,9 @@
 
 =======
 
+<<<<<<< HEAD
+
+ 
+=======
 </html>
 >>>>>>> 9df730dd8b53c86a6c0b4afe2aee237d7c97d34a

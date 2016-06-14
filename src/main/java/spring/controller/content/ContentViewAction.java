@@ -56,8 +56,8 @@ public class ContentViewAction {
 		/*int connum = Integer.parseInt(request.getParameter("connum"));*/
 		int connum = 82;
 		
-		request.getSession().setAttribute("memId", "test");
-		request.getSession().setAttribute("nickName", "testnick");
+		request.getSession().setAttribute("memId", "soonyoung");
+		request.getSession().setAttribute("nickName", "soonyoung");
 
 
 		SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:mm");
@@ -68,7 +68,6 @@ public class ContentViewAction {
 		ArrayList<CommentCommand> array = (ArrayList) commentdao.getComments(connum);
 		int count = commentdao.commentcount(connum);
 		
-	
 		mav.addObject("content", content);
 		mav.addObject("sdf", sdf);
 		mav.addObject("comment", array);
@@ -78,12 +77,6 @@ public class ContentViewAction {
 		return mav;
 	}
 	
-	private static class TIME_MAXIMUM {
-		public static final int SEC = 60;
-		public static final int MIN = 60;
-		public static final int HOUR = 24;
-		public static final int DAY = 30;
-		public static final int MONTH = 12;
-	}
+
 
 }

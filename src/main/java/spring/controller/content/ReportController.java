@@ -8,47 +8,98 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import mybatis.CommentDAO;
+import mybatis.ContentDAO;
 import mybatis.ReportDAO;
+import spring.controller.comment.CommentController;
+import spring.model.CommentCommand;
+import spring.model.ContentCommand;
 import spring.model.ReportCommand;
-
 
 @Controller
 public class ReportController {
 
+	@Autowired
 	private ReportDAO reportdao;
+
+	@Autowired
+	private ContentDAO contentdao;
+
+	@Autowired
+	private CommentDAO commentdao;
+	
+	
+	public void setCommentdao(CommentDAO commentdao) {
+		this.commentdao = commentdao;
+	}
+
+	public void setContentdao(ContentDAO contentdao) {
+		this.contentdao = contentdao;
+	}
 
 	public void setReportdao(ReportDAO reportdao) {
 		this.reportdao = reportdao;
 	}
-	
-	@ModelAttribute("dto")
-	public ReportCommand dto(){
+
+	@ModelAttribute("reportdto")
+	public ReportCommand dto() {
 		return new ReportCommand();
 	}
+
+	@ModelAttribute("contentdto")
+	public ContentCommand contentdto() {
+		return new ContentCommand();
+	}
 	
-	@RequestMapping("/Report/ReportForm.hash")
-	public ModelAndView reportForm(HttpServletRequest request){
-		ModelAndView mav = new ModelAndView("Report/ReportForm");
-		
+	@ModelAttribute("commentdto")
+	public CommentCommand commentdto(){
+		return new CommentCommand();
+	}
+
+	@RequestMapping("/ReportForm.hash")
+	public ModelAndView reportForm(@ModelAttribute("contentdto") ContentCommand contentdto,
+			HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView("content/ReportForm");
 		int connum = Integer.parseInt(request.getParameter("connum"));
-			
-		//ContentDataBean content = dbpro.getContent(connum);
-		//mav.addobject("content", content)
-			
+		int check = 0;
+		ContentCommand content = contentdao.getContent(connum);
+		mav.addObject("check",check);
+		mav.addObject("content", content);
+		return mav;
+	}
+
+	@RequestMapping("/ReportPro.hash")
+	public ModelAndView reportPro(@ModelAttribute("reportdto") ReportCommand reportdto, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView("content/ReportPro");
+		int connum = Integer.parseInt(request.getParameter("connum"));
+		String email = reportdto.getEmail();
+		reportdao.sendReport(reportdto);
+		int result = reportdao.reportCount(email);
 		return mav;
 	}
 	
-	@RequestMapping("/Report/ReportPro.hash")
-	public ModelAndView reportPro(@ModelAttribute("dto") ReportCommand dto,HttpServletRequest request){
-		ModelAndView mav = new ModelAndView("Report/ReportPro");
-			
-		String email = (String) request.getSession().getAttribute("memId");
-		
-		reportdao.sendReport(dto);
-		
-		reportdao.reportCount(email);
-		
+	@RequestMapping("/ReportFormCom.hash")
+	public ModelAndView reportFormCom(@ModelAttribute("commentdto") CommentCommand commentdto,
+			HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView("content/ReportFormCom");
+		int comnum = Integer.parseInt(request.getParameter("comnum"));
+		int check = 1;
+		commentdto = commentdao.selectComment(comnum);
+		mav.addObject("check", check);
+		mav.addObject("comment", commentdto);
 		return mav;
 	}
 	
+	@RequestMapping("/ReportProCom.hash")
+	public ModelAndView reportProCom(@ModelAttribute("reportdto") ReportCommand reportdto, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView("content/ReportPro");
+		int comnum = Integer.parseInt(request.getParameter("comnum"));
+		String email = reportdto.getEmail();
+		System.out.println("여기::::::::::"+reportdto.getEmail());
+		reportdao.sendReportCom(reportdto);
+		System.out.println("여기::::::::::");
+		int result = reportdao.reportCount(email);
+		return mav;
+	}
+
 }

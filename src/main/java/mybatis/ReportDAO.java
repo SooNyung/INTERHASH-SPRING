@@ -23,4 +23,8 @@ public class ReportDAO {
 		return session.update("Report.Reportcount", email);
 	}
 	
+	public int sendReportCom(ReportCommand dto){
+		return session.insert("Report.sendReportCom",dto);
+	}
+	
 }

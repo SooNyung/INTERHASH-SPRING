@@ -6,6 +6,7 @@ public class ReportCommand {
 	char redistinction;
 	int connum;
 	String email;
+	int comnum;
 	
 	
 	public int getRenum() {
@@ -32,6 +33,13 @@ public class ReportCommand {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public int getComnum() {
+		return comnum;
+	}
+	public void setComnum(int comnum) {
+		this.comnum = comnum;
+	}
+	
 	
 	
 }
