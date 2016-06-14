@@ -51,8 +51,6 @@ public class CommentController {
 	}
 	
 	
-	
-	
 	@RequestMapping("/InsertComment.hash")
 	public ModelAndView InsertComment(@ModelAttribute("commentdto") CommentCommand commentdto,
 			@ModelAttribute("contentdao") ContentCommand contentdto,
@@ -83,6 +81,9 @@ public class CommentController {
 
 		ArrayList<CommentCommand> array = (ArrayList<CommentCommand>) commentdao.getComments(connum);
 
+		int count = commentdao.commentcount(connum);
+		mav.addObject("count", count);
+		
 		mav.addObject("comment",array);
 		mav.addObject("content",contentdto);
 		mav.addObject("sdf",sdf1);
@@ -106,6 +107,9 @@ public class CommentController {
 		contentdto = contentdao.getContent(connum);
 		ArrayList<CommentCommand> array = (ArrayList) commentdao.getComments(connum);
 		
+		int count = commentdao.commentcount(connum);
+		mav.addObject("count", count);
+		
 		mav.addObject("comment", array);
 		mav.addObject("content",contentdto);
 		mav.addObject("check",check);
@@ -126,6 +130,10 @@ public class CommentController {
 		
 		CommentCommand article = commentdao.selectComment(comnum);
 		
+		article.getComcreateddate();
+		SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:mm");
+		
+		mav.addObject("sdf",sdf);
 		mav.addObject("article",article);
 		mav.addObject("connum",connum);
 		

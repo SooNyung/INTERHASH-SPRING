@@ -17,9 +17,9 @@
 		<pattern>/Main.hash</pattern>
 		<pattern>/SignupForm.hash*</pattern>
 		<pattern>/SendEmail.hash*</pattern>
-	
-		
+		<pattern>/ReportPro.hash*</pattern>
 		<pattern>/Logout.hash</pattern> 
+		<pattern>/ReportFormCom.hash*</pattern>
 	</excludes>
  
 </decorators>
