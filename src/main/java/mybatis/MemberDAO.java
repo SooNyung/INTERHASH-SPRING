@@ -48,4 +48,8 @@ public class MemberDAO {
 		
 		return session.selectOne("member.login",info);
 	}
+	
+	public String nick(MemberCommand info){
+		return session.selectOne("member.nick",info);
+	}
 }

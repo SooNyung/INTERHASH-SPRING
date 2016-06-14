@@ -156,11 +156,11 @@
 		}
 	}
 	
-	function tagCheck() {
+/* 	function tagCheck() {
 
-		url = "/INTERHASH/userpage/TagCheck.jsp?check=y";
+		url = "TagCheck.hash?check=y";
 		newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
-	}
+	} */
     </script>
  
   </head>
@@ -168,7 +168,7 @@
     <div id="jb-container">
       <div id="jb-header">
       	<div id="jb-logo">
-	      	<img alt="로고" src='<c:url value="/image/logo/logo.jpg" />' onclick="window.location.href='Board.hash'">
+	      	<img alt="로고" src='<c:url value="/image/logo/logo.jpg" />' onclick="window.location.href='Main.hash'">
       	</div>
       	<div id="jb_search">
       		<form method="post" action="Board.hash">
@@ -185,9 +185,11 @@
       			
       			<table>
 					<tr>
-						<td align="left"><%=session.getAttribute("nickName")%>님</td>
-						<td align="right"><input type="button" value="로그아웃" onclick="window.location.href='Logout.hash';"></td>
-						<td align="left"><input type="button" value="정보수정"	onclick="window.location.href='UserInfoModifyForm.hash';"></td>
+						<c:if test="${memId!=null}">
+							<td align="left">${nickName}님</td>
+							<td align="right"><input type="button" value="로그아웃" onclick="window.location.href='LogOut.hash';"></td>
+							<td align="left"><input type="button" value="정보수정"	onclick="window.location.href='UserInfoModifyForm.hash';"></td>
+						</c:if>
       			</tr>
       			<c:if test="${sessionScope.memId=='admin@admin.com' }">
       			<tr>

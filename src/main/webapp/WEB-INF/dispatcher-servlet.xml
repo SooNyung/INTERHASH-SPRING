@@ -81,7 +81,6 @@
 			value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory">
 		</property>
 	</bean> -->
-	
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 	<bean id="beanNameResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver" />
 	<bean id="viewResolver"
