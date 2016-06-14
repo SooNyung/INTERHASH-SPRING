@@ -31,7 +31,9 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/SignupForm.hash")
-	public String SignupForm(){
+	public String SignupForm(HttpServletRequest request, HttpSession session){
+		String key = (String)request.getSession().getAttribute("key");
+		session.setAttribute("key", key);
 		return "userpage/SignupForm";
 	}
 	

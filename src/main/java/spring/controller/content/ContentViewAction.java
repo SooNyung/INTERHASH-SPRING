@@ -1,19 +1,16 @@
 package spring.controller.content;
 
+import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.sun.org.apache.xml.internal.dtm.DTMDOMException;
 
 import mybatis.CommentDAO;
 import mybatis.ContentDAO;
@@ -71,6 +68,7 @@ public class ContentViewAction {
 		ArrayList<CommentCommand> array = (ArrayList) commentdao.getComments(connum);
 		int count = commentdao.commentcount(connum);
 		
+	
 		mav.addObject("content", content);
 		mav.addObject("sdf", sdf);
 		mav.addObject("comment", array);
@@ -79,4 +77,13 @@ public class ContentViewAction {
 
 		return mav;
 	}
+	
+	private static class TIME_MAXIMUM {
+		public static final int SEC = 60;
+		public static final int MIN = 60;
+		public static final int HOUR = 24;
+		public static final int DAY = 30;
+		public static final int MONTH = 12;
+	}
+
 }

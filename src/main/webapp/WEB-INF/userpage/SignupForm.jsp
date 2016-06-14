@@ -19,7 +19,7 @@ padding:10px;
 	
 		
 	function checkIt(){
-						
+		var key = "<c:out value= "${key}" />";			
 		var userinput = eval("document.userinput");
 		if(!userinput.email.value){
 			alert("Email을 입력하세요.");
@@ -46,10 +46,10 @@ padding:10px;
 			return false;
 		}
 		
-	 	if(userinput.getElementById('pass').value != userinput.getElementById('pass1').value){
+	/* 	if(userinput.getElementById('pass').value != userinput.getElementById('pass1').value){
 			alert("비밀번호를 동일하게 입력하세요");
 			return false;
-		} 
+		} */
 		if(!checkEmail){
 			alert("이메일 중복확인을 해주세요");
 			return false;
@@ -68,7 +68,7 @@ padding:10px;
 			return false;
 		}
 		
-		if(!userinput.emailnumber.value != !inputkey.value){
+ 		if(!userinput.emailnumber.value != !key){
 			alert("이메일 인증되지 않았습니다.");
 			return false;
 		}

@@ -19,7 +19,9 @@
 		<pattern>/SendEmail.hash*</pattern>
 	
 		
-		<pattern>/Logout.hash</pattern> 
+		<!-- <pattern>/Logout.hash</pattern> -->
+		<pattern>/Logout.hash*</pattern>
+		<pattern>/LoginFailPro.hash*</pattern> 
 	</excludes>
  
 </decorators>

@@ -1,14 +1,14 @@
 package spring.model;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class ContentCommand {
 	int connum;
 	String content;
 	String conhash;
-	Timestamp concreateddate;
-	Timestamp conmodifieddate;
+	Date concreateddate;
+	Date conmodifieddate;
 	String conip;
 	int conreportcount;
 	String conblind;
@@ -59,20 +59,19 @@ public class ContentCommand {
 		this.conhash = conhash;
 	}
 
-
-	public Timestamp getConcreateddate() {
+	public Date getConcreateddate() {
 		return concreateddate;
 	}
 
-	public void setConcreateddate(Timestamp concreateddate) {
+	public void setConcreateddate(Date concreateddate) {
 		this.concreateddate = concreateddate;
 	}
 
-	public Timestamp getConmodifieddate() {
+	public Date getConmodifieddate() {
 		return conmodifieddate;
 	}
 
-	public void setConmodifieddate(Timestamp conmodifieddate) {
+	public void setConmodifieddate(Date conmodifieddate) {
 		this.conmodifieddate = conmodifieddate;
 	}
 

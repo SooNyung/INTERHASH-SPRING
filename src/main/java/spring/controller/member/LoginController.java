@@ -32,24 +32,25 @@ public class LoginController {
 
 	//로그인
 	@RequestMapping("/LoginPro.hash")
-	private ModelAndView login(@ModelAttribute("userinput")MemberCommand info,  HttpSession session) 
-	{
+	private ModelAndView login(@ModelAttribute("userinput")MemberCommand info,  HttpSession session) {
 		ModelAndView mv = new ModelAndView("fixpage/boardDiv");
 		// result가 1이면 로그인 성공 0이면 실패
 
-		//MemberCommand info = new MemberCommand();
-
-		System.out.println("passwd :: "+ info.getPasswd()+" ::: "+info.getEmail());
+		System.out.println("passwd :: "+ info.getPasswd()+" email "+info.getEmail());
 
 		int result = dao.login(info);
 
-		System.out.println("dao.login('info') :: " + result);
-		// int result = 1;
+		String nick = dao.nick(info) ;
+
+		System.out.println("dao.nick(info) ::: " + nick);
+
+		System.out.println("dao.login(info) :: " + result);
 
 		//if(result != null && result.equals(info.getPasswd()) )
 		if(result == 1)
 		{
 			session.setAttribute("memId", info.getEmail());
+			session.setAttribute("nickName", nick);
 
 			System.out.println("요기 들어오나~");	
 			return mv;		
@@ -61,7 +62,8 @@ public class LoginController {
 
 			System.out.println("로그인 실패");
 
-			mv.setViewName("main");
+			//mv.setViewName("userpage/LoginFail");
+			mv.setViewName("redirect:LoginFailPro.hash");
 
 			return mv;
 		}
@@ -86,7 +88,7 @@ public class LoginController {
 	}
 
 	// 로그인실패
-	@RequestMapping("LoginFail.hash")
+	@RequestMapping("LoginFailPro.hash")
 	private String intpu() {
 		return "main";
 	}
@@ -103,6 +105,7 @@ public class LoginController {
 		ModelAndView mv = new ModelAndView("main"); // ("TEST");
 		session.setAttribute("memId", null);
 		session.setAttribute("password", null);
+		session.setAttribute("nickName",null);
 		return mv;
 	}
 
@@ -113,7 +116,7 @@ public class LoginController {
 	}
 
 	@RequestMapping("/FindPasswordPro.hash")
-	private ModelAndView find(@ModelAttribute("userinfo") MemberCommand info) {
+	private ModelAndView find(@ModelAttribute("useremail") MemberCommand info) {
 		ModelAndView mv = new ModelAndView("userpage/FindPasswordForm");
 
 		String email = info.getEmail();

@@ -185,9 +185,11 @@
       			
       			<table>
 					<tr>
-						<td align="left"><%=session.getAttribute("nickName")%>님</td>
-						<td align="right"><input type="button" value="로그아웃" onclick="window.location.href='Logout.hash';"></td>
-						<td align="left"><input type="button" value="정보수정"	onclick="window.location.href='UserInfoModifyForm.hash';"></td>
+						<c:if test="${memId!=null}">
+							<td align="left">${nickName}님</td>
+							<td align="right"><input type="button" value="로그아웃" onclick="window.location.href='LogOut.hash';"></td>
+							<td align="left"><input type="button" value="정보수정"	onclick="window.location.href='UserInfoModifyForm.hash';"></td>
+						</c:if>
       			</tr>
       			<c:if test="${sessionScope.memId=='admin@admin.com' }">
       			<tr>

@@ -60,7 +60,6 @@ public class CommentController {
 		ModelAndView mav = new ModelAndView("content/ContentView");
 		
 		int connum = Integer.parseInt(request.getParameter("connum"));
-
 		
 		SimpleDateFormat sdf1 = new SimpleDateFormat("YY-MM-dd HH:mm");
 		
@@ -80,38 +79,39 @@ public class CommentController {
 		
 		int result = commentdao.insertComment(commentdto);
 		
-		/*contentdao.getContent(connum);*/
 		contentdto = contentdao.getContent(connum);
-	
 
-		
-		
-		
 		ArrayList<CommentCommand> array = (ArrayList<CommentCommand>) commentdao.getComments(connum);
-		
-		String comsdf = sdf1.format(commentdto.getCommodifieddate());
 
 		mav.addObject("comment",array);
 		mav.addObject("content",contentdto);
-		mav.addObject("comsdf",comsdf);
+		mav.addObject("sdf",sdf1);
 
 		return mav;
 	}
 	
 	@RequestMapping("/deleteComment.hash")
-	public ModelAndView DeleteComment(@ModelAttribute("commentdto") CommentCommand commentdto,HttpServletRequest request){
+	public ModelAndView DeleteComment(@ModelAttribute("commentdto") CommentCommand commentdto,
+			@ModelAttribute("contentdto") ContentCommand contentdto,
+			HttpServletRequest request){
 		
 		ModelAndView mav = new ModelAndView("content/ContentView");
 		
 		int comnum = Integer.parseInt(request.getParameter("comnum"));
 		int connum = Integer.parseInt(request.getParameter("connum"));
 		int check = commentdao.deleteComment(comnum);
-		
+		SimpleDateFormat sdf1 = new SimpleDateFormat("YY-MM-dd HH:mm");
+	
 		//게시글을 가져오기 위한 변수 
-		//ContentDataBean content = dbpro.getContent(connum);
+		contentdto = contentdao.getContent(connum);
+		ArrayList<CommentCommand> array = (ArrayList) commentdao.getComments(connum);
 		
+		mav.addObject("comment", array);
+		mav.addObject("content",contentdto);
 		mav.addObject("check",check);
 		mav.addObject("connum",connum);
+		mav.addObject("sdf",sdf1);
+		
 		
 		return mav;
 	}
@@ -133,7 +133,9 @@ public class CommentController {
 	}
 
 	@RequestMapping("/updateCommentPro.hash")
-	public ModelAndView UpdateCommentPro(@ModelAttribute("commentdto") CommentCommand commentdto, HttpServletRequest request){
+	public ModelAndView UpdateCommentPro(@ModelAttribute("commentdto") CommentCommand commentdto,
+			@ModelAttribute("contentdto") ContentCommand contentdto,
+			HttpServletRequest request){
 		ModelAndView mav = new ModelAndView("content/UpdateCommentPro");
 		
 		int comnum = Integer.parseInt(request.getParameter("comnum"));
@@ -143,6 +145,11 @@ public class CommentController {
 		
 		
 		int check = commentdao.updateComment(commentdto);
+		
+		contentdto = contentdao.getContent(connum);
+		ArrayList<CommentCommand> array = (ArrayList) commentdao.getComments(connum);
+		mav.addObject("comment", array);
+		mav.addObject("content",contentdto);
 		
 		request.setAttribute("connum", connum);
 		request.setAttribute("check", check);
