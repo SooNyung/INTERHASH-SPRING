@@ -35,7 +35,8 @@ public class ConfirmController {
 	@RequestMapping(value="/ConfirmKey.hash")
 	private String key(HttpServletRequest request, HttpSession session){
 		String inputkey = request.getParameter("inputkey");
-		String key = (String)request.getSession().getAttribute("key");
+		String key = (String)session.getAttribute("key");
+		
 		
 		if(inputkey.equals(key)){
 			session.setAttribute("key", "success");
