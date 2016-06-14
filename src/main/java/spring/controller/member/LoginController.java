@@ -28,14 +28,11 @@ public class LoginController {
 		return "userpage/LoginForm";
 	}
 
-<<<<<<< HEAD
 	@RequestMapping("/Board.hash")
 	private String mainPage(){
 		return "pixpage/boardDiv";
 	}
 
-=======
->>>>>>> 9f455746f60b869202b560802ca2ccec59da2aa6
 	//·Î±×ÀÎ
 	@RequestMapping("/LoginPro.hash")
 	private ModelAndView login(@ModelAttribute("userinput")MemberCommand info,  HttpSession session) {
