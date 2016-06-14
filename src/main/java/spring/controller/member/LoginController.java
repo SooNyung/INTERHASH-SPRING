@@ -28,12 +28,6 @@ public class LoginController {
 		return "userpage/LoginForm";
 	}
 
-<<<<<<< HEAD
-	// 로그인동작
-=======
-
->>>>>>> da6d2edf2e90066251faa38d89ff0684582da3e0
-
 	//로그인
 	@RequestMapping("/LoginPro.hash")
 	private ModelAndView login(@ModelAttribute("userinput")MemberCommand info,  HttpSession session) {
