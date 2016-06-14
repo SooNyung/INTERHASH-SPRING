@@ -8,6 +8,15 @@
 <head>
 <title>View</title>
 <style>
+
+#nickname{
+font-size:15px;
+}
+#time{
+color:gray;
+font-size:14px; 
+}
+
 #hash{
 color:#5AAEFF;
 }
@@ -19,7 +28,6 @@ color:#5AAEFF;
 	padding:5px;
 	margin:auto;
 	}
-	
 	#view_left{
 	width:380px;
 	height:620px;
@@ -28,9 +36,6 @@ color:#5AAEFF;
 	border:1px solid;
 	margin:auto;
 	}
-	
-	
-	
 	#view_right{	
 	width:380px;
 	height:620px;
@@ -127,23 +132,29 @@ color:#5AAEFF;
 	}
 	
 	#test{border-bottom:1px solid;}
-</style>
-<script>   
 
+</style>
+
+<script> 
 function modifycon(connum){
 	url="/INTERHASH/UpdateContent.hash?check=y&&connum="+connum
 }
 
  function modify(comnum,connum){
 	url="updateCommentForm.hash?check=y&&comnum="+comnum+"&&connum="+connum;
-	window.open(url,"post","toolbar=no ,width=500 ,height=250,directories=no,status=yes,menubar=no,scrollbars=no");
+	window.open(url,"post","toolbar=no ,width=400 ,height=150,directories=no,status=yes,menubar=no,scrollbars=no");
 } 
 
 function report(){
 	
-	url="/INTERHASH/ReportForm.hash?check=y&&connickname=${content.connickname}&&connum=${content.connum}";
+	url="ReportForm.hash?check=y&&connickname=${content.connickname}&&connum=${content.connum}";
 	
-	window.open(url,"post","toolbar=no ,width=500 ,height=250,directories=no,status=yes,menubar=no,scrollbars=no");
+	window.open(url,"post","toolbar=no ,width=500 ,height=200,directories=no,status=yes,menubar=no,scrollbars=no");
+}
+
+function reportCom(comnum){
+	url="ReportFormCom.hash?check=y&&comnum="+comnum;
+	window.open(url,"post","toolbar=no ,width=500 ,height=200,directories=no,status=yes,menubar=no,scrollbars=no");
 }
 </script>
 
@@ -155,8 +166,9 @@ function report(){
 <div id="view_left">
 	<form>
 	<div id="left_nickndate">
-		<span id ="align_left">${sessionScope.nickName}님</span>
-		<span id="align_right">${sdf.format(content.conmodifieddate)}</span> 
+		<span id ="align_left"><b>${sessionScope.nickName}</b>님</span>
+	<span id="align_right"><label id="time">${sdf.format(content.conmodifieddate)}</label></span>
+		
 	</div>
 
 	<c:if test="${sessionScope.memId==content.email}">
@@ -198,10 +210,10 @@ function report(){
 	<input type=hidden name=connum value="${content.connum}">
 	<input type=hidden name=comnick value="${sessionScope.nickName}">
 	<div id="right_nick">
-		<span id ="align_left">${sessionScope.nickName}님</span>
+		<span id ="align_left"><b>${sessionScope.nickName}</b>님</span>
 	</div>
 	<div id="comment_content">
-		<textarea id="comment_textarea" name="comcontent"></textarea>
+		<textarea id="comment_textarea" name="comcontent" placeholder="댓글을 입력해주세요"></textarea>
 	</div>
 	
 	<div id="comment_submit">
@@ -213,11 +225,12 @@ function report(){
 	
 	
 	<div id="comment_view" style="height:460px; overflow-x:auto" onchange="reload();">
-
+<form>
 	<c:forEach var="comment" items="${comment}">
 	<input type=hidden name=comnum value="${comment.comnum}">
-	<span>${comment.comnick}</span>
-	<span>${sdf.format(comment.commodifieddate)}</span>
+	<span><b id="nickname">${comment.comnick}</b></span>
+	
+	<span><label id="time">${sdf.format(comment.commodifieddate)}</label></span>
 	
 	<span id="align_right">
 		<c:if test="${sessionScope.memId==comment.email}">
@@ -227,19 +240,20 @@ function report(){
 		</c:if	>
 		
 		<c:if test="${sessionScope.memId!=comment.email}">
-		<a href="/INTERHASH/UpdateComment.hash?comnum="+${comment.comnum}>신고</a>
-		<a onclick="report()">신고</a>
+		<a onclick="reportCom(${comment.comnum})">신고</a>
 		</c:if>	
 	</span><br>
+	<div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">${comment.comcontent}</textarea></div>
 	
-	<div id="test">${comment.comcontent}</div>
 	</c:forEach>
+	</form>
 	</div>
 	
+
+	
 </div>
 
 </div>
-
 
 </body>
 </html>

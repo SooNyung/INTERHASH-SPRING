@@ -3,15 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title here</title>
-
 </head>
 <body>
-alert("신고되었습니다.");
+
 
 <script type="text/javascript">
+alert('신고되었습니다.');
 window.close();
+
 </script>
+
 </body>
 </html>
 
