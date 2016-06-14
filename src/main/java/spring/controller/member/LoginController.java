@@ -28,7 +28,10 @@ public class LoginController {
 		return "userpage/LoginForm";
 	}
 
-
+	@RequestMapping("/Board.hash")
+	private String mainPage(){
+		return "pixpage/boardDiv";
+	}
 
 	//·Î±×ÀÎ
 	@RequestMapping("/LoginPro.hash")

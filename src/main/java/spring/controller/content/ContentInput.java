@@ -149,20 +149,21 @@ public class ContentInput {
 	}
 	
 	@RequestMapping("/ContentInputPro.hash")
-	public String file_upload(@RequestParam("conphoto") MultipartFile conphoto, HttpServletRequest request) {
+	public String file_upload(@RequestParam("conphoto") MultipartFile conphoto,@RequestParam("content") String content ,
+			@RequestParam("tag") String tag ,HttpServletRequest request) {
 		//@RequestParam(file1) FileForm info)
 		System.out.println("여긴 들어오나?");
 		try {
 			//request.setAttribute("list", list());
-			request.setAttribute("file1",upload(conphoto,request));
+			request.setAttribute("file1",upload(conphoto,request,content,tag));
 			request.setAttribute("real_name", real_name);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "fileupload/upload_list";
+		return "fixpage/boardDiv";
 	}
 	String real_name;
-	private String upload(MultipartFile info,HttpServletRequest request) throws Exception{
+	private String upload(MultipartFile info,HttpServletRequest request,String content,String tag) throws Exception{
 		String workspace_dir= (String)System.getProperties().get("user.dir");
 		String workspace_into_dir = "\\src\\main\\webapp\\upload\\";
 		String tmp_dir = request.getSession().getServletContext().getRealPath("/");
@@ -176,16 +177,15 @@ public class ContentInput {
 		real_name= System.currentTimeMillis()+name;
 		String real_path= path+real_name;
 		int size = info.getInputStream().available();
-/*	
+	
 		ContentCommand content_obj = new ContentCommand();
         content_obj.setContent(content);
         content_obj.setConip(request.getRemoteAddr());
-        content_obj.setConnickname(nickname);
-        content_obj.setEmail(email);
-        content_obj.setConhash(conhash);
+        content_obj.setConnickname((String)request.getSession().getAttribute("nickName"));
+        content_obj.setEmail((String)request.getSession().getAttribute("memId"));
+        content_obj.setConhash(tag);
         content_obj.setConcreateddate(new Timestamp(System.currentTimeMillis()));
-        content_obj.setConmodifieddate(new Timestamp(System.currentTimeMillis()));
-	*/	
+        content_obj.setConmodifieddate(new Timestamp(System.currentTimeMillis()));	
 		
 		
 		PhotoCommand fileinfo = new PhotoCommand();
