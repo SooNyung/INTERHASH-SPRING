@@ -100,5 +100,10 @@ public class MemberController {
 		return mv;
 		
 	}
+	
+	@RequestMapping("/Board.hash")
+	public String board(){
+		return "fixpage/boardDiv";
+	}
 
 }
