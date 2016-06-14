@@ -59,7 +59,6 @@ public class ContentCommand {
 		this.conhash = conhash;
 	}
 
-
 	public Timestamp getConcreateddate() {
 		return concreateddate;
 	}

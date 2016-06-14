@@ -17,9 +17,11 @@
 		<pattern>/Main.hash</pattern>
 		<pattern>/SignupForm.hash*</pattern>
 		<pattern>/SendEmail.hash*</pattern>
-	
+		<pattern>/TagCheck.hash*</pattern>
 		
-		<pattern>/Logout.hash</pattern> 
+		<!-- <pattern>/Logout.hash</pattern> -->
+		<pattern>/Logout.hash*</pattern>
+		<pattern>/LoginFailPro.hash*</pattern> 
 	</excludes>
  
 </decorators>

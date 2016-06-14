@@ -16,9 +16,10 @@ padding:10px;
 	var checkEmail=false;
 	var checkNickname=false;
 	var checkEmailNum=false;
+	
 		
 	function checkIt(){
-						
+		var key = "<c:out value= "${key}" />";			
 		var userinput = eval("document.userinput");
 		if(!userinput.email.value){
 			alert("Email을 입력하세요.");
@@ -66,6 +67,11 @@ padding:10px;
 			alert("비밀번호를 동일하게 입력하세요");
 			return false;
 		}
+		
+ 		if(!userinput.emailnumber.value != !key){
+			alert("이메일 인증되지 않았습니다.");
+			return false;
+		}
 				
 		return true;
 	};
@@ -93,6 +99,11 @@ padding:10px;
 		checkEmail=true;
 	}
 	function keyCheck(){
+/* 		var userinput = eval("document.userinput");
+		if(userinput.emailnumber.value==""){
+			alert("키를 입력해 주세요");
+			return false;
+		} */
 		url="/INTERHASH-SPRING/ConfirmKey.hash?inputkey=" + userinput.emailnumber.value;
 		open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
 		checkEmailNum=true;
@@ -489,7 +500,12 @@ color:#7A7A7A;
 			</tr>
 			</table>
 		</div>
-	<input type="submit" value="가입"><input type="button" value="취소" onclick="javascript:window.location='Main.hash'">
+
+	<input type="submit" value="가입">
+
+	
+	<input type="button" value="취소" onclick="javascript:window.location='Main.hash'">
+	
 </form>
 </center>
 
