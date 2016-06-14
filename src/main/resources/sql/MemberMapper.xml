@@ -32,13 +32,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select passwd from usertable where email=#{email}
 	</select>
 	
-	<select id="login" parameterType="spring.model.MemberCommand" resultType="String">
-		select passwd from usertable where email=#{email} and passwd=#{passwd}
+	<select id="login" parameterType="spring.model.MemberCommand" resultType="int">
+		select count(*) from usertable where email=#{email} and passwd=#{passwd}
 	</select>
 	
 	<select id="findPassword" parameterType="spring.model.MemberCommand" resultType="String">
 		select passwd from usertable where email=#{email}
-	</select>	
+	</select>
+	
+	<select id="nick" parameterType="spring.model.MemberCommand" resultType="String">
+		select nickname from usertable where email=#{email} and passwd=#{passwd}
+	</select>
+		
 	
 
 </mapper>

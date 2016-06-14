@@ -28,36 +28,51 @@ public class LoginController {
 		return "userpage/LoginForm";
 	}
 
+<<<<<<< HEAD
 	// 로그인동작
+=======
 
+>>>>>>> da6d2edf2e90066251faa38d89ff0684582da3e0
+
+	//로그인
 	@RequestMapping("/LoginPro.hash")
-	private ModelAndView login(@ModelAttribute("userinput") MemberCommand info, HttpSession session) {
-		ModelAndView mv = new ModelAndView("userpage/Board");
+	private ModelAndView login(@ModelAttribute("userinput")MemberCommand info,  HttpSession session) {
+		ModelAndView mv = new ModelAndView("fixpage/boardDiv");
 		// result가 1이면 로그인 성공 0이면 실패
 
-		// MemberCommand info = new MemberCommand();
+		System.out.println("passwd :: "+ info.getPasswd()+" email "+info.getEmail());
 
-		System.out.println("passwd :: " + info.getPasswd() + info.getEmail());
+		int result = dao.login(info);
 
-		String result = dao.login(info);
+		String nick = dao.nick(info) ;
 
-		System.out.println("dao.login('info') :: " + result);
-		// int result = 1;
+		System.out.println("dao.nick(info) ::: " + nick);
 
-		if (result.equals(info.getPasswd())) {
-			session.setAttribute("memId", info);
+		System.out.println("dao.login(info) :: " + result);
 
-			System.out.println("요기 들어오나~");
-			return mv;
-		} else {
+		//if(result != null && result.equals(info.getPasswd()) )
+		if(result == 1)
+		{
+			session.setAttribute("memId", info.getEmail());
+			session.setAttribute("nickName", nick);
+
+			System.out.println("요기 들어오나~");	
+			return mv;		
+		} 
+		else
+		{
 			session.setAttribute("memId", null);
-			// session.setAttribute("passwd", null);
+			//	session.setAttribute("passwd", null);
 
-			mv.setViewName("main");
+			System.out.println("로그인 실패");
+
+			//mv.setViewName("userpage/LoginFail");
+			mv.setViewName("redirect:LoginFailPro.hash");
 
 			return mv;
 		}
 	}
+			
 
 	// 새창에서 로그인 동작?
 	@RequestMapping(value = "/LoginPro.hash", method = RequestMethod.GET)
@@ -77,7 +92,7 @@ public class LoginController {
 	}
 
 	// 로그인실패
-	@RequestMapping("LoginFail.hash")
+	@RequestMapping("LoginFailPro.hash")
 	private String intpu() {
 		return "main";
 	}
@@ -94,6 +109,7 @@ public class LoginController {
 		ModelAndView mv = new ModelAndView("main"); // ("TEST");
 		session.setAttribute("memId", null);
 		session.setAttribute("password", null);
+		session.setAttribute("nickName",null);
 		return mv;
 	}
 
@@ -104,7 +120,7 @@ public class LoginController {
 	}
 
 	@RequestMapping("/FindPasswordPro.hash")
-	private ModelAndView find(@ModelAttribute("userinfo") MemberCommand info) {
+	private ModelAndView find(@ModelAttribute("useremail") MemberCommand info) {
 		ModelAndView mv = new ModelAndView("userpage/FindPasswordForm");
 
 		String email = info.getEmail();

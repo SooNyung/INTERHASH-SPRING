@@ -93,7 +93,7 @@ function checkIt(){
 		</td>
 		<td />
 		<td align="right">
-			<input type="button" value="비밀번호찾기" onclick="javascript:window.location='FindPasswordForm.do'"/>
+			<input type="button" value="비밀번호찾기" onclick="javascript:window.location='FindPasswordForm.hash'"/>
 		</td>
 	</tr>
 </table>

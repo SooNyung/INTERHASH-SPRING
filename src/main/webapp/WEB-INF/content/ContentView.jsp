@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page import = "spring.controller.content.ContentViewAction" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false" %>
 
@@ -135,7 +136,6 @@ function modifycon(connum){
 
  function modify(comnum,connum){
 	url="updateCommentForm.hash?check=y&&comnum="+comnum+"&&connum="+connum;
-	
 	window.open(url,"post","toolbar=no ,width=500 ,height=250,directories=no,status=yes,menubar=no,scrollbars=no");
 } 
 
@@ -156,7 +156,7 @@ function report(){
 	<form>
 	<div id="left_nickndate">
 		<span id ="align_left">${sessionScope.nickName}님</span>
-		<span id="align_right">${sdf.format(content.conmodifieddate)}</span>
+		<span id="align_right">${sdf.format(content.conmodifieddate)}</span> 
 	</div>
 
 	<c:if test="${sessionScope.memId==content.email}">
@@ -177,7 +177,7 @@ function report(){
 		<label>${content.connickname}<br></label>
 		<label>${content.content}<br></label>
 
-		<label id="hash">${content.conhash}</label><br>
+		<label id="hash">#${content.conhash}</label><br>
 		
 		<c:forEach var="photo" items="${content.photolist}">
 		<img id = "img" src='${photo.serverpath }' width="320px" height="240"/>
@@ -227,7 +227,7 @@ function report(){
 		</c:if	>
 		
 		<c:if test="${sessionScope.memId!=comment.email}">
-		<%-- <a href="/INTERHASH/UpdateComment.hash?comnum="+${comment.comnum}>신고</a> --%>
+		<a href="/INTERHASH/UpdateComment.hash?comnum="+${comment.comnum}>신고</a>
 		<a onclick="report()">신고</a>
 		</c:if>	
 	</span><br>
@@ -236,7 +236,6 @@ function report(){
 	</c:forEach>
 	</div>
 	
-
 </div>
 
 </div>

@@ -40,10 +40,16 @@ public class MemberDAO {
 		return session.selectOne("member.findPassword",info);
 	}
 	
-	public String login(MemberCommand info){
-		System.out.println(info.getEmail() + info.getPasswd());
-		String s= session.selectOne("member.login", info);
-		System.out.println("s:::"+s);
-		return s;
+	public int login(MemberCommand info){
+		System.out.println(info.getEmail()+ " ::: " + info.getPasswd());
+		//String s= session.selectOne("member.login", info);
+		//System.out.println("s:::"+s);
+		//return s;
+		
+		return session.selectOne("member.login",info);
+	}
+	
+	public String nick(MemberCommand info){
+		return session.selectOne("member.nick",info);
 	}
 }
