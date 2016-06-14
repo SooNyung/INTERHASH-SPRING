@@ -50,8 +50,12 @@ public class MemberController {
 	
 	@RequestMapping("/UserInfoModifyForm.hash")
 	public ModelAndView ModifyForm(HttpSession session){
+		System.out.println("¿©±â¿È?");
 		ModelAndView mv = new ModelAndView("userpage/UserInfoModifyForm");
+		System.out.println("¿©±â¿È?2");
 		String email = (String)session.getAttribute("memId");
+
+		System.out.println("memId ::  " + email);
 		MemberCommand command = dao.modify(email);
 		String gethash = command.getHash();
 		gethash = gethash.substring(1, gethash.length()-1);
