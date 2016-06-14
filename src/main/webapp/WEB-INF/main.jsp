@@ -222,6 +222,7 @@ function checkIt(){
       </form>
 
       <p class="text--center">Not a member? <a href="SignupForm.hash">Sign up now</a> <span class="fontawesome-arrow-right"></span></p>
+      <p class="text--center">Forgot password? <a href="FindPasswordForm.hash">Find password</a> <span class="fontawesome-arrow-right"></span></p>
 
     </div>
 
