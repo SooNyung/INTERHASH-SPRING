@@ -56,7 +56,6 @@ public class MemberController {
 		String email = (String)session.getAttribute("memId");
 		MemberCommand command = dao.modify(email);
 		String gethash = command.getHash();
-		gethash = gethash.substring(1, gethash.length()-1);
 		System.out.println("gethash ::" + gethash);
 		command.setHash(gethash);	
 		mv.addObject("c", command);
