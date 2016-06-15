@@ -351,7 +351,7 @@ $(function(){
 <div id="board_div" class="box-shadow border-round white">
 	<div id="board_img">
 	<a href="ContentView.hash?connum=${con.connum}">
-		<img id = "img" src='${con.photolist[0].serverpath }'/>
+		<img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />' />
 		</a>
 	</div>
 	<div id ="board_main">
