@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import spring.controller.member.TempPasswd;
 import spring.model.MemberCommand;
 
 @Repository
@@ -58,8 +59,14 @@ public class MemberDAO {
 		return session.selectOne("member.findEmail",info);
 	}
 	
+<<<<<<< HEAD
 	public List<MemberCommand> emailList(){
 		return session.selectList("member.emailList");
 	}
 	
+=======
+	public String tempPasswd(TempPasswd temppw){
+		return session.selectOne("member.tempPasswd",temppw);
+	}
+>>>>>>> 54c6f0a3e7ab77047875a75ba9856d40d247ffb8
 }
