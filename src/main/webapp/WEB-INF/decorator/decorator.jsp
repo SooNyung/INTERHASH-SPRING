@@ -34,7 +34,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
       .navbar{top:0;list-style-type:none;margin:0;padding:0;float:left;
       		width:100%!important;
       		height:60px;
-			position:static;
+			position:absolute;
 			text-decoration:none;
 			text-align:center;
 			display:block;
@@ -82,6 +82,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
 
 	  #main{
 	  	top:0; padding:0px; height:780px; margin-bottom:0px;
+	
 	  }
 	  
       #jb-container {
@@ -98,9 +99,10 @@ html,body,div{font-family: "Open Sans", sans-serif}
        /*  border: 1px solid #bcbcbc; */
       }
       #jb_search{
+      	position:absolute;
       	margin-top:20px;
-      	margin-left:740px;
-      	float: left;
+      	margin-left:1000px;
+      	float:left;
       	width: 250px;
       	height:auto;
       /* 	border:1px solid #bcbcbc; */
@@ -114,19 +116,19 @@ html,body,div{font-family: "Open Sans", sans-serif}
         /* border: 1px solid #bcbcbc; */
       } 
       #jb-sidebar {
-      	position:fixed;
-      	height:800px;
+      	position:absolute;
+      	height:600px;
         width: 300px;
-        padding: 20px;
-        padding-left:0px;
-        margin-bottom: 0px;
+        margin-top:20px;
+        padding-left:0px;   	
         float: left;
    /*      border: 1px solid #bcbcbc; */
       }
       #jb-footer {
-      	width:1250px;
+      	position:fixed;
+      	width:100%;
         clear: both;
-        padding: 40px 0px 0px 0px;
+        padding: 0px 0px 0px 0px;
         /* border: 1px solid #bcbcbc; */
       }
       #jb-logo{
@@ -162,7 +164,10 @@ html,body,div{font-family: "Open Sans", sans-serif}
 	
 	/* ----------------------------------------------------------------------- */
 
-	
+
+
+		
+		
     </style>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script>
@@ -243,7 +248,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
 
 	}
 	
-
+	
     </script>
  
   </head>
@@ -252,10 +257,8 @@ html,body,div{font-family: "Open Sans", sans-serif}
 <!-- navbar -->
 <div class="top">
  <ul class="navbar color1 left-align large">
-  <li class="small"><a href="#" class="padding-large color2 margin-right"><img src = "image/logo/interHash.png" width="100" height="25"></i></a></li>
-  <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Messages"><img src = "image/logo/message.PNG" width="30" height="25"></a></li>
-  <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Alarm"><img src = "image/logo/알림.PNG" width="30" height="25"></a></li>
 
+<<<<<<< HEAD
 
 
  
@@ -268,23 +271,30 @@ html,body,div{font-family: "Open Sans", sans-serif}
 	      	<img alt="로고" src='<c:url value="/image/logo/logo.jpg" />' onclick="window.location.href='Main.hash'">
       	</div>
 
+=======
+  <li class="small"><a href="#" class="padding-large color2 margin-right"><img src = "image/logo/interHash.png" width="100" height="25"></a></li>
+  <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Messages"><i class ="fa fa-envelope"></i></a></li>
+  <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Alarm"><i class="fa fa-bell"></i></a></li>
+
+
+>>>>>>> 4fb5560777e64dcdb967d02ba1ef39e9b5a0eac1
       	<div id="jb_search">
       		<form method="post" action="Board.hash">
       			<input type="text" name="hash"/>
       			<input type="submit" value="검색"/>
       		</form>
       	</div>
-      	
-      	<li class="small">
-      	<a href="#" class="padding-large hover-white account-right" title="MyAccount"><img src = "image/logo/i.PNG" width="30" height="30"></a>
-<!--       	<div class = "dropdown-content white box-shadow">
-      		<a href="#">회원정보수정</a>
-      		<a href="#">프로필수정</a>
-      		<a href="#">로그아웃</a>
-      	</div> -->
-      	</li>
+ 
+  <li class="small">
+     <a href="#" class="padding-large hover-white account-right" title="MyAccount"><img src = "image/logo/i.PNG" width="30" height="30"></a>
+<!-- 		<div>
+			<a href="#">회원정보수정</a>
+			<a href="#">프로필수정</a>
+			<a href="#">로그아웃</a>
+		</div> -->
+  </li>
 		
-<%--       	<div id="jb-logon">
+      	<div id="jb-logon">
       		<form>
       			<!-- <input type = "text"><br>
       			<input type = "password"><br>
@@ -309,7 +319,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
 				</table>
 				
       		</form>
-      	</div> --%>
+      	</div> 
       	</ul>
       	<br>
       </div>

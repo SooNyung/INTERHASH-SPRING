@@ -11,7 +11,7 @@
 	
 	<insert id="sendReportCom" parameterType="spring.model.ReportCommand">
 		insert into report
-		values(report_num.nextval,#{redistinction},0,#{email},#{comnum})
+		values(report_num.nextval,#{redistinction},#{connum},#{email},#{comnum})
 	</insert>
 
 	<update id="Reportcount" parameterType="String">

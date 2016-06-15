@@ -330,10 +330,11 @@ $(function(){
 					<input type="text" name="tag" size="7" readonly>
 					<input type="button" value="Tag" onClick="tagCheck()">
 				</span> 
-				<!-- <span id="submit" style="width: 100px; float: left;"> 
-				<input type="submit" id="button" value="submit"/> -->
-				<a href="javascript:document.regform.onsubmit()"><img src="image/logo/post.PNG" border=0></a>
-				<!-- </span> -->
+				 <span id="submit" style="width: 100px; float: left;"> 
+				  <input type="submit" id="button" value="submit"/> 
+			<!-- 	<input type="image" src="image/logo/post.PNG">  -->
+			
+				 </span>
 			</div>
 		</div>
 	</form>
@@ -342,13 +343,15 @@ $(function(){
             </div>
           </div>
 
+
+
 <form method='post' action='ContentView.hash'>
 <c:forEach var="con" items= '${content}' >
 <input type="hidden" name="connum" value="${con.connum}">
 <div id="board_div">
 	<div id="board_img">
 	<a href="ContentView.hash?connum=${con.connum}">
-		<img id = "img" src='${con.photolist[0].serverpath }'/>
+		<img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />' />
 		</a>
 	</div>
 	<div id ="board_main">

@@ -30,7 +30,7 @@ public class ContentDAO {
 		for (int i = 0; i < array.size(); i++) {
 			ContentCommand bean = array.get(i);
 			int connum = bean.getConnum();
-			photo = (ArrayList) session.selectList("photo.selectPhoto", connum);
+			photo = (ArrayList) session.selectList("writecontent.selectPhoto", connum);
 			bean.setPhotolist(photo);
 			array.set(i, bean);
 		}
@@ -66,6 +66,12 @@ public class ContentDAO {
 		content = session.selectOne("writecontent.getContentone",connum);
 		content.setPhotolist(photo);
 		return content;
+	}
+	
+	public int deleteContent(int connum){
+		int result = session.delete("writecontent.deleteContent",connum);
+		System.out.println("result :::::" + result);
+		return result;
 	}
 
 /*	public ContentCommand getContent(int connum) throws Exception {

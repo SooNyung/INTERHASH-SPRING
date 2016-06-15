@@ -58,7 +58,7 @@ public class ContentInput {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "fixpage/boardDiv";
+		return "redirect:Board.hash";
 	}
 	String real_name;
 	private String upload(MultipartFile info,HttpServletRequest request,String content,String tag) throws Exception{
@@ -87,7 +87,7 @@ public class ContentInput {
 		System.out.println("workspace 경로  :: "+ workspace_dir);
 		//서버 경로
 		System.out.println("서버 경로 :: "+tmp_dir);
-		String upload_tmp_path = tmp_dir + "spring_interhash\\upload\\";
+		String upload_tmp_path = tmp_dir + "\\INTERHASH-SPRING\\upload\\";
 		String name = info.getOriginalFilename();
 		real_name= System.currentTimeMillis()+name;
 		
@@ -105,7 +105,7 @@ public class ContentInput {
 		
 		PhotoCommand fileinfo = new PhotoCommand();
 		fileinfo.setPhotoname(name);
-		fileinfo.setRealpath("test");
+		fileinfo.setRealpath(real_name);
 		fileinfo.setPhotosize(size+"");
 		fileinfo.setEmail(email);
 		fileinfo.setServerpath("");
