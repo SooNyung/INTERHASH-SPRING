@@ -257,26 +257,12 @@ html,body,div{font-family: "Open Sans", sans-serif}
 <div class="top">
  <ul class="navbar color1 left-align large">
 
-<<<<<<< HEAD
 
-
- 
-
-  
-    <div id="jb-container">
-      <div id="jb-header">
-
-      	<div id="jb-logo">
-	      	<img alt="로고" src='<c:url value="/image/logo/logo.jpg" />' onclick="window.location.href='Main.hash'">
-      	</div>
-
-=======
   <li class="small"><a href="#" class="padding-large color2 margin-right"><img src = "image/logo/interHash.png" width="100" height="25"></a></li>
   <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Messages"><i class ="fa fa-envelope"></i></a></li>
   <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Alarm"><i class="fa fa-bell"></i></a></li>
 
 
->>>>>>> 4fb5560777e64dcdb967d02ba1ef39e9b5a0eac1
       	<div id="jb_search">
       		<form method="post" action="Board.hash">
       			<input type="text" name="hash"/>
