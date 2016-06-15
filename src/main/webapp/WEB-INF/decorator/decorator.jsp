@@ -29,7 +29,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
 	  .w3-theme-d5 {color:#fff !important; background-color:#303e45 !important}
       .padding{margin-top:50px; margin-left:30px;}
       .account-right{margin-right:0px; float:right;}
-      .top{top:0; padding:0px; height:60px; margin-bottom:0px;}
+      .top{top:0; padding:0px; height:60px; margin-bottom:0px; overflow: hidden;}
       .w3-right{text-align:right}
       .navbar{top:0;list-style-type:none;margin:0;padding:0;float:left;
       		width:100%!important;
@@ -80,7 +80,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
       .closebtn:hover,.w3-closebtn:focus{color:#000;text-decoration:none;cursor:pointer}
       .closebtn{text-decoration:none;float:right;font-size:24px;font-weight:bold;color:inherit;}
 
-	#main{}
+	.top{}
 	 
 	  
       #jb-container {
@@ -94,6 +94,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
         padding: 20px;
         height: 120px;
         margin-bottom: 20px;
+        
        /*  border: 1px solid #bcbcbc; */
       }
       #jb_search{
@@ -107,7 +108,6 @@ html,body,div{font-family: "Open Sans", sans-serif}
       }
        #jb-content {
         width: 910px;
-        height:300px;
         padding: 20px;
         margin-bottom: 50px;
         float: right;
@@ -125,9 +125,10 @@ html,body,div{font-family: "Open Sans", sans-serif}
       #jb-footer {
       	width:100%;
 	height:60px;
-	position:absolute;
+	clear: both;
+/* 	position:absolute;
 	bottom:0;
-	left:0;
+	left:0; */
         /* border: 1px solid #bcbcbc; */
       }
       #jb-logo{
@@ -159,7 +160,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
 	    color: white;
 	}
 	
-	
+
 	
 	/* ----------------------------------------------------------------------- */
 
@@ -248,33 +249,20 @@ html,body,div{font-family: "Open Sans", sans-serif}
 	}
 	
 	
-    </script>
- 
+    </script> 
   </head>
   <body style="background-color:#f5f7f8">
  
 <!-- navbar -->
 <div class="top">
  <ul class="navbar color1 left-align large">
-<<<<<<< HEAD
-    <div id="jb-container">
-      <div id="jb-header">
 
-      	<div id="jb-logo">
-	      	<img alt="로고" src='<c:url value="/image/logo/logo.jpg" />' onclick="window.location.href='Main.hash'">
-      	</div>
-=======
-
->>>>>>> edc523c685eebacdc6118026782f5acd9baeb9c5
 
   <li class="small"><a href="#" class="padding-large color2 margin-right"><img src = "image/logo/interHash.png" width="100" height="25"></a></li>
   <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Messages"><i class ="fa fa-envelope"></i></a></li>
   <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Alarm"><i class="fa fa-bell"></i></a></li>
-<<<<<<< HEAD
-=======
 
 
->>>>>>> edc523c685eebacdc6118026782f5acd9baeb9c5
       	<div id="jb_search">
       		<form method="post" action="Board.hash">
       			<input type="text" name="hash"/>
@@ -327,8 +315,9 @@ html,body,div{font-family: "Open Sans", sans-serif}
       
       <div id="jb-content"> 
        <decorator:body/> 
+       
+     
       </div>
-      
       
       <div id="jb-sidebar">
       <!-- Profile -->
@@ -392,13 +381,13 @@ html,body,div{font-family: "Open Sans", sans-serif}
         </div>
       </div>
       <br>
+      
     </div>
     
-<!--      <div id="jb-footer" class=" w3-theme-d3">
-        <p>Copyright</p>
-      </div> -->
    </div>
-      
+       <div id="jb-footer" class=" w3-theme-d3">
+        <p>Copyright</p>
+      </div> 
      
       
      
