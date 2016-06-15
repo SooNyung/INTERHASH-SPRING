@@ -55,7 +55,7 @@ function test() {
 <br>
 <div align="center">
 <input type="submit" value="전송" onsubmit="return test()">
-<input type="button" value="취소" onclick="javascript:window.close()">
+<input type="button" value="취소" onclick="javascript:self.close()">
 </div>
 </form> 
 </body>
