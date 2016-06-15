@@ -83,9 +83,7 @@ public class ReportController {
 			HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("content/ReportFormCom");
 		int comnum = Integer.parseInt(request.getParameter("comnum"));
-		int check = 1;
 		commentdto = commentdao.selectComment(comnum);
-		mav.addObject("check", check);
 		mav.addObject("comment", commentdto);
 		return mav;
 	}
@@ -95,9 +93,8 @@ public class ReportController {
 		ModelAndView mav = new ModelAndView("content/ReportPro");
 		int comnum = Integer.parseInt(request.getParameter("comnum"));
 		String email = reportdto.getEmail();
-		System.out.println("여기::::::::::"+reportdto.getEmail());
 		reportdao.sendReportCom(reportdto);
-		System.out.println("여기::::::::::");
+		
 		int result = reportdao.reportCount(email);
 		return mav;
 	}
