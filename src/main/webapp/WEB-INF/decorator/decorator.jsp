@@ -80,10 +80,8 @@ html,body,div{font-family: "Open Sans", sans-serif}
       .closebtn:hover,.w3-closebtn:focus{color:#000;text-decoration:none;cursor:pointer}
       .closebtn{text-decoration:none;float:right;font-size:24px;font-weight:bold;color:inherit;}
 
-	  #main{
-	  	top:0; padding:0px; height:780px; margin-bottom:0px;
-	
-	  }
+	#main{}
+	 
 	  
       #jb-container {
         width: 2000px;
@@ -125,10 +123,11 @@ html,body,div{font-family: "Open Sans", sans-serif}
    /*      border: 1px solid #bcbcbc; */
       }
       #jb-footer {
-      	position:fixed;
       	width:100%;
-        clear: both;
-        padding: 0px 0px 0px 0px;
+	height:60px;
+	position:absolute;
+	bottom:0;
+	left:0;
         /* border: 1px solid #bcbcbc; */
       }
       #jb-logo{
@@ -311,10 +310,10 @@ html,body,div{font-family: "Open Sans", sans-serif}
       
       
       <!-- main -->
-      <div id="main">
+   <div id = "main">
       
       <div id="jb-content"> 
-      <decorator:body/>
+       <decorator:body/> 
       </div>
       
       
@@ -381,11 +380,13 @@ html,body,div{font-family: "Open Sans", sans-serif}
       </div>
       <br>
     </div>
-    </div><!-- main화면 -->   
-      
-      <div id="jb-footer" class=" w3-theme-d3">
+    
+<!--      <div id="jb-footer" class=" w3-theme-d3">
         <p>Copyright</p>
-      </div>
+      </div> -->
+   </div>
+      
+     
       
      
   </body>
