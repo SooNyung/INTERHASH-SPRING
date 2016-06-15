@@ -105,7 +105,7 @@ public class ContentInput {
 		
 		PhotoCommand fileinfo = new PhotoCommand();
 		fileinfo.setPhotoname(name);
-		fileinfo.setRealpath("test");
+		fileinfo.setRealpath(real_name);
 		fileinfo.setPhotosize(size+"");
 		fileinfo.setEmail(email);
 		fileinfo.setServerpath("");
