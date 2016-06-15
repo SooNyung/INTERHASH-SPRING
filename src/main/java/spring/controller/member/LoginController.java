@@ -144,7 +144,7 @@ public class LoginController {
 		return mv;
 	}*/
 	
-String key="";
+	String key="";
 	
 	@RequestMapping("/FindPasswordPro.hash")
 	private String find1(@ModelAttribute("useremail") MemberCommand info, HttpSession session, HttpServletRequest request ) //@RequestParam("email") MemberCommand info, HttpSession session, 
@@ -206,6 +206,16 @@ String key="";
 	final String password = "q131313!#";
 
 	public void sendmail(String email,String key) {
+		
+		TempPasswd temppw = new TempPasswd();
+		temppw.setEmail(email);
+		System.out.println("sendEmail() ::: "+email);
+		
+		temppw.setPasswd(makeKey());
+		System.out.println("temppw.getPasswd() ::: "+temppw.getPasswd());
+		
+		dao.tempPasswd(temppw);
+		System.out.println("dao.tempPasswd(temppw) ::: "+dao.tempPasswd(temppw) );
 
 		Properties props = new Properties();
 		
