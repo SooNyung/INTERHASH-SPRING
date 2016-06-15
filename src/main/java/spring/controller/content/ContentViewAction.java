@@ -1,8 +1,10 @@
 package spring.controller.content;
 
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Properties;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -24,7 +26,18 @@ public class ContentViewAction {
 
 	@RequestMapping("/Main.hash")
 	private String mainview() {
+<<<<<<< HEAD
 	
+=======
+		/*Properties prop = System.getProperties();
+		Set set = prop.keySet();
+		Iterator iter = set.iterator();
+		while(iter.hasNext()){
+			String key=(String)iter.next();
+			System.out.println(key + " :: "+prop.getProperty(key));
+			
+		}*/
+>>>>>>> 11aaebda10b177fd0d9d4ef6ce0bb27f0fb257ef
 		return "main";
 	}
 
@@ -59,8 +72,8 @@ public class ContentViewAction {
 		/*int connum = Integer.parseInt(request.getParameter("connum"));*/
 		int connum = 82;
 		
-		request.getSession().setAttribute("memId", "test");
-		request.getSession().setAttribute("nickName", "testnick");
+		request.getSession().setAttribute("memId", "soonyoung");
+		request.getSession().setAttribute("nickName", "soonyoung");
 
 
 		SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:mm");
@@ -71,7 +84,6 @@ public class ContentViewAction {
 		ArrayList<CommentCommand> array = (ArrayList) commentdao.getComments(connum);
 		int count = commentdao.commentcount(connum);
 		
-	
 		mav.addObject("content", content);
 		mav.addObject("sdf", sdf);
 		mav.addObject("comment", array);
@@ -81,12 +93,6 @@ public class ContentViewAction {
 		return mav;
 	}
 	
-	private static class TIME_MAXIMUM {
-		public static final int SEC = 60;
-		public static final int MIN = 60;
-		public static final int HOUR = 24;
-		public static final int DAY = 30;
-		public static final int MONTH = 12;
-	}
+
 
 }

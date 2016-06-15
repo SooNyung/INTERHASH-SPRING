@@ -4,6 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <c:if test ="${sessionScope.memId==null}">
 <script>
@@ -81,8 +84,14 @@ function fileUploadPreview(thisObj, preViewer) {
 		}
 	}
 }
+function tagCheck() {
+
+	url = "TagCheck.hash?check=y";
+	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+}
 </script>
 <style type="text/css">
+	.background-color{color:#000 !important; background-color:#f5f7f8 !important}
 	#board_div{
 		width:760px;
 		height:320px;
@@ -196,8 +205,8 @@ function fileUploadPreview(thisObj, preViewer) {
 	
 	#writeform{
 		width:700px;
-		height:240px;
-		margin: 10px auto;
+		height:150px;
+		margin: 10px;
 		/* border:1px solid; */
 	}
 	
@@ -224,7 +233,7 @@ function fileUploadPreview(thisObj, preViewer) {
 
 #submit {
 	height: 30px;
-	background: #ffffff;
+	background: #607d8b;
 }
 
 #button {
@@ -276,6 +285,14 @@ function fileUploadPreview(thisObj, preViewer) {
 	height:100px;
 	overflow: auto;
 }
+
+ .box-shadow{box-shadow:0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)!important;margin-top:0px;}
+ .border-round{border-radius:4px!important}
+ .container{content:"";display:table;clear:both;padding:0.01em 16px; margin-left:0px;}
+.w3-col.m12{width:100px}
+html,body,h6{font-family: "Open Sans", sans-serif}
+.w3-theme {color:#fff !important; background-color:#607d8b !important}
+.white{color:#000!important;background-color:#fff!important;}
 </style>
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script>
@@ -289,7 +306,11 @@ $(function(){
 </script>
 </head>
 <body>
- <div id="writeform">
+<div>
+          <div class="box-shadow border-round white">
+            <div class="container w3-padding">
+              <h6 class="w3-opacity">I love it!! InterHash~♡</h6>
+            <div id="writeform" border="1">
       <form action="ContentInputPro.hash" name="writeForm" method="post" enctype="multipart/form-data"> 
 		<div id="wrap" style="width: 500px; margin: auto;">
 			<textarea id="textfield" name="content" placeholder="내용을 입력하세요."></textarea>
@@ -309,13 +330,18 @@ $(function(){
 					<input type="text" name="tag" size="7" readonly>
 					<input type="button" value="Tag" onClick="tagCheck()">
 				</span> 
-				<span id="submit" style="width: 100px; float: left;"> 
-				<input type="submit" id="button" value="submit"/>
-				</span>
+				<!-- <span id="submit" style="width: 100px; float: left;"> 
+				<input type="submit" id="button" value="submit"/> -->
+				<a href="javascript:document.regform.onsubmit()"><img src="image/logo/post.PNG" border=0></a>
+				<!-- </span> -->
 			</div>
 		</div>
 	</form>
 	</div>
+              
+            </div>
+          </div>
+
 <form method='post' action='ContentView.hash'>
 <c:forEach var="con" items= '${content}' >
 <input type="hidden" name="connum" value="${con.connum}">
@@ -366,5 +392,6 @@ $(function(){
 </div>
 </c:forEach>
 </form>
+</div>
 </body>
 </html>

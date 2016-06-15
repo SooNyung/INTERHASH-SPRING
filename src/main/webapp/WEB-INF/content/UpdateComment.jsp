@@ -11,6 +11,10 @@
 font-size:15px;
 }
 
+#time{
+color:gray;
+font-size:14px; 
+}
 </style>
 
 <script type="text/javascript">
@@ -23,22 +27,27 @@ function close(){
 </head>
 <body>
 
-<div align="center">댓글수정</div>
-
 <form method="get" action="updateCommentPro.hash">
-<div align="center">
+<div>
 
-<b id="nickname">닉네임 :${article.comnick}</b>님</div>
-<div align="center">
-<input type="text" size="30" name="comcontent" value="${article.comcontent}">
-<%-- <input type="hidden" name="commodifieddate" value="${article.commodifieddate}">
- --%><input type="hidden" name="comnum" value="${article.comnum}">
-<input type="hidden" name="connum" value="${article.connum}">
-${article.connum}
-${article.comnum}	
+<b id="nickname">${article.comnick}</b>
+<label id="time">${sdf.format(article.commodifieddate)}</label>
 </div>
-<br>
-<div align="center"><input type="submit" value="수정하기" onsubmit="close();"/></div>
+
+
+
+<div>
+<%-- <input type="text" size="30" name="comcontent" value="${article.comcontent}"> --%>
+<textarea name="comcontent" rows="3" cols="51.5" value="${article.comcontent}">${article.comcontent}</textarea>
+<input type="hidden" name="comnum" value="${article.comnum}">
+<input type="hidden" name="connum" value="${article.connum}">
+</div>
+
+
+<div align="right">
+<input type="submit" value="수정하기" onsubmit="close();"/>
+<input type="button" value="취소" onclick="self.close()">
+</div>
 </form>  
 
 

@@ -7,13 +7,11 @@ public class MemberCommand {
 	private String nickname;
 	private String passwd;
 	private String hash;
-	private int age;
 	private Timestamp createddate;
 	private Timestamp modifieddate;
 	private String ip;
 	private int distinction;
 	private int reportcount;
-	
 	
 	
 	public String getIp() {
@@ -45,12 +43,6 @@ public class MemberCommand {
 	}
 	public void setHash(String hash) {
 		this.hash = hash;
-	}
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
 	}
 	public Timestamp getModifieddate() {
 		return modifieddate;
