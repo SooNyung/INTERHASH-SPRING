@@ -274,13 +274,19 @@ html,body,div{font-family: "Open Sans", sans-serif}
 		}
 	}
 	
-/* 	function tagCheck() {
+ 	function tagCheck() {
 
 		url = "TagCheck.hash?check=y";
 		newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 
 	}
+
+	function Message(){
+	url="MessageForm.hash?check=y";
+	window.open(url,"post","toolbar=no ,width=400 ,height=150,directories=no,status=yes,menubar=no,scrollbars=no");
+	} 
 	
+<<<<<<< HEAD
 	
 	
 
@@ -296,16 +302,27 @@ html,body,div{font-family: "Open Sans", sans-serif}
 			});
       });	
    </script>
+=======
+    </script>
+ 
+
+>>>>>>> 54c6f0a3e7ab77047875a75ba9856d40d247ffb8
   </head>
   <body style="background-color:#f5f7f8">
- 
+
 <!-- navbar -->
 <div class="top">
  <ul class="navbar color1 left-align large">
 
+<<<<<<< HEAD
   <li class="small"><a href="Board.hash" class="padding-large color2 margin-right"><img src = "image/logo/interHash.png" width="100" height="25"></a></li>
   <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Messages"><i class ="fa fa-envelope"></i></a></li>
   <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Alarm"><i class="fa fa-bell"></i></a></li>
+=======
+  <li class="small"><a href="#" class="padding-large color2 margin-right"><img src = "image/logo/interHash.png" width="100" height="25"></i></a></li>
+  <li class="small"><a onclick="Message()" class="padding-large hover-white margin-right" title="Messages"><img src = "image/logo/message.PNG" width="30" height="25"></a></li>
+  <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Alarm"><img src = "image/logo/알림.PNG" width="30" height="25"></a></li>
+>>>>>>> 54c6f0a3e7ab77047875a75ba9856d40d247ffb8
 
       	<div id="jb_search">
       		<form method="post" action="Board.hash">
