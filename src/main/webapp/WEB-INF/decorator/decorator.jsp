@@ -265,10 +265,6 @@ html,body,div{font-family: "Open Sans", sans-serif}
       	<div id="jb-logo">
 	      	<img alt="로고" src='<c:url value="/image/logo/logo.jpg" />' onclick="window.location.href='Main.hash'">
       	</div>
-<<<<<<< HEAD
-=======
-
->>>>>>> 5924e6dc39d948c55524002887693c60be30264e
       	<div id="jb_search">
       		<form method="post" action="Board.hash">
       			<input type="text" name="hash"/>
