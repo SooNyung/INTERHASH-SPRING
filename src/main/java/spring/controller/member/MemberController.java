@@ -7,22 +7,30 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import mybatis.ContentDAO;
 import mybatis.MemberDAO;
 import spring.model.MemberCommand;
 
 @Controller
 public class MemberController {
 	
+	@Autowired	
 	MemberDAO dao;
 	
-	@Autowired	
 	public void setDao(MemberDAO dao) {
 		this.dao = dao;
+	}
+	@Autowired
+	ContentDAO cdao;
+
+	public void setCdao(ContentDAO cdao) {
+		this.cdao = cdao;
 	}
 
 	@ModelAttribute("command")
@@ -100,7 +108,9 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/Board.hash")
-	public String board(){
+	public String board(Model model){
+		model.addAttribute("content", cdao.getContent());
+		
 		return "fixpage/boardDiv";
 	}
 
