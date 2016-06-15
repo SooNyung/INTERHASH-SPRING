@@ -58,7 +58,7 @@ public class ContentInput {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "fixpage/boardDiv";
+		return "redirect:Board.hash";
 	}
 	String real_name;
 	private String upload(MultipartFile info,HttpServletRequest request,String content,String tag) throws Exception{
