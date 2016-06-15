@@ -96,7 +96,7 @@ function tagCheck() {
 		width:760px;
 		height:320px;
 /* 		 background-color: black;  */
-		border:1px solid; 
+		
 		padding:5px;
 		margin:10px;
 	}
@@ -331,8 +331,8 @@ $(function(){
 					<input type="button" value="Tag" onClick="tagCheck()">
 				</span> 
 				 <span id="submit" style="width: 100px; float: left;"> 
-				  <input type="submit" id="button" value="submit"/> 
-			<!-- 	<input type="image" src="image/logo/post.PNG">  -->
+			<!-- 	  <input type="submit" id="button" value="submit"/>  -->
+			<input type="image" src="image/logo/post.PNG"> 
 			
 				 </span>
 			</div>
@@ -348,7 +348,7 @@ $(function(){
 <form method='post' action='ContentView.hash'>
 <c:forEach var="con" items= '${content}' >
 <input type="hidden" name="connum" value="${con.connum}">
-<div id="board_div">
+<div id="board_div" class="box-shadow border-round white">
 	<div id="board_img">
 	<a href="ContentView.hash?connum=${con.connum}">
 		<img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />' />

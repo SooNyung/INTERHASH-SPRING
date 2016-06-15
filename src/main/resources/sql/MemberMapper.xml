@@ -46,7 +46,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findEmail" parameterType="spring.model.MemberCommand" resultType="int">
 		select count(*) from usertable where email=#{email}
 	</select>
-		
+	
+	<update id="tempPasswd" parameterType="spring.controller.member.TempPasswd" >
+		update usertable set passwd=#{passwd} where email=#{email}
+	</update>	
 	
 
 </mapper>

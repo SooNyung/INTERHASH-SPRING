@@ -27,4 +27,12 @@ public class ReportDAO {
 		return session.insert("Report.sendReportCom",dto);
 	}
 	
+	public int reportCountCon(String email){
+		return session.update("Reportcountcon",email);
+	}
+	
+	public int reportCountCom(String email){
+		return session.update("Reportcountcom",email);
+	}
+	
 }

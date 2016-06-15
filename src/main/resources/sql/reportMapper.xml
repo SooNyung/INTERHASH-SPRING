@@ -17,6 +17,14 @@
 	<update id="Reportcount" parameterType="String">
 		update usertable set reportcount=reportcount+1 where email = #{email}
 	</update>
+	
+	<update id="Reportcountcon" parameterType="String">
+		update contents set conreportcount=conreportcount+1 where email= #{email}
+	</update>
+	
+		<update id="Reportcountcom" parameterType="String">
+		update contents set comreportcount=comreportcount+1 where email= #{email}
+	</update>
 
 	
 

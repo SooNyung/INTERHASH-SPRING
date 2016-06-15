@@ -144,7 +144,7 @@ public class LoginController {
 		return mv;
 	}*/
 	
-String key="";
+	String key="";
 	
 	@RequestMapping("/FindPasswordPro.hash")
 	private String find1(@ModelAttribute("useremail") MemberCommand info, HttpSession session, HttpServletRequest request ) //@RequestParam("email") MemberCommand info, HttpSession session, 
@@ -157,24 +157,23 @@ String key="";
 		
 		System.out.println("info.getEmail ::: " + info.getEmail());
 		
-		key = makeKey();
+		//key = makeKey();
 	
-		sendmail(email,key); // 랜던값으로 생성한 임시 비밀번호를 email에 저장
+		sendmail(email); // 랜던값으로 생성한 임시 비밀번호를 email에 저장
 		
-		System.out.println("key ::: "+ key);
+		//System.out.println("key ::: "+ key);
 		
 		int result = dao.findEmail(info);
 		
 		String findpassword = dao.findPassword(info) ;
-
-		//String tempPasswd = dao.tempPasswd(tempPasswd) ;
-		//System.out.println("tempPasswd ::: " + tempPasswd);
 		
 		if(result == 1)
 		{	
 			System.out.println("result 실행 O");
-			
+
 			session.setAttribute("key",key);
+			System.out.println("result == 1 안에 key :::" +key);
+			
 			session.setAttribute("email", info.getEmail());
 			session.setAttribute("password", findpassword);
 		
@@ -191,21 +190,21 @@ String key="";
 			return "userpage/FindPasswordForm";
 		}
 	}
-	
-	// 임시 비밀번호를 랜던값으로 생성
-	public String makeKey(){
-		Random ran = new Random();
-		String key = "";
-		for(int i=0;i<7;i++){
-			key+=ran.nextInt(10);
-		}
-		return key;
-	}
 
 	final String username = "fksh90@gmail.com";
 	final String password = "q131313!#";
 
-	public void sendmail(String email,String key) {
+	public void sendmail(String email) {
+		
+		TempPasswd temppw = new TempPasswd();
+		temppw.setEmail(email);
+		System.out.println("sendEmail() ::: "+email);
+		
+		temppw.setPasswd(makeKey());
+		System.out.println("temppw.getPasswd() ::: "+temppw.getPasswd());
+		
+		dao.tempPasswd(temppw);
+		System.out.println("dao.tempPasswd(temppw) ::: "+dao.tempPasswd(temppw) );
 
 		Properties props = new Properties();
 		
@@ -262,5 +261,15 @@ String key="";
 		finally{
 			key="";
 		}
+	}
+	
+	// 임시 비밀번호를 랜던값으로 생성
+	public String makeKey(){
+		Random ran = new Random();
+		String key = "";
+		for(int i=0;i<7;i++){
+			key+=ran.nextInt(10);
+		}
+		return key;
 	}
 }
