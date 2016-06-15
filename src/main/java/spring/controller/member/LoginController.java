@@ -148,7 +148,7 @@ public class LoginController {
 	
 	@RequestMapping("/FindPasswordPro.hash")
 	private String find1(@ModelAttribute("useremail") MemberCommand info, HttpSession session, HttpServletRequest request ) //@RequestParam("email") MemberCommand info, HttpSession session, 
-	{
+	{		
 		System.out.println("findEmail 들어오나~");
 		
 		//String email = (String) request.getSession().getAttribute("email");
@@ -166,6 +166,8 @@ public class LoginController {
 		int result = dao.findEmail(info);
 		
 		String findpassword = dao.findPassword(info) ;
+		
+		key = dao.findPassword(info);
 		
 		if(result == 1)
 		{	
@@ -205,6 +207,8 @@ public class LoginController {
 		
 		dao.tempPasswd(temppw);
 		System.out.println("dao.tempPasswd(temppw) ::: "+dao.tempPasswd(temppw) );
+		
+		key=temppw.getPasswd() ;
 
 		Properties props = new Properties();
 		
