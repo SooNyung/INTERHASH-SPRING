@@ -240,7 +240,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
 
 		url = "TagCheck.hash?check=y";
 		newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
-<<<<<<< HEAD
+
 	}
 	
 
@@ -257,18 +257,15 @@ html,body,div{font-family: "Open Sans", sans-serif}
   <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Alarm"><img src = "image/logo/알림.PNG" width="30" height="25"></a></li>
 
 
-=======
-	} */
+
     </script>
  
   </head>
   <body>
     <div id="jb-container">
       <div id="jb-header">
-      	<div id="jb-logo">
-	      	<img alt="로고" src='<c:url value="/image/logo/logo.jpg" />' onclick="window.location.href='Main.hash'">
-      	</div>
->>>>>>> 9df730dd8b53c86a6c0b4afe2aee237d7c97d34a
+
+
       	<div id="jb_search">
       		<form method="post" action="Board.hash">
       			<input type="text" name="hash"/>
