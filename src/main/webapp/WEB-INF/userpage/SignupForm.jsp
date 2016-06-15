@@ -19,7 +19,7 @@ padding:10px;
 	
 		
 	function checkIt(){
-		var key = '${key}';
+		
 		var userinput = eval("document.userinput");
 		if(!userinput.email.value){
 			alert("Email을 입력하세요.");
@@ -74,10 +74,10 @@ padding:10px;
 			alert("이메일이 인증되지 않았습니다.");
 			return false;
 		} */
-/* 		if(key != 'success'){
-			alert("이메일이 인증되지 않았습니다.");
+  		if('${sessionScope.key}' != 'success'){
+			alert("이메일 인증 실패.");
 			return false;
-		} */
+		}
 		return true;
 	};
 	
