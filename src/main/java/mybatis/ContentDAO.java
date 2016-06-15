@@ -23,18 +23,17 @@ public class ContentDAO {
 		session.insert("writecontent.insertPhoto", photo);
 	}
 
-	public ArrayList getContent() throws Exception {
+	public ArrayList<ContentCommand> getContent() {
 		ArrayList photo = null;
-		ArrayList array = (ArrayList) session.selectList("writecontent.getContent");
+		ArrayList<ContentCommand> array = (ArrayList) session.selectList("writecontent.getContent");
 
 		for (int i = 0; i < array.size(); i++) {
-			ContentCommand bean = (ContentCommand) array.get(i);
+			ContentCommand bean = array.get(i);
 			int connum = bean.getConnum();
 			photo = (ArrayList) session.selectList("photo.selectPhoto", connum);
 			bean.setPhotolist(photo);
 			array.set(i, bean);
 		}
-		session.commit();
 		return array;
 	}
 
@@ -44,13 +43,13 @@ public class ContentDAO {
 		return array;
 	}
 
-	public ArrayList getContent(String hash) throws Exception {
+	public ArrayList<ContentCommand> getContent(String hash) throws Exception {
 		ArrayList photo = null;
-		ArrayList array = (ArrayList) session.selectList("writecontent.getContentByHash", hash);
+		ArrayList<ContentCommand> array = (ArrayList) session.selectList("writecontent.getContentByHash", hash);
 
 		// array = (ArrayList) session.selectList("writecontent.getContent");
 		for (int i = 0; i < array.size(); i++) {
-			ContentCommand bean = (ContentCommand) array.get(i);
+			ContentCommand bean = array.get(i);
 			int connum = bean.getConnum();
 			photo = (ArrayList) session.selectList("photo.selectPhoto", connum);
 			bean.setPhotolist(photo);

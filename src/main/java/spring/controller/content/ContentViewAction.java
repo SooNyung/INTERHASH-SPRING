@@ -1,10 +1,13 @@
 package spring.controller.content;
 
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Properties;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,12 +19,25 @@ import mybatis.CommentDAO;
 import mybatis.ContentDAO;
 import spring.model.CommentCommand;
 import spring.model.ContentCommand;
+import spring.model.MemberCommand;
 
 @Controller
 public class ContentViewAction {
 
 	@RequestMapping("/Main.hash")
 	private String mainview() {
+<<<<<<< HEAD
+	
+=======
+		/*Properties prop = System.getProperties();
+		Set set = prop.keySet();
+		Iterator iter = set.iterator();
+		while(iter.hasNext()){
+			String key=(String)iter.next();
+			System.out.println(key + " :: "+prop.getProperty(key));
+			
+		}*/
+>>>>>>> 11aaebda10b177fd0d9d4ef6ce0bb27f0fb257ef
 		return "main";
 	}
 

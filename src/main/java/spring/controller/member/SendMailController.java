@@ -10,6 +10,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,7 @@ public class SendMailController {
 	String key="";
 	
 	@RequestMapping(value="/SendEmail.hash")
-	private String send(HttpServletRequest request){
+	private String send(HttpServletRequest request, HttpSession session){
 		String email = (String)request.getSession().getAttribute("email");
 		key = makeKey();
 		
