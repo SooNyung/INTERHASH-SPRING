@@ -5,6 +5,7 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import spring.controller.member.TempPasswd;
 import spring.model.MemberCommand;
 
 @Repository
@@ -51,5 +52,13 @@ public class MemberDAO {
 	
 	public String nick(MemberCommand info){
 		return session.selectOne("member.nick",info);
+	}
+	
+	public int findEmail(MemberCommand info){
+		return session.selectOne("member.findEmail",info);
+	}
+	
+	public String tempPasswd(TempPasswd temppw){
+		return session.selectOne("member.tempPasswd",temppw);
 	}
 }

@@ -52,11 +52,13 @@ function test() {
 	<input type="hidden" name="redistinction" value="1">
 	<input type="hidden" name="email" value="${comment.email}">
 	<input type="hidden" name="comnum" value="${comment.comnum}">
+	<input type="hidden" name="connum" value="${comment.connum}">
+	
 </div>
 <br>
 <div align="center">
 <input type="submit" value="전송" onsubmit="return test()">
-<input type="button" value="취소" onclick="window.close()">
+<input type="button" value="취소" onclick="javascript:window.close()">
 </div>
 </form> 
 

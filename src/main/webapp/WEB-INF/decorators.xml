@@ -13,6 +13,7 @@
 		<pattern>/ConfirmNickname.hash*</pattern>
 		<pattern>/ConfirmKey.hash*</pattern>
 		<pattern>/ReportForm.hash</pattern>
+		<pattern>/ReportFormCom.hash</pattern>
 		<pattern>/ConfirmEmail.hash*</pattern>
 		<pattern>/Main.hash</pattern>
 		<pattern>/SignupForm.hash*</pattern>
@@ -21,7 +22,7 @@
 		<pattern>/Logout.hash</pattern> 
 		<pattern>/ReportFormCom.hash*</pattern>
 		<pattern>/TagCheck.hash*</pattern>
-		
+		<pattern>/MessageForm.hash*</pattern>
 		<!-- <pattern>/Logout.hash</pattern> -->
 		<pattern>/Logout.hash*</pattern>
 		<pattern>/LoginFailPro.hash*</pattern> 
