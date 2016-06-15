@@ -19,14 +19,19 @@ width:100px;
 text-align:center;
 }
 
-#div1{ float:right; width:33%;}
-#div2{ float:right; width:33%;}
+#div1{ float:left; width:50%;}
+#div2{ float:right; width:50%;}
 </style>
 </head>
 <body>
 <center>
 <h3>통계</h3>
 <hr/>
+<div align="bottom"><input type="date" name="date" id="date"></div>
+<p>
+
+<input type="button" value="관리자페이지" onclick="javascript:window.location='ManagerPage.hash'">
+
 <p>
 
 <div id ="div1">
@@ -63,12 +68,6 @@ ${hash.hashContentCount}
 </table>
 </div>
 
-
-<hr/>
-<div align="bottom"><input type="date" name="date" id="date"></div>
-<p>
-
-<input type="button" value="관리자페이지" onclick="javascript:window.location='ManagerPage.hash'">
 
 </body>
 </html>

@@ -29,10 +29,10 @@ html,body,div{font-family: "Open Sans", sans-serif}
 	  .w3-theme-d5 {color:#fff !important; background-color:#303e45 !important}
       .padding{margin-top:50px; margin-left:30px;}
       .account-right{margin-right:0px; float:right;}
-      .top{top:0; padding:0px; height:60px; margin-bottom:0px; overflow: hidden;}
+      .top{top:0; padding:0px; width:100%; height:60px; margin-bottom:0px; overflow: hidden;}
       .w3-right{text-align:right}
       .navbar{top:0;list-style-type:none;margin:0;padding:0;float:left;
-      		width:100%!important;
+      		width:100%;
       		height:60px;
 			position:absolute;
 			text-decoration:none;
@@ -80,13 +80,10 @@ html,body,div{font-family: "Open Sans", sans-serif}
       .closebtn:hover,.w3-closebtn:focus{color:#000;text-decoration:none;cursor:pointer}
       .closebtn{text-decoration:none;float:right;font-size:24px;font-weight:bold;color:inherit;}
 
-<<<<<<< HEAD
+
 	  #main{width:100%}
-=======
-	.top{}
->>>>>>> 7f9c15c1e570c102251bd506e1ab72129f71caae
-	 
-	  
+
+
       #jb-container {
         width: 2000px;
         padding-left: 0px;
@@ -111,7 +108,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
       /* 	border:1px solid #bcbcbc; */
       }
        #jb-content {
-        width: 910px;
+        width: 70%;
         padding: 20px;
         margin-bottom: 50px;
         float: right;
@@ -120,7 +117,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
       #jb-sidebar {
       	position:absolute;
       	height:600px;
-        width: 300px;
+        width: 25%;
         margin-top:20px;
         padding-left:0px;   	
         float: left;
@@ -168,7 +165,39 @@ html,body,div{font-family: "Open Sans", sans-serif}
 	
 	/* ----------------------------------------------------------------------- */
 
-
+ ul.menu li{ 
+	     float: right;
+		 width: 179px;
+		 height: 48px;
+		 background-color: #555;
+		 position: relative;
+		 }
+      ul.menu li a{
+	     display: block;
+		 width: 100%;
+		 height: 100%;
+		 line-height: 48px;
+		 text-indent: 30px;
+		 font-weight: bold;
+		 color: #eee;
+		 text-decoration: none;
+		 }
+      ul.menu li a:hover{
+	     background-color: #333;
+		 }
+      ul.menu li ul.sub{
+	     position: absolute;
+		 }
+      ul.menu{
+	     zoom: 1;
+		 }
+      ul.menu:after{
+	     height: 0;
+		 visibility: hidden;
+		 content: ".";
+		 display: block;
+		 clear: both;
+		 }
 
 		
 		
@@ -253,7 +282,20 @@ html,body,div{font-family: "Open Sans", sans-serif}
 	}
 	
 	
+	
+
     </script> 
+     <script type="text/javascript">
+         $(function(){
+	     $(".sm").hide();
+		 $(".small").hover(function(){
+		    $(".small:not(:animated)",this).slideDown("fast");
+			},
+			function(){
+			   $(".small",this).slideUp("fast");
+			});
+      });	
+   </script>
   </head>
   <body style="background-color:#f5f7f8">
  
@@ -261,11 +303,9 @@ html,body,div{font-family: "Open Sans", sans-serif}
 <div class="top">
  <ul class="navbar color1 left-align large">
 
-
   <li class="small"><a href="Board.hash" class="padding-large color2 margin-right"><img src = "image/logo/interHash.png" width="100" height="25"></a></li>
   <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Messages"><i class ="fa fa-envelope"></i></a></li>
   <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Alarm"><i class="fa fa-bell"></i></a></li>
-
 
       	<div id="jb_search">
       		<form method="post" action="Board.hash">
@@ -274,14 +314,16 @@ html,body,div{font-family: "Open Sans", sans-serif}
       		</form>
       	</div>
  
+
   <li class="small">
      <a href="#" class="padding-large hover-white account-right" title="MyAccount"><img src = "image/logo/i.PNG" width="30" height="30"></a>
-<!-- 		<div>
-			<a href="#">회원정보수정</a>
-			<a href="#">프로필수정</a>
-			<a href="#">로그아웃</a>
-		</div> -->
+ 		<ul class="sm">
+			<li><a href="#">회원정보수정</a></li>
+			<li><a href="#">프로필수정</a></li>
+			<li><a href="#">로그아웃</a></li>
+		</ul> 
   </li>
+ 
 		
       	<div id="jb-logon">
       		<form>
