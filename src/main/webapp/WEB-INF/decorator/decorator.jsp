@@ -241,14 +241,13 @@ html,body,div{font-family: "Open Sans", sans-serif}
 		}
 	}
 	
-/* 	function tagCheck() {
+ 	function tagCheck() {
 
 		url = "TagCheck.hash?check=y";
 		newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 
 	}
-	
-<<<<<<< HEAD
+
 	function Message(){
 	url="MessageForm.hash?check=y";
 	window.open(url,"post","toolbar=no ,width=400 ,height=150,directories=no,status=yes,menubar=no,scrollbars=no");
@@ -256,39 +255,18 @@ html,body,div{font-family: "Open Sans", sans-serif}
 	
     </script>
  
-=======
-	
-    </script> 
->>>>>>> 7f9c15c1e570c102251bd506e1ab72129f71caae
+
   </head>
   <body style="background-color:#f5f7f8">
 
 <!-- navbar -->
 <div class="top">
  <ul class="navbar color1 left-align large">
-<<<<<<< HEAD
+
   <li class="small"><a href="#" class="padding-large color2 margin-right"><img src = "image/logo/interHash.png" width="100" height="25"></i></a></li>
   <li class="small"><a onclick="Message()" class="padding-large hover-white margin-right" title="Messages"><img src = "image/logo/message.PNG" width="30" height="25"></a></li>
   <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Alarm"><img src = "image/logo/알림.PNG" width="30" height="25"></a></li>
 
-    </script>
- 
-  </head>
-  <body>
-    <div id="jb-container">
-      <div id="jb-header">
-
-      	<div id="jb-logo">
-	      	<img alt="로고" src='<c:url value="/image/logo/logo.jpg" />' onclick="window.location.href='Main.hash'">
-      	</div>
-=======
-
-
-  <li class="small"><a href="#" class="padding-large color2 margin-right"><img src = "image/logo/interHash.png" width="100" height="25"></a></li>
-  <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Messages"><i class ="fa fa-envelope"></i></a></li>
-  <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Alarm"><i class="fa fa-bell"></i></a></li>
-
->>>>>>> 7f9c15c1e570c102251bd506e1ab72129f71caae
 
       	<div id="jb_search">
       		<form method="post" action="Board.hash">
