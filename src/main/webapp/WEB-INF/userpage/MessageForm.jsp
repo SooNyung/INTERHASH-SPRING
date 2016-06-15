@@ -7,6 +7,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 </head>
+<script type="text/javascript">
+<c:forEach var="1" items="${emailList}">
+alert(${1.ema);
+
+</c:forEach>
+
+</script>
+
 <body>	
 <h3>메시지 보내기 Form</h3>
 <form method="post" action="MessagePro.hash">
@@ -17,8 +25,8 @@
 <div>
 <input type="submit" value="보내기">
 <input type="button" value="닫기" onclick="javascript:window.close()"/>
-</div>
 
+</div>
 </form>
 
 </div>

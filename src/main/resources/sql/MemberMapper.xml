@@ -3,7 +3,6 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
-
 	<insert id="insert" parameterType="spring.model.MemberCommand">
 		insert into usertable
 		values
@@ -47,9 +46,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from usertable where email=#{email}
 	</select>
 	
+<<<<<<< HEAD
+	<select id="emailList" resultType="spring.model.MemberCommand">
+		select email from usertable
+	</select>
+=======
 	<update id="tempPasswd" parameterType="spring.controller.member.TempPasswd" >
 		update usertable set passwd=#{passwd} where email=#{email}
 	</update>	
+>>>>>>> 54c6f0a3e7ab77047875a75ba9856d40d247ffb8
 	
 
 </mapper>

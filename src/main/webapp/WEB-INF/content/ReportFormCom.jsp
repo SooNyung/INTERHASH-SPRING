@@ -15,23 +15,13 @@ font-size:15px;
 #test1{
 font-size:12px;}
 </style>
-<script>
-function close(){	
-	window.close();
-	}
-
-</script>
 <script type="text/javascript">
 function test(){
 	self.close();
 }
 </script>
 </head>
-<script>
-function test() {
-	self.close();
-}
-</script>
+
 <body>
 
 <form name="report" method="post" action="ReportProCom.hash">
@@ -58,9 +48,13 @@ function test() {
 <br>
 <div align="center">
 <input type="submit" value="전송" onsubmit="return test()">
-<input type="button" value="취소" onclick="javascript:window.close()">
+<input type="button" value="취소" onclick="javascript:testtest()">
 </div>
 </form> 
-
+<script>
+function testtest() {
+	self.close();
+}
+</script>
 </body>
 </html>
