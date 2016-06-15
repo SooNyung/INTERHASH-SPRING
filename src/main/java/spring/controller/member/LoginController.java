@@ -120,7 +120,12 @@ public class LoginController {
 
 	// 패스워드 찾기
 	@RequestMapping("/FindPasswordForm.hash")
-	private String find() {
+	private String find(HttpSession session) {
+		
+		session.setAttribute("memId", null);
+		session.setAttribute("email", null);
+		session.setAttribute("password", null);
+		
 		return "userpage/FindPasswordForm";
 	}
 
