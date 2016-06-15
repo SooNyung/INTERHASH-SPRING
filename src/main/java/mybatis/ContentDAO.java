@@ -68,6 +68,12 @@ public class ContentDAO {
 		content.setPhotolist(photo);
 		return content;
 	}
+	
+	public int deleteContent(int connum){
+		int result = session.delete("writecontent.deleteContent",connum);
+		System.out.println("result :::::" + result);
+		return result;
+	}
 
 /*	public ContentCommand getContent(int connum) throws Exception {
 		ContentCommand content = null;

@@ -52,6 +52,8 @@ function test() {
 	<input type="hidden" name="redistinction" value="1">
 	<input type="hidden" name="email" value="${comment.email}">
 	<input type="hidden" name="comnum" value="${comment.comnum}">
+	<input type="hidden" name="connum" value="${comment.connum}">
+	
 </div>
 <br>
 <div align="center">

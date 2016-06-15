@@ -14,9 +14,6 @@
 <% response.sendRedirect("Main.hash"); %>
 </body>
 
-<<<<<<< HEAD
 
- 
-=======
 </html>
->>>>>>> 9df730dd8b53c86a6c0b4afe2aee237d7c97d34a
+
