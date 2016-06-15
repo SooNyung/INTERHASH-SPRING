@@ -5,14 +5,19 @@
 
 <html>
 <head><title>Insert title here</title>
+<<<<<<< HEAD
 <head>
+=======
+>>>>>>> 3e30a8772310d46806f7ef69afbaa0fc4efee0ce
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-
 <body>
 <% response.sendRedirect("Main.hash"); %>
 </body>
 </html>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 3e30a8772310d46806f7ef69afbaa0fc4efee0ce
