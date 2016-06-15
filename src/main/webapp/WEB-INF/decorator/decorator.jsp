@@ -257,9 +257,26 @@ html,body,div{font-family: "Open Sans", sans-serif}
 <!-- navbar -->
 <div class="top">
  <ul class="navbar color1 left-align large">
+
   <li class="small"><a href="#" class="padding-large color2 margin-right"><img src = "image/logo/interHash.png" width="100" height="25"></a></li>
   <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Messages"><i class ="fa fa-envelope"></i></a></li>
   <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Alarm"><i class="fa fa-bell"></i></a></li>
+
+  <li class="small"><a href="#" class="padding-large color2 margin-right"><img src = "image/logo/interHash.png" width="100" height="25"></i></a></li>
+  <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Messages"><img src = "image/logo/message.PNG" width="30" height="25"></a></li>
+  <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Alarm"><img src = "image/logo/알림.PNG" width="30" height="25"></a></li>
+
+
+    </script>
+ 
+  </head>
+  <body>
+    <div id="jb-container">
+      <div id="jb-header">
+
+      	<div id="jb-logo">
+	      	<img alt="로고" src='<c:url value="/image/logo/logo.jpg" />' onclick="window.location.href='Main.hash'">
+      	</div>
 
       	<div id="jb_search">
       		<form method="post" action="Board.hash">

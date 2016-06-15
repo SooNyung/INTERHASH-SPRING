@@ -7,6 +7,7 @@ import java.util.Properties;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,12 +19,14 @@ import mybatis.CommentDAO;
 import mybatis.ContentDAO;
 import spring.model.CommentCommand;
 import spring.model.ContentCommand;
+import spring.model.MemberCommand;
 
 @Controller
 public class ContentViewAction {
 
 	@RequestMapping("/Main.hash")
 	private String mainview() {
+
 		/*Properties prop = System.getProperties();
 		Set set = prop.keySet();
 		Iterator iter = set.iterator();
@@ -32,6 +35,7 @@ public class ContentViewAction {
 			System.out.println(key + " :: "+prop.getProperty(key));
 			
 		}*/
+
 		return "main";
 	}
 
@@ -64,12 +68,12 @@ public class ContentViewAction {
 			@ModelAttribute("commentdto") CommentCommand comment, HttpServletRequest request) throws Exception {
 		ModelAndView mav = new ModelAndView("content/ContentView");
 		/*int connum = Integer.parseInt(request.getParameter("connum"));*/
-		int connum = 82;
+		int connum = 84;
 		
-		request.getSession().setAttribute("memId", "soonyoung");
-		request.getSession().setAttribute("nickName", "soonyoung");
+		/*request.getSession().setAttribute("memId", "soonyoung");
+		request.getSession().setAttribute("nickName", "soonyoung");*/
 
-
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:mm");
 		content = contentdao.getContent(connum);
 		String conhash = content.getConhash();

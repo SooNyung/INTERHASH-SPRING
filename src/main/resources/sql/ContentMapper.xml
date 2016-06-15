@@ -31,6 +31,10 @@
 		select * from contents where connum = #{connum}
 	</select>
 	
+	<delete id="deleteContent" parameterType="int">
+		delete from contents where connum = #{connum}
+	</delete>
+	
 </mapper>
 
 
