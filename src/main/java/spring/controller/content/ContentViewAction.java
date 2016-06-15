@@ -1,8 +1,10 @@
 package spring.controller.content;
 
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Properties;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,6 +24,14 @@ public class ContentViewAction {
 
 	@RequestMapping("/Main.hash")
 	private String mainview() {
+		/*Properties prop = System.getProperties();
+		Set set = prop.keySet();
+		Iterator iter = set.iterator();
+		while(iter.hasNext()){
+			String key=(String)iter.next();
+			System.out.println(key + " :: "+prop.getProperty(key));
+			
+		}*/
 		return "main";
 	}
 
