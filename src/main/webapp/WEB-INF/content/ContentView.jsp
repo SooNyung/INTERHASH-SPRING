@@ -173,7 +173,7 @@ function reportCom(comnum){
 
 	<c:if test="${sessionScope.memId==content.email}">
 	<div id="left_mod_del_rep">
-		<span id="align_right">/<a href="/ContentDelete.hash?connum=${content.connum}">삭제하기</a></span>
+		<span id="align_right">/<a href="ContentDelete.hash?connum=${content.connum}">삭제하기</a></span>
 		<<span id="align_right"><a href="/INTERHASH/ContentUpdate.hash?connum=${content.connum}">수정하기 </a></span>
 		
 	</div>
