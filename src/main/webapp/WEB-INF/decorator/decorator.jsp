@@ -80,10 +80,8 @@ html,body,div{font-family: "Open Sans", sans-serif}
       .closebtn:hover,.w3-closebtn:focus{color:#000;text-decoration:none;cursor:pointer}
       .closebtn{text-decoration:none;float:right;font-size:24px;font-weight:bold;color:inherit;}
 
-	  #main{
-	  	top:0; padding:0px; height:780px; margin-bottom:0px;
-	
-	  }
+	#main{}
+	 
 	  
       #jb-container {
         width: 2000px;
@@ -125,10 +123,11 @@ html,body,div{font-family: "Open Sans", sans-serif}
    /*      border: 1px solid #bcbcbc; */
       }
       #jb-footer {
-      	position:fixed;
       	width:100%;
-        clear: both;
-        padding: 0px 0px 0px 0px;
+	height:60px;
+	position:absolute;
+	bottom:0;
+	left:0;
         /* border: 1px solid #bcbcbc; */
       }
       #jb-logo{
@@ -257,16 +256,25 @@ html,body,div{font-family: "Open Sans", sans-serif}
 <!-- navbar -->
 <div class="top">
  <ul class="navbar color1 left-align large">
+<<<<<<< HEAD
     <div id="jb-container">
       <div id="jb-header">
 
       	<div id="jb-logo">
 	      	<img alt="로고" src='<c:url value="/image/logo/logo.jpg" />' onclick="window.location.href='Main.hash'">
       	</div>
+=======
+
+>>>>>>> edc523c685eebacdc6118026782f5acd9baeb9c5
 
   <li class="small"><a href="#" class="padding-large color2 margin-right"><img src = "image/logo/interHash.png" width="100" height="25"></a></li>
   <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Messages"><i class ="fa fa-envelope"></i></a></li>
   <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Alarm"><i class="fa fa-bell"></i></a></li>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> edc523c685eebacdc6118026782f5acd9baeb9c5
       	<div id="jb_search">
       		<form method="post" action="Board.hash">
       			<input type="text" name="hash"/>
@@ -315,10 +323,10 @@ html,body,div{font-family: "Open Sans", sans-serif}
       
       
       <!-- main -->
-      <div id="main">
+   <div id = "main">
       
       <div id="jb-content"> 
-      <decorator:body/>
+       <decorator:body/> 
       </div>
       
       
@@ -385,11 +393,13 @@ html,body,div{font-family: "Open Sans", sans-serif}
       </div>
       <br>
     </div>
-    </div><!-- main화면 -->   
-      
-      <div id="jb-footer" class=" w3-theme-d3">
+    
+<!--      <div id="jb-footer" class=" w3-theme-d3">
         <p>Copyright</p>
-      </div>
+      </div> -->
+   </div>
+      
+     
       
      
   </body>
