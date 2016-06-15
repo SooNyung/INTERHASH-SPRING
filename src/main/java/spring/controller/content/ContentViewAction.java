@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,12 +17,14 @@ import mybatis.CommentDAO;
 import mybatis.ContentDAO;
 import spring.model.CommentCommand;
 import spring.model.ContentCommand;
+import spring.model.MemberCommand;
 
 @Controller
 public class ContentViewAction {
 
 	@RequestMapping("/Main.hash")
 	private String mainview() {
+	
 		return "main";
 	}
 

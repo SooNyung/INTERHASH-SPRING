@@ -52,4 +52,8 @@ public class MemberDAO {
 	public String nick(MemberCommand info){
 		return session.selectOne("member.nick",info);
 	}
+	
+	public int findEmail(MemberCommand info){
+		return session.selectOne("member.findEmail",info);
+	}
 }
