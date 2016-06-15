@@ -18,13 +18,23 @@ td{
 width:100px; 
 text-align:center;
 }
+
+#div1{ float:left; width:50%;}
+#div2{ float:right; width:50%;}
 </style>
 </head>
 <body>
 <center>
 <h3>통계</h3>
 <hr/>
+<div align="bottom"><input type="date" name="date" id="date"></div>
 <p>
+
+<input type="button" value="관리자페이지" onclick="javascript:window.location='ManagerPage.hash'">
+
+<p>
+
+<div id ="div1">
 <table border="1">
 <tr>
 <td><b>HashTag</b></td>
@@ -46,20 +56,18 @@ ${hash.hashContentCount}
 </tr>
 </c:forEach>
 </table>
+</div>
 
-<hr/>
-
-<div align="right"><input type="date" name="date" id="date"></div>
-<p>
+<div id ="div2">
 <table border="1">
 <tr height="30">
 <td><b>방문자 수</b></td>
 <td><b>게시물 수</b></td>
 <td><b>좋아요 수</b></td>
 </tr>
-
 </table>
-<input type="button" value="관리자페이지" onclick="javascript:window.location='ManagerPage.hash'">
+</div>
+
 
 </body>
 </html>

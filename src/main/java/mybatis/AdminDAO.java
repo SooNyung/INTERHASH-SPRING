@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import spring.model.AdminCommand;
+import spring.model.ContentCommand;
 import spring.model.MemberCommand;
 import spring.model.WithdrawalCommand;
 
@@ -52,5 +53,9 @@ public class AdminDAO {
 	
 	public List<WithdrawalCommand> selectWithdrawal(){
 		return session.selectList("admin.withselect");
+	}
+	
+	public List<ContentCommand> report(){
+		return session.selectList("admin.report");
 	}
 }

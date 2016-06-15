@@ -19,6 +19,7 @@ color:#7A7A7A;
 <center>
 <h3>呕硼雀盔包府</h3>
 <hr/>
+<input type="button" value="包府磊其捞瘤" onclick="javascript:window.location='ManagerPage.hash'">
 <table border="1">
 <tr>
 <td><b>email</b></td>
@@ -39,7 +40,7 @@ ${member.drawalcause}
 </tr>
 </c:forEach>
 </table>
-<input type="button" value="包府磊其捞瘤" onclick="javascript:window.location='ManagerPage.hash'">
+
 <br>
 <a href="toExcelWithdrawl.hash"><img src='<c:url value="/image/logo/竣伎.PNG" ></c:url>' width='50' height="50"></a>
 </body>

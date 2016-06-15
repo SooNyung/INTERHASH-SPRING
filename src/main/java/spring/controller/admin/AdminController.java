@@ -19,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import mybatis.AdminDAO;
 import mybatis.LogonDAO;
 import mybatis.WithdrawalDAO;
-
+import spring.model.ContentCommand;
 import spring.model.MemberCommand;
 import spring.model.WithdrawalCommand;
 
@@ -68,15 +68,16 @@ public class AdminController {
 		return mv;
 	}
 	
-	//�뜝�럥六울옙�뫁伊믦떋�씛�삕占쎈뻣占쎈닱�뜝占� �뜝�럥�쓡�뜝�럩逾좂춯�쉻�삕
+	//신고게시물
 	@RequestMapping(value="/ManagerPageReport.hash", method=RequestMethod.GET)
 	private ModelAndView adminReport(HttpServletRequest request){
 		
 		ModelAndView mv = new ModelAndView("adminpage/ManagerPageReport");
 
 		//String nickname = request.getParameter("connickname");//???
+
+		request.setAttribute("report", dao.report());
 		
-		request.setAttribute("array", dao.selectMember());
 		return mv;
 	}
 	
