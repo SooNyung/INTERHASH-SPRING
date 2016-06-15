@@ -75,6 +75,7 @@ public class ReportController {
 		String email = reportdto.getEmail();
 		reportdao.sendReport(reportdto);
 		int result = reportdao.reportCount(email);
+		int result2 = reportdao.reportCountCon(email);
 		return mav;
 	}
 	
@@ -96,6 +97,7 @@ public class ReportController {
 		reportdao.sendReportCom(reportdto);
 		
 		int result = reportdao.reportCount(email);
+		int result2 = reportdao.reportCountCom(email);
 		return mav;
 	}
 
