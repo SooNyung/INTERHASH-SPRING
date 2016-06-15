@@ -29,7 +29,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
 	  .w3-theme-d5 {color:#fff !important; background-color:#303e45 !important}
       .padding{margin-top:50px; margin-left:30px;}
       .account-right{margin-right:0px; float:right;}
-      .top{top:0; padding:0px; height:60px; margin-bottom:0px;}
+      .top{top:0; padding:0px; height:60px; margin-bottom:0px; overflow: hidden;}
       .w3-right{text-align:right}
       .navbar{top:0;list-style-type:none;margin:0;padding:0;float:left;
       		width:100%!important;
@@ -80,7 +80,11 @@ html,body,div{font-family: "Open Sans", sans-serif}
       .closebtn:hover,.w3-closebtn:focus{color:#000;text-decoration:none;cursor:pointer}
       .closebtn{text-decoration:none;float:right;font-size:24px;font-weight:bold;color:inherit;}
 
+<<<<<<< HEAD
 	  #main{width:100%}
+=======
+	.top{}
+>>>>>>> 7f9c15c1e570c102251bd506e1ab72129f71caae
 	 
 	  
       #jb-container {
@@ -94,6 +98,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
         padding: 20px;
         height: 120px;
         margin-bottom: 20px;
+        
        /*  border: 1px solid #bcbcbc; */
       }
       #jb_search{
@@ -124,9 +129,10 @@ html,body,div{font-family: "Open Sans", sans-serif}
       #jb-footer {
       	width:100%;
 	height:60px;
-	position:absolute;
+	clear: both;
+/* 	position:absolute;
 	bottom:0;
-	left:0;
+	left:0; */
         /* border: 1px solid #bcbcbc; */
       }
       #jb-logo{
@@ -158,7 +164,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
 	    color: white;
 	}
 	
-	
+
 	
 	/* ----------------------------------------------------------------------- */
 
@@ -247,8 +253,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
 	}
 	
 	
-    </script>
- 
+    </script> 
   </head>
   <body style="background-color:#f5f7f8">
  
@@ -314,8 +319,9 @@ html,body,div{font-family: "Open Sans", sans-serif}
       
       <div id="jb-content"> 
        <decorator:body/> 
+       
+     
       </div>
-      
       
       <div id="jb-sidebar">
       <!-- Profile -->
@@ -379,14 +385,19 @@ html,body,div{font-family: "Open Sans", sans-serif}
         </div>
       </div>
       <br>
+      
     </div>
     
 
+
    </div>
       
-          <div id="jb-footer" class=" w3-theme-d3">
+
+
+       <div id="jb-footer" class=" w3-theme-d3">
         <p>Copyright</p>
       </div> 
+
       
      
   </body>
