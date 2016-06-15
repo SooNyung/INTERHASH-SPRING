@@ -30,7 +30,7 @@ public class ContentDAO {
 		for (int i = 0; i < array.size(); i++) {
 			ContentCommand bean = array.get(i);
 			int connum = bean.getConnum();
-			photo = (ArrayList) session.selectList("photo.selectPhoto", connum);
+			photo = (ArrayList) session.selectList("writecontent.selectPhoto", connum);
 			bean.setPhotolist(photo);
 			array.set(i, bean);
 		}

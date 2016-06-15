@@ -29,12 +29,12 @@ html,body,div{font-family: "Open Sans", sans-serif}
 	  .w3-theme-d5 {color:#fff !important; background-color:#303e45 !important}
       .padding{margin-top:50px; margin-left:30px;}
       .account-right{margin-right:0px; float:right;}
-      .top{top:0; padding:0px; height:60px; margin-bottom:0px;}
+      .top{top:0; padding:0px; height:60px; margin-bottom:0px; overflow: hidden;}
       .w3-right{text-align:right}
       .navbar{top:0;list-style-type:none;margin:0;padding:0;float:left;
       		width:100%!important;
       		height:60px;
-			position:static;
+			position:absolute;
 			text-decoration:none;
 			text-align:center;
 			display:block;
@@ -80,9 +80,8 @@ html,body,div{font-family: "Open Sans", sans-serif}
       .closebtn:hover,.w3-closebtn:focus{color:#000;text-decoration:none;cursor:pointer}
       .closebtn{text-decoration:none;float:right;font-size:24px;font-weight:bold;color:inherit;}
 
-	  #main{
-	  	top:0; padding:0px; height:780px; margin-bottom:0px;
-	  }
+	.top{}
+	 
 	  
       #jb-container {
         width: 2000px;
@@ -95,38 +94,41 @@ html,body,div{font-family: "Open Sans", sans-serif}
         padding: 20px;
         height: 120px;
         margin-bottom: 20px;
+        
        /*  border: 1px solid #bcbcbc; */
       }
       #jb_search{
+      	position:absolute;
       	margin-top:20px;
-      	margin-left:740px;
-      	float: left;
+      	margin-left:1000px;
+      	float:left;
       	width: 250px;
       	height:auto;
       /* 	border:1px solid #bcbcbc; */
       }
        #jb-content {
         width: 910px;
-        height:300px;
         padding: 20px;
         margin-bottom: 50px;
         float: right;
         /* border: 1px solid #bcbcbc; */
       } 
       #jb-sidebar {
-      	position:fixed;
-      	height:800px;
+      	position:absolute;
+      	height:600px;
         width: 300px;
-        padding: 20px;
-        padding-left:0px;
-        margin-bottom: 0px;
+        margin-top:20px;
+        padding-left:0px;   	
         float: left;
    /*      border: 1px solid #bcbcbc; */
       }
       #jb-footer {
-      	width:1250px;
-        clear: both;
-        padding: 40px 0px 0px 0px;
+      	width:100%;
+	height:60px;
+	clear: both;
+/* 	position:absolute;
+	bottom:0;
+	left:0; */
         /* border: 1px solid #bcbcbc; */
       }
       #jb-logo{
@@ -158,11 +160,14 @@ html,body,div{font-family: "Open Sans", sans-serif}
 	    color: white;
 	}
 	
-	
+
 	
 	/* ----------------------------------------------------------------------- */
 
-	
+
+
+		
+		
     </style>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script>
@@ -243,6 +248,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
 
 	}
 	
+<<<<<<< HEAD
 	function Message(){
 	url="MessageForm.hash?check=y";
 	window.open(url,"post","toolbar=no ,width=400 ,height=150,directories=no,status=yes,menubar=no,scrollbars=no");
@@ -250,12 +256,17 @@ html,body,div{font-family: "Open Sans", sans-serif}
 	
     </script>
  
+=======
+	
+    </script> 
+>>>>>>> 7f9c15c1e570c102251bd506e1ab72129f71caae
   </head>
   <body style="background-color:#f5f7f8">
 
 <!-- navbar -->
 <div class="top">
  <ul class="navbar color1 left-align large">
+<<<<<<< HEAD
   <li class="small"><a href="#" class="padding-large color2 margin-right"><img src = "image/logo/interHash.png" width="100" height="25"></i></a></li>
   <li class="small"><a onclick="Message()" class="padding-large hover-white margin-right" title="Messages"><img src = "image/logo/message.PNG" width="30" height="25"></a></li>
   <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Alarm"><img src = "image/logo/알림.PNG" width="30" height="25"></a></li>
@@ -270,6 +281,14 @@ html,body,div{font-family: "Open Sans", sans-serif}
       	<div id="jb-logo">
 	      	<img alt="로고" src='<c:url value="/image/logo/logo.jpg" />' onclick="window.location.href='Main.hash'">
       	</div>
+=======
+
+
+  <li class="small"><a href="#" class="padding-large color2 margin-right"><img src = "image/logo/interHash.png" width="100" height="25"></a></li>
+  <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Messages"><i class ="fa fa-envelope"></i></a></li>
+  <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Alarm"><i class="fa fa-bell"></i></a></li>
+
+>>>>>>> 7f9c15c1e570c102251bd506e1ab72129f71caae
 
       	<div id="jb_search">
       		<form method="post" action="Board.hash">
@@ -277,17 +296,17 @@ html,body,div{font-family: "Open Sans", sans-serif}
       			<input type="submit" value="검색"/>
       		</form>
       	</div>
-      	
-      	<li class="small">
-      	<a href="#" class="padding-large hover-white account-right" title="MyAccount"><img src = "image/logo/i.PNG" width="30" height="30"></a>
-<!--       	<div class = "dropdown-content white box-shadow">
-      		<a href="#">회원정보수정</a>
-      		<a href="#">프로필수정</a>
-      		<a href="#">로그아웃</a>
-      	</div> -->
-      	</li>
+ 
+  <li class="small">
+     <a href="#" class="padding-large hover-white account-right" title="MyAccount"><img src = "image/logo/i.PNG" width="30" height="30"></a>
+<!-- 		<div>
+			<a href="#">회원정보수정</a>
+			<a href="#">프로필수정</a>
+			<a href="#">로그아웃</a>
+		</div> -->
+  </li>
 		
-<%--       	<div id="jb-logon">
+      	<div id="jb-logon">
       		<form>
       			<!-- <input type = "text"><br>
       			<input type = "password"><br>
@@ -312,19 +331,20 @@ html,body,div{font-family: "Open Sans", sans-serif}
 				</table>
 				
       		</form>
-      	</div> --%>
+      	</div> 
       	</ul>
       	<br>
       </div>
       
       
       <!-- main -->
-      <div id="main">
+   <div id = "main">
       
       <div id="jb-content"> 
-      <decorator:body/>
+       <decorator:body/> 
+       
+     
       </div>
-      
       
       <div id="jb-sidebar">
       <!-- Profile -->
@@ -388,12 +408,14 @@ html,body,div{font-family: "Open Sans", sans-serif}
         </div>
       </div>
       <br>
-    </div>
-    </div><!-- main화면 -->   
       
-      <div id="jb-footer" class=" w3-theme-d3">
+    </div>
+    
+   </div>
+       <div id="jb-footer" class=" w3-theme-d3">
         <p>Copyright</p>
-      </div>
+      </div> 
+     
       
      
   </body>
