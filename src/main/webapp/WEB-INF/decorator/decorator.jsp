@@ -263,6 +263,18 @@ html,body,div{font-family: "Open Sans", sans-serif}
   <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Alarm"><i class="fa fa-bell"></i></a></li>
 
 
+<<<<<<< HEAD
+=======
+    </script>
+ 
+  </head>
+  <body>
+    <div id="jb-container">
+      <div id="jb-header">
+      	<div id="jb-logo">
+	      	<img alt="로고" src='<c:url value="/image/logo/logo.jpg" />' onclick="window.location.href='Main.hash'">
+      	</div>
+>>>>>>> 6517606385461ee4a3f2fb8712e037a21adc350f
       	<div id="jb_search">
       		<form method="post" action="Board.hash">
       			<input type="text" name="hash"/>

@@ -42,7 +42,7 @@ public class LoginController {
 	//로그인
 	@RequestMapping("/LoginPro.hash")
 	private ModelAndView login(@ModelAttribute("userinput")MemberCommand info,  HttpSession session) {
-		ModelAndView mv = new ModelAndView("fixpage/boardDiv");
+		ModelAndView mv = new ModelAndView("redirect:Board.hash");
 		// result가 1이면 로그인 성공 0이면 실패
 
 		System.out.println("passwd :: "+ info.getPasswd()+" email "+info.getEmail());
