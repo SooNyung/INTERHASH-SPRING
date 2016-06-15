@@ -262,35 +262,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
   <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Messages"><i class ="fa fa-envelope"></i></a></li>
   <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Alarm"><i class="fa fa-bell"></i></a></li>
 
-  <li class="small"><a href="#" class="padding-large color2 margin-right"><img src = "image/logo/interHash.png" width="100" height="25"></i></a></li>
-  <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Messages"><img src = "image/logo/message.PNG" width="30" height="25"></a></li>
-  <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Alarm"><img src = "image/logo/알림.PNG" width="30" height="25"></a></li>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 37901f4299fa1a1e592af13154e88cf0f9812d4d
-    </script>
- 
-  </head>
-  <body>
-    <div id="jb-container">
-      <div id="jb-header">
-<<<<<<< HEAD
-
-      	<div id="jb-logo">
-	      	<img alt="로고" src='<c:url value="/image/logo/logo.jpg" />' onclick="window.location.href='Main.hash'">
-      	</div>
-
-=======
-      	<div id="jb-logo">
-	      	<img alt="로고" src='<c:url value="/image/logo/logo.jpg" />' onclick="window.location.href='Main.hash'">
-      	</div>
-<<<<<<< HEAD
-=======
-
->>>>>>> 5924e6dc39d948c55524002887693c60be30264e
->>>>>>> 37901f4299fa1a1e592af13154e88cf0f9812d4d
       	<div id="jb_search">
       		<form method="post" action="Board.hash">
       			<input type="text" name="hash"/>

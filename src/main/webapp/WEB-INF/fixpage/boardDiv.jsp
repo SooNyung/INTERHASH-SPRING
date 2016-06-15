@@ -331,8 +331,9 @@ $(function(){
 					<input type="button" value="Tag" onClick="tagCheck()">
 				</span> 
 				 <span id="submit" style="width: 100px; float: left;"> 
-				<input type="submit" id="button" value="submit"/>
-				<a href="javascript:document.regform.onsubmit()"><img src="image/logo/post.PNG" border=0></a>
+				  <input type="submit" id="button" value="submit"/> 
+			<!-- 	<input type="image" src="image/logo/post.PNG">  -->
+			
 				 </span>
 			</div>
 		</div>
@@ -341,6 +342,25 @@ $(function(){
               
             </div>
           </div>
+<!-- <!-- list로 받아온 글들 -->
+      <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
+        <img src="img_avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <span class="w3-right w3-opacity">1 min</span>
+        <h4>John Doe</h4><br>
+        <hr class="w3-clear">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <div class="w3-row-padding" style="margin:0 -16px">
+            <div class="w3-half">
+              <img src="img_lights.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+            </div>
+            <div class="w3-half">
+              <img src="img_nature.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">
+          </div>
+        </div>
+        <button type="button" class="w3-btn w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i> &nbsp;Like</button> 
+        <button type="button" class="w3-btn w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i> &nbsp;Comment</button> 
+      </div> -->
+
 
 <form method='post' action='ContentView.hash'>
 <c:forEach var="con" items= '${content}' >
