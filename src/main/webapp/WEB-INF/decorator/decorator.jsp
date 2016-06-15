@@ -80,7 +80,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
       .closebtn:hover,.w3-closebtn:focus{color:#000;text-decoration:none;cursor:pointer}
       .closebtn{text-decoration:none;float:right;font-size:24px;font-weight:bold;color:inherit;}
 
-	#main{}
+	  #main{width:100%}
 	 
 	  
       #jb-container {
@@ -107,7 +107,6 @@ html,body,div{font-family: "Open Sans", sans-serif}
       }
        #jb-content {
         width: 910px;
-        height:300px;
         padding: 20px;
         margin-bottom: 50px;
         float: right;
@@ -258,7 +257,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
  <ul class="navbar color1 left-align large">
 
 
-  <li class="small"><a href="#" class="padding-large color2 margin-right"><img src = "image/logo/interHash.png" width="100" height="25"></a></li>
+  <li class="small"><a href="Board.hash" class="padding-large color2 margin-right"><img src = "image/logo/interHash.png" width="100" height="25"></a></li>
   <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Messages"><i class ="fa fa-envelope"></i></a></li>
   <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Alarm"><i class="fa fa-bell"></i></a></li>
 
@@ -382,12 +381,12 @@ html,body,div{font-family: "Open Sans", sans-serif}
       <br>
     </div>
     
-<!--      <div id="jb-footer" class=" w3-theme-d3">
-        <p>Copyright</p>
-      </div> -->
+
    </div>
       
-     
+          <div id="jb-footer" class=" w3-theme-d3">
+        <p>Copyright</p>
+      </div> 
       
      
   </body>
