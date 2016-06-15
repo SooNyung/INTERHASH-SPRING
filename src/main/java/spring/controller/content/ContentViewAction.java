@@ -26,7 +26,6 @@ public class ContentViewAction {
 
 	@RequestMapping("/Main.hash")
 	private String mainview() {
-
 		/*Properties prop = System.getProperties();
 		Set set = prop.keySet();
 		Iterator iter = set.iterator();
@@ -35,7 +34,6 @@ public class ContentViewAction {
 			System.out.println(key + " :: "+prop.getProperty(key));
 			
 		}*/
-
 		return "main";
 	}
 

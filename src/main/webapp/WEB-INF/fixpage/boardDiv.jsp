@@ -330,10 +330,10 @@ $(function(){
 					<input type="text" name="tag" size="7" readonly>
 					<input type="button" value="Tag" onClick="tagCheck()">
 				</span> 
-				<!-- <span id="submit" style="width: 100px; float: left;"> 
-				<input type="submit" id="button" value="submit"/> -->
+				 <span id="submit" style="width: 100px; float: left;"> 
+				<input type="submit" id="button" value="submit"/>
 				<a href="javascript:document.regform.onsubmit()"><img src="image/logo/post.PNG" border=0></a>
-				<!-- </span> -->
+				 </span>
 			</div>
 		</div>
 	</form>

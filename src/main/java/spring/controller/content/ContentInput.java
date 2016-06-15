@@ -87,7 +87,7 @@ public class ContentInput {
 		System.out.println("workspace 경로  :: "+ workspace_dir);
 		//서버 경로
 		System.out.println("서버 경로 :: "+tmp_dir);
-		String upload_tmp_path = tmp_dir + "spring_interhash\\upload\\";
+		String upload_tmp_path = tmp_dir + "\\INTERHASH-SPRING\\upload\\";
 		String name = info.getOriginalFilename();
 		real_name= System.currentTimeMillis()+name;
 		
