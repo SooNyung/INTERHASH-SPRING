@@ -113,5 +113,4 @@ public class MemberController {
 		
 		return "fixpage/boardDiv";
 	}
-
 }

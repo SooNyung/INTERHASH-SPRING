@@ -100,6 +100,8 @@ function tagCheck() {
 		padding:10px;
 		margin:10px;
 	}
+	
+	
 	#board_img{
 		width:270px;
 		height:280px;
@@ -232,7 +234,7 @@ function tagCheck() {
 }
 
 #submit {
-	height: 30px;
+	
 	background: #607d8b;
 }
 
@@ -293,6 +295,19 @@ function tagCheck() {
 html,body,h6{font-family: "Open Sans", sans-serif}
 .w3-theme {color:#fff !important; background-color:#607d8b !important}
 .white{color:#000!important;background-color:#fff!important;}
+
+.margin-right{margin-right:8px}
+.circle{border-radius:50%}
+.left-align{align:left;}
+.right-align{float:left; margin-left:400px; margin-top:0px;}
+.opacity{opacity:0.6;}
+
+.w3-theme-d1 {color:#fff !important; background-color:#57707d !important}
+.w3-theme-d2 {color:#fff !important; background-color:#4d636f !important}
+.container{vertical-align: text-bottom; line-height:30px; }
+.w3-row-padding{margin-left:30px; width:300px; }
+.write{width:300px; height:500px;}
+.content{width:300px; height:700px;}
 </style>
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script>
@@ -330,7 +345,7 @@ $(function(){
 					<input type="text" name="tag" size="7" readonly>
 					<input type="button" value="Tag" onClick="tagCheck()">
 				</span> 
-				 <span id="submit" style="width: 100px; float: left;"> 
+				 <span id="submit" "> 
 			<!-- 	  <input type="submit" id="button" value="submit"/>  -->
 			<input type="image" src="image/logo/post.PNG"> 
 			
@@ -348,15 +363,38 @@ $(function(){
 <form method='post' action='ContentView.hash'>
 <c:forEach var="con" items= '${content}' >
 <input type="hidden" name="connum" value="${con.connum}">
-<div id="board_div" class="box-shadow border-round white">
-	<div id="board_img">
+<div id="board_div" class="container box-shadow border-round white">
+<table width="100%">
+<tr>
+<td width="10%"><img src="image/logo/img_avatar2.png" alt="Avatar" class="left-align circle" style="width:60px"></td>
+<td width="50%"><b>${con.connickname}</b></td>
+<td width="40%"><b class="right-align opacity">${con.conmodifieddate}</b></td>
+</tr>
+</table>
+	<hr class="w3-clear">
+	<div class="content">
+	<div class="write">${con.content}</div>
+
+	<div class="w3-row-padding">
+        <a href="ContentView.hash?connum=${con.connum}">
+		<img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />'/>
+		</a>  
+    </div>
+    
+    <p>#${con.conhash}</p>
+	</div>
+    <button type="button" class="w3-btn w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
+    <button type="button" class="w3-btn w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
+
+	<%-- <div id="board_img">
 	<a href="ContentView.hash?connum=${con.connum}">
 		<img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />' />
 		</a>
 	</div>
 	<div id ="board_main">
 	<a href="ContentView.hash?connum=${con.connum}">
-		<div id="board_subject">
+	
+		 <div id="board_subject">
 			<div id="subject">
 			<label>'${con.connickname}'</label>
 			</div>
@@ -370,7 +408,7 @@ $(function(){
 			<label> ${con.conhash} </label>
 
 		</div>
-		<div id="board_like">
+ 		<div id="board_like">
 			<div id="like">
 				<div id="like_img">
 				</div>
@@ -389,9 +427,9 @@ $(function(){
 				</div>
 				<P><a href="ContentView.hash?connum=${con.connum}"></a></P>
 			</div>
-		</div>
+		</div>  
 		</a>
-	</div>
+	</div> --%>
 </div>
 </c:forEach>
 </form>

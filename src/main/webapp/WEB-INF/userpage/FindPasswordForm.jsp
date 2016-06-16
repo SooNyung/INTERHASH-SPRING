@@ -75,15 +75,16 @@
 </script>
 </c:if> --%>
  
-<%-- <c:if test='${email != null}'>
+<c:if test='${email != null}'>
 <script>
 	alert("해당 이메일로 임시비밀번호를 전송했습니다.");
 </script>
-</c:if> --%>
+</c:if> 
 
 </head>
+
 <body>
-비밀번호 찾기 폼<br>
+ 비밀번호 찾기 폼<br>
 <c:if test="${email==null }">
 <form method="post" name="useremail" action="FindPasswordPro.hash" onSubmit="return checkIt()">
 	<input type="text" name="email">
@@ -91,15 +92,15 @@
 </form>
 </c:if>
 
-<c:if test="${email != null}">
+<%--<c:if test="${email != null}">
 email ::: ${email} <br>
 password ::: ${password} <br>
-<br>
-<input type="button" value="확인" onClick="location.href='Main.hash'"/>
+tempPassword ::: ${key}<br>
+</c:if> --%>
 
-key test ::: ${key}<br>
+<c:if test="${email!=null}">
+	<input type="button" value="로그인하러 가기" onClick="location.href='Main.hash'"/>
 </c:if>
-
 
 </body>
 </html>
