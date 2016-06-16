@@ -10,6 +10,7 @@ window.onload=function() {
 document.getElementById('date').valueAsDate = new Date();
 }
 </script>
+
 <style>
 *{
 color:#7A7A7A;

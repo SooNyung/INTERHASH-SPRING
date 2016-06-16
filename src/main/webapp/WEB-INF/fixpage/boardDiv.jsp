@@ -93,11 +93,11 @@ function tagCheck() {
 <style type="text/css">
 	.background-color{color:#000 !important; background-color:#f5f7f8 !important}
 	#board_div{
-		width:760px;
+		width:800px;
 		height:320px;
 /* 		 background-color: black;  */
 		
-		padding:5px;
+		padding:10px;
 		margin:10px;
 	}
 	#board_img{
@@ -307,7 +307,7 @@ $(function(){
 </head>
 <body>
 <div>
-          <div class="box-shadow border-round white">
+          <div id="board_div" class="box-shadow border-round white">
             <div class="container w3-padding">
               <h6 class="w3-opacity">I love it!! InterHash~♡</h6>
             <div id="writeform" border="1">
