@@ -1,5 +1,8 @@
 package mybatis;
-
+/*
+ * 게시물에 대한 DAO객체 입니다.
+ * 
+ */
 import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
@@ -38,9 +41,7 @@ public class ContentDAO {
 	}
 
 	public ArrayList getReport() throws Exception {
-		ArrayList array = (ArrayList) session.selectList("report.getreport");
-		session.commit();
-		return array;
+		return (ArrayList) session.selectList("report.getreport");
 	}
 
 	public ArrayList<ContentCommand> getContent(String hash) throws Exception {
@@ -55,8 +56,6 @@ public class ContentDAO {
 			bean.setPhotolist(photo);
 			array.set(i, bean);
 		}
-
-		session.commit();
 		return array;
 	}
 	
