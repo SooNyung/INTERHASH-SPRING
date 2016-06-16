@@ -58,15 +58,14 @@ public class MemberDAO {
 	public int findEmail(MemberCommand info){
 		return session.selectOne("member.findEmail",info);
 	}
-	
-<<<<<<< HEAD
+
 	public List<MemberCommand> emailList(){
 		return session.selectList("member.emailList");
 	}
 	
-=======
+
 	public String tempPasswd(TempPasswd temppw){
 		return session.selectOne("member.tempPasswd",temppw);
 	}
->>>>>>> 54c6f0a3e7ab77047875a75ba9856d40d247ffb8
+
 }
