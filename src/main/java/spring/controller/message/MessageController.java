@@ -1,5 +1,7 @@
 package spring.controller.message;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,8 +44,12 @@ public class MessageController {
 	}
 	
 	@RequestMapping("/MessageForm.hash")
-	public ModelAndView messageForm(){
+	public ModelAndView messageForm(@ModelAttribute("memberdto") MemberCommand memberdto){
 		ModelAndView mav = new ModelAndView("userpage/MessageForm");
+		
+		ArrayList<MemberCommand> emailList = (ArrayList<MemberCommand>) memberdao.emailList();
+		System.out.println("emailList"+emailList);
+		mav.addObject("emailList",emailList);
 		return mav;
 	}
 	
@@ -74,21 +80,10 @@ public class MessageController {
 		messagedto.setReceEmail(receiver);
 		messagedto.setSendNickname(senderNick);
 		messagedto.setReceNickname(receiverNick);
-		
-		
-		
-		System.out.println("null을 찾아라 !"+sender);
-		System.out.println("null을 찾아라 !"+receiver);
-		System.out.println("null을 찾아라 !"+senderNick);
-		System.out.println("null을 찾아라 !"+receiverNick);
-		System.out.println("null을 찾아라 !"+msgContent);
-		
-		
+			
 		//메시지 보내는 쿼리 insert 
 		int result = messagedao.sendMessage(messagedto);
-		
-		System.out.println("send result::::::::::::::::::::::::::::::::::" + result);
-		
+				
 		return mav;
 		
 	}

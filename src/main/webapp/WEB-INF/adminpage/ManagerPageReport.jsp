@@ -1,40 +1,59 @@
-<%@ page contentType="text/html; charset=EUC-KR"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 <head>
-<title>°ü¸®ÀÚ</title>
+<title>ê´€ë¦¬ì</title>
+<style>
+*{
+color:#7A7A7A;
+}
+
+#view_div{
+	width:780px;
+	height:640px;
+ 	/* background-color: black; */
+	/* border:1px solid; */
+	padding:5px;
+	margin:auto;
+	}
+</style>
+</style>
 </head>
 <body>
+<div id ="view_div">
 <center>
-<h3>½Å°í °Ô½Ã¹°</h3>
+<h3>ì‹ ê³  ê²Œì‹œë¬¼</h3>
 <hr/>
 <form method="post" action="ManagerPageMemberPro.hash">
+<input type="button" value="ê´€ë¦¬ìí˜ì´ì§€" onclick="javascript:window.location='ManagerPage.hash'">
 <table border="1">
 <tr>
 <td><b>email</b></td>
 <td><b>nickname</b></td>
-<td><b>½Å°íÈ½¼ö</b></td>
-<td><b>È¸¿ø»èÁ¦</b></td>
+<td><b>ì‹ ê³ íšŸìˆ˜</b></td>
+<td><b>íšŒì›ì‚­ì œ</b></td>
 </tr>
 
-<c:forEach var="member" items="${array}">
+<c:forEach var="member" items="${report}">
 <tr>
 <td>
 ${member.email}
 </td>
 <td>
-${member.nickname}
+${member.connickname}
 </td>
 <td>
-${member.reportcount}
+${member.conreportcount}
 </td>
 <td><input type="checkbox" name="delete" value="${member.email}"></td>
 </tr>
 </c:forEach>
 </table>
-<div align="center"><input type="submit" value="È¸¿ø»èÁ¦"></div>
+<div align="center"><input type="submit" value="íšŒì›ì‚­ì œ"></div>
 </form>
-<input type="button" value="°ü¸®ÀÚÆäÀÌÁö" onclick="javascript:window.location='ManagerPage.hash'">
+
+</div>
 </body>
 </html>

@@ -46,10 +46,14 @@ function close(){
 
 <div align="right">
 <input type="submit" value="수정하기" onsubmit="close();"/>
-<input type="button" value="취소" onclick="self.close()">
+<input type="button" value="취소" onclick="testtt()">
 </div>
 </form>  
-
+<script>
+function testtt(){
+self.close();
+}
+</script>
 
 </body>
 </html>

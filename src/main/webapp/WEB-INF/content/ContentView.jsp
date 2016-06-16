@@ -8,6 +8,13 @@
 <head>
 <title>View</title>
 <style>
+.box-shadow{box-shadow:0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)!important;margin-top:0px;}
+ .border-round{border-radius:4px!important}
+ .container{content:"";display:table;clear:both;padding:0.01em 16px; margin-left:0px;}
+.w3-col.m12{width:100px}
+html,body,h6{font-family: "Open Sans", sans-serif}
+.w3-theme {color:#fff !important; background-color:#607d8b !important}
+.white{color:#000!important;background-color:#fff!important;}
 
 #nickname{
 font-size:15px;
@@ -33,7 +40,6 @@ color:#5AAEFF;
 	height:620px;
 	/* background-color: yellow; */
 	float:left;	
-	border:1px solid;
 	margin:auto;
 	}
 	#view_right{	
@@ -41,7 +47,6 @@ color:#5AAEFF;
 	height:620px;
 	/* background-color: yellow; */
 	float:right;
-	border:1px solid;
 	margin:auto;
 	}
 	
@@ -50,7 +55,6 @@ color:#5AAEFF;
 	height:20px;
 	float:auto;
 	margin:5px;
-	border:1px solid;
 	background-color:white;
 	}
 	
@@ -73,7 +77,6 @@ color:#5AAEFF;
 	height:20px;
 	float:auto;
 	margin:5px;
-	border:1px solid;
 	background-color:white;
 	}
 
@@ -89,7 +92,7 @@ color:#5AAEFF;
 	height:20px;
 	float:left;
 	margin:5px;
-	border:1px solid;
+
 	background-color:white;
 	}
 	#comment_content{
@@ -118,7 +121,7 @@ color:#5AAEFF;
 	height:460px;
 	float:left;
 	margin:5px;
-	border:1px solid;
+	
 	background-color:white;
 	}
 	
@@ -127,7 +130,7 @@ color:#5AAEFF;
 	height:490px;
 	float:left;
 	margin:5px;
-	border:1px solid;
+	
 	background-color:white;
 	}
 	
@@ -163,10 +166,11 @@ function reportCom(comnum){
 <div id="view_div">
 <!-- <form name="view"> -->
 
-<div id="view_left">
+<div id="view_left" class="box-shadow border-round white">
 	<form>
 	<div id="left_nickndate">
 		<span id ="align_left"><b>${sessionScope.nickName}</b>님</span>
+		
 	<span id="align_right"><label id="time">${sdf.format(content.conmodifieddate)}</label></span>
 		
 	</div>
@@ -204,7 +208,7 @@ function reportCom(comnum){
 	</form>
 </div>
 
-<div id="view_right">
+<div id="view_right" class="box-shadow border-round white">
 
 	<form method=post action="InsertComment.hash">
 	<input type=hidden name=connum value="${content.connum}">
