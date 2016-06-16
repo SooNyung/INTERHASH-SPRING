@@ -301,9 +301,6 @@ html,body,div{font-family: "Open Sans", sans-serif}
       });	
    </script>
 
-    </script>
- 
-
   </head>
   <body style="background-color:#f5f7f8">
 
