@@ -14,7 +14,8 @@ color:#7A7A7A;
 <center>
 회원정보가 수정되었습니다!<br>
 잠시후 페이지가 이동됩니다.
-<meta http-equiv="Refresh" content="2;url=/INTERHASH/Board.hash" >
+<!-- <meta http-equiv="Refresh" content="2;url=/INTERHASH/Board.hash" > --> <!-- 원래있던거 -->
+<meta http-equiv="Refresh" content="2;url=Board.hash" ><!-- 수정한거 -->
 </center>
 </body>
 </html>
