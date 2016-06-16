@@ -300,7 +300,7 @@ html,body,h6{font-family: "Open Sans", sans-serif}
 .circle{border-radius:50%}
 .left-align{align:left;}
 .right-align{float:left; margin-left:400px; margin-top:0px;}
-.opacity{opacity:0.6;}
+.opacity{color:#eee}
 
 .w3-theme-d1 {color:#fff !important; background-color:#57707d !important}
 .w3-theme-d2 {color:#fff !important; background-color:#4d636f !important}
@@ -308,7 +308,10 @@ html,body,h6{font-family: "Open Sans", sans-serif}
 .w3-row-padding{margin-left:30px; width:300px; }
 .write{width:300px; height:500px;}
 .content{width:300px; height:700px;}
+hr{border-top:1px solid; background-color:#eee;}
 </style>
+
+
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script>
 $(function(){
@@ -345,7 +348,7 @@ $(function(){
 					<input type="text" name="tag" size="7" readonly>
 					<input type="button" value="Tag" onClick="tagCheck()">
 				</span> 
-				 <span id="submit" "> 
+				 <span id="submit"> 
 			<!-- 	  <input type="submit" id="button" value="submit"/>  -->
 			<input type="image" src="image/logo/post.PNG"> 
 			
@@ -367,11 +370,11 @@ $(function(){
 <table width="100%">
 <tr>
 <td width="10%"><img src="image/logo/img_avatar2.png" alt="Avatar" class="left-align circle" style="width:60px"></td>
-<td width="50%"><b>${con.connickname}</b></td>
-<td width="40%"><b class="right-align opacity">${con.conmodifieddate}</b></td>
+<td width="65%"><b>${con.connickname}</b></td>
+<td width="35%"><b class="right-align opacity"><font color="#b2b2b2">${con.conmodifieddate}</font></b></td>
 </tr>
 </table>
-	<hr class="w3-clear">
+	<hr color="#eee">
 	<div class="content">
 	<div class="write">${con.content}</div>
 
