@@ -118,8 +118,8 @@ html,body,div{font-family: "Open Sans", sans-serif}
       	position:absolute;
       	height:600px;
         width: 25%;
-        margin-top:20px;
-        padding-left:0px;   	
+        margin-top:25px;
+        padding-left:15px;   	
         float: left;
    /*      border: 1px solid #bcbcbc; */
       }
