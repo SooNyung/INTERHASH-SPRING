@@ -25,6 +25,7 @@ import spring.model.WithdrawalCommand;
 
 @Controller
 public class AdminController {
+	
 	@Autowired
 	AdminDAO dao;
 	
@@ -68,7 +69,7 @@ public class AdminController {
 		return mv;
 	}
 	
-	//신고게시물
+
 	@RequestMapping(value="/ManagerPageReport.hash", method=RequestMethod.GET)
 	private ModelAndView adminReport(HttpServletRequest request){
 		
@@ -81,7 +82,7 @@ public class AdminController {
 		return mv;
 	}
 	
-	//占쎄슈�뜝�뜾逾놂옙�봿�겱�뤆�룊�삕 �뜝�럩�뤂�뜝�럩�쐸占쎄슈�뜝�뜾逾놂옙�뿫由��뜝�럥裕� �뜝�럥�쓡�뜝�럩逾좂춯�쉻�삕
+
 	@RequestMapping(value="/ManagerPageMember.hash", method=RequestMethod.GET)
 	private ModelAndView adminMember(HttpServletRequest request){
 		ModelAndView mv = new ModelAndView("adminpage/ManagerPageMember");
@@ -93,8 +94,7 @@ public class AdminController {
 
 		return mv;
 	}
-	
-	//회원삭제하기
+
 	@RequestMapping(value="/ManagerPageMemberPro.hash", method=RequestMethod.POST)
 	private ModelAndView adminMemberPro(HttpServletRequest request){
 		ModelAndView mv = new ModelAndView("adminpage/ManagerPageMemberPro");
@@ -105,9 +105,9 @@ public class AdminController {
 		
 		/*WithdrawalCommand members = new WithdrawalCommand();
 		members.setDrawalemail(member);
-		dao.adminInsert(member);//탈퇴한 회원이 탈퇴회원관리에 저장됨
+		dao.adminInsert(member);//
 */		
-		MemberCommand a = new MemberCommand();//회원관리
+		MemberCommand a = new MemberCommand();
 		a.setEmail(member);
 		dao.deleteMember(member);
 		
@@ -115,7 +115,7 @@ public class AdminController {
 	}
 	
 
-	//占쎄슈�뜝�뜾逾놂옙�봿�겱�뤆�룊�삕 �뜝�럡�돮�뜝�럥�떄�뜝�럩�꼨�뜝�럩�쐸占쎄슈�뜝�뜾逾놂옙�뿫由��뜝�럥裕� �뜝�럥�쓡�뜝�럩逾좂춯�쉻�삕
+	
 	@RequestMapping(value="/ManagerPageDeleteMember.hash", method=RequestMethod.GET)
 	private ModelAndView adminDeleteMember(HttpServletRequest request){
 		ModelAndView mv = new ModelAndView("adminpage/ManagerPageDeleteMember");

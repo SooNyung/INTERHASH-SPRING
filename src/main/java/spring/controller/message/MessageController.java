@@ -1,6 +1,6 @@
 package spring.controller.message;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -47,9 +47,13 @@ public class MessageController {
 	public ModelAndView messageForm(@ModelAttribute("memberdto") MemberCommand memberdto){
 		ModelAndView mav = new ModelAndView("userpage/MessageForm");
 		
-		ArrayList<MemberCommand> emailList = (ArrayList<MemberCommand>) memberdao.emailList();
-		System.out.println("emailList"+emailList);
-		mav.addObject("emailList",emailList);
+		String email="123";
+		List<String> test = memberdao.selectEmail();
+		System.out.println("test"+test);
+	/*	for(int i=0; i<test.size(); i++){
+			email.equals(test);
+		}*/
+		mav.addObject("emailList",test);
 		return mav;
 	}
 	
@@ -60,17 +64,23 @@ public class MessageController {
 			HttpServletRequest request){
 		ModelAndView mav = new ModelAndView("fixpage/boardDiv");
 		
-		//송신자
-		String sender = (String) request.getSession().getAttribute("memId");	
-		//수신자
+		//송신자 이메일		
+		String sender = (String) request.getSession().getAttribute("memId");
+
+		//수신자 이메일	
 		String receiver = request.getParameter("receEmail");
-		
+
 		//송신자  닉네임
 		memberdto = memberdao.modify(sender);
 		String senderNick = memberdto.getNickname();		
+		
 		//수신자 닉네임
 		memberdto = memberdao.modify(receiver);
+		
 		String receiverNick = memberdto.getNickname();
+		messagedto.setReceNickname(receiverNick);
+
+		
 		
 		//글 내용
 		String msgContent = request.getParameter("messagecontent");
@@ -79,13 +89,12 @@ public class MessageController {
 		messagedto.setSendEmail(sender);
 		messagedto.setReceEmail(receiver);
 		messagedto.setSendNickname(senderNick);
-		messagedto.setReceNickname(receiverNick);
-			
+		
+
 		//메시지 보내는 쿼리 insert 
 		int result = messagedao.sendMessage(messagedto);
-				
+		
 		return mav;
 		
 	}
-	
 }
