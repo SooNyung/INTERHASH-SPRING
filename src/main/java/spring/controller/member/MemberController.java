@@ -127,6 +127,7 @@ public class MemberController {
 		String []  hashlist = hash.split(",");
 		List<String> list = Arrays.asList(hashlist);
 		model.addAttribute("hashlist",list);
+		model.addAttribute("mesagelist",mdao.getMessageList(email));
 		return "fixpage/boardDiv";
 	}
 }

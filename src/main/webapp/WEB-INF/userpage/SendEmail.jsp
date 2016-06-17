@@ -9,6 +9,13 @@
 color:#7A7A7A;
 }
 </style>
+<script>
+function setReadonly()
+{
+opener.userinput.email.readOnly ="true";
+self.close();
+}
+</script>
 </head>
 <body>
 <table>
@@ -16,7 +23,7 @@ color:#7A7A7A;
     <td align="center">
       <p>인증번호가 전송되었습니다. </p>
       <p>해당 이메일에서<br>인증번호를확인해주세요!</p>
-      <input type="button" value="닫기" onclick="self.close()">
+      <input type="button" value="닫기" onclick="setReadonly()">
     </td>
   </tr>
 </table>

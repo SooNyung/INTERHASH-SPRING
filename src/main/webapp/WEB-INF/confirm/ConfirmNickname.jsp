@@ -14,6 +14,7 @@ color:#7A7A7A;
   function setNickname()
     {
     opener.document.userinput.nickname.value="${nickname}";
+    opener.document.userinput.nickname.readOnly="true";
 	self.close();
 	}
 </script>
