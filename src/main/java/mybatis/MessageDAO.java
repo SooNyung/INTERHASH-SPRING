@@ -25,6 +25,9 @@ public class MessageDAO {
 	public List getMessageList(String email){
 		return session.selectList("Message.getMessageList",email);
 	}
+	public int getMessageCount(String email){
+		return session.selectOne(email);
+	}
 /*	public int insertMember(MemberCommand command){
 		return session.insert("member.insert", command);
 	}*/

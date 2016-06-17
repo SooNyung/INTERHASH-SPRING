@@ -10,7 +10,9 @@
 	<select id="getMessageList" parameterType="String" resultType="spring.model.MessageCommand">
 		select * from message where receEmail = #{eamil}
 	</select>
-	
+	<select id="getMessageCount" parameterType="String" resultType="int">
+		select count(*) from message where receEmail=#{email}
+	</select>
 
 </mapper>
 

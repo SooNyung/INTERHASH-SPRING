@@ -119,7 +119,7 @@ public class MemberController {
 		String email =(String)session.getAttribute("memId");
 		model.addAttribute("content", cdao.getContent());
 		model.addAttribute("memberinfo", dao.getMemberInfo(email));
-		model.addAttribute("messagelist",mdao.getMessageList(email));
+		model.addAttribute("messagecount",mdao.getMessageCount(email));
 		
 		return "fixpage/boardDiv";
 	}
