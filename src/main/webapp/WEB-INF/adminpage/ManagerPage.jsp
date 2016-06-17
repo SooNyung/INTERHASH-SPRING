@@ -19,6 +19,7 @@
 <div id ="view_div">
 <center>
 <p>관리자페이지입니다.</p>
+    
 <a href="ManagerPageCount.hash">통계</a><br>
 <a href="ManagerPageReport.hash">신고게시물</a><br>
 <a href="ManagerPageMember.hash">회원관리</a><br>

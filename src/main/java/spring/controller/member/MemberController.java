@@ -122,6 +122,7 @@ public class MemberController {
 		model.addAttribute("content", cdao.getContent());
 		model.addAttribute("memberinfo", command);
 		model.addAttribute("messagecount",mdao.getMessageCount(email));
+		System.out.println(mdao.getMessageCount(email));
 		String hash = command.getHash();
 		hash = hash.substring(1,hash.length()-1);
 		String []  hashlist = hash.split(",");
