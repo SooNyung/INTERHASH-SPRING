@@ -10,6 +10,7 @@
 color:#7A7A7A;
 }
 </style>
+
 </head>
 <body>
 <c:if test="${check!=0}">
@@ -29,7 +30,7 @@ color:#7A7A7A;
   <tr>
     <td align="center">
       <p>사용할수 있는 이메일입니다. </p>
-      <input type="submit" value="인증번호 전송" >
+      <input type="submit" value="인증번호 전송" onSubmit="self.close()" >
     </td>
   </tr>
 </table>

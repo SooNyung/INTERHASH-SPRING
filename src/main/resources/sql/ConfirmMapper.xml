@@ -10,5 +10,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="existNickname" parameterType="String" resultType="Integer">
 		select count(*) from usertable where nickname=#{nickname}
 	</select>
+	<select id="selectEmail" parameterType="String" resultType="String">
+		select email from usertable where email=#{email}
+	</select>
 
 </mapper>
