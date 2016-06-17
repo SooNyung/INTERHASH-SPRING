@@ -209,7 +209,10 @@ html,body,div{font-family: "Open Sans", sans-serif}
 				width:200px;
 				z-index:500;}
 	.top li:hover ul{display:block;   /* 마우스 커서 올리면 서브메뉴 보이게 하기 */}
-		
+	.badge{background-color:#000;color:#fff;display:inline-block;padding-left:6px;padding-right:5px;text-align:center; margin-left:5px; margin-top:0px; padding-top:0px;
+			border-radius:70%;}
+	.right{float:right}
+	.green{background-color:#4CAF50!important}
 		
     </style>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -320,7 +323,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
 
 
   <li class="small"><a href="Board.hash" class="padding-large color2 margin-right"><img src = "image/logo/interHash.png" width="100" height="25"></a></li>
-  <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Messages"><i class ="fa fa-envelope"></i></a></li>
+  <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Messages"><i class ="fa fa-envelope"></i><span class="badge right small green">3</span> </a></li> 
   <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Alarm"><i class="fa fa-bell"></i></a></li>
 
       	<div id="jb_search">
