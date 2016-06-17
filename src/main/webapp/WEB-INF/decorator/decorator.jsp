@@ -62,7 +62,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
       .box-shadow{box-shadow:0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)!important;margin-top:0px;}
       .border-round{border-radius:4px!important}
       .container{content:"";display:table;clear:both;padding:0.01em 16px; margin-left:0px;width:270px;}
-      .container1{content:"";display:table;clear:both;padding:0.01em 16px; margin-left:0px;}
+      .container1{content:"";display:table;clear:both;padding:0.01em 16px; margin-left:0px; width:310px;}
       .center{text-align:center}
       .text-theme{color:#607d8b !important}
       .accordian{width:100%;cursor:pointer}
@@ -72,8 +72,8 @@ html,body,div{font-family: "Open Sans", sans-serif}
 		width:100%;}
 	  .theme-l1{color:#fff !important; background-color:#7d97a5 !important}
 	  .left-align{text-align:left}
-      .tag{background-color:#000;color:#fff;display:inline-block;padding-left:8px;padding-right:8px;text-align:center;}
-      .font-small{font-size:8px}
+      .tag{display:inline-block; padding-left:8px; padding-right:8px; text-align:center; margin:0px 10px 10px 0px;}
+      .font-small{font-size:20px}
 	  .border{border:1px solid #ccc!important}
       .theme-border {border-color:#607d8b !important}
       .hover-theme:hover {color:#fff !important; background-color:#607d8b !important}
@@ -208,12 +208,29 @@ html,body,div{font-family: "Open Sans", sans-serif}
 				position:absolute;
 				width:200px;
 				z-index:500;}
+				
+	.top li .message{background: rgb(255,240,300);
+				display:none;  /* 평상시에는 서브메뉴가 안보이게 하기 */
+				height:auto;
+				padding:0px;
+				margin:0px;
+				margin-left:0px;
+				border:0px;
+				position:absolute;
+				width:200px;
+				z-index:500;}
+				
 	.top li:hover ul{display:block;   /* 마우스 커서 올리면 서브메뉴 보이게 하기 */}
+	
 	.badge{background-color:#000;color:#fff;display:inline-block;padding-left:6px;padding-right:5px;text-align:center; margin-left:5px; margin-top:0px; padding-top:0px;
 			border-radius:70%;}
 	.right{float:right}
 	.green{background-color:#4CAF50!important}
 		
+	a:link {text-decoration: none; color: #f9ffff;}
+	a:visited {text-decoration: none; color: #f9ffff;}
+	a:active {text-decoration: none; color: #f9ffff;}
+	a:hover {text-decoration: underline; color: #dddddd;}
     </style>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script>
@@ -323,7 +340,14 @@ html,body,div{font-family: "Open Sans", sans-serif}
 
 
   <li class="small"><a href="Board.hash" class="padding-large color2 margin-right"><img src = "image/logo/interHash.png" width="100" height="25"></a></li>
-  <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Messages"><i class ="fa fa-envelope"></i><span class="badge right small green">3</span> </a></li> 
+  <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Messages"><i class ="fa fa-envelope"></i><span class="badge right small green">${messagecount}</span> </a>
+   <ul class="message">
+   			<li >쪽지</li>
+			<li><a href="#"><img src="image/logo/img_avatar5.png" class="left-align circle" width="30%" height="30%"> 뭐하냐??</a></li>
+			<li><a href="#"><img src="image/logo/img_avatar5.png" class="left-align circle" width="30%" height="30%"> 심심해!</a></li>
+			<li><a href="#"><img src="image/logo/img_avatar5.png" class="left-align circle" width="30%" height="30%"> 야야야야</a></li>
+	</ul>
+  </li> 
   <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Alarm"><i class="fa fa-bell"></i></a></li>
 
       	<div id="jb_search">
@@ -385,19 +409,16 @@ html,body,div{font-family: "Open Sans", sans-serif}
       </div>
       
       <div id="jb-sidebar">
+      
       <!-- Profile -->
        <div class="box-shadow border-round white">
         <div class="container">
          <h4 class="center">My Profile</h4>
          <p class="center"><img src="image/logo/사람.PNG"  style="height:106px;width:106px" alt="Avatar"></p>
         <hr color="#eee">
-        <c:forEach var="profile" items="${memberinfo}">
-			<img id = "img" src='${photo.serverpath }' width="320px" height="240"/>
-	
-         <p><i class="fa fa-pencil fa-fw margin-right text-theme"></i> ${profile.nickname}</p>
+         <p><i class="fa fa-pencil fa-fw margin-right text-theme"></i> ${memberinfo.nickname}</p>
          <p><i class="fa fa-home fa-fw margin-right text-theme"></i> London, UK</p>
-         <p><i class="fa fa-birthday-cake fa-fw margin-right text-theme"></i> ${profile.birthday}</p>
-         </c:forEach>
+         <p><i class="fa fa-birthday-cake fa-fw margin-right text-theme"></i>${memberinfo.birthday}</p>      
         </div>
       </div>
       <br>
@@ -410,7 +431,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
           <button onclick="myFunction();" class="btn-block theme-l1 left-align"><i class="fa fa-users fa-fw margin-right"></i> 인기 글 보기</button>
         <script>
         	function myFunction(){
-        		alert("버튼1을 누르셨습니다.");
+        		alert("버튼을 누르셨습니다.");
         	}
         </script>
         </div>      
@@ -422,9 +443,9 @@ html,body,div{font-family: "Open Sans", sans-serif}
         <div class="container1">
           <p>Interests</p>
           <p>
-          <%--  <ul>
-        	<c:forEach var="tagname" items="${memberHash}">
-       		 <li><a href="Board.hash?hash=${tagname}">#${tagname}</a></li>
+            
+        	<c:forEach var="tagname" items="${hashlist}">
+       		
          	 <!-- <li><a href='Board.hash?hash=사랑'>#사랑</a></li>
           	<li><a href="Board.hash?hash=돈">#돈</a></li>
           	<li><a href="Board.hash?hash=컴퓨터">#컴퓨터</a></li>
@@ -432,20 +453,12 @@ html,body,div{font-family: "Open Sans", sans-serif}
           	<li><a href="Board.hash?hash=책">#책</a></li>
           	<li><a href="Board.hash?hash=반려동물">#반려동물</a></li>
           	<li><a href="Board.hash?hash=독도">#독도</a></li>
-          	<li><a href="Board.hash?hash=맥주">#맥주</a></li> -->
-          	</c:forEach>
-        	</ul> --%>
-            <span class="tag font-small w3-theme-d5">News</span>
-            <span class="tag font-small w3-theme-d4">W3Schools</span>
-            <span class="tag font-small w3-theme-d3">Labels</span>
-            <span class="tag font-small w3-theme-d2">Games</span>
-            <span class="tag font-small w3-theme-d1">Friends</span>
-            <span class="tag font-small w3-theme">Games</span>
-            <span class="tag font-small w3-theme-l1">Friends</span>
-            <span class="tag font-small w3-theme-l2">Food</span>
-            <span class="tag font-small w3-theme-l3">Design</span>
-            <span class="tag font-small w3-theme-l4">Art</span>
-            <span class="tag font-small w3-theme-l5">Photos</span>
+          	<li><a href="Board.hash?hash=맥주">#맥주</a></li> -->   
+            <span class="tag font-small w3-theme-d1"><a href="Board.hash?hash=${tagname}">#${tagname}</a></span>
+   
+         
+            </c:forEach>
+             
           </p>
         </div>
       </div>

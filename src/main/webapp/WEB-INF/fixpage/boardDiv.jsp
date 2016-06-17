@@ -371,8 +371,8 @@ $(function(){
 <input type="hidden" name="connum" value="${con.connum}">
 <div id="board_div" class="container box-shadow border-round white">
 <table width="100%">
-<tr>
-<td width="10%"><img src="image/logo/img_avatar2.png" alt="Avatar" class="left-align circle" style="width:60px"></td>
+<tr>  
+<td width="10%"><img src="image/logo/사람.PNG" alt="Avatar" class="left-align circle" style="width:50px"></td>
 <td width="65%"><b>${con.connickname}</b></td>
 <td width="35%"><b class="right-align opacity"><font color="#b2b2b2">${con.conmodifieddate}</font></b></td>
 </tr>
