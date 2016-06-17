@@ -53,6 +53,7 @@ public class MessageController {
 	/*	for(int i=0; i<test.size(); i++){
 			email.equals(test);
 		}*/
+		mav.addObject("emailList",test);
 		return mav;
 	}
 	
