@@ -7,7 +7,7 @@ public class MemberCommand {
 	private String nickname;
 	private String passwd;
 	private String hash;
-	private int birthday;
+	private String birthday;
 	private Timestamp createddate;
 	private Timestamp modifieddate;
 	private String ip;
@@ -76,10 +76,11 @@ public class MemberCommand {
 	public void setCreateddate(Timestamp createddate) {
 		this.createddate = createddate;
 	}
-	public int getBirthday() {
+	
+	public String getBirthday() {
 		return birthday;
 	}
-	public void setBirthday(int birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 	public String getElementaryschool() {
