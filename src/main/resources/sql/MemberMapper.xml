@@ -56,11 +56,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="int">
 		select count(*) from usertable where email=#{email}
 	</select>
+<<<<<<< HEAD
+=======
+	
+>>>>>>> f7042b25414da657a0d6abee55f4e7b85900c245
 
 	<select id="emailList" resultType="spring.model.MemberCommand">
 		select email from usertable
 	</select>
 
+<<<<<<< HEAD
 	<update id="tempPasswd" parameterType="spring.controller.member.TempPasswd">
 		update usertable set passwd=#{passwd} where email=#{email}
 	</update>
@@ -69,5 +74,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select email from usertable
 	</select>
 
+=======
+	<update id="tempPasswd" parameterType="spring.controller.member.TempPasswd" >
+		update usertable set passwd=#{passwd} where email=#{email}
+	</update>	
+
+	
+>>>>>>> f7042b25414da657a0d6abee55f4e7b85900c245
 
 </mapper>

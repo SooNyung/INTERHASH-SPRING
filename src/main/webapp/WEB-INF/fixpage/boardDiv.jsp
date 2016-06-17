@@ -93,13 +93,15 @@ function tagCheck() {
 <style type="text/css">
 	.background-color{color:#000 !important; background-color:#f5f7f8 !important}
 	#board_div{
-		width:760px;
-		height:320px;
+		width:800px;
+		height:230px;
 /* 		 background-color: black;  */
 		
-		padding:5px;
+		padding:10px;
 		margin:10px;
 	}
+	
+	
 	#board_img{
 		width:270px;
 		height:280px;
@@ -205,7 +207,7 @@ function tagCheck() {
 	
 	#writeform{
 		width:700px;
-		height:150px;
+		height:50px;
 		margin: 10px;
 		/* border:1px solid; */
 	}
@@ -232,7 +234,7 @@ function tagCheck() {
 }
 
 #submit {
-	height: 30px;
+	
 	background: #607d8b;
 }
 
@@ -293,7 +295,26 @@ function tagCheck() {
 html,body,h6{font-family: "Open Sans", sans-serif}
 .w3-theme {color:#fff !important; background-color:#607d8b !important}
 .white{color:#000!important;background-color:#fff!important;}
+
+.margin-right{margin-right:8px}
+.circle{border-radius:50%}
+.left-align{align:left;}
+.right-align{float:left; margin-left:400px; margin-top:0px;}
+.opacity{color:#eee}
+
+.w3-theme-d1 {color:#fff !important; background-color:#57707d !important}
+.w3-theme-d2 {color:#fff !important; background-color:#4d636f !important}
+.container{vertical-align: text-bottom; line-height:30px; }
+.w3-row-padding{margin-left:30px; width:300px; }
+.write{width:300px; height:500px;}
+.content{width:300px; height:700px;}
+hr{border-top:1px solid; background-color:#eee;}
+.w3-btn{pointer-events:none;
+box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
 </style>
+
+
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script>
 $(function(){
@@ -307,9 +328,9 @@ $(function(){
 </head>
 <body>
 <div>
-          <div class="box-shadow border-round white">
+          <div id="board_div" class="box-shadow border-round white">
             <div class="container w3-padding">
-              <h6 class="w3-opacity">I love it!! InterHash~♡</h6>
+           <!--    <h6 class="opacity">I love it!! InterHash~♡</h6> -->
             <div id="writeform" border="1">
       <form action="ContentInputPro.hash" name="writeForm" method="post" enctype="multipart/form-data"> 
 		<div id="wrap" style="width: 500px; margin: auto;">
@@ -330,7 +351,7 @@ $(function(){
 					<input type="text" name="tag" size="7" readonly>
 					<input type="button" value="Tag" onClick="tagCheck()">
 				</span> 
-				 <span id="submit" style="width: 100px; float: left;"> 
+				 <span id="submit"> 
 			<!-- 	  <input type="submit" id="button" value="submit"/>  -->
 			<input type="image" src="image/logo/post.PNG"> 
 			
@@ -348,15 +369,38 @@ $(function(){
 <form method='post' action='ContentView.hash'>
 <c:forEach var="con" items= '${content}' >
 <input type="hidden" name="connum" value="${con.connum}">
-<div id="board_div" class="box-shadow border-round white">
-	<div id="board_img">
+<div id="board_div" class="container box-shadow border-round white">
+<table width="100%">
+<tr>
+<td width="10%"><img src="image/logo/img_avatar2.png" alt="Avatar" class="left-align circle" style="width:60px"></td>
+<td width="65%"><b>${con.connickname}</b></td>
+<td width="35%"><b class="right-align opacity"><font color="#b2b2b2">${con.conmodifieddate}</font></b></td>
+</tr>
+</table>
+	<hr color="#eee">
+	<div class="content">
+	<div class="write">${con.content}</div>
+
+	<div class="w3-row-padding">
+        <a href="ContentView.hash?connum=${con.connum}">
+		<img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />'/>
+		</a>  
+    </div>
+    
+    <p>#${con.conhash}</p>
+	</div>
+    <button type="button" class="w3-btn w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
+    <button type="button" class="w3-btn w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
+
+	<%-- <div id="board_img">
 	<a href="ContentView.hash?connum=${con.connum}">
 		<img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />' />
 		</a>
 	</div>
 	<div id ="board_main">
 	<a href="ContentView.hash?connum=${con.connum}">
-		<div id="board_subject">
+	
+		 <div id="board_subject">
 			<div id="subject">
 			<label>'${con.connickname}'</label>
 			</div>
@@ -370,7 +414,7 @@ $(function(){
 			<label> ${con.conhash} </label>
 
 		</div>
-		<div id="board_like">
+ 		<div id="board_like">
 			<div id="like">
 				<div id="like_img">
 				</div>
@@ -389,9 +433,9 @@ $(function(){
 				</div>
 				<P><a href="ContentView.hash?connum=${con.connum}"></a></P>
 			</div>
-		</div>
+		</div>  
 		</a>
-	</div>
+	</div> --%>
 </div>
 </c:forEach>
 </form>

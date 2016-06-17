@@ -26,7 +26,7 @@ public class SendMailController {
 		String email = (String)request.getSession().getAttribute("email");
 		key = makeKey();
 		
-		request.getSession().setAttribute("key",key);
+		session.setAttribute("key",key);
 		
 		sendmail(email,key);
 		return "userpage/SendEmail";

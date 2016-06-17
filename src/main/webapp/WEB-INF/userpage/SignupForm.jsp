@@ -16,10 +16,8 @@ padding:10px;
 	var checkEmail=false;
 	var checkNickname=false;
 	var checkEmailNum=false;
-	var key='<c:out value="${sessionScope.key}"/>';
 		
 	function checkIt(){
-		
 		var userinput = eval("document.userinput");
 		if(!userinput.email.value){
 			alert("Email을 입력하세요.");
@@ -66,14 +64,6 @@ padding:10px;
 			alert("비밀번호를 동일하게 입력하세요");
 			return false;
 		}
-/*   		if('${sessionScope.key}' != 'success'){
-			alert("이메일 인증 실패.");
-			return false;
-		} */
-/* 		if(key != 'success'){
-			alert("이메일 실패");
-			return false;
-		} */
 		return true;
 	};
 	
@@ -180,12 +170,12 @@ color:#7A7A7A;
 <tr>
 <td>email</td>
 <td><input type="email" name="email" id="email" autofocus/></td>
-<td><input type="button" value="인증하기" onClick="confirmemail()"/> </td>
+<td><input type="button" value="인증하기" onClick="confirmemail()" readonly="false"/> </td>
 </tr>
 <tr>
 <td>email인증번호</td>
 <td><input type="text" name="emailnumber"/></td>
-<td><input type="button" value="확인" onClick="keyCheck()"/><br></td>
+<td><input type="button" value="확인" onClick="keyCheck()" readonly="false"/><br></td>
 </tr>
 <tr>
 <td>password</td>
@@ -201,7 +191,7 @@ color:#7A7A7A;
 <tr>
 <td>닉네임</td>
 <td><input type="text" name="nickname"/></td>
-<td><input type="button" value="중복검사" onClick="confirmnickname()"/></td>
+<td><input type="button" value="중복검사" onClick="confirmnickname()" readonly="false"/></td>
 </tr>
 <tr>
 <td>나이</td>

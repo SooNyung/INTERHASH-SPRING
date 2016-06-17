@@ -7,11 +7,18 @@ public class MemberCommand {
 	private String nickname;
 	private String passwd;
 	private String hash;
+	private String birthday;
 	private Timestamp createddate;
 	private Timestamp modifieddate;
 	private String ip;
 	private int distinction;
 	private int reportcount;
+	private String elementaryschool;
+	private String middelschool;
+	private String highschhol;
+	private String university;
+	private String graduateschool;
+	
 	
 	
 	public String getIp() {
@@ -68,6 +75,43 @@ public class MemberCommand {
 	}
 	public void setCreateddate(Timestamp createddate) {
 		this.createddate = createddate;
+	}
+	
+	public String getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+	public String getElementaryschool() {
+		return elementaryschool;
+	}
+	public void setElementaryschool(String elementaryschool) {
+		this.elementaryschool = elementaryschool;
+	}
+	public String getMiddelschool() {
+		return middelschool;
+	}
+	public void setMiddelschool(String middelschool) {
+		this.middelschool = middelschool;
+	}
+	public String getHighschhol() {
+		return highschhol;
+	}
+	public void setHighschhol(String highschhol) {
+		this.highschhol = highschhol;
+	}
+	public String getUniversity() {
+		return university;
+	}
+	public void setUniversity(String university) {
+		this.university = university;
+	}
+	public String getGraduateschool() {
+		return graduateschool;
+	}
+	public void setGraduateschool(String graduateschool) {
+		this.graduateschool = graduateschool;
 	}
 	
 
