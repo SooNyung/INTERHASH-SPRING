@@ -1,6 +1,7 @@
 package spring.controller.member;
 
 import java.util.Arrays;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -117,10 +118,15 @@ public class MemberController {
 	@RequestMapping("/Board.hash")
 	public String board(Model model,HttpSession session){
 		String email =(String)session.getAttribute("memId");
+		MemberCommand command = dao.getMemberInfo(email);
 		model.addAttribute("content", cdao.getContent());
-		model.addAttribute("memberinfo", dao.getMemberInfo(email));
+		model.addAttribute("memberinfo", command);
 		model.addAttribute("messagecount",mdao.getMessageCount(email));
-		
+		String hash = command.getHash();
+		hash = hash.substring(1,hash.length()-1);
+		String []  hashlist = hash.split(",");
+		List<String> list = Arrays.asList(hashlist);
+		model.addAttribute("hashlist",list);
 		return "fixpage/boardDiv";
 	}
 }
