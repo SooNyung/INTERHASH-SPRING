@@ -7,7 +7,10 @@
 		insert into Message
 		values(MESSAGE_SEQ.NEXTVAL,#{messageContent},#{sendEmail},#{sendNickname},#{receEmail},#{receNickname},sysdate)
 	</insert>
-
+	<select id="getMessageList" parameterType="String" resultType="spring.model.MessageCommand">
+		select * from message where receEmail = #{eamil}
+	</select>
+	
 
 </mapper>
 

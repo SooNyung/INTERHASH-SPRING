@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import mybatis.ContentDAO;
 import mybatis.MemberDAO;
+import mybatis.MessageDAO;
 import spring.model.MemberCommand;
 
 @Controller
@@ -37,7 +38,13 @@ public class MemberController {
 	public MemberCommand memberCommand() {
 		return new MemberCommand();
 	}
+	@Autowired
+	MessageDAO mdao;
 	
+	public void setMdao(MessageDAO mdao) {
+		this.mdao = mdao;
+	}
+
 	@RequestMapping("/SignupForm.hash")
 	public String SignupForm(){
 		return "userpage/SignupForm";
@@ -108,8 +115,11 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/Board.hash")
-	public String board(Model model){
+	public String board(Model model,HttpSession session){
+		String email =(String)session.getAttribute("memId");
 		model.addAttribute("content", cdao.getContent());
+		model.addAttribute("memberinfo", dao.getMemberInfo(email));
+		model.addAttribute("messagelist",mdao.getMessageList(email));
 		
 		return "fixpage/boardDiv";
 	}
