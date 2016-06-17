@@ -391,9 +391,13 @@ html,body,div{font-family: "Open Sans", sans-serif}
          <h4 class="center">My Profile</h4>
          <p class="center"><img src="image/logo/사람.PNG"  style="height:106px;width:106px" alt="Avatar"></p>
         <hr color="#eee">
-         <p><i class="fa fa-pencil fa-fw margin-right text-theme"></i> Designer, UI</p>
+        <c:forEach var="profile" items="${memberinfo}">
+			<img id = "img" src='${photo.serverpath }' width="320px" height="240"/>
+	
+         <p><i class="fa fa-pencil fa-fw margin-right text-theme"></i> ${profile.nickname}</p>
          <p><i class="fa fa-home fa-fw margin-right text-theme"></i> London, UK</p>
-         <p><i class="fa fa-birthday-cake fa-fw margin-right text-theme"></i> April 1, 1988</p>
+         <p><i class="fa fa-birthday-cake fa-fw margin-right text-theme"></i> ${profile.birthday}</p>
+         </c:forEach>
         </div>
       </div>
       <br>
