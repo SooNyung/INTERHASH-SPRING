@@ -28,7 +28,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
 	  .w3-theme-d4 {color:#fff !important; background-color:#3a4b53 !important}
 	  .w3-theme-d5 {color:#fff !important; background-color:#303e45 !important}
       .padding{margin-top:50px; margin-left:30px;}
-      .account-right{margin-right:0px; float:right;}
+      .account-right{margin-left:700px; float:left;}
       .top{top:0; padding:0px; width:100%; height:60px; margin-bottom:0px; overflow: hidden;}
       .w3-right{text-align:right}
       .navbar{top:0;list-style-type:none;margin:0;padding:0;float:left;
@@ -198,7 +198,17 @@ html,body,div{font-family: "Open Sans", sans-serif}
 		 display: block;
 		 clear: both;
 		 }
-
+	.top li ul{background: rgb(255,240,245);
+				display:none;  /* 평상시에는 서브메뉴가 안보이게 하기 */
+				height:auto;
+				padding:0px;
+				margin:60px;
+				margin-left:700px;
+				border:0px;
+				position:absolute;
+				width:200px;
+				z-index:500;}
+	.top li:hover ul{display:block;   /* 마우스 커서 올리면 서브메뉴 보이게 하기 */}
 		
 		
     </style>
@@ -322,11 +332,11 @@ html,body,div{font-family: "Open Sans", sans-serif}
  
 
   <li class="small">
-     <a href="#" class="padding-large hover-white account-right" title="MyAccount"><img src = "image/logo/i.PNG" width="30" height="30"></a>
- 		<ul class="sm">
-			<li><a href="#">회원정보수정</a></li>
+     <a href="#" class="padding-large account-right" title="MyAccount"><img src = "image/logo/i.PNG" width="30" height="30">${nickName}님</a>
+ 		 <ul>
+			<li><a href="UserInfoModifyForm.hash">회원정보수정</a></li>
 			<li><a href="#">프로필수정</a></li>
-			<li><a href="#">로그아웃</a></li>
+			<li><a href="LogOut.hash">로그아웃</a></li>
 		</ul> 
   </li>
  
@@ -338,7 +348,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
       			<input type = "button" value="회원가입"><input type="submit" value="로그인">
       			<input type="button" value="정보수정" onclick="window.location.href='UserInfoModifyForm.hash';"> -->
       			
-      			<table>
+<%--       			<table>
 					<tr>
 						<c:if test="${memId!=null}">
 							<td align="left">${nickName}님</td>
@@ -353,7 +363,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
       				</tr>
       			</c:if>
 					
-				</table>
+				</table> --%>
 				
       		</form>
       	</div> 
@@ -377,7 +387,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
         <div class="container">
          <h4 class="center">My Profile</h4>
          <p class="center"><img src="image/logo/사람.PNG"  style="height:106px;width:106px" alt="Avatar"></p>
-        <hr>
+        <hr color="#eee">
          <p><i class="fa fa-pencil fa-fw margin-right text-theme"></i> Designer, UI</p>
          <p><i class="fa fa-home fa-fw margin-right text-theme"></i> London, UK</p>
          <p><i class="fa fa-birthday-cake fa-fw margin-right text-theme"></i> April 1, 1988</p>
