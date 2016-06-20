@@ -41,14 +41,14 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
 			
 			}
     
-	  .margin-right{margin:6px 8px 0px 10px;}
+	  .margin-right{margin:10px 0px 0px 10px;}
       .color1{background-color:#FFCCCC}
       .color2{background-color:#FFCCCC}
       .left-align{text-align:left!important}
       .font-size{font-size:18px!important}
       .small{display: inline!important; float:left;}
       .circle{border-radius:50%}
-      .padding-large{padding:10px 0px 0px 0px}
+      .padding-large{padding:10px 5px 0px 5px;}
       .closebtn.hover-text.dropdown-hover.hover-white{-webkit-transition:background-color .3s,#white .15s,box-shadow .3s,opacity 0.3s;transition:background-color .3s,#white .15s,box-shadow .3s,opacity 0.3s}
       .btn-block.accordian-content.dropdown-hover{min-width:100%;
 		display:block;z-index:1;
@@ -62,7 +62,7 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
       .box-shadow{box-shadow:0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)!important;margin-top:0px;}
       .border-round{border-radius:5px!important}
       .container{content:"";display:table;clear:both;padding:0.01em 16px; margin-left:0px;width:270px;}
-      .container1{content:"";display:table;clear:both;padding:0.01em 16px; margin-left:0px; width:310px;}
+      .container1{content:"";display:table;clear:both;padding:0.01em 16px; margin-left:0px; width:320px;}
       .center{text-align:center}
       .text-theme{color:#607d8b !important}
       .accordian{width:100%;cursor:pointer}
@@ -206,17 +206,19 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
 		 display: block;
 		 clear: both;
 		 }
-		 
-	.navbar li .account{background: rgb(255,240,245);
-				display:none;  /* 평상시에는 서브메뉴가 안보이게 하기 */
+ 		 
+	 .navbar li .account{background: rgb(255,240,245);
+				display:none; 
 				height:200;
 				padding:0px;
-				margin:60px;
+				margin:0px;
 				margin-left:650px;
 				border:0px;
 				position:absolute;
 				width:200px;
-				z-index:500;}
+				z-index:500;
+				}  
+	
 				
 	.navbar li .message{background: rgb(255,240,245);
 				display:none;  /* 평상시에는 서브메뉴가 안보이게 하기 */
@@ -231,17 +233,17 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
 				z-index:500;}
 				
 	.navbar li:hover ul{display:block;   /* 마우스 커서 올리면 서브메뉴 보이게 하기 */}
+	.navbar li a:hover{display:block;   /* 마우스 커서 올리면 서브메뉴 보이게 하기 */}
 	
-	
-	.badge{background-color:#000;color:#fff;display:inline-block;padding-left:6px;padding-right:5px;text-align:center; margin-left:5px; margin-top:0px; padding-top:0px;
+	.badge{background-color:#000;color:#fff;display:inline-block;padding-left:5px;padding-right:5px;text-align:center; margin:0px 0px 0px 5px; 
 			border-radius:70%;}
-	.right{float:right; margin-right:150px;}
+	.right{float:right; margin-right:250px;}
 	.green{background-color:#4CAF50!important}
 		
 	#a:link {text-decoration: none; color: #f9ffff;}
 	#a:visited {text-decoration: none; color: #f9ffff;}
 	#a:active {text-decoration: none; color: #f9ffff;}
-	#a:hover {text-decoration: underline; color: #dddddd;}
+	#a:hover {text-decoration: underline; color: #b2b2b2;}
 	
 
     </style>
@@ -379,31 +381,32 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
 
 <!-- navbar -->
 
-<div class="left-align">
+<div>
  <ul class="navbar color1">
   <li class="small"><a href="Board.hash" class="padding-large margin-right"><b>I N T E R H A S H #</b></a></li>
-  <li class="small"><a href="messageView.hash" class="padding-large hover-white margin-right" title="Messages"><i class ="fa fa-envelope" width="50px" height="50px"></i><span class="badge right small green">${messagecount}</span> </a>
+  <li class="small"><a href="messageView.hash" class="padding-large margin-right" title="Messages"><i class ="fa fa-envelope"></i><span class="badge right small green">${messagecount}</span> </a>
    <ul class="message">
    <table><tr><td>쪽지</td><td class="w3-right"><a href="MessageForm.hash">쪽지보내기</a></td></tr>
-   			<tr><td colspan="2"><c:forEach var="message" items="${mesagelist}" begin="0" end="2">
+   			<tr class="left-align"><td colspan="2"><c:forEach var="message" items="${mesagelist}" begin="0" end="2">
 			<li><a href="messageView.hash?messageNum=${message.messageNum}"><img src="image/logo/img_avatar5.png" class="left-align circle " width="15%" height="15%">${message.sendNickname} ${message.messageContent}</a></li>
 			</c:forEach>
 			</td></tr>
-			<tr><Td colspan="2"><a href="#">모든 쪽지 보기</a></Td></tr>
+			
+			<tr><Td colspan="2"><a href="#"><hr>모든 쪽지 보기</a></Td></tr>
 	</table>
 	</ul>
   </li> 
-  <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Alarm"><i class="fa fa-bell"></i></a></li>
+  <li class="small"><a href="#" class="margin-right padding-large left-align" title="Alarm"><i class="fa fa-bell"></i></a></li>
 
-<li class="small right">
-     <a href="#"  class="padding-large account" title="MyAccount"><img src="image/logo/사람.PNG" class="circle" width="30%" height="30%">${nickName}님</a>
- 		<ul>
+	<li class="small right"><a href="#"  class="padding-large" title="MyAccount"><img src="image/logo/사람.PNG" class="circle" width="30%" height="30%">${nickName}님</a>
+ 	
+ 		<ul class="account">
 			<li><a href="UserInfoModifyForm.hash">회원정보수정</a></li>
 			<li><a href="#">프로필수정</a></li>
 			<li><a href="LogOut.hash">로그아웃</a></li>
 		</ul> 
- 
-  </li>
+		
+	</li>
 
       	<div id="jb_search">
       		<form method="post" action="Board.hash">
