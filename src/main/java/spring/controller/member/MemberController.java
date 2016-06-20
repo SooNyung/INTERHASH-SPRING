@@ -52,14 +52,27 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/SignupPro.hash")
-	public ModelAndView SignupPro(MemberCommand memberCommand, @RequestParam("hash")String[] hash, HttpServletRequest request, HttpSession session) {
-		ModelAndView mv = new ModelAndView("redirect:Main.hash");
+	public ModelAndView SignupPro(MemberCommand memberCommand, HttpServletRequest request, HttpSession session) {
+		ModelAndView mv = new ModelAndView("userpage/SignupPro");
+		memberCommand.setIp(request.getRemoteAddr());
+		/*int a = dao.insertMember(memberCommand);*/
+/*		System.out.println("회원가입 성공? :: " + a);*/
+		mv.addObject("member", memberCommand);
+		return mv;
+		
+	}
+	
+	@RequestMapping("/SignupPro2.hash")
+	public ModelAndView SignupPro2(MemberCommand memberCommand, @RequestParam("hash")String[] hash, HttpServletRequest request){
+		ModelAndView mv = new ModelAndView("userpage/SignupPro2");
+		System.out.println("email : " +  memberCommand.getEmail());
+		System.out.println("nickname : " +  memberCommand.getNickname());
+		System.out.println("passwd : " +  memberCommand.getPasswd());
+		memberCommand.setIp(request.getRemoteAddr());
 		memberCommand.setHash(Arrays.toString(hash));
 		System.out.println("hash태그 :: " + Arrays.toString(hash));
-		memberCommand.setIp(request.getRemoteAddr());
 		int a = dao.insertMember(memberCommand);
 		System.out.println("회원가입 성공? :: " + a);
-		mv.addObject("member", memberCommand);
 		return mv;
 		
 	}

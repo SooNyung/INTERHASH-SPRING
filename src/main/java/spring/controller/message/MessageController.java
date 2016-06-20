@@ -1,10 +1,12 @@
 package spring.controller.message;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -79,20 +81,74 @@ public class MessageController {
 		
 		String receiverNick = memberdto.getNickname();
 		messagedto.setReceNickname(receiverNick);
-
-		
-		
+	
 		//글 내용
 		String msgContent = request.getParameter("messagecontent");
 		messagedto.setMessageContent(msgContent);
 		messagedto.setSendEmail(sender);
 		messagedto.setReceEmail(receiver);
+<<<<<<< HEAD
+		messagedto.setSendNickname(senderNick);
+		
+=======
 		messagedto.setSendNickname(senderNick);		
 
+>>>>>>> 30ee3af3e381ea8fcaa87cace7b156850d8ab2bc
 		//메시지 보내는 쿼리 insert 
 		int result = messagedao.sendMessage(messagedto);
+		return mav;	
+	}
+	
+	@RequestMapping("/MessageList.hash")
+	public ModelAndView MessageList(
+			@ModelAttribute("messagedto") MessageCommand messagedto,
+			HttpServletRequest request){
+				ModelAndView mav = new ModelAndView("userpage/MessageList");
+				String email = (String) request.getSession().getAttribute("memId");
+				SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:mm");
+				
+				//메시지 리스트를 얻어오기 위한 쿼리문 
+				List messageList = messagedao.getMessageList(email);
+
+				
+				mav.addObject("sdf",sdf);
+				mav.addObject("messageList",messageList);
+				return mav;
+	}
+
+	@RequestMapping("/MessageView.hash")
+	public ModelAndView MessageView(
+		@ModelAttribute("messagedto") MessageCommand messagedto,
+		HttpServletRequest request){
+		ModelAndView mav = new ModelAndView("userpage/MessageView");
+		
+		int messagenum = Integer.parseInt(request.getParameter("messageNum"));
+		SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:mm");
+		
+		messagedto = messagedao.selectMessageOne(messagenum);
+		
+		mav.addObject("sdf",sdf);
+		mav.addObject("messageone",messagedto);
 		
 		return mav;
-		
 	}
+	
+	@RequestMapping("/deleteMessage.hash")
+	public ModelAndView deleteMessage(
+			@ModelAttribute("messagedto") MessageCommand messagedto,
+			HttpServletRequest request){
+		
+		ModelAndView mav = new ModelAndView("userpage/MessageList");
+		int messagenum = Integer.parseInt(request.getParameter("messageNum"));
+		String email = (String) request.getSession().getAttribute("memId");
+		//메시지 삭제 쿼리
+		int result = messagedao.deleteMessage(messagenum);
+
+		List messageList = messagedao.getMessageList(email);
+		
+		mav.addObject("messageList",messageList);
+		mav.addObject("result",result);		
+		return mav;
+	}
+
 }
