@@ -66,7 +66,7 @@ public class ContentViewAction {
 			@ModelAttribute("commentdto") CommentCommand comment, HttpServletRequest request) throws Exception {
 		ModelAndView mav = new ModelAndView("content/ContentView");
 		/*int connum = Integer.parseInt(request.getParameter("connum"));*/
-		int connum = 84;
+		int connum = 92;
 		
 		/*request.getSession().setAttribute("memId", "soonyoung");
 		request.getSession().setAttribute("nickName", "soonyoung");*/

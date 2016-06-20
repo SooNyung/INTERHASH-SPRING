@@ -7,14 +7,23 @@
 		insert into Message
 		values(MESSAGE_SEQ.NEXTVAL,#{messageContent},#{sendEmail},#{sendNickname},#{receEmail},#{receNickname},sysdate)
 	</insert>
-	
-	<select id="getMessageList" parameterType="String" resultType="spring.model.MessageCommand">
-		select * from message where receEmail = #{email}
-	</select>
-	
-	<select id="getMessageCount" parameterType="String" resultType="int">
-		select count(*) from message where receEmail=#{email}
+
+	<select id="getMessageList" parameterType="String"
+		resultType="spring.model.MessageCommand">
+		select * from message where receEmail = #{receEmail}
 	</select>
 
+	<select id="getMessageCount" parameterType="String" resultType="int">
+		select count(*) from message where receEmail=#{receEmail}
+	</select>
+
+	<delete id="deleteMessage" parameterType="int">
+		delete from message
+		where messageNum=#{messageNum}
+	</delete>
+	
+	<select id="MessageOne" parameterType="int" resultType="spring.model.MessageCommand">
+		select * from message where messageNum=#{messageNum}
+	</select>
 </mapper>
 
