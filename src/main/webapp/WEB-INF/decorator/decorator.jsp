@@ -126,7 +126,6 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
       }
       #jb-footer {
       	width:100%;
-<<<<<<< HEAD
 		height:60px;
 		clear: both;
 /* 	position:absolute;
@@ -347,9 +346,9 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
 	     /* alert($('#jb-content').outerHeight(true)); */ 
 	   // alert(document.getElementById("main").currentStyle.width);
 	});
-	$(window).load(function(){
+	/* $(window).load(function(){
 	    alert($('#jb-content').attr('height'));
-	});
+	}); */
 	
 
     </script> 
