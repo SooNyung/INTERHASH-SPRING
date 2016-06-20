@@ -331,25 +331,7 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
 
 
     </script> 
-     <script type="text/javascript">
-         $(function(){
-	     $(".sm").hide();
-	     /*
-	     	hover 이벤트
-	     	mouseover 와 mouseout 시의 이벤트 정의
-	     	첫번째는 mouseover, 두번째는 mouseout
-	     	또한 slideDown과 slideUp은 toggle로 대체 가능
-	     	$(".small").slideToggle("fast");
-	     	콜백함수의 조건절 없이 하나의 콜백함수로 표현가능
-	     */
-		 $(".small").hover(
-			function(){ 
-				$(".small:not(:animated)",this).slideDown("fast");},
-			function(){
-			   	$(".small",this).slideUp("fast");
-			});
-      });	
-   </script>
+
 
   </head>
   <body style="background-color:#f5f7f8">
@@ -362,7 +344,7 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
   <li class="small"><a href="Board.hash" class="padding-large margin-right"><b>I N T E R H A S H #</b></a></li>
   <li class="small"><a href="messageView.hash" class="padding-large hover-white margin-right" title="Messages"><i class ="fa fa-envelope" width="50px" height="50px"></i><span class="badge right small green">${messagecount}</span> </a>
    <ul class="message">
-   			<li>쪽지</li><a href="#">쪽지보내기</a>
+   			<li>쪽지</li><a href="MessageForm.hash">쪽지보내기</a>
    			<c:forEach var="message" items="${mesagelist}">
 			<li><a href="messageView.hash?messageNum=${message.messageNum}"><img src="image/logo/img_avatar5.png" class="left-align circle" width="30%" height="30%">${message.sendNickname} ${message.messageContent}</a></li>
 			</c:forEach>
