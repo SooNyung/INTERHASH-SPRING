@@ -341,6 +341,7 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
 	     	또한 slideDown과 slideUp은 toggle로 대체 가능
 	     	$(".small").slideToggle("fast");
 	     	콜백함수의 조건절 없이 하나의 콜백함수로 표현가능
+	     	
 	     */
 		 $(".small").hover(
 			function(){ 
