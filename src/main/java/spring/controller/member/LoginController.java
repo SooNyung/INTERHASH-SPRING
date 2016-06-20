@@ -193,7 +193,7 @@ public class LoginController {
 		//props.put("mail.smtp.password","emailtest123");
 		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.port", "456");
-		props.put("mail.debug", "true");
+		//props.put("mail.debug", "true");
 		props.put("mail.smtp.auth", "true");
 		
 		props.put("mail.smtp.starttls.enable", "true");
@@ -218,7 +218,7 @@ public class LoginController {
 		try {
 			Message message = new MimeMessage(session);
 			
-			message.setFrom(new InternetAddress("emailtestt90@gmail.com")); //보내는 사람 Email
+			message.setFrom(new InternetAddress(username)); //보내는 사람 Email
 			
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));// 받는 사람 Email
 			System.out.println("sendEmail() 안에 email ::: " + email);

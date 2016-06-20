@@ -101,10 +101,7 @@ window.onload=function checkHash(){
 <td><input type="text" name="nickname" value="${c.nickname}"/></td>
 <td><input type="button" value="중복검사" onClick="confirmnickname()"/></td>
 </tr>
-<tr>
-<td>나이</td>
-<td><input type="text" name="age" value="${c.age}"/></td>
-</tr>
+
 <tr>
 <td>favorite</td>
 <td>관심있는 해시태그를 골라주세요!</td>

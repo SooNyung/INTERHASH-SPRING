@@ -53,7 +53,7 @@ public class MemberController {
 	
 	@RequestMapping("/SignupPro.hash")
 	public ModelAndView SignupPro(MemberCommand memberCommand, @RequestParam("hash")String[] hash, HttpServletRequest request, HttpSession session) {
-		ModelAndView mv = new ModelAndView("userpage/SignupPro");
+		ModelAndView mv = new ModelAndView("redirect:Main.hash");
 		memberCommand.setHash(Arrays.toString(hash));
 		System.out.println("hashÅÂ±× :: " + Arrays.toString(hash));
 		memberCommand.setIp(request.getRemoteAddr());
