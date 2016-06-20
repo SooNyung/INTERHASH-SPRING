@@ -28,6 +28,15 @@ public class MessageDAO {
 	public int getMessageCount(String email){
 		return session.selectOne("Message.getMessageCount",email);
 	}
+	
+	public int deleteMessage(int messagenum){
+		return session.delete("Message.deleteMessage",messagenum);
+	}
+	
+	public MessageCommand selectMessageOne(int messagenum){
+		return session.selectOne("Message.MessageOne", messagenum);
+	}
+	
 /*	public int insertMember(MemberCommand command){
 		return session.insert("member.insert", command);
 	}*/
