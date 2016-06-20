@@ -55,52 +55,29 @@ function email(){
 	
 }
 </script>
-<!-- <script>
-$(function(){
-/* 	var emailList = "${emailList}";
-	var email = document.getElementsByName("receEmail");
-	
-	alert(emailList);
-	alert(email); */
-	
-	var emailList = "${emailList}";
-	var email = document.getElementById("receEmail").value;
 
-	
-	$('input[name=receEmail]').keyup(function(){
-		$('input[name=hiddenCheck]').attr("type", "font");
-			
-		alert($('input[name=receEmail]').val());
-		/* if(emailList.indexOf(email)==0) {
-			$('input[name=hiddenCheck]').val("해당 이메일은 사용가능한 이메일입니다.");
-		}else
-			$('input[name=hiddenCheck]').val("해당 이메일은 없는 이메일입니다."); */
-			
-							
-		})		
-				
-	
-});
-</script> -->
 </head>
 <body>	
 
-<h3>메시지 보내기 Form</h3>
+<div align="center">
 <form method="post" action="MessagePro.hash" onsubmit="return checkIt()">
-<div>받는사람 : <input type="email" id="receEmail" name="receEmail">
-<input type="button" onclick="email()" value="이메일검사"></div>
+<hr>
+<div>받는사람 : 
+<input type="email" id="receEmail" name="receEmail">
+<input type="button" onclick="email()" value="이메일검사">
+</div>
+<hr>
 
-<div>내용</div>
-<div><textarea name="messagecontent" rows="3" cols="50"></textarea></div><br>
+
+<div><textarea name="messagecontent" rows="10" cols="50"></textarea></div><br>
 
 <div>
 <input type="submit" value="보내기">
 <input type="button" value="닫기" onclick="javascript:window.close()"/>
-
 </div>
 
 </form>
-
+</div>
 
 </body>
 </html>

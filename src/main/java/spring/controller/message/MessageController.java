@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
+
+import jdk.nashorn.internal.ir.RuntimeNode.Request;
 import mybatis.MemberDAO;
 import mybatis.MessageDAO;
 import spring.model.MemberCommand;
@@ -49,17 +52,13 @@ public class MessageController {
 	public ModelAndView messageForm(@ModelAttribute("memberdto") MemberCommand memberdto){
 		ModelAndView mav = new ModelAndView("userpage/MessageForm");
 		
-		String email="123";
 		List<String> test = memberdao.selectEmail();
-		System.out.println("test"+test);
-	/*	for(int i=0; i<test.size(); i++){
-			email.equals(test);
-		}*/
+
 		mav.addObject("emailList",test);
 		return mav;
 	}
 	
-	@RequestMapping("/MessagePro.hash")
+	@RequestMapping("/MessagePro.hash")	
 	public ModelAndView messagePro(
 			@ModelAttribute("memberdto") MemberCommand memberdto,
 			@ModelAttribute("messagedto") MessageCommand messagedto,
@@ -85,9 +84,15 @@ public class MessageController {
 		//글 내용
 		String msgContent = request.getParameter("messagecontent");
 		messagedto.setMessageContent(msgContent);
+		
 		messagedto.setSendEmail(sender);
 		messagedto.setReceEmail(receiver);
 		messagedto.setSendNickname(senderNick);
+<<<<<<< HEAD
+		messagedto.setSendNickname(senderNick);		
+		
+=======
+>>>>>>> bd4d681d62528b7de887af4a02ea5fa0ea1ec95f
 		//메시지 보내는 쿼리 insert 
 		int result = messagedao.sendMessage(messagedto);
 		return mav;	
@@ -98,6 +103,7 @@ public class MessageController {
 			@ModelAttribute("messagedto") MessageCommand messagedto,
 			HttpServletRequest request){
 				ModelAndView mav = new ModelAndView("userpage/MessageList");
+				
 				String email = (String) request.getSession().getAttribute("memId");
 				SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:mm");
 				
@@ -143,6 +149,55 @@ public class MessageController {
 		mav.addObject("messageList",messageList);
 		mav.addObject("result",result);		
 		return mav;
+	}
+	
+	@RequestMapping("/ReMessageForm.hash")
+	public ModelAndView ReMessage(
+			@ModelAttribute("messagedto") MessageCommand messagedto,
+			HttpServletRequest request
+			){
+		ModelAndView mav = new ModelAndView("userpage/ReMessageForm");
+		
+		String sender = request.getParameter("sendEmail");
+		String sendernick = request.getParameter("sendNickname");
+
+		mav.addObject("sender",sender);
+		mav.addObject("sendNick",sendernick);
+	
+		return mav;
+	}
+	
+	@RequestMapping("/ReMessagePro.hash")
+	public ModelAndView ReMessagePro(
+			@ModelAttribute("memberdto") MemberCommand memberdto,
+			@ModelAttribute("messagedto") MessageCommand messagedto,
+			HttpServletRequest request
+			){
+		ModelAndView mav = new ModelAndView("userpage/MessageList");
+		
+		//수신자 [답장]
+		String receiver = request.getParameter("sender");
+		String recenick = request.getParameter("sendNick");
+
+		//송신자
+		String sender = (String) request.getSession().getAttribute("memId");
+		
+		//송신자 닉네임
+		memberdto = memberdao.modify(sender);
+		String senderNick = memberdto.getNickname();
+		String msgContent = request.getParameter("messagecontent");
+		
+		messagedto.setSendEmail(sender);
+		messagedto.setSendNickname(senderNick);
+		messagedto.setReceEmail(receiver);
+		messagedto.setReceNickname(recenick);
+		messagedto.setMessageContent(msgContent);
+		
+		//답장 쿼리문
+		int result = messagedao.sendMessage(messagedto);
+		
+		return mav;
+		
 	}
 
 }
