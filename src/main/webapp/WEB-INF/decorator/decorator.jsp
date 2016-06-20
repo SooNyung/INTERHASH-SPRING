@@ -81,7 +81,7 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
       .closebtn{text-decoration:none;float:right;font-size:24px;font-weight:bold;color:inherit;}
 
 
-	  #main{width:100%}
+	  #main{width:100%; height: 1000px;}
 
 
       #jb-container {
@@ -126,11 +126,19 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
       }
       #jb-footer {
       	width:100%;
+<<<<<<< HEAD
 		height:60px;
 		clear: both;
 /* 	position:absolute;
+=======
+	height:60px;
+	clear: both;
+/*	
+ 	position:absolute;
+>>>>>>> 5bbf2dc6970b9761b198a4be87a2b4e933d01251
 	bottom:0;
-	left:0; */
+	left:0;
+	*/
         /* border: 1px solid #bcbcbc; */
       }
       #jb-logo{
@@ -330,6 +338,18 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
 	url="MessageForm.hash?check=y";
 	window.open(url,"post","toolbar=no ,width=400 ,height=150,directories=no,status=yes,menubar=no,scrollbars=no");
 	} 
+	
+
+	$(document).ready(function(){
+		if ($('#jb-content').outerHeight(true) < 1000){
+			$("#jb-content").attr("height" , "1000px");
+		}
+	     /* alert($('#jb-content').outerHeight(true)); */ 
+	   // alert(document.getElementById("main").currentStyle.width);
+	});
+	$(window).load(function(){
+	    alert($('#jb-content').attr('height'));
+	});
 	
 
     </script> 

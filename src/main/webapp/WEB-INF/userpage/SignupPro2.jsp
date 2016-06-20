@@ -18,6 +18,6 @@ color:#FFCCCC;
 ♡잠시후 페이지가 이동합니다♡
 </center>
 <!-- <meta http-equiv="Refresh" content="2;url=/INTERHASH/Board.hash" > --> <!-- 원래있던거 -->
-<meta http-equiv="Refresh" content="3;url=Main.hash" ><!-- 수정한거 -->
+<meta http-equiv="Refresh" content="2;url=Main.hash" ><!-- 수정한거 -->
 </body>
 </html>
