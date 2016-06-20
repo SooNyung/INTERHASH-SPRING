@@ -7,7 +7,6 @@
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <c:if test ="${sessionScope.memId==null}">
 <script>
 alert("비밀번호가 틀립니다.");
@@ -315,7 +314,6 @@ box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 </style>
 
 
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script>
 $(function(){
 	$(window).scroll(function(){

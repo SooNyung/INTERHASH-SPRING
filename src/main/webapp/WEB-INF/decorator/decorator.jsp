@@ -12,6 +12,7 @@
 html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open Sans", sans-serif;}
 </style>
 <head>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <decorator:head/>
     <meta charset="utf-8">
     <title>에벌레</title>
@@ -234,15 +235,24 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
 	
 
     </style>
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
     <script>
+    
+    /*
+    	conphoto 는 contentInputForm.jsp 파일 안에 있는 파일 업로드 부분
+    	이곳이 변경되면, 파일을 읽어 들이는 함수 동작
+    */
     $(function() {
         $("#conphoto").on('change', function(){
              readURL(this); 
         });
     });
 
-    
+    /*
+    	사진 미리 보기 부분
+    	자바스립트의 FileReader() 를 통해 임시 경로에 사진을 업로드 함.
+    	또한 attr 을 통해 사진의 크기를 강제로 조정함.
+    */
      function readURL(input) {
         if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -324,11 +334,19 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
      <script type="text/javascript">
          $(function(){
 	     $(".sm").hide();
-		 $(".small").hover(function(){
-		    $(".small:not(:animated)",this).slideDown("fast");
-			},
+	     /*
+	     	hover 이벤트
+	     	mouseover 와 mouseout 시의 이벤트 정의
+	     	첫번째는 mouseover, 두번째는 mouseout
+	     	또한 slideDown과 slideUp은 toggle로 대체 가능
+	     	$(".small").slideToggle("fast");
+	     	콜백함수의 조건절 없이 하나의 콜백함수로 표현가능
+	     */
+		 $(".small").hover(
+			function(){ 
+				$(".small:not(:animated)",this).slideDown("fast");},
 			function(){
-			   $(".small",this).slideUp("fast");
+			   	$(".small",this).slideUp("fast");
 			});
       });	
    </script>

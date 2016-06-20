@@ -11,7 +11,6 @@ input[name=hiddenCheck]{
 	color:red;
 }
 </style>
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script>
 var check = false;
 var check2 = false;

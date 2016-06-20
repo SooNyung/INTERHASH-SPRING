@@ -5,7 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Tag check</title>
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
 	function checkOnly(chk) {
 
