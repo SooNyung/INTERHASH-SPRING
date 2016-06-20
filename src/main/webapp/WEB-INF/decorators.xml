@@ -24,7 +24,9 @@
 		<pattern>/MessageForm.hash*</pattern>
 		<!-- <pattern>/Logout.hash</pattern> -->
 		<pattern>/Logout.hash*</pattern>
-		<pattern>/LoginFailPro.hash*</pattern> 
+		<pattern>/LoginFailPro.hash*</pattern>
+		<pattern>/SignupPro.hash*</pattern> 
+		<pattern>/SignupPro2.hash*</pattern>
 	</excludes>
  
 </decorators>
