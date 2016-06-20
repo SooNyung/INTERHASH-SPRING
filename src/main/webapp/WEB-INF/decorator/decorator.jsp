@@ -82,7 +82,7 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
       .closebtn{text-decoration:none;float:right;font-size:24px;font-weight:bold;color:inherit;}
 
 
-	  #main{width:100%}
+	  #main{width:100%; height: 1000px;}
 
 
       #jb-container {
@@ -128,9 +128,11 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
       	width:100%;
 	height:60px;
 	clear: both;
-/* 	position:absolute;
+/*	
+ 	position:absolute;
 	bottom:0;
-	left:0; */
+	left:0;
+	*/
         /* border: 1px solid #bcbcbc; */
       }
       #jb-logo{
@@ -329,7 +331,11 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
 	} 
 	
 	$(document).ready(function(){
-	    alert($('#jb-content').attr('height'));
+		if ($('#jb-content').outerHeight(true) < 1000){
+			$("#jb-content").attr("height" , "1000px");
+		}
+	     /* alert($('#jb-content').outerHeight(true)); */ 
+	   // alert(document.getElementById("main").currentStyle.width);
 	});
 	$(window).load(function(){
 	    alert($('#jb-content').attr('height'));
