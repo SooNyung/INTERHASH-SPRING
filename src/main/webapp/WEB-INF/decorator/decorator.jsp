@@ -328,8 +328,13 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
 	window.open(url,"post","toolbar=no ,width=400 ,height=150,directories=no,status=yes,menubar=no,scrollbars=no");
 	} 
 	
-
-
+	$(document).ready(function(){
+	    alert($('#jb-content').attr('height'));
+	});
+	$(window).load(function(){
+	    alert($('#jb-content').attr('height'));
+	});
+	
     </script> 
 
 <!--      <script type="text/javascript">
