@@ -155,6 +155,9 @@ public class MemberController {
 		String hash = command.getHash();
 		hash = hash.substring(1,hash.length()-1);
 		String []  hashlist = hash.split(",");
+		for(int i = 0;i<hashlist.length;i++){
+			hashlist[i] = hashlist[i].trim();
+		}
 		List<String> list = Arrays.asList(hashlist);
 		model.addAttribute("hashlist",list);
 		model.addAttribute("mesagelist",mdao.getMessageList(email));
