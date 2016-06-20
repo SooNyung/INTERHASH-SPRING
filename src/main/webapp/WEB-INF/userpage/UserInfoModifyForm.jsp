@@ -77,8 +77,8 @@ window.onload=function checkHash(){
 }
 </script>
 </head>
-<body>
-<center>
+<body style="margin-left: auto; margin-right: auto;">
+<%-- <center> --%>
 <form method="post" action="UserInfoModifyPro.hash" name="userinput" id="userinput">
 <table>
 <tr>
@@ -403,7 +403,7 @@ window.onload=function checkHash(){
 	<input type="button" value="취소" onclick="javascript:window.location='Board.hash'">
 	<input type="button" value="회원탈퇴" onclick="javascript:window.location='WithdrawalForm.hash'">
 </form>
-</center>
+<%-- </center> --%>
 
 
 
