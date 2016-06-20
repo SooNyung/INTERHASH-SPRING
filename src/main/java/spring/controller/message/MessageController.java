@@ -84,14 +84,10 @@ public class MessageController {
 		
 		//글 내용
 		String msgContent = request.getParameter("messagecontent");
-		System.out.println(msgContent);
 		messagedto.setMessageContent(msgContent);
 		messagedto.setSendEmail(sender);
 		messagedto.setReceEmail(receiver);
-		messagedto.setSendNickname(senderNick);
-		
-
-		
+		messagedto.setSendNickname(senderNick);		
 
 		//메시지 보내는 쿼리 insert 
 		int result = messagedao.sendMessage(messagedto);

@@ -332,6 +332,26 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
 
     </script> 
 
+<!--      <script type="text/javascript">
+         $(function(){
+	     $(".sm").hide();
+	     /*
+	     	hover 이벤트
+	     	mouseover 와 mouseout 시의 이벤트 정의
+	     	첫번째는 mouseover, 두번째는 mouseout
+	     	또한 slideDown과 slideUp은 toggle로 대체 가능
+	     	$(".small").slideToggle("fast");
+	     	콜백함수의 조건절 없이 하나의 콜백함수로 표현가능
+	     	
+	     */
+		 $(".small").hover(
+			function(){ 
+				$(".small:not(:animated)",this).slideDown("fast");},
+			function(){
+			   	$(".small",this).slideUp("fast");
+			});
+      });	
+   </script> -->
 
   </head>
   <body style="background-color:#f5f7f8">
