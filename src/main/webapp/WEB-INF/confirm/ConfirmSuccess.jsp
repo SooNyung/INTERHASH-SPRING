@@ -10,13 +10,20 @@
 color:#7A7A7A;
 }
 </style>
+<script>
+function setReadonly()
+{
+opener.userinput.emailnumber.readOnly="true";
+self.close();
+}
+</script>
 </head>
 <body>
 <c:if test="${sessionScope.key=='success'}">
 <table>
   <tr>
     <td align="center"><p>인증되었습니다.</p>
-    <input type="button" value="닫기" onclick="self.close()">
+    <input type="button" value="닫기" onclick="setReadonly();">
     </td>
   </tr>
 </table>

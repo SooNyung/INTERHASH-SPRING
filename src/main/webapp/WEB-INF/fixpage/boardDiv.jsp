@@ -94,7 +94,7 @@ function tagCheck() {
 	.background-color{color:#000 !important; background-color:#f5f7f8 !important}
 	#board_div{
 		width:800px;
-		height:320px;
+		height:230px;
 /* 		 background-color: black;  */
 		
 		padding:10px;
@@ -207,7 +207,7 @@ function tagCheck() {
 	
 	#writeform{
 		width:700px;
-		height:150px;
+		height:50px;
 		margin: 10px;
 		/* border:1px solid; */
 	}
@@ -309,6 +309,9 @@ html,body,h6{font-family: "Open Sans", sans-serif}
 .write{width:300px; height:500px;}
 .content{width:300px; height:700px;}
 hr{border-top:1px solid; background-color:#eee;}
+.w3-btn{pointer-events:none;
+box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
 </style>
 
 
@@ -327,7 +330,7 @@ $(function(){
 <div>
           <div id="board_div" class="box-shadow border-round white">
             <div class="container w3-padding">
-              <h6 class="w3-opacity">I love it!! InterHash~♡</h6>
+           <!--    <h6 class="opacity">I love it!! InterHash~♡</h6> -->
             <div id="writeform" border="1">
       <form action="ContentInputPro.hash" name="writeForm" method="post" enctype="multipart/form-data"> 
 		<div id="wrap" style="width: 500px; margin: auto;">
@@ -368,8 +371,8 @@ $(function(){
 <input type="hidden" name="connum" value="${con.connum}">
 <div id="board_div" class="container box-shadow border-round white">
 <table width="100%">
-<tr>
-<td width="10%"><img src="image/logo/img_avatar2.png" alt="Avatar" class="left-align circle" style="width:60px"></td>
+<tr>  
+<td width="10%"><img src="image/logo/사람.PNG" alt="Avatar" class="left-align circle" style="width:50px"></td>
 <td width="65%"><b>${con.connickname}</b></td>
 <td width="35%"><b class="right-align opacity"><font color="#b2b2b2">${con.conmodifieddate}</font></b></td>
 </tr>

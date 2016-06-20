@@ -1,6 +1,7 @@
 package spring.controller.member;
 
 import java.util.Arrays;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import mybatis.ContentDAO;
 import mybatis.MemberDAO;
+import mybatis.MessageDAO;
 import spring.model.MemberCommand;
 
 @Controller
@@ -37,7 +39,13 @@ public class MemberController {
 	public MemberCommand memberCommand() {
 		return new MemberCommand();
 	}
+	@Autowired
+	MessageDAO mdao;
 	
+	public void setMdao(MessageDAO mdao) {
+		this.mdao = mdao;
+	}
+
 	@RequestMapping("/SignupForm.hash")
 	public String SignupForm(){
 		return "userpage/SignupForm";
@@ -108,9 +116,19 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/Board.hash")
-	public String board(Model model){
+	public String board(Model model,HttpSession session){
+		String email =(String)session.getAttribute("memId");
+		MemberCommand command = dao.getMemberInfo(email);
 		model.addAttribute("content", cdao.getContent());
-		
+		model.addAttribute("memberinfo", command);
+		model.addAttribute("messagecount",mdao.getMessageCount(email));
+		System.out.println(mdao.getMessageCount(email));
+		String hash = command.getHash();
+		hash = hash.substring(1,hash.length()-1);
+		String []  hashlist = hash.split(",");
+		List<String> list = Arrays.asList(hashlist);
+		model.addAttribute("hashlist",list);
+		model.addAttribute("mesagelist",mdao.getMessageList(email));
 		return "fixpage/boardDiv";
 	}
 }
