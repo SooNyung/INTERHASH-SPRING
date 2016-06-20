@@ -29,10 +29,9 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
 	  .w3-theme-d4 {color:#fff !important; background-color:#3a4b53 !important}
 	  .w3-theme-d5 {color:#fff !important; background-color:#303e45 !important}
       .padding{margin-top:50px; margin-left:30px;}
-      .account-right{margin-left:700px; float:left;}
-      .top{top:0; padding:0px; width:100%; height:60px; margin-bottom:0px; overflow: hidden;}
+      .account-right{margin-left:650px; float:left;}
       .w3-right{text-align:right}
-      .navbar{top:0;list-style-type:none;margin:0;padding:0;float:left;
+      .navbar{top:0;list-style-type:none; float:left;
       		width:100%;
       		height:60px;
 			position:absolute;
@@ -49,7 +48,7 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
       .font-size{font-size:18px!important}
       .small{display: inline!important; float:left;}
       .circle{border-radius:50%}
-      .padding-large{padding:10px 5px 6px 5px}
+      .padding-large{padding:10px 0px 0px 0px}
       .closebtn.hover-text.dropdown-hover.hover-white{-webkit-transition:background-color .3s,#white .15s,box-shadow .3s,opacity 0.3s;transition:background-color .3s,#white .15s,box-shadow .3s,opacity 0.3s}
       .btn-block.accordian-content.dropdown-hover{min-width:100%;
 		display:block;z-index:1;
@@ -110,8 +109,9 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
       }
        #jb-content {
         width: 70%;
-        padding: 15px;
+        padding: auto;
         margin-bottom: 50px;
+        margin-top:50px;
         float: right;
         /* border: 1px solid #bcbcbc; */
       } 
@@ -119,15 +119,15 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
       	position:absolute;
       	height:600px;
         width: 25%;
-        margin-top:25px;
+        margin-top:60px;
         padding-left:15px;   	
         float: left;
    /*      border: 1px solid #bcbcbc; */
       }
       #jb-footer {
       	width:100%;
-	height:60px;
-	clear: both;
+		height:60px;
+		clear: both;
 /* 	position:absolute;
 	bottom:0;
 	left:0; */
@@ -145,7 +145,7 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
       	list-style-type: none;
     	margin: 0;
     	padding: 0;
-    	width: 230px;
+    	width: 100px;
     	background-color: #f1f1f1;
 	}
 
@@ -158,8 +158,8 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
 	
 /* Change the link color on hover */
 	li a:hover {
-    	background-color: #555;
-	    color: white;
+    	background-color: #b2b2b2;
+	    
 	}
 	
 
@@ -199,33 +199,36 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
 		 display: block;
 		 clear: both;
 		 }
-	.top li ul{background: rgb(255,240,245);
+		 
+	.navbar li .account{background: rgb(255,240,245);
 				display:none;  /* 평상시에는 서브메뉴가 안보이게 하기 */
-				height:auto;
+				height:200;
 				padding:0px;
 				margin:60px;
-				margin-left:700px;
+				margin-left:650px;
 				border:0px;
 				position:absolute;
 				width:200px;
 				z-index:500;}
 				
-	.top li .message{background: rgb(255,240,300);
+	.navbar li .message{background: rgb(255,240,245);
 				display:none;  /* 평상시에는 서브메뉴가 안보이게 하기 */
-				height:auto;
+				height:250px;
 				padding:0px;
 				margin:0px;
 				margin-left:0px;
 				border:0px;
 				position:absolute;
 				width:200px;
+				overflow:hidden;
 				z-index:500;}
 				
-	.top li:hover ul{display:block;   /* 마우스 커서 올리면 서브메뉴 보이게 하기 */}
+	.navbar li:hover ul{display:block;   /* 마우스 커서 올리면 서브메뉴 보이게 하기 */}
+	
 	
 	.badge{background-color:#000;color:#fff;display:inline-block;padding-left:6px;padding-right:5px;text-align:center; margin-left:5px; margin-top:0px; padding-top:0px;
 			border-radius:70%;}
-	.right{float:right}
+	.right{float:right; margin-right:150px;}
 	.green{background-color:#4CAF50!important}
 		
 	#a:link {text-decoration: none; color: #f9ffff;}
@@ -329,7 +332,6 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
 	} 
 	
 
-
     </script> 
 
 <!--      <script type="text/javascript">
@@ -357,20 +359,32 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
   <body style="background-color:#f5f7f8">
 
 <!-- navbar -->
-<div class="top">
- <ul class="navbar color1 left-align">
 
-
+<div class="left-align">
+ <ul class="navbar color1">
   <li class="small"><a href="Board.hash" class="padding-large margin-right"><b>I N T E R H A S H #</b></a></li>
   <li class="small"><a href="messageView.hash" class="padding-large hover-white margin-right" title="Messages"><i class ="fa fa-envelope" width="50px" height="50px"></i><span class="badge right small green">${messagecount}</span> </a>
    <ul class="message">
-   			<li>쪽지</li><a href="MessageForm.hash">쪽지보내기</a>
-   			<c:forEach var="message" items="${mesagelist}">
-			<li><a href="messageView.hash?messageNum=${message.messageNum}"><img src="image/logo/img_avatar5.png" class="left-align circle" width="30%" height="30%">${message.sendNickname} ${message.messageContent}</a></li>
+   <table><tr><td>쪽지</td><td class="w3-right"><a href="MessageForm.hash">쪽지보내기</a></td></tr>
+   			<tr><td colspan="2"><c:forEach var="message" items="${mesagelist}" begin="0" end="2">
+			<li><a href="messageView.hash?messageNum=${message.messageNum}"><img src="image/logo/img_avatar5.png" class="left-align circle " width="15%" height="15%">${message.sendNickname} ${message.messageContent}</a></li>
 			</c:forEach>
+			</td></tr>
+			<tr><Td colspan="2"><a href="#">모든 쪽지 보기</a></Td></tr>
+	</table>
 	</ul>
   </li> 
   <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Alarm"><i class="fa fa-bell"></i></a></li>
+
+<li class="small right">
+     <a href="#"  class="padding-large account" title="MyAccount"><img src="image/logo/사람.PNG" class="circle" width="30%" height="30%">${nickName}님</a>
+ 		<ul>
+			<li><a href="UserInfoModifyForm.hash">회원정보수정</a></li>
+			<li><a href="#">프로필수정</a></li>
+			<li><a href="LogOut.hash">로그아웃</a></li>
+		</ul> 
+ 
+  </li>
 
       	<div id="jb_search">
       		<form method="post" action="Board.hash">
@@ -378,19 +392,10 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
       			<input type="submit" value="검색"/>
       		</form>
       	</div>
- 
-  <li class="small">
-     <a href="#" class="padding-large account-right" title="MyAccount"><img src="image/logo/사람.PNG" class="left-align circle" width="30%" height="30%">${nickName}님</a>
- 		 <ul>
-			<li><a href="UserInfoModifyForm.hash">회원정보수정</a></li>
-			<li><a href="#">프로필수정</a></li>
-			<li><a href="LogOut.hash">로그아웃</a></li>
-		</ul> 
-  </li>
-  
-      	<div id="jb-logon">
-      		<form>
-      			<!-- <input type = "text"><br>
+
+</ul>
+</div>
+	      			<!-- <input type = "text"><br>
       			<input type = "password"><br>
       			<input type = "button" value="회원가입"><input type="submit" value="로그인">
       			<input type="button" value="정보수정" onclick="window.location.href='UserInfoModifyForm.hash';"> -->
@@ -411,21 +416,15 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
       			</c:if>
 					
 				</table> --%>
-				
-      		</form>
-      	</div> 
-      	</ul>
-      	<br>
-      </div>
-      
+
+    <br>
+
       
       <!-- main -->
    <div id = "main">
       
       <div id="jb-content"> 
-       <decorator:body/> 
-       
-     
+       <decorator:body/>      
       </div>
       
       <div id="jb-sidebar">
