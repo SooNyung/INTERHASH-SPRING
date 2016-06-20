@@ -81,7 +81,7 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
       .closebtn{text-decoration:none;float:right;font-size:24px;font-weight:bold;color:inherit;}
 
 
-	  #main{width:100%; height: 1000px;}
+	  #main{width:100%;}
 
 
       #jb-container {
