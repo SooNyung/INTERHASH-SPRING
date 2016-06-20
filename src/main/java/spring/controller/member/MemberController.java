@@ -65,9 +65,6 @@ public class MemberController {
 	@RequestMapping("/SignupPro2.hash")
 	public ModelAndView SignupPro2(MemberCommand memberCommand, @RequestParam("hash")String[] hash, HttpServletRequest request){
 		ModelAndView mv = new ModelAndView("userpage/SignupPro2");
-		System.out.println("email : " +  memberCommand.getEmail());
-		System.out.println("nickname : " +  memberCommand.getNickname());
-		System.out.println("passwd : " +  memberCommand.getPasswd());
 		memberCommand.setIp(request.getRemoteAddr());
 		memberCommand.setHash(Arrays.toString(hash));
 		System.out.println("hash태그 :: " + Arrays.toString(hash));
@@ -82,9 +79,6 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView("userpage/UserInfoModifyForm");
 		String email = (String)session.getAttribute("memId");
 		MemberCommand command = dao.modify(email);
-		String gethash = command.getHash();
-		System.out.println("gethash ::" + gethash);
-		command.setHash(gethash);	
 		mv.addObject("c", command);
 		return mv;
 	}
@@ -95,6 +89,28 @@ public class MemberController {
 		System.out.println("회원정보 수정완료? " + a);
 		return "userpage/UserInfoModifyPro";
 	}
+	
+	@RequestMapping("/ModifyHash.hash")
+	public ModelAndView ModifyHash(HttpSession session){
+		ModelAndView mv = new ModelAndView("userpage/ModifyHash");
+		String email = (String)session.getAttribute("memId");
+		MemberCommand command = dao.modify(email);
+		String gethash = command.getHash();
+		System.out.println("gethash ::" + gethash);
+		command.setHash(gethash);
+		mv.addObject("c", command);
+		return mv;
+	}
+	
+	@RequestMapping("/ModifyHashPro.hash")
+	public String ModifyHashPro(@ModelAttribute("command")MemberCommand command, @RequestParam("hash") String[] hash){
+		command.setHash(Arrays.toString(hash));
+		System.out.println("hash태그 :: " + Arrays.toString(hash));
+		int a = dao.modifyHash(command);
+		System.out.println("해시태그 수정완료? " + a);
+		return "userpage/ModifyHashPro";
+	}
+
 	
 	@RequestMapping("/WithdrawalForm.hash")
 	public ModelAndView deleteMember(@ModelAttribute("command")MemberCommand command){

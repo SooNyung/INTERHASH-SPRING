@@ -461,7 +461,7 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
       <!-- Interests --> 
       <div class="box-shadow border-round white small">
         <div class="container1">
-          <p><b>Interests</b></p>
+          <p><b>Interests</b> <input type="button" onclick="javascript:window.location='ModifyHash.hash'" value="hashtag 수정"></p>
           <p>
             
         	<c:forEach var="tagname" items="${hashlist}">
@@ -474,7 +474,8 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
           	<li><a href="Board.hash?hash=반려동물">#반려동물</a></li>
           	<li><a href="Board.hash?hash=독도">#독도</a></li>
           	<li><a href="Board.hash?hash=맥주">#맥주</a></li> -->   
-            <span class="tag font-small w3-theme-d1 border-round"><a id ="a" href="Board.hash?hash=${tagname}">#${tagname}</a></span>        
+            <span class="tag font-small w3-theme-d1 border-round">
+            <a id ="a" href="Board.hash?hash=${tagname}">#${tagname}</a></span>        
             </c:forEach>            
           </p>
         </div>

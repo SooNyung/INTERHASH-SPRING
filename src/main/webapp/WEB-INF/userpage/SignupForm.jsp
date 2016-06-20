@@ -393,7 +393,6 @@ $(function(){
         <div class="form__field">
           <label class="fontawesome-lock" for="login__password"><span class="hidden">Password</span></label>
           <input type="password" id="login__password" name="passwd" class="form__input" placeholder="Password" required>
-          <form:errors path="password"/>
         </div>
         
         <div class="form__field">

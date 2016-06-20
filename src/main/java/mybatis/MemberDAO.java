@@ -30,6 +30,10 @@ public class MemberDAO {
 	public int modifyPro(MemberCommand command) {
 		return session.update("member.updateMember", command);
 	}
+	
+	public int modifyHash(MemberCommand command) {
+		return session.update("member.updateHash", command);
+	}
 
 	public int deleteMember(String email) {
 		return session.delete("member.delete", email);
