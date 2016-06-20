@@ -9,7 +9,6 @@
 	<excludes>
 	 	<pattern>/ReportForm.hash*</pattern>
 		<pattern>/updateCommentForm.hash*</pattern>
-		<pattern>/ReportForm.hash*</pattern>
 		<pattern>/ConfirmNickname.hash*</pattern>
 		<pattern>/ConfirmKey.hash*</pattern>
 		<pattern>/ReportForm.hash</pattern>
