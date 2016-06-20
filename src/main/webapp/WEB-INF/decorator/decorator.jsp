@@ -129,12 +129,10 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
 		height:60px;
 		clear: both;
 /* 	position:absolute;
-=======
 	height:60px;
 	clear: both;
 /*	
  	position:absolute;
->>>>>>> 5bbf2dc6970b9761b198a4be87a2b4e933d01251
 	bottom:0;
 	left:0;
 	*/
