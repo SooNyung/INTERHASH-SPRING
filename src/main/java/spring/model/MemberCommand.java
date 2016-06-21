@@ -13,14 +13,45 @@ public class MemberCommand {
 	private String ip;
 	private int distinction;
 	private int reportcount;
-	private String elementaryschool;
-	private String middelschool;
-	private String highschhol;
+	private String middleschool;
+	private String highschool;
 	private String university;
-	private String graduateschool;
+	private String bloodgroups;
+	private String location;
+	private String phone;
 	
 	
-	
+
+	public String getMiddleschool() {
+		return middleschool;
+	}
+	public void setMiddleschool(String middleschool) {
+		this.middleschool = middleschool;
+	}
+	public String getHighschool() {
+		return highschool;
+	}
+	public void setHighschool(String highschool) {
+		this.highschool = highschool;
+	}
+	public String getBloodgroups() {
+		return bloodgroups;
+	}
+	public void setBloodgroups(String bloodgroups) {
+		this.bloodgroups = bloodgroups;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 	public String getIp() {
 		return ip;
 	}
@@ -83,36 +114,12 @@ public class MemberCommand {
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
-	public String getElementaryschool() {
-		return elementaryschool;
-	}
-	public void setElementaryschool(String elementaryschool) {
-		this.elementaryschool = elementaryschool;
-	}
-	public String getMiddelschool() {
-		return middelschool;
-	}
-	public void setMiddelschool(String middelschool) {
-		this.middelschool = middelschool;
-	}
-	public String getHighschhol() {
-		return highschhol;
-	}
-	public void setHighschhol(String highschhol) {
-		this.highschhol = highschhol;
-	}
+
 	public String getUniversity() {
 		return university;
 	}
 	public void setUniversity(String university) {
 		this.university = university;
 	}
-	public String getGraduateschool() {
-		return graduateschool;
-	}
-	public void setGraduateschool(String graduateschool) {
-		this.graduateschool = graduateschool;
-	}
-	
 
 }

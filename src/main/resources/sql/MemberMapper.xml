@@ -72,6 +72,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="tempPasswd" parameterType="spring.controller.member.TempPasswd" >
 		update usertable set passwd=#{passwd} where email=#{email}
 	</update>	
+	
+	<update id="profile" parameterType="spring.model.MemberCommand">
+	update usertable set birthday=#{birthday}, middleschool=#{middleschool}, highschool=#{highschool}, bloodgroups=#{bloodgroups},
+	university=#{university}, location=#{location}, phone=#{phone} where email=#{email}
+	</update>
 
 
 </mapper>

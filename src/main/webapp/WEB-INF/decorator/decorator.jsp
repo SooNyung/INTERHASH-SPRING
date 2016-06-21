@@ -802,7 +802,7 @@ ul.menu:after {
 
 				<ul class="account">
 					<li><a href="UserInfoModifyForm.hash">회원정보수정</a></li>
-					<li><a href="#">프로필수정</a></li>
+					<li><a href="profile.hash">프로필수정</a></li>
 					<li><a href="LogOut.hash">로그아웃</a></li>
 				</ul></li>
 

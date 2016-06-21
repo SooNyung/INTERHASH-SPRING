@@ -117,7 +117,6 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView("userpage/WithdrawalForm");
 		mv.addObject("c", command);
 		
-		
 		return mv;
 	}
 	
@@ -143,6 +142,25 @@ public class MemberController {
 		return mv;
 		
 	}
+	
+	@RequestMapping("/profile.hash")
+	public ModelAndView profile(HttpSession session){
+		ModelAndView mv = new ModelAndView("userpage/Profile");
+		String email = (String)session.getAttribute("memId");
+		MemberCommand command = dao.modify(email);
+		mv.addObject("c", command);
+		return mv;
+	}
+	
+	@RequestMapping("/profilePro.hash")
+	public String ProfilePro(@ModelAttribute("command")MemberCommand command){
+		int a = dao.profile(command);
+		System.out.println("프로필 수정완료? " + a);
+		return "userpage/ProfilePro";
+	}
+	
+	
+	
 	
 	@RequestMapping("/Board.hash")
 	public String board(Model model,HttpSession session){
