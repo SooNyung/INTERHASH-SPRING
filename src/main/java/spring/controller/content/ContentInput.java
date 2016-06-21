@@ -91,6 +91,7 @@ public class ContentInput {
 		String name = info.getOriginalFilename();
 		real_name= System.currentTimeMillis()+name;
 		
+		//available() 메서드는 바이트 단위로 계산함.
 		int size = info.getInputStream().available();
 		System.out.println("email : "+request.getSession().getAttribute("memId"));
 		ContentCommand content_obj = new ContentCommand();
