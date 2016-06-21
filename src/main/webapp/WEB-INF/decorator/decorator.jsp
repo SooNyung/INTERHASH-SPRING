@@ -894,59 +894,9 @@ ul.menu:after {
 
 		</ul>
 	</div>
-	<!-- <input type = "text"><br>
-=======
-  </head>
-  <body style="background-color:#f5f7f8">
 
-<!-- navbar -->
 
-<div>
- <ul class="navbar color1">
-  <li class="small"><a href="Board.hash" class="padding-large margin-right"><b>I N T E R H A S H #</b></a></li>
-  <li class="small"><a href="messageView.hash" class="padding-large margin-right" title="Messages"><i class ="fa fa-envelope"></i><span class="badge right small green">${messagecount}</span> </a>
-   <ul class="message">
-
-   <table><tr><td>쪽지</td><td class="w3-right"><a href="#" onclick="Message()">쪽지보내기</a></td></tr>
-   			<tr><td colspan="2"><c:forEach var="message" items="${mesagelist}" begin="0" end="2">
-			<li><a href="MessageView.hash?messageNum=${message.messageNum}"><img src="image/logo/img_avatar5.png" class="left-align circle " width="15%" height="15%">${message.sendNickname} ${message.messageContent}</a></li>
-			</c:forEach>
-			</td></tr>
-			<tr><Td colspan="2"><a href="#" onclick="MessageList()">모든 쪽지 보기</a></Td></tr>
-
-   <table><tr><td>쪽지</td><td class="w3-right"><a href="MessageForm.hash">쪽지보내기</a></td></tr>
-   			<tr class="left-align"><td colspan="2"><c:forEach var="message" items="${mesagelist}" begin="0" end="2">
-			<li><a href="messageView.hash?messageNum=${message.messageNum}"><img src="image/logo/img_avatar5.png" class="left-align circle " width="15%" height="15%">${message.sendNickname} ${message.messageContent}</a></li>
-			</c:forEach>
-			</td></tr>
-			
-			<tr><Td colspan="2"><a href="#"><hr>모든 쪽지 보기</a></Td></tr>
-
-	</table>
-	</ul>
-  </li> 
-  <li class="small"><a href="#" class="margin-right padding-large left-align" title="Alarm"><i class="fa fa-bell"></i></a></li>
-
-	<li class="small right"><a href="#"  class="padding-large" title="MyAccount"><img src="image/logo/사람.PNG" class="circle" width="30%" height="30%">${nickName}님</a>	
- 		<ul class="account">
-			<li><a href="UserInfoModifyForm.hash">회원정보수정</a></li>
-			<li><a href="#">프로필수정</a></li>
-			<li><a href="LogOut.hash">로그아웃</a></li>
-		</ul> 
-		
-	</li>
-
-      	<div id="jb_search">
-      		<form method="post" action="Board.hash">
-      			<input type="text" name="hash"/>
-      			<input type="submit" value="검색"/>
-      		</form>
-      	</div>
-
-</ul>
-</div>
 	      			<!-- <input type = "text"><br>
->>>>>>> af0dfc677d3d34dfe7ed1321a2f16e774257464e
       			<input type = "password"><br>
       			<input type = "button" value="회원가입"><input type="submit" value="로그인">
       			<input type="button" value="정보수정" onclick="window.location.href='UserInfoModifyForm.hash';"> -->
@@ -1044,7 +994,6 @@ ul.menu:after {
           	<li><a href="Board.hash?hash=책">#책</a></li>
           	<li><a href="Board.hash?hash=반려동물">#반려동물</a></li>
           	<li><a href="Board.hash?hash=독도">#독도</a></li>
-<<<<<<< HEAD
           	<li><a href="Board.hash?hash=맥주">#맥주</a></li> -->   
             <span class="tag font-small w3-theme-d1 border-round">
             <a id ="a" href="Board.hash?hash=${tagname}" >#${tagname}</a></span>    
@@ -1060,15 +1009,7 @@ ul.menu:after {
         <p>Copyright</p>
       </div> 
 
-          	
-
-
-		</div>
-	</div>
-	<div id="jb-footer" class="w3-theme-d3">
-		<p>Copyright</p>
-	</div>
-
+          
 
 
 </body>
