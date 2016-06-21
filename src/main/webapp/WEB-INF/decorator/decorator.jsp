@@ -12,18 +12,13 @@
 	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
 <style>
-<<<<<<< HEAD
+
 html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open Sans", sans-serif;}
 body{padding:0px;margin:0px;width:100%;height:100%;}
-=======
-html, body, div {
-	font-family: "Open Sans", sans-serif;
-	font: 400 0.875rem/1.5 "Open Sans", sans-serif;
-}
->>>>>>> d68d2abd7f87e8a3b74d7d700ab116c355ddc56a
+
 </style>
 <head>
-<<<<<<< HEAD
+
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <decorator:head />
 <meta charset="utf-8">
@@ -544,7 +539,7 @@ ul.menu:after {
 	clear: both;
 }
 
-.navbar li .account {
+/* .navbar li .account {
 	background: rgb(255, 240, 245);
 	display: none;
 	height: 200;
@@ -555,7 +550,7 @@ ul.menu:after {
 	position: absolute;
 	width: 200px;
 	z-index: 500;
-}
+} */
 
 .navbar li .message {
 	background: rgb(255, 240, 245);
@@ -615,8 +610,10 @@ ul.menu:after {
 }
 
 #a:hover {
-	text-decoration: underline;
-	color: #b2b2b2;
+	text-decoration: none;
+	color: #f9ffff;
+	border-radius:7px;
+	background-color:#ff6088;
 }
 
 /* -----------------------------해시태그버튼 css---------------------------------- */
@@ -695,117 +692,6 @@ ul.menu:after {
 }
 </style>
 
-<script>
-	/*
-		conphoto 는 contentInputForm.jsp 파일 안에 있는 파일 업로드 부분
-		이곳이 변경되면, 파일을 읽어 들이는 함수 동작
-	 */
-	$(function() {
-		$("#conphoto").on('change', function() {
-			readURL(this);
-		});
-	});
-
-	/*
-		사진 미리 보기 부분
-		자바스립트의 FileReader() 를 통해 임시 경로에 사진을 업로드 함.
-		또한 attr 을 통해 사진의 크기를 강제로 조정함.
-	 */
-	function readURL(input) {
-		if (input.files && input.files[0]) {
-			var reader = new FileReader();
-			reader.onload = function(e) {
-
-				$('#blah').attr('src', e.target.result);
-				$('#blah').attr('height', '100px');
-				$('#blah').attr('width', '100px');
-			}
-
-			reader.readAsDataURL(input.files[0]);
-		}
-	}
-<<<<<<< HEAD
-	function fileUploadPreview(thisObj, preViewer) {
-=======
-	
-
-	
-	/* ----------------------------------------------------------------------- */
-
- ul.menu li{ 
-	     float: right;
-		 width: 179px;
-		 height: 48px;
-		 background-color: #555;
-		 position: relative;
-		 }
-      ul.menu li a{
-	     display: block;
-		 width: 100%;
-		 height: 100%;
-		 line-height: 48px;
-		 text-indent: 30px;
-		 font-weight: bold;
-		 color: #eee;
-		 text-decoration: none;
-		 }
-      ul.menu li a:hover{
-	     background-color: #333;
-		 }
-      ul.menu li ul.sub{
-	     position: absolute;
-		 }
-      ul.menu{
-	     zoom: 1;
-		 }
-      ul.menu:after{
-	     height: 0;
-		 visibility: hidden;
-		 content: ".";
-		 display: block;
-		 clear: both;
-		 }
- 		 
- /* 	 .navbar li .account{background: rgb(255,240,245);
-				display:none; 
-				height:200;
-				padding:0px;
-				margin:0px;
-				margin-left:650px;
-				border:0px;
-				position:absolute;
-				width:200px;
-				z-index:500;
-				}   */ 
-	
-				
-	.navbar li .message{background: rgb(255,240,245);
-				display:none;  /* 평상시에는 서브메뉴가 안보이게 하기 */
-				height:250px;
-				padding:0px;
-				margin:0px;
-				margin-left:0px;
-				border:0px;
-				position:absolute;
-				width:200px;
-				overflow:hidden;
-				z-index:500;}
-				
-	.navbar li:hover ul{display:block;   /* 마우스 커서 올리면 서브메뉴 보이게 하기 */}
-	
-	
-	.badge{background-color:#000;color:#fff;display:inline-block;padding-left:5px;padding-right:5px;text-align:center; margin:0px 0px 0px 5px; 
-			border-radius:70%;}
-	.right{float:right; margin-right:250px;}
-	.green{background-color:#4CAF50!important}
-		
-	#a:link {text-decoration: none; color: #f9ffff;}
-	#a:visited {text-decoration: none; color: #f9ffff;}
-	#a:active {text-decoration: none; color: #f9ffff;}
-	#a:hover {text-decoration: none; color: #f9ffff; background-color:#ff6088; border-radius:7px;} 
-
-    </style>
-
     <script>
     
     /*
@@ -837,7 +723,7 @@ ul.menu:after {
         }
     } 
     function fileUploadPreview(thisObj, preViewer) {
->>>>>>> af0dfc677d3d34dfe7ed1321a2f16e774257464e
+
 		// 형식 체크
 		if (!/(\.gif|\.jpg|\.jpeg|\.png)$/i.test(thisObj.value)) {
 			alert("이미지 형식의 파일을 선택하십시오");
@@ -897,7 +783,6 @@ ul.menu:after {
 
 	}
 
-<<<<<<< HEAD
 	function Message() {
 		url = "MessageForm.hash?check=y";
 		window
@@ -906,7 +791,7 @@ ul.menu:after {
 						"post",
 						"toolbar=no ,width=400 ,height=150,directories=no,status=yes,menubar=no,scrollbars=no");
 	}
-=======
+
 	function Message(){
 		url="MessageForm.hash?check=y";
 		window.open(url,"post","toolbar=no ,width=400 ,height=350,directories=no,status=yes,menubar=no,scrollbars=no");
@@ -917,7 +802,7 @@ ul.menu:after {
 		window.open(url,"post","toolbar=no ,width=400 ,height=350,directories=no,status=yes,menubar=no,scrollbars=no");
 		} 
 	
->>>>>>> af0dfc677d3d34dfe7ed1321a2f16e774257464e
+
 
 	$(document).ready(function() {
 		if ($('#jb-content').outerHeight(true) < 1000) {
@@ -952,7 +837,6 @@ ul.menu:after {
       });	
    </script> -->
 
-<<<<<<< HEAD
 </head>
 <body style="background-color: #f5f7f8">
 
@@ -1010,59 +894,9 @@ ul.menu:after {
 
 		</ul>
 	</div>
-	<!-- <input type = "text"><br>
-=======
-  </head>
-  <body style="background-color:#f5f7f8">
 
-<!-- navbar -->
 
-<div>
- <ul class="navbar color1">
-  <li class="small"><a href="Board.hash" class="padding-large margin-right"><b>I N T E R H A S H #</b></a></li>
-  <li class="small"><a href="messageView.hash" class="padding-large margin-right" title="Messages"><i class ="fa fa-envelope"></i><span class="badge right small green">${messagecount}</span> </a>
-   <ul class="message">
-<<<<<<< HEAD
-   <table><tr><td>쪽지</td><td class="w3-right"><a href="#" onclick="Message()">쪽지보내기</a></td></tr>
-   			<tr><td colspan="2"><c:forEach var="message" items="${mesagelist}" begin="0" end="2">
-			<li><a href="MessageView.hash?messageNum=${message.messageNum}"><img src="image/logo/img_avatar5.png" class="left-align circle " width="15%" height="15%">${message.sendNickname} ${message.messageContent}</a></li>
-			</c:forEach>
-			</td></tr>
-			<tr><Td colspan="2"><a href="#" onclick="MessageList()">모든 쪽지 보기</a></Td></tr>
-=======
-   <table><tr><td>쪽지</td><td class="w3-right"><a href="MessageForm.hash">쪽지보내기</a></td></tr>
-   			<tr class="left-align"><td colspan="2"><c:forEach var="message" items="${mesagelist}" begin="0" end="2">
-			<li><a href="messageView.hash?messageNum=${message.messageNum}"><img src="image/logo/img_avatar5.png" class="left-align circle " width="15%" height="15%">${message.sendNickname} ${message.messageContent}</a></li>
-			</c:forEach>
-			</td></tr>
-			
-			<tr><Td colspan="2"><a href="#"><hr>모든 쪽지 보기</a></Td></tr>
->>>>>>> c8e81406edcdf145e7f2b86d8a12c34932c5b798
-	</table>
-	</ul>
-  </li> 
-  <li class="small"><a href="#" class="margin-right padding-large left-align" title="Alarm"><i class="fa fa-bell"></i></a></li>
-
-	<li class="small right"><a href="#"  class="padding-large" title="MyAccount"><img src="image/logo/사람.PNG" class="circle" width="30%" height="30%">${nickName}님</a>	
- 		<ul class="account">
-			<li><a href="UserInfoModifyForm.hash">회원정보수정</a></li>
-			<li><a href="#">프로필수정</a></li>
-			<li><a href="LogOut.hash">로그아웃</a></li>
-		</ul> 
-		
-	</li>
-
-      	<div id="jb_search">
-      		<form method="post" action="Board.hash">
-      			<input type="text" name="hash"/>
-      			<input type="submit" value="검색"/>
-      		</form>
-      	</div>
-
-</ul>
-</div>
 	      			<!-- <input type = "text"><br>
->>>>>>> af0dfc677d3d34dfe7ed1321a2f16e774257464e
       			<input type = "password"><br>
       			<input type = "button" value="회원가입"><input type="submit" value="로그인">
       			<input type="button" value="정보수정" onclick="window.location.href='UserInfoModifyForm.hash';"> -->
@@ -1160,7 +994,6 @@ ul.menu:after {
           	<li><a href="Board.hash?hash=책">#책</a></li>
           	<li><a href="Board.hash?hash=반려동물">#반려동물</a></li>
           	<li><a href="Board.hash?hash=독도">#독도</a></li>
-<<<<<<< HEAD
           	<li><a href="Board.hash?hash=맥주">#맥주</a></li> -->   
             <span class="tag font-small w3-theme-d1 border-round">
             <a id ="a" href="Board.hash?hash=${tagname}" >#${tagname}</a></span>    
@@ -1175,23 +1008,8 @@ ul.menu:after {
        <div id="jb-footer" class="w3-theme-d3">
         <p>Copyright</p>
       </div> 
-=======
-          	<li><a href="Board.hash?hash=맥주">#맥주</a></li> -->
-							<span class="tag font-small w3-theme-d1 border-round"> <a
-								id="a" href="Board.hash?hash=${tagname}">#${tagname}</a></span>
-						</c:forEach>
-					</p>
-				</div>
-			</div>
-			<br>
->>>>>>> d68d2abd7f87e8a3b74d7d700ab116c355ddc56a
 
-		</div>
-	</div>
-	<div id="jb-footer" class="w3-theme-d3">
-		<p>Copyright</p>
-	</div>
-
+          
 
 
 </body>
