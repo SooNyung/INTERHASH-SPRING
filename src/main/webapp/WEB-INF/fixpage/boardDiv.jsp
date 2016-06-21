@@ -88,11 +88,16 @@ function tagCheck() {
 	url = "TagCheck.hash?check=y";
 	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 }
+function like(num){
+	
+	url = "LikeCheck.hash?connum="+num;
+	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+}
 </script>
 <style type="text/css">
 	.background-color{color:#000 !important; background-color:#f5f7f8 !important}
 	#board_div{
-		width:800px;
+		width:500px;
 		height:230px;
 /* 		 background-color: black;  */
 		
@@ -110,8 +115,8 @@ function tagCheck() {
 		margin:auto;
 	}
 	#img{
-		width: 260px;
-		height:270px;
+		width: 180px;
+		height:150px;
 		margin:auto;
 	}
 	#board_main{
@@ -207,12 +212,12 @@ function tagCheck() {
 	#writeform{
 		width:700px;
 		height:50px;
-		margin: 10px;
+		margin: 0px;
 		/* border:1px solid; */
 	}
 	
 	#textfield {
-	width: 500px;
+	width: 465px;
 	height: 80px;
 	background: #ffffff;
 }
@@ -331,7 +336,7 @@ $(function(){
            <!--    <h6 class="opacity">I love it!! InterHash~♡</h6> -->
             <div id="writeform" border="1">
       <form action="ContentInputPro.hash" name="writeForm" method="post" enctype="multipart/form-data"> 
-		<div id="wrap" style="width: 500px; margin: auto;">
+		<div id="wrap" style="width: 500px; ">
 			<textarea id="textfield" name="content" placeholder="내용을 입력하세요."></textarea>
 			<div class="photoBox" style="height: 100px; width: 100px;">
 				<input class='fileData' id = "conphoto" name="conphoto" type="file"/> 
@@ -387,7 +392,7 @@ $(function(){
     
     <p>#${con.conhash}</p>
 	</div>
-    <button type="button" class="w3-btn w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
+    <button type="button" class="w3-btn w3-theme-d1 w3-margin-bottom" onclick="javascript:like('${con.connum}')"><i class="fa fa-thumbs-up"></i>  Like</button> 
     <button type="button" class="w3-btn w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
 
 	<%-- <div id="board_img">

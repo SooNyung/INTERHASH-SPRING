@@ -35,6 +35,10 @@ public class MemberDAO {
 		return session.delete("member.delete", email);
 	}
 
+	public int modifyHash(MemberCommand command) {
+		return session.update("member.updateHash", command);
+	}
+
 	public String checkDelete(String email) {
 		return session.selectOne("member.checkdelete", email);
 	}
@@ -60,9 +64,10 @@ public class MemberDAO {
 		return session.selectOne("member.findEmail", info);
 	}
 
-	public List emailList() {
+	public List<MemberCommand> emailList() {
 		return session.selectList("member.emailList");
 	}
+
 
 	public List<String> selectEmail() {
 		return session.selectList("member.selectEmail");

@@ -1,25 +1,37 @@
 package spring.controller.content;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import mybatis.ContentDAO;
+import spring.model.ContentCommand;
+
+@Controller
 public class ContentModify {
-
+	@Autowired
+	ContentDAO cdao;
+	
+	public void setCdao(ContentDAO cdao) {
+		this.cdao = cdao;
+	}
 	@RequestMapping("/ContentModifyForm.hash")
-	public String request(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		// TODO Auto-generated method stub
-		return "/userpage/ContentModifyForm.jsp";
+	public String request(Model model,@RequestParam("connum") int connum) {
+		ContentCommand command = cdao.getContent(connum);
+		model.addAttribute("content",command);
+		
+		return "userpage/ContentModifyForm";
 	}
 	@RequestMapping("/ContentModifyPro.hash")
-	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		int connum = Integer.parseInt(request.getParameter("connum"));
+	public String requestPro(Model model,@RequestParam("connum") int connum,@ModelAttribute("content") ContentCommand command) {
 		
-		//ContentDBBean dbpro = ContentDBBean.getInstance();
-/*		ContentDataBean article = dbpro.co*/
+		//result 값이 1이어야 올바른 것
+		int result = cdao.modifyContent(command);
 		
-		return "ContentView.hash";
+		return "redirect:ContentView.hash";
 	}
 	
 }

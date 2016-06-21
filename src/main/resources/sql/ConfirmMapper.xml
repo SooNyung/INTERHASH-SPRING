@@ -10,8 +10,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="existNickname" parameterType="String" resultType="Integer">
 		select count(*) from usertable where nickname=#{nickname}
 	</select>
-	<select id="selectEmail" parameterType="String" resultType="String">
-		select email from usertable where email=#{email}
+	<select id="getConlike" parameterType="int" resultType="int">
+		select conlike from contents where connum = #{connum}
 	</select>
+	<select id="getContent" parameterType="integer" resultType="spring.model.ContentCommand">
+		select * from contents where connum = #{connum}
+	</select>
+	<update id="conlikePlus" parameterType="int">
+		update contents set conlike=(conlike+1) where connum = #{connum}
+	</update>
 
 </mapper>
