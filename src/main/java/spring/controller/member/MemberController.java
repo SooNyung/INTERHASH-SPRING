@@ -108,6 +108,7 @@ public class MemberController {
 		System.out.println("hash태그 :: " + Arrays.toString(hash));
 		int a = dao.modifyHash(command);
 		System.out.println("해시태그 수정완료? " + a);
+		System.out.println("여기두오겠지?");
 		return "userpage/ModifyHashPro";
 	}
 
