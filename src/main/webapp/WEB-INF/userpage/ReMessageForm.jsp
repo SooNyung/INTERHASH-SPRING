@@ -6,14 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<style>
-input[name=hiddenCheck]{
-	color:red;
-}
-</style>
+
 <script>
 function checkIt() {
 		alert("전송되었습니다.");
+		
 }
 
 </script>
@@ -23,7 +20,6 @@ function checkIt() {
 
 <div align="center">
 <form method="post" action="ReMessagePro.hash" onsubmit="checkIt()">
-<hr>
 <div>받는사람 : 
 <input type="text" id="receEmail" name="receEmail" readonly="readonly" value="${sendNick}(${sender})">
 </div>

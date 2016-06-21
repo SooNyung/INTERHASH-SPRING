@@ -79,7 +79,27 @@ public class MessageController {
 		messagedto.setSendEmail(sender);
 		messagedto.setReceEmail(receiver);
 		messagedto.setSendNickname(senderNick);
+<<<<<<< HEAD
 		//메시지 보내는 쿼리 insert
+=======
+<<<<<<< HEAD
+
+		messagedto.setSendNickname(senderNick);		
+		
+
+
+		messagedto.setSendNickname(senderNick);		
+		
+		messagedto.setSendNickname(senderNick);		
+
+		messagedto.setSendNickname(senderNick);		
+
+
+=======
+
+>>>>>>> d8e7fa8de6bdf211fec52cc219310aaf77ae252a
+		//메시지 보내는 쿼리 insert 
+>>>>>>> dd811a5812176577259d7840a1f38903439ed54f
 		int result = messagedao.sendMessage(messagedto);
 		return mav;	
 	}
@@ -91,7 +111,7 @@ public class MessageController {
 				ModelAndView mav = new ModelAndView("userpage/MessageList");
 				
 				String email = (String) request.getSession().getAttribute("memId");
-				SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:mm");
+				SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:MM");
 				
 				//메시지 리스트를 얻어오기 위한 쿼리문 
 				List messageList = messagedao.getMessageList(email);
@@ -165,6 +185,7 @@ public class MessageController {
 		//수신자 [답장]
 		String receiver = request.getParameter("sender");
 		String recenick = request.getParameter("sendNick");
+		String email = (String) request.getSession().getAttribute("memId");
 
 		//송신자
 		String sender = (String) request.getSession().getAttribute("memId");
@@ -176,11 +197,15 @@ public class MessageController {
 		
 		String msgContent = request.getParameter("messagecontent");
 		
+		List messageList = messagedao.getMessageList(email);
+		
 		messagedto.setSendEmail(sender);
 		messagedto.setSendNickname(senderNick);
 		messagedto.setReceEmail(receiver);
 		messagedto.setReceNickname(recenick);
 		messagedto.setMessageContent(msgContent);
+		
+		mav.addObject("messageList",messageList);
 		
 		//답장 쿼리문
 		int result = messagedao.sendMessage(messagedto);

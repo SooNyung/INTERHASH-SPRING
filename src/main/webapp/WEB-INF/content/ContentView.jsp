@@ -15,7 +15,10 @@
 html,body,h6{font-family: "Open Sans", sans-serif}
 .w3-theme {color:#fff !important; background-color:#607d8b !important}
 .white{color:#000!important;background-color:#fff!important;}
-
+#img{
+		width: 350px;
+		height:300px;
+		margin:auto;}
 #nickname{
 font-size:15px;
 }
@@ -178,8 +181,8 @@ function reportCom(comnum){
 	<c:if test="${sessionScope.memId==content.email}">
 	<div id="left_mod_del_rep">
 		<span id="align_right">/<a href="ContentDelete.hash?connum=${content.connum}">삭제하기</a></span>
-		<<span id="align_right"><a href="/INTERHASH/ContentUpdate.hash?connum=${content.connum}">수정하기 </a></span>
-		
+		<span id="align_right"><a href="ContentUpdate.hash?connum=${content.connum}">수정하기 </a></span>
+		<span id="align_right"><a href="ContentModifyForm.hash">test</a></span>
 	</div>
 	</c:if>
 		
@@ -196,7 +199,9 @@ function reportCom(comnum){
 		<label id="hash">#${content.conhash}</label><br>
 		
 		<c:forEach var="photo" items="${content.photolist}">
-		<img id = "img" src='${photo.serverpath }' width="320px" height="240"/>
+		
+		<img id="img" src='<c:url value="/upload/${content.photolist[0].realpath }" />'/>
+
 		</c:forEach>
 
 	</div>
