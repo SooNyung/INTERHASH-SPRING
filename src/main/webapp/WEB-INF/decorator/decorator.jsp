@@ -318,14 +318,17 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 }
 
 #jb-content {
-	width: 70%;
+	width: 50%;
 	padding: auto;
 	margin-bottom: 50px;
 	margin-top: 50px;
 	float: right;
 	/* border: 1px solid #bcbcbc; */
 }
-
+#jb-right{
+	width:25%;
+	height:100%;
+}
 #jb-sidebar {
 	position: absolute;
 	height: 600px;
@@ -849,11 +852,6 @@ ul.menu:after {
 
 	<!-- main -->
 	<div id="main">
-
-		<div id="jb-content">
-			<decorator:body />
-		</div>
-
 		<div id="jb-sidebar">
 
 			<!-- Profile -->
@@ -930,6 +928,12 @@ ul.menu:after {
       <br>
       
     </div>
+    <div id="jb-content">
+			<decorator:body />
+	</div>
+	<div id="jb-right">
+		
+	</div>	
    </div>
        <div id="jb-footer" class="w3-theme-d3">
         <p>Copyright</p>
