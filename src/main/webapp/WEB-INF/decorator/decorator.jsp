@@ -108,11 +108,12 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
       /* 	border:1px solid #bcbcbc; */
       }
        #jb-content {
-        width: 70%;
-        padding: auto;
+        width: 50%;
+        padding: 0px;
+        margin-left:350px;
         margin-bottom: 50px;
         margin-top:50px;
-        float: right;
+        float: left;
         /* border: 1px solid #bcbcbc; */
       } 
       #jb-sidebar {
@@ -205,7 +206,7 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
 		 clear: both;
 		 }
  		 
-/* 	 .navbar li .account{background: rgb(255,240,245);
+ 	 .navbar li .account{background: rgb(255,240,245);
 				display:none; 
 				height:200;
 				padding:0px;
@@ -215,7 +216,7 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
 				position:absolute;
 				width:200px;
 				z-index:500;
-				}  */ 
+				}   
 	
 				
 	.navbar li .message{background: rgb(255,240,245);
@@ -231,7 +232,7 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
 				z-index:500;}
 				
 	.navbar li:hover ul{display:block;   /* 마우스 커서 올리면 서브메뉴 보이게 하기 */}
-	.navbar li a:hover{display:block;   /* 마우스 커서 올리면 서브메뉴 보이게 하기 */}
+	
 	
 	.badge{background-color:#000;color:#fff;display:inline-block;padding-left:5px;padding-right:5px;text-align:center; margin:0px 0px 0px 5px; 
 			border-radius:70%;}

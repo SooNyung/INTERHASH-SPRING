@@ -91,8 +91,6 @@ public class MessageController {
 
 		messagedto.setSendNickname(senderNick);		
 		
-
-
 		messagedto.setSendNickname(senderNick);		
 
 		messagedto.setSendNickname(senderNick);		
