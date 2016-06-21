@@ -10,7 +10,8 @@
 </head>
 
 <body>
-
+<div><a href="#">쪽지함  </a> / <a href="MessageForm.hash"> 쪽지보내기</a>
+<hr>
 	<c:forEach var="list" items="${messageList}">
 		<div>
 			<span>수신자 : ${list.sendNickname}(${list.sendEmail})</span> <span>보낸날짜:

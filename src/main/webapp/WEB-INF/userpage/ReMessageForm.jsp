@@ -12,21 +12,8 @@ input[name=hiddenCheck]{
 }
 </style>
 <script>
-var check = false;
-var check2 = false;
 function checkIt() {
-	if(check){
 		alert("전송되었습니다.");
-		return true;
-	}
-	if(!check) {
-		alert("이메일을 확인 해주세요.");
-		return false;
-	}
-	if(!checzk2) {
-		alert("올바른 이메일을 입력해주세요.")
-		return false;
-	}
 }
 
 </script>
@@ -35,8 +22,7 @@ function checkIt() {
 <body>
 
 <div align="center">
-<form method="post" action="ReMessagePro.hash">
-
+<form method="post" action="ReMessagePro.hash" onsubmit="checkIt()">
 <hr>
 <div>받는사람 : 
 <input type="text" id="receEmail" name="receEmail" readonly="readonly" value="${sendNick}(${sender})">
@@ -47,12 +33,10 @@ function checkIt() {
 
 <div><textarea name="messagecontent" rows="10" cols="50">[답장]</textarea></div><br>
 
-
 <div>
 <input type="submit" value="보내기">
-<input type="button" value="닫기" onclick="javascript:window.close()"/>
+<input type="button" value="닫기" onclick="javascript:history.go(-1)"/>
 </div>
-
 </form>
 </div> 
 

@@ -97,7 +97,7 @@ function like(num){
 <style type="text/css">
 	.background-color{color:#000 !important; background-color:#f5f7f8 !important}
 	#board_div{
-		width:800px;
+		width:500px;
 		height:230px;
 /* 		 background-color: black;  */
 		
@@ -115,8 +115,8 @@ function like(num){
 		margin:auto;
 	}
 	#img{
-		width: 260px;
-		height:270px;
+		width: 180px;
+		height:150px;
 		margin:auto;
 	}
 	#board_main{
@@ -212,12 +212,12 @@ function like(num){
 	#writeform{
 		width:700px;
 		height:50px;
-		margin: 10px;
+		margin: 0px;
 		/* border:1px solid; */
 	}
 	
 	#textfield {
-	width: 500px;
+	width: 465px;
 	height: 80px;
 	background: #ffffff;
 }
@@ -336,7 +336,7 @@ $(function(){
            <!--    <h6 class="opacity">I love it!! InterHash~♡</h6> -->
             <div id="writeform" border="1">
       <form action="ContentInputPro.hash" name="writeForm" method="post" enctype="multipart/form-data"> 
-		<div id="wrap" style="width: 500px; margin: auto;">
+		<div id="wrap" style="width: 500px; ">
 			<textarea id="textfield" name="content" placeholder="내용을 입력하세요."></textarea>
 			<div class="photoBox" style="height: 100px; width: 100px;">
 				<input class='fileData' id = "conphoto" name="conphoto" type="file"/> 
