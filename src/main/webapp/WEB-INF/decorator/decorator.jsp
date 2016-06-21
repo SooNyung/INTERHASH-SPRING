@@ -284,7 +284,10 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 	font-weight: bold;
 	color: inherit;
 }
-
+#head{
+	width:100%;
+	height: 60px;
+}
 #main {
 	width: 100%;
 }
@@ -378,7 +381,6 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 		height:60px;
 		clear: both;
 /* 	position:absolute;
->>>>>>> af0dfc677d3d34dfe7ed1321a2f16e774257464e
 	height:60px;
 	clear: both;
 /*	
@@ -725,8 +727,12 @@ ul.menu:after {
 
 
 	$(document).ready(function() {
-		if ($('#jb-content').outerHeight(true) < 1000) {
+		if ($('#jb-content').outerHeight(true) < 900) {
 			$("#jb-content").attr("height", "1000px");
+		}else{
+			var g = $('#jb-content').outerHeight(true);
+			$('#main').css("height", g);
+			
 		}
 		/* alert($('#jb-content').outerHeight(true)); */
 		// alert(document.getElementById("main").currentStyle.width);
@@ -762,7 +768,7 @@ ul.menu:after {
 
 	<!-- navbar -->
 
-	<div>
+	<div id=head>
 		<ul class="navbar color1">
 			<li class="small"><a href="Board.hash"
 				class="padding-large margin-right"><b>I N T E R H A S H #</b></a></li>

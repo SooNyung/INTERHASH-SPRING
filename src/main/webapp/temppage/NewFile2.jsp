@@ -12,6 +12,16 @@
 	background-color:blue;
 	height:80px;
 }
+
+#head_left{
+
+}
+#head_right{
+
+}
+
+
+
 #main{
 	background-color:red;
 	height:900px;
