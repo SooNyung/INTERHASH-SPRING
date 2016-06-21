@@ -5,8 +5,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import mybatis.ConfirmDAO;
 
@@ -56,5 +58,14 @@ public class ConfirmController {
 		session.setAttribute("check", check);
 		
 		return "confirm/ConfirmNickname";
+	}
+	@RequestMapping("/LikeCheck.hash")
+	private String like_check(@RequestParam("connum") int connum,HttpSession session,Model model){
+		
+		model.addAttribute("connum",connum);
+		Dao.conlikePlus(connum);
+		int conlike = Dao.getConlike(connum);
+		session.setAttribute("conlike", conlike);
+		return "confirm/likeCheck";
 	}
 }
