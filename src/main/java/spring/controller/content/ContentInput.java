@@ -7,6 +7,7 @@ import java.util.Properties;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import mybatis.ConfirmDAO;
 import mybatis.ContentDAO;
 import mybatis.PhotoDAO;
 import spring.model.ContentCommand;
@@ -36,7 +38,6 @@ public class ContentInput {
 	public void setDao(PhotoDAO pdao) {
 		this.pdao = pdao;
 	}
-	
 	@Autowired
 	ContentDAO cdao;
 	
