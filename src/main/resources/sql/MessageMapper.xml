@@ -10,7 +10,7 @@
 
 	<select id="getMessageList" parameterType="String"
 		resultType="spring.model.MessageCommand">
-		select * from message where receEmail = #{receEmail}
+		select * from message where receEmail = #{receEmail} order by sendDate desc
 	</select>
 
 	<select id="getMessageCount" parameterType="String" resultType="int">

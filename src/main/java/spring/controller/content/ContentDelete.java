@@ -29,7 +29,7 @@ public class ContentDelete {
 	@RequestMapping("/ContentDelete.hash")
 	public ModelAndView contentDelete(@ModelAttribute("contentdto") ContentCommand contentdto,
 			@RequestParam("connum") int connum) throws Throwable {
-		ModelAndView mav = new ModelAndView("main");
+		ModelAndView mav = new ModelAndView("fixpage/boardDiv");
 		//int connum = Integer.parseInt(request.getParameter("connum"));
 		contentdao.deleteContent(connum);
 		return mav;

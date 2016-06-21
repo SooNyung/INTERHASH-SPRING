@@ -17,6 +17,7 @@ var check2 = false;
 function checkIt() {
 	if(check){
 		alert("전송되었습니다.");
+			window.close();
 		return true;
 	}
 	if(!check) {
@@ -59,12 +60,12 @@ function email(){
 <body>	
 
 <div align="center">
-<div><a href="MessageList.hash">쪽지함  </a> / <a href="#"> 쪽지보내기</a>
+<div><a href="MessageList.hash">받은쪽지  </a> | <a href="#"> 쪽지쓰기</a><br><br>	
 
 </div>
-<hr>
+
 <form method="post" action="MessagePro.hash" onsubmit="return checkIt()">
-<hr>
+
 <div>받는사람 : 
 <input type="email" id="receEmail" name="receEmail">
 <input type="button" onclick="email()" value="이메일검사">

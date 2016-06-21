@@ -735,6 +735,47 @@ ul.menu:after {
       });	
    </script> -->
 
+<<<<<<< HEAD
+  </head>
+  <body style="background-color:#f5f7f8">
+
+<!-- navbar -->
+
+<div>
+ <ul class="navbar color1">
+  <li class="small"><a href="Board.hash" class="padding-large margin-right"><b>I N T E R H A S H #</b></a></li>
+  <li class="small"><a href="messageView.hash" class="padding-large margin-right" title="Messages"><i class ="fa fa-envelope"></i><span class="badge right small green">${messagecount}</span> </a>
+   <ul class="message">
+
+   <table><tr><td>쪽지</td><td class="w3-right"><a href="#" onclick="Message()">쪽지보내기</a></td></tr>
+   			<tr><td colspan="2"><c:forEach var="message" items="${mesagelist}" begin="0" end="2">
+			<li><a href="MessageView.hash?messageNum=${message.messageNum}"><img src="image/logo/img_avatar5.png" class="left-align circle " width="15%" height="15%">${message.sendNickname} ${message.messageContent}</a></li>
+			</c:forEach>
+			</td></tr>
+			<tr><Td colspan="2"><a href="#" onclick="MessageList()">모든 쪽지 보기</a></Td></tr>
+
+   <table><tr><td>쪽지</td><td class="w3-right"><a href="MessageForm.hash">쪽지보내기</a></td></tr>
+   			<tr class="left-align"><td colspan="2"><c:forEach var="message" items="${mesagelist}" begin="0" end="2">
+			<li><a href="messageView.hash?messageNum=${message.messageNum}"><img src="image/logo/img_avatar5.png" class="left-align circle " width="15%" height="15%">${message.sendNickname} ${message.messageContent}</a></li>
+			</c:forEach>
+			</td></tr>
+			
+			<tr><Td colspan="2"><a href="#"><hr>모든 쪽지 보기</a></Td></tr>
+
+	</table>
+	</ul>
+  </li> 
+  <li class="small"><a href="#" class="margin-right padding-large left-align" title="Alarm"><i class="fa fa-bell"></i></a></li>
+
+	<li class="small right"><a href="#"  class="padding-large" title="MyAccount"><img src="image/logo/사람.PNG" class="circle" width="30%" height="30%">${nickName}님</a>	
+ 		<ul class="account">
+			<li><a href="UserInfoModifyForm.hash">회원정보수정</a></li>
+			<li><a href="#">프로필수정</a></li>
+			<li><a href="LogOut.hash">로그아웃</a></li>
+		</ul> 
+		
+	</li>
+=======
 </head>
 <body style="background-color: #f5f7f8">
 
@@ -795,6 +836,7 @@ ul.menu:after {
 
 		</ul>
 	</div>
+>>>>>>> d8e7fa8de6bdf211fec52cc219310aaf77ae252a
 
 
 	      			<!-- <input type = "text"><br>
