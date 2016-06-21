@@ -29,7 +29,6 @@ function checkIt() {
 	}
 }
 function email(){
-	
 	var regex=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;  
 	var emailList = "${emailList}";
 	var email = document.getElementById("receEmail").value;
@@ -60,6 +59,10 @@ function email(){
 <body>	
 
 <div align="center">
+<div><a href="MessageList.hash">쪽지함  </a> / <a href="#"> 쪽지보내기</a>
+
+</div>
+<hr>
 <form method="post" action="MessagePro.hash" onsubmit="return checkIt()">
 <hr>
 <div>받는사람 : 
@@ -67,7 +70,6 @@ function email(){
 <input type="button" onclick="email()" value="이메일검사">
 </div>
 <hr>
-
 
 <div><textarea name="messagecontent" rows="10" cols="50"></textarea></div><br>
 

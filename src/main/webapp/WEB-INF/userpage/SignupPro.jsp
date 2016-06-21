@@ -97,8 +97,8 @@ input {
 
 .grid__container {
 	margin: 0 auto;
-	max-width: 25rem;
-	width: 90%;
+	max-width: 50rem;
+	width: 400px;
 }
 
 label {
@@ -181,6 +181,8 @@ label:focus, label:hover {
 				<label for="dmadkr">#음악</label>
 				<input type="checkbox" name="hash" id="ck" value="차" style="display:none">
 				<label for="ck">#차</label>
+				<input type="checkbox" name="hash" id="Rna" value="꿈" style="display:none">
+				<label for="Rna">#꿈</label>
 			
 				
 			</div>
