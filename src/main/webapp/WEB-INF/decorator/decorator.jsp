@@ -207,7 +207,7 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
 		 clear: both;
 		 }
  		 
-	 .navbar li .account{background: rgb(255,240,245);
+/* 	 .navbar li .account{background: rgb(255,240,245);
 				display:none; 
 				height:200;
 				padding:0px;
@@ -217,7 +217,7 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
 				position:absolute;
 				width:200px;
 				z-index:500;
-				}  
+				}  */ 
 	
 				
 	.navbar li .message{background: rgb(255,240,245);
@@ -398,8 +398,7 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
   </li> 
   <li class="small"><a href="#" class="margin-right padding-large left-align" title="Alarm"><i class="fa fa-bell"></i></a></li>
 
-	<li class="small right"><a href="#"  class="padding-large" title="MyAccount"><img src="image/logo/사람.PNG" class="circle" width="30%" height="30%">${nickName}님</a>
- 	
+	<li class="small right"><a href="#"  class="padding-large" title="MyAccount"><img src="image/logo/사람.PNG" class="circle" width="30%" height="30%">${nickName}님</a>	
  		<ul class="account">
 			<li><a href="UserInfoModifyForm.hash">회원정보수정</a></li>
 			<li><a href="#">프로필수정</a></li>
