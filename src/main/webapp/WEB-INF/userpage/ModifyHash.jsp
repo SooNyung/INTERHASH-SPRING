@@ -128,13 +128,27 @@ label:focus, label:hover {
 }
 </style>
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script>
+window.onload=function checkHash(){
+		var hasharr = "${c.hash}"; //hasharr에 저장됨
+		var hash=document.getElementsByName("hash"); //해쉬체크박스 배열 가져옴
+
+		
+		
+	 	 for(i=0;i<hash.length;i++){
+			 if(hasharr.indexOf(hash[i].value)!=-1){ 
+				hash[i].checked=true;
+			}
+		}  
+	}
+</script>
 
 </head>
 <body class="align">
 	<div class="site__container">
 		<div class="grid__container">
 			<h1>Please check your HASHTAG!</h1>
-			 <form action="SignupPro2.hash" name="userinput" method="post" class="form form--login">
+			 <form action="ModifyHashPro.hash" name="userinput" method="post" class="form form--login">
 			<div class="form__field">
 				<input type="checkbox" name="hash" id="tkfkd" value="사랑"
 					style="display: none"> <label id="check" for="tkfkd">#사랑</label>
@@ -220,11 +234,9 @@ label:focus, label:hover {
 				<label for="cnrwp">#축제</label>
 				
 			</div>
-			<input type="hidden" name="email" value="${member.email}">
-			<input type="hidden" name="passwd" value="${member.passwd}">
-			<input type="hidden" name="nickname" value="${member.nickname}">
+			<input type="hidden" name="email" value="${c.email}">
 			
-			<input type="submit" value="  S I G N    U P  ">
+			<input type="submit" value=" MODIFY HASHTAG ">
 
 			</form>
 		</div>

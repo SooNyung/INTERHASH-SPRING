@@ -3,51 +3,69 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
+
 	<insert id="insert" parameterType="spring.model.MemberCommand">
-		insert into usertable
+		insert into usertable(email,nickname,passwd,hash,createddate,modifieddate,distinction,reportcount,ip)
 		values
 		(#{email},#{nickname},#{passwd},#{hash},sysdate,sysdate,0,0,#{ip})
 	</insert>
 
-	<select id="selectMember" parameterType="String" resultType="spring.model.MemberCommand">
+	<select id="selectMember" parameterType="String"
+		resultType="spring.model.MemberCommand">
 		select * from usertable where email=#{email}
 	</select>
 
-	<select id="selectAll" parameterType="spring.model.MemberCommand" resultType="spring.model.MemberCommand">
+	<select id="selectAll" parameterType="spring.model.MemberCommand"
+		resultType="spring.model.MemberCommand">
 		select * from usertable
 	</select>
-	
+
 	<update id="updateMember" parameterType="spring.model.MemberCommand">
 		update usertable set
-		email=#{email}, nickname=#{nickname}, passwd=#{passwd}, hash=#{hash} where email=#{email}
+		email=#{email}, nickname=#{nickname}, passwd=#{passwd}	where email=#{email}
+	</update>
+	
+	<update id="updateHash" parameterType="spring.model.MemberCommand">
+		update usertable set
+		hash=#{hash} where email=#{email}
 	</update>
 
 	<delete id="delete" parameterType="String">
-		delete from usertable where email=#{email}
+		delete from usertable where
+		email=#{email}
 	</delete>
-	
+
 	<select id="checkdelete" parameterType="String" resultType="String">
-	select passwd from usertable where email=#{email}
-	</select>
-	
-	<select id="login" parameterType="spring.model.MemberCommand" resultType="int">
-		select count(*) from usertable where email=#{email} and passwd=#{passwd}
-	</select>
-	
-	<select id="findPassword" parameterType="spring.model.MemberCommand" resultType="String">
 		select passwd from usertable where email=#{email}
 	</select>
-	
-	<select id="nick" parameterType="spring.model.MemberCommand" resultType="String">
-		select nickname from usertable where email=#{email} and passwd=#{passwd}
+
+	<select id="login" parameterType="spring.model.MemberCommand"
+		resultType="int">
+		select count(*) from usertable where email=#{email} and
+		passwd=#{passwd}
 	</select>
-	
-	<select id="findEmail" parameterType="spring.model.MemberCommand" resultType="int">
+
+	<select id="findPassword" parameterType="spring.model.MemberCommand"
+		resultType="String">
+		select passwd from usertable where email=#{email}
+	</select>
+
+	<select id="nick" parameterType="spring.model.MemberCommand"
+		resultType="String">
+		select nickname from usertable where email=#{email} and
+		passwd=#{passwd}
+	</select>
+
+	<select id="findEmail" parameterType="spring.model.MemberCommand"
+		resultType="int">
 		select count(*) from usertable where email=#{email}
 	</select>
 	
-
 	<select id="emailList" resultType="spring.model.MemberCommand">
+		select email from usertable
+	</select>
+	
+	<select id="selectEmail" resultType="String">
 		select email from usertable
 	</select>
 
@@ -55,6 +73,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update usertable set passwd=#{passwd} where email=#{email}
 	</update>	
 
-	
 
 </mapper>

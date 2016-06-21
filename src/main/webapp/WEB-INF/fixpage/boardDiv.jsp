@@ -7,7 +7,6 @@
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <c:if test ="${sessionScope.memId==null}">
 <script>
 alert("비밀번호가 틀립니다.");
@@ -320,7 +319,6 @@ box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 </style>
 
 
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script>
 $(function(){
 	$(window).scroll(function(){
@@ -376,8 +374,8 @@ $(function(){
 <input type="hidden" name="connum" value="${con.connum}">
 <div id="board_div" class="container box-shadow border-round white">
 <table width="100%">
-<tr>
-<td width="10%"><img src="image/logo/img_avatar2.png" alt="Avatar" class="left-align circle" style="width:60px"></td>
+<tr>  
+<td width="10%"><img src="image/logo/사람.PNG" alt="Avatar" class="left-align circle" style="width:50px"></td>
 <td width="65%"><b>${con.connickname}</b></td>
 <td width="35%"><b class="right-align opacity"><font color="#b2b2b2">${con.conmodifieddate}</font></b></td>
 </tr>

@@ -24,6 +24,7 @@ public class MemberDAO {
 
 	public MemberCommand modify(String email) {
 		return session.selectOne("member.selectMember", email);
+
 	}
 
 	public int modifyPro(MemberCommand command) {
@@ -32,6 +33,10 @@ public class MemberDAO {
 
 	public int deleteMember(String email) {
 		return session.delete("member.delete", email);
+	}
+
+	public int modifyHash(MemberCommand command) {
+		return session.update("member.updateHash", command);
 	}
 
 	public String checkDelete(String email) {
@@ -61,6 +66,11 @@ public class MemberDAO {
 
 	public List<MemberCommand> emailList() {
 		return session.selectList("member.emailList");
+	}
+
+
+	public List<String> selectEmail() {
+		return session.selectList("member.selectEmail");
 	}
 
 	public String tempPasswd(TempPasswd temppw) {

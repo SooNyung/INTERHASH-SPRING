@@ -9,9 +9,10 @@
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
 <style>
-html,body,div{font-family: "Open Sans", sans-serif}
+html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open Sans", sans-serif;}
 </style>
 <head>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <decorator:head/>
     <meta charset="utf-8">
     <title>에벌레</title>
@@ -22,16 +23,15 @@ html,body,div{font-family: "Open Sans", sans-serif}
 	  .w3-theme-l3 {color:#000 !important; background-color:#becbd2 !important}
 	  .w3-theme-l2 {color:#000 !important; background-color:#9eb1bb !important}
 	  .w3-theme-l1 {color:#fff !important; background-color:#7d97a5 !important}
-	  .w3-theme-d1 {color:#fff !important; background-color:#57707d !important}
+	  .w3-theme-d1 {color:#fff !important; background-color:#cccccc !important}
 	  .w3-theme-d2 {color:#fff !important; background-color:#4d636f !important}
-	  .w3-theme-d3 {color:#fff !important; background-color:#435761 !important}
+	  .w3-theme-d3 {color:#fff !important; background-color:#ffcccc !important}
 	  .w3-theme-d4 {color:#fff !important; background-color:#3a4b53 !important}
 	  .w3-theme-d5 {color:#fff !important; background-color:#303e45 !important}
       .padding{margin-top:50px; margin-left:30px;}
-      .account-right{margin-left:700px; float:left;}
-      .top{top:0; padding:0px; width:100%; height:60px; margin-bottom:0px; overflow: hidden;}
+      .account-right{margin-left:650px; float:left;}
       .w3-right{text-align:right}
-      .navbar{top:0;list-style-type:none;margin:0;padding:0;float:left;
+      .navbar{top:0;list-style-type:none; float:left;
       		width:100%;
       		height:60px;
 			position:absolute;
@@ -40,15 +40,15 @@ html,body,div{font-family: "Open Sans", sans-serif}
 			display:block;
 			
 			}
-      .hover-text:hover{color:#757575!important}
-	  .margin-right{margin-right:8px}
-      .color1{background-color:#4d636f}
-      .color2{background-color:#3a4b53}
+    
+	  .margin-right{margin:10px 0px 0px 10px;}
+      .color1{background-color:#FFCCCC}
+      .color2{background-color:#FFCCCC}
       .left-align{text-align:left!important}
       .font-size{font-size:18px!important}
       .small{display: inline!important; float:left;}
       .circle{border-radius:50%}
-      .padding-large{padding:18px 5px 6px 5px}
+      .padding-large{padding:10px 5px 0px 5px;}
       .closebtn.hover-text.dropdown-hover.hover-white{-webkit-transition:background-color .3s,#white .15s,box-shadow .3s,opacity 0.3s;transition:background-color .3s,#white .15s,box-shadow .3s,opacity 0.3s}
       .btn-block.accordian-content.dropdown-hover{min-width:100%;
 		display:block;z-index:1;
@@ -60,9 +60,9 @@ html,body,div{font-family: "Open Sans", sans-serif}
 	  .dropdown-hover{display:inline-block;cursor:pointer}
       .white{color:#000!important;background-color:#fff!important;}
       .box-shadow{box-shadow:0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)!important;margin-top:0px;}
-      .border-round{border-radius:4px!important}
+      .border-round{border-radius:5px!important}
       .container{content:"";display:table;clear:both;padding:0.01em 16px; margin-left:0px;width:270px;}
-      .container1{content:"";display:table;clear:both;padding:0.01em 16px; margin-left:0px;}
+      .container1{content:"";display:table;clear:both;padding:0.01em 16px; margin-left:0px; width:320px;}
       .center{text-align:center}
       .text-theme{color:#607d8b !important}
       .accordian{width:100%;cursor:pointer}
@@ -70,10 +70,10 @@ html,body,div{font-family: "Open Sans", sans-serif}
       .btn-block{border:none;display:inline-block;outline:0;padding:6px 16px;vertical-align:middle;overflow:hidden;text-decoration:none!important;color:#fff;background-color:#000;text-align:center;cursor:pointer;white-space:nowrap;
 		box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 		width:100%;}
-	  .theme-l1{color:#fff !important; background-color:#7d97a5 !important}
+	  .theme-l1{color:#fff !important; background-color:#FFCCCC !important}
 	  .left-align{text-align:left}
-      .tag{background-color:#000;color:#fff;display:inline-block;padding-left:8px;padding-right:8px;text-align:center;}
-      .font-small{font-size:8px}
+      .tag{display:inline-block; padding-left:8px; padding-right:8px; text-align:center; margin:0px 10px 10px 0px;}
+      .font-small{font-size:20px}
 	  .border{border:1px solid #ccc!important}
       .theme-border {border-color:#607d8b !important}
       .hover-theme:hover {color:#fff !important; background-color:#607d8b !important}
@@ -81,7 +81,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
       .closebtn{text-decoration:none;float:right;font-size:24px;font-weight:bold;color:inherit;}
 
 
-	  #main{width:100%}
+	  #main{width:100%;}
 
 
       #jb-container {
@@ -109,8 +109,9 @@ html,body,div{font-family: "Open Sans", sans-serif}
       }
        #jb-content {
         width: 70%;
-        padding: 15px;
+        padding: auto;
         margin-bottom: 50px;
+        margin-top:50px;
         float: right;
         /* border: 1px solid #bcbcbc; */
       } 
@@ -118,18 +119,23 @@ html,body,div{font-family: "Open Sans", sans-serif}
       	position:absolute;
       	height:600px;
         width: 25%;
-        margin-top:25px;
+        margin-top:60px;
         padding-left:15px;   	
         float: left;
    /*      border: 1px solid #bcbcbc; */
       }
       #jb-footer {
       	width:100%;
+		height:60px;
+		clear: both;
+/* 	position:absolute;
 	height:60px;
 	clear: both;
-/* 	position:absolute;
+/*	
+ 	position:absolute;
 	bottom:0;
-	left:0; */
+	left:0;
+	*/
         /* border: 1px solid #bcbcbc; */
       }
       #jb-logo{
@@ -144,7 +150,7 @@ html,body,div{font-family: "Open Sans", sans-serif}
       	list-style-type: none;
     	margin: 0;
     	padding: 0;
-    	width: 230px;
+    	width: 100px;
     	background-color: #f1f1f1;
 	}
 
@@ -157,8 +163,8 @@ html,body,div{font-family: "Open Sans", sans-serif}
 	
 /* Change the link color on hover */
 	li a:hover {
-    	background-color: #555;
-	    color: white;
+    	background-color: #b2b2b2;
+	    
 	}
 	
 
@@ -198,32 +204,65 @@ html,body,div{font-family: "Open Sans", sans-serif}
 		 display: block;
 		 clear: both;
 		 }
-	.top li ul{background: rgb(255,240,245);
-				display:none;  /* 평상시에는 서브메뉴가 안보이게 하기 */
-				height:auto;
+ 		 
+	 .navbar li .account{background: rgb(255,240,245);
+				display:none; 
+				height:200;
 				padding:0px;
-				margin:60px;
-				margin-left:700px;
+				margin:0px;
+				margin-left:650px;
 				border:0px;
 				position:absolute;
 				width:200px;
+				z-index:500;
+				}  
+	
+				
+	.navbar li .message{background: rgb(255,240,245);
+				display:none;  /* 평상시에는 서브메뉴가 안보이게 하기 */
+				height:250px;
+				padding:0px;
+				margin:0px;
+				margin-left:0px;
+				border:0px;
+				position:absolute;
+				width:200px;
+				overflow:hidden;
 				z-index:500;}
-	.top li:hover ul{display:block;   /* 마우스 커서 올리면 서브메뉴 보이게 하기 */}
-	.badge{background-color:#000;color:#fff;display:inline-block;padding-left:6px;padding-right:5px;text-align:center; margin-left:5px; margin-top:0px; padding-top:0px;
+				
+	.navbar li:hover ul{display:block;   /* 마우스 커서 올리면 서브메뉴 보이게 하기 */}
+	.navbar li a:hover{display:block;   /* 마우스 커서 올리면 서브메뉴 보이게 하기 */}
+	
+	.badge{background-color:#000;color:#fff;display:inline-block;padding-left:5px;padding-right:5px;text-align:center; margin:0px 0px 0px 5px; 
 			border-radius:70%;}
-	.right{float:right}
+	.right{float:right; margin-right:250px;}
 	.green{background-color:#4CAF50!important}
 		
+	#a:link {text-decoration: none; color: #f9ffff;}
+	#a:visited {text-decoration: none; color: #f9ffff;}
+	#a:active {text-decoration: none; color: #f9ffff;}
+	#a:hover {text-decoration: underline; color: #b2b2b2;}
+	
+
     </style>
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
     <script>
+    
+    /*
+    	conphoto 는 contentInputForm.jsp 파일 안에 있는 파일 업로드 부분
+    	이곳이 변경되면, 파일을 읽어 들이는 함수 동작
+    */
     $(function() {
         $("#conphoto").on('change', function(){
              readURL(this); 
         });
     });
 
-    
+    /*
+    	사진 미리 보기 부분
+    	자바스립트의 FileReader() 를 통해 임시 경로에 사진을 업로드 함.
+    	또한 attr 을 통해 사진의 크기를 강제로 조정함.
+    */
      function readURL(input) {
         if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -300,31 +339,72 @@ html,body,div{font-family: "Open Sans", sans-serif}
 	} 
 	
 
+	$(document).ready(function(){
+		if ($('#jb-content').outerHeight(true) < 1000){
+			$("#jb-content").attr("height" , "1000px");
+		}
+	     /* alert($('#jb-content').outerHeight(true)); */ 
+	   // alert(document.getElementById("main").currentStyle.width);
+	});
+	/* $(window).load(function(){
+	    alert($('#jb-content').attr('height'));
+	}); */
+	
 
     </script> 
-     <script type="text/javascript">
+
+<!--      <script type="text/javascript">
          $(function(){
 	     $(".sm").hide();
-		 $(".small").hover(function(){
-		    $(".small:not(:animated)",this).slideDown("fast");
-			},
+	     /*
+	     	hover 이벤트
+	     	mouseover 와 mouseout 시의 이벤트 정의
+	     	첫번째는 mouseover, 두번째는 mouseout
+	     	또한 slideDown과 slideUp은 toggle로 대체 가능
+	     	$(".small").slideToggle("fast");
+	     	콜백함수의 조건절 없이 하나의 콜백함수로 표현가능
+	     	
+	     */
+		 $(".small").hover(
+			function(){ 
+				$(".small:not(:animated)",this).slideDown("fast");},
 			function(){
-			   $(".small",this).slideUp("fast");
+			   	$(".small",this).slideUp("fast");
 			});
       });	
-   </script>
+   </script> -->
 
   </head>
   <body style="background-color:#f5f7f8">
 
 <!-- navbar -->
-<div class="top">
- <ul class="navbar color1 left-align large">
 
+<div>
+ <ul class="navbar color1">
+  <li class="small"><a href="Board.hash" class="padding-large margin-right"><b>I N T E R H A S H #</b></a></li>
+  <li class="small"><a href="messageView.hash" class="padding-large margin-right" title="Messages"><i class ="fa fa-envelope"></i><span class="badge right small green">${messagecount}</span> </a>
+   <ul class="message">
+   <table><tr><td>쪽지</td><td class="w3-right"><a href="MessageForm.hash">쪽지보내기</a></td></tr>
+   			<tr class="left-align"><td colspan="2"><c:forEach var="message" items="${mesagelist}" begin="0" end="2">
+			<li><a href="messageView.hash?messageNum=${message.messageNum}"><img src="image/logo/img_avatar5.png" class="left-align circle " width="15%" height="15%">${message.sendNickname} ${message.messageContent}</a></li>
+			</c:forEach>
+			</td></tr>
+			
+			<tr><Td colspan="2"><a href="#"><hr>모든 쪽지 보기</a></Td></tr>
+	</table>
+	</ul>
+  </li> 
+  <li class="small"><a href="#" class="margin-right padding-large left-align" title="Alarm"><i class="fa fa-bell"></i></a></li>
 
-  <li class="small"><a href="Board.hash" class="padding-large color2 margin-right"><img src = "image/logo/interHash.png" width="100" height="25"></a></li>
-  <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Messages"><i class ="fa fa-envelope"></i><span class="badge right small green">3</span> </a></li> 
-  <li class="small"><a href="#" class="padding-large hover-white margin-right" title="Alarm"><i class="fa fa-bell"></i></a></li>
+	<li class="small right"><a href="#"  class="padding-large" title="MyAccount"><img src="image/logo/사람.PNG" class="circle" width="30%" height="30%">${nickName}님</a>
+ 	
+ 		<ul class="account">
+			<li><a href="UserInfoModifyForm.hash">회원정보수정</a></li>
+			<li><a href="#">프로필수정</a></li>
+			<li><a href="LogOut.hash">로그아웃</a></li>
+		</ul> 
+		
+	</li>
 
       	<div id="jb_search">
       		<form method="post" action="Board.hash">
@@ -332,21 +412,10 @@ html,body,div{font-family: "Open Sans", sans-serif}
       			<input type="submit" value="검색"/>
       		</form>
       	</div>
- 
 
-  <li class="small">
-     <a href="#" class="padding-large account-right" title="MyAccount"><img src = "image/logo/i.PNG" width="30" height="30">${nickName}님</a>
- 		 <ul>
-			<li><a href="UserInfoModifyForm.hash">회원정보수정</a></li>
-			<li><a href="#">프로필수정</a></li>
-			<li><a href="LogOut.hash">로그아웃</a></li>
-		</ul> 
-  </li>
- 
-		
-      	<div id="jb-logon">
-      		<form>
-      			<!-- <input type = "text"><br>
+</ul>
+</div>
+	      			<!-- <input type = "text"><br>
       			<input type = "password"><br>
       			<input type = "button" value="회원가입"><input type="submit" value="로그인">
       			<input type="button" value="정보수정" onclick="window.location.href='UserInfoModifyForm.hash';"> -->
@@ -367,46 +436,41 @@ html,body,div{font-family: "Open Sans", sans-serif}
       			</c:if>
 					
 				</table> --%>
-				
-      		</form>
-      	</div> 
-      	</ul>
-      	<br>
-      </div>
-      
+
+    <br>
+
       
       <!-- main -->
    <div id = "main">
       
       <div id="jb-content"> 
-       <decorator:body/> 
-       
-     
+       <decorator:body/>      
       </div>
       
       <div id="jb-sidebar">
+      
       <!-- Profile -->
        <div class="box-shadow border-round white">
         <div class="container">
          <h4 class="center">My Profile</h4>
          <p class="center"><img src="image/logo/사람.PNG"  style="height:106px;width:106px" alt="Avatar"></p>
         <hr color="#eee">
-         <p><i class="fa fa-pencil fa-fw margin-right text-theme"></i> Designer, UI</p>
+         <p><i class="fa fa-pencil fa-fw margin-right text-theme"></i> ${memberinfo.nickname}</p>
          <p><i class="fa fa-home fa-fw margin-right text-theme"></i> London, UK</p>
-         <p><i class="fa fa-birthday-cake fa-fw margin-right text-theme"></i> April 1, 1988</p>
+         <p><i class="fa fa-birthday-cake fa-fw margin-right text-theme"></i>${memberinfo.birthday}</p>      
         </div>
       </div>
       <br>
       
       <!-- menu -->
       <div class="box-shadow border-round">
-        <div class="accordion white">
-          <button onclick="myFunction();" class="btn-block theme-l1 left-align"><i class="fa fa-circle-o-notch fa-fw margin-right"></i> 내 글 보기</button>     
+        <div class="accordion white border-round">
+          <button onclick="myFunction();" class="btn-block theme-l1 left-align border-round"><i class="fa fa-circle-o-notch fa-fw margin-right"></i> 내 글 보기</button>     
           <button onclick="myFunction();" class="btn-block theme-l1 left-align"><i class="fa fa-calendar-check-o fa-fw margin-right"></i> 최신 글 보기</button>     
-          <button onclick="myFunction();" class="btn-block theme-l1 left-align"><i class="fa fa-users fa-fw margin-right"></i> 인기 글 보기</button>
+          <button onclick="myFunction();" class="btn-block theme-l1 left-align border-round"><i class="fa fa-users fa-fw margin-right"></i> 인기 글 보기</button>
         <script>
         	function myFunction(){
-        		alert("버튼1을 누르셨습니다.");
+        		alert("버튼을 누르셨습니다.");
         	}
         </script>
         </div>      
@@ -416,11 +480,11 @@ html,body,div{font-family: "Open Sans", sans-serif}
       <!-- Interests --> 
       <div class="box-shadow border-round white small">
         <div class="container1">
-          <p>Interests</p>
+          <p><b>Interests</b> <input type="button" onclick="javascript:window.location='ModifyHash.hash'" value="hashtag 수정"></p>
           <p>
-          <%--  <ul>
-        	<c:forEach var="tagname" items="${memberHash}">
-       		 <li><a href="Board.hash?hash=${tagname}">#${tagname}</a></li>
+            
+        	<c:forEach var="tagname" items="${hashlist}">
+       		
          	 <!-- <li><a href='Board.hash?hash=사랑'>#사랑</a></li>
           	<li><a href="Board.hash?hash=돈">#돈</a></li>
           	<li><a href="Board.hash?hash=컴퓨터">#컴퓨터</a></li>
@@ -428,34 +492,18 @@ html,body,div{font-family: "Open Sans", sans-serif}
           	<li><a href="Board.hash?hash=책">#책</a></li>
           	<li><a href="Board.hash?hash=반려동물">#반려동물</a></li>
           	<li><a href="Board.hash?hash=독도">#독도</a></li>
-          	<li><a href="Board.hash?hash=맥주">#맥주</a></li> -->
-          	</c:forEach>
-        	</ul> --%>
-            <span class="tag font-small w3-theme-d5">News</span>
-            <span class="tag font-small w3-theme-d4">W3Schools</span>
-            <span class="tag font-small w3-theme-d3">Labels</span>
-            <span class="tag font-small w3-theme-d2">Games</span>
-            <span class="tag font-small w3-theme-d1">Friends</span>
-            <span class="tag font-small w3-theme">Games</span>
-            <span class="tag font-small w3-theme-l1">Friends</span>
-            <span class="tag font-small w3-theme-l2">Food</span>
-            <span class="tag font-small w3-theme-l3">Design</span>
-            <span class="tag font-small w3-theme-l4">Art</span>
-            <span class="tag font-small w3-theme-l5">Photos</span>
+          	<li><a href="Board.hash?hash=맥주">#맥주</a></li> -->   
+            <span class="tag font-small w3-theme-d1 border-round">
+            <a id ="a" href="Board.hash?hash=${tagname}">#${tagname}</a></span>        
+            </c:forEach>            
           </p>
         </div>
       </div>
       <br>
       
     </div>
-    
-
-
    </div>
-      
-
-
-       <div id="jb-footer" class=" w3-theme-d3">
+       <div id="jb-footer" class="w3-theme-d3">
         <p>Copyright</p>
       </div> 
 
