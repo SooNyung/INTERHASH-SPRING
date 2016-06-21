@@ -6,7 +6,7 @@ public class MemberCommand {
 	private String email;
 	private String nickname;
 	private String passwd;
-	private String hash1;
+	private String hash;
 	private String birthday;
 	private Timestamp createddate;
 	private Timestamp modifieddate;
@@ -46,10 +46,10 @@ public class MemberCommand {
 		this.passwd = passwd;
 	}
 	public String getHash() {
-		return hash1;
+		return hash;
 	}
-	public void setHash(String hash1) {
-		this.hash1 = hash1;
+	public void setHash(String hash) {
+		this.hash = hash;
 	}
 	public Timestamp getModifieddate() {
 		return modifieddate;
