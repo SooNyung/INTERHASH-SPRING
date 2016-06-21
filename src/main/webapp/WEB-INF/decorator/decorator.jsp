@@ -13,7 +13,7 @@
 
 <style>
 
-html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open Sans", sans-serif;}
+html,body{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open Sans", sans-serif;}
 body{padding:0px;margin:0px;width:100%;height:100%;}
 
 </style>
@@ -75,8 +75,9 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 }
 
 .padding {
-	margin-top: 50px;
-	margin-left: 30px;
+	margin-top: 0px;
+	margin-left: 0px;
+	padding:0px;
 }
 
 .account-right {
@@ -176,14 +177,15 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 }
 
 .border-round {
-	border-radius: 5px !important
+	border-radius: 7px !important
 }
 
 .container {
 	content: "";
 	display: table;
 	clear: both;
-	padding: 0.01em 16px;
+	padding: 0px 16px;
+	margin:0px;
 	margin-left: 0px;
 	width: 270px;
 }
@@ -248,8 +250,8 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 
 .tag {
 	display: inline-block;
-	padding-left: 8px;
-	padding-right: 8px;
+	padding-left:1px;
+	padding-right: 1px;
 	text-align: center;
 	margin: 0px 10px 10px 0px;
 }
@@ -290,13 +292,7 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 }
 #main {
 	width: 100%;
-}
-
-#jb-container {
-	width: 2000px;
-	padding-left: 0px;
-	float: left;
-	/* border: 1px solid #bcbcbc; */
+	margin:0px;
 }
 
 #jb-header {
@@ -306,34 +302,36 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 
 	/*  border: 1px solid #bcbcbc; */
 }
-
 #jb_search {
-	position: absolute;
-	margin-top: 20px;
-	margin-left: 1000px;
-	float: left;
+	margin-top: 15px;
+	margin-right: 100px;
+	float: right;
 	width: 250px;
 	height: auto;
 	/* 	border:1px solid #bcbcbc; */
 }
 
-#jb-content {
-	width: 50%;
-	padding: auto;
-	margin-bottom: 50px;
-	margin-top: 50px;
-	float: right;
-	/* border: 1px solid #bcbcbc; */
-}
 #jb-right{
 	width:25%;
 	height:100%;
+	float:right;
 }
+
+#jb-content{
+	width: 50%;
+	height:100%;
+	margin-top: 10px auto;
+	overflow:hidden;	
+	margin-left:375px;
+	
+}
+
 #jb-sidebar {
 	position: absolute;
-	height: 600px;
+	height: 100%;
 	width: 25%;
-	margin-top: 60px;
+	margin: 10px;
+	padding:0px;
 	padding-left: 15px;
 	float: left;
 	/*      border: 1px solid #bcbcbc; */
@@ -344,45 +342,7 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 	height: 60px;
 	clear: both;
       }
-      
-      #jb-header {
-        padding: 20px;
-        height: 120px;
-        margin-bottom: 20px;
-        
-       /*  border: 1px solid #bcbcbc; */
-      }
-      #jb_search{
-      	position:absolute;
-      	margin-top:20px;
-      	margin-left:1000px;
-      	float:left;
-      	width: 250px;
-      	height:auto;
-      /* 	border:1px solid #bcbcbc; */
-      }
-       #jb-content {
-        width: 50%;
-        padding: 0px;
-        margin-left:350px;
-        margin-bottom: 50px;
-        margin-top:50px;
-        float: left;
-        /* border: 1px solid #bcbcbc; */
-      } 
-      #jb-sidebar {
-      	position:absolute;
-      	height:600px;
-        width: 25%;
-        margin-top:60px;
-        padding-left:15px;   	
-        float: left;
-   /*      border: 1px solid #bcbcbc; */
-      }
-      #jb-footer {
-      	width:100%;
-		height:60px;
-		clear: both;
+   
 /* 	position:absolute;
 	height:60px;
 	clear: both;
@@ -464,20 +424,9 @@ ul.menu:after {
 	clear: both;
 }
 
-/* .navbar li .account {
-	background: rgb(255, 240, 245);
-	display: none;
-	height: 200;
-	padding: 0px;
-	margin: 0px;
-	margin-left: 650px;
-	border: 0px;
-	position: absolute;
-	width: 200px;
-	z-index: 500;
-} */
+.navbar li .account{display:none;}
 
-.navbar li .message {
+.navbar li .sub {
 	background: rgb(255, 240, 245);
 	display: none; /* 평상시에는 서브메뉴가 안보이게 하기 */
 	height: 250px;
@@ -491,32 +440,24 @@ ul.menu:after {
 	z-index: 500;
 }
 
-.navbar li:hover ul {
+/* .navbar li:hover ul {
 	display: block; /* 마우스 커서 올리면 서브메뉴 보이게 하기 */
 }
-
-.navbar li a:hover {
-	display: block; /* 마우스 커서 올리면 서브메뉴 보이게 하기 */
-}
+ */
 
 .badge {
-	background-color: #000;
-	color: #fff;
-	display: inline-block;
-	padding-left: 5px;
-	padding-right: 5px;
+	color: #b2b2b2;
+	margin-top:0px;
 	text-align: center;
-	margin: 0px 0px 0px 5px;
-	border-radius: 70%;
+	border-radius: 50%;
 }
 
 .right {
 	float: right;
-	margin-right: 250px;
 }
 
-.green {
-	background-color: #4CAF50 !important
+.pink {
+	background-color: #ff6088 !important
 }
 
 #a:link {
@@ -540,6 +481,8 @@ ul.menu:after {
 	border-radius:7px;
 	background-color:#ff6088;
 }
+#up{width:90%; height:300px; margin-top:10px; padding:10px 0px 20px 0px;}
+#down{width:90%; height:400px; padding:10px 0px 20px 0px;}
 
 /* -----------------------------해시태그버튼 css---------------------------------- */
 .button {
@@ -730,7 +673,7 @@ ul.menu:after {
 
 
 	$(document).ready(function() {
-		if ($('#jb-content').outerHeight(true) < 900) {
+		if ($('#jb-content').outerHeight(true) < 500) {
 			$("#jb-content").attr("height", "1000px");
 		}else{
 			var g = $('#jb-content').outerHeight(true);
@@ -740,6 +683,32 @@ ul.menu:after {
 		/* alert($('#jb-content').outerHeight(true)); */
 		// alert(document.getElementById("main").currentStyle.width);
 	});
+	
+	
+	$(document).ready(function(){  
+		   
+		  $(".topnav").hover(function() {                    //마우스를 topnav에 오버시
+		   $(this).parent().find(".account").slideDown('normal').show();                   //subnav가 내려옴.
+		   $(this).parent().hover(function() {  
+		   }, function(){  
+		    $(this).parent().find(".account").slideUp('fast');                 //subnav에서 마우스 벗어났을 시 원위치시킴  
+		   });  
+		  });  
+		   
+		 });  
+	
+
+	$(document).ready(function(){  
+		   
+		  $(".message").hover(function() {                    //마우스를 topnav에 오버시
+		   $(this).parent().find(".sub").slideDown('normal').show();                   //subnav가 내려옴.
+		   $(this).parent().hover(function() {  
+		   }, function(){  
+		    $(this).parent().find(".sub").slideUp('fast');                 //subnav에서 마우스 벗어났을 시 원위치시킴  
+		   });  
+		  });  
+		   
+		 }); 
 	/* $(window).load(function(){
 	    alert($('#jb-content').attr('height'));
 	}); */
@@ -775,11 +744,14 @@ ul.menu:after {
 		<ul class="navbar color1">
 			<li class="small"><a href="Board.hash"
 				class="padding-large margin-right"><b>I N T E R H A S H #</b></a></li>
-			<li class="small"><a href="messageView.hash"
-				class="padding-large margin-right" title="Messages"><i
-					class="fa fa-envelope"></i><span class="badge right small green">${messagecount}</span>
+			<li class="small">
+			<div class="message">
+			<a href="messageView.hash" class="padding-large margin-right" title="Messages">
+				<i class="fa fa-envelope"></i><span class="badge right small pink">${messagecount}</span>
 			</a>
-				<ul class="message">
+			</div>
+			
+				<ul class="sub">
 					<table>
 						<tr>
 							<td>쪽지</td>
@@ -805,10 +777,10 @@ ul.menu:after {
 				class="margin-right padding-large left-align" title="Alarm"><i
 					class="fa fa-bell"></i></a></li>
 
-			<li class="small right"><a href="#" class="padding-large"
+			<li class="small right">
+			<div class="topnav">	<a href="#" class="padding-large"
 				title="MyAccount"><img src="image/logo/사람.PNG" class="circle"
-					width="30%" height="30%">${nickName}님</a>
-
+					width="30%" height="30%">${nickName}님</a></div>
 				<ul class="account">
 					<li><a href="UserInfoModifyForm.hash">회원정보수정</a></li>
 					<li><a href="#">프로필수정</a></li>
@@ -847,15 +819,12 @@ ul.menu:after {
 					
 				</table> --%>
 
-	<br>
-
-
 	<!-- main -->
 	<div id="main">
 		<div id="jb-sidebar">
 
 			<!-- Profile -->
-			<div class="box-shadow border-round white">
+			<div class="box-shadow border-round white padding">
 				<div class="container">
 					<h4 class="center">My Profile</h4>
 					<p class="center">
@@ -925,15 +894,21 @@ ul.menu:after {
           </p>
         </div>
       </div>
-      <br>
-      
+         
     </div>
-    <div id="jb-content">
-			<decorator:body />
-	</div>
-	<div id="jb-right">
-		
-	</div>	
+  
+     
+   <div id="jb-right">
+   	<div id ="up" class="box-shadow border-round white padding">인기글</div>
+   	<br>
+	<div id ="down"  class="box-shadow border-round white padding">채팅창</div>
+   </div>
+  
+   <div id="jb-content">
+   <decorator:body/> 
+   </div>
+
+   	
    </div>
        <div id="jb-footer" class="w3-theme-d3">
         <p>Copyright</p>
