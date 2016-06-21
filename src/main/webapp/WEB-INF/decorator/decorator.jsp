@@ -334,9 +334,14 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
 	}
 
 	function Message(){
-	url="MessageForm.hash?check=y";
-	window.open(url,"post","toolbar=no ,width=400 ,height=150,directories=no,status=yes,menubar=no,scrollbars=no");
-	} 
+		url="MessageForm.hash?check=y";
+		window.open(url,"post","toolbar=no ,width=400 ,height=350,directories=no,status=yes,menubar=no,scrollbars=no");
+		} 
+	
+	function MessageList(){
+		url="MessageList.hash?check=y";
+		window.open(url,"post","toolbar=no ,width=400 ,height=350,directories=no,status=yes,menubar=no,scrollbars=no");
+		} 
 	
 
 	$(document).ready(function(){
@@ -384,12 +389,12 @@ html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open
   <li class="small"><a href="Board.hash" class="padding-large margin-right"><b>I N T E R H A S H #</b></a></li>
   <li class="small"><a href="messageView.hash" class="padding-large hover-white margin-right" title="Messages"><i class ="fa fa-envelope" width="50px" height="50px"></i><span class="badge right small green">${messagecount}</span> </a>
    <ul class="message">
-   <table><tr><td>쪽지</td><td class="w3-right"><a href="MessageForm.hash">쪽지보내기</a></td></tr>
+   <table><tr><td>쪽지</td><td class="w3-right"><a href="#" onclick="Message()">쪽지보내기</a></td></tr>
    			<tr><td colspan="2"><c:forEach var="message" items="${mesagelist}" begin="0" end="2">
-			<li><a href="messageView.hash?messageNum=${message.messageNum}"><img src="image/logo/img_avatar5.png" class="left-align circle " width="15%" height="15%">${message.sendNickname} ${message.messageContent}</a></li>
+			<li><a href="MessageView.hash?messageNum=${message.messageNum}"><img src="image/logo/img_avatar5.png" class="left-align circle " width="15%" height="15%">${message.sendNickname} ${message.messageContent}</a></li>
 			</c:forEach>
 			</td></tr>
-			<tr><Td colspan="2"><a href="#">모든 쪽지 보기</a></Td></tr>
+			<tr><Td colspan="2"><a href="#" onclick="MessageList()">모든 쪽지 보기</a></Td></tr>
 	</table>
 	</ul>
   </li> 
