@@ -12,10 +12,15 @@
 	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
 <style>
+<<<<<<< HEAD
+html,body,div{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open Sans", sans-serif;}
+body{padding:0px;margin:0px;width:100%;height:100%;}
+=======
 html, body, div {
 	font-family: "Open Sans", sans-serif;
 	font: 400 0.875rem/1.5 "Open Sans", sans-serif;
 }
+>>>>>>> d68d2abd7f87e8a3b74d7d700ab116c355ddc56a
 </style>
 <head>
 <<<<<<< HEAD
@@ -387,7 +392,7 @@ html, body, div {
 	  .dropdown-hover{display:inline-block;cursor:pointer}
       .white{color:#000!important;background-color:#fff!important;}
       .box-shadow{box-shadow:0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)!important;margin-top:0px;}
-      .border-round{border-radius:5px!important}
+      .border-round{border-radius:7px!important}
       .container{content:"";display:table;clear:both;padding:0.01em 16px; margin-left:0px;width:270px;}
       .container1{content:"";display:table;clear:both;padding:0.01em 16px; margin-left:0px; width:320px;}
       .center{text-align:center}
@@ -399,7 +404,8 @@ html, body, div {
 		width:100%;}
 	  .theme-l1{color:#fff !important; background-color:#FFCCCC !important}
 	  .left-align{text-align:left}
-      .tag{display:inline-block; padding-left:8px; padding-right:8px; text-align:center; margin:0px 10px 10px 0px;}
+      .tag{display:inline-block; padding-left:1px; padding-right:1px; text-align:center; margin:0px 10px 10px 0px;}
+      
       .font-small{font-size:20px}
 	  .border{border:1px solid #ccc!important}
       .theme-border {border-color:#607d8b !important}
@@ -760,7 +766,7 @@ ul.menu:after {
 		 clear: both;
 		 }
  		 
- 	 .navbar li .account{background: rgb(255,240,245);
+ /* 	 .navbar li .account{background: rgb(255,240,245);
 				display:none; 
 				height:200;
 				padding:0px;
@@ -770,7 +776,7 @@ ul.menu:after {
 				position:absolute;
 				width:200px;
 				z-index:500;
-				}   
+				}   */ 
 	
 				
 	.navbar li .message{background: rgb(255,240,245);
@@ -796,8 +802,7 @@ ul.menu:after {
 	#a:link {text-decoration: none; color: #f9ffff;}
 	#a:visited {text-decoration: none; color: #f9ffff;}
 	#a:active {text-decoration: none; color: #f9ffff;}
-	#a:hover {text-decoration: underline; color: #b2b2b2;}
-	
+	#a:hover {text-decoration: none; color: #f9ffff; background-color:#ff6088; border-radius:7px;} 
 
     </style>
 
@@ -1155,6 +1160,22 @@ ul.menu:after {
           	<li><a href="Board.hash?hash=책">#책</a></li>
           	<li><a href="Board.hash?hash=반려동물">#반려동물</a></li>
           	<li><a href="Board.hash?hash=독도">#독도</a></li>
+<<<<<<< HEAD
+          	<li><a href="Board.hash?hash=맥주">#맥주</a></li> -->   
+            <span class="tag font-small w3-theme-d1 border-round">
+            <a id ="a" href="Board.hash?hash=${tagname}" >#${tagname}</a></span>    
+            </c:forEach>            
+          </p>
+        </div>
+      </div>
+      <br>
+      
+    </div>
+   </div>
+       <div id="jb-footer" class="w3-theme-d3">
+        <p>Copyright</p>
+      </div> 
+=======
           	<li><a href="Board.hash?hash=맥주">#맥주</a></li> -->
 							<span class="tag font-small w3-theme-d1 border-round"> <a
 								id="a" href="Board.hash?hash=${tagname}">#${tagname}</a></span>
@@ -1163,6 +1184,7 @@ ul.menu:after {
 				</div>
 			</div>
 			<br>
+>>>>>>> d68d2abd7f87e8a3b74d7d700ab116c355ddc56a
 
 		</div>
 	</div>
