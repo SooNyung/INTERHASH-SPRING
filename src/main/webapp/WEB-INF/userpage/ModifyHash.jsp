@@ -62,14 +62,14 @@ input[type="submit"] {
 	border-radius: 0.25rem;
 	margin-left:110px;
 	padding: 1rem;
-	background-color: #ea4c88;
+	background-color: #FF6088;
 	color: #eee;
 	font-weight: bold;
 	text-transform: uppercase;
 }
 
 input[type="submit"]:focus, input[type="submit"]:hover {
-	background-color: #d44179;
+	background-color: #E84D5B;
 }
 
 .site__container {
@@ -97,8 +97,8 @@ input {
 
 .grid__container {
 	margin: 0 auto;
-	max-width: 25rem;
-	width: 90%;
+	max-width: 50rem;
+	width: 470px;
 }
 
 label {
@@ -116,13 +116,13 @@ label {
 }
 
 label:focus, label:hover {
-	background-color: #ea4c88;
+	background-color: #FF6088;
 	color: #eee;
 	font-weight: bold;
 }
 
 :checked+label {
-	background-color: #ea4c88;
+	background-color: #FF6088;
 	color: #eee;
 	font-weight: bold;
 }
@@ -195,6 +195,8 @@ window.onload=function checkHash(){
 				<label for="dmadkr">#음악</label>
 				<input type="checkbox" name="hash" id="ck" value="차" style="display:none">
 				<label for="ck">#차</label>
+				<input type="checkbox" name="hash" id="Rna" value="꿈" style="display:none">
+				<label for="Rna">#꿈</label>
 			
 				
 			</div>

@@ -7,8 +7,8 @@
 <script>
 
 function ReMessage(sendEmail,sendNick){
-	url="ReMessageForm.hash?check=y&sendEmail="+sendEmail+"&sendNickname="+sendNick;
-	open(url);
+/* 	url="ReMessageForm.hash?check=y&sendEmail="+sendEmail+"&sendNickname="+sendNick; */
+	location.href = "ReMessageForm.hash?check=y&sendEmail="+sendEmail+"&sendNickname="+sendNick;
 	/* +"&sendNickname="+sendNick; */
 	/* url="ReMessage.hash?sendEmail=sender&sendNickname=senderNick"; */
 }
