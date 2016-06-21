@@ -34,6 +34,9 @@
 	<delete id="deleteContent" parameterType="int">
 		delete from contents where connum = #{connum}
 	</delete>
+	<update id = "modifyContent" parameterType="spring.model.ContentCommand">
+	
+	</update>
 	
 </mapper>
 

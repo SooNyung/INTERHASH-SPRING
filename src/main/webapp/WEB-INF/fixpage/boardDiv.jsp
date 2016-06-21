@@ -88,6 +88,11 @@ function tagCheck() {
 	url = "TagCheck.hash?check=y";
 	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 }
+function like(num){
+	
+	url = "LikeCheck.hash?connum="+num;
+	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+}
 </script>
 <style type="text/css">
 	.background-color{color:#000 !important; background-color:#f5f7f8 !important}
@@ -387,7 +392,7 @@ $(function(){
     
     <p>#${con.conhash}</p>
 	</div>
-    <button type="button" class="w3-btn w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
+    <button type="button" class="w3-btn w3-theme-d1 w3-margin-bottom" onclick="javascript:like('${con.connum}')"><i class="fa fa-thumbs-up"></i>  Like</button> 
     <button type="button" class="w3-btn w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
 
 	<%-- <div id="board_img">

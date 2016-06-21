@@ -105,7 +105,7 @@ public class MemberController {
 	@RequestMapping("/ModifyHashPro.hash")
 	public String ModifyHashPro(@ModelAttribute("command")MemberCommand command, @RequestParam("hash") String[] hash){
 		command.setHash(Arrays.toString(hash));
-		System.out.println("hash태그 :: " + Arrays.toString(hash));
+		System.out.println("hash태그 :: " + command.getHash());
 		int a = dao.modifyHash(command);
 		System.out.println("해시태그 수정완료? " + a);
 		System.out.println("여기두오겠지?");

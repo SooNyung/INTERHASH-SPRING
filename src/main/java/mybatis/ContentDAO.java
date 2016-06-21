@@ -72,7 +72,9 @@ public class ContentDAO {
 		System.out.println("result :::::" + result);
 		return result;
 	}
-
+	public int modifyContent(ContentCommand command){
+		return session.update("writecontent.modifyContent",command);
+	}
 /*	public ContentCommand getContent(int connum) throws Exception {
 		ContentCommand content = null;
 		

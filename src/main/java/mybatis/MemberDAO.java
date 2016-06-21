@@ -30,13 +30,13 @@ public class MemberDAO {
 	public int modifyPro(MemberCommand command) {
 		return session.update("member.updateMember", command);
 	}
-	
-	public int modifyHash(MemberCommand command) {
-		return session.update("member.updateHash", command);
-	}
 
 	public int deleteMember(String email) {
 		return session.delete("member.delete", email);
+	}
+
+	public int modifyHash(MemberCommand command) {
+		return session.update("member.updateHash", command);
 	}
 
 	public String checkDelete(String email) {
@@ -64,9 +64,10 @@ public class MemberDAO {
 		return session.selectOne("member.findEmail", info);
 	}
 
-	public List emailList() {
+	public List<MemberCommand> emailList() {
 		return session.selectList("member.emailList");
 	}
+
 
 	public List<String> selectEmail() {
 		return session.selectList("member.selectEmail");
