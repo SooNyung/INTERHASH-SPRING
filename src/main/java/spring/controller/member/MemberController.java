@@ -103,14 +103,11 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/ModifyHashPro.hash")
-	public String ModifyHashPro(HttpSession session, @RequestParam("hash") String[] hash){
-		MemberCommand command = new MemberCommand();
+	public String ModifyHashPro(@ModelAttribute("command")MemberCommand command, @RequestParam("hash") String[] hash){
 		command.setHash(Arrays.toString(hash));
-		command.setEmail((String)session.getAttribute("memId"));
-		System.out.println("hash태그 :: " + command.getHash());
+		System.out.println("hash태그 :: " + Arrays.toString(hash));
 		int a = dao.modifyHash(command);
 		System.out.println("해시태그 수정완료? " + a);
-		System.out.println("여기두오겠지?");
 		return "userpage/ModifyHashPro";
 	}
 
