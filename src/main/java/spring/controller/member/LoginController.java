@@ -43,19 +43,15 @@ public class LoginController {
 	@RequestMapping("/LoginPro.hash")
 	private ModelAndView login(@ModelAttribute("userinput")MemberCommand info,  HttpSession session) {
 		ModelAndView mv = new ModelAndView("redirect:Board.hash");
-		// result가 1이면 로그인 성공 0이면 실패
-
-		System.out.println("passwd :: "+ info.getPasswd()+" email "+info.getEmail());
-
+		
 		int result = dao.login(info);
 
 		String nick = dao.nick(info) ;
 
-		System.out.println("dao.nick(info) ::: " + nick);
-
-		System.out.println("dao.login(info) :: " + result);
-
-		//if(result != null && result.equals(info.getPasswd()) )
+		//System.out.println("dao.nick(info) ::: " + nick);
+		//System.out.println("dao.login(info) :: " + result);
+		
+		// result가 1이면 로그인 성공 0이면 실패
 		if(result == 1)
 		{
 			session.setAttribute("memId", info.getEmail());
@@ -67,51 +63,25 @@ public class LoginController {
 		else
 		{
 			session.setAttribute("memId", null);
-			//	session.setAttribute("passwd", null);
+			session.setAttribute("passwd", null);
+			session.setAttribute("nickName", null);
 
 			System.out.println("로그인 실패");
-
-			//mv.setViewName("userpage/LoginFail");
 			mv.setViewName("redirect:LoginFailPro.hash");
-
 			return mv;
 		}
 	}
-			
-
-	// 새창에서 로그인 동작?
-	@RequestMapping(value = "/LoginPro.hash", method = RequestMethod.GET)
-	private String login1(MemberCommand info, HttpSession session) {
-
-		return "userpage/LoginMain";
-
-		/*
-		 * System.out.println("login1 :: info.getEmail() :: "+info.getEmail());
-		 * 
-		 * int result = dao.login(info);
-		 * 
-		 * if(result==1) { session.setAttribute("memId", info.getEmail());
-		 * return "login/LoginMain"; } else { session.setAttribute("memId",
-		 * null); return "login/LoginFail"; }
-		 */
-	}
-
+	
 	// 로그인실패
 	@RequestMapping("LoginFailPro.hash")
 	private String intpu() {
 		return "main";
 	}
-
-	// 로그인 새창띄우기
-	@RequestMapping("LoginNew.hash")
-	private String input() {
-		return "userpage/LoginNew";
-	}
-
+	
 	// 로그아웃
 	@RequestMapping("/LogOut.hash")
 	private ModelAndView logout(HttpSession session) {
-		ModelAndView mv = new ModelAndView("main"); // ("TEST");
+		ModelAndView mv = new ModelAndView("main");
 		session.setAttribute("memId", null);
 		session.setAttribute("password", null);
 		session.setAttribute("nickName",null);
@@ -189,11 +159,8 @@ public class LoginController {
 
 		Properties props = new Properties();
 		
-		//props.put("mail.smtp.user","emailtestt90@gmail.com"); 
-		//props.put("mail.smtp.password","emailtest123");
 		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.port", "456");
-		//props.put("mail.debug", "true");
 		props.put("mail.smtp.auth", "true");
 		
 		props.put("mail.smtp.starttls.enable", "true");
@@ -208,7 +175,6 @@ public class LoginController {
 
 		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				//return new PasswordAuthentication(username, password);
 				return new PasswordAuthentication(username,password);
 				
 			}
@@ -217,12 +183,9 @@ public class LoginController {
 		
 		try {
 			Message message = new MimeMessage(session);
-			
 			message.setFrom(new InternetAddress(username)); //보내는 사람 Email
-			
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));// 받는 사람 Email
-			System.out.println("sendEmail() 안에 email ::: " + email);
-		
+			//System.out.println("sendEmail() 안에 email ::: " + email);
 			message.setContent("<h3>InterHash#</h3><hr/>임시 비밀번호는 "+key+" 입니다.<br>","text/html; charset=UTF-8;");//글내용을 html타입
 			message.setSubject("InterHash#의 이메일 임시 비밀번호입니다");
 			//message.setText("<html><body><a href='http://www.naver.com'>naver</a> Dear Mail Crawler," + "\n\n No spam to my email, please!</body></html>");// 내용
@@ -279,3 +242,26 @@ public class LoginController {
 		return result;
 	}
 }
+
+/*// 새창에서 로그인 동작?
+@RequestMapping(value = "/LoginPro.hash", method = RequestMethod.GET)
+private String login1(MemberCommand info, HttpSession session) {
+
+	return "userpage/LoginMain";
+
+	
+	 * System.out.println("login1 :: info.getEmail() :: "+info.getEmail());
+	 * 
+	 * int result = dao.login(info);
+	 * 
+	 * if(result==1) { session.setAttribute("memId", info.getEmail());
+	 * return "login/LoginMain"; } else { session.setAttribute("memId",
+	 * null); return "login/LoginFail"; }
+	 
+}
+
+// 로그인 새창띄우기
+@RequestMapping("LoginNew.hash")
+private String input() {
+	return "userpage/LoginNew";
+}*/

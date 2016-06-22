@@ -25,7 +25,7 @@ border:0;
 <div id="bar"><a href="#">받은쪽지  </a> | <a href="MessageForm.hash"> 쪽지쓰기</a></div><br>
 
 	<c:forEach var="list" items="${messageList}">
-	
+		<c:if test="${list!=null}">
 		<div>
 			<span><b id="fontsize">보낸사람 </b> <label id="fontsize">${list.sendNickname}(${list.sendEmail})</label></span><br> 
 			<span><b id="fontsize">받은시간 </b> <label id="fontsize">${sdf.format(list.sendDate)}</label></span><br><hr>
@@ -33,7 +33,11 @@ border:0;
 				<input type="text" id="message" value="${list.messageContent}"></a><br>
 			</span><br>
 		</div>
+		</c:if>
 		
+		<c:if test="${list==null}">
+		<div>쪽지가 없습니다.</div>
+		</c:if>
 	</c:forEach>
 
 

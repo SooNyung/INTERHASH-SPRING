@@ -15,7 +15,24 @@
 [class*="fontawesome-"]:before {
 	font-family: 'FontAwesome', sans-serif;
 }
+.box-shadow {
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+      rgba(0, 0, 0, 0.19) !important;
+   
+}
 
+
+
+.border-round {
+   border-radius: 7px !important
+}
+
+
+.white {
+   color: #000 !important;
+   background-color: #fff !important;
+   
+}
 .form__field {
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -77,7 +94,8 @@ input[type="submit"]:focus, input[type="submit"]:hover {
 	-webkit-flex: 1;
 	-ms-flex: 1;
 	flex: 1;
-	padding: 3rem 0;
+	/* padding: 3rem 0; */
+	 padding-bottom: 10px;
 }
 
 input {
@@ -98,7 +116,7 @@ input {
 .grid__container {
 	margin: 0 auto;
 	max-width: 50rem;
-	width: 470px;
+	width: 75%;
 }
 
 label {
@@ -145,7 +163,7 @@ window.onload=function checkHash(){
 
 </head>
 <body class="align">
-	<div class="site__container">
+	  <div class="site__container box-shadow border-round white">
 		<div class="grid__container">
 			<h1>Please check your HASHTAG!</h1>
 			 <form action="ModifyHashPro.hash" name="userinput" method="post" class="form form--login">

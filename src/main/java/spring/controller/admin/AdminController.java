@@ -89,9 +89,11 @@ public class AdminController {
 
 		
 		//MemberCommand bean = (MemberCommand)list.get(0);
-
+		System.out.println(dao.memberCount());
+		request.setAttribute("count", dao.memberCount());
 		request.setAttribute("array", dao.selectMember());
-
+		
+		
 		return mv;
 	}
 

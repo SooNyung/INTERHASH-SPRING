@@ -142,9 +142,11 @@ color:#5AAEFF;
 </style>
 
 <script> 
-function modifycon(connum){
-	url="/INTERHASH/UpdateContent.hash?check=y&&connum="+connum
+function up() {
+	url = "UpdateTagCheck.hash?check=y";
+	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 }
+
 
  function modify(comnum,connum){
 	url="updateCommentForm.hash?check=y&&comnum="+comnum+"&&connum="+connum;
@@ -167,15 +169,18 @@ function back(){
 	location.href ="Board.hash";
 	
 }
+
+
 </script>
 
 </head>
 <body>
+
 <div id="view_div">
 <!-- <form name="view"> -->
 
 <div id="view_left" class="box-shadow border-round white">
-	<form>
+	<form name="UpdateContent" method="post" action="ContentUpdatePro.hash">
 	<div id="left_nickndate">
 		<span id ="align_left"><b>${sessionScope.nickName}</b>님</span>
 		
@@ -185,8 +190,11 @@ function back(){
 
 	<c:if test="${sessionScope.memId==content.email}">
 	<div id="left_mod_del_rep">
-		<span id="align_right">/<a href="ContentDelete.hash?connum=${content.connum}">삭제하기</a></span>
-		<span id="align_right"><a href="ContentUpdate.hash?connum=${content.connum}">수정하기 </a></span>
+		<input type="hidden" name="connum" value="${content.connum}">
+	    <span id="align_right"><input type="button" onclick="javascript:history.go(-1)" value="닫기버튼"></span> 
+		<span id="align_right"><input type="submit" value="수정버튼">/</span>
+		
+		
 	</div>
 	</c:if>
 		
@@ -197,10 +205,10 @@ function back(){
 	</c:if>	
 	
 	<div id="content_photo" style="height:490px; overflow-x:auto">
+		<textarea name="content" rows="5" cols="52" value="${content.content}">${content.content}</textarea><br>
 
-		<label>${content.content}<br></label><br>
 
-		<label id="hash">#${content.conhash}</label><br><br>
+		<label id="hash">#${content.conhash}</label><br>
 		
 		<c:forEach var="photo" items="${content.photolist}">
 		
@@ -209,7 +217,12 @@ function back(){
 		</c:forEach>
 
 	</div>
-	
+<div>				
+					<span id="taglist" style="width: 300px; float: left;">
+					<input type="text" id="updatetag" name="updatetag" size="7" readonly>
+					<input type="button" value="Tag" onClick="up()">
+				</span>
+</div>	
 	<div id="left_good_re">
 		<label id="align_right">댓글 수: ${count}</label>
 		<!-- <label id="align_right">좋아요/</label> --> 
@@ -218,14 +231,13 @@ function back(){
 </div>
 
 <div id="view_right" class="box-shadow border-round white">
-	<input type=button class=mtf-close>
+
 	<form method=post action="InsertComment.hash">
 	<input type=hidden name=connum value="${content.connum}">
 	<input type=hidden name=comnick value="${sessionScope.nickName}">
 	<div id="right_nick">
 		<span id ="align_left"><b>${sessionScope.nickName}</b>님</span>
 		<span id="align_right"><input type="button" onclick="back()" value="닫기버튼"></span>
-		
 	</div>
 	<div id="comment_content">
 		<textarea id="comment_textarea" name="comcontent" placeholder="댓글을 입력해주세요"></textarea>
@@ -267,7 +279,6 @@ function back(){
 
 	
 </div>
-
 </div>
 
 </body>

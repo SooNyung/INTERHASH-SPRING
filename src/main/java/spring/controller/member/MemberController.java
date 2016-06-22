@@ -166,9 +166,9 @@ public class MemberController {
 	public String board(Model model,HttpSession session){
 		String email =(String)session.getAttribute("memId");
 		MemberCommand command = dao.getMemberInfo(email);
-		model.addAttribute("content", cdao.getContent());
-		model.addAttribute("memberinfo", command);
-		model.addAttribute("messagecount",mdao.getMessageCount(email));
+		session.setAttribute("content", cdao.getContent());
+		session.setAttribute("memberinfo", command);
+		session.setAttribute("messagecount",mdao.getMessageCount(email));
 		System.out.println(mdao.getMessageCount(email));
 		String hash = command.getHash();
 		hash = hash.substring(1,hash.length()-1);
@@ -177,8 +177,8 @@ public class MemberController {
 			hashlist[i] = hashlist[i].trim();
 		}
 		List<String> list = Arrays.asList(hashlist);
-		model.addAttribute("hashlist",list);
-		model.addAttribute("mesagelist",mdao.getMessageList(email));
+		session.setAttribute("hashlist",list);
+		session.setAttribute("mesagelist",mdao.getMessageList(email));
 		return "fixpage/boardDiv";
 	}
 }
