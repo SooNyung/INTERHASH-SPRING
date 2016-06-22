@@ -320,9 +320,9 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 #jb-content{
 	width: 50%;
 	height:100%;
-	margin-top: 10px auto;
+	margin: auto 100px;;
 	overflow:hidden;	
-	margin-left:375px;
+	float:right;
 	
 }
 
@@ -735,9 +735,8 @@ ul.menu:after {
       });	
    </script> -->
 
-<<<<<<< HEAD
   </head>
-  <body style="background-color:#f5f7f8">
+<%--   <body style="background-color:#f5f7f8">
 
 <!-- navbar -->
 
@@ -775,8 +774,7 @@ ul.menu:after {
 		</ul> 
 		
 	</li>
-=======
-</head>
+</head> --%>
 <body style="background-color: #f5f7f8">
 
 	<!-- navbar -->
@@ -836,7 +834,6 @@ ul.menu:after {
 
 		</ul>
 	</div>
->>>>>>> d8e7fa8de6bdf211fec52cc219310aaf77ae252a
 
 
 	      			<!-- <input type = "text"><br>
@@ -863,8 +860,8 @@ ul.menu:after {
 
 	<!-- main -->
 	<div id="main">
+	<div id=sidebar_content style="float:left; width:75%">
 		<div id="jb-sidebar">
-
 			<!-- Profile -->
 			<div class="box-shadow border-round white padding">
 				<div class="container">
@@ -938,7 +935,10 @@ ul.menu:after {
       </div>
          
     </div>
-  
+  <div id="jb-content">
+   <decorator:body/> 
+   </div>
+  </div>
      
    <div id="jb-right">
    	<div id ="up" class="box-shadow border-round white padding">인기글</div>
@@ -946,10 +946,7 @@ ul.menu:after {
 	<div id ="down"  class="box-shadow border-round white padding">채팅창</div>
    </div>
   
-   <div id="jb-content">
-   <decorator:body/> 
-   </div>
-
+   
    	
    </div>
        <div id="jb-footer" class="w3-theme-d3">
