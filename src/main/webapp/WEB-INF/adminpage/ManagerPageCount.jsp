@@ -40,7 +40,7 @@ text-align:center;
 
 <div id ="div1">
 <table border="1">
-<tr>
+<tr height="30">
 <td><b>HashTag</b></td>
 <td><b>좋아요 수</b></td>
 <td><b>게시글 수</b></td>

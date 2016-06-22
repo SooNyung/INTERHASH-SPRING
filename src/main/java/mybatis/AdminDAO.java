@@ -58,4 +58,8 @@ public class AdminDAO {
 	public List<ContentCommand> report(){
 		return session.selectList("admin.report");
 	}
+	
+	public int memberCount(){
+		return session.selectOne("member.memberCount");
+	}
 }

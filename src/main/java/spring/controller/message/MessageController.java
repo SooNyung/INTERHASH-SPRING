@@ -81,6 +81,7 @@ public class MessageController {
 		messagedto.setSendNickname(senderNick);
 
 
+
 		//메시지 보내는 쿼리 insert 
 		int result = messagedao.sendMessage(messagedto);
 		return mav;	

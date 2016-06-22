@@ -66,8 +66,10 @@ public class ContentViewAction {
 			@ModelAttribute("commentdto") CommentCommand comment, HttpServletRequest request) throws Exception {
 		ModelAndView mav = new ModelAndView("content/ContentView");
 		/*int connum = Integer.parseInt(request.getParameter("connum"));*/
-		int connum = 91;
-	
+
+		int connum = 93;
+
+		//int connum = 91;
 		SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:mm");
 		content = contentdao.getContent(connum);
 		String conhash = content.getConhash();

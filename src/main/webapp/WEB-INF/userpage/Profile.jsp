@@ -93,14 +93,14 @@ input {
 .form input[type="text"], .form input[type="submit"], .form input[type="date"] {
   width: 100%;
 }
-.form--login #pwdcheck{
+.form--login #pwdchecked{
 	font-size:13px;
 	color: red;
 	/* padding-left: 100px; */
 	width: 100%;
 }
 
-.form--login #pwdcheck2{
+.form--login #pwdchecked2{
 	font-size:13px;
 	color: green;
 	/* padding-left: 100px; */
@@ -243,7 +243,7 @@ font{
  #ra{
 	margin-right: 16%;
 } 
-:checked+label {
+:checkeded+label {
 	color: #FF6088;
 	font-weight: bold;
 }
@@ -255,13 +255,13 @@ font{
 </style>
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> 
 <script>
-window.onload=function checked(){
+window.onload=function checkeded(){
  	var rad = "${c.bloodgroups}";
 	var blood=document.getElementsByName("bloodgroups"); 
 	
  	for(i=0;i<blood.length;i++){
 		if(rad.indexOf(blood[i].value)!=-1){
-			blood[i].checked=true;
+			blood[i].checkeded=true;
 		}
 	}  
 	
@@ -277,7 +277,7 @@ window.onload=function checked(){
     <div class="grid__container">
 
 
-      <form action="profilePro.hash" name="userinput" method="post" class="form form--login" onSubmit="return checkIt()">
+      <form action="profilePro.hash" name="userinput" method="post" class="form form--login" onSubmit="return checkedIt()">
 
 		<div class="form__field">
 			<label class="fontawesome-ok" id="pu">공개</label>
@@ -287,14 +287,14 @@ window.onload=function checked(){
         <div class="form__field">
           <label class="fa fa-birthday-cake fa-fw margin-right text-theme" id="fa" for="login__username"><span class="hidden">birth</span></label>
           <label id="test2"><input id="login__username" name="birthday" type="date" value="${c.birthday}" class="form__input"></label>
-           <input type="checkbox" name="check" value="birthday" id="birthday" style="display:none">
+           <input type="checkbox" name="checked" value="birthday" id="birthday" style="display:none">
 				<label for="birthday" class="fontawesome-ok"></label>
         </div>
         
          <div class="form__field">
           <label class="fontawesome-phone" for="login__username"><span class="hidden">phone number</span></label>
           <input id="login__username" name="phone" type="text" class="form__input" placeholder="Phone number" value="${c.phone}">
-        <input type="checkbox" name="check" value="phone" id="phone" style="display:none">
+        <input type="checkbox" name="checked" value="phone" id="phone" style="display:none">
 				<label for="phone" class="fontawesome-ok"></label>
         </div>
 
@@ -302,7 +302,7 @@ window.onload=function checked(){
         <div class="form__field">
           <label class="fontawesome-home" for="login__password"><span class="hidden">Location</span></label>
           <input type="text" id="login__password" name="location" class="form__input" placeholder="Location" value="${c.location}">
-        <input type="checkbox" name="check" value="location" id="location" style="display:none">
+        <input type="checkbox" name="checked" value="location" id="location" style="display:none">
 				<label for="location" class="fontawesome-ok"></label>
         </div>
         
@@ -310,7 +310,7 @@ window.onload=function checked(){
         <div class="form__field">
           <label class="fontawesome-book" for="login__username"><span class="hidden">middle</span></label>
           <input id="login__username" name="middleschool" type="text" class="form__input" placeholder="Middle school" value="${c.middleschool}">
-        <input type="checkbox" name="check" value="middleschool" id="middleschool" style="display:none">
+        <input type="checkbox" name="checked" value="middleschool" id="middleschool" style="display:none">
 				<label for="middleschool" class="fontawesome-ok"></label>
         </div>
         
@@ -319,14 +319,14 @@ window.onload=function checked(){
         <div class="form__field">
           <label class="fontawesome-book" for="login__username"><span class="hidden">highschool</span></label>
           <input id="login__username" name="highschool" type="text" class="form__input" placeholder="High school" value="${c.highschool}">
-        <input type="checkbox" name="check" value="highschool" id="highschool" style="display:none">
+        <input type="checkbox" name="checked" value="highschool" id="highschool" style="display:none">
 				<label for="highschool" class="fontawesome-ok"></label>
         </div>
         
         <div class="form__field">
           <label class="fontawesome-book" for="login__username"><span class="hidden">university</span></label>
           <input id="login__username" name="university" type="text" class="form__input" placeholder="University" value="${c.university}">
-       <input type="checkbox" name="check" value="university" id="university" style="display:none">
+       <input type="checkbox" name="checked" value="university" id="university" style="display:none">
 				<label for="university" class="fontawesome-ok"></label>
         </div>
         
@@ -340,7 +340,7 @@ window.onload=function checked(){
 		  <label id="radio"><input type="radio" id="radio" name="bloodgroups" value="O형">O형</label>
 		  <label id="radio"><input type="radio" id="radio" name="bloodgroups" value="AB형">AB형</label>
 		  </label>
-		  <input type="checkbox" name="check" value="bloodgroups" id="bloodgroups" style="display:none">
+		  <input type="checkbox" name="checked" value="bloodgroups" id="bloodgroups" style="display:none">
 				<label for="bloodgroups" class="fontawesome-ok"></label>
         
         </div>
