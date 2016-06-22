@@ -79,8 +79,12 @@ public class MessageController {
 		messagedto.setSendEmail(sender);
 		messagedto.setReceEmail(receiver);
 		messagedto.setSendNickname(senderNick);
+<<<<<<< HEAD
 
 		//메시지 보내는 쿼리 insert 
+=======
+		//메시지 보내는 쿼리 insert
+>>>>>>> c48ff0574e9b6b8a46c1ab4c8abbc43a5a2f98f9
 		int result = messagedao.sendMessage(messagedto);
 		return mav;	
 	}

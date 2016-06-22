@@ -22,6 +22,9 @@ text-align:center;
 
 #div1{ float:left; width:50%;}
 #div2{ float:right; width:50%;}
+
+
+
 </style>
 </head>
 <body>
