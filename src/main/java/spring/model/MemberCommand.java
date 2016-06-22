@@ -19,9 +19,19 @@ public class MemberCommand {
 	private String bloodgroups;
 	private String location;
 	private String phone;
+	private String checked;
+	
+	
+	
 	
 	
 
+	public String getChecked() {
+		return checked;
+	}
+	public void setChecked(String checked) {
+		this.checked = checked;
+	}
 	public String getMiddleschool() {
 		return middleschool;
 	}

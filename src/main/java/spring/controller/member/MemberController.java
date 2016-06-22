@@ -153,7 +153,9 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/profilePro.hash")
-	public String ProfilePro(@ModelAttribute("command")MemberCommand command){
+	public String ProfilePro(@ModelAttribute("command")MemberCommand command, @RequestParam("checked") String[] checked){
+		command.setHash(Arrays.toString(checked));
+		System.out.println("hash태그 :: " + Arrays.toString(checked));
 		int a = dao.profile(command);
 		System.out.println("프로필 수정완료? " + a);
 		return "userpage/ProfilePro";
@@ -169,6 +171,8 @@ public class MemberController {
 		session.setAttribute("content", cdao.getContent());
 		session.setAttribute("memberinfo", command);
 		session.setAttribute("messagecount",mdao.getMessageCount(email));
+		String checked = dao.selectCheck(email);
+		System.out.println("공개하는 컬럼? : " + checked);
 		System.out.println(mdao.getMessageCount(email));
 		String hash = command.getHash();
 		hash = hash.substring(1,hash.length()-1);

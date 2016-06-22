@@ -79,8 +79,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<update id="profile" parameterType="spring.model.MemberCommand">
 	update usertable set birthday=#{birthday}, middleschool=#{middleschool}, highschool=#{highschool}, bloodgroups=#{bloodgroups},
-	university=#{university}, location=#{location}, phone=#{phone} where email=#{email}
+	university=#{university}, location=#{location}, phone=#{phone}, checked=#{checked} where email=#{email}
 	</update>
+	
+	<select id="selectCheck" parameterType="String" resultType="String">
+	select checked from usertable where email=#{email}
+	</select>
 
 
 </mapper>

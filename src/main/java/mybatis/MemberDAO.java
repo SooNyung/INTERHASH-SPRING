@@ -84,5 +84,9 @@ public class MemberDAO {
 	public int profile(MemberCommand command){
 		return session.update("member.profile", command);
 	}
+	
+	public String selectCheck(String email){
+		return session.selectOne("member.selectCheck", email);
+	}
 
 }
