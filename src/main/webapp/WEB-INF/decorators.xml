@@ -32,6 +32,9 @@
 		<pattern>/deleteMessage.hash*</pattern>
 		<pattern>/ReMessageForm.hash*</pattern>
 		<pattern>/ReMessagePro.hash*</pattern>
+		
+		<pattern>/FindPasswordForm.hash*</pattern>
+		<pattern>/FindPasswordPro.hash*</pattern>  
 	</excludes>
  
 </decorators>
