@@ -17,7 +17,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="selectAll" parameterType="spring.model.MemberCommand"
 		resultType="spring.model.MemberCommand">
-		select * from usertable
+		select * from usertable order by createddate desc
+	</select>
+	
+	<select id="memberCount" parameterType="spring.model.MemberCommand" resultType="int">
+		select count(email) from usertable 
 	</select>
 
 	<update id="updateMember" parameterType="spring.model.MemberCommand">

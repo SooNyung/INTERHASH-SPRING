@@ -33,7 +33,7 @@ width:100px;
 <center>
 <h3>회원관리</h3>
 <hr/>
-
+전체 회원 수:${count}
 <form method="post" action="ManagerPageMemberPro.hash">
 <input type="button" value="관리자페이지" onclick="javascript:window.location='ManagerPage.hash'">
 <br>
