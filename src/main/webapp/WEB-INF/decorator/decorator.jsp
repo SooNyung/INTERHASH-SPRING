@@ -19,7 +19,8 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 </style>
 <head>
 
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<!-- <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.0.0.js"></script>
 <decorator:head />
 <meta charset="utf-8">
 <title>에벌레</title>
@@ -735,7 +736,21 @@ ul.menu:after {
          });
       });   
    </script> -->
+<!-- <script>
+$scope.ws = new WebSocket('ws://localhost:9090/echo');
+$scope.ws.onopen = function() {
+  console.log('websocket opened');
+};
+$scope.ws.onmessage = function(message) {
+  console.log(message);
+  console.log('receive message : ' + message.data);
+};
+$scope.ws.onclose = function(event) {
+  console.log(event);
+  console.log('websocket closed');
+};
 
+</script> -->
   </head>
 
 <body style="background-color: #f5f7f8">
@@ -903,12 +918,27 @@ ul.menu:after {
   </div>
      
    <div id="jb-right">
+<<<<<<< HEAD
+   	<div style="width:100%; height: 350px; ">
+   	<div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
+   	</div>
+   	<div style="width:100%; ">
+	<div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">
+		<input type="text" value="message"/>
+			<button onclick="javascript:message()">SEND</button>
+		<ul >
+  			<li>{{echo}}</li>
+		</ul>
+	</div>
+	</div>
+=======
       <div style="width:100%; height: 350px; ">
       <div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
       </div>
       <div style="width:100%; ">
    <div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">채팅창</div>
    </div>
+>>>>>>> 57644ecff8665e5d06af6fe889332b0deb56f79a
    </div>
   
    
