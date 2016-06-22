@@ -1069,16 +1069,7 @@ ul.menu:after {
       </div>
        <br>
       
-      <!-- Interests --> 
-      <div class="box-shadow border-round white small">
-        <div class="container1">
-          <p><b>Interests</b> <input type="button" onclick="javascript:window.location='ModifyHash.hash'" value="hashtag 수정"></p>
-          <p>
-            
-        	<c:forEach var="tagname" items="${hashlist}">
-       		
-         	 <!-- <li><a href='Board.hash?hash=사랑'>#사랑</a></li>
-=======
+
 	<!-- main -->
 	<div id="main">
 	<div id=sidebar_content style="float:left; width:80%">
@@ -1156,8 +1147,6 @@ ul.menu:after {
       </div>
          
     </div>
-<<<<<<< HEAD
-=======
   <div id="jb-content">
    <decorator:body/> 
    </div>
@@ -1174,7 +1163,6 @@ ul.menu:after {
   
    
    	
->>>>>>> c48ff0574e9b6b8a46c1ab4c8abbc43a5a2f98f9
    </div>
        <div id="jb-footer" class="w3-theme-d3">
         <p>Copyright</p>
