@@ -43,26 +43,6 @@ a:focus, a:hover {
   color:#ea4c88;
   
 }
-#hdc{
-display: none;
-}
-#hdc2{
-width: 100%;
-padding-left: 10px;
-}
-#pwd{
-display: none;
-}
-#pwd2{
-color:red;
-background-color: white;
-padding-left: 60px;
-}
-#pwd3{
-color:green;
-background-color: white;
-padding-left: 60px;
-}
 
 input {
   border: 0;
@@ -212,14 +192,14 @@ font{
 }
 #test1 {
 	margin: 0px;
-	padding-left : 20px;
-	padding-right : 20px;
+	padding-left : 15px;
+	padding-right : 15px;
 	 border: 1px solid #d9d9d9;
 }
 #test2 {
 	margin: 0px;
-	padding-left : 55px;
-	padding-right : 56px;
+	padding-left : 50px;
+	padding-right : 51px;
 	 border: 1px solid #d9d9d9;
 }
 
