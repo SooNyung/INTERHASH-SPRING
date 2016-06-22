@@ -19,6 +19,24 @@
   box-sizing: border-box;
 }
 
+.box-shadow {
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+      rgba(0, 0, 0, 0.19) !important;
+   
+}
+
+
+
+.border-round {
+   border-radius: 7px !important
+}
+
+
+.white {
+   color: #000 !important;
+   background-color: #fff !important;
+   
+}
 html {
   height: 100%;
 }
@@ -60,7 +78,9 @@ input {
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  padding: 3rem 0;
+/*    padding: 1rem 0; */
+	padding-bottom: 10px;
+  
 }
 
 .form input[type="password"], .form input[type="text"], .form input[type="submit"] {
@@ -153,6 +173,12 @@ input {
   -webkit-flex-direction: row;
       -ms-flex-direction: row;
           flex-direction: row;
+/*    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+      rgba(0, 0, 0, 0.19) !important;
+   margin-top: 0px;
+   border-radius: 7px !important
+   color: #000 !important;
+   background-color: #fff !important; */
 }
 
 .hidden {
@@ -224,9 +250,9 @@ window.onload=function checked(){
 </script>
 </head>
 
-<body class="align">
+<body class ="align">
 
-  <div class="site__container">
+  <div class="site__container box-shadow border-round white">
 <h1>PROFILE</h1>
     <div class="grid__container">
 
