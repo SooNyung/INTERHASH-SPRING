@@ -231,8 +231,8 @@ font{
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> 
 <script>
 window.onload=function checked(){
- 	var rad = "${dto.blood}";
-	var blood=document.getElementsByName("blood"); 
+ 	var rad = "${c.bloodgroups}";
+	var blood=document.getElementsByName("bloodgroups"); 
 	
  	for(i=0;i<blood.length;i++){
 		if(rad.indexOf(blood[i].value)!=-1){
@@ -292,12 +292,12 @@ window.onload=function checked(){
           <label class="fontawesome-tint" for="login__username"><span class="hidden">blood</span></label>
           <!-- <input id="login__username" name="graduateschool" type="radio" class="form__input"> -->
           <label id="radio"><input type="radio" name="bloodgroups" value="A형">A형</label>
-		  <label id="radio"><input type="radio" id="radio" name="bloodgroups" value="B형">B형    </label>  
-		  <label id="radio"><input type="radio" id="radio" name="bloodgroups" value="O형">O형     </label>
-		  <label id="radio"><input type="radio" id="radio" name="bloodgroups" value="AB형">AB형    </label> 
+		  <label id="radio"><input type="radio" id="radio" name="bloodgroups" value="B형">B형</label>  
+		  <label id="radio"><input type="radio" id="radio" name="bloodgroups" value="O형">O형</label>
+		  <label id="radio"><input type="radio" id="radio" name="bloodgroups" value="AB형">AB형</label> 
         </div>
         
-               
+        <input type="hidden" name="email" value="${c.email}">       
         
 
         <div class="form__field">
