@@ -32,18 +32,12 @@
 		<pattern>/deleteMessage.hash*</pattern>
 		<pattern>/ReMessageForm.hash*</pattern>
 		<pattern>/ReMessagePro.hash*</pattern>
-<<<<<<< HEAD
 		<pattern>/ContentView.hash*</pattern>
-=======
-
 		
 		<pattern>/FindPasswordForm.hash*</pattern>
 		<pattern>/FindPasswordPro.hash*</pattern>  
-
 		<pattern>/ReportProCom.hash*</pattern>
 		<pattern>/UpdateTagCheck.hash*</pattern>
-
->>>>>>> 57644ecff8665e5d06af6fe889332b0deb56f79a
 	</excludes>
  
 </decorators>
