@@ -94,7 +94,7 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 	list-style-type: none;
 	float: left;
 	width: 100%;
-	height: 60px;
+	height: 70px;
 	position: absolute;
 	text-decoration: none;
 	text-align: center;
@@ -287,12 +287,14 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 	color: inherit;
 }
 #head{
+	position:fixed;
 	width:100%;
-	height: 60px;
+	height: 70px;
+	z-index: 5;
 }
 #main {
 	width: 100%;
-	margin:0px;
+	padding-top: 70px;
 }
 
 #jb-header {
@@ -481,7 +483,7 @@ ul.menu:after {
 	border-radius:7px;
 	background-color:#ff6088;
 }
-#up{width:90%; height:300px; margin-top:10px; padding:10px 0px 20px 0px;}
+#up{width:90%; height:300px; margin-top:10px; padding:10px 0px 20px 0px; }
 #down{width:90%; height:400px; padding:10px 0px 20px 0px;}
 
 /* -----------------------------해시태그버튼 css---------------------------------- */
@@ -941,9 +943,12 @@ ul.menu:after {
   </div>
      
    <div id="jb-right">
-   	<div id ="up" class="box-shadow border-round white padding">인기글</div>
-   	<br>
-	<div id ="down"  class="box-shadow border-round white padding">채팅창</div>
+   	<div style="width:100%; height: 350px; ">
+   	<div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
+   	</div>
+   	<div style="width:100%; ">
+	<div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">채팅창</div>
+	</div>
    </div>
   
    
