@@ -11,7 +11,7 @@ color:#7A7A7A;
 }
 
 #view_div{
-	width:780px;
+	width:580px;
 	height:640px;
  	/* background-color: black; */
 	/* border:1px solid; */

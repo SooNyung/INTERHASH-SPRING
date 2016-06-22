@@ -675,7 +675,7 @@ ul.menu:after {
 
 	$(document).ready(function() {
 		if ($('#jb-content').outerHeight(true) < 800) {
-			$("#jb-content").css("height", "787px");
+			$("#jb-content").css("height", "800px");
 		}else{
 			var g = $('#jb-content').outerHeight(true);
 			$('#main').css("height", g);
@@ -761,11 +761,11 @@ ul.menu:after {
 						</tr>
 						<tr class="left-align">
 							<td colspan="2"><c:forEach var="message"
-									items="${mesagelist}" begin="0" end="2">
+									items="${sessionScope.mesagelist}" begin="0" end="2">
 									<li><a
 										href="messageView.hash?messageNum=${message.messageNum}"><img
 											src="image/logo/img_avatar5.png" class="left-align circle "
-											width="15%" height="15%">${message.sendNickname}
+											width="15%" height="15%">${message.sendNickname}:
 											${message.messageContent}</a></li>
 								</c:forEach></td>
 						</tr>
@@ -839,8 +839,7 @@ ul.menu:after {
 						${memberinfo.nickname}
 					</p>
 					<p>
-						<i class="fa fa-home fa-fw margin-right text-theme"></i> London,
-						UK
+						<i class="fa fa-home fa-fw margin-right text-theme"></i> ${memberinfo.location}
 					</p>
 					<p>
 						<i class="fa fa-birthday-cake fa-fw margin-right text-theme"></i>${memberinfo.birthday}</p>
@@ -880,7 +879,7 @@ ul.menu:after {
 					</p>
 					<p>
 
-						<c:forEach var="tagname" items="${hashlist}">
+						<c:forEach var="tagname" items="${sessionScope.hashlist}">
 
 							<!-- <li><a href='Board.hash?hash=사랑'>#사랑</a></li>
           	<li><a href="Board.hash?hash=돈">#돈</a></li>
