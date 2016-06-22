@@ -314,7 +314,7 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 }
 
 #jb-right{
-	width:25%;
+	width:20%;
 	height:100%;
 	float:right;
 }
@@ -322,15 +322,14 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 #jb-content{
 	width: 50%;
 	height:100%;
-	margin: auto 100px;;
-	overflow:hidden;	
+	margin: auto 120px;
 	float:right;
 	
 }
 
 #jb-sidebar {
 	position: absolute;
-	height: 100%;
+	height: 500px;
 	width: 25%;
 	margin: 10px;
 	padding:0px;
@@ -675,8 +674,8 @@ ul.menu:after {
 
 
 	$(document).ready(function() {
-		if ($('#jb-content').outerHeight(true) < 500) {
-			$("#jb-content").attr("height", "1000px");
+		if ($('#jb-content').outerHeight(true) < 800) {
+			$("#jb-content").css("height", "787px");
 		}else{
 			var g = $('#jb-content').outerHeight(true);
 			$('#main').css("height", g);
@@ -738,45 +737,7 @@ ul.menu:after {
    </script> -->
 
   </head>
-<%--   <body style="background-color:#f5f7f8">
 
-<!-- navbar -->
-
-<div>
- <ul class="navbar color1">
-  <li class="small"><a href="Board.hash" class="padding-large margin-right"><b>I N T E R H A S H #</b></a></li>
-  <li class="small"><a href="messageView.hash" class="padding-large margin-right" title="Messages"><i class ="fa fa-envelope"></i><span class="badge right small green">${messagecount}</span> </a>
-   <ul class="message">
-
-   <table><tr><td>쪽지</td><td class="w3-right"><a href="#" onclick="Message()">쪽지보내기</a></td></tr>
-   			<tr><td colspan="2"><c:forEach var="message" items="${mesagelist}" begin="0" end="2">
-			<li><a href="MessageView.hash?messageNum=${message.messageNum}"><img src="image/logo/img_avatar5.png" class="left-align circle " width="15%" height="15%">${message.sendNickname} ${message.messageContent}</a></li>
-			</c:forEach>
-			</td></tr>
-			<tr><Td colspan="2"><a href="#" onclick="MessageList()">모든 쪽지 보기</a></Td></tr>
-
-   <table><tr><td>쪽지</td><td class="w3-right"><a href="MessageForm.hash">쪽지보내기</a></td></tr>
-   			<tr class="left-align"><td colspan="2"><c:forEach var="message" items="${mesagelist}" begin="0" end="2">
-			<li><a href="messageView.hash?messageNum=${message.messageNum}"><img src="image/logo/img_avatar5.png" class="left-align circle " width="15%" height="15%">${message.sendNickname} ${message.messageContent}</a></li>
-			</c:forEach>
-			</td></tr>
-			
-			<tr><Td colspan="2"><a href="#"><hr>모든 쪽지 보기</a></Td></tr>
-
-	</table>
-	</ul>
-  </li> 
-  <li class="small"><a href="#" class="margin-right padding-large left-align" title="Alarm"><i class="fa fa-bell"></i></a></li>
-
-	<li class="small right"><a href="#"  class="padding-large" title="MyAccount"><img src="image/logo/사람.PNG" class="circle" width="30%" height="30%">${nickName}님</a>	
- 		<ul class="account">
-			<li><a href="UserInfoModifyForm.hash">회원정보수정</a></li>
-			<li><a href="#">프로필수정</a></li>
-			<li><a href="LogOut.hash">로그아웃</a></li>
-		</ul> 
-		
-	</li>
-</head> --%>
 <body style="background-color: #f5f7f8">
 
 	<!-- navbar -->
@@ -791,9 +752,9 @@ ul.menu:after {
 				<i class="fa fa-envelope"></i><span class="badge right small pink">${messagecount}</span>
 			</a>
 			</div>
-			
+		
 				<ul class="sub">
-					<table>
+					<table>	
 						<tr>
 							<td>쪽지</td>
 							<td class="w3-right"><a href="MessageForm.hash">쪽지보내기</a></td>
@@ -862,7 +823,7 @@ ul.menu:after {
 
 	<!-- main -->
 	<div id="main">
-	<div id=sidebar_content style="float:left; width:75%">
+	<div id=sidebar_content style="float:left; width:80%">
 		<div id="jb-sidebar">
 			<!-- Profile -->
 			<div class="box-shadow border-round white padding">
