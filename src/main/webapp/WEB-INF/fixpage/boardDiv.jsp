@@ -7,6 +7,11 @@
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
+<link rel="stylesheet" href='<c:url value="modal/magnific-popup.css"/>' >
+
+
+<script src='<c:url value="modal/jquery.magnific-popup.min.js"/>'></script>
+
 <c:if test ="${sessionScope.memId==null}">
 <script>
 alert("비밀번호가 틀립니다.");
@@ -18,6 +23,10 @@ $(function() {
     $("#conphoto").on('change', function(){
          readURL(this); 
     });
+  	$('.img_link').magnificPopup({
+  		type:'ajax'
+  	});
+  	  
 });
 
 
@@ -93,6 +102,7 @@ function like(num){
 	url = "LikeCheck.hash?connum="+num;
 	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 }
+
 </script>
 <style type="text/css">
 	.background-color{color:#000 !important; background-color:#f5f7f8 !important}
@@ -385,7 +395,7 @@ $(function(){
 	<div class="write">${con.content}</div>
 
 	<div class="w3-row-padding">
-        <a href="ContentView.hash?connum=${con.connum}">
+        <a href="ContentView.hash?connum=${con.connum}" class="img_link">
 		<img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />'/>
 		</a>  
     </div>

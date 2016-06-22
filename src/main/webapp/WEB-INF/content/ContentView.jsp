@@ -214,7 +214,7 @@ function reportCom(comnum){
 </div>
 
 <div id="view_right" class="box-shadow border-round white">
-
+	<input type=button class=mtf-close>
 	<form method=post action="InsertComment.hash">
 	<input type=hidden name=connum value="${content.connum}">
 	<input type=hidden name=comnick value="${sessionScope.nickName}">

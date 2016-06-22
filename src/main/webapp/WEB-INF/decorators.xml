@@ -32,6 +32,7 @@
 		<pattern>/deleteMessage.hash*</pattern>
 		<pattern>/ReMessageForm.hash*</pattern>
 		<pattern>/ReMessagePro.hash*</pattern>
+		<pattern>/ContentView.hash*</pattern>
 	</excludes>
  
 </decorators>
