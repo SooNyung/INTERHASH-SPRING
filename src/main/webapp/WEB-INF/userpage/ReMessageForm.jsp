@@ -4,6 +4,12 @@
 
 <html>
 <head>
+
+<style>
+#fontsize{
+font-size:15px;
+}
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 
@@ -20,8 +26,8 @@ function checkIt() {
 
 <div align="center">
 <form method="post" action="ReMessagePro.hash" onsubmit="checkIt()">
-<div>받는사람 : 
-<input type="text" id="receEmail" name="receEmail" readonly="readonly" value="${sendNick}(${sender})">
+<div><b id="fontsize">받는사람 </b> 
+<span readonly="readonly">${sendNick}(${sender})</span>
 </div>
 <hr>
 <input type="hidden" name="sender" value="${sender}">
