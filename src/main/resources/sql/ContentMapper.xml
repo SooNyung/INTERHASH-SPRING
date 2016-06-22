@@ -36,10 +36,10 @@
 	<delete id="deleteContent" parameterType="int">
 		delete from contents where connum = #{connum}
 	</delete>
-	<update id = "modifyContent" parameterType="spring.model.ContentCommand">
 	
+	<update id="updateContent" parameterType="spring.model.ContentCommand">
+		update contents set content=#{content}, conhash=#{conhash} where connum=#{connum}
 	</update>
-	
 </mapper>
 
 

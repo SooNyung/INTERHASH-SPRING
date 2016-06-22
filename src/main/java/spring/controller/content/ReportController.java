@@ -65,6 +65,8 @@ public class ReportController {
 		ContentCommand content = contentdao.getContent(connum);
 		mav.addObject("check",check);
 		mav.addObject("content", content);
+		
+		System.out.println("신고대상::::::::::::::::::::::;"+ content.getEmail());
 		return mav;
 	}
 

@@ -6,11 +6,17 @@
 <html>
 <head>
 	<title>INTERHASH#</title>
+<link rel='stylesheet'
+	href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet"
+	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <style>
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
 @import url(http://weloveiconfonts.com/api/?family=entypo);
 @import url(http://weloveiconfonts.com/api/?family=maki);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+
 [class*="fontawesome-"]:before {
   font-family: 'FontAwesome', sans-serif;
 }
@@ -80,10 +86,11 @@ input {
           flex: 1;
 /*    padding: 1rem 0; */
 	padding-bottom: 10px;
+	width:100%;
   
 }
 
-.form input[type="password"], .form input[type="text"], .form input[type="submit"] {
+.form input[type="text"], .form input[type="submit"], .form input[type="date"] {
   width: 100%;
 }
 .form--login #pwdcheck{
@@ -198,8 +205,8 @@ input {
 
 .grid__container {
    margin: 0 auto;
-   max-width: 25rem;
-  width: 90%;
+ /*   max-width: 25rem; */
+ width: 80%;
 }
 h1 {
   font-size: 30px;
@@ -216,23 +223,35 @@ font{
 	font-size:3px;
 	color:red;
 }
-#test1 {
-	margin: 0px;
-	padding-left : 15px;
-	padding-right : 15px;
-	 border: 1px solid #d9d9d9;
-}
+
 #test2 {
-	margin: 0px;
-	padding-left : 50px;
-	padding-right : 51px;
+/*  	padding-left : 25.5%;
+	padding-right : 24%; */
 	 border: 1px solid #d9d9d9;
+	 border-top-left-radius: 0rem;
+	 border-bottom-left-radius:0;
 }
 
 #radio {
-	margin-right: 10px;
-	padding-right: 10px;
+	padding-right: 8px;
 }
+
+#fa{
+	margin:0px;
+	margin-right: 2.4%;
+}
+ #ra{
+	margin-right: 16%;
+} 
+:checked+label {
+	color: #FF6088;
+	font-weight: bold;
+}
+#pu{
+	color: #FF6088;
+	padding-left: 65%;
+}
+
 </style>
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> 
 <script>
@@ -247,6 +266,7 @@ window.onload=function checked(){
 	}  
 	
 }
+
 </script>
 </head>
 
@@ -259,26 +279,39 @@ window.onload=function checked(){
 
       <form action="profilePro.hash" name="userinput" method="post" class="form form--login" onSubmit="return checkIt()">
 
-        <div class="form__field"><span class="hidden">birth</span>
-          <label class="fontawesome-star" for="login__username"><span class="hidden">birth</span></label>
-          <label id="test1">Birthday</label><label id="test2"><input id="login__username" name="birthday" type="date" value="${c.birthday}" class="form__input"></label>
+		<div class="form__field">
+			<label class="fontawesome-ok" id="pu">공개</label>
+			<label class="fontawesome-ok">비공개</label>
+		</div>
+		
+        <div class="form__field">
+          <label class="fa fa-birthday-cake fa-fw margin-right text-theme" id="fa" for="login__username"><span class="hidden">birth</span></label>
+          <label id="test2"><input id="login__username" name="birthday" type="date" value="${c.birthday}" class="form__input"></label>
+           <input type="checkbox" name="check" value="birthday" id="birthday" style="display:none">
+				<label for="birthday" class="fontawesome-ok"></label>
         </div>
         
          <div class="form__field">
           <label class="fontawesome-phone" for="login__username"><span class="hidden">phone number</span></label>
           <input id="login__username" name="phone" type="text" class="form__input" placeholder="Phone number" value="${c.phone}">
+        <input type="checkbox" name="check" value="phone" id="phone" style="display:none">
+				<label for="phone" class="fontawesome-ok"></label>
         </div>
 
         
         <div class="form__field">
           <label class="fontawesome-home" for="login__password"><span class="hidden">Location</span></label>
           <input type="text" id="login__password" name="location" class="form__input" placeholder="Location" value="${c.location}">
+        <input type="checkbox" name="check" value="location" id="location" style="display:none">
+				<label for="location" class="fontawesome-ok"></label>
         </div>
         
  
         <div class="form__field">
-          <label class="fontawesome-book" for="login__username"><span class="hidden">elementaryschool</span></label>
+          <label class="fontawesome-book" for="login__username"><span class="hidden">middle</span></label>
           <input id="login__username" name="middleschool" type="text" class="form__input" placeholder="Middle school" value="${c.middleschool}">
+        <input type="checkbox" name="check" value="middleschool" id="middleschool" style="display:none">
+				<label for="middleschool" class="fontawesome-ok"></label>
         </div>
         
        
@@ -286,21 +319,30 @@ window.onload=function checked(){
         <div class="form__field">
           <label class="fontawesome-book" for="login__username"><span class="hidden">highschool</span></label>
           <input id="login__username" name="highschool" type="text" class="form__input" placeholder="High school" value="${c.highschool}">
+        <input type="checkbox" name="check" value="highschool" id="highschool" style="display:none">
+				<label for="highschool" class="fontawesome-ok"></label>
         </div>
         
         <div class="form__field">
           <label class="fontawesome-book" for="login__username"><span class="hidden">university</span></label>
           <input id="login__username" name="university" type="text" class="form__input" placeholder="University" value="${c.university}">
+       <input type="checkbox" name="check" value="university" id="university" style="display:none">
+				<label for="university" class="fontawesome-ok"></label>
         </div>
         
         
         <div class="form__field">
           <label class="fontawesome-tint" for="login__username"><span class="hidden">blood</span></label>
           <!-- <input id="login__username" name="graduateschool" type="radio" class="form__input"> -->
+          <label id="ra">
           <label id="radio"><input type="radio" name="bloodgroups" value="A형">A형</label>
 		  <label id="radio"><input type="radio" id="radio" name="bloodgroups" value="B형">B형</label>  
 		  <label id="radio"><input type="radio" id="radio" name="bloodgroups" value="O형">O형</label>
-		  <label id="radio"><input type="radio" id="radio" name="bloodgroups" value="AB형">AB형</label> 
+		  <label id="radio"><input type="radio" id="radio" name="bloodgroups" value="AB형">AB형</label>
+		  </label>
+		  <input type="checkbox" name="check" value="bloodgroups" id="bloodgroups" style="display:none">
+				<label for="bloodgroups" class="fontawesome-ok"></label>
+        
         </div>
         
         <input type="hidden" name="email" value="${c.email}">       

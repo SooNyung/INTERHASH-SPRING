@@ -32,6 +32,8 @@
 		<pattern>/deleteMessage.hash*</pattern>
 		<pattern>/ReMessageForm.hash*</pattern>
 		<pattern>/ReMessagePro.hash*</pattern>
+		<pattern>/ReportProCom.hash*</pattern>
+		<pattern>/UpdateTagCheck.hash*</pattern>
 	</excludes>
  
 </decorators>
