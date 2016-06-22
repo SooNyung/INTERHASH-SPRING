@@ -918,7 +918,7 @@ $scope.ws.onclose = function(event) {
   </div>
      
    <div id="jb-right">
-<<<<<<< HEAD
+
    	<div style="width:100%; height: 350px; ">
    	<div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
    	</div>
@@ -931,14 +931,14 @@ $scope.ws.onclose = function(event) {
 		</ul>
 	</div>
 	</div>
-=======
+
       <div style="width:100%; height: 350px; ">
       <div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
       </div>
       <div style="width:100%; ">
    <div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">채팅창</div>
    </div>
->>>>>>> 57644ecff8665e5d06af6fe889332b0deb56f79a
+
    </div>
   
    
