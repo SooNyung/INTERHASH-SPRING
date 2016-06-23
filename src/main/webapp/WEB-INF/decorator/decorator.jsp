@@ -931,18 +931,8 @@ $scope.ws.onclose = function(event) {
 		</ul>
 	</div>
 	</div>
-
-      <div style="width:100%; height: 350px; ">
-      <div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
-      </div>
-      <div style="width:100%; ">
-   <div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">채팅창</div>
    </div>
 
-   </div>
-  
-   
-      
    </div>
        <div id="jb-footer" class="w3-theme-d3">
         <p>Copyright</p>
