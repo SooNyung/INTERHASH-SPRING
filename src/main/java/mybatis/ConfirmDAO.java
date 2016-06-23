@@ -32,6 +32,9 @@ public class ConfirmDAO {
 	public void conlikePlus(int connum){
 		session.update("Confirm.conlikePlus", connum);
 	}
+	public void unlike(int connum){
+		session.update("Confirm.unlike",connum);
+	}
 }
 
 /*

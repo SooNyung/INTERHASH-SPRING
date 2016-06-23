@@ -19,5 +19,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="conlikePlus" parameterType="int">
 		update contents set conlike=(conlike+1) where connum = #{connum}
 	</update>
+	<update id="unlike" parameterType="int">
+		update contents set conlike=(conlike-1) where connum = #{connum}
+	</update>
 
 </mapper>
