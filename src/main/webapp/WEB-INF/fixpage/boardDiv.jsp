@@ -124,7 +124,7 @@ function like(num){
 	url = "LikeCheck.hash?connum="+num;
 	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 }
-<<<<<<< HEAD
+
 function unlike(num){
 	
 	url = "Unlike.hash?connum="+num;
@@ -133,14 +133,14 @@ function unlike(num){
 /* function toggle(){
 	$("#btn_group").simpleToggleBtn();
 } */
-=======
+
 function modal_close(){
 	var e = $.Event("keyup");
 	e.which = 27;
 	e.keyCode = 27;
 	$(document).trigger(e); 
 }
->>>>>>> 00c2833afc61ec1ba690f27627bcb6cbe2a753cf
+
 </script>
 <style type="text/css">
 	.background-color{color:#000 !important; background-color:#f5f7f8 !important}
