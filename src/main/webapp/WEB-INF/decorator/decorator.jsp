@@ -19,12 +19,7 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 </style>
 <head>
 
-<<<<<<< HEAD
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-=======
-<!-- <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script> -->
-<script src="https://code.jquery.com/jquery-2.2.4.js"></script>
->>>>>>> 00c2833afc61ec1ba690f27627bcb6cbe2a753cf
 <decorator:head />
 <meta charset="utf-8">
 <title>에벌레</title>
@@ -99,7 +94,7 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
    list-style-type: none;
    float: left;
    width: 100%;
-   height: 70px;
+   height: 60px;
    position: absolute;
    text-decoration: none;
    text-align: center;
@@ -292,14 +287,12 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
    color: inherit;
 }
 #head{
-   position:fixed;
    width:100%;
-   height: 70px;
-   z-index: 5;
+   height: 60px;
 }
 #main {
    width: 100%;
-   padding-top: 70px;
+   margin:0px;
 }
 
 #jb-header {
@@ -319,7 +312,7 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 }
 
 #jb-right{
-   width:20%;
+   width:25%;
    height:100%;
    float:right;
 }
@@ -327,14 +320,15 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 #jb-content{
    width: 50%;
    height:100%;
-   margin: auto 120px;
-   float:right;
+   margin-top: 10px auto;
+   overflow:hidden;   
+   margin-left:375px;
    
 }
 
 #jb-sidebar {
    position: absolute;
-   height: 500px;
+   height: 100%;
    width: 25%;
    margin: 10px;
    padding:0px;
@@ -487,7 +481,7 @@ ul.menu:after {
    border-radius:7px;
    background-color:#ff6088;
 }
-#up{width:90%; height:300px; margin-top:10px; padding:10px 0px 20px 0px; }
+#up{width:90%; height:300px; margin-top:10px; padding:10px 0px 20px 0px;}
 #down{width:90%; height:400px; padding:10px 0px 20px 0px;}
 
 /* -----------------------------해시태그버튼 css---------------------------------- */
@@ -679,8 +673,8 @@ ul.menu:after {
 
 
    $(document).ready(function() {
-      if ($('#jb-content').outerHeight(true) < 800) {
-         $("#jb-content").css("height", "800px");
+      if ($('#jb-content').outerHeight(true) < 500) {
+         $("#jb-content").attr("height", "1000px");
       }else{
          var g = $('#jb-content').outerHeight(true);
          $('#main').css("height", g);
@@ -740,23 +734,8 @@ ul.menu:after {
          });
       });   
    </script> -->
-<!-- <script>
-$scope.ws = new WebSocket('ws://localhost:9090/echo');
-$scope.ws.onopen = function() {
-  console.log('websocket opened');
-};
-$scope.ws.onmessage = function(message) {
-  console.log(message);
-  console.log('receive message : ' + message.data);
-};
-$scope.ws.onclose = function(event) {
-  console.log(event);
-  console.log('websocket closed');
-};
 
-</script> -->
-  </head>
-
+</head>
 <body style="background-color: #f5f7f8">
 
    <!-- navbar -->
@@ -771,20 +750,20 @@ $scope.ws.onclose = function(event) {
             <i class="fa fa-envelope"></i><span class="badge right small pink">${messagecount}</span>
          </a>
          </div>
-      
+         
             <ul class="sub">
-               <table>   
+               <table>
                   <tr>
                      <td>쪽지</td>
                      <td class="w3-right"><a href="MessageForm.hash">쪽지보내기</a></td>
                   </tr>
                   <tr class="left-align">
                      <td colspan="2"><c:forEach var="message"
-                           items="${sessionScope.mesagelist}" begin="0" end="2">
+                           items="${mesagelist}" begin="0" end="2">
                            <li><a
                               href="messageView.hash?messageNum=${message.messageNum}"><img
                                  src="image/logo/img_avatar5.png" class="left-align circle "
-                                 width="15%" height="15%">${message.sendNickname}:
+                                 width="15%" height="15%">${message.sendNickname}
                                  ${message.messageContent}</a></li>
                         </c:forEach></td>
                   </tr>
@@ -804,7 +783,7 @@ $scope.ws.onclose = function(event) {
                width="30%" height="30%">${nickName}님</a></div>
             <ul class="account">
                <li><a href="UserInfoModifyForm.hash">회원정보수정</a></li>
-               <li><a href="profile.hash">프로필수정</a></li>
+               <li><a href="#">프로필수정</a></li>
                <li><a href="LogOut.hash">로그아웃</a></li>
             </ul></li>
 
@@ -842,8 +821,8 @@ $scope.ws.onclose = function(event) {
 
    <!-- main -->
    <div id="main">
-   <div id=sidebar_content style="float:left; width:80%">
       <div id="jb-sidebar">
+
          <!-- Profile -->
          <div class="box-shadow border-round white padding">
             <div class="container">
@@ -858,7 +837,8 @@ $scope.ws.onclose = function(event) {
                   ${memberinfo.nickname}
                </p>
                <p>
-                  <i class="fa fa-home fa-fw margin-right text-theme"></i> ${memberinfo.location}
+                  <i class="fa fa-home fa-fw margin-right text-theme"></i> London,
+                  UK
                </p>
                <p>
                   <i class="fa fa-birthday-cake fa-fw margin-right text-theme"></i>${memberinfo.birthday}</p>
@@ -898,7 +878,7 @@ $scope.ws.onclose = function(event) {
                </p>
                <p>
 
-                  <c:forEach var="tagname" items="${sessionScope.hashlist}">
+                  <c:forEach var="tagname" items="${hashlist}">
 
                      <!-- <li><a href='Board.hash?hash=사랑'>#사랑</a></li>
              <li><a href="Board.hash?hash=돈">#돈</a></li>
@@ -916,40 +896,19 @@ $scope.ws.onclose = function(event) {
       </div>
          
     </div>
-  <div id="jb-content">
-   <decorator:body/> 
-   </div>
-  </div>
+  
      
    <div id="jb-right">
-<<<<<<< HEAD
-      <div style="width:100%; height: 350px; ">
-      <div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
-      </div>
-      <div style="width:100%; ">
-   <div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">채팅창</div>
-   </div>
+      <div id ="up" class="box-shadow border-round white padding">인기글</div>
+      <br>
+   <div id ="down"  class="box-shadow border-round white padding">채팅창</div>
    </div>
   
-   
-      
-=======
-
-   	<div style="width:100%; height: 350px; ">
-   	<div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
-   	</div>
-   	<div style="width:100%; ">
-	<div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">
-		<input type="text" value="message"/>
-			<button onclick="javascript:message()">SEND</button>
-		<ul >
-  			<li>{{echo}}</li>
-		</ul>
-	</div>
-	</div>
+   <div id="jb-content">
+   <decorator:body/> 
    </div>
 
->>>>>>> 00c2833afc61ec1ba690f27627bcb6cbe2a753cf
+      
    </div>
        <div id="jb-footer" class="w3-theme-d3">
         <p>Copyright</p>
