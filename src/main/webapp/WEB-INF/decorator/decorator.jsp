@@ -20,7 +20,7 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 <head>
 
 <!-- <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script> -->
-<script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.js"></script>
 <decorator:head />
 <meta charset="utf-8">
 <title>에벌레</title>
