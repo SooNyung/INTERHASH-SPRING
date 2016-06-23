@@ -266,7 +266,18 @@ window.onload=function checkeded(){
 	}  
 	
 }
+window.onload=function checkHash(){
+		var hasharr = "${c.checked}"; //hasharr에 저장됨
+		var hash=document.getElementsByName("checked"); //해쉬체크박스 배열 가져옴
 
+		
+		
+	 	 for(i=0;i<hash.length;i++){
+			 if(hasharr.indexOf(hash[i].value)!=-1){ 
+				hash[i].checked=true;
+			}
+		}  
+	}
 </script>
 </head>
 

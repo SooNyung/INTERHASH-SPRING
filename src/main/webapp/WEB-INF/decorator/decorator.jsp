@@ -94,7 +94,7 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
    list-style-type: none;
    float: left;
    width: 100%;
-   height: 60px;
+   height: 70px;
    position: absolute;
    text-decoration: none;
    text-align: center;
@@ -287,12 +287,14 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
    color: inherit;
 }
 #head{
+   position:fixed;
    width:100%;
-   height: 60px;
+   height: 70px;
+   z-index: 5;
 }
 #main {
    width: 100%;
-   margin:0px;
+   padding-top: 70px;
 }
 
 #jb-header {
@@ -312,7 +314,7 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 }
 
 #jb-right{
-   width:25%;
+   width:20%;
    height:100%;
    float:right;
 }
@@ -320,15 +322,14 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 #jb-content{
    width: 50%;
    height:100%;
-   margin-top: 10px auto;
-   overflow:hidden;   
-   margin-left:375px;
+   margin: auto 120px;
+   float:right;
    
 }
 
 #jb-sidebar {
    position: absolute;
-   height: 100%;
+   height: 500px;
    width: 25%;
    margin: 10px;
    padding:0px;
@@ -481,7 +482,7 @@ ul.menu:after {
    border-radius:7px;
    background-color:#ff6088;
 }
-#up{width:90%; height:300px; margin-top:10px; padding:10px 0px 20px 0px;}
+#up{width:90%; height:300px; margin-top:10px; padding:10px 0px 20px 0px; }
 #down{width:90%; height:400px; padding:10px 0px 20px 0px;}
 
 /* -----------------------------해시태그버튼 css---------------------------------- */
@@ -673,8 +674,8 @@ ul.menu:after {
 
 
    $(document).ready(function() {
-      if ($('#jb-content').outerHeight(true) < 500) {
-         $("#jb-content").attr("height", "1000px");
+      if ($('#jb-content').outerHeight(true) < 800) {
+         $("#jb-content").css("height", "800px");
       }else{
          var g = $('#jb-content').outerHeight(true);
          $('#main').css("height", g);
@@ -735,7 +736,8 @@ ul.menu:after {
       });   
    </script> -->
 
-</head>
+  </head>
+
 <body style="background-color: #f5f7f8">
 
    <!-- navbar -->
@@ -750,20 +752,20 @@ ul.menu:after {
             <i class="fa fa-envelope"></i><span class="badge right small pink">${messagecount}</span>
          </a>
          </div>
-         
+      
             <ul class="sub">
-               <table>
+               <table>   
                   <tr>
                      <td>쪽지</td>
                      <td class="w3-right"><a href="MessageForm.hash">쪽지보내기</a></td>
                   </tr>
                   <tr class="left-align">
                      <td colspan="2"><c:forEach var="message"
-                           items="${mesagelist}" begin="0" end="2">
+                           items="${sessionScope.mesagelist}" begin="0" end="2">
                            <li><a
                               href="messageView.hash?messageNum=${message.messageNum}"><img
                                  src="image/logo/img_avatar5.png" class="left-align circle "
-                                 width="15%" height="15%">${message.sendNickname}
+                                 width="15%" height="15%">${message.sendNickname}:
                                  ${message.messageContent}</a></li>
                         </c:forEach></td>
                   </tr>
@@ -783,7 +785,7 @@ ul.menu:after {
                width="30%" height="30%">${nickName}님</a></div>
             <ul class="account">
                <li><a href="UserInfoModifyForm.hash">회원정보수정</a></li>
-               <li><a href="#">프로필수정</a></li>
+               <li><a href="profile.hash">프로필수정</a></li>
                <li><a href="LogOut.hash">로그아웃</a></li>
             </ul></li>
 
@@ -821,8 +823,8 @@ ul.menu:after {
 
    <!-- main -->
    <div id="main">
+   <div id=sidebar_content style="float:left; width:80%">
       <div id="jb-sidebar">
-
          <!-- Profile -->
          <div class="box-shadow border-round white padding">
             <div class="container">
@@ -837,8 +839,7 @@ ul.menu:after {
                   ${memberinfo.nickname}
                </p>
                <p>
-                  <i class="fa fa-home fa-fw margin-right text-theme"></i> London,
-                  UK
+                  <i class="fa fa-home fa-fw margin-right text-theme"></i> ${memberinfo.location}
                </p>
                <p>
                   <i class="fa fa-birthday-cake fa-fw margin-right text-theme"></i>${memberinfo.birthday}</p>
@@ -878,7 +879,7 @@ ul.menu:after {
                </p>
                <p>
 
-                  <c:forEach var="tagname" items="${hashlist}">
+                  <c:forEach var="tagname" items="${sessionScope.hashlist}">
 
                      <!-- <li><a href='Board.hash?hash=사랑'>#사랑</a></li>
              <li><a href="Board.hash?hash=돈">#돈</a></li>
@@ -896,18 +897,21 @@ ul.menu:after {
       </div>
          
     </div>
-  
-     
-   <div id="jb-right">
-      <div id ="up" class="box-shadow border-round white padding">인기글</div>
-      <br>
-   <div id ="down"  class="box-shadow border-round white padding">채팅창</div>
-   </div>
-  
-   <div id="jb-content">
+  <div id="jb-content">
    <decorator:body/> 
    </div>
-
+  </div>
+     
+   <div id="jb-right">
+      <div style="width:100%; height: 350px; ">
+      <div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
+      </div>
+      <div style="width:100%; ">
+   <div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">채팅창</div>
+   </div>
+   </div>
+  
+   
       
    </div>
        <div id="jb-footer" class="w3-theme-d3">
