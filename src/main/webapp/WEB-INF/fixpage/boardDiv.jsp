@@ -138,6 +138,8 @@ function modal_close(){
 	e.keyCode = 27;
 	$(document).trigger(e); 
 }
+
+
 </script>
 <style type="text/css">
 	.background-color{color:#000 !important; background-color:#f5f7f8 !important}
