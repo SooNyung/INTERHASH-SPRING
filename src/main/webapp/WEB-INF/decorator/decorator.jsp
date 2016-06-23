@@ -19,7 +19,7 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 </style>
 <head>
 
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 <decorator:head />
 <meta charset="utf-8">
 <title>에벌레</title>
