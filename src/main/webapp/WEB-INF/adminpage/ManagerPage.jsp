@@ -6,17 +6,36 @@
 <title>관리자</title>
 <style>
 #view_div{
-	width:780px;
-	height:640px;
+	width:580px;
+	height:780px;
  	/* background-color: black; */
 	/* border:1px solid; */
 	padding:5px;
-	margin:auto;
+	margin-top:10px;
 	}
+	
+
+.box-shadow {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19) !important;
+	margin-top: 0px;
+}
+
+
+
+.border-round {
+	border-radius: 7px !important;
+}
+
+
+.white {
+	color: #000 !important;
+	background-color: #fff !important;
+}
 </style>
 </head>
 <body>
-<div id ="view_div">
+<div id ="view_div" class="box-shadow border-round white">
 <center>
 <p>관리자페이지입니다.</p>
     

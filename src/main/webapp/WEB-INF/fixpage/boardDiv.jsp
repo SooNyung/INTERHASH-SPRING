@@ -7,6 +7,11 @@
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
+<link rel="stylesheet" href='<c:url value="modal/magnific-popup.css"/>' >
+
+
+<script src='<c:url value="modal/jquery.magnific-popup.min.js"/>'></script>
+
 <c:if test ="${sessionScope.memId==null}">
 <script>
 alert("비밀번호가 틀립니다.");
@@ -18,6 +23,10 @@ $(function() {
     $("#conphoto").on('change', function(){
          readURL(this); 
     });
+  	$('.img_link').magnificPopup({
+  		type:'ajax'
+  	});
+  	  
 });
 //TODO:심플한 토글 버튼
 //<div id="btn_group">
@@ -115,6 +124,7 @@ function like(num){
 	url = "LikeCheck.hash?connum="+num;
 	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 }
+<<<<<<< HEAD
 function unlike(num){
 	
 	url = "Unlike.hash?connum="+num;
@@ -123,11 +133,19 @@ function unlike(num){
 /* function toggle(){
 	$("#btn_group").simpleToggleBtn();
 } */
+=======
+function modal_close(){
+	var e = $.Event("keyup");
+	e.which = 27;
+	e.keyCode = 27;
+	$(document).trigger(e); 
+}
+>>>>>>> 00c2833afc61ec1ba690f27627bcb6cbe2a753cf
 </script>
 <style type="text/css">
 	.background-color{color:#000 !important; background-color:#f5f7f8 !important}
 	#board_div{
-		width:800px;
+		width:500px;
 		height:230px;
 /* 		 background-color: black;  */
 		
@@ -145,8 +163,8 @@ function unlike(num){
 		margin:auto;
 	}
 	#img{
-		width: 260px;
-		height:270px;
+		width: 180px;
+		height:150px;
 		margin:auto;
 	}
 	#board_main{
@@ -242,12 +260,12 @@ function unlike(num){
 	#writeform{
 		width:700px;
 		height:50px;
-		margin: 10px;
+		margin: 0px;
 		/* border:1px solid; */
 	}
 	
 	#textfield {
-	width: 500px;
+	width: 465px;
 	height: 80px;
 	background: #ffffff;
 }
@@ -366,7 +384,7 @@ $(function(){
            <!--    <h6 class="opacity">I love it!! InterHash~♡</h6> -->
             <div id="writeform" border="1">
       <form action="ContentInputPro.hash" name="writeForm" method="post" enctype="multipart/form-data"> 
-		<div id="wrap" style="width: 500px; margin: auto;">
+		<div id="wrap" style="width: 500px; ">
 			<textarea id="textfield" name="content" placeholder="내용을 입력하세요."></textarea>
 			<div class="photoBox" style="height: 100px; width: 100px;">
 				<input class='fileData' id = "conphoto" name="conphoto" type="file"/> 
@@ -412,7 +430,7 @@ $(function(){
 	<div class="content">
 	<div class="write">${con.content}</div>
 	<div class="w3-row-padding">
-        <a href="ContentView.hash?connum=${con.connum}">
+        <a href="ContentView.hash?connum=${con.connum}" class="img_link">
 		<img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />'/>
 		</a>  
     </div>

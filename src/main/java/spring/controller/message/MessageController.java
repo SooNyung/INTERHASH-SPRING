@@ -37,17 +37,8 @@ public class MessageController {
 	public void setMemberdao(MemberDAO memberdao) {
 		this.memberdao = memberdao;
 	}
-	
-	@ModelAttribute("messagedto")
-	public MessageCommand messagedto(){
-		return new MessageCommand();
-	}
-	
-	@ModelAttribute("memberdto")
-	public MemberCommand memberdto(){
-		return new MemberCommand();
-	}
-	
+
+
 	@RequestMapping("/MessageForm.hash")
 	public ModelAndView messageForm(@ModelAttribute("memberdto") MemberCommand memberdto){
 		ModelAndView mav = new ModelAndView("userpage/MessageForm");
@@ -88,7 +79,9 @@ public class MessageController {
 		messagedto.setSendEmail(sender);
 		messagedto.setReceEmail(receiver);
 		messagedto.setSendNickname(senderNick);
-		messagedto.setSendNickname(senderNick);		
+
+
+
 		//메시지 보내는 쿼리 insert 
 		int result = messagedao.sendMessage(messagedto);
 		return mav;	
@@ -101,7 +94,7 @@ public class MessageController {
 				ModelAndView mav = new ModelAndView("userpage/MessageList");
 				
 				String email = (String) request.getSession().getAttribute("memId");
-				SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:mm");
+				SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:MM");
 				
 				//메시지 리스트를 얻어오기 위한 쿼리문 
 				List messageList = messagedao.getMessageList(email);
@@ -133,15 +126,16 @@ public class MessageController {
 	public ModelAndView deleteMessage(
 			@ModelAttribute("messagedto") MessageCommand messagedto,
 			HttpServletRequest request){
-		
 		ModelAndView mav = new ModelAndView("userpage/MessageList");
 		int messagenum = Integer.parseInt(request.getParameter("messageNum"));
 		String email = (String) request.getSession().getAttribute("memId");
+		SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:mm");
 		//메시지 삭제 쿼리
 		int result = messagedao.deleteMessage(messagenum);
 
 		List messageList = messagedao.getMessageList(email);
 		
+		mav.addObject("sdf",sdf);
 		mav.addObject("messageList",messageList);
 		mav.addObject("result",result);		
 		return mav;
@@ -174,20 +168,27 @@ public class MessageController {
 		//수신자 [답장]
 		String receiver = request.getParameter("sender");
 		String recenick = request.getParameter("sendNick");
+		String email = (String) request.getSession().getAttribute("memId");
 
 		//송신자
 		String sender = (String) request.getSession().getAttribute("memId");
 		
 		//송신자 닉네임
 		memberdto = memberdao.modify(sender);
+		
 		String senderNick = memberdto.getNickname();
+		
 		String msgContent = request.getParameter("messagecontent");
+		
+		List messageList = messagedao.getMessageList(email);
 		
 		messagedto.setSendEmail(sender);
 		messagedto.setSendNickname(senderNick);
 		messagedto.setReceEmail(receiver);
 		messagedto.setReceNickname(recenick);
 		messagedto.setMessageContent(msgContent);
+		
+		mav.addObject("messageList",messageList);
 		
 		//답장 쿼리문
 		int result = messagedao.sendMessage(messagedto);

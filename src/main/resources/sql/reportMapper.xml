@@ -23,7 +23,7 @@
 	</update>
 	
 		<update id="Reportcountcom" parameterType="String">
-		update contents set comreportcount=comreportcount+1 where email= #{email}
+		update commenttable set comreportcount=comreportcount+1 where email= #{email}
 	</update>
 
 	

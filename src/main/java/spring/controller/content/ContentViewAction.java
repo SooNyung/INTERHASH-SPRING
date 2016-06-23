@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import mybatis.CommentDAO;
@@ -63,22 +64,18 @@ public class ContentViewAction {
 
 	@RequestMapping("/ContentView.hash")
 	public ModelAndView contentView(@ModelAttribute("contentdao") ContentCommand content,
-			@ModelAttribute("commentdto") CommentCommand comment, HttpServletRequest request) throws Exception {
+			@ModelAttribute("commentdto") CommentCommand comment, HttpServletRequest request,@RequestParam("connum")int connum) throws Exception {
 		ModelAndView mav = new ModelAndView("content/ContentView");
 		/*int connum = Integer.parseInt(request.getParameter("connum"));*/
-		int connum = 92;
-		
-		/*request.getSession().setAttribute("memId", "soonyoung");
-		request.getSession().setAttribute("nickName", "soonyoung");*/
-
-		
+		int connum1 = 93;
 		SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:mm");
-		content = contentdao.getContent(connum);
+		content = contentdao.getContent(connum1);
 		String conhash = content.getConhash();
 		conhash = conhash.replaceAll(",", "");
 		content.setConhash(conhash);
-		ArrayList<CommentCommand> array = (ArrayList) commentdao.getComments(connum);
-		int count = commentdao.commentcount(connum);
+		ArrayList<CommentCommand> array = (ArrayList) commentdao.getComments(connum1);
+		
+		int count = commentdao.commentcount(connum1);
 		
 		mav.addObject("content", content);
 		mav.addObject("sdf", sdf);

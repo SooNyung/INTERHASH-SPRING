@@ -17,6 +17,7 @@ var check2 = false;
 function checkIt() {
 	if(check){
 		alert("전송되었습니다.");
+			window.close();
 		return true;
 	}
 	if(!check) {
@@ -29,7 +30,6 @@ function checkIt() {
 	}
 }
 function email(){
-	
 	var regex=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;  
 	var emailList = "${emailList}";
 	var email = document.getElementById("receEmail").value;
@@ -60,14 +60,17 @@ function email(){
 <body>	
 
 <div align="center">
+<div><a href="MessageList.hash">받은쪽지  </a> | <a href="#"> 쪽지쓰기</a><br><br>	
+
+</div>
+
 <form method="post" action="MessagePro.hash" onsubmit="return checkIt()">
-<hr>
+
 <div>받는사람 : 
 <input type="email" id="receEmail" name="receEmail">
 <input type="button" onclick="email()" value="이메일검사">
 </div>
 <hr>
-
 
 <div><textarea name="messagecontent" rows="10" cols="50"></textarea></div><br>
 

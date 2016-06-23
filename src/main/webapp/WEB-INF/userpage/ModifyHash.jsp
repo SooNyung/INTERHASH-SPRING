@@ -15,7 +15,24 @@
 [class*="fontawesome-"]:before {
 	font-family: 'FontAwesome', sans-serif;
 }
+.box-shadow {
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+      rgba(0, 0, 0, 0.19) !important;
+   
+}
 
+
+
+.border-round {
+   border-radius: 7px !important
+}
+
+
+.white {
+   color: #000 !important;
+   background-color: #fff !important;
+   
+}
 .form__field {
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -62,14 +79,14 @@ input[type="submit"] {
 	border-radius: 0.25rem;
 	margin-left:110px;
 	padding: 1rem;
-	background-color: #ea4c88;
+	background-color: #FF6088;
 	color: #eee;
 	font-weight: bold;
 	text-transform: uppercase;
 }
 
 input[type="submit"]:focus, input[type="submit"]:hover {
-	background-color: #d44179;
+	background-color: #E84D5B;
 }
 
 .site__container {
@@ -77,7 +94,8 @@ input[type="submit"]:focus, input[type="submit"]:hover {
 	-webkit-flex: 1;
 	-ms-flex: 1;
 	flex: 1;
-	padding: 3rem 0;
+	/* padding: 3rem 0; */
+	 padding-bottom: 10px;
 }
 
 input {
@@ -97,8 +115,8 @@ input {
 
 .grid__container {
 	margin: 0 auto;
-	max-width: 25rem;
-	width: 90%;
+	max-width: 50rem;
+	width: 75%;
 }
 
 label {
@@ -116,13 +134,13 @@ label {
 }
 
 label:focus, label:hover {
-	background-color: #ea4c88;
+	background-color: #FF6088;
 	color: #eee;
 	font-weight: bold;
 }
 
 :checked+label {
-	background-color: #ea4c88;
+	background-color: #FF6088;
 	color: #eee;
 	font-weight: bold;
 }
@@ -145,7 +163,7 @@ window.onload=function checkHash(){
 
 </head>
 <body class="align">
-	<div class="site__container">
+	  <div class="site__container box-shadow border-round white">
 		<div class="grid__container">
 			<h1>Please check your HASHTAG!</h1>
 			 <form action="ModifyHashPro.hash" name="userinput" method="post" class="form form--login">
@@ -195,6 +213,8 @@ window.onload=function checkHash(){
 				<label for="dmadkr">#음악</label>
 				<input type="checkbox" name="hash" id="ck" value="차" style="display:none">
 				<label for="ck">#차</label>
+				<input type="checkbox" name="hash" id="Rna" value="꿈" style="display:none">
+				<label for="Rna">#꿈</label>
 			
 				
 			</div>

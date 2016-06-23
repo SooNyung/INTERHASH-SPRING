@@ -13,9 +13,20 @@ padding:3px;
 *{
 color:#7A7A7A;
 }
+
+#view_div{
+	width:580px;
+	height:640px;
+ 	/* background-color: black; */
+	/* border:1px solid; */
+	padding:5px;
+	margin:auto;
+	}
+
 </style>
 </head>
 <body>
+<div class="view_div">
 <center>
 <h3>Å»ÅðÈ¸¿ø°ü¸®</h3>
 <hr/>
@@ -31,10 +42,10 @@ color:#7A7A7A;
 <td>
 ${member.drawalemail}
 </td>
-<td>
+<td width="150">
 ${member.drawaldate}
 </td>
-<td>
+<td width="230">
 ${member.drawalcause}
 </td>
 </tr>
@@ -43,5 +54,6 @@ ${member.drawalcause}
 
 <br>
 <a href="toExcelWithdrawl.hash"><img src='<c:url value="/image/logo/¿¢¼¿.PNG" ></c:url>' width='50' height="50"></a>
+</div>
 </body>
 </html>

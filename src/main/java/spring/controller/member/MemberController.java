@@ -105,7 +105,7 @@ public class MemberController {
 	@RequestMapping("/ModifyHashPro.hash")
 	public String ModifyHashPro(@ModelAttribute("command")MemberCommand command, @RequestParam("hash") String[] hash){
 		command.setHash(Arrays.toString(hash));
-		System.out.println("hash태그 :: " + command.getHash());
+		System.out.println("hash태그 :: " + Arrays.toString(hash));
 		int a = dao.modifyHash(command);
 		System.out.println("해시태그 수정완료? " + a);
 		return "userpage/ModifyHashPro";
@@ -116,7 +116,6 @@ public class MemberController {
 	public ModelAndView deleteMember(@ModelAttribute("command")MemberCommand command){
 		ModelAndView mv = new ModelAndView("userpage/WithdrawalForm");
 		mv.addObject("c", command);
-		
 		
 		return mv;
 	}
@@ -144,13 +143,36 @@ public class MemberController {
 		
 	}
 	
+	@RequestMapping("/profile.hash")
+	public ModelAndView profile(HttpSession session){
+		ModelAndView mv = new ModelAndView("userpage/Profile");
+		String email = (String)session.getAttribute("memId");
+		MemberCommand command = dao.modify(email);
+		mv.addObject("c", command);
+		return mv;
+	}
+	
+	@RequestMapping("/profilePro.hash")
+	public String ProfilePro(@ModelAttribute("command")MemberCommand command, @RequestParam("checked") String[] checked){
+		command.setHash(Arrays.toString(checked));
+		System.out.println("hash태그 :: " + Arrays.toString(checked));
+		int a = dao.profile(command);
+		System.out.println("프로필 수정완료? " + a);
+		return "userpage/ProfilePro";
+	}
+	
+	
+	
+	
 	@RequestMapping("/Board.hash")
 	public String board(Model model,HttpSession session){
 		String email =(String)session.getAttribute("memId");
 		MemberCommand command = dao.getMemberInfo(email);
-		model.addAttribute("content", cdao.getContent());
-		model.addAttribute("memberinfo", command);
-		model.addAttribute("messagecount",mdao.getMessageCount(email));
+		session.setAttribute("content", cdao.getContent());
+		session.setAttribute("memberinfo", command);
+		session.setAttribute("messagecount",mdao.getMessageCount(email));
+		String checked = dao.selectCheck(email);
+		System.out.println("공개하는 컬럼? : " + checked);
 		System.out.println(mdao.getMessageCount(email));
 		String hash = command.getHash();
 		hash = hash.substring(1,hash.length()-1);
@@ -159,8 +181,8 @@ public class MemberController {
 			hashlist[i] = hashlist[i].trim();
 		}
 		List<String> list = Arrays.asList(hashlist);
-		model.addAttribute("hashlist",list);
-		model.addAttribute("mesagelist",mdao.getMessageList(email));
+		session.setAttribute("hashlist",list);
+		session.setAttribute("mesagelist",mdao.getMessageList(email));
 		return "fixpage/boardDiv";
 	}
 }

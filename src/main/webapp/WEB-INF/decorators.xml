@@ -27,6 +27,17 @@
 		<pattern>/LoginFailPro.hash*</pattern>
 		<pattern>/SignupPro.hash*</pattern> 
 		<pattern>/SignupPro2.hash*</pattern>
+		<pattern>/MessageList.hash*</pattern>
+		<pattern>/MessageView.hash*</pattern>
+		<pattern>/deleteMessage.hash*</pattern>
+		<pattern>/ReMessageForm.hash*</pattern>
+		<pattern>/ReMessagePro.hash*</pattern>
+		<pattern>/ContentView.hash*</pattern>
+		
+		<pattern>/FindPasswordForm.hash*</pattern>
+		<pattern>/FindPasswordPro.hash*</pattern>  
+		<pattern>/ReportProCom.hash*</pattern>
+		<pattern>/UpdateTagCheck.hash*</pattern>
 	</excludes>
  
 </decorators>
