@@ -28,9 +28,29 @@ $(function() {
   	});
   	  
 });
+//TODO:심플한 토글 버튼
+//<div id="btn_group">
+//<button>button1</button>
+//<button class="hide">button2</button>
+//<input type="checkbox" class="hide"/>
+//</div>
+//.hide { display: none; }
+(function ($) {
+$.fn.simpleToggleBtn = function () {
 
+    var btns = $(this).find("button"), // 버튼 그룹 내 버튼들;
+        checkBox = $("input:checkbox");
 
- function readURL(input) {
+    btns.on("click", function () { // 버튼들 중 클릭한 버튼에 함수;
+        $(this).addClass("hide");
+        $(this).siblings("button").removeClass("hide");
+        // 첫번째 버튼 기준으로 input 요소 체크!
+        $(this).first().hasClass("hide") ? checkBox.attr("checked",true) : checkBox.attr("checked",false);
+    });
+}
+}(jQuery));
+
+function readURL(input) {
     if (input.files && input.files[0]) {
     var reader = new FileReader();
     	reader.onload = function (e) {
@@ -43,6 +63,7 @@ $(function() {
       reader.readAsDataURL(input.files[0]);
     }
 } 
+
 function fileUploadPreview(thisObj, preViewer) {
 	// 형식 체크
 	if (!/(\.gif|\.jpg|\.jpeg|\.png)$/i.test(thisObj.value)) {
@@ -98,11 +119,28 @@ function tagCheck() {
 	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 }
 function like(num){
-	
+	/* $(this).simpleToggleBtn(); */
+	$("#btn_group").simpleToggleBtn();
 	url = "LikeCheck.hash?connum="+num;
 	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 }
-
+<<<<<<< HEAD
+function unlike(num){
+	
+	url = "Unlike.hash?connum="+num;
+	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+}
+/* function toggle(){
+	$("#btn_group").simpleToggleBtn();
+} */
+=======
+function modal_close(){
+	var e = $.Event("keyup");
+	e.which = 27;
+	e.keyCode = 27;
+	$(document).trigger(e); 
+}
+>>>>>>> 00c2833afc61ec1ba690f27627bcb6cbe2a753cf
 </script>
 <style type="text/css">
 	.background-color{color:#000 !important; background-color:#f5f7f8 !important}
@@ -268,7 +306,7 @@ function like(num){
 	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
 	box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
 }
-
+.hide { display: none; }
 .photoBox .fileData {
 	display: none;
 }
@@ -296,6 +334,7 @@ function like(num){
 .custom_checkbox input {
 	type ="checkbox": checked+ label{background-position:0 -25px;
 }
+
 #blah_img{
 	width:100px;
 	height:100px;
@@ -327,7 +366,6 @@ hr{border-top:1px solid; background-color:#eee;}
 box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 -webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
 </style>
-
 
 <script>
 $(function(){
@@ -376,9 +414,7 @@ $(function(){
               
             </div>
           </div>
-
-
-
+       
 <form method='post' action='ContentView.hash'>
 <c:forEach var="con" items= '${content}' >
 <input type="hidden" name="connum" value="${con.connum}">
@@ -393,18 +429,26 @@ $(function(){
 	<hr color="#eee">
 	<div class="content">
 	<div class="write">${con.content}</div>
-
 	<div class="w3-row-padding">
         <a href="ContentView.hash?connum=${con.connum}" class="img_link">
 		<img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />'/>
 		</a>  
     </div>
-    
+
     <p>#${con.conhash}</p>
 	</div>
-    <button type="button" class="w3-btn w3-theme-d1 w3-margin-bottom" onclick="javascript:like('${con.connum}')"><i class="fa fa-thumbs-up"></i>  Like</button> 
-    <button type="button" class="w3-btn w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
-
+ 	<div id="btn_group">
+    <button type="button" id="btn1" class="w3-btn w3-theme-d1 w3-margin-bottom" onclick="javascript:like('${con.connum}')"><i class="fa fa-thumbs-up"></i> Like </button>
+    <button type="button" id="btn2" class="w3-btn w3-theme-d2 w3-margin-bottom hide" onclick="javascript:unlike('${con.connum}')"> un_like </button>
+    <input type="checkbox" class="hide"/>
+    
+    <%-- <button type="button" class="w3-btn w3-theme-d1 w3-margin-bottom likebutton" onclick="javascript:like('${con.connum}')"><i class="fa fa-thumbs-up"></i>  Like</button>
+    <button type="button" class="w3-btn w3-theme-d2 w3-margin-bottom" style ="display:none" onclick="javascript:unlike('${con.connum}')">  UnLike</button> --%>
+    
+    <button type="button" class="w3-btn w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+    </div>
+  	
+	
 	<%-- <div id="board_img">
 	<a href="ContentView.hash?connum=${con.connum}">
 		<img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />' />

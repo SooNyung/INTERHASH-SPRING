@@ -67,18 +67,22 @@ public class ContentViewAction {
 			@ModelAttribute("commentdto") CommentCommand comment, HttpServletRequest request,@RequestParam("connum")int connum) throws Exception {
 		ModelAndView mav = new ModelAndView("content/ContentView");
 		/*int connum = Integer.parseInt(request.getParameter("connum"));*/
+<<<<<<< HEAD
 	
 
 		//int connum = 91;
 		//int connum = 88;
+=======
+		int connum1 = 93;
+>>>>>>> fac8799efd24beb0bed4f0dce4d46d5568a7b075
 		SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:mm");
-		content = contentdao.getContent(connum);
+		content = contentdao.getContent(connum1);
 		String conhash = content.getConhash();
 		conhash = conhash.replaceAll(",", "");
 		content.setConhash(conhash);
-		ArrayList<CommentCommand> array = (ArrayList) commentdao.getComments(connum);
+		ArrayList<CommentCommand> array = (ArrayList) commentdao.getComments(connum1);
 		
-		int count = commentdao.commentcount(connum);
+		int count = commentdao.commentcount(connum1);
 		
 		mav.addObject("content", content);
 		mav.addObject("sdf", sdf);

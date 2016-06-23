@@ -167,6 +167,7 @@ function back(){
 	location.href ="Board.hash";
 	
 }
+
 </script>
 
 </head>
@@ -218,13 +219,13 @@ function back(){
 </div>
 
 <div id="view_right" class="box-shadow border-round white">
-	<input type=button class=mtf-close>
+	<input type=button onclick="modal_close()" value="X" style="float:right">
 	<form method=post action="InsertComment.hash">
 	<input type=hidden name=connum value="${content.connum}">
 	<input type=hidden name=comnick value="${sessionScope.nickName}">
 	<div id="right_nick">
 		<span id ="align_left"><b>${sessionScope.nickName}</b>님</span>
-		<span id="align_right"><input type="button" onclick="back()" value="닫기버튼"></span>
+		<!-- <span id="align_right"><input type="button" onclick="back()" value="닫기버튼"></span> -->
 		
 	</div>
 	<div id="comment_content">

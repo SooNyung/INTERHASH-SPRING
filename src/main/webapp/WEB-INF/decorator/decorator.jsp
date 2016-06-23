@@ -19,8 +19,12 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 </style>
 <head>
 
+<<<<<<< HEAD
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+=======
 <!-- <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script> -->
-<script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+>>>>>>> 00c2833afc61ec1ba690f27627bcb6cbe2a753cf
 <decorator:head />
 <meta charset="utf-8">
 <title>에벌레</title>
@@ -919,6 +923,18 @@ $scope.ws.onclose = function(event) {
      
    <div id="jb-right">
 <<<<<<< HEAD
+      <div style="width:100%; height: 350px; ">
+      <div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
+      </div>
+      <div style="width:100%; ">
+   <div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">채팅창</div>
+   </div>
+   </div>
+  
+   
+      
+=======
+
    	<div style="width:100%; height: 350px; ">
    	<div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
    	</div>
@@ -931,18 +947,9 @@ $scope.ws.onclose = function(event) {
 		</ul>
 	</div>
 	</div>
-=======
-      <div style="width:100%; height: 350px; ">
-      <div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
-      </div>
-      <div style="width:100%; ">
-   <div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">채팅창</div>
    </div>
->>>>>>> 57644ecff8665e5d06af6fe889332b0deb56f79a
-   </div>
-  
-   
-      
+
+>>>>>>> 00c2833afc61ec1ba690f27627bcb6cbe2a753cf
    </div>
        <div id="jb-footer" class="w3-theme-d3">
         <p>Copyright</p>

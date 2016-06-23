@@ -115,14 +115,14 @@ public class LoginController {
 		
 		String findpassword = dao.findPassword(info) ;
 		
-		key = dao.findPassword(info);
+		//key = dao.findPassword(info);
 		
 		if(result == 1)
 		{	
 			System.out.println("email 있음");
 
-			session.setAttribute("key",key);
-			System.out.println("result == 1 안에 임시 비밀번호 :::" +key);
+			//session.setAttribute("key",key);
+			//System.out.println("result == 1 안에 임시 비밀번호 :::" +key);
 			
 			session.setAttribute("email", info.getEmail());
 			session.setAttribute("password", findpassword);
@@ -147,6 +147,11 @@ public class LoginController {
 	public void sendmail(String email) {
 		
 		TempPasswd temppw = new TempPasswd();
+		
+		//test 임시비밀번호를생성할때 항상 처음에는 null 값이 들어가게
+		temppw.setPasswd(null);
+		System.out.println("temppw.getPasswd() :::" + temppw.getPasswd());
+		
 		temppw.setEmail(email);
 		System.out.println("sendEmail() ::: "+email);
 		
@@ -154,6 +159,7 @@ public class LoginController {
 		System.out.println("temppw.getPasswd() ::: "+temppw.getPasswd());
 		
 		dao.tempPasswd(temppw);
+		System.out.println("key :::" + key);
 		
 		key=temppw.getPasswd(); // 바뀐 비밀번호를 key에 저장
 
