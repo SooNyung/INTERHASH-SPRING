@@ -40,6 +40,11 @@
 	<update id="updateContent" parameterType="spring.model.ContentCommand">
 		update contents set content=#{content}, conhash=#{conhash} where connum=#{connum}
 	</update>
+<!-- 추가 -->	
+	<select id ="myContent" parameterType= "string" resultType="spring.model.ContentCommand">
+		select * from contents where email =#{email}
+	</select>
+	
 </mapper>
 
 

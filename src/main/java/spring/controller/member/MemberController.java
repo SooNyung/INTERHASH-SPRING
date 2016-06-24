@@ -172,8 +172,7 @@ public class MemberController {
 		session.setAttribute("memberinfo", command);
 		session.setAttribute("messagecount",mdao.getMessageCount(email));
 		String checked = dao.selectCheck(email);
-		System.out.println("공개하는 컬럼? : " + checked);
-		System.out.println(mdao.getMessageCount(email));
+		session.setAttribute("checked", checked);
 		String hash = command.getHash();
 		hash = hash.substring(1,hash.length()-1);
 		String []  hashlist = hash.split(",");
@@ -183,6 +182,29 @@ public class MemberController {
 		List<String> list = Arrays.asList(hashlist);
 		session.setAttribute("hashlist",list);
 		session.setAttribute("mesagelist",mdao.getMessageList(email));
+		session.setAttribute("num",1);
+		return "fixpage/boardDiv";
+	}
+	
+	@RequestMapping("/myContent.hash")
+	public String myContent(Model model,HttpSession session){
+		String email =(String)session.getAttribute("memId");
+		MemberCommand command = dao.getMemberInfo(email);
+		session.setAttribute("content", cdao.myContent(email));
+		session.setAttribute("memberinfo", command);
+		session.setAttribute("messagecount",mdao.getMessageCount(email));
+		String checked = dao.selectCheck(email);
+		session.setAttribute("checked", checked);
+		String hash = command.getHash();
+		hash = hash.substring(1,hash.length()-1);
+		String []  hashlist = hash.split(",");
+		for(int i = 0;i<hashlist.length;i++){
+			hashlist[i] = hashlist[i].trim();
+		}
+		List<String> list = Arrays.asList(hashlist);
+		session.setAttribute("hashlist",list);
+		session.setAttribute("mesagelist",mdao.getMessageList(email));
+		session.setAttribute("num",1);
 		return "fixpage/boardDiv";
 	}
 }
