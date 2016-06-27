@@ -19,7 +19,7 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 </style>
 <head>
 
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 <decorator:head />
 <meta charset="utf-8">
 <title>에벌레</title>
@@ -192,6 +192,8 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 	width: 270px;
 }
 
+.count{
+padding: 0px 5px 0px 5px;}
 .container1 {
 	content: "";
 	display: table;
@@ -429,7 +431,7 @@ ul.menu:after {
 }
 
 .navbar li .account{display:none;
-width: 150px;
+width: 180px;
 border-radius:7px;
 }
 
@@ -455,9 +457,8 @@ border-radius:7px;
 
 .badge {
 	color: #b2b2b2;
-	margin-top:0px;
+	margin-top:4px;
 	text-align: center;
-	border-radius: 50%;
 }
 
 .right {
@@ -491,6 +492,8 @@ border-radius:7px;
 }
 #up{width:90%; height:300px; margin-top:10px; padding:10px 0px 20px 0px; }
 #down{width:90%; height:400px; padding:10px 0px 20px 0px;}
+
+
 
 /* -----------------------------해시태그버튼 css---------------------------------- */
 .button {
@@ -571,6 +574,7 @@ border-radius:7px;
 /*    font-size: 16px; */
    border: 0px;
 }
+
 
 </style>
 
@@ -707,16 +711,15 @@ border-radius:7px;
 		 });  
 	
 
-	$(document).ready(function(){  
-		   
-		  $(".message").hover(function() {                    //마우스를 topnav에 오버시
+	$(document).ready(function(){  		   
+		  $(".message").hover(function() {//마우스를 topnav에 오버시
+		   $(this).parent().find("span").hide();      
 		   $(this).parent().find(".sub").slideDown('normal').show();                   //subnav가 내려옴.
 		   $(this).parent().hover(function() {  
 		   }, function(){  
 		    $(this).parent().find(".sub").slideUp('fast');                 //subnav에서 마우스 벗어났을 시 원위치시킴  
 		   });  
-		  });  
-		   
+		  });  	   
 		 }); 
 	
 	
@@ -748,31 +751,11 @@ border-radius:7px;
 	        
 	      });
 
+
 	/* $(window).load(function(){
 	    alert($('#jb-content').attr('height'));
 	}); */
 </script>
-
-<!--      <script type="text/javascript">
-         $(function(){
-	     $(".sm").hide();
-	     /*
-	     	hover 이벤트
-	     	mouseover 와 mouseout 시의 이벤트 정의
-	     	첫번째는 mouseover, 두번째는 mouseout
-	     	또한 slideDown과 slideUp은 toggle로 대체 가능
-	     	$(".small").slideToggle("fast");
-	     	콜백함수의 조건절 없이 하나의 콜백함수로 표현가능
-	     	
-	     */
-		 $(".small").hover(
-			function(){ 
-				$(".small:not(:animated)",this).slideDown("fast");},
-			function(){
-			   	$(".small",this).slideUp("fast");
-			});
-      });	
-   </script> -->
 
   </head>
 
@@ -786,8 +769,9 @@ border-radius:7px;
 				class="padding-large margin-right"><b>I N T E R H A S H #</b></a></li>
 			<li class="small">
 			<div class="message">
-			<a href="messageView.hash" class="padding-large margin-right" title="Messages">
-				<i class="fa fa-envelope"></i><span class="badge right small pink">${messagecount}</span>
+			<a href="#" onclick="window.open('MessageList.hash','new','width=400 height=350');return false" 
+			class="padding-large margin-right"  title="Messages">
+				<i class="fa fa-envelope"></i><span class="count badge right small circle pink">${messagecount}</span>
 			</a>
 			</div>
 		
@@ -800,8 +784,9 @@ border-radius:7px;
 						<tr class="left-align">
 							<td colspan="2"><c:forEach var="message"
 									items="${sessionScope.mesagelist}" begin="0" end="2">
-									<li><a
-										href="messageView.hash?messageNum=${message.messageNum}"><img
+									<li><a 
+										href="#"
+										onclick="window.open('MessageView.hash?messageNum=${message.messageNum}','new','width=400 height=350');return false"><img
 											src="image/logo/img_avatar5.png" class="left-align circle "
 											width="15%" height="15%">${message.sendNickname}:
 											${message.messageContent}</a></li>
@@ -820,7 +805,7 @@ border-radius:7px;
 			<li class="small right">
 			<div class="topnav">	<a href="#" class="padding-large"
 				title="MyAccount"><img src="image/logo/사람.PNG" class="circle"
-					width="30%" height="30%">${nickName}님</a></div>
+					width="30%" height="30%">${memberinfo.nickname}님</a></div>
 				<ul class="account">
 					<li><a href="UserInfoModifyForm.hash">회원정보수정</a></li>
 					<li><a href="profile.hash">프로필수정</a></li>
