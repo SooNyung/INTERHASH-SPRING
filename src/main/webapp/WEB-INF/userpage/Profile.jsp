@@ -255,23 +255,19 @@ font{
 </style>
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> 
 <script>
-window.onload=function checkeded(){
- 	var rad = "${c.bloodgroups}";
-	var blood=document.getElementsByName("bloodgroups"); 
-	
- 	for(i=0;i<blood.length;i++){
-		if(rad.indexOf(blood[i].value)!=-1){
-			blood[i].checked=true;
-		}
-	}  
-	
-}
 window.onload=function checkHash(){
 		var hasharr = "${c.checked}"; //hasharr에 저장됨
 		var hash=document.getElementsByName("checked"); //해쉬체크박스 배열 가져옴
-
+				
+		var rad = "${c.bloodgroups}";
+		var blood=document.getElementsByName("bloodgroups"); 
 		
-		
+	 	for(i=0;i<blood.length;i++){
+			if(rad.indexOf(blood[i].value)!=-1){
+				blood[i].checked=true;
+			}
+		} 
+	 	
 	 	 for(i=0;i<hash.length;i++){
 			 if(hasharr.indexOf(hash[i].value)!=-1){ 
 				hash[i].checked=true;
@@ -344,13 +340,13 @@ window.onload=function checkHash(){
         
         <div class="form__field">
           <label class="fontawesome-tint" for="login__username"><span class="hidden">blood</span></label>
-          <!-- <input id="login__username" name="graduateschool" type="radio" class="form__input"> -->
-          <label id="ra">
+    
+         <label id="ra">
           <label id="radio"><input type="radio" name="bloodgroups" value="A형">A형</label>
 		  <label id="radio"><input type="radio" id="radio" name="bloodgroups" value="B형">B형</label>  
 		  <label id="radio"><input type="radio" id="radio" name="bloodgroups" value="O형">O형</label>
 		  <label id="radio"><input type="radio" id="radio" name="bloodgroups" value="AB형">AB형</label>
-		  </label>
+		   </label> 
 		  <input type="checkbox" name="checked" value="bloodgroups" id="bloodgroups" style="display:none">
 				<label for="bloodgroups" class="fontawesome-ok"></label>
         
