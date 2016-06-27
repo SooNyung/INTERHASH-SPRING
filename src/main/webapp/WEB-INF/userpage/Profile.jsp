@@ -284,7 +284,15 @@ $(document).ready(function(){
   <div class="site__container box-shadow border-round white">
 <h1>PROFILE</h1>
     <div class="grid__container">
-
+    <p class="center">
+                  <img src="image/logo/사람.PNG" style="height: 106px; width: 106px"
+                     alt="Avatar">
+                   
+               </p>
+               <p class="center">
+               <input type="file">
+               </p>
+               <hr color="#eee">
 
       <form action="profilePro.hash" name="userinput" method="post" class="form form--login" onSubmit="return checkedIt()">
 
