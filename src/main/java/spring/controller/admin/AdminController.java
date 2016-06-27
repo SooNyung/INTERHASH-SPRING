@@ -58,7 +58,7 @@ public class AdminController {
 	@RequestMapping(value="/ManagerPageCount.hash",method=RequestMethod.GET)
 	private ModelAndView adminCount(HttpServletRequest request){
 		ModelAndView mv = new ModelAndView("adminpage/ManagerPageCount");
-
+		
 		//request.setAttribute("hashname", HashName);
 	
 		//AdminCommand bean = (AdminCommand)list.get(5);//?
