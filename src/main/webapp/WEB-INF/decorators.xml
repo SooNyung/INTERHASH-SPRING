@@ -38,6 +38,8 @@
 		<pattern>/FindPasswordPro.hash*</pattern>  
 		<pattern>/ReportProCom.hash*</pattern>
 		<pattern>/UpdateTagCheck.hash*</pattern>
+		<pattern>/LikeCheck.hash*</pattern>
+		<pattern>/Unlike.hash*</pattern>
 	</excludes>
  
 </decorators>
