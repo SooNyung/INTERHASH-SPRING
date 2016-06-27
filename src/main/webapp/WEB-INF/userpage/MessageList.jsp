@@ -17,6 +17,8 @@ text-overflow: ellipsis;
 width: 300px;
 border:0;
 }
+
+body{background-color:#FFCCCC}
 </style>
 
 </head>

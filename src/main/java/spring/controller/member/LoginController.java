@@ -47,6 +47,9 @@ public class LoginController {
 		int result = dao.login(info);
 
 		String nick = dao.nick(info) ;
+		
+		String pw = dao.findPassword(info);
+		System.out.println("pw ::: " + pw );
 
 		//System.out.println("dao.nick(info) ::: " + nick);
 		//System.out.println("dao.login(info) :: " + result);
@@ -106,26 +109,17 @@ public class LoginController {
 	{		
 		System.out.println("findPassword 들어오나~");
 		
-		String email = info.getEmail() ;		
-//		System.out.println("info.getEmail ::: " + info.getEmail());
-	
-		sendmail(email); // 랜던값으로 생성한 임시 비밀번호를 email에 저장
-		
 		int result = dao.findEmail(info);
 		
-		String findpassword = dao.findPassword(info) ;
-		
-		//key = dao.findPassword(info);
+		String email = info.getEmail() ;		
+		sendmail(email); // 랜던값으로 생성한 임시 비밀번호를 email에 저장
 		
 		if(result == 1)
 		{	
 			System.out.println("email 있음");
 
-			//session.setAttribute("key",key);
-			//System.out.println("result == 1 안에 임시 비밀번호 :::" +key);
-			
 			session.setAttribute("email", info.getEmail());
-			session.setAttribute("password", findpassword);
+			//session.setAttribute("password", findpassword);
 		
 			return "userpage/FindPasswordForm";
 		}
@@ -148,21 +142,15 @@ public class LoginController {
 		
 		TempPasswd temppw = new TempPasswd();
 		
-		//test 임시비밀번호를생성할때 항상 처음에는 null 값이 들어가게
-		temppw.setPasswd(null);
-		System.out.println("temppw.getPasswd() :::" + temppw.getPasswd());
-		
 		temppw.setEmail(email);
-		System.out.println("sendEmail() ::: "+email);
+		temppw.setPasswd(makeKey()); // 임시 비밀번호를 만들어서 passwd에 저장
 		
-		temppw.setPasswd(makeKey());
-		System.out.println("temppw.getPasswd() ::: "+temppw.getPasswd());
+		dao.tempPasswd(temppw); // 임시 비밀번호로 업데이트함
 		
-		dao.tempPasswd(temppw);
-		System.out.println("key :::" + key);
-		
+		// 저장한 임시 비밀번호를 가져와서 key에 저장 
 		key=temppw.getPasswd(); // 바뀐 비밀번호를 key에 저장
-
+		System.out.println("임시비밀번호를 이메일에 전송 key  ::: " + key);
+		
 		Properties props = new Properties();
 		
 		props.put("mail.smtp.host", "smtp.gmail.com");
@@ -206,7 +194,7 @@ public class LoginController {
 			e.printStackTrace();
 		}
 		finally{
-			key="";
+			key=""; // key를 초기화 시켜줌
 		}
 	}
 	
@@ -221,8 +209,8 @@ public class LoginController {
 	}*/
 	
 	//임시 비밀번호 특수문자포함
-	String result="";
 	private String makeKey(){
+		String result="";
 		//33번은 ! 이고, 122 는 z 입니다.
 		//그러므로 총 문자는 90개입니다.
 		Random ran = new Random();

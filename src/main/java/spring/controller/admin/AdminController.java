@@ -58,7 +58,7 @@ public class AdminController {
 	@RequestMapping(value="/ManagerPageCount.hash",method=RequestMethod.GET)
 	private ModelAndView adminCount(HttpServletRequest request){
 		ModelAndView mv = new ModelAndView("adminpage/ManagerPageCount");
-
+		
 		//request.setAttribute("hashname", HashName);
 	
 		//AdminCommand bean = (AdminCommand)list.get(5);//?
@@ -146,5 +146,16 @@ public class AdminController {
 	List<WithdrawalCommand> list = wdao.selectMember(); //쿼리
 
 	return new ModelAndView("withdrawl", "Withdrawal", list);
+	}
+	
+	@RequestMapping(value="/template2.hash")//get방식으로 요청이 들어올때 다음생성자를 실행한다.
+	public String form1() {
+		return "map";
+	}
+	
+	@RequestMapping(value="/map.hash")//get방식으로 요청이 들어올때 다음생성자를 실행한다.
+	public String map(HttpServletRequest req) {
+	
+		return "adminpage/test";
 	}
 }

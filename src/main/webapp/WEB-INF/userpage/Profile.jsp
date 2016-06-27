@@ -255,29 +255,27 @@ font{
 </style>
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> 
 <script>
-window.onload=function checkeded(){
- 	var rad = "${c.bloodgroups}";
-	var blood=document.getElementsByName("bloodgroups"); 
+$(document).ready(function(){ 
+	var hasharr = "${c.checked}"; //hasharr에 저장됨
+	var hash=document.getElementsByName("checked"); //해쉬체크박스 배열 가져옴
 	
- 	for(i=0;i<blood.length;i++){
-		if(rad.indexOf(blood[i].value)!=-1){
-			blood[i].checked=true;
+	for(i=0;i<hash.length;i++){
+		 if(hasharr.indexOf(hash[i].value)!=-1){ 
+			hash[i].checked=true;
 		}
 	}  
 	
-}
-window.onload=function checkHash(){
-		var hasharr = "${c.checked}"; //hasharr에 저장됨
-		var hash=document.getElementsByName("checked"); //해쉬체크박스 배열 가져옴
-
+});
+$(document).ready(function(){
+		var rad = "${c.bloodgroups}";
+		var blood=document.getElementsByName("bloodgroups"); 
 		
-		
-	 	 for(i=0;i<hash.length;i++){
-			 if(hasharr.indexOf(hash[i].value)!=-1){ 
-				hash[i].checked=true;
+	 	for(i=0;i<blood.length;i++){
+			if(rad.indexOf(blood[i].value)!=-1){
+				blood[i].checked=true;
 			}
-		}  
-	}
+		} 
+});
 </script>
 </head>
 
@@ -298,31 +296,33 @@ window.onload=function checkHash(){
         <div class="form__field">
           <label class="fa fa-birthday-cake fa-fw margin-right text-theme" id="fa" for="login__username"><span class="hidden">birth</span></label>
           <label id="test2"><input id="login__username" name="birthday" type="date" value="${c.birthday}" class="form__input"></label>
-           <input type="checkbox" name="checked" value="birthday" id="birthday" style="display:none">
-				<label for="birthday" class="fontawesome-ok"></label>
+           <input type="checkbox" name="checked" value="birthday" id="birth" style="display:none">
+				<label for="birth" class="fontawesome-ok"></label>
+				
+	
         </div>
         
          <div class="form__field">
           <label class="fontawesome-phone" for="login__username"><span class="hidden">phone number</span></label>
           <input id="login__username" name="phone" type="text" class="form__input" placeholder="Phone number" value="${c.phone}">
-        <input type="checkbox" name="checked" value="phone" id="phone" style="display:none">
-				<label for="phone" class="fontawesome-ok"></label>
+        <input type="checkbox" name="checked" value="phone" id="pho" style="display:none">
+				<label for="pho" class="fontawesome-ok"></label>
         </div>
 
         
         <div class="form__field">
           <label class="fontawesome-home" for="login__password"><span class="hidden">Location</span></label>
           <input type="text" id="login__password" name="location" class="form__input" placeholder="Location" value="${c.location}">
-        <input type="checkbox" name="checked" value="location" id="location" style="display:none">
-				<label for="location" class="fontawesome-ok"></label>
+        <input type="checkbox" name="checked" value="location" id="locat" style="display:none">
+				<label for="locat" class="fontawesome-ok"></label>
         </div>
         
  
         <div class="form__field">
           <label class="fontawesome-book" for="login__username"><span class="hidden">middle</span></label>
           <input id="login__username" name="middleschool" type="text" class="form__input" placeholder="Middle school" value="${c.middleschool}">
-        <input type="checkbox" name="checked" value="middleschool" id="middleschool" style="display:none">
-				<label for="middleschool" class="fontawesome-ok"></label>
+        <input type="checkbox" name="checked" value="middleschool" id="middle" style="display:none">
+				<label for="middle" class="fontawesome-ok"></label>
         </div>
         
        
@@ -330,29 +330,36 @@ window.onload=function checkHash(){
         <div class="form__field">
           <label class="fontawesome-book" for="login__username"><span class="hidden">highschool</span></label>
           <input id="login__username" name="highschool" type="text" class="form__input" placeholder="High school" value="${c.highschool}">
-        <input type="checkbox" name="checked" value="highschool" id="highschool" style="display:none">
-				<label for="highschool" class="fontawesome-ok"></label>
+        <input type="checkbox" name="checked" value="highschool" id="high" style="display:none">
+				<label for="high" class="fontawesome-ok"></label>
         </div>
         
         <div class="form__field">
           <label class="fontawesome-book" for="login__username"><span class="hidden">university</span></label>
           <input id="login__username" name="university" type="text" class="form__input" placeholder="University" value="${c.university}">
-       <input type="checkbox" name="checked" value="university" id="university" style="display:none">
-				<label for="university" class="fontawesome-ok"></label>
+       <input type="checkbox" name="checked" value="university" id="univer" style="display:none">
+				<label for="univer" class="fontawesome-ok"></label>
+        </div>
+        
+        <div class="form__field">
+          <label class="fontawesome-briefcase" for="login__username"><span class="hidden">job</span></label>
+          <input id="login__username" name="job" type="text" class="form__input" placeholder="Workplace" value="${c.job}">
+       <input type="checkbox" name="checked" value="job" id="jo" style="display:none">
+				<label for="jo" class="fontawesome-ok"></label>
         </div>
         
         
         <div class="form__field">
           <label class="fontawesome-tint" for="login__username"><span class="hidden">blood</span></label>
-          <!-- <input id="login__username" name="graduateschool" type="radio" class="form__input"> -->
-          <label id="ra">
+    
+         <label id="ra">
           <label id="radio"><input type="radio" name="bloodgroups" value="A형">A형</label>
 		  <label id="radio"><input type="radio" id="radio" name="bloodgroups" value="B형">B형</label>  
 		  <label id="radio"><input type="radio" id="radio" name="bloodgroups" value="O형">O형</label>
 		  <label id="radio"><input type="radio" id="radio" name="bloodgroups" value="AB형">AB형</label>
-		  </label>
-		  <input type="checkbox" name="checked" value="bloodgroups" id="bloodgroups" style="display:none">
-				<label for="bloodgroups" class="fontawesome-ok"></label>
+		   </label> 
+		  <input type="checkbox" name="checked" value="bloodgroups" id="blood" style="display:none">
+				<label for="blood" class="fontawesome-ok"></label>
         
         </div>
         

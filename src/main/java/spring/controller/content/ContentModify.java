@@ -96,12 +96,7 @@ public class ContentModify {
 		ArrayList<CommentCommand> array = (ArrayList) commentdao.getComments(connum);
 		
 		int count = commentdao.commentcount(connum);
-	
-
-
-		
-		
-		
+			
 		mav.addObject("content", contentdto);
 		mav.addObject("sdf", sdf);
 		mav.addObject("comment", array);
