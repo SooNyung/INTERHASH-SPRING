@@ -142,10 +142,6 @@ function modal_close(){
 	$(document).trigger(e); 
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> ba29d5e6ee32725920c53f2389cf0fa3f18d5bc6
 </script>
 <style type="text/css">
 @import url(http://weloveiconfonts.com/api/?family=Font Awesome);
@@ -387,7 +383,7 @@ $(function(){
 }); 
 
 function Map(){
-	url="template2.do";
+	url="template2.hash";
 	window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
 	}  
 </script>

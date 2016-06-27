@@ -207,4 +207,5 @@ public class MemberController {
 		session.setAttribute("num",1);
 		return "fixpage/boardDiv";
 	}
+
 }

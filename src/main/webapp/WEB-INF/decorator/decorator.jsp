@@ -19,11 +19,7 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 </style>
 <head>
 
-<<<<<<< HEAD
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-=======
-<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
->>>>>>> ba29d5e6ee32725920c53f2389cf0fa3f18d5bc6
 <decorator:head />
 <meta charset="utf-8">
 <title>에벌레</title>
@@ -429,12 +425,7 @@ ul.menu:after {
 	clear: both;
 }
 
-.navbar li .account{
-	display:none;
-	width: 170px;
-	height: 100px;
-	margin: 3px;
-}
+.navbar li .account{display:none;}
 
 .navbar li .sub {
 	background: rgb(255, 240, 245);
@@ -576,6 +567,9 @@ ul.menu:after {
     	conphoto 는 contentInputForm.jsp 파일 안에 있는 파일 업로드 부분
     	이곳이 변경되면, 파일을 읽어 들이는 함수 동작
     */
+    
+    
+    
     $(function() {
         $("#conphoto").on('change', function(){
              readURL(this); 
@@ -661,15 +655,16 @@ ul.menu:after {
 
 	}
 
- function Message(){
-		url="MessageForm.hash?check=y";
+
+	function Message(){
+		url="MessageForm.hash";
 		window.open(url,"post","toolbar=no ,width=400 ,height=350,directories=no,status=yes,menubar=no,scrollbars=no");
-		}  
+		} 
 	
- 	function MessageList(){
+	function MessageList(){
 		url="MessageList.hash?check=y";
 		window.open(url,"post","toolbar=no ,width=400 ,height=350,directories=no,status=yes,menubar=no,scrollbars=no");
-		}  
+		} 
 	
 
 
@@ -757,20 +752,21 @@ ul.menu:after {
 					<table>	
 						<tr>
 							<td>쪽지</td>
-							<td class="w3-right"><button type="button" onClick="Message()">쪽지보내기</button></td>
+							<td class="w3-right"><button onclick="Message()">쪽지보내기</button></td>
 						</tr>
 						<tr class="left-align">
-							<td colspan="2">
-							<c:forEach var="message" items="${sessionScope.mesagelist}" begin="0" end="2">
-									<li><a href="#">
-									<img src="image/logo/img_avatar5.png" class="left-align circle" width="15%" height="15%">
-											<b>${message.sendNickname}</b>: &nbsp ${message.messageContent}</a></li>
-							</c:forEach>
-							</td>
+							<td colspan="2"><c:forEach var="message"
+									items="${sessionScope.mesagelist}" begin="0" end="2">
+									<li><a
+										href="messageView.hash?messageNum=${message.messageNum}"><img
+											src="image/logo/img_avatar5.png" class="left-align circle "
+											width="15%" height="15%">${message.sendNickname}:
+											${message.messageContent}</a></li>
+								</c:forEach></td>
 						</tr>
 
 						<tr>
-							<Td colspan="2"><hr><button type="button" onClick="MessageList()">모든 쪽지 보기</button></Td>
+							<Td colspan="2"><hr><button onclick="MessageList()">모든 쪽지 보기</button></Td>
 						</tr>
 					</table>
 				</ul></li>
@@ -835,7 +831,7 @@ ul.menu:after {
 					<hr color="#eee">
 					<p>
 						<i class="fa fa-pencil fa-fw margin-right text-theme"></i>
-						${sessionScope.checked}
+						${memberinfo.nickname}
 					</p>
 					<p>
 						<i class="fa fa-home fa-fw margin-right text-theme"></i> ${memberinfo.location}
@@ -849,11 +845,11 @@ ul.menu:after {
 			<!-- menu -->
 			<div class="box-shadow border-round">
 				<div class="accordion white border-round">
-					<button type="button" onClick="location.href='myContent.hash'"
+					<button onclick="myContent();"
 						class="btn-block theme-l1 left-align border-round">
 						<i class="fa fa-circle-o-notch fa-fw margin-right"></i> 내 글 보기
 					</button>
-					<button type="button" onClick="location.href='Board.hash'"
+					<button onclick="updateContent();"
 						class="btn-block theme-l1 left-align">
 						<i class="fa fa-calendar-check-o fa-fw margin-right"></i> 최신 글 보기
 					</button>
@@ -862,9 +858,14 @@ ul.menu:after {
 						<i class="fa fa-users fa-fw margin-right"></i> 인기 글 보기
 					</button>
 					<script>
-						function myFunction() {
-							alert("버튼을 누르셨습니다.");
+						function myContent() {
+							location.href="myContent.hash";
 						}
+						
+						function updateContent() {
+							location.href="Board.hash";
+						}
+						
 					</script>
 				</div>
 			</div>
@@ -902,7 +903,6 @@ ul.menu:after {
   </div>
      
    <div id="jb-right">
-<<<<<<< HEAD
    	<div style="width:100%; height: 350px; ">
    	<div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
    	</div>
@@ -913,18 +913,6 @@ ul.menu:after {
   
    
    	
-=======
-      <div style="width:100%; height: 350px; ">
-      <div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
-      </div>
-      <div style="width:100%; ">
-   <div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">채팅창</div>
-   </div>
-   </div>
-  
-   
-      
->>>>>>> ba29d5e6ee32725920c53f2389cf0fa3f18d5bc6
    </div>
        <div id="jb-footer" class="w3-theme-d3">
         <p>Copyright</p>

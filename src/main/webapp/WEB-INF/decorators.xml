@@ -7,6 +7,7 @@
 	</decorator>
  
 	<excludes>
+		<pattern>/template2.hash*</pattern>
 	 	<pattern>/ReportForm.hash*</pattern>
 		<pattern>/updateCommentForm.hash*</pattern>
 		<pattern>/ConfirmNickname.hash*</pattern>
