@@ -7,6 +7,7 @@
 	</decorator>
  
 	<excludes>
+		<pattern>/template2.hash*</pattern>
 	 	<pattern>/ReportForm.hash*</pattern>
 		<pattern>/updateCommentForm.hash*</pattern>
 		<pattern>/ConfirmNickname.hash*</pattern>
@@ -21,7 +22,7 @@
 		<pattern>/Logout.hash</pattern> 
 		<pattern>/ReportFormCom.hash*</pattern>
 		<pattern>/TagCheck.hash*</pattern>
-		<!-- <pattern>/MessageForm.hash*</pattern> -->
+		 <pattern>/MessageForm.hash*</pattern>
 		<!-- <pattern>/Logout.hash</pattern> -->
 		<pattern>/Logout.hash*</pattern>
 		<pattern>/LoginFailPro.hash*</pattern>
@@ -38,6 +39,8 @@
 		<pattern>/FindPasswordPro.hash*</pattern>  
 		<pattern>/ReportProCom.hash*</pattern>
 		<pattern>/UpdateTagCheck.hash*</pattern>
+		<pattern>/LikeCheck.hash*</pattern>
+		<pattern>/Unlike.hash*</pattern>
 	</excludes>
  
 </decorators>

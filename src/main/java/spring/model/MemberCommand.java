@@ -19,6 +19,7 @@ public class MemberCommand {
 	private String bloodgroups;
 	private String location;
 	private String phone;
+	private String job;
 	private String checked;
 	
 	
@@ -26,6 +27,12 @@ public class MemberCommand {
 	
 	
 
+	public String getJob() {
+		return job;
+	}
+	public void setJob(String job) {
+		this.job = job;
+	}
 	public String getChecked() {
 		return checked;
 	}

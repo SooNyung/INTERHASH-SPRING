@@ -10,7 +10,7 @@
 <body>
 <table>
   <tr>
-    <p><td align="center">좋아요 : ${conlike}</p>
+    <p><td align="center">Like : ${conlike}</p>
     <input type="button" value="닫기" onclick="self.close()">
     </td>
   </tr>

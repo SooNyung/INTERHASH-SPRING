@@ -60,18 +60,26 @@ public class ConfirmController {
 		return "confirm/ConfirmNickname";
 	}
 	@RequestMapping("/LikeCheck.hash")
-	private String like_check(@RequestParam("connum") int connum,HttpSession session,Model model){
+	private String like_check(@RequestParam("connum") int connum, @RequestParam("conhash") String hashname,
+			HttpSession session,Model model){
 		model.addAttribute("connum",connum);
+		model.addAttribute("conhash",hashname);
+
 		Dao.conlikePlus(connum);
+		Dao.adminlike(hashname);
 		int conlike = Dao.getConlike(connum);
 		session.setAttribute("conlike", conlike);
 		return "confirm/likeCheck";
 	}
 	
 	@RequestMapping("/Unlike.hash")
-	private String unlike(@RequestParam("connum") int connum,HttpSession session,Model model){
-		model.addAttribute("connum", connum);
+	private String unlike(@RequestParam("connum") int connum, @RequestParam("conhash") String hashname,
+			HttpSession session,Model model){
+		model.addAttribute("connum",connum);
+		model.addAttribute("conhash",hashname);
+
 		Dao.unlike(connum);
+		Dao.adminunlike(hashname);
 		int conlike = Dao.getConlike(connum);
 		session.setAttribute("conlike", conlike);
 		return "confirm/unlike";
