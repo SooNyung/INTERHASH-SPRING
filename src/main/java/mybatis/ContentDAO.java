@@ -4,11 +4,13 @@ package mybatis;
  * 
  */
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import spring.model.AdminCommand;
 import spring.model.ContentCommand;
 import spring.model.PhotoCommand;
 
@@ -74,6 +76,11 @@ public class ContentDAO {
 	}
 	public int modifyContent(ContentCommand command){
 		return session.update("writecontent.updateContent",command);
+	}
+	
+	
+	public List<ContentCommand> myContent(String email){
+		return session.selectList("writecontent.myContent",email);
 	}
 	
 	
