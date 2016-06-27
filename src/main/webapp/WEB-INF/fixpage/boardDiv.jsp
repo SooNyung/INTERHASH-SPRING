@@ -141,11 +141,13 @@ function like(num,String){
 
 	url = "LikeCheck.hash?connum="+num+"&conhash="+String;
 	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	//location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
 }
 function unlike(num,String){
 	
 	url = "Unlike.hash?connum="+num+"&conhash="+String;
 	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	//location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
 }
 /* function toggle(){
 	$("#btn_group").simpleToggleBtn();
@@ -530,11 +532,9 @@ function Map(){
     <button type="button" id="btn2" class="w3-btn w3-theme-d2 w3-margin-bottom hide" onclick="javascript:unlike('${con.connum}')"> un_like </button>
     <input type="checkbox" class="hide"/>
     </div> --%>
-    <button type="button" class="w3-btn w3-theme-d1 w3-margin-bottom" onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>  Like</button>
-    <button type="button" class="w3-btn w3-theme-d2 w3-margin-bottom hide" onclick="javascript:unlike('${con.connum}','${con.conhash}')">  un-like</button>
-    
+    <button type="button" class="w3-btn w3-theme-d1 w3-margin-bottom" onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button>
+    <button type="button" class="w3-btn w3-theme-d2 w3-margin-bottom hide" onclick="javascript:unlike('${con.connum}','${con.conhash}')">  un-like ${con.conlike}</button>
     <button type="button" class="w3-btn w3-theme-d3 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
-    
   	
 	
 	<%-- <div id="board_img">

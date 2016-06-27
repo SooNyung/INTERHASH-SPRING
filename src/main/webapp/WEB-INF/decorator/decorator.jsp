@@ -1146,7 +1146,6 @@ border-radius:7px;
 					</p>
 					<hr color="#eee">
 					  <p>
->>>>>>> 4cf31a3dc816aedb1e671847a41ddc77001b7364
                   <i class="fa fa-pencil fa-fw margin-right text-theme"></i>
                   ${memberinfo.nickname}
                </p>
@@ -1233,7 +1232,6 @@ border-radius:7px;
              <li><a href="Board.hash?hash=반려동물">#반려동물</a></li>
              <li><a href="Board.hash?hash=독도">#독도</a></li>
              <li><a href="Board.hash?hash=맥주">#맥주</a></li> -->   
-=======
 
 				</div>
 			</div>
