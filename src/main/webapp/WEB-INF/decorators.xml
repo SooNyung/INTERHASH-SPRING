@@ -21,13 +21,13 @@
 		<pattern>/Logout.hash</pattern> 
 		<pattern>/ReportFormCom.hash*</pattern>
 		<pattern>/TagCheck.hash*</pattern>
-		<pattern>/MessageForm.hash*</pattern>
+		<!-- <pattern>/MessageForm.hash*</pattern> -->
 		<!-- <pattern>/Logout.hash</pattern> -->
 		<pattern>/Logout.hash*</pattern>
 		<pattern>/LoginFailPro.hash*</pattern>
 		<pattern>/SignupPro.hash*</pattern> 
 		<pattern>/SignupPro2.hash*</pattern>
-		<pattern>/MessageList.hash*</pattern>
+		<pattern>/MessageList.hash*</pattern> 
 		<pattern>/MessageView.hash*</pattern>
 		<pattern>/deleteMessage.hash*</pattern>
 		<pattern>/ReMessageForm.hash*</pattern>

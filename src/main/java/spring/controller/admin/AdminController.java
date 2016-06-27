@@ -147,4 +147,9 @@ public class AdminController {
 
 	return new ModelAndView("withdrawl", "Withdrawal", list);
 	}
+	
+	@RequestMapping(value="/template2.do")//get방식으로 요청이 들어올때 다음생성자를 실행한다.
+	public String form1() {
+		return "template2";
+	}
 }

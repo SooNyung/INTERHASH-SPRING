@@ -10,6 +10,8 @@
 input[name=hiddenCheck]{
 	color:red;
 }
+
+body{background-color:#FFCCCC}
 </style>
 <script>
 var check = false;

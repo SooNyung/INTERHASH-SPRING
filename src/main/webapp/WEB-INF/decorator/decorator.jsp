@@ -12,6 +12,10 @@
    href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
 <style>
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+@import url(http://weloveiconfonts.com/api/?family=maki);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
 html,body{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open Sans", sans-serif;}
 body{padding:0px;margin:0px;width:100%;height:100%;}
@@ -559,6 +563,11 @@ ul.menu:after {
    background: #BDBDBD;
    border-color: #5D5D5D #8C8C8C #BDBDBD;
 }
+
+.pro {
+/* 	font-size: 16px; */
+	border: 0px;
+}
 </style>
 
     <script>
@@ -713,6 +722,37 @@ ul.menu:after {
    /* $(window).load(function(){
        alert($('#jb-content').attr('height'));
    }); */
+   
+   
+  
+   
+   $(document).ready(function(){  
+	   var check = "${memberinfo.checked}";
+	   
+    		$('.profile').each(function() {
+   			var tt = $(this).attr("id");
+	 	 	if(check.indexOf(tt)!=-1){ 
+	 		   	$(this).attr("style","inline");
+	 		} 
+   		});  
+   });
+   
+ $(document).ready(function(){  
+	   
+	   var check = "${memberinfo.checked}"; //hasharr에 저장됨
+	   /* var hi = $(".pro").attr("id"); */
+	   
+	   $('.pro').each(function() {
+		    var eachh = $(this).attr("id");
+		    /* alert(eachh); */
+ 		    if(check.indexOf(eachh)!=-1){
+		    	$(this).attr("type","font");
+		    } 
+		  });
+	   
+
+        
+      });
 </script>
 
 <!--      <script type="text/javascript">
@@ -838,11 +878,42 @@ ul.menu:after {
                   <i class="fa fa-pencil fa-fw margin-right text-theme"></i>
                   ${memberinfo.nickname}
                </p>
-               <p>
-                  <i class="fa fa-home fa-fw margin-right text-theme"></i> ${memberinfo.location}
+                <p>
+                  <i class="fa fa-birthday-cake fa-fw margin-right text-theme profile" id="birthday" style="display: none;"></i>
+                  <input type="hidden" name="pro" class="pro" id="birthday" value="${memberinfo.birthday}" readonly="readonly">
                </p>
                <p>
-                  <i class="fa fa-birthday-cake fa-fw margin-right text-theme"></i>${memberinfo.birthday}</p>
+                  <i class="fa fontawesome-phone fa-fw margin-right text-theme profile" id="phone" style="display: none;"></i>
+                  <input type="hidden" name="pro" class="pro" id="phone" value="${memberinfo.phone}" readonly="readonly">
+               </p>
+               <p>
+                  <i class="fa fa-home fa-fw margin-right text-theme profile" id="location" style="display: none;"></i>
+                  <input type="hidden" name="pro" class="pro" id="location" value="${memberinfo.location}" readonly="readonly">
+               </p>
+
+               <p>
+                  <i class="fa fontawesome-tint fa-fw margin-right text-theme profile" id="bloodgroups" style="display: none;"></i>
+                  <input type="hidden" name="pro" class="pro" id="bloodgroups" value="${memberinfo.bloodgroups}" readonly="readonly">
+               </p>
+               <p>
+                  <i class="fa fontawesome-book fa-fw margin-right text-theme profile" id="middleschool" style="display: none;"></i>
+                  <input type="hidden" name="pro" class="pro" id="middleschool" value="${memberinfo.middleschool}" readonly="readonly">
+               </p>
+               <p>
+                  <i class="fa fontawesome-book fa-fw margin-right text-theme profile" id="highschool" style="display: none;"></i>
+                  <input type="hidden" name="pro" class="pro" id="highschool" value="${memberinfo.highschool}" readonly="readonly">
+               </p>
+               <p>
+                  <i class="fa fontawesome-book fa-fw margin-right text-theme profile" id="university" style="display: none;"></i>
+                  <input type="hidden" name="pro" class="pro" id="university" value="${memberinfo.university}" readonly="readonly">
+               </p>
+               
+               <p>
+                  <i class="fa fontawesome-briefcase fa-fw margin-right text-theme profile" id="job" style="display: none;"></i>
+                  <input type="hidden" name="pro" class="pro" id="job" value="${memberinfo.job}에서 근무" readonly="readonly">
+               </p>
+               
+
             </div>
          </div>
          <br>
