@@ -367,7 +367,9 @@ hr{border-top:1px solid; background-color:#eee;}
 box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 -webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
 </style>
-
+<%
+    String cp = request.getContextPath();
+%>
 <script>
 $(function(){
 	$(window).scroll(function(){
@@ -376,6 +378,57 @@ $(function(){
 		}
 	});  
 }); 
+function modifycon(connum){
+	url="/INTERHASH/UpdateContent.hash?check=y&&connum="+connum
+}
+
+ function modify(comnum,connum){
+	url="updateCommentForm.hash?check=y&&comnum="+comnum+"&&connum="+connum;
+	window.open(url,"post","toolbar=no ,width=400 ,height=150,directories=no,status=yes,menubar=no,scrollbars=no");
+} 
+
+function report(connum){
+	url="ReportForm.hash?check=y&connum="+connum;
+
+	window.open(url,"post","toolbar=no ,width=500 ,height=200,directories=no,status=yes,menubar=no,scrollbars=no");
+}
+
+function reportCom(comnum){
+	url="ReportFormCom.hash?check=y&&comnum="+comnum;
+	window.open(url,"post","toolbar=no ,width=500 ,height=200,directories=no,status=yes,menubar=no,scrollbars=no");
+}
+
+function back(){
+	location.href ="Board.hash";
+	
+}
+
+function test(connum){
+	
+	var con = connum;
+	var texta = $('#comment_textarea').val();
+
+	var url="<%=cp%>/InsertComment.hash";
+	var params ="connum="+connum+"&comcontent="+texta;
+
+	$.ajax({
+		type:"post"
+		,url:url
+		,data:params
+		,dataType:"json"
+ 		,success:function(args){
+ 			
+ 			
+ 		
+		}  
+	    ,error:function(e) {
+	    	alert(e.responseText);
+	    }
+	});
+}
+
+
+
 </script>
 </head>
 <body>

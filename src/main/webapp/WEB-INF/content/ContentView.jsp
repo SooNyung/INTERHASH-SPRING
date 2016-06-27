@@ -140,34 +140,15 @@ color:#5AAEFF;
 	#test{border-bottom:1px solid;}
 
 </style>
-
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> 
 <script> 
-function modifycon(connum){
-	url="/INTERHASH/UpdateContent.hash?check=y&&connum="+connum
-}
-
- function modify(comnum,connum){
-	url="updateCommentForm.hash?check=y&&comnum="+comnum+"&&connum="+connum;
-	window.open(url,"post","toolbar=no ,width=400 ,height=150,directories=no,status=yes,menubar=no,scrollbars=no");
-} 
-
-function report(){
+$(document).ready(function(){
+	var con = ${content.connum}
+	var texta = $('#comment_textarea').val();
+	$('#rptl').attr('onclick','test(con,texta)');
 	
-	url="ReportForm.hash?check=y&&connickname=${content.connickname}&&connum=${content.connum}";
 	
-	window.open(url,"post","toolbar=no ,width=500 ,height=200,directories=no,status=yes,menubar=no,scrollbars=no");
-}
-
-function reportCom(comnum){
-	url="ReportFormCom.hash?check=y&&comnum="+comnum;
-	window.open(url,"post","toolbar=no ,width=500 ,height=200,directories=no,status=yes,menubar=no,scrollbars=no");
-}
-
-function back(){
-	location.href ="Board.hash";
-	
-}
-
+});
 </script>
 
 </head>
@@ -193,7 +174,7 @@ function back(){
 		
 	<c:if test="${sessionScope.memId!=content.email}">
 	<div id="left_mod_del_rep">
-		<span id="align_right"><a onclick="report()">신고하기</a></span>
+		<span id="align_right"><a onclick="report(${content.connum})">신고하기</a></span>
 	</div>
 	</c:if>	
 	
@@ -220,7 +201,9 @@ function back(){
 
 <div id="view_right" class="box-shadow border-round white">
 	<input type=button onclick="modal_close()" value="X" style="float:right">
-	<form method=post action="InsertComment.hash">
+	
+	
+	<form>
 	<input type=hidden name=connum value="${content.connum}">
 	<input type=hidden name=comnick value="${sessionScope.nickName}">
 	<div id="right_nick">
@@ -235,12 +218,12 @@ function back(){
 	<div id="comment_submit">
 		<span id="align_right">
 		<input type="submit" value="개시"></span>
+		<input type="button" id="rptl" value="개시시" onclick="test(${content.connum})"> 
 	</div>
 	</form>
 	
-	
-	
 	<div id="comment_view" style="height:460px; overflow-x:auto" onchange="reload();">
+	
 <form>
 	<c:forEach var="comment" items="${comment}">
 	<input type=hidden name=comnum value="${comment.comnum}">
@@ -256,9 +239,9 @@ function back(){
 		</c:if	>
 		
 		<c:if test="${sessionScope.memId!=comment.email}">
-		<a onclick="reportCom(${comment.comnum})">신고</a>
+		<a onclick="reportCom(${comment.comnum})">ㄹ</a>
 		</c:if>	
-	</span><br>
+	</span><br> 
 	<div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">${comment.comcontent}</textarea></div>
 	
 	</c:forEach>

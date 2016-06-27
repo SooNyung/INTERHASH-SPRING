@@ -1,23 +1,25 @@
 package spring.controller.comment;
 
-import java.io.UnsupportedEncodingException;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 
 import mybatis.CommentDAO;
 import mybatis.ContentDAO;
+import net.sf.json.JSONObject;
 import spring.model.CommentCommand;
 import spring.model.ContentCommand;
 
@@ -50,8 +52,56 @@ public class CommentController {
 		return new ContentCommand();
 	}
 	
-	
+	//ajaxtest
+	@ResponseBody
 	@RequestMapping("/InsertComment.hash")
+	public void InsertComment(@RequestParam("connum") int connum,
+			CommentCommand commentdto,
+			HttpServletResponse resp, 
+			HttpServletRequest request
+			) throws IOException{
+			
+		SimpleDateFormat sdf1 = new SimpleDateFormat("YY-MM-dd HH:mm");
+		String comnick = (String) request.getSession().getAttribute("nickName");
+		String comcontent = request.getParameter("comcontent");
+		Timestamp comcreateddate; 
+		Timestamp commodifieddate;
+		String comip = request.getRemoteAddr();
+		
+		String email = (String) request.getSession().getAttribute("memId");
+		
+		commentdto.setComnick(comnick);
+		commentdto.setComcontent(comcontent);
+		commentdto.setEmail(email);
+		commentdto.setComip(comip);
+		
+		int result = commentdao.insertComment(commentdto);
+
+		/*contentdto = contentdao.getContent(connum);*/
+
+		ArrayList<CommentCommand> array = (ArrayList<CommentCommand>) commentdao.getComments(connum);
+
+		JSONObject jso = new JSONObject(); // JASON 객체생성
+		jso.put("data", array); // jason은 map구조(키,값), data라는 key로 list데이터를 주입했다.
+		resp.setContentType("text/html;charset=utf-8");
+		
+		PrintWriter out = resp.getWriter();
+		out.print(jso.toString());
+		
+		int count = commentdao.commentcount(connum);
+		
+		request.setAttribute("count", count);
+		
+		
+/*		mav.addObject("count", count);
+		
+		mav.addObject("comment",array);
+		mav.addObject("content",contentdto);
+		mav.addObject("sdf",sdf1);
+	*/
+	}
+	
+	/*@RequestMapping("/InsertComment.hash")
 	public ModelAndView InsertComment(@ModelAttribute("commentdto") CommentCommand commentdto,
 			@ModelAttribute("contentdao") ContentCommand contentdto,
 			HttpServletRequest request, HttpSession session){
@@ -89,7 +139,7 @@ public class CommentController {
 		mav.addObject("sdf",sdf1);
 
 		return mav;
-	}
+	}*/
 	
 	@RequestMapping("/deleteComment.hash")
 	public ModelAndView DeleteComment(@ModelAttribute("commentdto") CommentCommand commentdto,
