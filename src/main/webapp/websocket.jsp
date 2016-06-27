@@ -7,48 +7,65 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script src="<c:url value="/modal/sockjs-1.1.1.js"/>"></script>
+<script src="<c:url value="/modal/sockjs-0.3.4.js"/>"></script>
+<script src="<c:url value="/modal/stomp.js"/>"></script>
 <script type="text/javascript">
- 
-    $(document).ready(function(){
-        $("#sendBtn").click(function(){
-            sendMessage();
-        });
-    });
-    
-    //websocket을 지정한 URL로 연결
-    var sock= new SockJS("<c:url value="/echo"/>");
-    //websocket 서버에서 메시지를 보내면 자동으로 실행된다.
-    sock.onmessage = onMessage;
-    //websocket 과 연결을 끊고 싶을때 실행하는 메소드
-    sock.onclose = onClose;
-    
-    
-    function sendMessage(){
+        var stompClient = null;
         
-            //websocket으로 메시지를 보내겠다.
-            sock.send($("#message").val());
+        function setConnected(connected) {
+            document.getElementById('connect').disabled = connected;
+            document.getElementById('disconnect').disabled = !connected;
+            document.getElementById('conversationDiv').style.visibility = connected ? 'visible' : 'hidden';
+            document.getElementById('response').innerHTML = '';
+        }
         
-    }
-            
-    //evt 파라미터는 websocket이 보내준 데이터다.
-    function onMessage(evt){  //변수 안에 function자체를 넣음.
-        var data = evt.data;
-        $("#data").append(data+"<br/>");
-        /* sock.close(); */
-    }
-    
-    function onClose(evt){
-        $("#data").append("연결 끊김");
-    }
-    
-</script>
+        function connect() {
+            var socket = new SockJS('/hello');
+            stompClient = Stomp.over(socket);            
+            stompClient.connect({}, function(frame) {
+                setConnected(true);
+                console.log('Connected: ' + frame);
+                stompClient.subscribe('/topic/greetings', function(greeting){
+                    showGreeting(JSON.parse(greeting.body).content);
+                });
+            });
+        }
+        
+        function disconnect() {
+            if (stompClient != null) {
+                stompClient.disconnect();
+            }
+            setConnected(false);
+            console.log("Disconnected");
+        }
+        
+        function sendName() {
+            var name = document.getElementById('name').value;
+            stompClient.send("/app/hello", {}, JSON.stringify({ 'name': name }));
+        }
+        
+        function showGreeting(message) {
+            var response = document.getElementById('response');
+            var p = document.createElement('p');
+            p.style.wordWrap = 'break-word';
+            p.appendChild(document.createTextNode(message));
+            response.appendChild(p);
+        }
+    </script>
 </head>
-<body>
- 
-    <input type="text" id="message"/>
-    <input type="button" id="sendBtn" value="전송"/>
-    <div id="data"></div>
- 
+<body onload="disconnect()">
+<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being enabled. Please enable
+    Javascript and reload this page!</h2></noscript>
+<div>
+    <div>
+        <button id="connect" onclick="connect();">Connect</button>
+        <button id="disconnect" disabled="disabled" onclick="disconnect();">Disconnect</button>
+    </div>
+    <div id="conversationDiv">
+        <label>What is your name?</label><input type="text" id="name" />
+        <button id="sendName" onclick="sendName();">Send</button>
+        <p id="response"></p>
+    </div>
+</div>
 </body>
 </html>

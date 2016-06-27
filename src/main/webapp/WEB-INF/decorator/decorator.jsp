@@ -19,11 +19,7 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 </style>
 <head>
 
-<<<<<<< HEAD
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-=======
 <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
->>>>>>> ba29d5e6ee32725920c53f2389cf0fa3f18d5bc6
 <decorator:head />
 <meta charset="utf-8">
 <title>에벌레</title>
@@ -902,29 +898,20 @@ ul.menu:after {
   </div>
      
    <div id="jb-right">
-<<<<<<< HEAD
-   	<div style="width:100%; height: 350px; ">
-   	<div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
-   	</div>
-   	<div style="width:100%; ">
-	<div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">채팅창</div>
-	</div>
-   </div>
-  
-   
-   	
-=======
       <div style="width:100%; height: 350px; ">
       <div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
       </div>
       <div style="width:100%; ">
-   <div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">채팅창</div>
+   <div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">
+   <div style="height:100%;">
+<iframe src="http://192.168.50.42:8080/" style="height:100%;"></iframe>
+</div>
+</div>
    </div>
    </div>
   
    
       
->>>>>>> ba29d5e6ee32725920c53f2389cf0fa3f18d5bc6
    </div>
        <div id="jb-footer" class="w3-theme-d3">
         <p>Copyright</p>
