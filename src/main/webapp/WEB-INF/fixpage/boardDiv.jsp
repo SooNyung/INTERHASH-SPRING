@@ -29,27 +29,45 @@ $(function() {
   	});
   	  
 });
-//TODO:심플한 토글 버튼
-//<div id="btn_group">
-//<button>button1</button>
-//<button class="hide">button2</button>
-//<input type="checkbox" class="hide"/>
-//</div>
-//.hide { display: none; }
-(function ($) {
-$.fn.simpleToggleBtn = function () {
 
-    var btns = $(this).find("button"), // 버튼 그룹 내 버튼들;
-        checkBox = $("input:checkbox");
+/* (function ($) {
+	$.fn.simpleToggleBtn = function () {
 
-    btns.on("click", function () { // 버튼들 중 클릭한 버튼에 함수;
-        $(this).addClass("hide");
-        $(this).siblings("button").removeClass("hide");
-        // 첫번째 버튼 기준으로 input 요소 체크!
-        $(this).first().hasClass("hide") ? checkBox.attr("checked",true) : checkBox.attr("checked",false);
-    });
-}
-}(jQuery));
+	    var btns = $(this).find("button"), // 버튼 그룹 내 버튼들;
+	        checkBox = $("input:checkbox");
+
+	    btns.on("click", function () { // 버튼들 중 클릭한 버튼에 함수;
+	        $(this).addClass("hide");
+	        $(this).siblings("button").removeClass("hide");
+	        // 첫번째 버튼 기준으로 input 요소 체크!
+	        $(this).first().hasClass("hide") ? checkBox.attr("checked",true) : checkBox.attr("checked",false);
+	    });
+	}
+	}(jQuery)); 
+ */
+$(document).ready(function(){
+	$(".w3-theme-d1").click(function(){
+		if($(this).hasClass("hide")){
+			$(".w3-theme-d1").removeClass("hide");
+			$(".w3-theme-d2").addClass("hide");
+		}else{
+			$(".w3-theme-d1").addClass("hide");
+			$(".w3-theme-d2").removeClass("hide");
+		}
+	});
+});
+$(document).ready(function(){
+	$(".w3-theme-d2").click(function(){
+		if($(this).hasClass("hide")){
+			$(".w3-theme-d2").removeClass("hide");
+			$(".w3-theme-d1").addClass("hide");
+		}else{
+			$(".w3-theme-d2").addClass("hide");
+			$(".w3-theme-d1").removeClass("hide");
+		}
+	});
+});
+
 
 function readURL(input) {
     if (input.files && input.files[0]) {
@@ -119,17 +137,15 @@ function tagCheck() {
 	url = "TagCheck.hash?check=y";
 	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 }
-function like(num){
-	/* $(this).simpleToggleBtn(); */
-	$("#btn_group").simpleToggleBtn();
-	url = "LikeCheck.hash?connum="+num;
-	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
-}
+function like(num,String){
 
-function unlike(num){
+	url = "LikeCheck.hash?connum="+num+"&conhash="+String;
+	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+}
+function unlike(num,String){
 	
-	url = "Unlike.hash?connum="+num;
-	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	url = "Unlike.hash?connum="+num+"&conhash="+String;
+	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 }
 /* function toggle(){
 	$("#btn_group").simpleToggleBtn();
@@ -139,7 +155,7 @@ function modal_close(){
 	var e = $.Event("keyup");
 	e.which = 27;
 	e.keyCode = 27;
-	$(document).trigger(e); 
+	$(document).trigger(e);
 }
 
 </script>
@@ -363,6 +379,7 @@ html,body,h6{font-family: "Open Sans", sans-serif}
 
 .w3-theme-d1 {color:#fff !important; background-color:#57707d !important}
 .w3-theme-d2 {color:#fff !important; background-color:#4d636f !important}
+.w3-theme-d3 {color:#fff !important; background-color:#607d8b !important}
 .container{vertical-align: text-bottom; line-height:30px; }
 .w3-row-padding{margin-left:30px; width:300px; }
 .write{width:300px; height:500px;}
@@ -383,7 +400,7 @@ $(function(){
 }); 
 
 function Map(){
-	url="template2.do";
+	url="template2.hash";
 	window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
 	}  
 </script>
@@ -455,16 +472,17 @@ function Map(){
 
     <p>#${con.conhash}</p>
 	</div>
- 	<div id="btn_group">
+	
+<%--  	<div id="btn_group">
     <button type="button" id="btn1" class="w3-btn w3-theme-d1 w3-margin-bottom" onclick="javascript:like('${con.connum}')"><i class="fa fa-thumbs-up"></i> Like </button>
     <button type="button" id="btn2" class="w3-btn w3-theme-d2 w3-margin-bottom hide" onclick="javascript:unlike('${con.connum}')"> un_like </button>
     <input type="checkbox" class="hide"/>
+    </div> --%>
+    <button type="button" class="w3-btn w3-theme-d1 w3-margin-bottom" onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>  Like</button>
+    <button type="button" class="w3-btn w3-theme-d2 w3-margin-bottom hide" onclick="javascript:unlike('${con.connum}','${con.conhash}')">  un-like</button>
     
-    <%-- <button type="button" class="w3-btn w3-theme-d1 w3-margin-bottom likebutton" onclick="javascript:like('${con.connum}')"><i class="fa fa-thumbs-up"></i>  Like</button>
-    <button type="button" class="w3-btn w3-theme-d2 w3-margin-bottom" style ="display:none" onclick="javascript:unlike('${con.connum}')">  UnLike</button> --%>
+    <button type="button" class="w3-btn w3-theme-d3 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
     
-    <button type="button" class="w3-btn w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
-    </div>
   	
 	
 	<%-- <div id="board_img">
