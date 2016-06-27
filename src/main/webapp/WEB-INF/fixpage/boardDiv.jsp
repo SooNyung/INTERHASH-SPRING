@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -141,9 +142,16 @@ function modal_close(){
 	$(document).trigger(e); 
 }
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> ba29d5e6ee32725920c53f2389cf0fa3f18d5bc6
 </script>
 <style type="text/css">
+@import url(http://weloveiconfonts.com/api/?family=Font Awesome);
+[class*="Font Awesome-"]:before {
+  font-family: 'Font Awesome', sans-serif;
+}
 	.background-color{color:#000 !important; background-color:#f5f7f8 !important}
 	#board_div{
 		width:500px;
@@ -282,6 +290,7 @@ function modal_close(){
 }
 
 #taglist {
+	float:right;
 	height: 30px;
 	background: #ffffff;
 }
@@ -376,6 +385,11 @@ $(function(){
 		}
 	});  
 }); 
+
+function Map(){
+	url="template2.do";
+	window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
+	}  
 </script>
 </head>
 <body>
@@ -395,10 +409,14 @@ $(function(){
 			</div>
 			<div style="clear: both;"></div>
 			<div id="sub">
-				<span id="imageon" style="width: 100px; float: left;"> 
+				<span id="imageon" style="width: 50px; float: left;"> 
 				 <img src='<c:url value="/image/logo/camera.jpg" />' onclick="$('.fileData:last').click();" /> 
-				
 				</span> 
+				
+				<span id="imageon" style="width: 50px; float: left;">
+				<img src='<c:url value="/image/logo/place.PNG" />' onclick="Map()" /> 			
+				</span> 
+				
 				<span id="taglist" style="width: 300px; float: left;">
 					<input type="text" name="tag" size="7" readonly>
 					<input type="button" value="Tag" onClick="tagCheck()">
@@ -415,8 +433,11 @@ $(function(){
               
             </div>
           </div>
-       
+      
+      
+ 
 <form method='post' action='ContentView.hash'>
+
 <c:forEach var="con" items= '${content}' >
 <input type="hidden" name="connum" value="${con.connum}">
 <div id="board_div" class="container box-shadow border-round white">
@@ -496,6 +517,8 @@ $(function(){
 	</div> --%>
 </div>
 </c:forEach>
+
+
 </form>
 </div>
 </body>
