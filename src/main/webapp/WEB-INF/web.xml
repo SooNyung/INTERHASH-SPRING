@@ -40,7 +40,6 @@
 		<url-pattern>*.hash</url-pattern>
 	</servlet-mapping>
 	
-	
 
 
 </web-app>
