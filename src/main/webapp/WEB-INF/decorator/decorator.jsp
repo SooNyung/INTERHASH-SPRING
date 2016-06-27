@@ -28,6 +28,8 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 <meta charset="utf-8">
 <title>에벌레</title>
 <style>
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
 .w3-theme-l5 {
    color: #000 !important;
    background-color: #f5f7f8 !important
@@ -386,7 +388,12 @@ li a {
 
 /* Change the link color on hover */
 li a:hover {
+<<<<<<< HEAD
    background-color: #b2b2b2;
+=======
+	background-color: #b2b2b2;
+	border-radius:7px;
+>>>>>>> 4cf31a3dc816aedb1e671847a41ddc77001b7364
 }
 
 /* ----------------------------------------------------------------------- */
@@ -429,9 +436,13 @@ ul.menu:after {
    clear: both;
 }
 
-.navbar li .account{display:none;}
+.navbar li .account{display:none;
+width: 150px;
+border-radius:7px;
+}
 
 .navbar li .sub {
+<<<<<<< HEAD
    background: rgb(255, 240, 245);
    display: none; /* 평상시에는 서브메뉴가 안보이게 하기 */
    height: 250px;
@@ -443,6 +454,20 @@ ul.menu:after {
    width: 200px;
    overflow: hidden;
    z-index: 500;
+=======
+	background: rgb(255, 240, 245);
+	display: none; /* 평상시에는 서브메뉴가 안보이게 하기 */
+	height: 250px;
+	padding: 0px;
+	margin: 0px;
+	margin-left: 0px;
+	border: 0px;
+	border-radius:7px;
+	position: absolute;
+	width: 200px;
+	overflow: hidden;
+	z-index: 500;
+>>>>>>> 4cf31a3dc816aedb1e671847a41ddc77001b7364
 }
 
 /* .navbar li:hover ul {
@@ -568,6 +593,12 @@ ul.menu:after {
 /* 	font-size: 16px; */
 	border: 0px;
 }
+
+.pro {
+/*    font-size: 16px; */
+   border: 0px;
+}
+
 </style>
 
     <script>
@@ -602,6 +633,7 @@ ul.menu:after {
     } 
     function fileUploadPreview(thisObj, preViewer) {
 
+<<<<<<< HEAD
       // 형식 체크
       if (!/(\.gif|\.jpg|\.jpeg|\.png)$/i.test(thisObj.value)) {
          alert("이미지 형식의 파일을 선택하십시오");
@@ -753,6 +785,150 @@ ul.menu:after {
 
         
       });
+=======
+		// 형식 체크
+		if (!/(\.gif|\.jpg|\.jpeg|\.png)$/i.test(thisObj.value)) {
+			alert("이미지 형식의 파일을 선택하십시오");
+			$(thisObj).val('');
+			return;
+		}
+
+		var preViewer = $('.preViewImg:last');//(typeof(preViewer) == "object") ? preViewer : document.getElementById(preViewer);
+		var ua = window.navigator.userAgent;
+
+		// 렌더링 버전 알아내기
+		var rv = -1;
+
+		// ie 브라우저이며 ie10 미만 버전
+		if (ua.indexOf("MSIE") > -1 && rv < 10) {
+			var img_path = "";
+			if (thisObj.value.indexOf("\\fakepath\\") < 0) {
+				img_path = thisObj.value;
+			} else {
+				thisObj.select();
+				var selectionRange = document.selection.createRange();
+				img_path = selectionRange.text.toString();
+				thisObj.blur();
+			}
+			$(preViewer).css(
+					'filter',
+					"progid:DXImageTransform.Microsoft.AlphaImageLoader(src='fi"
+							+ "le://" + img_path + "', sizingMethod='scale')")
+					.show();
+
+			var cloneHtml = $('.photo_list:last').clone();
+			cloneHtml.find('input').val('');
+			cloneHtml.find('img').removeAttr('src', 'style').hide();
+			$(thisObj).parents('.photoBox:first').append(cloneHtml);
+		} else { // 그외 브라우저
+			var reader = new FileReader();
+			reader.readAsDataURL(thisObj.files[0]);
+			reader.onload = function(e) {
+				$('.preViewImg:last').attr('src', e.target.result).show();
+
+				var cloneHtml = $('.photo_list:last').clone();
+				cloneHtml.find('input').val('');
+				cloneHtml.find('img').attr('src', '').hide();
+				$(thisObj).parents('.photoBox:first').append(cloneHtml);
+			}
+		}
+	}
+
+	function tagCheck() {
+
+		url = "TagCheck.hash?check=y";
+		newwindow = window
+				.open(
+						url,
+						"post",
+						"toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+
+	}
+
+
+	function Message(){
+		url="MessageForm.hash";
+		window.open(url,"post","toolbar=no ,width=400 ,height=350,directories=no,status=yes,menubar=no,scrollbars=no");
+		} 
+	
+	function MessageList(){
+		url="MessageList.hash?check=y";
+		window.open(url,"post","toolbar=no ,width=400 ,height=350,directories=no,status=yes,menubar=no,scrollbars=no");
+		} 
+	
+
+
+	$(document).ready(function() {
+		if ($('#jb-content').outerHeight(true) < 800) {
+			$("#jb-content").css("height", "800px");
+		}else{
+			var g = $('#jb-content').outerHeight(true);
+			$('#main').css("height", g);
+			
+		}
+		/* alert($('#jb-content').outerHeight(true)); */
+		// alert(document.getElementById("main").currentStyle.width);
+	});
+	
+	
+	$(document).ready(function(){  
+		   
+		  $(".topnav").hover(function() {                    //마우스를 topnav에 오버시
+		   $(this).parent().find(".account").slideDown('normal').show();                   //subnav가 내려옴.
+		   $(this).parent().hover(function() {  
+		   }, function(){  
+		    $(this).parent().find(".account").slideUp('fast');                 //subnav에서 마우스 벗어났을 시 원위치시킴  
+		   });  
+		  });  
+		   
+		 });  
+	
+
+	$(document).ready(function(){  
+		   
+		  $(".message").hover(function() {                    //마우스를 topnav에 오버시
+		   $(this).parent().find(".sub").slideDown('normal').show();                   //subnav가 내려옴.
+		   $(this).parent().hover(function() {  
+		   }, function(){  
+		    $(this).parent().find(".sub").slideUp('fast');                 //subnav에서 마우스 벗어났을 시 원위치시킴  
+		   });  
+		  });  
+		   
+		 }); 
+	
+	
+	 $(document).ready(function(){  
+	      var check = "${memberinfo.checked}";
+	      
+	          $('.profile').each(function() {
+	            var tt = $(this).attr("id");
+	           if(check.indexOf(tt)!=-1){ 
+	                $(this).attr("style","inline");
+	          } 
+	         });  
+	   });
+	   
+	 $(document).ready(function(){  
+	      
+	      var check = "${memberinfo.checked}"; //hasharr에 저장됨
+	      /* var hi = $(".pro").attr("id"); */
+	      
+	      $('.pro').each(function() {
+	          var eachh = $(this).attr("id");
+	          /* alert(eachh); */
+	           if(check.indexOf(eachh)!=-1){
+	             $(this).attr("type","font");
+	          } 
+	        });
+	      
+
+	        
+	      });
+
+	/* $(window).load(function(){
+	    alert($('#jb-content').attr('height'));
+	}); */
+>>>>>>> 4cf31a3dc816aedb1e671847a41ddc77001b7364
 </script>
 
 <!--      <script type="text/javascript">
@@ -855,6 +1031,7 @@ ul.menu:after {
                <c:if test="${sessionScope.memId=='admin@admin.com' }">
                <tr>
      
+<<<<<<< HEAD
                   <td colspan=3 align="right"><input type="button" value="관리자페이지" onclick="window.location.href='ManagerPage.hash'"></td>
                   </tr>
                </c:if>
@@ -875,6 +1052,28 @@ ul.menu:after {
                </p>
                <hr color="#eee">
                <p>
+=======
+      				<td colspan=3 align="right"><input type="button" value="관리자페이지" onclick="window.location.href='ManagerPage.hash'"></td>
+      				</tr>
+      			</c:if>
+					
+				</table> --%>
+
+	<!-- main -->
+	<div id="main">
+	<div id=sidebar_content style="float:left; width:80%">
+		<div id="jb-sidebar">
+			<!-- Profile -->
+			<div class="box-shadow border-round white padding">
+				<div class="container">
+					<h4 class="center">My Profile</h4>
+					<p class="center">
+						<img src="image/logo/사람.PNG" style="height: 106px; width: 106px"
+							alt="Avatar">
+					</p>
+					<hr color="#eee">
+					  <p>
+>>>>>>> 4cf31a3dc816aedb1e671847a41ddc77001b7364
                   <i class="fa fa-pencil fa-fw margin-right text-theme"></i>
                   ${memberinfo.nickname}
                </p>
@@ -912,6 +1111,7 @@ ul.menu:after {
                   <i class="fa fontawesome-briefcase fa-fw margin-right text-theme profile" id="job" style="display: none;"></i>
                   <input type="hidden" name="pro" class="pro" id="job" value="${memberinfo.job}에서 근무" readonly="readonly">
                </p>
+<<<<<<< HEAD
                
 
             </div>
@@ -960,6 +1160,60 @@ ul.menu:after {
              <li><a href="Board.hash?hash=반려동물">#반려동물</a></li>
              <li><a href="Board.hash?hash=독도">#독도</a></li>
              <li><a href="Board.hash?hash=맥주">#맥주</a></li> -->   
+=======
+
+				</div>
+			</div>
+			<br>
+
+			<!-- menu -->
+			<div class="box-shadow border-round">
+				<div class="accordion white border-round">
+					<button onclick="myContent();"
+						class="btn-block theme-l1 left-align border-round">
+						<i class="fa fa-circle-o-notch fa-fw margin-right"></i> 내 글 보기
+					</button>
+					<button onclick="updateContent();"
+						class="btn-block theme-l1 left-align">
+						<i class="fa fa-calendar-check-o fa-fw margin-right"></i> 최신 글 보기
+					</button>
+					<button onclick="myFunction();"
+						class="btn-block theme-l1 left-align border-round">
+						<i class="fa fa-users fa-fw margin-right"></i> 인기 글 보기
+					</button>
+					<script>
+						function myContent() {
+							location.href="myContent.hash";
+						}
+						
+						function updateContent() {
+							location.href="Board.hash";
+						}
+						
+					</script>
+				</div>
+			</div>
+			<br>
+
+			<!-- Interests -->
+			<div class="box-shadow border-round white small">
+				<div class="container1">
+					<p>
+						<b>Interests</b>    <a href="ModifyHash.hash" class="button button-pink"> 수 정 </a>
+					</p>
+					<p>
+
+						<c:forEach var="tagname" items="${sessionScope.hashlist}">
+
+							<!-- <li><a href='Board.hash?hash=사랑'>#사랑</a></li>
+          	<li><a href="Board.hash?hash=돈">#돈</a></li>
+          	<li><a href="Board.hash?hash=컴퓨터">#컴퓨터</a></li>
+          	<li><a href="Board.hash?hash=커피">#커피</a></li>
+          	<li><a href="Board.hash?hash=책">#책</a></li>
+          	<li><a href="Board.hash?hash=반려동물">#반려동물</a></li>
+          	<li><a href="Board.hash?hash=독도">#독도</a></li>
+          	<li><a href="Board.hash?hash=맥주">#맥주</a></li> -->   
+>>>>>>> 4cf31a3dc816aedb1e671847a41ddc77001b7364
             <span class="tag font-small w3-theme-d1 border-round">
             <a id ="a" href="Board.hash?hash=${tagname}" >#${tagname}</a></span>    
             </c:forEach>            
@@ -978,12 +1232,23 @@ ul.menu:after {
       <div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
       </div>
       <div style="width:100%; ">
+<<<<<<< HEAD
    <div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">채팅창</div>
    </div>
    </div>
   
    
       
+=======
+   <div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">
+   <div style="height:100%;">
+<iframe src="http://192.168.50.42:8080/" style="height:100%;"></iframe>
+</div>
+</div>
+   </div>
+   </div>
+  
+>>>>>>> 4cf31a3dc816aedb1e671847a41ddc77001b7364
    </div>
        <div id="jb-footer" class="w3-theme-d3">
         <p>Copyright</p>

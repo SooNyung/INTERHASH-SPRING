@@ -308,7 +308,7 @@ function readURL(input) {
   <div class="site__container box-shadow border-round white">
 <h1>PROFILE</h1>
     <div class="grid__container">
-    <form id="form1">
+
    		 <p class="center">
     
               <img id="blah" src="image/logo/사람.PNG" class="circle" style="height: 106px; width: 106px"
@@ -319,7 +319,7 @@ function readURL(input) {
                <input type='file' id="imgInp">
                
                </p>
-               </form>
+    
                <hr color="#eee">
 
       <form action="profilePro.hash" name="userinput" method="post" class="form form--login" onSubmit="return checkedIt()">
