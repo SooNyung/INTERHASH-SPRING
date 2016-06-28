@@ -140,7 +140,6 @@ color:#5AAEFF;
 	#test{border-bottom:1px solid;}
 
 </style>
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> 
 <script> 
 $(document).ready(function(){
 	var con = ${content.connum}
