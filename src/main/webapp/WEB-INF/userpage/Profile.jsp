@@ -252,8 +252,11 @@ font{
 :checked+label {
 	color: #ea4c88;
 }
+.circle {
+   border-radius: 50%;
+}
 </style>
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> 
+<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script> 
 <script>
 $(document).ready(function(){ 
 	var hasharr = "${c.checked}"; //hasharr에 저장됨
@@ -276,6 +279,27 @@ $(document).ready(function(){
 			}
 		} 
 });
+
+$(function() {
+    $("#imgInp").on('change', function(){
+        readURL(this);
+    });
+});
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+            $('#blah').attr('src', e.target.result);
+        }
+
+      reader.readAsDataURL(input.files[0]);
+    }
+}
+
+
+
 </script>
 </head>
 
@@ -285,6 +309,18 @@ $(document).ready(function(){
 <h1>PROFILE</h1>
     <div class="grid__container">
 
+   		 <p class="center">
+    
+              <img id="blah" src="image/logo/사람.PNG" class="circle" style="height: 106px; width: 106px"
+                     alt="Avatar">
+                   
+               </p>
+               <p class="center">
+               <input type='file' id="imgInp">
+               
+               </p>
+    
+               <hr color="#eee">
 
       <form action="profilePro.hash" name="userinput" method="post" class="form form--login" onSubmit="return checkedIt()">
 

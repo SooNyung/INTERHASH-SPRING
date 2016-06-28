@@ -60,10 +60,11 @@
         <hr>
         <ul id="placesList"></ul>
         <div id="pagination"></div>
-    </div>
+       <button type="button" id="map" value="map" onclick="javascript:map()"></button>
+    </div>    
 </div>
 <p id="result"></p>
-
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9ee99f6f7e29a9a2459e7218773c63fe&libraries=services"></script>
 <script>
 // 마커를 담을 배열입니다
@@ -123,7 +124,6 @@ function placesSearchCB(status, data, pagination) {
 
         alert('검색 결과 중 오류가 발생했습니다.');
         return;
-
     }
 }
 
@@ -156,7 +156,7 @@ function displayPlaces(places) {
         // 마커와 검색결과 항목에 mouseover 했을때
         // 해당 장소에 인포윈도우에 장소명을 표시합니다
         // mouseout 했을 때는 인포윈도우를 닫습니다
-        (function(marker, title) {
+        (function(marker, title,places) {
             daum.maps.event.addListener(marker, 'mouseover', function() {
                 displayInfowindow(marker, title);
             });
@@ -166,6 +166,7 @@ function displayPlaces(places) {
             });
           
             daum.maps.event.addListener(marker, 'click', function() {
+            	alert(marker);
                 selectInfo(marker,title,address);
             });
             
@@ -193,7 +194,7 @@ function displayPlaces(places) {
             itemEl.onmouseout =  function () {
                 infowindow.close();
             };
-        })(marker, places[i].title);
+        })(marker, places[i].title,places[i].latitude);
 
         fragment.appendChild(itemEl);
     }
@@ -293,18 +294,20 @@ function displayPagination(pagination) {
 // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
 // 인포윈도우에 장소명을 표시합니다
 function displayInfowindow(marker, title) {
-    var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+    var content = '<a href="adminpage/test.jsp?title="'+title+'><div style="padding:5px;z-index:1;">' + title + '</div></a>';
 
     infowindow.setContent(content);
     infowindow.open(map, marker);
+    
+    
 }
 
 function selectInfo(marker, title,address) {
-	alert($(this).attr("class"));
-			//removeMarker();
-	
+	//alert($(this).attr("class"));
+			//removeMarker();	
 	//data.places
-	ps.keywordSearch( title, placesSearchCB);
+	ps.keywordSearch(title, placesSearchCB);
+	alert(title);
 	/* url="MessageForm.hash?check=y";"; */
 	//addMarker(placePosition, i);	
 }
