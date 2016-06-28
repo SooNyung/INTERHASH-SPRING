@@ -44,7 +44,9 @@
 	<select id ="myContent" parameterType= "string" resultType="spring.model.ContentCommand">
 		select * from contents where email =#{email}
 	</select>
-	
+	<select id ="hashLike" parameterType= "string" resultType="spring.model.ContentCommand">
+		select * from contents where conhash =#{conhash}
+	</select>
 </mapper>
 
 
