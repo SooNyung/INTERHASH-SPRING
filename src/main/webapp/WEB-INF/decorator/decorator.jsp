@@ -855,11 +855,13 @@ border-radius:7px;
             <div class="container">
                <h4 class="center">My Profile</h4>
                <p class="center">
-                  <img src='<c:url value="/upload/${sessionScope.profilePhoto}" />' style="height: 106px; width: 106px"
+                  <img src='<c:url value="/upload/${sessionScope.profilePhoto}" />' 
+                  style="height: 130px; width: 130px" class="circle"
                      alt="Avatar">
                </p>
                <hr color="#eee">
                  <p>
+
                   <i class="fa fa-pencil fa-fw margin-right text-theme"></i>
                   ${memberinfo.nickname}
                </p>

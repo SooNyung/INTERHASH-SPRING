@@ -53,6 +53,7 @@ $(function(){
 		}
 	});
 });
+
 function readURL(input) {
     if (input.files && input.files[0]) {
     var reader = new FileReader();
@@ -446,8 +447,6 @@ function test(connum){
 	    }
 	});
 }
-
-
 function Map(){
 	url="template2.hash";
 	window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
@@ -478,7 +477,7 @@ function Map(){
 				
 				<span id="imageon" style="width: 50px; float: left;">
 				<img src='<c:url value="/image/logo/place.PNG" />' onclick="Map()" />
-				<input type="text" name= "maptitle"/>
+				<input type="text" name="maptitle"/>
 				<input type="text" name="mapplace" /> 			
 				</span> 
 				
