@@ -127,7 +127,7 @@ label:focus, label:hover {
 	font-weight: bold;
 }
 </style>
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 </head>
 <body class="align">

@@ -973,8 +973,6 @@ border-radius:7px;
    </div>
    </div>
    </div>
-  
-   
       
    </div>
        <div id="jb-footer" class="w3-theme-d3">

@@ -5,6 +5,122 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Tag check</title>
+<style>
+[class*="fontawesome-"]:before {
+	font-family: 'FontAwesome', sans-serif;
+}
+
+.form__field {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	margin-bottom: 1rem;
+}
+
+.align {
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	/* background-color: #2c3338; */
+	background-color: #FFFFFF;
+	color: #606468;
+	/* color:#EAEAEA; */
+	font: 400 0.875rem/1.5 "Open Sans", sans-serif;
+	margin: 0;
+	/*   min-height: 100%; */
+}
+
+input[type="button"] {
+	border-radius: 0.25rem;
+	margin-left:110px;
+	padding: 1rem;
+	background-color: #ea4c88;
+	color: #eee;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+
+input[type="button"]:focus, input[type="button"]:hover{
+	background-color: #d44179;
+}
+.site__container {
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	padding: 3rem 0;
+}
+
+input {
+	border: 0;
+	color: inherit;
+	font: inherit;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	-webkit-transition: background-color .3s;
+	transition: background-color .3s;
+}
+
+.text--center {
+	text-align: center;
+}
+
+.grid__container {
+	margin: 0 auto;
+	max-width: 50rem;
+	width: 400px;
+}
+
+label {
+	background-color: #FFCCCC;
+	color: white;
+	font-weight: bold;
+	/*   background-color:#DBDBDB; */
+	border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
+	padding-left: 1.25rem;
+	padding-right: 1.25rem;
+	border-radius: 0.25rem;
+	padding: 1rem;
+	margin: 5px;
+}
+
+label:focus, label:hover {
+	background-color: #ea4c88;
+	color: #eee;
+	font-weight: bold;
+}
+
+:checked+label {
+	background-color: #ea4c88;
+	color: #eee;
+	font-weight: bold;
+}
+</style>
 <script type="text/javascript">
 	function checkOnly(chk) {
 
@@ -36,11 +152,11 @@
 		var a = "asfasdf";
 		//alert(document.tagcheck.val.value);
 		//opener.document.fo.aaaaa.value = document.tagcheck.favorite.value;
-		var obj = document.getElementsByName("favorite");
+		var obj = document.getElementsByName("hash");
 
 		for (var i = 0; i < obj.length; i++) {
 			if (obj[i].checked == true) {
-				opener.document.writeForm.tag.value = document.getElementsByName("favorite")[i].value;
+				opener.document.writeForm.tag.value = document.getElementsByName("hash")[i].value;
 				break;
 			}
 		}
