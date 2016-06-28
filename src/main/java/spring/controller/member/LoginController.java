@@ -31,6 +31,8 @@ public class LoginController {
 	public void setDao(MemberDAO dao) {
 		this.dao = dao;
 	}
+	
+	
 
 	// ·Î±×ÀÎÆû
 	@RequestMapping("/LoginForm.hash")

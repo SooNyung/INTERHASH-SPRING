@@ -845,25 +845,6 @@ border-radius:7px;
 					
 				</table> --%>
 
-	<!-- main -->
-	<div id="main">
-	<div id=sidebar_content style="float:left; width:80%">
-		<div id="jb-sidebar">
-			<!-- Profile -->
-			<div class="box-shadow border-round white padding">
-				<div class="container">
-					<h4 class="center">My Profile</h4>
-					<p class="center">
-						<img src="<c:url value='image/upload/man.png'/>" style="height: 106px; width: 106px"
-							alt="Avatar">
-					</p>
-					<hr color="#eee">
-					  <p>
-                  <td colspan=3 align="right"><input type="button" value="관리자페이지" onclick="window.location.href='ManagerPage.hash'"></td>
-                  </tr>
-               </c:if>
-               
-            </table> 
 
    <!-- main -->
    <div id="main">
@@ -874,7 +855,7 @@ border-radius:7px;
             <div class="container">
                <h4 class="center">My Profile</h4>
                <p class="center">
-                  <img src="image/logo/사람.PNG" style="height: 106px; width: 106px"
+                  <img src='<c:url value="/upload/${sessionScope.profilephoto }" />' style="height: 106px; width: 106px"
                      alt="Avatar">
                </p>
                <hr color="#eee">
@@ -969,7 +950,7 @@ border-radius:7px;
              <li><a href="Board.hash?hash=독도">#독도</a></li>
              <li><a href="Board.hash?hash=맥주">#맥주</a></li> -->   
             <span class="tag font-small w3-theme-d1 border-round">
-            <a id ="a" href="hashLike.hash?conhash=${tagname}" >#${tagname}</a></span>    
+            <a id ="a" href="Board.hash?hash=${tagname}" >#${tagname}</a></span>    
             </c:forEach>            
           </p>
         </div>
@@ -996,6 +977,8 @@ border-radius:7px;
    </div>
    </div>
    </div>
+  
+   
       
    </div>
        <div id="jb-footer" class="w3-theme-d3">

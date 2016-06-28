@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(#{email},#{nickname},#{passwd},#{hash},sysdate,sysdate,0,0,#{ip})
 	</insert>
 	
-	<insert id="insertP" parameterType="spring.model.ProfilePhotoCommand">
+	<insert id="insertP" parameterType="String">
 		insert into profilePhoto(email)
 		values (#{email})
 	</insert>
