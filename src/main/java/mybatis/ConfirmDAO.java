@@ -1,7 +1,5 @@
 package mybatis;
 
-import java.util.ArrayList;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -42,8 +40,3 @@ public class ConfirmDAO {
 		session.update("Confirm.adminunlike",hashname);
 	}
 }
-
-/*
-<select id="existEmail" parameterType="String" resultType="Integer">
-select count(*) from usertable where email=#{email}
-</select>*/

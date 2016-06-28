@@ -29,46 +29,30 @@ $(function() {
   	});
   	  
 });
-
-/* (function ($) {
-	$.fn.simpleToggleBtn = function () {
-
-	    var btns = $(this).find("button"), // 버튼 그룹 내 버튼들;
-	        checkBox = $("input:checkbox");
-
-	    btns.on("click", function () { // 버튼들 중 클릭한 버튼에 함수;
-	        $(this).addClass("hide");
-	        $(this).siblings("button").removeClass("hide");
-	        // 첫번째 버튼 기준으로 input 요소 체크!
-	        $(this).first().hasClass("hide") ? checkBox.attr("checked",true) : checkBox.attr("checked",false);
-	    });
-	}
-	}(jQuery)); 
- */
-$(document).ready(function(){
-	$(".w3-theme-d1").click(function(){
-		if($(this).hasClass("hide")){
-			$(".w3-theme-d1").removeClass("hide");
-			$(".w3-theme-d2").addClass("hide");
+$(function(){
+	$(".like").click(function(){
+		var index = $(".like").index(this);
+		if($(".like:eq("+index+")").hasClass("hide")){
+			$(".like:eq("+index+")").removeClass("hide");
+			$(".unlike:eq("+index+")").addClass("hide");
 		}else{
-			$(".w3-theme-d1").addClass("hide");
-			$(".w3-theme-d2").removeClass("hide");
+			$(".like:eq("+index+")").addClass("hide");
+			$(".unlike:eq("+index+")").removeClass("hide");
 		}
 	});
 });
-$(document).ready(function(){
-	$(".w3-theme-d2").click(function(){
-		if($(this).hasClass("hide")){
-			$(".w3-theme-d2").removeClass("hide");
-			$(".w3-theme-d1").addClass("hide");
+$(function(){
+	$(".unlike").click(function(){
+		var indexu = $(".unlike").index(this);
+		if($(".unlike:eq("+indexu+")").hasClass("hide")){
+			$(".unlike:eq("+indexu+")").removeClass("hide");
+			$(".like:eq("+indexu+")").addClass("hide");
 		}else{
-			$(".w3-theme-d2").addClass("hide");
-			$(".w3-theme-d1").removeClass("hide");
+			$(".unlike:eq("+indexu+")").addClass("hide");
+			$(".like:eq("+indexu+")").removeClass("hide");
 		}
 	});
 });
-
-
 function readURL(input) {
     if (input.files && input.files[0]) {
     var reader = new FileReader();
@@ -147,10 +131,6 @@ function unlike(num,String){
 	url = "Unlike.hash?connum="+num+"&conhash="+String;
 	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 }
-/* function toggle(){
-	$("#btn_group").simpleToggleBtn();
-} */
-
 function modal_close(){
 	var e = $.Event("keyup");
 	e.which = 27;
@@ -472,19 +452,12 @@ function Map(){
 
     <p>#${con.conhash}</p>
 	</div>
-	
-<%--  	<div id="btn_group">
-    <button type="button" id="btn1" class="w3-btn w3-theme-d1 w3-margin-bottom" onclick="javascript:like('${con.connum}')"><i class="fa fa-thumbs-up"></i> Like </button>
-    <button type="button" id="btn2" class="w3-btn w3-theme-d2 w3-margin-bottom hide" onclick="javascript:unlike('${con.connum}')"> un_like </button>
-    <input type="checkbox" class="hide"/>
-    </div> --%>
-    <button type="button" class="w3-btn w3-theme-d1 w3-margin-bottom" onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>  Like</button>
-    <button type="button" class="w3-btn w3-theme-d2 w3-margin-bottom hide" onclick="javascript:unlike('${con.connum}','${con.conhash}')">  un-like</button>
+	<div class="w3-btn">
+    <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>  Like</button>
+    <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlike('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>  Like</button>
     
-    <button type="button" class="w3-btn w3-theme-d3 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
-    
-  	
-	
+    <button type="button" class="w3-theme-d3 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>  	
+	</div>
 	<%-- <div id="board_img">
 	<a href="ContentView.hash?connum=${con.connum}">
 		<img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />' />
