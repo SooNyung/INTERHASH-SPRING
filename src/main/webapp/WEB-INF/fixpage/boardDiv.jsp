@@ -129,14 +129,19 @@ function like(num,String){
 	//location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
 } 
 
-/* $("#like_ajax").click(function(){
+/* $('#like_ajax').click(function(){
     $.ajax({
-        type:"POST",
-        url:"LikeCheck.hash?connum="+num+"&conhash="+String,
-       // data : {name : "홍길동"},
-        dataType : "jxon",   
-    });
-}); */
+        url:'LikeCheck.hash?connum='+num+'&conhash='+String;,
+        dataType:'json',
+        success:function(data){
+            var str = '';
+            for(var name in data){
+                str += '<li>'+data[name]+'</li>';
+            }
+            $('#timezones').html('<ul>'+str+'</ul>');
+        }
+    })
+}) */
 
 function unlike(num,String){
 	
@@ -528,12 +533,12 @@ function Map(){
 
 	<div class="w3-btn">
     
-    <%-- <button id="like_ajax" type="button" class="w3-theme-d1 w3-margin-bottom like" ><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button> --%>
+   	<%-- <button id="like_ajax" type="button" class="w3-theme-d1 w3-margin-bottom like" ><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button> --%>
     
-  	<button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button> 
-  	<button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlike('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button>
+  	<button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}like_bn">${con.conlike}</i></button> &nbsp
+  	<button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlike('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}unlike_bn"> ${con.conlike}</i></button>
     
-    <button type="button" class="w3-theme-d3 w3-margin-bottom" onclick="location.href='Board.hash'"><i class="fa fa-comment"></i>  Comment ${con.connum}</button>  	
+    <button type="button" class="w3-theme-d3 w3-margin-bottom" ><i class="fa fa-comment"></i>  Comment ${con.connum}</button>  	
 	</div>
 
 	<%-- <div id="board_img">
