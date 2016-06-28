@@ -308,7 +308,7 @@ function readURL(input) {
   <div class="site__container box-shadow border-round white">
 <h1>PROFILE</h1>
     <div class="grid__container">
-
+    <form action="profilePro.hash" name="userinput" method="post" class="form form--login" onSubmit="return checkedIt()" enctype="multipart/form-data">
    		 <p class="center">
     
               <img id="blah" src="image/logo/사람.PNG" class="circle" style="height: 106px; width: 106px"
@@ -316,13 +316,12 @@ function readURL(input) {
                    
                </p>
                <p class="center">
-               <input type='file' id="imgInp">
+               <input type='file' id="imgInp" name="photo">
                
                </p>
-    
                <hr color="#eee">
 
-      <form action="profilePro.hash" name="userinput" method="post" class="form form--login" onSubmit="return checkedIt()">
+      
 
 		<div class="form__field">
 			<label class="fontawesome-ok" id="pu">공개</label>
