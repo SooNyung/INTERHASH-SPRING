@@ -432,7 +432,7 @@ function test(connum){
 	var texta = $('#comment_textarea').val();
 
 	var url="<%=cp%>/InsertComment.hash";
-	var params ="connum="+connum+"&comcontent="+texta;
+	var params ="connum="+con+"&comcontent="+texta;
 
 	$.ajax({
 		type:"post"
@@ -441,14 +441,14 @@ function test(connum){
 		,dataType:"json"
  		,success:function(args){
  			
- 			
- 		
+ 		alert('성고고고고오오오오옹');
 		}  
-	    ,error:function(e) {
-	    	alert(e.responseText);
+	    ,error:function() {
+	    	alert('실패');
 	    }
 	});
 }
+
 
 function Map(){
 	url="template2.hash";
