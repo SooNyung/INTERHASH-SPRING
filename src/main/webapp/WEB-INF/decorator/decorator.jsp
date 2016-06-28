@@ -12,10 +12,6 @@
    href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
 <style>
-@import url(http://weloveiconfonts.com/api/?family=fontawesome);
-@import url(http://weloveiconfonts.com/api/?family=entypo);
-@import url(http://weloveiconfonts.com/api/?family=maki);
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
 html,body{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open Sans", sans-serif;}
 body{padding:0px;margin:0px;width:100%;height:100%;}
@@ -390,12 +386,8 @@ li a {
 
 /* Change the link color on hover */
 li a:hover {
-<<<<<<< HEAD
    background-color: #b2b2b2;
-=======
-	background-color: #b2b2b2;
-	border-radius:7px;
->>>>>>> 4cf31a3dc816aedb1e671847a41ddc77001b7364
+   border-radius:7px;
 }
 
 /* ----------------------------------------------------------------------- */
@@ -444,7 +436,6 @@ border-radius:7px;
 }
 
 .navbar li .sub {
-<<<<<<< HEAD
    background: rgb(255, 240, 245);
    display: none; /* 평상시에는 서브메뉴가 안보이게 하기 */
    height: 250px;
@@ -452,24 +443,11 @@ border-radius:7px;
    margin: 0px;
    margin-left: 0px;
    border: 0px;
+   border-radius:7px;
    position: absolute;
    width: 200px;
    overflow: hidden;
    z-index: 500;
-=======
-	background: rgb(255, 240, 245);
-	display: none; /* 평상시에는 서브메뉴가 안보이게 하기 */
-	height: 250px;
-	padding: 0px;
-	margin: 0px;
-	margin-left: 0px;
-	border: 0px;
-	border-radius:7px;
-	position: absolute;
-	width: 200px;
-	overflow: hidden;
-	z-index: 500;
->>>>>>> 4cf31a3dc816aedb1e671847a41ddc77001b7364
 }
 
 /* .navbar li:hover ul {
@@ -478,16 +456,9 @@ border-radius:7px;
  */
 
 .badge {
-<<<<<<< HEAD
-	color: #b2b2b2;
-	margin-top:4px;
-	text-align: center;
-=======
    color: #b2b2b2;
-   margin-top:0px;
+   margin-top:4px;
    text-align: center;
-   border-radius: 50%;
->>>>>>> 661c7fedff9689160c98d6b1c1a2bdb5c0139ea1
 }
 
 .right {
@@ -600,11 +571,6 @@ border-radius:7px;
 }
 
 .pro {
-/* 	font-size: 16px; */
-	border: 0px;
-}
-
-.pro {
 /*    font-size: 16px; */
    border: 0px;
 }
@@ -618,6 +584,9 @@ border-radius:7px;
        conphoto 는 contentInputForm.jsp 파일 안에 있는 파일 업로드 부분
        이곳이 변경되면, 파일을 읽어 들이는 함수 동작
     */
+    
+    
+    
     $(function() {
         $("#conphoto").on('change', function(){
              readURL(this); 
@@ -644,7 +613,6 @@ border-radius:7px;
     } 
     function fileUploadPreview(thisObj, preViewer) {
 
-<<<<<<< HEAD
       // 형식 체크
       if (!/(\.gif|\.jpg|\.jpeg|\.png)$/i.test(thisObj.value)) {
          alert("이미지 형식의 파일을 선택하십시오");
@@ -704,17 +672,9 @@ border-radius:7px;
 
    }
 
-   function Message() {
-      url = "MessageForm.hash?check=y";
-      window
-            .open(
-                  url,
-                  "post",
-                  "toolbar=no ,width=400 ,height=150,directories=no,status=yes,menubar=no,scrollbars=no");
-   }
 
    function Message(){
-      url="MessageForm.hash?check=y";
+      url="MessageForm.hash";
       window.open(url,"post","toolbar=no ,width=400 ,height=350,directories=no,status=yes,menubar=no,scrollbars=no");
       } 
    
@@ -751,283 +711,56 @@ border-radius:7px;
        });  
    
 
-   $(document).ready(function(){  
-         
-        $(".message").hover(function() {                    //마우스를 topnav에 오버시
+   $(document).ready(function(){           
+        $(".message").hover(function() {//마우스를 topnav에 오버시
+         $(this).parent().find("span").hide();      
          $(this).parent().find(".sub").slideDown('normal').show();                   //subnav가 내려옴.
          $(this).parent().hover(function() {  
          }, function(){  
           $(this).parent().find(".sub").slideUp('fast');                 //subnav에서 마우스 벗어났을 시 원위치시킴  
          });  
-        });  
-         
+        });        
        }); 
+   
+   
+    $(document).ready(function(){  
+         var check = "${memberinfo.checked}";
+         
+             $('.profile').each(function() {
+               var tt = $(this).attr("id");
+              if(check.indexOf(tt)!=-1){ 
+                   $(this).attr("style","inline");
+             } 
+            });  
+      });
+      
+    $(document).ready(function(){  
+         
+         var check = "${memberinfo.checked}"; //hasharr에 저장됨
+         /* var hi = $(".pro").attr("id"); */
+         
+         $('.pro').each(function() {
+             var eachh = $(this).attr("id");
+             /* alert(eachh); */
+              if(check.indexOf(eachh)!=-1){
+                $(this).attr("type","font");
+             } 
+           });
+         
+
+           
+         });
+
+
    /* $(window).load(function(){
        alert($('#jb-content').attr('height'));
    }); */
-   
-   
-  
-   
-   $(document).ready(function(){  
-	   var check = "${memberinfo.checked}";
-	   
-    		$('.profile').each(function() {
-   			var tt = $(this).attr("id");
-	 	 	if(check.indexOf(tt)!=-1){ 
-	 		   	$(this).attr("style","inline");
-	 		} 
-   		});  
-   });
-   
- $(document).ready(function(){  
-	   
-	   var check = "${memberinfo.checked}"; //hasharr에 저장됨
-	   /* var hi = $(".pro").attr("id"); */
-	   
-	   $('.pro').each(function() {
-		    var eachh = $(this).attr("id");
-		    /* alert(eachh); */
- 		    if(check.indexOf(eachh)!=-1){
-		    	$(this).attr("type","font");
-		    } 
-		  });
-	   
-
-        
-      });
-=======
-		// 형식 체크
-		if (!/(\.gif|\.jpg|\.jpeg|\.png)$/i.test(thisObj.value)) {
-			alert("이미지 형식의 파일을 선택하십시오");
-			$(thisObj).val('');
-			return;
-		}
-
-		var preViewer = $('.preViewImg:last');//(typeof(preViewer) == "object") ? preViewer : document.getElementById(preViewer);
-		var ua = window.navigator.userAgent;
-
-		// 렌더링 버전 알아내기
-		var rv = -1;
-
-		// ie 브라우저이며 ie10 미만 버전
-		if (ua.indexOf("MSIE") > -1 && rv < 10) {
-			var img_path = "";
-			if (thisObj.value.indexOf("\\fakepath\\") < 0) {
-				img_path = thisObj.value;
-			} else {
-				thisObj.select();
-				var selectionRange = document.selection.createRange();
-				img_path = selectionRange.text.toString();
-				thisObj.blur();
-			}
-			$(preViewer).css(
-					'filter',
-					"progid:DXImageTransform.Microsoft.AlphaImageLoader(src='fi"
-							+ "le://" + img_path + "', sizingMethod='scale')")
-					.show();
-
-			var cloneHtml = $('.photo_list:last').clone();
-			cloneHtml.find('input').val('');
-			cloneHtml.find('img').removeAttr('src', 'style').hide();
-			$(thisObj).parents('.photoBox:first').append(cloneHtml);
-		} else { // 그외 브라우저
-			var reader = new FileReader();
-			reader.readAsDataURL(thisObj.files[0]);
-			reader.onload = function(e) {
-				$('.preViewImg:last').attr('src', e.target.result).show();
-
-				var cloneHtml = $('.photo_list:last').clone();
-				cloneHtml.find('input').val('');
-				cloneHtml.find('img').attr('src', '').hide();
-				$(thisObj).parents('.photoBox:first').append(cloneHtml);
-			}
-		}
-	}
-
-	function tagCheck() {
-
-		url = "TagCheck.hash?check=y";
-		newwindow = window
-				.open(
-						url,
-						"post",
-						"toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
-
-	}
-
-
-	function Message(){
-		url="MessageForm.hash";
-		window.open(url,"post","toolbar=no ,width=400 ,height=350,directories=no,status=yes,menubar=no,scrollbars=no");
-		} 
-	
-	function MessageList(){
-		url="MessageList.hash?check=y";
-		window.open(url,"post","toolbar=no ,width=400 ,height=350,directories=no,status=yes,menubar=no,scrollbars=no");
-		} 
-	
-
-
-	$(document).ready(function() {
-		if ($('#jb-content').outerHeight(true) < 800) {
-			$("#jb-content").css("height", "800px");
-		}else{
-			var g = $('#jb-content').outerHeight(true);
-			$('#main').css("height", g);
-			
-		}
-		/* alert($('#jb-content').outerHeight(true)); */
-		// alert(document.getElementById("main").currentStyle.width);
-	});
-	
-	
-	$(document).ready(function(){  
-		   
-		  $(".topnav").hover(function() {                    //마우스를 topnav에 오버시
-		   $(this).parent().find(".account").slideDown('normal').show();                   //subnav가 내려옴.
-		   $(this).parent().hover(function() {  
-		   }, function(){  
-		    $(this).parent().find(".account").slideUp('fast');                 //subnav에서 마우스 벗어났을 시 원위치시킴  
-		   });  
-		  });  
-		   
-		 });  
-	
-
-	$(document).ready(function(){  		   
-		  $(".message").hover(function() {//마우스를 topnav에 오버시
-		   $(this).parent().find("span").hide();      
-		   $(this).parent().find(".sub").slideDown('normal').show();                   //subnav가 내려옴.
-		   $(this).parent().hover(function() {  
-		   }, function(){  
-		    $(this).parent().find(".sub").slideUp('fast');                 //subnav에서 마우스 벗어났을 시 원위치시킴  
-		   });  
-		  });  	   
-		 }); 
-	
-	
-	 $(document).ready(function(){  
-	      var check = "${memberinfo.checked}";
-	      
-	          $('.profile').each(function() {
-	            var tt = $(this).attr("id");
-	           if(check.indexOf(tt)!=-1){ 
-	                $(this).attr("style","inline");
-	          } 
-	         });  
-	   });
-	   
-	 $(document).ready(function(){  
-	      
-	      var check = "${memberinfo.checked}"; //hasharr에 저장됨
-	      /* var hi = $(".pro").attr("id"); */
-	      
-	      $('.pro').each(function() {
-	          var eachh = $(this).attr("id");
-	          /* alert(eachh); */
-	           if(check.indexOf(eachh)!=-1){
-	             $(this).attr("type","font");
-	          } 
-	        });
-	      
-
-	        
-	      });
-
-
-	/* $(window).load(function(){
-	    alert($('#jb-content').attr('height'));
-	}); */
->>>>>>> 4cf31a3dc816aedb1e671847a41ddc77001b7364
 </script>
 
-<<<<<<< HEAD
-=======
-<!--      <script type="text/javascript">
-         $(function(){
-        $(".sm").hide();
-        /*
-           hover 이벤트
-           mouseover 와 mouseout 시의 이벤트 정의
-           첫번째는 mouseover, 두번째는 mouseout
-           또한 slideDown과 slideUp은 toggle로 대체 가능
-           $(".small").slideToggle("fast");
-           콜백함수의 조건절 없이 하나의 콜백함수로 표현가능
-           
-        */
-       $(".small").hover(
-         function(){ 
-            $(".small:not(:animated)",this).slideDown("fast");},
-         function(){
-               $(".small",this).slideUp("fast");
-         });
-      });   
-   </script> -->
-
->>>>>>> 661c7fedff9689160c98d6b1c1a2bdb5c0139ea1
   </head>
 
 <body style="background-color: #f5f7f8">
 
-<<<<<<< HEAD
-	<!-- navbar -->
-
-	<div id=head>
-		<ul class="navbar color1">
-			<li class="small"><a href="Board.hash"
-				class="padding-large margin-right"><b>I N T E R H A S H #</b></a></li>
-			<li class="small">
-			<div class="message">
-			<a href="#" onclick="window.open('MessageList.hash','new','width=400 height=350');return false" 
-			class="padding-large margin-right"  title="Messages">
-				<i class="fa fa-envelope"></i><span class="count badge right small circle pink">${messagecount}</span>
-			</a>
-			</div>
-		
-				<ul class="sub">
-					<table>	
-						<tr>
-							<td>쪽지</td>
-							<td class="w3-right"><button onclick="Message()">쪽지보내기</button></td>
-						</tr>
-						<tr class="left-align">
-							<td colspan="2"><c:forEach var="message"
-									items="${sessionScope.mesagelist}" begin="0" end="2">
-									<li><a 
-										href="#"
-										onclick="window.open('MessageView.hash?messageNum=${message.messageNum}','new','width=400 height=350');return false"><img
-											src="image/logo/img_avatar5.png" class="left-align circle "
-											width="15%" height="15%">${message.sendNickname}:
-											${message.messageContent}</a></li>
-								</c:forEach></td>
-						</tr>
-
-						<tr>
-							<Td colspan="2"><hr><button onclick="MessageList()">모든 쪽지 보기</button></Td>
-						</tr>
-					</table>
-				</ul></li>
-			<li class="small"><a href="#"
-				class="margin-right padding-large left-align" title="Alarm"><i
-					class="fa fa-bell"></i></a></li>
-
-			<li class="small right">
-			<div class="topnav">	<a href="#" class="padding-large"
-				title="MyAccount"><img src="image/logo/사람.PNG" class="circle"
-					width="30%" height="30%">${memberinfo.nickname}님</a></div>
-				<ul class="account">
-					<li><a href="UserInfoModifyForm.hash">회원정보수정</a></li>
-					<li><a href="profile.hash">프로필수정</a></li>
-					<li><a href="LogOut.hash">로그아웃</a></li>
-				</ul></li>
-
-			<div id="jb_search">
-				<form method="post" action="Board.hash">
-					<input type="text" name="hash" /> <input type="submit" value="검색" />
-				</form>
-			</div>
-=======
    <!-- navbar -->
 
    <div id=head>
@@ -1036,8 +769,9 @@ border-radius:7px;
             class="padding-large margin-right"><b>I N T E R H A S H #</b></a></li>
          <li class="small">
          <div class="message">
-         <a href="messageView.hash" class="padding-large margin-right" title="Messages">
-            <i class="fa fa-envelope"></i><span class="badge right small pink">${messagecount}</span>
+         <a href="#" onclick="window.open('MessageList.hash','new','width=400 height=350');return false" 
+         class="padding-large margin-right"  title="Messages">
+            <i class="fa fa-envelope"></i><span class="count badge right small circle pink">${messagecount}</span>
          </a>
          </div>
       
@@ -1045,13 +779,14 @@ border-radius:7px;
                <table>   
                   <tr>
                      <td>쪽지</td>
-                     <td class="w3-right"><a href="MessageForm.hash">쪽지보내기</a></td>
+                     <td class="w3-right"><button onclick="Message()">쪽지보내기</button></td>
                   </tr>
                   <tr class="left-align">
                      <td colspan="2"><c:forEach var="message"
                            items="${sessionScope.mesagelist}" begin="0" end="2">
-                           <li><a
-                              href="messageView.hash?messageNum=${message.messageNum}"><img
+                           <li><a 
+                              href="#"
+                              onclick="window.open('MessageView.hash?messageNum=${message.messageNum}','new','width=400 height=350');return false"><img
                                  src="image/logo/img_avatar5.png" class="left-align circle "
                                  width="15%" height="15%">${message.sendNickname}:
                                  ${message.messageContent}</a></li>
@@ -1059,7 +794,7 @@ border-radius:7px;
                   </tr>
 
                   <tr>
-                     <Td colspan="2"><a href="#"><hr>모든 쪽지 보기</a></Td>
+                     <Td colspan="2"><hr><button onclick="MessageList()">모든 쪽지 보기</button></Td>
                   </tr>
                </table>
             </ul></li>
@@ -1070,7 +805,7 @@ border-radius:7px;
          <li class="small right">
          <div class="topnav">   <a href="#" class="padding-large"
             title="MyAccount"><img src="image/logo/사람.PNG" class="circle"
-               width="30%" height="30%">${nickName}님</a></div>
+               width="30%" height="30%">${memberinfo.nickname}님</a></div>
             <ul class="account">
                <li><a href="UserInfoModifyForm.hash">회원정보수정</a></li>
                <li><a href="profile.hash">프로필수정</a></li>
@@ -1086,7 +821,6 @@ border-radius:7px;
       </ul>
    </div>
 
->>>>>>> 661c7fedff9689160c98d6b1c1a2bdb5c0139ea1
 
                   <!-- <input type = "text"><br>
                <input type = "password"><br>
@@ -1104,7 +838,6 @@ border-radius:7px;
                <c:if test="${sessionScope.memId=='admin@admin.com' }">
                <tr>
      
-<<<<<<< HEAD
                   <td colspan=3 align="right"><input type="button" value="관리자페이지" onclick="window.location.href='ManagerPage.hash'"></td>
                   </tr>
                </c:if>
@@ -1124,28 +857,7 @@ border-radius:7px;
                      alt="Avatar">
                </p>
                <hr color="#eee">
-               <p>
-=======
-      				<td colspan=3 align="right"><input type="button" value="관리자페이지" onclick="window.location.href='ManagerPage.hash'"></td>
-      				</tr>
-      			</c:if>
-					
-				</table> --%>
-
-	<!-- main -->
-	<div id="main">
-	<div id=sidebar_content style="float:left; width:80%">
-		<div id="jb-sidebar">
-			<!-- Profile -->
-			<div class="box-shadow border-round white padding">
-				<div class="container">
-					<h4 class="center">My Profile</h4>
-					<p class="center">
-						<img src="image/logo/사람.PNG" style="height: 106px; width: 106px"
-							alt="Avatar">
-					</p>
-					<hr color="#eee">
-					  <p>
+                 <p>
                   <i class="fa fa-pencil fa-fw margin-right text-theme"></i>
                   ${memberinfo.nickname}
                </p>
@@ -1183,8 +895,6 @@ border-radius:7px;
                   <i class="fa fontawesome-briefcase fa-fw margin-right text-theme profile" id="job" style="display: none;"></i>
                   <input type="hidden" name="pro" class="pro" id="job" value="${memberinfo.job}에서 근무" readonly="readonly">
                </p>
-<<<<<<< HEAD
-               
 
             </div>
          </div>
@@ -1193,11 +903,11 @@ border-radius:7px;
          <!-- menu -->
          <div class="box-shadow border-round">
             <div class="accordion white border-round">
-               <button onclick="myFunction();"
+               <button onclick="myContent();"
                   class="btn-block theme-l1 left-align border-round">
                   <i class="fa fa-circle-o-notch fa-fw margin-right"></i> 내 글 보기
                </button>
-               <button onclick="myFunction();"
+               <button onclick="updateContent();"
                   class="btn-block theme-l1 left-align">
                   <i class="fa fa-calendar-check-o fa-fw margin-right"></i> 최신 글 보기
                </button>
@@ -1206,9 +916,14 @@ border-radius:7px;
                   <i class="fa fa-users fa-fw margin-right"></i> 인기 글 보기
                </button>
                <script>
-                  function myFunction() {
-                     alert("버튼을 누르셨습니다.");
+                  function myContent() {
+                     location.href="myContent.hash";
                   }
+                  
+                  function updateContent() {
+                     location.href="Board.hash";
+                  }
+                  
                </script>
             </div>
          </div>
@@ -1232,59 +947,6 @@ border-radius:7px;
              <li><a href="Board.hash?hash=반려동물">#반려동물</a></li>
              <li><a href="Board.hash?hash=독도">#독도</a></li>
              <li><a href="Board.hash?hash=맥주">#맥주</a></li> -->   
-
-				</div>
-			</div>
-			<br>
-
-			<!-- menu -->
-			<div class="box-shadow border-round">
-				<div class="accordion white border-round">
-					<button onclick="myContent();"
-						class="btn-block theme-l1 left-align border-round">
-						<i class="fa fa-circle-o-notch fa-fw margin-right"></i> 내 글 보기
-					</button>
-					<button onclick="updateContent();"
-						class="btn-block theme-l1 left-align">
-						<i class="fa fa-calendar-check-o fa-fw margin-right"></i> 최신 글 보기
-					</button>
-					<button onclick="myFunction();"
-						class="btn-block theme-l1 left-align border-round">
-						<i class="fa fa-users fa-fw margin-right"></i> 인기 글 보기
-					</button>
-					<script>
-						function myContent() {
-							location.href="myContent.hash";
-						}
-						
-						function updateContent() {
-							location.href="Board.hash";
-						}
-						
-					</script>
-				</div>
-			</div>
-			<br>
-
-			<!-- Interests -->
-			<div class="box-shadow border-round white small">
-				<div class="container1">
-					<p>
-						<b>Interests</b>    <a href="ModifyHash.hash" class="button button-pink"> 수 정 </a>
-					</p>
-					<p>
-
-						<c:forEach var="tagname" items="${sessionScope.hashlist}">
-
-							<!-- <li><a href='Board.hash?hash=사랑'>#사랑</a></li>
-          	<li><a href="Board.hash?hash=돈">#돈</a></li>
-          	<li><a href="Board.hash?hash=컴퓨터">#컴퓨터</a></li>
-          	<li><a href="Board.hash?hash=커피">#커피</a></li>
-          	<li><a href="Board.hash?hash=책">#책</a></li>
-          	<li><a href="Board.hash?hash=반려동물">#반려동물</a></li>
-          	<li><a href="Board.hash?hash=독도">#독도</a></li>
-          	<li><a href="Board.hash?hash=맥주">#맥주</a></li> -->   
->>>>>>> 4cf31a3dc816aedb1e671847a41ddc77001b7364
             <span class="tag font-small w3-theme-d1 border-round">
             <a id ="a" href="Board.hash?hash=${tagname}" >#${tagname}</a></span>    
             </c:forEach>            
@@ -1303,23 +965,17 @@ border-radius:7px;
       <div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
       </div>
       <div style="width:100%; ">
-<<<<<<< HEAD
-   <div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">채팅창</div>
+   <div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">
+      <div style="height:100%">
+         <iframe style="height:100%" src= "http://192.168.50.42:8080/">
+         </iframe>
+      </div>
+   </div>
    </div>
    </div>
   
    
       
-=======
-   <div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">
-   <div style="height:100%;">
-<iframe src="http://192.168.50.42:8080/" style="height:100%;"></iframe>
-</div>
-</div>
-   </div>
-   </div>
-  
->>>>>>> 4cf31a3dc816aedb1e671847a41ddc77001b7364
    </div>
        <div id="jb-footer" class="w3-theme-d3">
         <p>Copyright</p>
