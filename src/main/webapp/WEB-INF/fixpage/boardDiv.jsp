@@ -53,6 +53,7 @@ $(function(){
 		}
 	});
 });
+
 function readURL(input) {
     if (input.files && input.files[0]) {
     var reader = new FileReader();
@@ -428,8 +429,6 @@ function test(connum){
 	    }
 	});
 }
-
-
 function Map(){
 	url="template2.hash";
 	window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");

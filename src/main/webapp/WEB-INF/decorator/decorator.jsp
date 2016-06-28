@@ -967,7 +967,7 @@ border-radius:7px;
    	<div style="width:100%; ">
 	<div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">
 		<div style="height:100%">
-			<iframe style="height:100%" src= "http://192.168.50.42:8080/">
+			<iframe style="height:100%" src= "http://192.168.50.42:8080/?id=${sessionScope.nickName }">
 			</iframe>
 		</div>
 	</div>
