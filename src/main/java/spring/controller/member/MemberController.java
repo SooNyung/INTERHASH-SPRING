@@ -1,5 +1,7 @@
 package spring.controller.member;
 
+import java.io.File;
+import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,12 +14,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import mybatis.ContentDAO;
 import mybatis.MemberDAO;
 import mybatis.MessageDAO;
+import mybatis.PhotoDAO;
+import spring.model.ContentCommand;
 import spring.model.MemberCommand;
+import spring.model.PhotoCommand;
+import spring.model.ProfilePhotoCommand;
 
 @Controller
 public class MemberController {
@@ -25,11 +32,20 @@ public class MemberController {
 	@Autowired	
 	MemberDAO dao;
 	
+	@Autowired
+	PhotoDAO pdao;
+	
+	@Autowired
+	ContentDAO cdao;
+		
+	public void setPdao(PhotoDAO pdao) {
+		this.pdao = pdao;
+	}
+
 	public void setDao(MemberDAO dao) {
 		this.dao = dao;
 	}
-	@Autowired
-	ContentDAO cdao;
+
 
 	public void setCdao(ContentDAO cdao) {
 		this.cdao = cdao;
@@ -39,6 +55,11 @@ public class MemberController {
 	public MemberCommand memberCommand() {
 		return new MemberCommand();
 	}
+	@ModelAttribute("Pcommand")
+	public ProfilePhotoCommand command(){
+		return new ProfilePhotoCommand();
+	}
+	
 	@Autowired
 	MessageDAO mdao;
 	
@@ -142,7 +163,7 @@ public class MemberController {
 		return mv;
 		
 	}
-	
+/*	-----------------------------------프로필---------------------------------------*/
 	@RequestMapping("/profile.hash")
 	public ModelAndView profile(HttpSession session){
 		ModelAndView mv = new ModelAndView("userpage/Profile");
@@ -153,7 +174,17 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/profilePro.hash")
-	public String ProfilePro(@ModelAttribute("command")MemberCommand command, @RequestParam("checked") String[] checked){
+	public String ProfilePro(@ModelAttribute("command")MemberCommand command, 
+			ProfilePhotoCommand Pcommand, @RequestParam("photo") MultipartFile photo, @RequestParam("checked") String[] checked,
+			HttpServletRequest request){
+		
+		try {
+			upload(photo, request);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	/*	--------------------------------------------------------*/
+		System.out.println("photo 받아옴? : " + photo);
 		command.setHash(Arrays.toString(checked));
 		System.out.println("hash태그 :: " + Arrays.toString(checked));
 		int a = dao.profile(command);
@@ -161,8 +192,48 @@ public class MemberController {
 		return "userpage/ProfilePro";
 	}
 	
+	String real_name;
+	
+	private String upload(MultipartFile info,HttpServletRequest request) throws Exception{
+		System.out.println("upload 메소드로 넘어옴");
+
+		String user_home= (String)System.getProperties().get("user.home");
+		
+		// C:\Users\jin_notebook\Documents\workspace-sts-3.7.3.RELEASE\INTERHASH-SPRING\src\main\webapp\ upload\ 
+		String workspace_dir=user_home+"\\Documents\\workspace-sts-3.7.3.RELEASE\\INTERHASH-SPRING\\src\\main\\webapp\\upload\\";
+		//String tmp_dir = request.getSession().getServletContext().getRealPath("/");
+		String tmp_dir = (String)System.getProperties().get("wtp.deploy");
+		String email = (String)request.getSession().getAttribute("memId");
+		//workspace 경로
+		System.out.println("workspace 경로  :: "+ workspace_dir);
+		//서버 경로
+		System.out.println("서버 경로 :: "+tmp_dir);
+		String upload_tmp_path = tmp_dir + "\\INTERHASH-SPRING\\upload\\";
+		String name = info.getOriginalFilename();
+		real_name= System.currentTimeMillis()+name;
+		String path = workspace_dir + real_name;
+		System.out.println("email :: " + email);
+		System.out.println("path :: " + path);
+		ProfilePhotoCommand fileinfo = new ProfilePhotoCommand();
+		fileinfo.setEmail(email);
+		fileinfo.setPath(real_name);
+		System.out.println("여기가 에런가??");
+		
+		int a = pdao.updateProfilePhoto(fileinfo);
+		System.out.println("사진 update 성공?" + a);
+	//	int result = pdao.insertPhoto();
+		
+		File f = new File(workspace_dir+real_name);
+		File f1 = new File(upload_tmp_path+real_name);
+		System.out.println("workspace : \n"+workspace_dir+real_name);
+		System.out.println("tmp_dir : \n"+upload_tmp_path+real_name);
+		info.transferTo(f);
+		info.transferTo(f1);
+		return name;
+	}
 	
 	
+	/*	-----------------------------------프로필 끝---------------------------------------*/
 	//최신글 보기
 	@RequestMapping("/Board.hash")
 	public String board(Model model,HttpSession session){
