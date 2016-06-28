@@ -296,9 +296,17 @@ function confirmnickname() {
 
 function confirmemail(){
 	var userinput = eval("document.userinput");
+	var regex=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
 	if(userinput.email.value=="") {
 		alert("Email을 입력해주세요");
+		userinput.email.focus(); 
 		return false;
+	}
+	if(regex.test(userinput.email.value) === false) 
+	{  
+	    alert("잘못된 Email 형식입니다.");  
+	    userinput.email.focus(); 
+	    return false; 
 	}
 	url="/INTERHASH-SPRING/ConfirmEmail.hash?email=" + userinput.email.value;
 	open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
