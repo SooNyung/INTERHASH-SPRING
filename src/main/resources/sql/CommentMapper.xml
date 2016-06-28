@@ -27,5 +27,8 @@
 		select count(*) from commenttable where connum = #{connum}
 	</select>
 
+	<select id="getCommentStr" parameterType="int" resultType="String">
+		select * from commenttable where connum = #{connum}
+	</select>
 </mapper>
 
