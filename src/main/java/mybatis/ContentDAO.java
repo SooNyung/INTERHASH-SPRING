@@ -82,7 +82,10 @@ public class ContentDAO {
 	public List<ContentCommand> myContent(String email){
 		return session.selectList("writecontent.myContent",email);
 	}
-	
+
+	public List<ContentCommand> hashLike(String conhash){
+		return session.selectList("writecontent.hashLike",conhash);
+	}
 	
 /*	public ContentCommand getContent(int connum) throws Exception {
 		ContentCommand content = null;
