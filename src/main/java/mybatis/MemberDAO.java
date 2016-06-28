@@ -94,6 +94,10 @@ public class MemberDAO {
 		return session.insert("member.insertP", email);
 		
 	}
+	
+	public String selectPath(String email){
+		return session.selectOne("Profile.selectPath", email);
+	}
 
 
 }

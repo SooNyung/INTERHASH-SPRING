@@ -853,7 +853,7 @@ border-radius:7px;
             <div class="container">
                <h4 class="center">My Profile</h4>
                <p class="center">
-                  <img src="image/logo/사람.PNG" style="height: 106px; width: 106px"
+                 <img src="<c:url value='image/upload/man.png'/>" style="height: 106px; width: 106px"
                      alt="Avatar">
                </p>
                <hr color="#eee">
