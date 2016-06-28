@@ -472,7 +472,9 @@ function Map(){
 				</span> 
 				
 				<span id="imageon" style="width: 50px; float: left;">
-				<img src='<c:url value="/image/logo/place.PNG" />' onclick="Map()" /> 			
+				<img src='<c:url value="/image/logo/place.PNG" />' onclick="Map()" />
+				<input type="text" name= "maptitle"/>
+				<input type="text" name="mapplace" /> 			
 				</span> 
 				
 				<span id="taglist" style="width: 300px; float: left;">

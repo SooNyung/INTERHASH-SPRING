@@ -837,7 +837,7 @@ border-radius:7px;
                </tr>
                <c:if test="${sessionScope.memId=='admin@admin.com' }">
                <tr>
-                
+
                   <td colspan=3 align="right"><input type="button" value="관리자페이지" onclick="window.location.href='ManagerPage.hash'"></td>
                   </tr>
                </c:if>
@@ -858,7 +858,6 @@ border-radius:7px;
                </p>
                <hr color="#eee">
                  <p>
-
                   <i class="fa fa-pencil fa-fw margin-right text-theme"></i>
                   ${memberinfo.nickname}
                </p>
@@ -949,7 +948,7 @@ border-radius:7px;
              <li><a href="Board.hash?hash=독도">#독도</a></li>
              <li><a href="Board.hash?hash=맥주">#맥주</a></li> -->   
             <span class="tag font-small w3-theme-d1 border-round">
-            <a id ="a" href="hashLike.hash?conhash=${tagname}" >#${tagname}</a></span>    
+            <a id ="a" href="Board.hash?hash=${tagname}" >#${tagname}</a></span>    
             </c:forEach>            
           </p>
         </div>
@@ -974,6 +973,8 @@ border-radius:7px;
    </div>
    </div>
    </div>
+  
+   
       
    </div>
        <div id="jb-footer" class="w3-theme-d3">
