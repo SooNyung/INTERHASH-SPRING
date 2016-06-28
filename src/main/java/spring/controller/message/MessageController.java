@@ -55,7 +55,7 @@ public class MessageController {
 			@ModelAttribute("messagedto") MessageCommand messagedto,
 			HttpServletRequest request){
 		ModelAndView mav = new ModelAndView("fixpage/boardDiv");
-		
+		System.out.println("123");
 		//송신자 이메일		
 		String sender = (String) request.getSession().getAttribute("memId");
 
@@ -74,8 +74,9 @@ public class MessageController {
 	
 		//글 내용
 		String msgContent = request.getParameter("messagecontent");
+		System.out.println("message sql 실행전 ::::::::::::::::");
 		messagedto.setMessageContent(msgContent);
-		
+		System.out.println("message sql 실행후 ::::::::::::::::");
 		messagedto.setSendEmail(sender);
 		messagedto.setReceEmail(receiver);
 		messagedto.setSendNickname(senderNick);

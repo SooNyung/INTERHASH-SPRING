@@ -140,17 +140,6 @@ color:#5AAEFF;
 	#test{border-bottom:1px solid;}
 
 </style>
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> 
-<script> 
-$(document).ready(function(){
-	var con = ${content.connum}
-	var texta = $('#comment_textarea').val();
-	$('#rptl').attr('onclick','test(con,texta)');
-	
-	
-});
-</script>
-
 </head>
 <body>
 <div id="view_div">
@@ -232,10 +221,10 @@ $(document).ready(function(){
 	<span><label id="time">${sdf.format(comment.commodifieddate)}</label></span>
 	
 	<span id="align_right">
+	
 		<c:if test="${sessionScope.memId==comment.email}">
 		<a href="deleteComment.hash?comnum=${comment.comnum}&&connum=${comment.connum}">삭제</a>
 		<a onclick="modify(${comment.comnum},${comment.connum})">수정</a>
- 
 		</c:if	>
 		
 		<c:if test="${sessionScope.memId!=comment.email}">
