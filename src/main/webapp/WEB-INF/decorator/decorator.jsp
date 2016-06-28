@@ -6,6 +6,7 @@
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel='stylesheet'
    href='https://fonts.googleapis.com/css?family=Open+Sans'>
 <link rel="stylesheet"
@@ -838,13 +839,11 @@ border-radius:7px;
                <c:if test="${sessionScope.memId=='admin@admin.com' }">
                <tr>
      
-<<<<<<< HEAD
       				<td colspan=3 align="right"><input type="button" value="관리자페이지" onclick="window.location.href='ManagerPage.hash'"></td>
       				</tr>
       			</c:if>
 					
 				</table> --%>
-
 
 
    <!-- main -->
@@ -856,7 +855,8 @@ border-radius:7px;
             <div class="container">
                <h4 class="center">My Profile</h4>
                <p class="center">
-                  <img src="image/logo/사람.PNG" style="height: 106px; width: 106px"
+                  <img src='<c:url value="/upload/${sessionScope.profilePhoto}" />' 
+                  style="height: 130px; width: 130px" class="circle"
                      alt="Avatar">
                </p>
                <hr color="#eee">
@@ -952,7 +952,7 @@ border-radius:7px;
              <li><a href="Board.hash?hash=독도">#독도</a></li>
              <li><a href="Board.hash?hash=맥주">#맥주</a></li> -->   
             <span class="tag font-small w3-theme-d1 border-round">
-            <a id ="a" href="hashLike.hash?conhash=${tagname}" >#${tagname}</a></span>    
+            <a id ="a" href="Board.hash?hash=${tagname}" >#${tagname}</a></span>    
             </c:forEach>            
           </p>
         </div>
@@ -965,18 +965,22 @@ border-radius:7px;
   </div>
      
    <div id="jb-right">
-      <div style="width:100%; height: 350px; ">
-      <div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
-      </div>
-      <div style="width:100%; ">
-   <div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">
-      <div style="height:100%">
-         <iframe style="height:100%" src= "http://192.168.50.42:8080/">
-         </iframe>
-      </div>
+   	<div style="width:100%; height: 350px; ">
+   	<div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
+   	</div>
+   	<div style="width:100%; ">
+	<div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">
+		<div style="height:100%">
+			<iframe style="height:100%" src= "http://192.168.50.42:8080/?id=${sessionScope.nickName }">
+			</iframe>
+		</div>
+	</div>
+	</div>
    </div>
    </div>
    </div>
+  
+   
       
    </div>
        <div id="jb-footer" class="w3-theme-d3">

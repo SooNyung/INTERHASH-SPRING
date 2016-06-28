@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 </head>
-<body>
+<body onload="javascript:self.close()">
 <table>
   <tr>
     <p><td align="center">Like : ${conlike}</p>
