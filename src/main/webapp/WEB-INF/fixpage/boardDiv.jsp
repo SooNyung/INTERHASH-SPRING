@@ -121,12 +121,23 @@ function tagCheck() {
 	url = "TagCheck.hash?check=y";
 	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 }
+
 function like(num,String){
 
 	url = "LikeCheck.hash?connum="+num+"&conhash="+String;
 	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 	//location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
-}
+} 
+
+/* $("#like_ajax").click(function(){
+    $.ajax({
+        type:"POST",
+        url:"LikeCheck.hash?connum="+num+"&conhash="+String,
+       // data : {name : "홍길동"},
+        dataType : "jxon",   
+    });
+}); */
+
 function unlike(num,String){
 	
 	url = "Unlike.hash?connum="+num+"&conhash="+String;
@@ -514,10 +525,13 @@ function Map(){
     </div> --%>
 
 	<div class="w3-btn">
-    <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>  Like</button>
-    <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlike('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>  Like</button>
     
-    <button type="button" class="w3-theme-d3 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>  	
+    <%-- <button id="like_ajax" type="button" class="w3-theme-d1 w3-margin-bottom like" ><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button> --%>
+    
+  	<button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button> 
+  	<button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlike('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button>
+    
+    <button type="button" class="w3-theme-d3 w3-margin-bottom" onclick="location.href='Board.hash'"><i class="fa fa-comment"></i>  Comment ${con.connum}</button>  	
 	</div>
 
 	<%-- <div id="board_img">
