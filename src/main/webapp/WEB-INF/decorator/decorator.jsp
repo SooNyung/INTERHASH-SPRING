@@ -845,26 +845,7 @@ border-radius:7px;
 					
 				</table> --%>
 
-	<!-- main -->
-	<div id="main">
-	<div id=sidebar_content style="float:left; width:80%">
-		<div id="jb-sidebar">
-			<!-- Profile -->
-			<div class="box-shadow border-round white padding">
-				<div class="container">
-					<h4 class="center">My Profile</h4>
-					<p class="center">
-						<img src="<c:url value='image/upload/man.png'/>" style="height: 106px; width: 106px"
-							alt="Avatar">
-					</p>
-					<hr color="#eee">
-					  <p>
-=======
-                  <td colspan=3 align="right"><input type="button" value="관리자페이지" onclick="window.location.href='ManagerPage.hash'"></td>
-                  </tr>
-               </c:if>
-               
-            </table> --%>
+
 
    <!-- main -->
    <div id="main">
@@ -880,7 +861,7 @@ border-radius:7px;
                </p>
                <hr color="#eee">
                  <p>
->>>>>>> d12794e7be7bcbf5731559a718b067c2b789f9dd
+
                   <i class="fa fa-pencil fa-fw margin-right text-theme"></i>
                   ${memberinfo.nickname}
                </p>

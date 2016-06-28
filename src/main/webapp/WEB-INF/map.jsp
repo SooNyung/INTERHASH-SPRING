@@ -166,8 +166,7 @@ function displayPlaces(places) {
             });
           
             daum.maps.event.addListener(marker, 'click', function() {
-            	alert(marker);
-                selectInfo(marker,title,address);
+                selectInfo(marker,title,placePosition);
             });
             
             daum.maps.event.addListener(map, 'click', function(mouseEvent) {        
@@ -297,19 +296,15 @@ function displayInfowindow(marker, title) {
     var content = '<a href="adminpage/test.jsp?title="'+title+'><div style="padding:5px;z-index:1;">' + title + '</div></a>';
 
     infowindow.setContent(content);
-    infowindow.open(map, marker);
-    
-    
+    infowindow.open(map, marker);    
 }
 
-function selectInfo(marker, title,address) {
-	//alert($(this).attr("class"));
-			//removeMarker();	
-	//data.places
-	ps.keywordSearch(title, placesSearchCB);
-	alert(title);
-	/* url="MessageForm.hash?check=y";"; */
-	//addMarker(placePosition, i);	
+function selectInfo(marker, title,placePosition) {
+	alert(placePosition); 
+	ps.keywordSearch( title, placesSearchCB);
+			//removeMarker();
+	opener.document.writeForm.maptitle.value = title;
+	opener.document.writeForm.mapplace.value = placePosition;
 }
 
  // 검색결과 목록의 자식 Element를 제거하는 함수입니다
