@@ -280,7 +280,7 @@ public class MemberController {
 		session.setAttribute("content", cdao.getContent());
 		session.setAttribute("memberinfo", command);
 		session.setAttribute("messagecount", mdao.getMessageCount(email));
-		String checked = dao.selectCheck(email);
+		String checked = dao.selectCheck(email); //Áø°æ
 		session.setAttribute("checked", checked);
 		String hash = command.getHash();
 		hash = hash.substring(1, hash.length() - 1);
