@@ -85,13 +85,23 @@ public class MemberController {
 
 	@RequestMapping("/SignupPro2.hash")
 	public ModelAndView SignupPro2(MemberCommand memberCommand, @RequestParam("email") String email,
-			@RequestParam("hash") String[] hash, HttpServletRequest request) {
+			@RequestParam("gender") String gender,@RequestParam("hash") String[] hash, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("userpage/SignupPro2");
 		memberCommand.setIp(request.getRemoteAddr());
 		memberCommand.setHash(Arrays.toString(hash));
 		System.out.println("hash태그 :: " + Arrays.toString(hash));
 		int a = dao.insertMember(memberCommand);
-		int b = dao.insertProfile(email);
+		ProfilePhotoCommand pcommand = new ProfilePhotoCommand();
+		pcommand.setEmail(email);
+		if(gender=="M" || gender.equals("M")){
+			pcommand.setPath("man.png");
+		}
+		else{
+			pcommand.setPath("women.png");
+		}
+		
+		int b = dao.insertProfile(pcommand);
+		
 		System.out.println("회원가입 성공? :: " + a);
 		System.out.println("프로필 insert 성공? :: " + b);
 		return mv;
@@ -270,7 +280,7 @@ public class MemberController {
 		session.setAttribute("content", cdao.getContent());
 		session.setAttribute("memberinfo", command);
 		session.setAttribute("messagecount", mdao.getMessageCount(email));
-		String checked = dao.selectCheck(email);
+		String checked = dao.selectCheck(email); //진경
 		session.setAttribute("checked", checked);
 		String hash = command.getHash();
 		hash = hash.substring(1, hash.length() - 1);
@@ -279,9 +289,21 @@ public class MemberController {
 			hashlist[i] = hashlist[i].trim();
 		}
 		List<String> list = Arrays.asList(hashlist);
+
+		session.setAttribute("hashlist",list);
+		session.setAttribute("mesagelist",mdao.getMessageList(email));
+		session.setAttribute("num",1);
+
+
 		session.setAttribute("hashlist", list);
 		session.setAttribute("mesagelist", mdao.getMessageList(email));
 		session.setAttribute("num", 1);
+
+
+		session.setAttribute("hashlist", list);
+		session.setAttribute("mesagelist", mdao.getMessageList(email));
+		session.setAttribute("num", 1);
+
 		return "fixpage/boardDiv";
 	}
 
