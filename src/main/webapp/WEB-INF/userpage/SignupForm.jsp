@@ -7,6 +7,7 @@
 	<title>INTERHASH#</title>
 <style>
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
+@import url(http://weloveiconfonts.com/api/?family=entypo);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 [class*="fontawesome-"]:before {
   font-family: 'FontAwesome', sans-serif;
@@ -117,7 +118,7 @@ input {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
 }
-.form--login input[type="text"], .form--login input[type="password"] {
+.form--login input[type="text"], .form--login input[type="password"], .form--login .gendd {
   /* background-color: #3b4148; */
  /*  background-color:#FFFFFF; */
   color:#606468;
@@ -206,6 +207,23 @@ font{
 	font-size:3px;
 	color:red;
 }
+
+.form--login .form__field .gendd{
+ 	padding-left:16.8%;
+	padding-right:16.8%; 
+	min-width:44%;
+	background-color: white;
+	border: 1px solid #d9d9d9;
+}
+.form--login .form__field input[type="radio"]:checked+label{
+	border:1px solid #ff6088;
+	color: #5D5D5D;
+}
+/* .form--login .form__field input[type="radio"] + label:hover{
+	border:1px solid #B0B0B0;
+	color: #5D5D5D;
+} */
+
 </style>
 <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script>
@@ -414,7 +432,13 @@ $(function(){
        </div>
         
         
-        
+        <div class="form__field">
+          <label class="fontawesome-lightbulb" for="login__username"><span class="hidden">User nickname</span></label>
+          <input type="radio" name="gender" id="male" value="M" style="display:none">
+				<label for="male" class="gendd">Male</label>
+          <input type="radio" name="gender" id="female" value="F" style="display:none">
+				<label for="female" class="gendd">Female</label>
+        </div>
         
         
         <div class="form__field">
@@ -427,10 +451,12 @@ $(function(){
         
 
         <div class="form__field">
-          <input type="submit" value="NEXT →">
+        	<input type="submit" value="NEXT →">
         </div>
-
-      </form>
+         </form>
+         
+        <p class="text--center">Want to cancle? <a href="Main.hash">Cancle</a> <span class="fontawesome-reply"></span></p>
+     
 
 <!--       <p class="text--center">Not a member? <a href="SignupForm.hash">Sign up now</a> <span class="fontawesome-arrow-right"></span></p>
       <p class="text--center">Forgot password? <a href="FindPasswordForm.hash">Find password</a> <span class="fontawesome-arrow-right"></span></p> -->

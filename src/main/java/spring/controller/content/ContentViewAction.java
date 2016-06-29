@@ -2,11 +2,9 @@ package spring.controller.content;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Properties;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +18,12 @@ import mybatis.CommentDAO;
 import mybatis.ContentDAO;
 import spring.model.CommentCommand;
 import spring.model.ContentCommand;
-import spring.model.MemberCommand;
 
 @Controller
 public class ContentViewAction {
 
 	@RequestMapping("/Main.hash")
-	private String mainview() {
+	private String mainview(HttpSession session) {
 		/*Properties prop = System.getProperties();
 		Set set = prop.keySet();
 		Iterator iter = set.iterator();
@@ -35,6 +32,7 @@ public class ContentViewAction {
 			System.out.println(key + " :: "+prop.getProperty(key));
 			
 		}*/
+		session.invalidate();
 		return "main";
 	}
 
@@ -62,18 +60,51 @@ public class ContentViewAction {
 		return new CommentCommand();
 	}
 
-	@RequestMapping("/ContentView.hash")
-	public ModelAndView contentView(@ModelAttribute("contentdao") ContentCommand content,
-			@ModelAttribute("commentdto") CommentCommand comment, HttpServletRequest request,@RequestParam("connum")int connum) throws Exception {
-		ModelAndView mav = new ModelAndView("content/ContentView");
-		/*int connum = Integer.parseInt(request.getParameter("connum"));*/
 	
-
+/*	@RequestMapping("/ContentView.hash")
+	public ModelAndView contentView(@ModelAttribute("contentdao") ContentCommand content,
+			@ModelAttribute("commentdto") CommentCommand comment, HttpServletRequest request,HttpServletResponse resp,@RequestParam("connum")int connum) throws Exception {
+		ModelAndView mav = new ModelAndView("content/ContentView");
+		int connum = Integer.parseInt(request.getParameter("connum"));
+	
 		SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:mm");
 		content = contentdao.getContent(connum);
 		String conhash = content.getConhash();
 		conhash = conhash.replaceAll(",", "");
 		content.setConhash(conhash);
+		
+		JSONObject jso = new JSONObject();
+		
+		PrintWriter out = resp.getWriter();
+		ArrayList<CommentCommand> array = (ArrayList) commentdao.getComments(connum);
+		
+		jso.put("data", array);
+		
+		out.print(jso.toString());
+		
+		int count = commentdao.commentcount(connum);
+		
+		mav.addObject("content", content);
+		mav.addObject("sdf", sdf);
+		mav.addObject("comment", array);
+		mav.addObject("conhash", conhash);
+		mav.addObject("count", count);
+
+		return mav;
+	}*/
+	
+	@RequestMapping("/ContentView.hash")
+	public ModelAndView contentView(@ModelAttribute("contentdao") ContentCommand content,
+			@ModelAttribute("commentdto") CommentCommand comment, HttpServletRequest request,HttpServletResponse resp,@RequestParam("connum")int connum) throws Exception {
+		ModelAndView mav = new ModelAndView("content/ContentView");
+		/*int connum = Integer.parseInt(request.getParameter("connum"));*/
+	
+		SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:mm");
+		content = contentdao.getContent(connum);
+		String conhash = content.getConhash();
+		conhash = conhash.replaceAll(",", "");
+		content.setConhash(conhash);
+	
 		ArrayList<CommentCommand> array = (ArrayList) commentdao.getComments(connum);
 		
 		int count = commentdao.commentcount(connum);
@@ -87,6 +118,20 @@ public class ContentViewAction {
 		return mav;
 	}
 	
+	
+	@RequestMapping("/mapopen.hash")
+	public ModelAndView mapOpen(@RequestParam("latitude") String latitude,
+			@RequestParam("longtitude") String longtitude,@RequestParam("maptitle") String maptitle,
+			HttpServletRequest request) throws Exception {
+		
+		ModelAndView mav = new ModelAndView("adminpage/mapopen");
+		/*int connum = Integer.parseInt(request.getParameter("connum"));*/
 
+		mav.addObject("latitude", latitude);
+		mav.addObject("longtitude", longtitude);
+		mav.addObject("maptitle", maptitle);
+		
+		return mav;
+	}
 
 }

@@ -13,6 +13,7 @@
 
 <script src='<c:url value="modal/jquery.magnific-popup.min.js"/>'></script>
 
+
 <c:if test ="${sessionScope.memId==null}">
 <script>
 alert("비밀번호가 틀립니다.");
@@ -124,27 +125,21 @@ function tagCheck() {
 }
 
 function like(num,String){
-
+	var select_id = "${sessionScope.conlike}";//'#'+num+"like_bn";
+	var like_cnt =select_id+1;//$(select_id).text();
+	alert(select_id);
+	
+	//$(select_id).text(like_cnt+1);
+	
+	alert(like_cnt);
 	url = "LikeCheck.hash?connum="+num+"&conhash="+String;
 	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 	//location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
-} 
+}
 
-/* $("#like_ajax").click(function(){
-    $.ajax({
-        type:"POST",
-        url:"LikeCheck.hash?connum="+num+"&conhash="+String,
-       // data : {name : "홍길동"},
-        dataType : "jxon",   
-    });
-}); */
 
-/* function unlike(num,String){
-	
-	url = "Unlike.hash?connum="+num+"&conhash="+String;
-	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
-	//location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
-} */
+
+
 function modal_close(){
 	var e = $.Event("keyup");
 	e.which = 27;
@@ -445,11 +440,19 @@ function test(connum){
 function Map(){
 	url="template2.hash";
 	window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
-	}  
+	} 
+
+function mapopen(latitude,longtitude,maptitle ) {
+	
+	url = "mapopen.hash?latitude="+ latitude + "&longtitude="+longtitude+"&maptitle="+maptitle;
+	newwindow=window.open(url,"post","toolbar=no ,width=500 ,height=400 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	//location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
+}
 
 </script>
 </head>
 <body>
+
 <div>
           <div id="board_div" class="box-shadow border-round white">
             <div class="container w3-padding">
@@ -460,9 +463,10 @@ function Map(){
 			<textarea id="textfield" name="content" placeholder="내용을 입력하세요."></textarea>
 			<div class="photoBox" style="height: 100px; width: 100px;">
 				<input class='fileData' id = "conphoto" name="conphoto" type="file"/> 
-					<div id="blah_img">
+					<div id="blah_img" >
 						<img id="blah" src="" alt="no image"/>
 					</div>
+					<div id="staticMap" style="width:600px;height:350px;"></div>  			
 			</div>
 			<div style="clear: both;"></div>
 			<div id="sub">
@@ -472,8 +476,8 @@ function Map(){
 				
 				<span id="imageon" style="width: 50px; float: left;">
 				<img src='<c:url value="/image/logo/place.PNG" />' onclick="Map()" />
-				<input type="text" name="maptitle"/>
-				<input type="text" name="mapplace" /> 			
+				<input type="hidden" name="maptitle"/>
+				<input type="hidden" name="mapplace" /> 			
 				</span> 
 				
 				<span id="taglist" style="width: 300px; float: left;">
@@ -544,14 +548,14 @@ function unlike(num,String){
 <div id="board_div" class="container box-shadow border-round white">
 <table width="100%">
 <tr>  
-<td width="10%"><img src="image/logo/사람.PNG" alt="Avatar" class="left-align circle" style="width:50px"></td>
+<td width="10%"><img src='<c:url value="/upload/${sessionScope.profilePhoto}"/>' alt="Avatar" class="left-align circle" style="width:50px"></td>
 <td width="65%"><b>${con.connickname}</b></td>
 <td width="35%"><b class="right-align opacity"><font color="#b2b2b2">${con.conmodifieddate}</font></b></td>
 </tr>
 </table>
 	<hr color="#eee">
 	<div class="content">
-	<div class="write">${con.content}</div>
+	<div class="write">${con.content}&nbsp;&nbsp;&nbsp;-<a href="#" onclick= "javascript:mapopen('${con.latitude}','${con.longtitude}','${con.maptitle}')" ><font color="#666"><b>${con.maptitle}</b>에서</font></a></div>
 	<div class="w3-row-padding">
         <a href="ContentView.hash?connum=${con.connum}" class="img_link">
 		<img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />'/>
@@ -559,6 +563,7 @@ function unlike(num,String){
     </div>
 
     <p>#${con.conhash}</p>
+
 	</div>
 	
 <%--  	<div id="btn_group">
@@ -568,8 +573,7 @@ function unlike(num,String){
     </div> --%>
 
 	<div class="w3-btn">
-    
-    <%-- <button id="like_ajax" type="button" class="w3-theme-d1 w3-margin-bottom like" ><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button> --%>
+        <%-- <button id="like_ajax" type="button" class="w3-theme-d1 w3-margin-bottom like" ><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button> --%>
     
   	<button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button> 
   	<button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlike('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button>
@@ -577,6 +581,7 @@ function unlike(num,String){
     <input type="button" id="btn" class="btn1 btn2" value="like" onclick="javascript:like('${con.connum}')"/>
 
     <button type="button" class="w3-theme-d3 w3-margin-bottom" onclick="location.href='Board.hash'"><i class="fa fa-comment"></i>  Comment ${con.connum}</button>  	
+
 	</div>
 
 	<%-- <div id="board_img">

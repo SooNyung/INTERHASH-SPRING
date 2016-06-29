@@ -53,9 +53,6 @@ public class LoginController {
 		String pw = dao.findPassword(info);
 		System.out.println("pw ::: " + pw );
 		
-		
-		
-
 		//System.out.println("dao.nick(info) ::: " + nick);
 		//System.out.println("dao.login(info) :: " + result);
 		
@@ -64,30 +61,31 @@ public class LoginController {
 		{
 			String path = dao.selectPath(email);
 			System.out.println("path ::: " + path);
+			
 			session.setAttribute("memId", info.getEmail());
 			session.setAttribute("nickName", nick);
 			session.setAttribute("profilePhoto", path);
-			
-			
 
 			System.out.println("로그인 성공");	
 			return mv;		
 		} 
 		else
 		{
-			session.setAttribute("memId", null);
+			session.setAttribute("emailfail", "fail");
 			session.setAttribute("passwd", null);
 			session.setAttribute("nickName", null);
 
 			System.out.println("로그인 실패");
+			//mv.setViewName("redirect:Main.hash");
 			mv.setViewName("redirect:LoginFailPro.hash");
 			return mv;
 		}
+		
 	}
 	
 	// 로그인실패
 	@RequestMapping("LoginFailPro.hash")
-	private String intpu() {
+	private String intpu(HttpSession session) {
 		return "main";
 	}
 	
@@ -95,9 +93,7 @@ public class LoginController {
 	@RequestMapping("/LogOut.hash")
 	private ModelAndView logout(HttpSession session) {
 		ModelAndView mv = new ModelAndView("main");
-		session.setAttribute("memId", null);
-		session.setAttribute("password", null);
-		session.setAttribute("nickName",null);
+		session.invalidate();
 		return mv;
 	}
 

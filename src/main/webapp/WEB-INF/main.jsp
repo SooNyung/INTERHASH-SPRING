@@ -1,9 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>INTERHASH#</title>
+
 <style>
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
@@ -192,16 +194,27 @@ function checkIt(){
 			return false;		
 		}
 		 return true; 		 
-}	 
+}	
+
+function emailfail()
+{
+	var emailfail = "${sessionScope.emailfail}" ;
+	
+	if(emailfail=="fail")
+	{
+		alert("Email 또는 비밀번호가 틀렸습니다.");	
+	}
+} 
 	
 </script>
+
 </head>
 
-<body class="align">
+<body onload="emailfail()" class="align">
+
   <div class="site__container">
 <h1>INTERHASH#</h1>
     <div class="grid__container">
-
 
       <form action="LoginPro.hash" name="userinput" method="post" class="form form--login" onSubmit="return checkIt()">
 
@@ -216,7 +229,7 @@ function checkIt(){
         </div>
 
         <div class="form__field">
-          <input type="submit" value="Log In">
+          <input type="submit" value="Log In →">
         </div>
 
       </form>
@@ -227,7 +240,6 @@ function checkIt(){
     </div>
 
   </div>
-
-
 </body>
+
 </html>
