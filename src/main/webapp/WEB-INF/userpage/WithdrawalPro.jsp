@@ -24,7 +24,7 @@ history.go(-1);
 <tr>
 <td align="center">
 <p>잠시후 메인페이지로 이동합니다.</p>
-<meta http-equiv="Refresh" content="2;url=/INTERHASH/Main.hash" >
+<meta http-equiv="Refresh" content="2;url=/INTERHASH-SPRING/Main.hash" >
 </td>
 </tr>
 <tr>
