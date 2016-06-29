@@ -192,7 +192,7 @@ color:#5AAEFF;
 	<input type=button onclick="modal_close()" value="X" style="float:right">
 	
 	
-	<form>
+	<form method="post" action="InsertComment.hash">
 	<input type=hidden name=connum value="${content.connum}">
 	<input type=hidden name=comnick value="${sessionScope.nickName}">
 	<div id="right_nick">
@@ -207,14 +207,16 @@ color:#5AAEFF;
 	<div id="comment_submit">
 		<span id="align_right">
 		<input type="submit" value="개시"></span>
-		<input type="button" id="rptl" value="개시시" onclick="test(${content.connum})"> 
+		<input type="button" id="rptl" value="개시시" onclick="insert(${content.connum})"> 
 	</div>
 	</form>
 	
 	<div id="comment_view" style="height:460px; overflow-x:auto" onchange="reload();">
 	
-<form>
-	<c:forEach var="comment" items="${comment}">
+	<div id="test_div"></div>
+ 	<c:forEach var="comment" items="${comment}">
+		
+	<div id="comment_div">   
 	<input type=hidden name=comnum value="${comment.comnum}">
 	<span><b id="nickname">${comment.comnick}</b></span>
 	
@@ -228,13 +230,13 @@ color:#5AAEFF;
 		</c:if	>
 		
 		<c:if test="${sessionScope.memId!=comment.email}">
-		<a onclick="reportCom(${comment.comnum})">ㄹ</a>
+		<a onclick="reportCom(${comment.comnum})">신고</a>
 		</c:if>	
 	</span><br> 
 	<div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">${comment.comcontent}</textarea></div>
+	</div>
 	
-	</c:forEach>
-	</form>
+	</c:forEach>  
 	</div>
 	
 

@@ -19,7 +19,7 @@ var check2 = false;
 function checkIt() {
 	if(check){
 		alert("전송되었습니다.");
-			window.close();
+		window.close();
 		return true;
 	}
 	if(!check) {
@@ -52,7 +52,7 @@ function email(){
 	}
 	else{
 		alert("해당 이메일은 없는 이메일입니다.");
-		check = true;
+		check = false;
 	}
 	
 }
@@ -67,7 +67,6 @@ function email(){
 </div>
 
 <form method="post" action="MessagePro.hash" onsubmit="return checkIt()">
-
 <div>받는사람 : 
 <input type="email" id="receEmail" name="receEmail">
 <input type="button" onclick="email()" value="이메일검사">
