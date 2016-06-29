@@ -748,8 +748,8 @@ border-radius:7px;
              } 
            });
          
-
-           
+         
+         
          });
 
 
@@ -800,12 +800,13 @@ border-radius:7px;
                </table>
             </ul></li>
          <li class="small"><a href="#"
-            class="margin-right padding-large left-align" title="Alarm"><i
-               class="fa fa-bell"></i></a></li>
+            class="margin-right padding-large left-align" title="Alarm">
+            
+            <i class="fa fa-bell"></i></a></li>
 
          <li class="small right">
          <div class="topnav">   <a href="#" class="padding-large"
-            title="MyAccount"><img src='<c:url value="/upload/${sessionScope.profilePhoto}" />'class="circle" width="10%" height="10%">
+            title="MyAccount"><img id ="img" src='<c:url value="/upload/${sessionScope.profilePhoto}" />' class="circle" width="10%" height="10%">
            ${memberinfo.nickname}님</a></div>
             <ul class="account">
                <li><a href="UserInfoModifyForm.hash">회원정보수정</a></li>
