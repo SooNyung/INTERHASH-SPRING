@@ -446,9 +446,9 @@ function Map(){
 	window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
 	} 
 
-function mapopen(latitude,longtitude){
+function mapopen(latitude,longtitude,maptitle){
 	
-	url = "mapopen.hash?latitude="+ latitude + "&longtitude="+longtitude;
+	url = "mapopen.hash?latitude="+ latitude + "&longtitude="+longtitude+"&maptitle="+maptitle;
 	newwindow=window.open(url,"post","toolbar=no ,width=500 ,height=400 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 	//location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
 }
@@ -517,7 +517,7 @@ function mapopen(latitude,longtitude){
 </table>
 	<hr color="#eee">
 	<div class="content">
-	<div class="write">${con.content}&nbsp;&nbsp;&nbsp;-<a href="#" onclick="mapopen(${con.latitude},${con.longtitude})"><font color="#666"><b>${con.maptitle}</b>에서</font></a></div>
+	<div class="write">${con.content}&nbsp;&nbsp;&nbsp;-<a href="#" onclick="mapopen(${con.latitude},${con.longtitude},${con.maptitle})"><font color="#666"><b>${con.maptitle}</b>에서</font></a></div>
 	<div class="w3-row-padding">
         <a href="ContentView.hash?connum=${con.connum}" class="img_link">
 		<img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />'/>

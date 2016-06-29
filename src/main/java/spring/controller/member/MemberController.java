@@ -289,16 +289,16 @@ public class MemberController {
 			hashlist[i] = hashlist[i].trim();
 		}
 		List<String> list = Arrays.asList(hashlist);
-<<<<<<< HEAD
+
 	
 		session.setAttribute("hashlist",list);
 		session.setAttribute("mesagelist",mdao.getMessageList(email));
 		session.setAttribute("num",1);
-=======
+
 		session.setAttribute("hashlist", list);
 		session.setAttribute("mesagelist", mdao.getMessageList(email));
 		session.setAttribute("num", 1);
->>>>>>> dd80f89e4937c25d1a0e9c3f917b5c5354275f94
+
 		return "fixpage/boardDiv";
 	}
 
