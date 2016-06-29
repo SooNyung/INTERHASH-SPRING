@@ -137,9 +137,6 @@ function like(num,String){
 	//location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
 }
 
-
-
-
 function unlike(num,String){
 	var select_id = "${sessionScope.conlike}";//'#'+num+"unlike_bn";
 	var like_cnt =select_id-1;//$(select_id).text();
