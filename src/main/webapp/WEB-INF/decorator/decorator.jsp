@@ -953,7 +953,7 @@ border-radius:7px;
              <li><a href="Board.hash?hash=독도">#독도</a></li>
              <li><a href="Board.hash?hash=맥주">#맥주</a></li> -->   
             <span class="tag font-small w3-theme-d1 border-round">
-            <a id ="a" href="Board.hash?hash=${tagname}" >#${tagname}</a></span>    
+            <a id ="a" href="hashLike.hash?conhash=${tagname}" >#${tagname}</a></span>    
             </c:forEach>            
           </p>
         </div>
