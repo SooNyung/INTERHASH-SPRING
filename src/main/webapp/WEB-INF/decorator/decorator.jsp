@@ -805,8 +805,8 @@ border-radius:7px;
 
          <li class="small right">
          <div class="topnav">   <a href="#" class="padding-large"
-            title="MyAccount"><img src="image/logo/사람.PNG" class="circle"
-               width="30%" height="30%">${memberinfo.nickname}님</a></div>
+            title="MyAccount"><img src='<c:url value="/upload/${sessionScope.profilePhoto}" />'class="circle" width="10%" height="10%">
+           ${memberinfo.nickname}님</a></div>
             <ul class="account">
                <li><a href="UserInfoModifyForm.hash">회원정보수정</a></li>
                <li><a href="profile.hash">프로필수정</a></li>

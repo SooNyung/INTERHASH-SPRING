@@ -209,17 +209,20 @@ font{
 }
 
 .form--login .form__field .gendd{
-  	padding-left:16.8%;
-	padding-right:16.8%;
-	min-width:25%;
-	margin : 0px;
+ 	padding-left:16.8%;
+	padding-right:16.8%; 
+	min-width:44%;
 	background-color: white;
 	border: 1px solid #d9d9d9;
 }
-.form--login .form__field input[type="radio"]:checked+label {
+.form--login .form__field input[type="radio"]:checked+label{
 	border:1px solid #ff6088;
 	color: #5D5D5D;
 }
+/* .form--login .form__field input[type="radio"] + label:hover{
+	border:1px solid #B0B0B0;
+	color: #5D5D5D;
+} */
 
 </style>
 <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -431,9 +434,9 @@ $(function(){
         
         <div class="form__field">
           <label class="fontawesome-lightbulb" for="login__username"><span class="hidden">User nickname</span></label>
-          <input type="radio" name="gender" id="male" value="male" style="display:none">
+          <input type="radio" name="gender" id="male" value="M" style="display:none">
 				<label for="male" class="gendd">Male</label>
-          <input type="radio" name="gender" id="female" value="female" style="display:none">
+          <input type="radio" name="gender" id="female" value="F" style="display:none">
 				<label for="female" class="gendd">Female</label>
         </div>
         

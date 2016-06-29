@@ -225,6 +225,8 @@ label:focus, label:hover {
 			<input type="hidden" name="email" value="${member.email}">
 			<input type="hidden" name="passwd" value="${member.passwd}">
 			<input type="hidden" name="nickname" value="${member.nickname}">
+			<input type="hidden" name="gender" value="${member.gender}">
+			
 			
 			<input type="submit" value="  S I G N    U P  ">
 
