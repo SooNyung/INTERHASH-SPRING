@@ -397,8 +397,8 @@ $(function(){
 
       </form>
 
-       <p class="text--center">Want to cancle? <a href="Board.hash">Cancle</a> <span class="fontawesome-arrow-right"></span></p>
-      <p class="text--center">Want to withdrawal? <a href="WithdrawalForm.hash">Withdrawal now</a> <span class="fontawesome-arrow-right"></span></p> 
+       <p class="text--center">Want to cancle? <a href="Board.hash">Cancle</a> <span class="fontawesome-reply"></span></p>
+      <p class="text--center">Want to withdrawal? <a href="WithdrawalForm.hash">Withdrawal now</a> <span class="fontawesome-remove"></span></p> 
 
     </div>
 

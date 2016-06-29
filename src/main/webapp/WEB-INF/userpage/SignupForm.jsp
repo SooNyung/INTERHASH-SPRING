@@ -453,10 +453,10 @@ $(function(){
         <div class="form__field">
         	<input type="submit" value="NEXT →">
         </div>
-        <div class="form__field">
-			<input type="submit" value="CANCEL →"	 onClick="location.href='Main.hash'" />
-		</div>
-      </form>
+         </form>
+         
+        <p class="text--center">Want to cancle? <a href="Main.hash">Cancle</a> <span class="fontawesome-reply"></span></p>
+     
 
 <!--       <p class="text--center">Not a member? <a href="SignupForm.hash">Sign up now</a> <span class="fontawesome-arrow-right"></span></p>
       <p class="text--center">Forgot password? <a href="FindPasswordForm.hash">Find password</a> <span class="fontawesome-arrow-right"></span></p> -->
