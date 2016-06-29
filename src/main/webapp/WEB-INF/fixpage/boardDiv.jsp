@@ -29,7 +29,7 @@ $(function() {
   	});
   	  
 });
-$(function(){
+ $(function(){
 	$(".like").click(function(){
 		var index = $(".like").index(this);
 		if($(".like:eq("+index+")").hasClass("hide")){
@@ -139,12 +139,12 @@ function like(num,String){
     });
 }); */
 
-function unlike(num,String){
+/* function unlike(num,String){
 	
 	url = "Unlike.hash?connum="+num+"&conhash="+String;
 	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 	//location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
-}
+} */
 function modal_close(){
 	var e = $.Event("keyup");
 	e.which = 27;
@@ -493,7 +493,49 @@ function Map(){
             </div>
           </div>
       
-      
+<script>
+/* $(function(){
+	$(".like").click(function(){
+		var index = $(".like").index(this);
+		if($(".like:eq("+index+")").hasClass("hide")){
+			$(".like:eq("+index+")").removeClass("hide");
+			$(".unlike:eq("+index+")").addClass("hide");
+		}else{
+			$(".like:eq("+index+")").addClass("hide");
+			$(".unlike:eq("+index+")").removeClass("hide");
+		}
+	});
+}); */
+
+$(function(){
+	$("#btn").click(function(){
+		var index = $("#btn").index(this);
+		if($("#btn:eq("+index+")").val()=='like'){
+			$("#btn:eq("+index+")").val('unlike');
+			$("#btn:eq("+index+")").css({"background-color" : "#ffa500"});
+			
+		}
+		else{
+			$("#btn:eq("+index+")").val('like');
+			$("#btn:eq("+index+")").css({"background-color" : "#7cfc00"});
+			
+		}
+	});
+});
+
+/* $(function(){
+	$('').click(function(){
+		unlike(this);
+	}
+}
+ */
+function unlike(num,String){
+
+	url = "Unlike.hash?connum="+num+"&conhash="+String;
+	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	//location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
+}
+</script>
  
 <form method='post' action='ContentView.hash'>
 
@@ -531,7 +573,9 @@ function Map(){
     
   	<button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button> 
   	<button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlike('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button>
-    
+   
+    <input type="button" id="btn" class="btn1 btn2" value="like" onclick="javascript:like('${con.connum}')"/>
+
     <button type="button" class="w3-theme-d3 w3-margin-bottom" onclick="location.href='Board.hash'"><i class="fa fa-comment"></i>  Comment ${con.connum}</button>  	
 	</div>
 
