@@ -133,7 +133,15 @@ function like(num,String){
 	url = "LikeCheck.hash?connum="+num+"&conhash="+String;
 	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 	//location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
-} 
+	
+	$(document).on('click', '.toggle-button', function() {
+	    $(this).toggleClass('toggle-button-selected'); 
+	});
+	
+}
+
+
+
 
 function unlike(num,String){
 	
