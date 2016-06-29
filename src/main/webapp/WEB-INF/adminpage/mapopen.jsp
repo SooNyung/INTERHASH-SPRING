@@ -52,7 +52,7 @@ position: markerPosition
 marker.setMap(map);
 
 //마커 위에 표시할 인포윈도우를 생성합니다
-var iwContent = '<div style="padding:5px;width:50px">${maptitle}</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+var iwContent = '<div style="margin: auto;width:50px;text-align:center;"><div style="margin:3px  auto;text-align:center; width:150px;">${maptitle}</div></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 iwPosition = new daum.maps.LatLng(${latitude}, ${longtitude}); //인포윈도우 표시 위치입니다;
 
 // 인포윈도우를 생성합니다
