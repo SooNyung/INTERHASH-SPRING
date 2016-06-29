@@ -125,25 +125,29 @@ function tagCheck() {
 }
 
 function like(num,String){
-	var select_id = '#'+num+"like_bn";
-	var like_cnt =$(select_id).text();
+	var select_id = "${sessionScope.conlike}";//'#'+num+"like_bn";
+	var like_cnt =select_id+1;//$(select_id).text();
 	alert(select_id);
+	
+	//$(select_id).text(like_cnt+1);
+	
 	alert(like_cnt);
-	$(select_id).text(like_cnt+1);
 	url = "LikeCheck.hash?connum="+num+"&conhash="+String;
 	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 	//location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
-	
-	$(document).on('click', '.toggle-button', function() {
-	    $(this).toggleClass('toggle-button-selected'); 
-	});
-	
 }
 
 
 
 
 function unlike(num,String){
+	var select_id = "${sessionScope.conlike}";//'#'+num+"unlike_bn";
+	var like_cnt =select_id-1;//$(select_id).text();
+	alert(select_id);
+	
+	//$(select_id).text(like_cnt-1);
+	
+	alert(like_cnt);
 	
 	url = "Unlike.hash?connum="+num+"&conhash="+String;
 	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
@@ -548,7 +552,7 @@ function mapopen(latitude,longtitude,maptitle ) {
     
   	<button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}like_bn">${con.conlike}</i></button> 
   	<button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlike('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}unlike_bn"> ${con.conlike}</i></button>    
-    <button type="button" class="w3-theme-d3 w3-margin-bottom" ><i class="fa fa-comment"></i> ?Comment ${con.connum}</button>  	
+    <button type="button" class="w3-theme-d3 w3-margin-bottom" ><i class="fa fa-comment"></i> Comment ${con.connum}</button>  	
 	</div>
 
 	<%-- <div id="board_img">
