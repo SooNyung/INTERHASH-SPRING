@@ -64,7 +64,7 @@ display: none;
 #hdc2{
 width: 100%;
 padding-left: 10px;
-background-color: #f5f7f8;
+background-color: white;
 }
 #pwd{
 display: none;
@@ -73,13 +73,11 @@ display: none;
 color:red;
 background-color: white;
 padding-left: 60px;
-background-color: #f5f7f8;
 }
 #pwd3{
 color:green;
 background-color: white;
 padding-left: 60px;
-background-color: #f5f7f8;
 }
 
 input {
@@ -110,7 +108,7 @@ input {
 	color: red;
 	/* padding-left: 100px; */
 	width: 100%;
-	background-color: #f5f7f8;
+	background-color: white;
 }
 
 .form--login #pwdcheck2{
@@ -118,7 +116,7 @@ input {
 	color: green;
 	/* padding-left: 100px; */
 	width: 100%;
-	background-color: #f5f7f8;
+	background-color: white;
 }
 
 
@@ -233,6 +231,18 @@ font{
 .form__field input[type="font"] {
 	background-color: #f5f7f8;	
 }
+.form--login .form__field .gendd{
+ 	padding-left:16.8%;
+	padding-right:16.8%; 
+	min-width:44%;
+	background-color: white;
+	border: 1px solid #d9d9d9;
+	color:#5D5D5D;
+}
+.form--login .form__field input[type="radio"]:checked+label{
+	border:1px solid #ff6088;
+	color: #5D5D5D;
+}
 </style>
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> 
 <script>
@@ -289,34 +299,6 @@ function confirmnickname() {
 	checkNickname=true;
 }
 
-
-
-/* function check(field) {
-if (checkflag == "false") {
-  for (i = 0; i < field.length; i++) {
-   field[i].checked = true;
-  }
-  checkflag = "true";
-} else {
-  for (i = 0; i < field.length; i++) {
-   field[i].checked = false; 
-  }
-  checkflag = "false"; 
-	}
-}; */
-
-
-/* window.onload=function checkHash(){
-	var hasharr = "${c.hash}"; //hasharr에 저장됨
-	var hash=document.getElementsByName("hash"); //해쉬체크박스 배열 가져옴
-
-	
- 	for(i=0;i<hash.length;i++){
-		if(hasharr.indexOf(hash[i].value)!=-1){
-			hash[i].checked=true;
-		}
-	} 
-} */
 </script>
 <script>
 $(function(){
@@ -349,6 +331,16 @@ $(function(){
 	  }); //#chpass.keyup
 	 });
 
+$(function(){
+	var gender = "${c.gender}"; 
+	var genderr=document.getElementsByName("gender"); 
+
+	 for(i=0;i<genderr.length;i++){
+		 if(gender.indexOf(genderr[i].value)!=-1){ 
+			 genderr[i].checked=true;
+		}
+	}
+});
 </script>
 </head>
 
@@ -381,7 +373,13 @@ $(function(){
        </div>
         
         
-        
+        <div class="form__field">
+          <label class="fontawesome-lightbulb" for="login__username"><span class="hidden"></span></label>
+          <input type="radio" name="gender" id="male" value="M" style="display:none">
+				<label for="male" class="gendd">Male</label>
+          <input type="radio" name="gender" id="female" value="F" style="display:none">
+				<label for="female" class="gendd">Female</label>
+        </div>
         
         
         <div class="form__field">
@@ -405,10 +403,6 @@ $(function(){
     </div>
 
   </div>
-
-
-</form>
-
 
 </body>
 </html>

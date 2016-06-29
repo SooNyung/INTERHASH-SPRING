@@ -14,9 +14,10 @@ color:#FFCCCC;
 <body>
 <center>
 <h2>프로필이 수정되었습니다!</h2><br>
-<hr align="center" style="border: dashed 0.5px #D8D8D8; width: 50%;"><br><br>
+<hr align="center" style="border: dashed 0.5px; width: 50%;"><br><br>
 ♡잠시후 페이지가 이동합니다♡
 </center>
-<meta http-equiv="Refresh" content="2;url=Board.hash" >
+ <meta http-equiv="Refresh" content="2;url=Board.hash" >
+<%-- <% response.sendRedirect("Board.hash"); %> --%>
 </body>
 </html>

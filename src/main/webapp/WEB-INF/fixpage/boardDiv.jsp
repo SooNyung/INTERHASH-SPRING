@@ -54,6 +54,7 @@ $(function(){
 		}
 	});
 });
+
 function readURL(input) {
     if (input.files && input.files[0]) {
     var reader = new FileReader();
@@ -124,20 +125,15 @@ function tagCheck() {
 }
 
 function like(num,String){
-
+	var select_id = '#'+num+"like_bn";
+	var like_cnt =$(select_id).text();
+	alert(select_id);
+	alert(like_cnt);
+	$(select_id).text(like_cnt+1);
 	url = "LikeCheck.hash?connum="+num+"&conhash="+String;
 	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 	//location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
 } 
-
-/* $("#like_ajax").click(function(){
-    $.ajax({
-        type:"POST",
-        url:"LikeCheck.hash?connum="+num+"&conhash="+String,
-       // data : {name : "홍길동"},
-        dataType : "jxon",   
-    });
-}); */
 
 function unlike(num,String){
 	
@@ -445,8 +441,6 @@ function test(connum){
 	    }
 	});
 }
-
-
 function Map(){
 	url="template2.hash";
 	window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
@@ -542,12 +536,12 @@ function mapopen(latitude,longtitude){
 
 	<div class="w3-btn">
     
-    <%-- <button id="like_ajax" type="button" class="w3-theme-d1 w3-margin-bottom like" ><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button> --%>
+   	<%-- <button id="like_ajax" type="button" class="w3-theme-d1 w3-margin-bottom like" ><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button> --%>
     
-  	<button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button> 
-  	<button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlike('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button>
+  	<button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}like_bn">${con.conlike}</i></button> 
+  	<button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlike('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}unlike_bn"> ${con.conlike}</i></button>
     
-    <button type="button" class="w3-theme-d3 w3-margin-bottom" onclick="location.href='Board.hash'"><i class="fa fa-comment"></i>  Comment ${con.connum}</button>  	
+    <button type="button" class="w3-theme-d3 w3-margin-bottom" ><i class="fa fa-comment"></i>  Comment ${con.connum}</button>  	
 	</div>
 
 	<%-- <div id="board_img">

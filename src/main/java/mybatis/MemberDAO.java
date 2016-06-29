@@ -90,8 +90,8 @@ public class MemberDAO {
 		return session.selectOne("member.selectCheck", email);
 	}
 	
-	public int insertProfile(String email){
-		return session.insert("member.insertP", email);
+	public int insertProfile(ProfilePhotoCommand command){
+		return session.insert("member.insertP", command);
 		
 	}
 	
