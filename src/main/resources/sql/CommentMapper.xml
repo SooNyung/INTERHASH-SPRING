@@ -4,7 +4,7 @@
 <mapper namespace="Comment">
 
 	<select id="getComment" parameterType="integer" resultType="spring.model.CommentCommand">
-		select * from commenttable where connum = #{connum}
+		select * from commenttable where connum = #{connum} order by comcreateddate desc
 	</select>
 	
 	<insert id="insertComment" parameterType="spring.model.CommentCommand">
