@@ -50,7 +50,7 @@ position: markerPosition
 
 //마커가 지도 위에 표시되도록 설정합니다
 marker.setMap(map);
-
+/* 
 (function(marker, ${maptitle}) {
     daum.maps.event.addListener(marker, 'mouseover', function() {
         displayInfowindow(marker, ${maptitle});
@@ -76,7 +76,7 @@ function displayInfowindow(marker, title) {
 
     infowindow.setContent(content);
     infowindow.open(map, marker);    
-}
+} */
 //아래 코드는 지도 위의 마커를 제거하는 코드입니다
 //marker.setMap(null);    
 

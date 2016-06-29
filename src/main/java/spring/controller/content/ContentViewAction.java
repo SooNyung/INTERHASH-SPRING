@@ -90,16 +90,18 @@ public class ContentViewAction {
 	
 	@RequestMapping("/mapopen.hash")
 	public ModelAndView mapOpen(@RequestParam("latitude") String latitude,
-			@RequestParam("longtitude") String longtitude,
+			@RequestParam("longtitude") String longtitude,@RequestParam("maptitle") String maptitle,
 			HttpServletRequest request) throws Exception {
 		ModelAndView mav = new ModelAndView("adminpage/mapopen");
 		/*int connum = Integer.parseInt(request.getParameter("connum"));*/
 
 		mav.addObject("latitude", latitude);
 		mav.addObject("longtitude", longtitude);
+		mav.addObject("maptitle", maptitle);
 	
 		System.out.println("위도야"+latitude);
 		System.out.println("경도야"+longtitude);
+
 		
 		return mav;
 	}

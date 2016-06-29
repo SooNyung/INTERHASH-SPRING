@@ -446,7 +446,7 @@ function Map(){
 	window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
 	} 
 
-function mapopen(latitude,longtitude,maptitle){
+function mapopen(latitude,longtitude,maptitle ) {
 	
 	url = "mapopen.hash?latitude="+ latitude + "&longtitude="+longtitude+"&maptitle="+maptitle;
 	newwindow=window.open(url,"post","toolbar=no ,width=500 ,height=400 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
@@ -517,7 +517,7 @@ function mapopen(latitude,longtitude,maptitle){
 </table>
 	<hr color="#eee">
 	<div class="content">
-	<div class="write">${con.content}&nbsp;&nbsp;&nbsp;-<a href="#" onclick="mapopen(${con.latitude},${con.longtitude},${con.maptitle})"><font color="#666"><b>${con.maptitle}</b>에서</font></a></div>
+	<div class="write">${con.content}&nbsp;&nbsp;&nbsp;-<a href="#" onclick= "javascript:mapopen('${con.latitude}','${con.longtitude}','${con.maptitle}')" ><font color="#666"><b>${con.maptitle}</b>에서</font></a></div>
 	<div class="w3-row-padding">
         <a href="ContentView.hash?connum=${con.connum}" class="img_link">
 		<img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />'/>
@@ -539,8 +539,7 @@ function mapopen(latitude,longtitude,maptitle){
    	<%-- <button id="like_ajax" type="button" class="w3-theme-d1 w3-margin-bottom like" ><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button> --%>
     
   	<button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}like_bn">${con.conlike}</i></button> 
-  	<button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlike('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}unlike_bn"> ${con.conlike}</i></button>
-    
+  	<button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlike('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}unlike_bn"> ${con.conlike}</i></button>    
     <button type="button" class="w3-theme-d3 w3-margin-bottom" ><i class="fa fa-comment"></i>  Comment ${con.connum}</button>  	
 	</div>
 
