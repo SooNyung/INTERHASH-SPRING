@@ -576,6 +576,11 @@ border-radius:7px;
    border: 0px;
 }
 
+#profileImg{
+width:50px;
+height:50px;
+}
+
 
 </style>
 
@@ -748,8 +753,7 @@ border-radius:7px;
              } 
            });
          
-         
-         
+          
          });
 
 
@@ -805,8 +809,7 @@ border-radius:7px;
             <i class="fa fa-bell"></i></a></li>
 
          <li class="small right">
-         <div class="topnav">   <a href="#" class="padding-large"
-            title="MyAccount"><img id ="img" src='<c:url value="/upload/${sessionScope.profilePhoto}" />' class="circle" width="10%" height="10%">
+         <div class="topnav">   <a href="#" title="MyAccount"><img id ="profileImg" src='<c:url value="/upload/${sessionScope.profilePhoto}" />' class="circle" width="10%" height="10%">
            ${memberinfo.nickname}님</a></div>
             <ul class="account">
                <li><a href="UserInfoModifyForm.hash">회원정보수정</a></li>
