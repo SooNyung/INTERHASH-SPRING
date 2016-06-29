@@ -15,9 +15,37 @@ public class ContentCommand {
 	String email;
 	String connickname;
 	int conlike;
-	
+	String latitude;
+	String longtitude;
+	String maptitle;	
 	ArrayList photolist;
 	
+	
+	
+	public String getMaptitle() {
+		return maptitle;
+	}
+
+	public void setMaptitle(String maptitle) {
+		this.maptitle = maptitle;
+	}
+
+	public String getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+
+	public String getLongtitude() {
+		return longtitude;
+	}
+
+	public void setLongtitude(String longtitude) {
+		this.longtitude = longtitude;
+	}
+
 	public ArrayList getPhotolist() {
 		return photolist;
 	}

@@ -253,6 +253,7 @@ public class MemberController {
 			hashlist[i] = hashlist[i].trim();
 		}
 		List<String> list = Arrays.asList(hashlist);
+	
 		session.setAttribute("hashlist",list);
 		session.setAttribute("mesagelist",mdao.getMessageList(email));
 		session.setAttribute("num",1);
