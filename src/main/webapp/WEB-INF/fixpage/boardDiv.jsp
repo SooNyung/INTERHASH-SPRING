@@ -18,6 +18,7 @@
 
 <script src='<c:url value="modal/jquery.magnific-popup.min.js"/>'></script>
 
+
 <c:if test ="${sessionScope.memId==null}">
 <script>
 alert("비밀번호가 틀립니다.");
@@ -34,45 +35,30 @@ $(function() {
   	});
   	  
 });
-
-/* (function ($) {
-	$.fn.simpleToggleBtn = function () {
-
-	    var btns = $(this).find("button"), // 버튼 그룹 내 버튼들;
-	        checkBox = $("input:checkbox");
-
-	    btns.on("click", function () { // 버튼들 중 클릭한 버튼에 함수;
-	        $(this).addClass("hide");
-	        $(this).siblings("button").removeClass("hide");
-	        // 첫번째 버튼 기준으로 input 요소 체크!
-	        $(this).first().hasClass("hide") ? checkBox.attr("checked",true) : checkBox.attr("checked",false);
-	    });
-	}
-	}(jQuery)); 
- */
-$(document).ready(function(){
-	$(".w3-theme-d1").click(function(){
-		if($(this).hasClass("hide")){
-			$(".w3-theme-d1").removeClass("hide");
-			$(".w3-theme-d2").addClass("hide");
+$(function(){
+	$(".like").click(function(){
+		var index = $(".like").index(this);
+		if($(".like:eq("+index+")").hasClass("hide")){
+			$(".like:eq("+index+")").removeClass("hide");
+			$(".unlike:eq("+index+")").addClass("hide");
 		}else{
-			$(".w3-theme-d1").addClass("hide");
-			$(".w3-theme-d2").removeClass("hide");
+			$(".like:eq("+index+")").addClass("hide");
+			$(".unlike:eq("+index+")").removeClass("hide");
 		}
 	});
 });
-$(document).ready(function(){
-	$(".w3-theme-d2").click(function(){
-		if($(this).hasClass("hide")){
-			$(".w3-theme-d2").removeClass("hide");
-			$(".w3-theme-d1").addClass("hide");
+$(function(){
+	$(".unlike").click(function(){
+		var indexu = $(".unlike").index(this);
+		if($(".unlike:eq("+indexu+")").hasClass("hide")){
+			$(".unlike:eq("+indexu+")").removeClass("hide");
+			$(".like:eq("+indexu+")").addClass("hide");
 		}else{
-			$(".w3-theme-d2").addClass("hide");
-			$(".w3-theme-d1").removeClass("hide");
+			$(".unlike:eq("+indexu+")").addClass("hide");
+			$(".like:eq("+indexu+")").removeClass("hide");
 		}
 	});
 });
-
 
 function readURL(input) {
     if (input.files && input.files[0]) {
@@ -142,19 +128,26 @@ function tagCheck() {
 	url = "TagCheck.hash?check=y";
 	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 }
-function like(num,String){
 
+function like(num,String){
+	var select_id = '#'+num+"like_bn";
+	var like_cnt =$(select_id).text();
+	alert(select_id);
+	alert(like_cnt);
+	$(select_id).text(like_cnt+1);
 	url = "LikeCheck.hash?connum="+num+"&conhash="+String;
 	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
-}
+	//location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
+} 
+
 function unlike(num,String){
 	
 	url = "Unlike.hash?connum="+num+"&conhash="+String;
 	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	//location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
 }
-/* function toggle(){
-	$("#btn_group").simpleToggleBtn();
-} */
+
+
 
 function modal_close(){
 	var e = $.Event("keyup");
@@ -445,6 +438,7 @@ function insert(connum){
 		,url:url
 		,data:params
 		,dataType:"json"
+<<<<<<< HEAD
 		,success:function(args){
 			
 		alert(${memId == args.data[0].email})
@@ -498,6 +492,28 @@ function insert(connum){
 		});
 	}
 
+=======
+ 		,success:function(args){
+ 			
+ 		alert('성고고고고오오오오옹');
+		}  
+	    ,error:function() {
+	    	alert('실패');
+	    }
+	});
+}
+function Map(){
+	url="template2.hash";
+	window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
+	} 
+
+function mapopen(latitude,longtitude,maptitle){
+	
+	url = "mapopen.hash?latitude="+ latitude + "&longtitude="+longtitude+"&maptitle="+maptitle;
+	newwindow=window.open(url,"post","toolbar=no ,width=500 ,height=400 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	//location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
+}
+>>>>>>> 9cfc77cc2ee5386c9aedd88867a2f800850e399e
 
 </script>
 
@@ -505,6 +521,7 @@ function insert(connum){
 
 </head>
 <body>
+
 <div>
           <div id="board_div" class="box-shadow border-round white">
             <div class="container w3-padding">
@@ -515,9 +532,10 @@ function insert(connum){
 			<textarea id="textfield" name="content" placeholder="내용을 입력하세요."></textarea>
 			<div class="photoBox" style="height: 100px; width: 100px;">
 				<input class='fileData' id = "conphoto" name="conphoto" type="file"/> 
-					<div id="blah_img">
+					<div id="blah_img" >
 						<img id="blah" src="" alt="no image"/>
 					</div>
+					<div id="staticMap" style="width:600px;height:350px;"></div>  			
 			</div>
 			<div style="clear: both;"></div>
 			<div id="sub">
@@ -526,7 +544,9 @@ function insert(connum){
 				</span> 
 				
 				<span id="imageon" style="width: 50px; float: left;">
-				<img src='<c:url value="/image/logo/place.PNG" />' onclick="Map()" /> 			
+				<img src='<c:url value="/image/logo/place.PNG" />' onclick="Map()" />
+				<input type="hidden" name="maptitle"/>
+				<input type="hidden" name="mapplace" /> 			
 				</span> 
 				
 				<span id="taglist" style="width: 300px; float: left;">
@@ -555,14 +575,14 @@ function insert(connum){
 <div id="board_div" class="container box-shadow border-round white">
 <table width="100%">
 <tr>  
-<td width="10%"><img src="image/logo/사람.PNG" alt="Avatar" class="left-align circle" style="width:50px"></td>
+<td width="10%"><img src='<c:url value="/upload/${sessionScope.profilePhoto}"/>' alt="Avatar" class="left-align circle" style="width:50px"></td>
 <td width="65%"><b>${con.connickname}</b></td>
 <td width="35%"><b class="right-align opacity"><font color="#b2b2b2">${con.conmodifieddate}</font></b></td>
 </tr>
 </table>
 	<hr color="#eee">
 	<div class="content">
-	<div class="write">${con.content}</div>
+	<div class="write">${con.content}&nbsp;&nbsp;&nbsp;-<a href="#" onclick="mapopen(${con.latitude},${con.longtitude},${con.maptitle})"><font color="#666"><b>${con.maptitle}</b>에서</font></a></div>
 	<div class="w3-row-padding">
 	
 		<a href="ContentView.hash?connum=${con.connum}" class="img_link">
@@ -572,6 +592,7 @@ function insert(connum){
     </div>
 
     <p>#${con.conhash}</p>
+
 	</div>
 	
 <%--  	<div id="btn_group">
@@ -579,13 +600,17 @@ function insert(connum){
     <button type="button" id="btn2" class="w3-btn w3-theme-d2 w3-margin-bottom hide" onclick="javascript:unlike('${con.connum}')"> un_like </button>
     <input type="checkbox" class="hide"/>
     </div> --%>
-    <button type="button" class="w3-btn w3-theme-d1 w3-margin-bottom" onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>  Like</button>
-    <button type="button" class="w3-btn w3-theme-d2 w3-margin-bottom hide" onclick="javascript:unlike('${con.connum}','${con.conhash}')">  un-like</button>
+
+	<div class="w3-btn">
     
-    <button type="button" class="w3-btn w3-theme-d3 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+   	<%-- <button id="like_ajax" type="button" class="w3-theme-d1 w3-margin-bottom like" ><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button> --%>
     
-  	
-	
+  	<button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}like_bn">${con.conlike}</i></button> 
+  	<button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlike('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}unlike_bn"> ${con.conlike}</i></button>
+    
+    <button type="button" class="w3-theme-d3 w3-margin-bottom" ><i class="fa fa-comment"></i>  Comment ${con.connum}</button>  	
+	</div>
+
 	<%-- <div id="board_img">
 	<a href="ContentView.hash?connum=${con.connum}">
 		<img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />' />

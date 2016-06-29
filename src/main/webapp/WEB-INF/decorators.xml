@@ -22,7 +22,8 @@
 		<pattern>/Logout.hash</pattern> 
 		<pattern>/ReportFormCom.hash*</pattern>
 		<pattern>/TagCheck.hash*</pattern>
-		 <pattern>/MessageForm.hash*</pattern>
+		<pattern>/MessageForm.hash*</pattern>
+		<pattern>/mapopen.hash*</pattern>
 		<!-- <pattern>/Logout.hash</pattern> -->
 		<pattern>/Logout.hash*</pattern>
 		<pattern>/LoginFailPro.hash*</pattern>
@@ -39,6 +40,8 @@
 		<pattern>/FindPasswordPro.hash*</pattern>  
 		<pattern>/ReportProCom.hash*</pattern>
 		<pattern>/UpdateTagCheck.hash*</pattern>
+		
+		<!-- 좋아요 test -->
 		<pattern>/LikeCheck.hash*</pattern>
 		<pattern>/Unlike.hash*</pattern>
 	</excludes>

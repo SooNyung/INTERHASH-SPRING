@@ -5,9 +5,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="member">
 
 	<insert id="insert" parameterType="spring.model.MemberCommand">
-		insert into usertable(email,nickname,passwd,hash,createddate,modifieddate,distinction,reportcount,ip)
+		insert into usertable(email,nickname,passwd,hash,createddate,modifieddate,distinction,reportcount,ip,gender)
 		values
-		(#{email},#{nickname},#{passwd},#{hash},sysdate,sysdate,0,0,#{ip})
+		(#{email},#{nickname},#{passwd},#{hash},sysdate,sysdate,0,0,#{ip},#{gender})
+	</insert>
+	
+	<insert id="insertP" parameterType="spring.model.ProfilePhotoCommand">
+		insert into profilePhoto
+		values (#{email},#{path})
 	</insert>
 
 	<select id="selectMember" parameterType="String"
@@ -26,7 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<update id="updateMember" parameterType="spring.model.MemberCommand">
 		update usertable set
-		email=#{email}, nickname=#{nickname}, passwd=#{passwd}	where email=#{email}
+		email=#{email}, nickname=#{nickname}, passwd=#{passwd}, gender=#{gender} where email=#{email}
 	</update>
 	
 	<update id="updateHash" parameterType="spring.model.MemberCommand">

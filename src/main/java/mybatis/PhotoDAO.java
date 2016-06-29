@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import spring.model.PhotoCommand;
+import spring.model.ProfilePhotoCommand;
 
 @Repository
 public class PhotoDAO {
@@ -23,6 +24,10 @@ public class PhotoDAO {
 	}
 	public List<PhotoCommand> selectPhoto(int connum){
 		return session.selectList("writecontent.selectPhoto",connum);
+	}
+	
+	public int updateProfilePhoto(ProfilePhotoCommand command){
+		return session.update("Profile.update", command);
 	}
 
 }

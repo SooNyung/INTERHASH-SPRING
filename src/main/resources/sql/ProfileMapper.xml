@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Profile">
+
+<update id="update" parameterType="spring.model.ProfilePhotoCommand">
+update profilePhoto
+set path=#{path} where email=#{email}
+</update>
+
+<select id="selectPath" parameterType="String" resultType="String">
+select path from profilePhoto
+where email=#{email}
+</select>
+
+
+</mapper>

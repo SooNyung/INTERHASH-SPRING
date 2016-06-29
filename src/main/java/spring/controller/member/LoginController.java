@@ -27,10 +27,12 @@ public class LoginController {
 
 	@Autowired
 	MemberDAO dao;
-
+	
 	public void setDao(MemberDAO dao) {
 		this.dao = dao;
 	}
+	
+	
 
 	// 로그인폼
 	@RequestMapping("/LoginForm.hash")
@@ -41,7 +43,7 @@ public class LoginController {
 
 	//로그인
 	@RequestMapping("/LoginPro.hash")
-	private ModelAndView login(@ModelAttribute("userinput")MemberCommand info,  HttpSession session) {
+	private ModelAndView login(@ModelAttribute("userinput")MemberCommand info, String email, HttpSession session) {
 		ModelAndView mv = new ModelAndView("redirect:Board.hash");
 		
 		int result = dao.login(info);
@@ -50,34 +52,40 @@ public class LoginController {
 		
 		String pw = dao.findPassword(info);
 		System.out.println("pw ::: " + pw );
-
+		
 		//System.out.println("dao.nick(info) ::: " + nick);
 		//System.out.println("dao.login(info) :: " + result);
 		
 		// result가 1이면 로그인 성공 0이면 실패
 		if(result == 1)
 		{
+			String path = dao.selectPath(email);
+			System.out.println("path ::: " + path);
+			
 			session.setAttribute("memId", info.getEmail());
 			session.setAttribute("nickName", nick);
+			session.setAttribute("profilePhoto", path);
 
 			System.out.println("로그인 성공");	
 			return mv;		
 		} 
 		else
 		{
-			session.setAttribute("memId", null);
+			session.setAttribute("emailfail", "fail");
 			session.setAttribute("passwd", null);
 			session.setAttribute("nickName", null);
 
 			System.out.println("로그인 실패");
+			//mv.setViewName("redirect:Main.hash");
 			mv.setViewName("redirect:LoginFailPro.hash");
 			return mv;
 		}
+		
 	}
 	
 	// 로그인실패
 	@RequestMapping("LoginFailPro.hash")
-	private String intpu() {
+	private String intpu(HttpSession session) {
 		return "main";
 	}
 	
@@ -85,9 +93,7 @@ public class LoginController {
 	@RequestMapping("/LogOut.hash")
 	private ModelAndView logout(HttpSession session) {
 		ModelAndView mv = new ModelAndView("main");
-		session.setAttribute("memId", null);
-		session.setAttribute("password", null);
-		session.setAttribute("nickName",null);
+		session.invalidate();
 		return mv;
 	}
 

@@ -16,7 +16,7 @@
 	<insert id="insertContent" parameterType="spring.model.ContentCommand">
 		insert into contents
 		values (connum_seq.nextval, #{content}, #{conhash}, #{concreateddate},
-		#{conmodifieddate},#{conip},0,'0',#{email},#{connickname},0)
+		#{conmodifieddate},#{conip},0,'0',#{email},#{connickname},0,#{latitude},#{longtitude},#{maptitle})
 	</insert>
 	
 	<insert id="insertPhoto" parameterType="spring.model.PhotoCommand">
@@ -44,7 +44,9 @@
 	<select id ="myContent" parameterType= "string" resultType="spring.model.ContentCommand">
 		select * from contents where email =#{email}
 	</select>
-	
+	<select id ="hashLike" parameterType= "string" resultType="spring.model.ContentCommand">
+		select * from contents where conhash =#{conhash}
+	</select>
 </mapper>
 
 

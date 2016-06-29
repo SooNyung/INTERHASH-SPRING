@@ -127,7 +127,7 @@ label:focus, label:hover {
 	font-weight: bold;
 }
 </style>
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 </head>
 <body class="align">
@@ -225,6 +225,8 @@ label:focus, label:hover {
 			<input type="hidden" name="email" value="${member.email}">
 			<input type="hidden" name="passwd" value="${member.passwd}">
 			<input type="hidden" name="nickname" value="${member.nickname}">
+			<input type="hidden" name="gender" value="${member.gender}">
+			
 			
 			<input type="submit" value="  S I G N    U P  ">
 

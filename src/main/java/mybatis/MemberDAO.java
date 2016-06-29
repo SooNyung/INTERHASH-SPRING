@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import spring.controller.member.TempPasswd;
 import spring.model.MemberCommand;
+import spring.model.ProfilePhotoCommand;
 
 @Repository
 public class MemberDAO {
@@ -88,5 +89,15 @@ public class MemberDAO {
 	public String selectCheck(String email){
 		return session.selectOne("member.selectCheck", email);
 	}
+	
+	public int insertProfile(ProfilePhotoCommand command){
+		return session.insert("member.insertP", command);
+		
+	}
+	
+	public String selectPath(String email){
+		return session.selectOne("Profile.selectPath", email);
+	}
+
 
 }

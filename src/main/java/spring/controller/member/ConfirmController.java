@@ -62,6 +62,7 @@ public class ConfirmController {
 	@RequestMapping("/LikeCheck.hash")
 	private String like_check(@RequestParam("connum") int connum, @RequestParam("conhash") String hashname,
 			HttpSession session,Model model){
+		System.out.println("좋아요 눌렀을때!");
 		model.addAttribute("connum",connum);
 		model.addAttribute("conhash",hashname);
 
@@ -70,11 +71,13 @@ public class ConfirmController {
 		int conlike = Dao.getConlike(connum);
 		session.setAttribute("conlike", conlike);
 		return "confirm/likeCheck";
+		//return "fixpage/boardDiv"; //보현test중
 	}
 	
 	@RequestMapping("/Unlike.hash")
 	private String unlike(@RequestParam("connum") int connum, @RequestParam("conhash") String hashname,
 			HttpSession session,Model model){
+		System.out.println("좋아요 2번째 눌렀을때!");
 		model.addAttribute("connum",connum);
 		model.addAttribute("conhash",hashname);
 
@@ -83,5 +86,6 @@ public class ConfirmController {
 		int conlike = Dao.getConlike(connum);
 		session.setAttribute("conlike", conlike);
 		return "confirm/unlike";
+		//return "fixpage/boardDiv"; //보현test중
 	}
 }

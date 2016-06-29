@@ -1,12 +1,11 @@
 package spring.controller.content;
 
-import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.ws.RespectBinding;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import mybatis.CommentDAO;
 import mybatis.ContentDAO;
-import net.sf.json.JSONObject;
 import spring.model.CommentCommand;
 import spring.model.ContentCommand;
 
@@ -25,7 +23,7 @@ import spring.model.ContentCommand;
 public class ContentViewAction {
 
 	@RequestMapping("/Main.hash")
-	private String mainview() {
+	private String mainview(HttpSession session) {
 		/*Properties prop = System.getProperties();
 		Set set = prop.keySet();
 		Iterator iter = set.iterator();
@@ -34,6 +32,7 @@ public class ContentViewAction {
 			System.out.println(key + " :: "+prop.getProperty(key));
 			
 		}*/
+		session.invalidate();
 		return "main";
 	}
 
@@ -119,6 +118,21 @@ public class ContentViewAction {
 		return mav;
 	}
 	
+	
+	@RequestMapping("/mapopen.hash")
+	public ModelAndView mapOpen(@RequestParam("latitude") String latitude,
+			@RequestParam("longtitude") String longtitude,
+			HttpServletRequest request) throws Exception {
+		ModelAndView mav = new ModelAndView("adminpage/mapopen");
+		/*int connum = Integer.parseInt(request.getParameter("connum"));*/
 
+		mav.addObject("latitude", latitude);
+		mav.addObject("longtitude", longtitude);
+	
+		System.out.println("위도야"+latitude);
+		System.out.println("경도야"+longtitude);
+		
+		return mav;
+	}
 
 }

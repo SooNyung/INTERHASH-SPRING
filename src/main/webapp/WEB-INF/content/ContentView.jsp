@@ -140,6 +140,16 @@ color:#5AAEFF;
 	#test{border-bottom:1px solid;}
 
 </style>
+
+<script> 
+$(document).ready(function(){
+	var con = ${content.connum}
+	var texta = $('#comment_textarea').val();
+	$('#rptl').attr('onclick','test(con,texta)');
+	
+	
+});
+</script>
 </head>
 <body>
 <div id="view_div">

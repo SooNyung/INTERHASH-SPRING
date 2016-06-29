@@ -18,12 +18,11 @@ function checkIt() {
 </script>
 </head>
 <body>
-<center>
 <form method="post" action="WithdrawalPro.hash" onsubmit="return checkIt()">
 <table>
 <tr>
 <td>email</td>
-<td><input type="text" name="email" value="${c.email}" readonly/></td>
+<td><input type="text" name="email" value="${sessionScope.memId}" readonly/></td>
 </tr>
 <tr>
 <td>비밀번호</td>
