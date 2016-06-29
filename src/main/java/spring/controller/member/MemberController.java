@@ -280,7 +280,7 @@ public class MemberController {
 		session.setAttribute("content", cdao.getContent());
 		session.setAttribute("memberinfo", command);
 		session.setAttribute("messagecount", mdao.getMessageCount(email));
-		String checked = dao.selectCheck(email);
+		String checked = dao.selectCheck(email); //Áø°æ
 		session.setAttribute("checked", checked);
 		String hash = command.getHash();
 		hash = hash.substring(1, hash.length() - 1);
@@ -289,9 +289,21 @@ public class MemberController {
 			hashlist[i] = hashlist[i].trim();
 		}
 		List<String> list = Arrays.asList(hashlist);
+
+		session.setAttribute("hashlist",list);
+		session.setAttribute("mesagelist",mdao.getMessageList(email));
+		session.setAttribute("num",1);
+
+
 		session.setAttribute("hashlist", list);
 		session.setAttribute("mesagelist", mdao.getMessageList(email));
 		session.setAttribute("num", 1);
+
+
+		session.setAttribute("hashlist", list);
+		session.setAttribute("mesagelist", mdao.getMessageList(email));
+		session.setAttribute("num", 1);
+
 		return "fixpage/boardDiv";
 	}
 

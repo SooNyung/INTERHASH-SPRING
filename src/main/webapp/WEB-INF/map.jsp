@@ -300,8 +300,7 @@ function displayInfowindow(marker, title) {
 }
 
 function selectInfo(marker, title,placePosition) {
-	alert(placePosition); 
-	ps.keywordSearch( title, placesSearchCB);
+	ps.keywordSearch(title, placesSearchCB);
 			//removeMarker();
 	opener.document.writeForm.maptitle.value = title;
 	opener.document.writeForm.mapplace.value = placePosition;

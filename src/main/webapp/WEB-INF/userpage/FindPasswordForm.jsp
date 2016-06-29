@@ -205,11 +205,11 @@ h1 {
 		</div>
 		
 		<div class="form__field">
-			<input type="submit" value="FIND" name="confirm">
+			<input type="submit" value="FIND →" name="confirm">
 		</div>
 		
 		<div class="form__field">
-			<input type="submit" value="CANCEL"	 onClick="location.href='Main.hash'" />
+			<input type="submit" value="CANCEL →" onClick="location.href='Main.hash'" />
 		</div>
 				
 	</form>

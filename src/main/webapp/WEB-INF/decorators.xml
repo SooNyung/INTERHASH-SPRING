@@ -22,7 +22,8 @@
 		<pattern>/Logout.hash</pattern> 
 		<pattern>/ReportFormCom.hash*</pattern>
 		<pattern>/TagCheck.hash*</pattern>
-		 <pattern>/MessageForm.hash*</pattern>
+		<pattern>/MessageForm.hash*</pattern>
+		<pattern>/mapopen.hash*</pattern>
 		<!-- <pattern>/Logout.hash</pattern> -->
 		<pattern>/Logout.hash*</pattern>
 		<pattern>/LoginFailPro.hash*</pattern>
