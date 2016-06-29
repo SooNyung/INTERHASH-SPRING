@@ -448,9 +448,11 @@ $(function(){
         
 
         <div class="form__field">
-          <input type="submit" value="NEXT →">
+        	<input type="submit" value="NEXT →">
         </div>
-
+        <div class="form__field">
+			<input type="submit" value="CANCEL →"	 onClick="location.href='Main.hash'" />
+		</div>
       </form>
 
 <!--       <p class="text--center">Not a member? <a href="SignupForm.hash">Sign up now</a> <span class="fontawesome-arrow-right"></span></p>

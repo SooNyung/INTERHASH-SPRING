@@ -26,7 +26,7 @@ import spring.model.MemberCommand;
 public class ContentViewAction {
 
 	@RequestMapping("/Main.hash")
-	private String mainview() {
+	private String mainview(HttpSession session) {
 		/*Properties prop = System.getProperties();
 		Set set = prop.keySet();
 		Iterator iter = set.iterator();
@@ -35,6 +35,7 @@ public class ContentViewAction {
 			System.out.println(key + " :: "+prop.getProperty(key));
 			
 		}*/
+		session.invalidate();
 		return "main";
 	}
 
