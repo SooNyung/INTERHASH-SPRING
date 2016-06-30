@@ -586,16 +586,20 @@ function mapopen(latitude,longtitude,maptitle ) {
             <input type="hidden" name="mapplace" />          
             </span> 
             
-            <span id="taglist" style="width: 150px; float: left;">
+            <div id="taglist" style="width: 110px; float:left; padding-right:180px; padding-bottom:0px">
+            <div style="float:left">
                <input type="text" name="tag" size="7" readonly>
-               <input type="button" value="Tag" onClick="tagCheck()">
-            </span> 
+            </div>
+             <div style="float:right">  
+               <img src ="image/logo/tag.png" width="25px" height="25px" onClick="tagCheck()">
+             </div>
+            </div> 
             
             <span>
-             <input type="text" name="maptitle" size="10px" readonly/></span>
+             <!-- <input type="text" name="maptitle" size="10px" readonly/></span> -->
              <span id="submit"> 
-         <!--      <input type="submit" id="button" value="submit"/>  -->
-         <input type="image" src="image/logo/post.PNG"> 
+         		<!--      <input type="submit" id="button" value="submit"/>  -->
+         		<input type="image" src="image/logo/post.PNG"> 
          
              </span>
          </div>
