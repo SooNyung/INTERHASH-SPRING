@@ -319,6 +319,7 @@ padding: 0px 5px 0px 5px;}
 }
 
 #jb-right{
+margin-right:60px;
    width:20%;
    height:100%;
    float:right;
@@ -491,8 +492,8 @@ border-radius:7px;
    border-radius:7px;
    background-color:#ff6088;
 }
-#up{width:90%; height:300px; margin-top:10px; padding:10px 0px 20px 0px; }
-#down{width:90%; height:400px; padding:10px 0px 20px 0px;}
+#up{width:25%; height:300px; margin-top:10px; padding:10px 0px 20px 0px; }
+#down{width:25%; height:400px; padding:10px 0px 20px 0px;}
 
 
 
@@ -752,8 +753,8 @@ height:50px;
                 $(this).attr("type","font");
              } 
            });
-         
-          
+         var chat_url = "http://192.168.50.42:8080/?id="+ encodeURIComponent("${sessionScope.nickName }");
+         $('#chat_table').attr('src',chat_url); 	
          });
 
 
@@ -852,7 +853,7 @@ height:50px;
 
    <!-- main -->
    <div id="main">
-   <div id=sidebar_content style="float:left; width:80%">
+   <div id=sidebar_content style="float:left; width:75%">
       <div id="jb-sidebar">
          <!-- Profile -->
          <div class="box-shadow border-round white padding">
@@ -975,8 +976,8 @@ height:50px;
    	<div style="width:100%; ">
 	<div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">
 		<div style="height:100%">
-			<%-- <iframe style="height:100%" src= "http://192.168.50.42:8080/?id=${sessionScope.nickName }">
-			</iframe> --%>
+			<iframe id='chat_table' style="height:100%" src= "" >
+			</iframe>
 		</div>
 	</div>
 	</div>
