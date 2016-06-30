@@ -138,7 +138,12 @@ function like(num,String){
 }
 
 
+function unlike(num,String){
 
+	url = "Unlike.hash?connum="+num+"&conhash="+String;
+	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	//location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
+}
 
 function modal_close(){
 	var e = $.Event("keyup");
@@ -497,7 +502,7 @@ function mapopen(latitude,longtitude,maptitle ) {
             </div>
           </div>
       
-<script>
+<!-- <script>
 /* $(function(){
 	$(".like").click(function(){
 		var index = $(".like").index(this);
@@ -511,7 +516,7 @@ function mapopen(latitude,longtitude,maptitle ) {
 	});
 }); */
 
-$(function(){
+/* $(function(){
 	$("#btn").click(function(){
 		var index = $("#btn").index(this);
 		if($("#btn:eq("+index+")").val()=='like'){
@@ -525,7 +530,7 @@ $(function(){
 			
 		}
 	});
-});
+}); */
 
 /* $(function(){
 	$('').click(function(){
@@ -533,13 +538,8 @@ $(function(){
 	}
 }
  */
-function unlike(num,String){
 
-	url = "Unlike.hash?connum="+num+"&conhash="+String;
-	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
-	//location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
-}
-</script>
+</script> -->
  
 <form method='post' action='ContentView.hash'>
 
@@ -578,7 +578,7 @@ function unlike(num,String){
   	<button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button> 
   	<button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlike('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button>
    
-    <input type="button" id="btn" class="btn1 btn2" value="like" onclick="javascript:like('${con.connum}')"/>
+   <%--  <input type="button" id="btn" class="btn1 btn2" value="like" onclick="javascript:like('${con.connum}')"/> --%>
 
     <button type="button" class="w3-theme-d3 w3-margin-bottom" onclick="location.href='Board.hash'"><i class="fa fa-comment"></i>  Comment ${con.connum}</button>  	
 
