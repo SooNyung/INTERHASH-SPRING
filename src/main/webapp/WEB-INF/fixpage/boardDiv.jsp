@@ -451,7 +451,7 @@ function test(connum){
 }
 function Map(){
 	url="template2.hash";
-	window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
+	window.open(url,"post","toolbar=no ,width=700 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
 	} 
 
 function mapopen(latitude,longtitude,maptitle ) {
@@ -483,11 +483,11 @@ function mapopen(latitude,longtitude,maptitle ) {
 			<div style="clear: both;"></div>
 			<div id="sub">
 				<span id="imageon" style="width: 50px; float: left;"> 
-				 <img src='<c:url value="/image/logo/camera.jpg" />' onclick="$('.fileData:last').click();" /> 
+				 <img src='<c:url value="/image/logo/photo.png" />' width="30px" height="30px" onclick="$('.fileData:last').click();" /> 
 				</span> 
 				
 				<span id="imageon" style="width: 50px; float: left;">
-				<img src='<c:url value="/image/logo/place.PNG" />' onclick="Map()" />
+				<img src='<c:url value="/image/logo/place.png" />' width="30px" height="30px" onclick="Map()" />
 				<input type="hidden" name="maptitle"/>
 				<input type="hidden" name="mapplace" /> 			
 				</span> 
