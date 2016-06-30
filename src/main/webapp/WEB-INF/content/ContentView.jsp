@@ -141,7 +141,7 @@ color:#5AAEFF;
 
 </style>
 
-<script> 
+<!-- <script> 
 $(document).ready(function(){
 	var con = ${content.connum}
 	var texta = $('#comment_textarea').val();
@@ -149,7 +149,7 @@ $(document).ready(function(){
 	
 	
 });
-</script>
+</script> -->
 </head>
 <body>
 <div id="view_div">
@@ -217,7 +217,7 @@ $(document).ready(function(){
 	<div id="comment_submit">
 		<span id="align_right">
 		<input type="submit" value="개시"></span>
-		<input type="button" id="rptl" value="개시시" onclick="insert(${content.connum})"> 
+		<input type="button" id="rptl" value="개시시" onclick="javascript:insert(${content.connum})"> 
 	</div>
 	</form>
 	
@@ -243,7 +243,7 @@ $(document).ready(function(){
 		<a onclick="reportCom(${comment.comnum})">신고</a>
 		</c:if>	
 	</span><br> 
-	<div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">${comment.comcontent}</textarea></div>
+	<div id="test"><textarea id="comment_textara" borderStyle="none" cols=50 readonly="readonly" class="autosize">${comment.comcontent}</textarea></div>
 	</div>
 	
 	</c:forEach>  

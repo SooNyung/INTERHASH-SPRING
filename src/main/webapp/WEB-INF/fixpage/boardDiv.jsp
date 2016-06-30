@@ -5,9 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <%
     String cp = request.getContextPath();
+	System.out.println(cp);
 %>
 
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
@@ -427,85 +427,7 @@ function Map(){
 	window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
 	}  
 
-function insert(connum){
-	var con = connum;
-	var url ="<%=cp%>/InsertComment.hash";
-	var texta = $('#comment_textarea').val();
-	var params = "connum="+con+"&comcontent="+texta;
-	
-	$.ajax({
-		type:"post"
-		,url:url
-		,data:params
-		,dataType:"json"
-<<<<<<< HEAD
-		,success:function(args){
-			
-		alert(${memId == args.data[0].email})
-			$("#test_div *").remove();
-			$("#comment_div *").remove();
-		/* 	$('#test_div').append(
-				'<input type="hidden" id="session_email" value= '+${memId}+' />'		
-			); */
-			for(var i=0;i<args.data.length;i++){
-			
-				$('#test_div').append(
-						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
-						'--!><span><label id="time">'+args.data[i].commodifieddate+'</label></span><!--'+
-						'--!><span id="align_right"><c:if test="${sessionScope.memId =='+ args.data[i].email +'}"><a href="deleteComment.hash?comnum=${comment.comnum}&connum=${comment.connum}">삭제</a><!--'+
-						'--!><a onclick="modify('+args.data[i].comnum+','+${comment.connum}+')">수정</a></c:if><c:if test="${sessionScope.memId !='+args.data[i].email.trim()+'}"><!--'+
-						'--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></c:if></span><br><!--'+
-						'--!><div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
-			} 
-/* 			for(var i=0;i<args.data.length;i++){					
-				$('#test_div').append(
-						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
-						'--!><span><label id="time">'+args.data[i].commodifieddate+'</label></span><!--'+
-						'--!><span id="align_right"><div id="rec_email'+i +''"></div><!--'+
-						'--!></span><input id=in_'+i+'type=hidden value='+ args.data[i].email +'/><br><!--'+
-						'--!><div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>');
-				alert(${memID} == $(input_id).val());
-			var input_id = "#in_"+i;
-			var email_id = "#rec_email"+i;
-			if(${memID} == $(input_id).val()){
-				$(email_id).append(
-						'<a href="deleteComment.hash?comnum=${comment.comnum}&connum=${comment.connum}">삭제</a><!--'+
-						'--!><a onclick="modify('+args.data[i].comnum+','+${comment.connum}+')">수정</a>'
-						
-				)			
-			}else{
-				$(email_id).append(
-						'<a onclick="reportCom('+args.data[i].comnum+')">신고${memId},'+args.data[i].email.toString()+'</a>'
-						
-				)	
-			
-				
-			} */
-			
-			
-			
-			
-		}
-		,error:function(e){
-			alert(e.response.Text);
-		}
-		});
-	}
 
-=======
- 		,success:function(args){
- 			
- 		alert('성고고고고오오오오옹');
-		}  
-	    ,error:function() {
-	    	alert('실패');
-	    }
-	});
-}
-function Map(){
-	url="template2.hash";
-	window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
-	} 
 
 function mapopen(latitude,longtitude,maptitle){
 	
@@ -513,8 +435,70 @@ function mapopen(latitude,longtitude,maptitle){
 	newwindow=window.open(url,"post","toolbar=no ,width=500 ,height=400 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 	//location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
 }
->>>>>>> 9cfc77cc2ee5386c9aedd88867a2f800850e399e
 
+
+function insert(connum){
+ 	var con = connum;
+	var url = "/INTERHASH-SPRING/InsertComment.hash";
+	var texta = $('#comment_textarea').val();
+	var params = "connum="+con+"&comcontent="+texta; 
+
+	$.ajax({
+		type:"post",
+		url:url,
+		data:params,
+		dataType:"json",
+		success:function(args){	
+			
+		alert('성공');
+			$("#test_div *").remove();
+			$("#comment_div *").remove();
+				
+
+			for(var i=0;i<args.data.length;i++){
+				$('#test_div').append(
+						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
+						'--!><span><label id="time">'+args.data[i].commodifieddate+'</label></span><!--'+
+						'--!><span id="align_right"><c:if test="${memId=='+args.data[i].email +'}"><a href="deleteComment.hash?comnum=${comment.comnum}&connum=${comment.connum}">삭제</a><!--'+
+						'--!><a onclick="modify('+args.data[i].comnum+','+${comment.connum}+')">수정</a></c:if><c:if test="${sessionScope.memId !='+args.data[i].email.trim()+'}"><!--'+
+						'--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></c:if></span><br><!--'+
+						'--!><div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')	
+		}
+		}
+			,error: function (xhr, status, err){
+				 alert(err);
+			} 
+	});
+}
+<%-- function (connum){
+	var con = connum;
+	var url ="<%=cp%>/InsertComment.hash";
+	var texta = $('#comment_textarea').val();
+	var params = "connum="+con+"&comcontent="+texta;
+	
+	$.ajax({
+		 type:"post"
+		,data:params
+		,dataType:"json"
+		,success:function(args){
+			$("#test_div *").remove();
+			$("#comment_div *").remove();
+
+			for(var i=0;i<args.data.length;i++){
+				$('#test_div').append(
+						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
+						'--!><span><label id="time">'+args.data[i].commodifieddate+'</label></span><!--'+
+						'--!><span id="align_right"><c:if test="${sessionScope.memId =='+ args.data[i].email +'}"><a href="deleteComment.hash?comnum=${comment.comnum}&connum=${comment.connum}">삭제</a><!--'+
+						'--!><a onclick="modify('+args.data[i].comnum+','+${comment.connum}+')">수정</a></c:if><c:if test="${sessionScope.memId !='+args.data[i].email.trim()+'}"><!--'+
+						'--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></c:if></span><br><!--'+
+						'--!><div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')	
+		}
+		}
+	,error:function(){
+			alert('실패');
+		}	
+	})
+	}	 --%>
 </script>
 
 

@@ -30,5 +30,9 @@
 	<select id="getCommentStr" parameterType="int" resultType="String">
 		select * from commenttable where connum = #{connum}
 	</select>
+	
+	<select id="test" resultType="String">
+		select email from commenttable;
+	</select>
 </mapper>
 
