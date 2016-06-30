@@ -42,10 +42,10 @@
 	</update>
 <!-- 추가 -->	
 	<select id ="myContent" parameterType= "string" resultType="spring.model.ContentCommand">
-		select * from contents where email =#{email}
+		select * from contents where email =#{email} order by conmodifieddate desc
 	</select>
 	<select id ="hashLike" parameterType= "string" resultType="spring.model.ContentCommand">
-		select * from contents where conhash =#{conhash}
+		select * from contents where conhash =#{conhash} order by conmodifieddate desc
 	</select>
 </mapper>
 

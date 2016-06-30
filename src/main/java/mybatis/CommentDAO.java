@@ -41,8 +41,13 @@ public class CommentDAO {
 		return session.selectOne("Comment.commentcount",connum);
 	}
 	
-	public List<String> getCommentstr(int connum){
+	/*public List<String> getCommentstr(int connum){
 		return session.selectList("Comment.getCommentStr",connum);
 	}
+	*/
+	public List<String> testcomment(){
+		return session.selectList("Comment.test");
+		
+	} 
 	
 }
