@@ -124,20 +124,6 @@ function tagCheck() {
    newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 }
 
-<<<<<<< HEAD
-//num : connum을 출력 / String : hashtag를 출력
-function like(num,String,conlike){
-	var select_id = conlike;//"${sessionScope.conlike}" ;//'#'+num+"like_bn";
-	var like_cnt =select_id+1;//$(select_id).text();
-	alert(select_id);
-	
-	$(select_id).text(like_cnt+1);
-	
-	alert(like_cnt);
-	url = "LikeCheck.hash?connum="+num+"&conhash="+String;
-	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
-	//location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
-=======
 function like(num,String){
    var select_id = "${sessionScope.conlike}";//'#'+num+"like_bn";
    var like_cnt =select_id+1;//$(select_id).text();
@@ -149,29 +135,9 @@ function like(num,String){
    url = "LikeCheck.hash?connum="+num+"&conhash="+String;
    newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
    //location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
->>>>>>> 9567d6b5b25bf8cec69f30dc527c1df6cd2c12ab
 }
 
-<<<<<<< HEAD
- function unlike(num,String,conlike){ 
-	var select_id = conlike;//"${sessionScope.conlike}";//'#'+num+"unlike_bn";
-	var like_cnt =select_id-1;//$(select_id).text();
-	alert(select_id);
-	
-	$(select_id).text(like_cnt-1);
-	
-	alert(like_cnt);
-	
-=======
 function unlike(num,String){
-<<<<<<< HEAD
-
->>>>>>> b72330d3434853ada5f9352162b4901e8164e8aa
-	url = "Unlike.hash?connum="+num+"&conhash="+String;
-	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
-	//location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
-} 
-=======
    var select_id = "${sessionScope.conlike}";//'#'+num+"unlike_bn";
    var like_cnt =select_id-1;//$(select_id).text();
    alert(select_id);
@@ -184,7 +150,6 @@ function unlike(num,String){
    newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
    //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
 }
->>>>>>> 9567d6b5b25bf8cec69f30dc527c1df6cd2c12ab
 
 
 
@@ -548,6 +513,7 @@ html,body,h6{font-family: "Open Sans", sans-serif}
 .write{width:300px; height:500px;}
 .content{width:300px; height:700px;}
 hr{border-top:1px solid; background-color:#eee;}
+#maptitle{border:0px; margin-top:100px;}
 .w3-btn{pointer-events:none;
 box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 -webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
@@ -642,7 +608,7 @@ function mapopen(latitude,longtitude,maptitle ) {
                <div id="blah_img" >
                   <img id="blah" src="" alt="no image"/>
                </div>
-               <div id="staticMap" style="width:600px;height:350px;"></div>           
+               <!-- <div id="staticMap" style="width:600px;height:350px;"></div>      -->      
          </div>
          <div style="clear: both;"></div>
          <div id="sub">
@@ -651,15 +617,18 @@ function mapopen(latitude,longtitude,maptitle ) {
             </span> 
             
             <span id="imageon" style="width: 50px; float: left;">
-            <img src='<c:url value="/image/logo/place.png" />'  width="30px" height="30px" onclick="Map()" />
-            <input type="hidden" name="maptitle"/>
+            <img src='<c:url value="/image/logo/place.png" />' width="30px" height="30px" onclick="Map()" />
+           
             <input type="hidden" name="mapplace" />          
             </span> 
             
-            <span id="taglist" style="width: 300px; float: left;">
+            <span id="taglist" style="width: 150px; float: left;">
                <input type="text" name="tag" size="7" readonly>
                <input type="button" value="Tag" onClick="tagCheck()">
             </span> 
+            
+            <span>
+             <input type="text" name="maptitle" size="10px" readonly/></span>
              <span id="submit"> 
          <!--      <input type="submit" id="button" value="submit"/>  -->
          <input type="image" src="image/logo/post.PNG"> 
@@ -689,7 +658,9 @@ function mapopen(latitude,longtitude,maptitle ) {
 </table>
    <hr color="#eee">
    <div class="content">
-   <div class="write">${con.content}&nbsp;&nbsp;&nbsp;-<a href="#" onclick= "javascript:mapopen('${con.latitude}','${con.longtitude}','${con.maptitle}')" ><font color="#666"><b>${con.maptitle}</b>에서</font></a></div>
+   <div class="write">${con.content}&nbsp;&nbsp;&nbsp;-<a href="#" onclick= "javascript:mapopen('${con.latitude}','${con.longtitude}','${con.maptitle}')" ><font 
+
+color="#666"><b>${con.maptitle}</b>에서</font></a></div>
    <div class="w3-row-padding">
         <a href="ContentView.hash?connum=${con.connum}" class="img_link">
       <img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />'/>
@@ -701,7 +672,9 @@ function mapopen(latitude,longtitude,maptitle ) {
    </div>
    
 <%--     <div id="btn_group">
-    <button type="button" id="btn1" class="w3-btn w3-theme-d1 w3-margin-bottom" onclick="javascript:like('${con.connum}')"><i class="fa fa-thumbs-up"></i> Like </button>
+    <button type="button" id="btn1" class="w3-btn w3-theme-d1 w3-margin-bottom" onclick="javascript:like('${con.connum}')"><i class="fa fa-thumbs-up"></i> Like 
+
+</button>
     <button type="button" id="btn2" class="w3-btn w3-theme-d2 w3-margin-bottom hide" onclick="javascript:unlike('${con.connum}')"> un_like </button>
     <input type="checkbox" class="hide"/>
     </div> --%>
@@ -768,6 +741,7 @@ function mapopen(latitude,longtitude,maptitle ) {
 		</div>  
 		</a>
 	</div> --%>
+
 
 </div>
 
