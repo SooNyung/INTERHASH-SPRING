@@ -5,19 +5,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
-=======
-
->>>>>>> b610e8851bf5597390a6fb94343118fa1e1cdd89
 <%
     String cp = request.getContextPath();
 	System.out.println(cp);
 %>
-<<<<<<< HEAD
-=======
-
-
->>>>>>> b610e8851bf5597390a6fb94343118fa1e1cdd89
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
@@ -485,24 +476,11 @@ function insert(connum){
 		data:params,
 		dataType:"json",
 		success:function(args){	
-<<<<<<< HEAD
-			alert(args.session);
-			alert('성공');
-			$("#test_div *").remove();
-			$("#comment_div *").remove();
-				
-		
-			for(var i=0;i<args.data.length;i++){
-				
-			alert(args.session==args.data[i].email);
-=======
-		alert('성공');
 			$("#test_div *").remove();
 			$("#comment_div *").remove();
 			for(var i=0;i<args.data.length;i++){
-				var check;
 			if(args.session==args.data[i].email){
-				$('#test_div').append(
+					$('#test_div').append(
 						/* ${sdf.format(content.conmodifieddate)} */
 						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
 						'--!><span><label id="time">${sdf.format('+args.data[i].commodifieddate+')}</label></span><!--'+
@@ -511,7 +489,6 @@ function insert(connum){
 						'--!></span><br><!--'+
 						'--!><div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
 			}else{
->>>>>>> b610e8851bf5597390a6fb94343118fa1e1cdd89
 				$('#test_div').append(
 						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
 						'--!><span><label id="time">'+args.data[i].commodifieddate+'</label></span><!--'+
