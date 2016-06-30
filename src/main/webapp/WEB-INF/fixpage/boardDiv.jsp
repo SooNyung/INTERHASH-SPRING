@@ -137,7 +137,6 @@ function like(num,String){
 	//location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
 }
 
-
 function unlike(num,String){
 
 	url = "Unlike.hash?connum="+num+"&conhash="+String;
