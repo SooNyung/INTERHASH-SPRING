@@ -5,14 +5,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
 <%
     String cp = request.getContextPath();
 	System.out.println(cp);
 %>
-
-=======
->>>>>>> d33aef387610f52192c39b6778fde0d15e40ad6f
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
@@ -462,13 +458,15 @@ function insert(connum){
 		data:params,
 		dataType:"json",
 		success:function(args){	
-			
-		alert('성공');
+			alert(args.session);
+			alert('성공');
 			$("#test_div *").remove();
 			$("#comment_div *").remove();
 				
-
+		
 			for(var i=0;i<args.data.length;i++){
+				
+			alert(args.session==args.data[i].email);
 				$('#test_div').append(
 						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
 						'--!><span><label id="time">'+args.data[i].commodifieddate+'</label></span><!--'+

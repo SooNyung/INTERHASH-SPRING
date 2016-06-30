@@ -84,7 +84,6 @@ public class CommentController {
 	
 	JSONObject jso = new JSONObject();
 	
-	JSONArray jsa = new JSONArray();
 	
 	jso.put("data", array);
 	jso.put("session",email);
