@@ -6,7 +6,7 @@
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
-
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel='stylesheet'
    href='https://fonts.googleapis.com/css?family=Open+Sans'>
 <link rel="stylesheet"
