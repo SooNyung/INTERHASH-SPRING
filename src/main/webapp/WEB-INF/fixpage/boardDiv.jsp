@@ -496,7 +496,7 @@ function mapopen(latitude,longtitude,maptitle ) {
             
             <span id="taglist" style="width: 150px; float: left;">
                <input type="text" name="tag" size="7" readonly>
-               <input type="button" value="Tag" onClick="tagCheck()">
+               <img src="image/logo/tag.png" width="30px" height="30px" onClick="tagCheck()"/>
             </span> 
             
             <span>
