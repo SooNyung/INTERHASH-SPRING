@@ -387,6 +387,7 @@ html,body,h6{font-family: "Open Sans", sans-serif}
 .write{width:300px; height:500px;}
 .content{width:300px; height:700px;}
 hr{border-top:1px solid; background-color:#eee;}
+#maptitle{border:0px; margin-top:100px;}
 .w3-btn{pointer-events:none;
 box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 -webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
@@ -479,7 +480,7 @@ function mapopen(latitude,longtitude,maptitle ) {
                <div id="blah_img" >
                   <img id="blah" src="" alt="no image"/>
                </div>
-               <div id="staticMap" style="width:600px;height:350px;"></div>           
+               <!-- <div id="staticMap" style="width:600px;height:350px;"></div>      -->      
          </div>
          <div style="clear: both;"></div>
          <div id="sub">
@@ -488,15 +489,18 @@ function mapopen(latitude,longtitude,maptitle ) {
             </span> 
             
             <span id="imageon" style="width: 50px; float: left;">
-            <img src='<c:url value="/image/logo/place.png" />'  width="30px" height="30px" onclick="Map()" />
-            <input type="hidden" name="maptitle"/>
+            <img src='<c:url value="/image/logo/place.png" />' width="30px" height="30px" onclick="Map()" />
+           
             <input type="hidden" name="mapplace" />          
             </span> 
             
-            <span id="taglist" style="width: 300px; float: left;">
+            <span id="taglist" style="width: 150px; float: left;">
                <input type="text" name="tag" size="7" readonly>
                <input type="button" value="Tag" onClick="tagCheck()">
             </span> 
+            
+            <span>
+             <input type="text" name="maptitle" size="10px" readonly/></span>
              <span id="submit"> 
          <!--      <input type="submit" id="button" value="submit"/>  -->
          <input type="image" src="image/logo/post.PNG"> 

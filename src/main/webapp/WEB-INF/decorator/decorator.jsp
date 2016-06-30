@@ -85,7 +85,7 @@ h2{font-family: 'Bad Script', cursive;}
 }
 
 .account-right {
-   margin-left: 650px;
+   margin-left: 80%;
    float: left;
 }
 
@@ -433,7 +433,7 @@ ul.menu:after {
 }
 
 .navbar li .account{display:none;
-width: 180px;
+width: 120px;
 border-radius:7px;
 }
 
@@ -902,15 +902,15 @@ height:50px;
             <div class="accordion white border-round">
                <button onclick="myContent();"
                   class="btn-block theme-l1 left-align border-round">
-                  <i class="fa fa-circle-o-notch fa-fw margin-right"></i> 내 글 보기
+                  <i class="fa fa-circle-o-notch fa-fw"></i> 내 글 보기
                </button>
                <button onclick="updateContent();"
                   class="btn-block theme-l1 left-align">
-                  <i class="fa fa-calendar-check-o fa-fw margin-right"></i> 최신 글 보기
+                  <i class="fa fa-calendar-check-o fa-fw"></i> 최신 글 보기
                </button>
                <button onclick="myFunction();"
                   class="btn-block theme-l1 left-align border-round">
-                  <i class="fa fa-users fa-fw margin-right"></i> 인기 글 보기
+                  <i class="fa fa-users fa-fw"></i> 인기 글 보기
                </button>
                <script>
                   function myContent() {
