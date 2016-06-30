@@ -194,11 +194,13 @@ public class MemberController {
 
 	@RequestMapping("/profilePro.hash")
 	public String ProfilePro(@ModelAttribute("command") MemberCommand command, ProfilePhotoCommand Pcommand,
-			@RequestParam("photo") MultipartFile photo, @RequestParam("checked") String[] checked,
+			@RequestParam("photo") MultipartFile photo, String[] checked, String bloodgroups,
 			HttpServletRequest request) {
 		
 		System.out.println("photo 받아옴? : " + photo);
-
+		if(bloodgroups==null || bloodgroups.equals(null) || bloodgroups.equals("")){
+			command.setBloodgroups("");
+		}
 
 			try {
 				upload(photo, request);
@@ -208,7 +210,7 @@ public class MemberController {
 
 		/* -------------------------------------------------------- */
 		System.out.println("photo 받아옴? : " + photo);
-		command.setHash(Arrays.toString(checked));
+		command.setChecked(Arrays.toString(checked));
 		System.out.println("hash태그 :: " + Arrays.toString(checked));
 		int a = dao.profile(command);
 		System.out.println("프로필 수정완료? " + a);

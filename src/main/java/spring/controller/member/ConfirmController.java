@@ -3,6 +3,7 @@ package spring.controller.member;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.tiles.request.jsp.extractor.SessionScopeExtractor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -59,17 +60,34 @@ public class ConfirmController {
 		
 		return "confirm/ConfirmNickname";
 	}
+	
+//	int togle = 1;
+	
 	@RequestMapping("/LikeCheck.hash")
 	private String like_check(@RequestParam("connum") int connum, @RequestParam("conhash") String hashname,
 			HttpSession session,Model model){
 		System.out.println("좋아요 눌렀을때!");
 		model.addAttribute("connum",connum);
 		model.addAttribute("conhash",hashname);
-
+		
 		Dao.conlikePlus(connum);
 		Dao.adminlike(hashname);
 		int conlike = Dao.getConlike(connum);
 		session.setAttribute("conlike", conlike);
+		
+		/*if(getConnum == connum && togle == 1 )
+		{
+			Dao.conlikePlus(connum);
+			Dao.adminlike(hashname);
+			int conlike = Dao.getConlike(connum);
+			
+			session.setAttribute("togle", "off");
+			session.setAttribute("conlike", conlike);
+			togle = 0 ;
+			System.out.println("togle :: 1");
+			
+		}*/
+		
 		return "confirm/likeCheck";
 		//return "fixpage/boardDiv"; //보현test중
 	}
@@ -85,6 +103,15 @@ public class ConfirmController {
 		Dao.adminunlike(hashname);
 		int conlike = Dao.getConlike(connum);
 		session.setAttribute("conlike", conlike);
+		
+		/*if(togle == 0 )
+		{
+			session.setAttribute("togle", "on");
+			session.setAttribute("conlike", conlike);
+			togle = 1 ;
+			System.out.println("togle :: 0");
+		}*/
+		
 		return "confirm/unlike";
 		//return "fixpage/boardDiv"; //보현test중
 	}

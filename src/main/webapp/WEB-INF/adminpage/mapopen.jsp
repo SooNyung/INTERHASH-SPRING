@@ -1,14 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-    <%@ page isELIgnored="false" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false" %>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Å°¿öµå·Î Àå¼Ò°Ë»öÇÏ°í ¸ñ·ÏÀ¸·Î Ç¥ÃâÇÏ±â</title>
+    <title>í‚¤ì›Œë“œë¡œ ì¥ì†Œê²€ìƒ‰í•˜ê³  ëª©ë¡ìœ¼ë¡œ í‘œì¶œí•˜ê¸°</title>
     <style>
-.map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'µ¸¿ò',sans-serif;font-size:12px;}
+.map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'ë‹ì›€',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#111;text-decoration: none;}
 .map_wrap {position:relative;width:100%;height:500px;}
 #menu_wrap {position:absolute;top:0;left:0;bottom:0;width:280px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 200, 1);z-index: 1;font-size:12px;border-radius: 10px;}
@@ -30,55 +30,40 @@
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9ee99f6f7e29a9a2459e7218773c63fe&libraries=services"></script>
 <script>
-// ¸¶Ä¿¸¦ ´ãÀ» ¹è¿­ÀÔ´Ï´Ù
+// ë§ˆì»¤ë¥¼ ë‹´ì„ ë°°ì—´ì…ë‹ˆë‹¤
 
-var mapContainer = document.getElementById('map'), // Áöµµ¸¦ Ç¥½ÃÇÒ div 
+var mapContainer = document.getElementById('map'), // ì§€ë„ë¥¼ í‘œì‹œí•  div 
 mapOption = { 
-    center: new daum.maps.LatLng(${latitude}, ${longtitude}), // ÁöµµÀÇ Áß½ÉÁÂÇ¥
-    level: 3 // ÁöµµÀÇ È®´ë ·¹º§
+    center: new daum.maps.LatLng(${latitude}, ${longtitude}), // ì§€ë„ì˜ ì¤‘ì‹¬ì¢Œí‘œ
+    level: 3 // ì§€ë„ì˜ í™•ëŒ€ ë ˆë²¨
 };
 
-var map = new daum.maps.Map(mapContainer, mapOption); // Áöµµ¸¦ »ı¼ºÇÕ´Ï´Ù
+var map = new daum.maps.Map(mapContainer, mapOption); // ì§€ë„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
 
-//¸¶Ä¿°¡ Ç¥½ÃµÉ À§Ä¡ÀÔ´Ï´Ù 
+//ë§ˆì»¤ê°€ í‘œì‹œë  ìœ„ì¹˜ì…ë‹ˆë‹¤ 
 var markerPosition  = new daum.maps.LatLng(${latitude}, ${longtitude}); 
 
-//¸¶Ä¿¸¦ »ı¼ºÇÕ´Ï´Ù
+//ë§ˆì»¤ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
 var marker = new daum.maps.Marker({
 position: markerPosition
 });
 
-//¸¶Ä¿°¡ Áöµµ À§¿¡ Ç¥½ÃµÇµµ·Ï ¼³Á¤ÇÕ´Ï´Ù
+//ë§ˆì»¤ê°€ ì§€ë„ ìœ„ì— í‘œì‹œë˜ë„ë¡ ì„¤ì •í•©ë‹ˆë‹¤
 marker.setMap(map);
 
-(function(marker, ${maptitle}) {
-    daum.maps.event.addListener(marker, 'mouseover', function() {
-        displayInfowindow(marker, ${maptitle});
-    });
+//ë§ˆì»¤ ìœ„ì— í‘œì‹œí•  ì¸í¬ìœˆë„ìš°ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
+var iwContent = '<div style="margin: auto;width:50px;text-align:center;"><div style="margin:3px  auto;text-align:center; width:150px;">${maptitle}</div></div>', // ì¸í¬ìœˆë„ìš°ì— í‘œì¶œë  ë‚´ìš©ìœ¼ë¡œ HTML ë¬¸ìì—´ì´ë‚˜ document elementê°€ ê°€ëŠ¥í•©ë‹ˆë‹¤
+iwPosition = new daum.maps.LatLng(${latitude}, ${longtitude}); //ì¸í¬ìœˆë„ìš° í‘œì‹œ ìœ„ì¹˜ì…ë‹ˆë‹¤;
 
-    daum.maps.event.addListener(marker, 'mouseout', function() {
-        infowindow.close();
-    });
-  
+// ì¸í¬ìœˆë„ìš°ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
+var infowindow = new daum.maps.InfoWindow({
+	position : iwPosition,
+    content : iwContent
+});
 
-    itemEl.onmouseover =  function () {
-        displayInfowindow(marker, ${maptitle});
-    };
-
-    itemEl.onmouseout =  function () {
-        infowindow.close();
-    };
-})(marker, ${maptitle});
+infowindow.open(map, marker);
 
 
-function displayInfowindow(marker, title) {
-    var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
-
-    infowindow.setContent(content);
-    infowindow.open(map, marker);    
-}
-//¾Æ·¡ ÄÚµå´Â Áöµµ À§ÀÇ ¸¶Ä¿¸¦ Á¦°ÅÇÏ´Â ÄÚµåÀÔ´Ï´Ù
-//marker.setMap(null);    
 
 </script>
 </body>

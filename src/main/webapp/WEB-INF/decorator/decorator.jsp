@@ -11,7 +11,7 @@
    href='https://fonts.googleapis.com/css?family=Open+Sans'>
 <link rel="stylesheet"
    href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-
+<link href='https://fonts.googleapis.com/css?family=Bad+Script' rel='stylesheet' type='text/css'>
 <style>
 
 html,body{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open Sans", sans-serif;}
@@ -27,6 +27,7 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 <style>
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
 
+h2{font-family: 'Bad Script', cursive;}
 .w3-theme-l5 {
    color: #000 !important;
    background-color: #f5f7f8 !important
@@ -84,7 +85,7 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 }
 
 .account-right {
-   margin-left: 650px;
+   margin-left: 80%;
    float: left;
 }
 
@@ -105,7 +106,7 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 }
 
 .margin-right {
-   margin: 10px 0px 0px 10px;
+   margin: 20px 0px 0px 30px;
 }
 
 .color1 {
@@ -134,7 +135,7 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 }
 
 .padding-large {
-   padding: 10px 5px 0px 5px;
+   padding: 0px 5px 0px 5px;
 }
 
 .closebtn.hover-text.dropdown-hover.hover-white {
@@ -387,7 +388,7 @@ li a {
 
 /* Change the link color on hover */
 li a:hover {
-   background-color: #b2b2b2;
+   background-color: #ffcccc;
    border-radius:7px;
 }
 
@@ -432,7 +433,7 @@ ul.menu:after {
 }
 
 .navbar li .account{display:none;
-width: 180px;
+width: 120px;
 border-radius:7px;
 }
 
@@ -604,19 +605,7 @@ height:50px;
        자바스립트의 FileReader() 를 통해 임시 경로에 사진을 업로드 함.
        또한 attr 을 통해 사진의 크기를 강제로 조정함.
     */
-     function readURL(input) {
-        if (input.files && input.files[0]) {
-        var reader = new FileReader();
-           reader.onload = function (e) {
- 
-                 $('#blah').attr('src', e.target.result); 
-                 $('#blah').attr('height', '100px');
-                 $('#blah').attr('width', '100px');
-            }
 
-          reader.readAsDataURL(input.files[0]);
-        }
-    } 
     function fileUploadPreview(thisObj, preViewer) {
 
       // 형식 체크
@@ -771,12 +760,12 @@ height:50px;
    <div id=head>
       <ul class="navbar color1">
          <li class="small"><a href="Board.hash"
-            class="padding-large margin-right"><b>I N T E R H A S H #</b></a></li>
+            class="padding-large margin-right"><h2>I N T E R H A S H #</h2></a></li>
          <li class="small">
          <div class="message">
          <a href="#" onclick="window.open('MessageList.hash','new','width=400 height=350');return false" 
          class="padding-large margin-right"  title="Messages">
-            <i class="fa fa-envelope"></i><span class="count badge right small circle pink">${messagecount}</span>
+           <img src ="image/logo/message .png" onmouseover="this.src='image/logo/message2.png'" onmouseout="this.src='image/logo/message .png'" width="30px" height="30px"/><span class="count badge right small circle pink">${messagecount}</span>
          </a>
          </div>
       
@@ -806,7 +795,7 @@ height:50px;
          <li class="small"><a href="#"
             class="margin-right padding-large left-align" title="Alarm">
             
-            <i class="fa fa-bell"></i></a></li>
+           <img src="image/logo/alarm1.png" onmouseover="this.src='image/logo/alarm.png'" onmouseout="this.src='image/logo/alarm1.png'" width="30px" height="30px"/></a></li>
 
          <li class="small right">
          <div class="topnav">   <a href="#" title="MyAccount"><img id ="profileImg" src='<c:url value="/upload/${sessionScope.profilePhoto}" />' class="circle" width="10%" height="10%">
@@ -843,11 +832,11 @@ height:50px;
                <c:if test="${sessionScope.memId=='admin@admin.com' }">
                <tr>
      
-      				<td colspan=3 align="right"><input type="button" value="관리자페이지" onclick="window.location.href='ManagerPage.hash'"></td>
-      				</tr>
-      			</c:if>
-					
-				</table> --%>
+                  <td colspan=3 align="right"><input type="button" value="관리자페이지" onclick="window.location.href='ManagerPage.hash'"></td>
+                  </tr>
+               </c:if>
+               
+            </table> --%>
 
 
    <!-- main -->
@@ -913,15 +902,15 @@ height:50px;
             <div class="accordion white border-round">
                <button onclick="myContent();"
                   class="btn-block theme-l1 left-align border-round">
-                  <i class="fa fa-circle-o-notch fa-fw margin-right"></i> 내 글 보기
+                  <i class="fa fa-circle-o-notch fa-fw"></i> 내 글 보기
                </button>
                <button onclick="updateContent();"
                   class="btn-block theme-l1 left-align">
-                  <i class="fa fa-calendar-check-o fa-fw margin-right"></i> 최신 글 보기
+                  <i class="fa fa-calendar-check-o fa-fw"></i> 최신 글 보기
                </button>
                <button onclick="myFunction();"
                   class="btn-block theme-l1 left-align border-round">
-                  <i class="fa fa-users fa-fw margin-right"></i> 인기 글 보기
+                  <i class="fa fa-users fa-fw"></i> 인기 글 보기
                </button>
                <script>
                   function myContent() {
@@ -969,17 +958,17 @@ height:50px;
   </div>
      
    <div id="jb-right">
-   	<div style="width:100%; height: 350px; ">
-   	<div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
-   	</div>
-   	<div style="width:100%; ">
-	<div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">
-		<div style="height:100%">
-			<%-- <iframe style="height:100%" src= "http://192.168.50.42:8080/?id=${sessionScope.nickName }">
-			</iframe> --%>
-		</div>
-	</div>
-	</div>
+      <div style="width:100%; height: 350px; ">
+      <div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
+      </div>
+      <div style="width:100%; ">
+   <div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">
+      <div style="height:100%">
+         <iframe style="height:100%" src= "http://192.168.50.42:8080/?id=${sessionScope.nickName }">
+         </iframe>
+      </div>
+   </div>
+   </div>
    </div>
    </div>
       
