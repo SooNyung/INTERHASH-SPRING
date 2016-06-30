@@ -5,10 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%
-    String cp = request.getContextPath();
-	System.out.println(cp);
-%>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
@@ -479,7 +475,7 @@ function insert(connum){
 			$("#test_div *").remove();
 			$("#comment_div *").remove();
 			for(var i=0;i<args.data.length;i++){
-			if(args.session==args.data[i].email){
+				if(args.session==args.data[i].email){
 					$('#test_div').append(
 						/* ${sdf.format(content.conmodifieddate)} */
 						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
@@ -533,28 +529,7 @@ function insert(connum){
 	})
 	}	 --%>
 
-function test(connum){
-   
-   var con = connum;
-   var texta = $('#comment_textarea').val();
 
-   var url="<%=cp%>/InsertComment.hash";
-   var params ="connum="+con+"&comcontent="+texta;
-
-   $.ajax({
-      type:"post"
-      ,url:url
-      ,data:params
-      ,dataType:"json"
-       ,success:function(args){
-          
-       alert('성고고고고오오오오옹');
-      }  
-       ,error:function() {
-          alert('실패');
-       }
-   });
-}
 function Map(){
    url="template2.hash";
    window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
