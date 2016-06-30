@@ -124,12 +124,13 @@ function tagCheck() {
 	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 }
 
-function like(num,String){
-	var select_id = "${sessionScope.conlike}";//'#'+num+"like_bn";
+//num : connum을 출력 / String : hashtag를 출력
+function like(num,String,conlike){
+	var select_id = conlike;//"${sessionScope.conlike}" ;//'#'+num+"like_bn";
 	var like_cnt =select_id+1;//$(select_id).text();
 	alert(select_id);
 	
-	//$(select_id).text(like_cnt+1);
+	$(select_id).text(like_cnt+1);
 	
 	alert(like_cnt);
 	url = "LikeCheck.hash?connum="+num+"&conhash="+String;
@@ -137,19 +138,19 @@ function like(num,String){
 	//location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
 }
 
-function unlike(num,String){
-	var select_id = "${sessionScope.conlike}";//'#'+num+"unlike_bn";
+ function unlike(num,String,conlike){ 
+	var select_id = conlike;//"${sessionScope.conlike}";//'#'+num+"unlike_bn";
 	var like_cnt =select_id-1;//$(select_id).text();
 	alert(select_id);
 	
-	//$(select_id).text(like_cnt-1);
+	$(select_id).text(like_cnt-1);
 	
 	alert(like_cnt);
 	
 	url = "Unlike.hash?connum="+num+"&conhash="+String;
 	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 	//location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
-}
+} 
 
 
 
@@ -262,6 +263,7 @@ function modal_close(){
 		left:-130px;
 		opacity:0.5;
 	}
+	
 	#board_commnet_click{
 		height:50px;
 		width:130px;
@@ -547,8 +549,17 @@ function mapopen(latitude,longtitude,maptitle ) {
     
    	<%-- <button id="like_ajax" type="button" class="w3-theme-d1 w3-margin-bottom like" ><i class="fa fa-thumbs-up"></i> ?Like ${con.conlike}</button> --%>
     
-  	<button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}like_bn">${con.conlike}</i></button> 
-  	<button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlike('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}unlike_bn"> ${con.conlike}</i></button>    
+    <%--  <c:if test= "${togle=='on'}">  --%>
+    
+  		<button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:like('${con.connum}','${con.conhash}','${con.conlike}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}like_bn">${con.conlike}</i></button>
+  		<button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide " onclick="javascript:unlike('${con.connum}','${con.conhash}','${con.conlike}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}unlike_bn"> ${con.conlike}</i></button> 
+  	
+  	<%--  </c:if>
+  	<c:if test= "${togle=='off'}">
+  		<button type="button" class="w3-theme-d2 w3-margin-bottom unlike " onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}unlike_bn"> ${con.conlike}</i></button>    
+    	<button type="button" class="w3-theme-d1 w3-margin-bottom like hide " onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}like_bn">${con.conlike}</i></button>
+    </c:if> --%> 
+    
     <button type="button" class="w3-theme-d3 w3-margin-bottom" ><i class="fa fa-comment"></i> Comment ${con.connum}</button>  	
 	</div>
 
