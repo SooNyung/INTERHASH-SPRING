@@ -7,11 +7,12 @@
 <!DOCTYPE html>
 <html>
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="icono.min.css">
 <link rel='stylesheet'
    href='https://fonts.googleapis.com/css?family=Open+Sans'>
 <link rel="stylesheet"
    href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-
+<link href='https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Lobster|Raleway|Open+Sans+Condensed:300|Josefin+Sans|Permanent+Marker|Poiret+One|Orbitron:400,900' rel='stylesheet' type='text/css'>
 <style>
 
 html,body{font-family: "Open Sans", sans-serif; font: 400 0.875rem/1.5 "Open Sans", sans-serif;}
@@ -26,6 +27,7 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 <title>에벌레</title>
 <style>
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
+h2{font-family: 'Orbitron', sans-serif;}
 
 .w3-theme-l5 {
    color: #000 !important;
@@ -105,7 +107,7 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 }
 
 .margin-right {
-   margin: 10px 0px 0px 10px;
+   margin: 20px 0px 0px 30px;
 }
 
 .color1 {
@@ -134,7 +136,7 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 }
 
 .padding-large {
-   padding: 10px 5px 0px 5px;
+   padding: 0px 0px 0px 0px;
 }
 
 .closebtn.hover-text.dropdown-hover.hover-white {
@@ -387,7 +389,7 @@ li a {
 
 /* Change the link color on hover */
 li a:hover {
-   background-color: #b2b2b2;
+   background-color: #FFCCCC;
    border-radius:7px;
 }
 
@@ -771,12 +773,13 @@ height:50px;
    <div id=head>
       <ul class="navbar color1">
          <li class="small"><a href="Board.hash"
-            class="padding-large margin-right"><b>I N T E R H A S H #</b></a></li>
+            class="padding-large margin-right"><h2>I N T E R H A S H #</h2></a></li>
          <li class="small">
          <div class="message">
          <a href="#" onclick="window.open('MessageList.hash','new','width=400 height=350');return false" 
          class="padding-large margin-right"  title="Messages">
-            <i class="fa fa-envelope"></i><span class="count badge right small circle pink">${messagecount}</span>
+            <img src = "image/logo/message .png" width="30px" height ="30px" onmouseover="this.src='image/logo/message2.png'"
+            onmouseout="this.src='image/logo/message .png'" ><span class="count badge right small circle pink">${messagecount}</span>
          </a>
          </div>
       
@@ -806,7 +809,8 @@ height:50px;
          <li class="small"><a href="#"
             class="margin-right padding-large left-align" title="Alarm">
             
-            <i class="fa fa-bell"></i></a></li>
+            <img src ="image/logo/alarm1.png" width="30px" height ="30px" onmouseover="this.src='image/logo/alarm.png'"
+            onmouseout="this.src='image/logo/alarm1.png'"/></a></li>
 
          <li class="small right">
          <div class="topnav">   <a href="#" title="MyAccount"><img id ="profileImg" src='<c:url value="/upload/${sessionScope.profilePhoto}" />' class="circle" width="10%" height="10%">

@@ -30,7 +30,7 @@ $(function() {
   	});
   	  
 });
-$(function(){
+ $(function(){
 	$(".like").click(function(){
 		var index = $(".like").index(this);
 		if($(".like:eq("+index+")").hasClass("hide")){
@@ -138,6 +138,7 @@ function like(num,String,conlike){
 	//location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
 }
 
+<<<<<<< HEAD
  function unlike(num,String,conlike){ 
 	var select_id = conlike;//"${sessionScope.conlike}";//'#'+num+"unlike_bn";
 	var like_cnt =select_id-1;//$(select_id).text();
@@ -147,12 +148,14 @@ function like(num,String,conlike){
 	
 	alert(like_cnt);
 	
+=======
+function unlike(num,String){
+
+>>>>>>> b72330d3434853ada5f9352162b4901e8164e8aa
 	url = "Unlike.hash?connum="+num+"&conhash="+String;
 	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 	//location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
 } 
-
-
 
 function modal_close(){
 	var e = $.Event("keyup");
@@ -454,7 +457,7 @@ function test(connum){
 }
 function Map(){
 	url="template2.hash";
-	window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
+	window.open(url,"post","toolbar=no ,width=700 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
 	} 
 
 function mapopen(latitude,longtitude,maptitle ) {
@@ -486,11 +489,11 @@ function mapopen(latitude,longtitude,maptitle ) {
 			<div style="clear: both;"></div>
 			<div id="sub">
 				<span id="imageon" style="width: 50px; float: left;"> 
-				 <img src='<c:url value="/image/logo/camera.jpg" />' onclick="$('.fileData:last').click();" /> 
+				 <img src='<c:url value="/image/logo/photo.png" />' width="30px" height="30px" onclick="$('.fileData:last').click();" /> 
 				</span> 
 				
 				<span id="imageon" style="width: 50px; float: left;">
-				<img src='<c:url value="/image/logo/place.PNG" />' onclick="Map()" />
+				<img src='<c:url value="/image/logo/place.png" />' width="30px" height="30px" onclick="Map()" />
 				<input type="hidden" name="maptitle"/>
 				<input type="hidden" name="mapplace" /> 			
 				</span> 
@@ -512,7 +515,44 @@ function mapopen(latitude,longtitude,maptitle ) {
             </div>
           </div>
       
-      
+<!-- <script>
+/* $(function(){
+	$(".like").click(function(){
+		var index = $(".like").index(this);
+		if($(".like:eq("+index+")").hasClass("hide")){
+			$(".like:eq("+index+")").removeClass("hide");
+			$(".unlike:eq("+index+")").addClass("hide");
+		}else{
+			$(".like:eq("+index+")").addClass("hide");
+			$(".unlike:eq("+index+")").removeClass("hide");
+		}
+	});
+}); */
+
+/* $(function(){
+	$("#btn").click(function(){
+		var index = $("#btn").index(this);
+		if($("#btn:eq("+index+")").val()=='like'){
+			$("#btn:eq("+index+")").val('unlike');
+			$("#btn:eq("+index+")").css({"background-color" : "#ffa500"});
+			
+		}
+		else{
+			$("#btn:eq("+index+")").val('like');
+			$("#btn:eq("+index+")").css({"background-color" : "#7cfc00"});
+			
+		}
+	});
+}); */
+
+/* $(function(){
+	$('').click(function(){
+		unlike(this);
+	}
+}
+ */
+
+</script> -->
  
 <form method='post' action='ContentView.hash'>
 
@@ -546,7 +586,9 @@ function mapopen(latitude,longtitude,maptitle ) {
     </div> --%>
 
 	<div class="w3-btn">
+        <%-- <button id="like_ajax" type="button" class="w3-theme-d1 w3-margin-bottom like" ><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button> --%>
     
+<<<<<<< HEAD
    	<%-- <button id="like_ajax" type="button" class="w3-theme-d1 w3-margin-bottom like" ><i class="fa fa-thumbs-up"></i> ?Like ${con.conlike}</button> --%>
     
     <%--  <c:if test= "${togle=='on'}">  --%>
@@ -561,6 +603,15 @@ function mapopen(latitude,longtitude,maptitle ) {
     </c:if> --%> 
     
     <button type="button" class="w3-theme-d3 w3-margin-bottom" ><i class="fa fa-comment"></i> Comment ${con.connum}</button>  	
+=======
+  	<button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button> 
+  	<button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlike('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button>
+   
+   <%--  <input type="button" id="btn" class="btn1 btn2" value="like" onclick="javascript:like('${con.connum}')"/> --%>
+
+    <button type="button" class="w3-theme-d3 w3-margin-bottom" onclick="location.href='Board.hash'"><i class="fa fa-comment"></i>  Comment ${con.connum}</button>  	
+
+>>>>>>> b72330d3434853ada5f9352162b4901e8164e8aa
 	</div>
 
 	<%-- <div id="board_img">
