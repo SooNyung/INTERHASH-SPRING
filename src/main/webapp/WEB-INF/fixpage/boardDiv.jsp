@@ -124,6 +124,20 @@ function tagCheck() {
    newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 }
 
+<<<<<<< HEAD
+//num : connum을 출력 / String : hashtag를 출력
+function like(num,String,conlike){
+	var select_id = conlike;//"${sessionScope.conlike}" ;//'#'+num+"like_bn";
+	var like_cnt =select_id+1;//$(select_id).text();
+	alert(select_id);
+	
+	$(select_id).text(like_cnt+1);
+	
+	alert(like_cnt);
+	url = "LikeCheck.hash?connum="+num+"&conhash="+String;
+	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	//location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
+=======
 function like(num,String){
    var select_id = "${sessionScope.conlike}";//'#'+num+"like_bn";
    var like_cnt =select_id+1;//$(select_id).text();
@@ -135,9 +149,29 @@ function like(num,String){
    url = "LikeCheck.hash?connum="+num+"&conhash="+String;
    newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
    //location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
+>>>>>>> 9567d6b5b25bf8cec69f30dc527c1df6cd2c12ab
 }
 
+<<<<<<< HEAD
+ function unlike(num,String,conlike){ 
+	var select_id = conlike;//"${sessionScope.conlike}";//'#'+num+"unlike_bn";
+	var like_cnt =select_id-1;//$(select_id).text();
+	alert(select_id);
+	
+	$(select_id).text(like_cnt-1);
+	
+	alert(like_cnt);
+	
+=======
 function unlike(num,String){
+<<<<<<< HEAD
+
+>>>>>>> b72330d3434853ada5f9352162b4901e8164e8aa
+	url = "Unlike.hash?connum="+num+"&conhash="+String;
+	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	//location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
+} 
+=======
    var select_id = "${sessionScope.conlike}";//'#'+num+"unlike_bn";
    var like_cnt =select_id-1;//$(select_id).text();
    alert(select_id);
@@ -150,6 +184,7 @@ function unlike(num,String){
    newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
    //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
 }
+>>>>>>> 9567d6b5b25bf8cec69f30dc527c1df6cd2c12ab
 
 
 
@@ -166,6 +201,134 @@ function modal_close(){
 [class*="Font Awesome-"]:before {
   font-family: 'Font Awesome', sans-serif;
 }
+<<<<<<< HEAD
+	.background-color{color:#000 !important; background-color:#f5f7f8 !important}
+	#board_div{
+		width:500px;
+		height:230px;
+/* 		 background-color: black;  */
+		
+		padding:10px;
+		margin:10px;
+	}
+	
+	
+	#board_img{
+		width:270px;
+		height:280px;
+		/* background-color: green; */
+		float:left;
+		/* border:2px solid; */
+		margin:auto;
+	}
+	#img{
+		width: 180px;
+		height:150px;
+		margin:auto;
+	}
+	#board_main{
+		width:470px;
+		height:310px;
+		/* background-color: yellow; */
+		float:right;
+		/*  border:1px solid;  */
+		margin:auto;
+	}
+	#board_subject{
+		width:470px;
+		height:50px;
+		 border:1px solid #bcbcbc; 
+		margin:auto;
+		/* background-color: blue; */
+	}
+	#board_content{
+		width:470px;
+		height:200px;
+		border:1px solid #bcbcbc; 
+		margin:auto;
+	}
+	#board_like{
+		width:470px;
+		height:50px;
+		/* border:2px solid; */
+		margin:auto;
+	}
+	
+	#like{
+		position: relative;
+	}
+	#commnet{
+	}
+	#like_img{
+		height:35px;
+		width:43px;
+		/* border:1px solid; */
+		margin:5px;
+		float:left;
+	}
+	#like_text{
+		height:35px;
+		width:70px;
+		/* border:1px solid; */
+		margin:5px;
+		float:left;
+		text-align: center;
+	}
+	#commnet_img{
+		height:35px;
+		width:43px;
+	/* 	border:1px solid; */
+		margin:5px;
+		float:left;
+	}
+	#commnet_text{
+		height:35px;
+		width:70px;
+		/* border:1px solid; */
+		margin:5px;
+		float:left;
+		text-align: center;
+	}
+	#board_subject_click{
+		height:50px;
+		width:130px;
+		position: relative;
+		background-color: white;
+		float:left;
+		left:-130px;
+		opacity:0.5;
+	}
+	
+	#board_commnet_click{
+		height:50px;
+		width:130px;
+		position: relative;
+		left:5px;
+		top:-45px;
+		float:left;
+		background-color: white;
+		opacity:0.5;
+	}
+	p{
+		
+		font-size: 18px;
+		margin:5px auto;
+	}
+	
+	
+	
+	#writeform{
+		width:700px;
+		height:50px;
+		margin: 0px;
+		/* border:1px solid; */
+	}
+	
+	#textfield {
+	width: 465px;
+	height: 80px;
+	background: #ffffff;
+=======
    .background-color{color:#000 !important; background-color:#f5f7f8 !important}
    #board_div{
       width:500px;
@@ -291,6 +454,7 @@ function modal_close(){
    width: 465px;
    height: 80px;
    background: #ffffff;
+>>>>>>> 9567d6b5b25bf8cec69f30dc527c1df6cd2c12ab
 }
 
 #preview {
@@ -549,6 +713,66 @@ function mapopen(latitude,longtitude,maptitle ) {
 
    <div class="w3-btn">
     
+   	<%-- <button id="like_ajax" type="button" class="w3-theme-d1 w3-margin-bottom like" ><i class="fa fa-thumbs-up"></i> ?Like ${con.conlike}</button> --%>
+    
+    <%--  <c:if test= "${togle=='on'}">  --%>
+    
+  		<button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:like('${con.connum}','${con.conhash}','${con.conlike}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}like_bn">${con.conlike}</i></button>
+  		<button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide " onclick="javascript:unlike('${con.connum}','${con.conhash}','${con.conlike}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}unlike_bn"> ${con.conlike}</i></button> 
+  	
+  	<%--  </c:if>
+  	<c:if test= "${togle=='off'}">
+  		<button type="button" class="w3-theme-d2 w3-margin-bottom unlike " onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}unlike_bn"> ${con.conlike}</i></button>    
+    	<button type="button" class="w3-theme-d1 w3-margin-bottom like hide " onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}like_bn">${con.conlike}</i></button>
+    </c:if> --%> 
+    
+    <button type="button" class="w3-theme-d3 w3-margin-bottom" ><i class="fa fa-comment"></i> Comment ${con.connum}</button>  	
+	</div>
+
+	<%-- <div id="board_img">
+	<a href="ContentView.hash?connum=${con.connum}">
+		<img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />' />
+		</a>
+	</div>
+	<div id ="board_main">
+	<a href="ContentView.hash?connum=${con.connum}">
+	
+		 <div id="board_subject">
+			<div id="subject">
+			<label>'${con.connickname}'</label>
+			</div>
+			<div id="time">
+			<label>'${con.conmodifieddate}'</label>
+			</div>
+		</div>
+		<div id="board_content">
+			<label>'${con.content}'</label>
+			<br/>
+			<label> ${con.conhash} </label>
+
+		</div>
+ 		<div id="board_like">
+			<div id="like">
+				<div id="like_img">
+				</div>
+				<div id="like_text">
+					<p>123</p>
+				</div>
+				<div id="like_alpha">
+				</div>
+			</div>
+			<div id="commnet">
+				<div id="commnet_img">
+				</div>
+				<div id="commnet_text">
+				
+					
+				</div>
+				<P><a href="ContentView.hash?connum=${con.connum}"></a></P>
+			</div>
+		</div>  
+		</a>
+	</div> --%>
       <%-- <button id="like_ajax" type="button" class="w3-theme-d1 w3-margin-bottom like" ><i class="fa fa-thumbs-up"></i> ?Like ${con.conlike}</button> --%>
     
      <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}like_bn">${con.conlike}</i></button> 
