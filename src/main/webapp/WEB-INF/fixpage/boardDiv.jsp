@@ -369,6 +369,23 @@ function modal_close(){
    overflow: auto;
 }
 
+a {
+  color: #C2C2C2;
+  outline: 0;
+  text-decoration: none;
+}
+
+#View {
+  color: #C2C2C2;
+  outline: 0;
+  text-decoration: none;
+}
+a:focus, a:hover {
+  text-decoration: underline; 
+  color:#ea4c88;
+  
+}
+
  .box-shadow{box-shadow:0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)!important;margin-top:0px;}
  .border-round{border-radius:4px!important}
  .container{content:"";display:table;clear:both;padding:0.01em 16px; margin-left:0px;}
@@ -405,6 +422,7 @@ $(function(){
       }
    });  
 }); 
+
 
 function modifycon(connum){
    url="/INTERHASH/UpdateContent.hash?check=y&&connum="+connum
@@ -607,7 +625,7 @@ function mapopen(latitude,longtitude,maptitle ) {
 <table width="100%">
 <tr>  
 <td width="10%"><img src='<c:url value="/upload/${sessionScope.profilePhoto}"/>' alt="Avatar" class="left-align circle" style="width:50px"></td>
-<td width="65%"><b>${con.connickname}</b></td>
+<td width="65%"><a id="View" href="Board.hash"><b>${con.connickname}</b></a></td>
 <td width="35%"><b class="right-align opacity"><font color="#b2b2b2">${con.conmodifieddate}</font></b></td>
 </tr>
 </table>
