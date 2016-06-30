@@ -201,7 +201,6 @@ function modal_close(){
 [class*="Font Awesome-"]:before {
   font-family: 'Font Awesome', sans-serif;
 }
-<<<<<<< HEAD
 	.background-color{color:#000 !important; background-color:#f5f7f8 !important}
 	#board_div{
 		width:500px;
@@ -328,7 +327,6 @@ function modal_close(){
 	width: 465px;
 	height: 80px;
 	background: #ffffff;
-=======
    .background-color{color:#000 !important; background-color:#f5f7f8 !important}
    #board_div{
       width:500px;
@@ -454,7 +452,6 @@ function modal_close(){
    width: 465px;
    height: 80px;
    background: #ffffff;
->>>>>>> 9567d6b5b25bf8cec69f30dc527c1df6cd2c12ab
 }
 
 #preview {
@@ -628,6 +625,8 @@ function mapopen(latitude,longtitude,maptitle ) {
 
 </script>
 </head>
+
+
 <body>
 
 <div>
@@ -769,58 +768,9 @@ function mapopen(latitude,longtitude,maptitle ) {
 		</div>  
 		</a>
 	</div> --%>
-      <%-- <button id="like_ajax" type="button" class="w3-theme-d1 w3-margin-bottom like" ><i class="fa fa-thumbs-up"></i> ?Like ${con.conlike}</button> --%>
-    
-     <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}like_bn">${con.conlike}</i></button> 
-     <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlike('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}unlike_bn"> ${con.conlike}</i></button>    
-    <button type="button" class="w3-theme-d3 w3-margin-bottom" ><i class="fa fa-comment"></i> Comment ${con.connum}</button>     
-   </div>
 
-   <%-- <div id="board_img">
-   <a href="ContentView.hash?connum=${con.connum}">
-      <img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />' />
-      </a>
-   </div>
-   <div id ="board_main">
-   <a href="ContentView.hash?connum=${con.connum}">
-   
-       <div id="board_subject">
-         <div id="subject">
-         <label>'${con.connickname}'</label>
-         </div>
-         <div id="time">
-         <label>'${con.conmodifieddate}'</label>
-         </div>
-      </div>
-      <div id="board_content">
-         <label>'${con.content}'</label>
-         <br/>
-         <label> ${con.conhash} </label>
-
-      </div>
-       <div id="board_like">
-         <div id="like">
-            <div id="like_img">
-            </div>
-            <div id="like_text">
-               <p>123</p>
-            </div>
-            <div id="like_alpha">
-            </div>
-         </div>
-         <div id="commnet">
-            <div id="commnet_img">
-            </div>
-            <div id="commnet_text">
-            
-               
-            </div>
-            <P><a href="ContentView.hash?connum=${con.connum}"></a></P>
-         </div>
-      </div>  
-      </a>
-   </div> --%>
 </div>
+
 </c:forEach>
 
 
