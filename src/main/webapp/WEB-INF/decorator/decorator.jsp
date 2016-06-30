@@ -311,11 +311,12 @@ padding: 0px 5px 0px 5px;}
    /*  border: 1px solid #bcbcbc; */
 }
 #jb_search {
-   margin-top: 15px;
+   margin-top: 20px;
    margin-right: 100px;
+   padding-right:10px;
    float: right;
-   width: 250px;
-   height: auto;
+   width: 210px;
+   height: 30px;
    /*    border:1px solid #bcbcbc; */
 }
 
@@ -808,7 +809,12 @@ height:50px;
 
          <div id="jb_search">
             <form method="post" action="Board.hash">
-               <input type="text" name="hash" /> <input type="submit" value="검색" />
+              <div style="float:left">
+               <input type="text" name="hash" />
+               </div>
+               <div style="float:right;">
+                <input type="image" src ="image/logo/search.png" width="30px" height="30px"/>
+            </div>
             </form>
          </div>
 
