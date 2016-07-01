@@ -27,4 +27,12 @@ values(num_seq.nextval, #{drawalemail}, #{drawalcause}, sysdate)
 <select id ="report" resultType="spring.model.ContentCommand">
 select * from contents where conreportcount >= 1 
 </select>
+
+<select id="contentcount" resultType="int">
+select count(*) from contents
+</select>
+
+<select id = "likecount" resultType="int">
+select sum(conlike) from contents
+</select>
 </mapper>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import spring.controller.member.TempPasswd;
 import spring.model.MemberCommand;
 import spring.model.ProfilePhotoCommand;
+import spring.model.VisitCommand;
 
 @Repository
 public class MemberDAO {
@@ -108,5 +109,9 @@ public class MemberDAO {
 		return session.selectOne("member.photoView", email);
 	}
 
-
+	public int visitor(VisitCommand visit){
+		return session.insert("member.visitor", visit);
+		
+	}
+	
 }
