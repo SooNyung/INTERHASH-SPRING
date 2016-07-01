@@ -79,6 +79,7 @@ input {
       -ms-flex: 1;
           flex: 1;
   padding: 3rem 0;
+  
 }
 
 .form input[type="password"], .form input[type="text"], .form input[type="submit"] {
