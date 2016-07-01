@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -101,22 +102,22 @@ public class CommentController {
 	}
 
 	
-	@RequestMapping("/deleteComment.hash")
+	@RequestMapping(value="/deleteComment.hash", method=RequestMethod.POST)
 	public void deleteComment(
-			@RequestParam("comnum") int comnum,
-			@RequestParam("connum") int connum,
+			@RequestParam("comnum") String comnum,
+			@RequestParam("connum") String connum,
 			HttpServletResponse resp,
-			ContentCommand contentdto
-			) throws IOException{
-		
-		
+			HttpServletRequest request
+			) throws Exception{
+
 		SimpleDateFormat sdf= new SimpleDateFormat("YY-MM-dd HH:mm");
 		//delete
-		int check = commentdao.deleteComment(comnum);
-		
+		int check = commentdao.deleteComment(Integer.parseInt(comnum));
+		String email = (String) request.getSession().getAttribute("memId");
+		System.out.println("deletecheck:::::"+check);
 		//select comment
-		contentdto = contentdao.getContent(connum);
-		ArrayList<CommentCommand> array = (ArrayList) commentdao.getComments(connum);
+		ArrayList array = (ArrayList) commentdao.getComments(Integer.parseInt(connum));
+
 		String test= "";
 		for(int i=0; i<array.size(); i++){
 			CommentCommand c = (CommentCommand) array.get(i);
@@ -127,18 +128,16 @@ public class CommentController {
 		
 		jso.put("data", array);
 		jso.put("time", test);
+		jso.put("session", email);
 		
 		resp.setContentType("application/json;charset=utf-8");
-		
+		 
 		PrintWriter out = resp.getWriter();
 		
-		out.print(jso.toString());
-		System.out.println("method test");
-		
+		out.print(jso.toString());		
 	}
 	
-	
-	/*@RequestMapping("/deleteComment.hash")
+/*	@RequestMapping("/deleteComment1.hash")
 	public ModelAndView DeleteComment(@ModelAttribute("commentdto") CommentCommand commentdto,
 			@ModelAttribute("contentdto") ContentCommand contentdto,
 			HttpServletRequest request){
@@ -165,8 +164,8 @@ public class CommentController {
 		
 		
 		return mav;
-	}
-	*/
+	}*/
+	
 	
 	@RequestMapping("/updateCommentForm.hash")
 	public ModelAndView UpdateCommentForm(@ModelAttribute("dto") CommentCommand commentdto,HttpServletRequest request){
@@ -188,6 +187,48 @@ public class CommentController {
 	}
 
 	@RequestMapping("/updateCommentPro.hash")
+	public void UpdateCommentPro(
+			@RequestParam("comnum") int comnum,
+			@RequestParam("connum") int connum,
+			@RequestParam("comcontent") String comcontent,
+			HttpServletResponse resp
+			) throws Exception{
+		
+		/*int check = commentdao.updateComment(commentdto);*/
+		
+		CommentCommand test1 = new CommentCommand();
+		
+		test1.setComnum(comnum);
+		test1.setConnum(connum);
+		test1.setComcontent(comcontent);
+		
+		int check = commentdao.updateComment(test1);
+		
+		System.out.println("comcontent::::::::::::::::::::::"+comcontent);
+		
+		System.out.println("check °ª test::::::::::::::::"+ check);
+		ArrayList<CommentCommand> array = (ArrayList) commentdao.getComments(connum);
+		
+		SimpleDateFormat sdf= new SimpleDateFormat("YY-MM-dd HH:mm");
+		String test= "";
+		for(int i=0; i<array.size(); i++){
+			CommentCommand c = (CommentCommand) array.get(i);
+			test = sdf.format(c.getComcreateddate());
+		}
+		
+		resp.setContentType("application/json;charset=utf-8");
+		
+		JSONObject jso = new JSONObject();
+		
+		jso.put("time", test);
+		jso.put("data", array);
+		
+		PrintWriter out = resp.getWriter();
+		
+		out.println(jso.toString());
+	}
+	
+/*	@RequestMapping("/updateCommentPro.hash")
 	public ModelAndView UpdateCommentPro(@ModelAttribute("commentdto") CommentCommand commentdto,
 			@ModelAttribute("contentdto") ContentCommand contentdto,
 			HttpServletRequest request){
@@ -210,5 +251,7 @@ public class CommentController {
 		request.setAttribute("check", check);
 		
 		return mav;
-	}
+	}*/
+	
+	
 }

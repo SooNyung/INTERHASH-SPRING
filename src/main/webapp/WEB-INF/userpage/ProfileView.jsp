@@ -90,7 +90,7 @@ input {
   
 }
 
-.form input[type="text"], .form input[type="submit"], .form input[type="date"] {
+.form input[type="text"], .form input[type="date"] {
   width: 100%;
 }
 .form--login #pwdchecked{
@@ -114,8 +114,7 @@ input {
 }
 .form--login label,
 .form--login input[type="text"],
-.form--login input[type="password"],
-.form--login input[type="submit"] {
+.form--login input[type="password"]{
   border-radius: 0.25rem;
   padding: 1rem;
 }
@@ -143,12 +142,12 @@ input {
   border: 1px solid #B0B0B0;
   
 }
-.form--login input[type="submit"] {
+/* .form--login input[type="submit"] {
   background-color: #ea4c88;
   color: #eee;
   font-weight: bold;
   text-transform: uppercase;
-}
+} */
 .form--login input[type="submit"]:focus, .form--login input[type="submit"]:hover {
   background-color: #d44179;
 }
@@ -227,6 +226,27 @@ font{
 .circle {
    border-radius: 50%;
 }
+
+#buttonid {
+	color: white;
+	background-color: #FFCCCC;
+	border-radius: 7px !important;
+	padding:5px;
+}
+#buttonid:hover {
+	color: white;
+	background-color: #FF9090;
+	border-radius: 7px !important;
+	padding:5px;
+}
+
+#idd {
+	color: white;
+	background-color: #BDBDBD;
+	border-radius: 7px !important;
+	padding:5px;
+}
+
 </style>
 <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script> 
 <script>
@@ -282,9 +302,10 @@ function readURL(input) {
   <div class="site__container box-shadow border-round white">
 <h1>${c.nickname}님의 PROFILE</h1>
     <div class="grid__container">
-    <form action="#" name="userinput" method="post" class="form form--login" enctype="multipart/form-data">
+    <form action="MessageForm.hash?email=${c.email}" name="userinput" method="post" class="form form--login" enctype="multipart/form-data">
+   		 <center>
    		 <p class="center">
- 
+ 			
                <img id="blah" src='<c:url value="/upload/${path}" />' 
                   style="height: 130px; width: 130px" class="circle"
                      alt="Avatar">
@@ -295,7 +316,11 @@ function readURL(input) {
                <p>
                   <i class="fa fa-pencil fa-fw margin-right text-theme"></i>
                   ${c.nickname}
-               </p>
+                  <span><input type="submit" value="Send Message" id="buttonid"> </span>
+                </p>
+               
+
+               
                 <p>
                   <i class="fa fa-birthday-cake fa-fw margin-right text-theme profile" id="birthday" style="display: none;"></i>
                   <input type="hidden" name="pro" class="pro" id="birthday" value="${c.birthday}" readonly="readonly">
@@ -329,6 +354,10 @@ function readURL(input) {
                <p>
                   <i class="fa fontawesome-briefcase fa-fw margin-right text-theme profile" id="job" style="display: none;"></i>
                   <input type="hidden" name="pro" class="pro" id="job" value="${c.job}에서 근무" readonly="readonly">
+               </p>
+               
+               <p>
+               <input type="button" value="Close" onClick="window.close()">
                </p>
                
                </form>

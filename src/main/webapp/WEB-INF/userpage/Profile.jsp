@@ -85,8 +85,9 @@ input {
       -ms-flex: 1;
           flex: 1;
 /*    padding: 1rem 0; */
-	padding-bottom: 10px;
-	width:100%;
+	padding-bottom: 30px;
+	width:120%;
+	height: 100%;
   
 }
 

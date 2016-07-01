@@ -40,12 +40,13 @@ public class MessageController {
 
 
 	@RequestMapping("/MessageForm.hash")
-	public ModelAndView messageForm(@ModelAttribute("memberdto") MemberCommand memberdto){
+	public ModelAndView messageForm(@ModelAttribute("memberdto") MemberCommand memberdto, String email){
 		ModelAndView mav = new ModelAndView("userpage/MessageForm");
 		
 		List<String> test = memberdao.selectEmail();
 
 		mav.addObject("emailList",test);
+		mav.addObject("email", email);
 		return mav;
 	}
 	
