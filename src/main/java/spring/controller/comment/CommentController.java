@@ -1,5 +1,6 @@
 package spring.controller.comment;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -63,7 +64,6 @@ public class CommentController {
 			) throws Exception{
 		
 	
-		
 	SimpleDateFormat sdf= new SimpleDateFormat("YY-MM-dd HH:mm");
 	String comnick = (String) request.getSession().getAttribute("nickName");
 	String comcontent = request.getParameter("comcontent");
@@ -80,14 +80,17 @@ public class CommentController {
 	
 	ArrayList array = (ArrayList)commentdao.getComments(connum);
 
-	
+	String test= "";
+	for(int i=0; i<array.size(); i++){
+		CommentCommand c = (CommentCommand) array.get(i);
+		test = sdf.format(c.getComcreateddate());
+	}
 	
 	JSONObject jso = new JSONObject();
 	
-	JSONArray jsa = new JSONArray();
-	
 	jso.put("data", array);
 	jso.put("session",email);
+	jso.put("test", test);
 	
 	resp.setContentType("application/json;charset=utf-8");
 	
@@ -95,17 +98,47 @@ public class CommentController {
 	PrintWriter out = resp.getWriter();
 		
 	out.print(jso.toString());
-	String test = null;
-	for(int i=0; i<array.size(); i++){
-		CommentCommand c = (CommentCommand) array.get(i);
-		test = sdf.format(c.getComcreateddate());
-		System.out.println("test:::::::::::::::"+test);
-	}
-	System.out.println("test:::::::::::::::::::::::::"+test);
 	}
 
 	
 	@RequestMapping("/deleteComment.hash")
+	public void deleteComment(
+			@RequestParam("comnum") int comnum,
+			@RequestParam("connum") int connum,
+			HttpServletResponse resp,
+			ContentCommand contentdto
+			) throws IOException{
+		
+		
+		SimpleDateFormat sdf= new SimpleDateFormat("YY-MM-dd HH:mm");
+		//delete
+		int check = commentdao.deleteComment(comnum);
+		
+		//select comment
+		contentdto = contentdao.getContent(connum);
+		ArrayList<CommentCommand> array = (ArrayList) commentdao.getComments(connum);
+		String test= "";
+		for(int i=0; i<array.size(); i++){
+			CommentCommand c = (CommentCommand) array.get(i);
+			test = sdf.format(c.getComcreateddate());
+		}
+		
+		JSONObject jso = new JSONObject();
+		
+		jso.put("data", array);
+		jso.put("time", test);
+		
+		resp.setContentType("application/json;charset=utf-8");
+		
+		PrintWriter out = resp.getWriter();
+		
+		out.print(jso.toString());
+		System.out.println("method test");
+		
+	}
+	
+	
+	/*@RequestMapping("/deleteComment.hash")
 	public ModelAndView DeleteComment(@ModelAttribute("commentdto") CommentCommand commentdto,
 			@ModelAttribute("contentdto") ContentCommand contentdto,
 			HttpServletRequest request){
@@ -133,7 +166,7 @@ public class CommentController {
 		
 		return mav;
 	}
-	
+	*/
 	
 	@RequestMapping("/updateCommentForm.hash")
 	public ModelAndView UpdateCommentForm(@ModelAttribute("dto") CommentCommand commentdto,HttpServletRequest request){
