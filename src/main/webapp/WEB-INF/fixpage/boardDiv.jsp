@@ -5,13 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<%
-    String cp = request.getContextPath();
-	System.out.println(cp);
-%>
-
-
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
@@ -157,8 +150,6 @@ function unlike(num,String){
    newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
    //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
 }
-
-
 
 function modal_close(){
    var e = $.Event("keyup");
@@ -372,6 +363,23 @@ function modal_close(){
    overflow: auto;
 }
 
+a {
+  color: #C2C2C2;
+  outline: 0;
+  text-decoration: none;
+}
+
+#View {
+  color: #C2C2C2;
+  outline: 0;
+  text-decoration: none;
+}
+a:focus, a:hover {
+  text-decoration: underline; 
+  color:#ea4c88;
+  
+}
+
  .box-shadow{box-shadow:0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)!important;margin-top:0px;}
  .border-round{border-radius:4px!important}
  .container{content:"";display:table;clear:both;padding:0.01em 16px; margin-left:0px;}
@@ -408,6 +416,7 @@ $(function(){
       }
    });  
 }); 
+
 
 function modifycon(connum){
    url="/INTERHASH/UpdateContent.hash?check=y&&connum="+connum
@@ -463,13 +472,12 @@ function insert(connum){
 		data:params,
 		dataType:"json",
 		success:function(args){	
-		alert('성공');
 			$("#test_div *").remove();
 			$("#comment_div *").remove();
 			for(var i=0;i<args.data.length;i++){
 				var check;
-			if(args.session==args.data[i].email){
-				$('#test_div').append(
+				if(args.session==args.data[i].email){
+					$('#test_div').append(
 						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
 						'--!><span><label id="time">'+args.test+'</label></span><!--'+
 						'--!><span id="align_right"><a href="#" onclick="delete('+args.data[i].comnum+','+args.data[i].conum+')">삭제</a><!--'+
@@ -489,6 +497,7 @@ function insert(connum){
 			} 
 	});
 }
+
 
 
 function Map(){
@@ -531,7 +540,7 @@ function mapopen(latitude,longtitude,maptitle ) {
             
             <span id="imageon" style="width: 50px; float: left;">
             <img src='<c:url value="/image/logo/place.png" />' width="30px" height="30px" onclick="Map()" />
-           
+           <input type="hidden" name="maptitle" size="10px" readonly/>
             <input type="hidden" name="mapplace" />          
             </span> 
             
@@ -544,8 +553,8 @@ function mapopen(latitude,longtitude,maptitle ) {
              </div>
             </div> 
             
-            <span>
-             <!-- <input type="text" name="maptitle" size="10px" readonly/></span> -->
+            
+             
              <span id="submit"> 
          		<!--      <input type="submit" id="button" value="submit"/>  -->
          		<input type="image" src="image/logo/post.PNG"> 
@@ -569,7 +578,7 @@ function mapopen(latitude,longtitude,maptitle ) {
 <table width="100%">
 <tr>  
 <td width="10%"><img src='<c:url value="/upload/${sessionScope.profilePhoto}"/>' alt="Avatar" class="left-align circle" style="width:50px"></td>
-<td width="65%"><b>${con.connickname}</b></td>
+<td width="65%"><a id="View" href="Board.hash"><b>${con.connickname}</b></a></td>
 <td width="35%"><b class="right-align opacity"><font color="#b2b2b2">${con.conmodifieddate}</font></b></td>
 </tr>
 </table>
