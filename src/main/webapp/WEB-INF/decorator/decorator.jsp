@@ -6,7 +6,7 @@
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
-<META http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
 <link rel='stylesheet'
    href='https://fonts.googleapis.com/css?family=Open+Sans'>
 <link rel="stylesheet"
@@ -311,15 +311,17 @@ padding: 0px 5px 0px 5px;}
    /*  border: 1px solid #bcbcbc; */
 }
 #jb_search {
-   margin-top: 15px;
+   margin-top: 20px;
    margin-right: 100px;
+   padding-right:10px;
    float: right;
-   width: 250px;
-   height: auto;
+   width: 210px;
+   height: 30px;
    /*    border:1px solid #bcbcbc; */
 }
 
 #jb-right{
+margin-right:60px;
    width:20%;
    height:100%;
    float:right;
@@ -492,8 +494,8 @@ border-radius:7px;
    border-radius:7px;
    background-color:#ff6088;
 }
-#up{width:90%; height:300px; margin-top:10px; padding:10px 0px 20px 0px; }
-#down{width:90%; height:400px; padding:10px 0px 20px 0px;}
+#up{width:25%; height:300px; margin-top:10px; padding:10px 0px 20px 0px; }
+#down{width:25%; height:400px; padding:10px 0px 20px 0px;}
 
 
 
@@ -741,8 +743,8 @@ height:50px;
                 $(this).attr("type","font");
              } 
            });
-         
-          
+         var chat_url = "http://192.168.50.42:8080/?id="+ encodeURIComponent("${sessionScope.nickName }");
+         $('#chat_table').attr('src',chat_url); 	
          });
 
 
@@ -808,7 +810,12 @@ height:50px;
 
          <div id="jb_search">
             <form method="post" action="Board.hash">
-               <input type="text" name="hash" /> <input type="submit" value="검색" />
+              <div style="float:left">
+               <input type="text" name="hash" />
+               </div>
+               <div style="float:right;">
+                <input type="image" src ="image/logo/search.png" width="30px" height="30px"/>
+            </div>
             </form>
          </div>
 
@@ -841,7 +848,7 @@ height:50px;
 
    <!-- main -->
    <div id="main">
-   <div id=sidebar_content style="float:left; width:80%">
+   <div id=sidebar_content style="float:left; width:75%">
       <div id="jb-sidebar">
          <!-- Profile -->
          <div class="box-shadow border-round white padding">
@@ -958,17 +965,18 @@ height:50px;
   </div>
      
    <div id="jb-right">
-      <div style="width:100%; height: 350px; ">
-      <div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
-      </div>
-      <div style="width:100%; ">
-   <div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">
-      <div style="height:100%">
-         <iframe style="height:100%" src= "http://192.168.50.42:8080/?id=${sessionScope.nickName }">
-         </iframe>
-      </div>
-   </div>
-   </div>
+   	<div style="width:100%; height: 350px; ">
+   	<div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
+   	</div>
+   	<div style="width:100%; ">
+	<div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">
+		<div style="height:100%">
+			<iframe id='chat_table' style="height:100%" src= "" >
+			</iframe>
+		</div>
+	</div>
+	</div>
+
    </div>
    </div>
       

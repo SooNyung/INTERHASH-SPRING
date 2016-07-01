@@ -363,6 +363,23 @@ function modal_close(){
    overflow: auto;
 }
 
+a {
+  color: #C2C2C2;
+  outline: 0;
+  text-decoration: none;
+}
+
+#View {
+  color: #C2C2C2;
+  outline: 0;
+  text-decoration: none;
+}
+a:focus, a:hover {
+  text-decoration: underline; 
+  color:#ea4c88;
+  
+}
+
  .box-shadow{box-shadow:0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)!important;margin-top:0px;}
  .border-round{border-radius:4px!important}
  .container{content:"";display:table;clear:both;padding:0.01em 16px; margin-left:0px;}
@@ -390,9 +407,7 @@ hr{border-top:1px solid; background-color:#eee;}
 box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 -webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
 </style>
-<%
-    String cp = request.getContextPath();
-%>
+
 <script>
 $(function(){
    $(window).scroll(function(){
@@ -401,6 +416,7 @@ $(function(){
       }
    });  
 }); 
+
 
 function modifycon(connum){
    url="/INTERHASH/UpdateContent.hash?check=y&&connum="+connum
@@ -427,28 +443,91 @@ function back(){
    
 }
 
-function test(connum){
-   
-   var con = connum;
-   var texta = $('#comment_textarea').val();
+function Map(){
+	url="template2.hash";
+	window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
+	}  
 
-   var url="<%=cp%>/InsertComment.hash";
-   var params ="connum="+con+"&comcontent="+texta;
 
-   $.ajax({
-      type:"post"
-      ,url:url
-      ,data:params
-      ,dataType:"json"
-       ,success:function(args){
-          
-       alert('성고고고고오오오오옹');
-      }  
-       ,error:function() {
-          alert('실패');
-       }
-   });
+
+function mapopen(latitude,longtitude,maptitle){
+	
+	url = "mapopen.hash?latitude="+ latitude + "&longtitude="+longtitude+"&maptitle="+maptitle;
+	newwindow=window.open(url,"post","toolbar=no ,width=500 ,height=400 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	//location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
 }
+
+
+function insert(connum){
+ 	var con = connum;
+	var url = "/INTERHASH-SPRING/InsertComment.hash";
+	var texta = $('#comment_textarea').val();
+	var params = "connum="+con+"&comcontent="+texta; 
+    var sdf=
+	$.ajax({
+		type:"post",
+		url:url,
+		data:params,
+		dataType:"json",
+		success:function(args){	
+			$("#test_div *").remove();
+			$("#comment_div *").remove();
+			for(var i=0;i<args.data.length;i++){
+				if(args.session==args.data[i].email){
+					$('#test_div').append(
+						/* ${sdf.format(content.conmodifieddate)} */
+						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
+						'--!><span><label id="time">${sdf.format('+args.data[i].commodifieddate+')}</label></span><!--'+
+						'--!><span id="align_right"><a href="deleteComment.hash?comnum=${comment.comnum}&connum=${comment.connum}">삭제</a><!--'+
+						'--!><a onclick="modify('+args.data[i].comnum+','+args.data[i].connum+')">수정</a><!--'+
+						'--!></span><br><!--'+
+						'--!><div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+			}else{
+				$('#test_div').append(
+						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
+						'--!><span><label id="time">'+args.data[i].commodifieddate+'</label></span><!--'+
+						'--!><span id="align_right"><!--'+
+						'--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></span><br><!--'+
+						'--!><div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+			}
+			}
+		}
+			,error: function (xhr, status, err){
+				 alert(err);
+			} 
+	});
+}
+<%-- function (connum){
+	var con = connum;
+	var url ="<%=cp%>/InsertComment.hash";
+	var texta = $('#comment_textarea').val();
+	var params = "connum="+con+"&comcontent="+texta;
+	
+	$.ajax({
+		 type:"post"
+		,data:params
+		,dataType:"json"
+		,success:function(args){
+			$("#test_div *").remove();
+			$("#comment_div *").remove();
+
+			for(var i=0;i<args.data.length;i++){
+				$('#test_div').append(
+						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
+						'--!><span><label id="time">'+args.data[i].commodifieddate+'</label></span><!--'+
+						'--!><span id="align_right"><c:if test="${sessionScope.memId =='+ args.data[i].email +'}"><a href="deleteComment.hash?comnum=${comment.comnum}&connum=${comment.connum}">삭제</a><!--'+
+						'--!><a onclick="modify('+args.data[i].comnum+','+${comment.connum}+')">수정</a></c:if><c:if test="${sessionScope.memId !='+args.data[i].email.trim()+'}"><!--'+
+						'--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></c:if></span><br><!--'+
+						'--!><div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')	
+		}
+		}
+	,error:function(){
+			alert('실패');
+		}	
+	})
+	}	 --%>
+
+
 function Map(){
    url="template2.hash";
    window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
@@ -460,6 +539,7 @@ function mapopen(latitude,longtitude,maptitle ) {
    newwindow=window.open(url,"post","toolbar=no ,width=500 ,height=400 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
    //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
 }
+
 
 </script>
 </head>
@@ -492,16 +572,20 @@ function mapopen(latitude,longtitude,maptitle ) {
             <input type="hidden" name="mapplace" />          
             </span> 
             
-            <span id="taglist" style="width: 150px; float: left;">
+            <div id="taglist" style="width: 110px; float:left; padding-right:180px; padding-bottom:0px">
+            <div style="float:left">
                <input type="text" name="tag" size="7" readonly>
-               <input type="button" value="Tag" onClick="tagCheck()">
-            </span> 
+            </div>
+             <div style="float:right">  
+               <img src ="image/logo/tag.png" width="25px" height="25px" onClick="tagCheck()">
+             </div>
+            </div> 
             
             <span>
-             <input type="text" name="maptitle" size="10px" readonly/></span>
+             <!-- <input type="text" name="maptitle" size="10px" readonly/></span> -->
              <span id="submit"> 
-         <!--      <input type="submit" id="button" value="submit"/>  -->
-         <input type="image" src="image/logo/post.PNG"> 
+         		<!--      <input type="submit" id="button" value="submit"/>  -->
+         		<input type="image" src="image/logo/post.PNG"> 
          
              </span>
          </div>
@@ -522,7 +606,7 @@ function mapopen(latitude,longtitude,maptitle ) {
 <table width="100%">
 <tr>  
 <td width="10%"><img src='<c:url value="/upload/${sessionScope.profilePhoto}"/>' alt="Avatar" class="left-align circle" style="width:50px"></td>
-<td width="65%"><b>${con.connickname}</b></td>
+<td width="65%"><a id="View" href="Board.hash"><b>${con.connickname}</b></a></td>
 <td width="35%"><b class="right-align opacity"><font color="#b2b2b2">${con.conmodifieddate}</font></b></td>
 </tr>
 </table>

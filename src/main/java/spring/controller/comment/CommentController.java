@@ -1,24 +1,25 @@
 package spring.controller.comment;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.stream.events.Comment;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import mybatis.CommentDAO;
 import mybatis.ContentDAO;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import spring.model.CommentCommand;
 import spring.model.ContentCommand;
@@ -52,18 +53,21 @@ public class CommentController {
 		return new ContentCommand();
 	}
 	
+
 	
-	//ajax insert
-	@RequestMapping(value="/InsertComment.hash", method=RequestMethod.POST)
+	@RequestMapping("/InsertComment.hash")
 	public void interC(@RequestParam("connum") int connum,
 			CommentCommand commentdto,
 			HttpServletResponse resp,
 			HttpServletRequest request
 			) throws Exception{
-	SimpleDateFormat sdf= new SimpleDateFormat("YY-MM-dd HH:mm");
+		
 	
+		
+	SimpleDateFormat sdf= new SimpleDateFormat("YY-MM-dd HH:mm");
 	String comnick = (String) request.getSession().getAttribute("nickName");
 	String comcontent = request.getParameter("comcontent");
+	
 	String comip = request.getRemoteAddr();
 	String email = (String) request.getSession().getAttribute("memId");
 	
@@ -72,27 +76,33 @@ public class CommentController {
 	commentdto.setEmail(email);
 	commentdto.setComip(comip);
 	
-	
 	int result = commentdao.insertComment(commentdto);
+	
+	ArrayList array = (ArrayList)commentdao.getComments(connum);
+
+	
 	
 	JSONObject jso = new JSONObject();
 	
-	PrintWriter out = resp.getWriter();
-		
-	ArrayList array = (ArrayList) commentdao.getComments(connum);
-	
 	
 	jso.put("data", array);
+	jso.put("session",email);
 	
+	resp.setContentType("application/json;charset=utf-8");
+	
+	request.setAttribute("sdf", sdf);
+	PrintWriter out = resp.getWriter();
+		
 	out.print(jso.toString());
-	
-	System.out.println("array:::::::::::::::::::"+jso.toString());
-	
-
+	String test = null;
+	for(int i=0; i<array.size(); i++){
+		CommentCommand c = (CommentCommand) array.get(i);
+		test = sdf.format(c.getComcreateddate());
+		System.out.println("test:::::::::::::::"+test);
+	}
+	System.out.println("test:::::::::::::::::::::::::"+test);
 	}
 
-	
-	
 	
 	@RequestMapping("/deleteComment.hash")
 	public ModelAndView DeleteComment(@ModelAttribute("commentdto") CommentCommand commentdto,
