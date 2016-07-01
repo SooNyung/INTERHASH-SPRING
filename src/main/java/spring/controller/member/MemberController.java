@@ -1,9 +1,12 @@
 package spring.controller.member;
 
 import java.io.File;
-import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sun.media.sound.PCMtoPCMCodec;
+import com.lowagie.text.pdf.hyphenation.TernaryTree.Iterator;
 
 import mybatis.ContentDAO;
 import mybatis.MemberDAO;
@@ -25,7 +28,6 @@ import mybatis.MessageDAO;
 import mybatis.PhotoDAO;
 import spring.model.ContentCommand;
 import spring.model.MemberCommand;
-import spring.model.PhotoCommand;
 import spring.model.ProfilePhotoCommand;
 
 @Controller
@@ -278,10 +280,23 @@ public class MemberController {
 	 */
 	// 최신글 보기
 	@RequestMapping("/Board.hash")
-	public String board(Model model, HttpSession session) {
+	public ModelAndView board(Model model, HttpSession session) {
+		
+		ModelAndView mv = new ModelAndView("fixpage/boardDiv");
 		String email = (String) session.getAttribute("memId");
 		MemberCommand command = dao.getMemberInfo(email);
 		session.setAttribute("content", cdao.getContent());
+		ArrayList<ContentCommand> content = cdao.getContent();
+		List listtt = dao.getPhotoPathMap();
+		List<Map<String, Object>> mapp = listtt;
+		Map<Object, Object> map2 = new HashMap<>();
+		for(int i=0;i<listtt.size();i++) {
+			map2.put(mapp.get(i).get("EMAIL"), mapp.get(i).get("PATH"));
+		}
+		
+		mv.addObject("profilephoto", map2);
+		session.setAttribute("profilephoto", map2);
+
 		session.setAttribute("memberinfo", command);
 		session.setAttribute("messagecount", mdao.getMessageCount(email));
 		String checked = dao.selectCheck(email); //진경
@@ -308,7 +323,7 @@ public class MemberController {
 		session.setAttribute("mesagelist", mdao.getMessageList(email));
 		session.setAttribute("num", 1);
 
-		return "fixpage/boardDiv";
+		return mv;
 	}
 
 	// 내 글보기
@@ -361,7 +376,6 @@ public class MemberController {
 	@RequestMapping("/ProfileView.hash")
 	public ModelAndView ProfileView(String nickname){
 		ModelAndView mv = new ModelAndView("userpage/ProfileView");
-		System.out.println("nickname ::" + nickname);
 		MemberCommand command = dao.selectNick(nickname);
 		String email = command.getEmail();
 		String path = dao.photoView(email);

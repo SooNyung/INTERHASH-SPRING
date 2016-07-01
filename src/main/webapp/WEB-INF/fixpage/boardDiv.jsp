@@ -577,7 +577,11 @@ function mapopen(latitude,longtitude,maptitle ) {
 <div id="board_div" class="container box-shadow border-round white">
 <table width="100%">
 <tr>  
-<td width="10%"><img src='<c:url value="/upload/${sessionScope.profilePhoto}"/>' alt="Avatar" class="left-align circle" style="width:50px"></td>
+<td width="10%">
+<c:set var= "temp" value="${con.email }" />
+<img src='<c:url value="/upload/${profilephoto.get(temp)}"/>' alt="Avatar" class="left-align circle" style="width:50px; height:50px;">
+
+</td>
 <td width="65%"><a id="View" target="_blank" href="#" onclick="window.open('ProfileView.hash?nickname=${con.connickname}','new','resizable=no width=700 height=500');return false"><b>${con.connickname}</b></a></td>
 <td width="35%"><b class="right-align opacity"><font color="#b2b2b2">${con.conmodifieddate}</font></b></td>
 </tr>

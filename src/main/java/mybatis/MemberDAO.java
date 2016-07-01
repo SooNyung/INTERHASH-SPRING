@@ -1,6 +1,7 @@
 package mybatis;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -106,6 +107,12 @@ public class MemberDAO {
 	
 	public String photoView(String email){
 		return session.selectOne("member.photoView", email);
+	}
+	public List getPhotoPathMap(){
+		return session.selectList("member.getprofilepath");
+		
+		
+		
 	}
 
 
