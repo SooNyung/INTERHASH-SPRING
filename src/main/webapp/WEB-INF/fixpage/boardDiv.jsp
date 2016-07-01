@@ -497,35 +497,6 @@ function insert(connum){
 			} 
 	});
 }
-<%-- function (connum){
-	var con = connum;
-	var url ="<%=cp%>/InsertComment.hash";
-	var texta = $('#comment_textarea').val();
-	var params = "connum="+con+"&comcontent="+texta;
-	
-	$.ajax({
-		 type:"post"
-		,data:params
-		,dataType:"json"
-		,success:function(args){
-			$("#test_div *").remove();
-			$("#comment_div *").remove();
-
-			for(var i=0;i<args.data.length;i++){
-				$('#test_div').append(
-						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
-						'--!><span><label id="time">'+args.data[i].commodifieddate+'</label></span><!--'+
-						'--!><span id="align_right"><c:if test="${sessionScope.memId =='+ args.data[i].email +'}"><a href="deleteComment.hash?comnum=${comment.comnum}&connum=${comment.connum}">삭제</a><!--'+
-						'--!><a onclick="modify('+args.data[i].comnum+','+${comment.connum}+')">수정</a></c:if><c:if test="${sessionScope.memId !='+args.data[i].email.trim()+'}"><!--'+
-						'--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></c:if></span><br><!--'+
-						'--!><div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')	
-		}
-		}
-	,error:function(){
-			alert('실패');
-		}	
-	})
-	}	 --%>
 
 
 function Map(){
@@ -538,6 +509,27 @@ function mapopen(latitude,longtitude,maptitle ) {
    url = "mapopen.hash?latitude="+ latitude + "&longtitude="+longtitude+"&maptitle="+maptitle;
    newwindow=window.open(url,"post","toolbar=no ,width=500 ,height=400 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
    //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
+}
+
+function callAjax(num,hash,like){
+	
+	var url="/INTERHASH-SPRING/LikeCheck.hash";
+	var params ="connum="+num+"&conhash="+hash;
+	
+	var snum=$("#liketest").text();
+
+	$.ajax({
+		type:"post"
+		,url:url
+		,data:params
+		,dataType:"json"
+ 		,success:function(args){
+ 			$('#liketest').text(args.data);
+ 		}
+	    ,error:function(request, status , err) {
+	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
+	    }
+	});
 }
 
 
@@ -635,10 +627,11 @@ color="#666"><b>${con.maptitle}</b>에서</font></a></div>
 
    <div class="w3-btn">
     
-      <%-- <button id="like_ajax" type="button" class="w3-theme-d1 w3-margin-bottom like" ><i class="fa fa-thumbs-up"></i> ?Like ${con.conlike}</button> --%>
-    
      <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>Like <i id="${con.connum}like_bn">${con.conlike}</i></button> 
      <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlike('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}unlike_bn"> ${con.conlike}</i></button>    
+    
+     <input type="button" id="btn" name="btn1" value="like" onclick="javascript:callAjax('${con.connum}','${con.conhash}','${con.conlike}')" > <i id="liketest"> ${con.conlike} </i> 
+        
     <button type="button" class="w3-theme-d3 w3-margin-bottom" ><i class="fa fa-comment"></i> Comment ${con.connum}</button>     
    </div>
 
