@@ -151,8 +151,6 @@ function unlike(num,String){
    //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
 }
 
-
-
 function modal_close(){
    var e = $.Event("keyup");
    e.which = 27;
