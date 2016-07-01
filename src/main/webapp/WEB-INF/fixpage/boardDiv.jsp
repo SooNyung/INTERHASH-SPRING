@@ -570,7 +570,7 @@ function mapopen(latitude,longtitude,maptitle ) {
             
             <span id="imageon" style="width: 50px; float: left;">
             <img src='<c:url value="/image/logo/place.png" />' width="30px" height="30px" onclick="Map()" />
-           
+           <input type="hidden" name="maptitle" size="10px" readonly/>
             <input type="hidden" name="mapplace" />          
             </span> 
             
@@ -583,8 +583,8 @@ function mapopen(latitude,longtitude,maptitle ) {
              </div>
             </div> 
             
-            <span>
-             <!-- <input type="text" name="maptitle" size="10px" readonly/></span> -->
+            
+             
              <span id="submit"> 
          		<!--      <input type="submit" id="button" value="submit"/>  -->
          		<input type="image" src="image/logo/post.PNG"> 
