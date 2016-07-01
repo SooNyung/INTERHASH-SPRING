@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sun.media.sound.PCMtoPCMCodec;
+
 import mybatis.ContentDAO;
 import mybatis.MemberDAO;
 import mybatis.MessageDAO;
@@ -354,6 +356,18 @@ public class MemberController {
 		session.setAttribute("mesagelist", mdao.getMessageList(email));
 		session.setAttribute("num", 1);
 		return "fixpage/boardDiv";
+	}
+	
+	@RequestMapping("/ProfileView.hash")
+	public ModelAndView ProfileView(String nickname){
+		ModelAndView mv = new ModelAndView("userpage/ProfileView");
+		System.out.println("nickname ::" + nickname);
+		MemberCommand command = dao.selectNick(nickname);
+		String email = command.getEmail();
+		String path = dao.photoView(email);
+		mv.addObject("path",path);
+		mv.addObject("c", command);
+		return mv;
 	}
 
 }

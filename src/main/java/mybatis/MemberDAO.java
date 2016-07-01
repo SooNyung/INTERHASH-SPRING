@@ -98,6 +98,15 @@ public class MemberDAO {
 	public String selectPath(String email){
 		return session.selectOne("Profile.selectPath", email);
 	}
+	
+	public MemberCommand selectNick(String nickname) {
+		return session.selectOne("member.selectNick", nickname);
+
+	}
+	
+	public String photoView(String email){
+		return session.selectOne("member.photoView", email);
+	}
 
 
 }
