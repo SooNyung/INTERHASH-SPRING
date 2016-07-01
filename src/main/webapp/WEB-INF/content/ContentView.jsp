@@ -235,8 +235,8 @@ $(document).ready(function(){
 	<span id="align_right">
 	
 		<c:if test="${sessionScope.memId==comment.email}">
-		<a href="deleteComment.hash?comnum=${comment.comnum}&&connum=${comment.connum}">삭제</a>
-		<a onclick="modify(${comment.comnum},${comment.connum})">수정</a>
+		<a href="#" onclick="delete1(${comment.comnum},${comment.connum})">삭제</a>
+		<a href="#" onclick="modify(${comment.comnum},${comment.connum})">수정</a>
 		</c:if	>
 		
 		<c:if test="${sessionScope.memId!=comment.email}">

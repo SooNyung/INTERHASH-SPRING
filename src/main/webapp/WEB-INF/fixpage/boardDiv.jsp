@@ -418,11 +418,11 @@ $(function(){
 }); 
 
 
-function modifycon(connum){
+/* function modifycon(connum){
    url="/INTERHASH/UpdateContent.hash?check=y&&connum="+connum
 }
-
- function modify(comnum,connum){
+ */
+  function modify(comnum,connum){
    url="updateCommentForm.hash?check=y&&comnum="+comnum+"&&connum="+connum;
    window.open(url,"post","toolbar=no ,width=400 ,height=150,directories=no,status=yes,menubar=no,scrollbars=no");
 } 
@@ -457,7 +457,42 @@ function mapopen(latitude,longtitude,maptitle){
 	//location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
 }
 
-
+ //comment delete
+function delete1(comnum, connum){
+ 	var com = comnum;
+	var con = connum;
+	var url = "/INTERHASH-SPRING/deleteComment.hash";
+	var params = "comnum="+comnum+"&connum="+connum;
+	$.ajax({
+		type:"post"
+		,url:url
+		,data:params
+		,dataType:"json"
+		,success:function(args){	
+			$("#test_div *").remove();
+			$("#comment_div *").remove();
+			for(var i=0;i<args.data.length;i++){
+				var check;
+				if(args.session==args.data[i].email){
+					$('#test_div').append(
+						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
+						'--!><span><label id="time">'+args.time+'</label></span><!--'+
+						'--!><span id="align_right"><a href="#" onclick="delete1('+args.data[i].comnum+','+args.data[i].connum+')">삭제</a><!--'+
+						'--!><a onclick="modify('+args.data[i].comnum+','+args.data[i].connum+')">수정</a><!--'+
+						'--!></span><br><div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+			}else{
+				$('#test_div').append(
+						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
+						'--!><span><label id="time">'+args.time+'</label></span><!--'+
+						'--!><span id="align_right"><!--'+
+						'--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></span><br><div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+			}
+			}
+		},error: function (xhr, status, err){
+			 alert(err);
+		} 	
+		});
+}   
 
 
 //comment insert
@@ -480,13 +515,13 @@ function insert(connum){
 					$('#test_div').append(
 						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
 						'--!><span><label id="time">'+args.test+'</label></span><!--'+
-						'--!><span id="align_right"><a href="#" onclick="delete('+args.data[i].comnum+','+args.data[i].conum+')">삭제</a><!--'+
+						'--!><span id="align_right"><a href="#" onclick="delete1('+args.data[i].comnum+','+args.data[i].connum+')">삭제</a><!--'+
 						'--!><a onclick="modify('+args.data[i].comnum+','+args.data[i].connum+')">수정</a><!--'+
 						'--!></span><br><div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
 			}else{
 				$('#test_div').append(
 						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
-						'--!><span><label id="time">'+args.data[i].commodifieddate+'</label></span><!--'+
+						'--!><span><label id="time">'+args.test+'</label></span><!--'+
 						'--!><span id="align_right"><!--'+
 						'--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></span><br><div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
 			}
