@@ -684,7 +684,7 @@ height:50px;
 
    $(document).ready(function() {
       if ($('#jb-content').outerHeight(true) < 800) {
-         $("#jb-content").css("height", "800px");
+         $("#jb-content").css("height", "900px");
       }else{
          var g = $('#jb-content').outerHeight(true);
          $('#main').css("height", g);

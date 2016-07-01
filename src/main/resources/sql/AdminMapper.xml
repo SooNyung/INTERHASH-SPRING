@@ -3,7 +3,7 @@
 
 <mapper namespace="admin">
 <select id="admincount" resultType="spring.model.AdminCommand">
-		select * from ADMINHASH
+		select conhash, sum(conlike) as hashlike,count(connum) as hashcontent from contents group by conhash
 </select>
 
 <delete id="deleteMember" parameterType="String">

@@ -244,8 +244,7 @@ $(document).ready(function(){
 		</c:if>	
 	</span><br> 
 	<div id="test"><textarea id="comment_textara" borderStyle="none" cols=50 readonly="readonly" class="autosize">${comment.comcontent}</textarea></div>
-	</div>
-	
+	</div>	
 	</c:forEach>  
 	</div>
 	

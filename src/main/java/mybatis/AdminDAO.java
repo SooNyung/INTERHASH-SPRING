@@ -22,7 +22,7 @@ public class AdminDAO {
 		this.session=session;
 	}
 	
-	public List<AdminCommand> selectHash(){
+	public List<ContentCommand> selectHash(){
 		return session.selectList("admin.admincount");
 	}
 	

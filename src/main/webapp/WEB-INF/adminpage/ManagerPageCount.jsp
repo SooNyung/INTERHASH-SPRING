@@ -48,13 +48,16 @@ text-align:center;
 <c:forEach var="hash" items="${content}">
 <tr>
 <td>
-${hash.hashName}
+${hash.conhash}
+
 </td>
 <td>
-${hash.hashLikeCount}
+${hash.hashlike}
+
 </td>
 <td>
-${hash.hashContentCount}
+${hash.hashcontent}
+
 </td>
 
 </tr>

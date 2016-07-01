@@ -552,7 +552,7 @@ function mapopen(latitude,longtitude,maptitle ) {
             <div id="writeform" border="1">
       <form action="ContentInputPro.hash" name="writeForm" method="post" enctype="multipart/form-data"> 
       <div id="wrap" style="width: 500px; ">
-         <textarea id="textfield" name="content" placeholder="내용을 입력하세요."></textarea>
+         <textarea style="resize: none; width:460px; height:80px;" id="textfield" name="content" placeholder="내용을 입력하세요."></textarea>
          <div class="photoBox" style="height: 100px; width: 100px;">
             <input class='fileData' id = "conphoto" name="conphoto" type="file"/> 
                <div id="blah_img" >
@@ -581,8 +581,7 @@ function mapopen(latitude,longtitude,maptitle ) {
              </div>
             </div> 
             
-            
-             
+                       
              <span id="submit"> 
          		<!--      <input type="submit" id="button" value="submit"/>  -->
          		<input type="image" src="image/logo/post.PNG"> 
@@ -612,9 +611,14 @@ function mapopen(latitude,longtitude,maptitle ) {
 </table>
    <hr color="#eee">
    <div class="content">
-   <div class="write">${con.content}&nbsp;&nbsp;&nbsp;-<a href="#" onclick= "javascript:mapopen('${con.latitude}','${con.longtitude}','${con.maptitle}')" ><font 
-
-color="#666"><b>${con.maptitle}</b>에서</font></a></div>
+   <div class="write">${con.content}&nbsp;&nbsp;&nbsp;
+   <c:if test="${!empty con.maptitle}">
+   -<a href="#" onclick= "javascript:mapopen('${con.latitude}','${con.longtitude}','${con.maptitle}')" >
+   <font color="#666"><b>${con.maptitle}</b>에서</font></a>
+   </c:if>
+   </div>
+   
+   
    <div class="w3-row-padding">
         <a href="ContentView.hash?connum=${con.connum}" class="img_link">
       <img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />'/>

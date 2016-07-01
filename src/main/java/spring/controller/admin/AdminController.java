@@ -63,9 +63,8 @@ public class AdminController {
 	
 		//AdminCommand bean = (AdminCommand)list.get(5);//?
 	
-	
 		mv.addObject("content",dao.selectHash());
-		
+		System.out.println(dao.selectHash());
 		return mv;
 	}
 	
