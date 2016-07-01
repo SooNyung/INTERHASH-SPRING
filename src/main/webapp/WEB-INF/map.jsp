@@ -156,7 +156,7 @@ function displayPlaces(places) {
         // 마커와 검색결과 항목에 mouseover 했을때
         // 해당 장소에 인포윈도우에 장소명을 표시합니다
         // mouseout 했을 때는 인포윈도우를 닫습니다
-        (function(marker, title,places) {
+        (function(marker, title) {
             daum.maps.event.addListener(marker, 'mouseover', function() {
                 displayInfowindow(marker, title);
             });
@@ -193,7 +193,7 @@ function displayPlaces(places) {
             itemEl.onmouseout =  function () {
                 infowindow.close();
             };
-        })(marker, places[i].title,places[i].latitude);
+        })(marker, places[i].title);
 
         fragment.appendChild(itemEl);
     }
@@ -304,15 +304,16 @@ function selectInfo(marker, title,placePosition) {
 			//removeMarker();
 	opener.document.writeForm.maptitle.value = title;
 	opener.document.writeForm.mapplace.value = placePosition;
-
 }
 
 //마커클릭하면 꺼진다
 function selectInfo2(marker, title,placePosition) {
+	
 	ps.keywordSearch(title, placesSearchCB);
 			//removeMarker();
 	opener.document.writeForm.maptitle.value = title;
 	opener.document.writeForm.mapplace.value = placePosition;
+	
 	window.close();
 }
 

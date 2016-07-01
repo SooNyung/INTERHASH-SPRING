@@ -124,33 +124,6 @@ function tagCheck() {
    newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 }
 
-function like(num,String){
-   var select_id = "${sessionScope.conlike}";//'#'+num+"like_bn";
-   var like_cnt =select_id+1;//$(select_id).text();
-   alert(select_id);
-   
-   //$(select_id).text(like_cnt+1);
-   
-   alert(like_cnt);
-   url = "LikeCheck.hash?connum="+num+"&conhash="+String;
-   newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
-   //location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
-}
-
-function unlike(num,String){
-   var select_id = "${sessionScope.conlike}";//'#'+num+"unlike_bn";
-   var like_cnt =select_id-1;//$(select_id).text();
-   alert(select_id);
-   
-   //$(select_id).text(like_cnt-1);
-   
-   alert(like_cnt);
-   
-   url = "Unlike.hash?connum="+num+"&conhash="+String;
-   newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
-   //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
-}
-
 function modal_close(){
    var e = $.Event("keyup");
    e.which = 27;
@@ -458,12 +431,14 @@ function mapopen(latitude,longtitude,maptitle){
 }
 
 
+
+
+//comment insert
 function insert(connum){
  	var con = connum;
 	var url = "/INTERHASH-SPRING/InsertComment.hash";
 	var texta = $('#comment_textarea').val();
 	var params = "connum="+con+"&comcontent="+texta; 
-    var sdf=
 	$.ajax({
 		type:"post",
 		url:url,
@@ -473,22 +448,20 @@ function insert(connum){
 			$("#test_div *").remove();
 			$("#comment_div *").remove();
 			for(var i=0;i<args.data.length;i++){
+				var check;
 				if(args.session==args.data[i].email){
 					$('#test_div').append(
-						/* ${sdf.format(content.conmodifieddate)} */
 						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
-						'--!><span><label id="time">${sdf.format('+args.data[i].commodifieddate+')}</label></span><!--'+
-						'--!><span id="align_right"><a href="deleteComment.hash?comnum=${comment.comnum}&connum=${comment.connum}">삭제</a><!--'+
+						'--!><span><label id="time">'+args.test+'</label></span><!--'+
+						'--!><span id="align_right"><a href="#" onclick="delete('+args.data[i].comnum+','+args.data[i].conum+')">삭제</a><!--'+
 						'--!><a onclick="modify('+args.data[i].comnum+','+args.data[i].connum+')">수정</a><!--'+
-						'--!></span><br><!--'+
-						'--!><div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+						'--!></span><br><div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
 			}else{
 				$('#test_div').append(
 						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
 						'--!><span><label id="time">'+args.data[i].commodifieddate+'</label></span><!--'+
 						'--!><span id="align_right"><!--'+
-						'--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></span><br><!--'+
-						'--!><div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+						'--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></span><br><div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
 			}
 			}
 		}
@@ -497,7 +470,6 @@ function insert(connum){
 			} 
 	});
 }
-
 
 function Map(){
    url="template2.hash";
@@ -511,12 +483,40 @@ function mapopen(latitude,longtitude,maptitle ) {
    //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
 }
 
-function callAjax(num,hash,like){
+/* function like(num,String){
+	   var select_id = "${sessionScope.conlike}";//'#'+num+"like_bn";
+	   var like_cnt =select_id+1;//$(select_id).text();
+	   alert(select_id);
+	   
+	   //$(select_id).text(like_cnt+1);
+	   
+	   alert(like_cnt);
+	   url = "LikeCheck.hash?connum="+num+"&conhash="+String;
+	   newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	   //location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
+	}
+
+	function unlike(num,String){
+	   var select_id = "${sessionScope.conlike}";//'#'+num+"unlike_bn";
+	   var like_cnt =select_id-1;//$(select_id).text();
+	   alert(select_id);
+	   
+	   //$(select_id).text(like_cnt-1);
+	   
+	   alert(like_cnt);
+	   
+	   url = "Unlike.hash?connum="+num+"&conhash="+String;
+	   newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	   //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
+	} */
+	
+function likeAjax(num,hash,like){
 	
 	var url="/INTERHASH-SPRING/LikeCheck.hash";
 	var params ="connum="+num+"&conhash="+hash;
 	
-	var snum=$("#liketest").text();
+	var snum=$("#likep").text();
+	alert(snum);
 
 	$.ajax({
 		type:"post"
@@ -524,7 +524,29 @@ function callAjax(num,hash,like){
 		,data:params
 		,dataType:"json"
  		,success:function(args){
- 			$('#liketest').text(args.data);
+ 			$('#likep').text(args.data);
+ 		}
+	    ,error:function(request, status , err) {
+	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
+	    }
+	});
+}
+
+function unlikeAjax(num,hash,like){
+	
+	var url="/INTERHASH-SPRING/Unlike.hash";
+	var params ="connum="+num+"&conhash="+hash;
+	
+	var snum=$("#likem").text();
+	alert(snum);
+
+	$.ajax({
+		type:"post"
+		,url:url
+		,data:params
+		,dataType:"json"
+ 		,success:function(args){
+ 			$('#likem').text(args.data);
  		}
 	    ,error:function(request, status , err) {
 	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
@@ -560,7 +582,7 @@ function callAjax(num,hash,like){
             
             <span id="imageon" style="width: 50px; float: left;">
             <img src='<c:url value="/image/logo/place.png" />' width="30px" height="30px" onclick="Map()" />
-           
+           <input type="hidden" name="maptitle" size="10px" readonly/>
             <input type="hidden" name="mapplace" />          
             </span> 
             
@@ -573,8 +595,8 @@ function callAjax(num,hash,like){
              </div>
             </div> 
             
-            <span>
-             <!-- <input type="text" name="maptitle" size="10px" readonly/></span> -->
+            
+             
              <span id="submit"> 
          		<!--      <input type="submit" id="button" value="submit"/>  -->
          		<input type="image" src="image/logo/post.PNG"> 
@@ -598,7 +620,7 @@ function callAjax(num,hash,like){
 <table width="100%">
 <tr>  
 <td width="10%"><img src='<c:url value="/upload/${sessionScope.profilePhoto}"/>' alt="Avatar" class="left-align circle" style="width:50px"></td>
-<td width="65%"><a id="View" href="Board.hash"><b>${con.connickname}</b></a></td>
+<td width="65%"><a id="View" target="_blank" href="#" onclick="window.open('ProfileView.hash?nickname=${con.connickname}','new','resizable=no width=700 height=500');return false"><b>${con.connickname}</b></a></td>
 <td width="35%"><b class="right-align opacity"><font color="#b2b2b2">${con.conmodifieddate}</font></b></td>
 </tr>
 </table>
@@ -627,10 +649,10 @@ color="#666"><b>${con.maptitle}</b>에서</font></a></div>
 
    <div class="w3-btn">
     
-     <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>Like <i id="${con.connum}like_bn">${con.conlike}</i></button> 
-     <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlike('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}unlike_bn"> ${con.conlike}</i></button>    
+     <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}','${con.conlike}')"><i class="fa fa-thumbs-up" id="likep" ></i>Like <i id="likep">${con.conlike}</i></button> 
+     <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}','${con.conlike}')"><i class="fa fa-thumbs-up"></i> Like <i id="likem"> ${con.conlike}</i></button>    
     
-     <input type="button" id="btn" name="btn1" value="like" onclick="javascript:callAjax('${con.connum}','${con.conhash}','${con.conlike}')" > <i id="liketest"> ${con.conlike} </i> 
+<%--  <input type="button" id="btn" name="btn1" value="like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}','${con.conlike}')" > <i id="likep"> ${con.conlike} </i>  --%>
         
     <button type="button" class="w3-theme-d3 w3-margin-bottom" ><i class="fa fa-comment"></i> Comment ${con.connum}</button>     
    </div>
