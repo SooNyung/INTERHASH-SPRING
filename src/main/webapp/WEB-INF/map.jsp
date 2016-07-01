@@ -308,7 +308,7 @@ function selectInfo(marker, title,placePosition) {
 
 //마커클릭하면 꺼진다
 function selectInfo2(marker, title,placePosition) {
-	alert(placePosition);
+	
 	ps.keywordSearch(title, placesSearchCB);
 			//removeMarker();
 	opener.document.writeForm.maptitle.value = title;
