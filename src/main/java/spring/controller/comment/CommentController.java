@@ -84,19 +84,23 @@ public class CommentController {
 	
 	JSONObject jso = new JSONObject();
 	
-	JSONArray jsa = new JSONArray();
 	
 	jso.put("data", array);
 	jso.put("session",email);
 	
 	resp.setContentType("application/json;charset=utf-8");
 	
+	request.setAttribute("sdf", sdf);
 	PrintWriter out = resp.getWriter();
 		
 	out.print(jso.toString());
-	
-	System.out.println("jso:::::::::::::::::::::::"+jso.toString());
-
+	String test = null;
+	for(int i=0; i<array.size(); i++){
+		CommentCommand c = (CommentCommand) array.get(i);
+		test = sdf.format(c.getComcreateddate());
+		System.out.println("test:::::::::::::::"+test);
+	}
+	System.out.println("test:::::::::::::::::::::::::"+test);
 	}
 
 	
