@@ -616,9 +616,9 @@ function likeAjax(num,hash,like){
 		,data:params
 		,dataType:"json"
  		,success:function(args){
- 			$('#likep').text(args.data);
+ //			$('#likep').text(args.data);
  		
-//			("#(${con.connum}likep)").text(args.data);
+			$('{con.connum}likep').text(args.data);
  			alert("ajax안에"+ like ) ;
  		}
 	    ,error:function(request, status , err) {
@@ -722,11 +722,6 @@ function unlikeAjax(num,hash,like){
    
 
     <%-- <input type="button" id="btn" class="btn1 btn2" value="like" onclick="javascript:like('${con.connum}')"/> --%>
-    <input type="button" class="btn2" id="btn" name="btn1" value="like" onclick="javascript:callAjax('${con.connum}','${con.conhash}','${con.conlike}')" > <i id="liketest"> ${con.conlike} </i> 
-
-    <button type="button" class="w3-theme-d3 w3-margin-bottom" onclick="location.href='Board.hash'"><i class="fa fa-comment"></i>  Comment ${con.connum}</button>  	
-
-	
 
 <%-- 	 <div id="board_img">
 	<a href="ContentView.hash?connum=${con.connum}">
