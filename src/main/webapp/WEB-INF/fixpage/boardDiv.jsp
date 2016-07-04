@@ -126,7 +126,7 @@ function tagCheck() {
 
 function like(num,String){
 	var select_id = "${sessionScope.conlike}";//'#'+num+"like_bn";
-	var like_cnt =select_id+1;//$(select_id).text();
+	var like_cnt = select_id+1;//$(select_id).text();
 	alert(select_id);
 	
 	//$(select_id).text(like_cnt+1);
@@ -138,7 +138,10 @@ function like(num,String){
 }
 
 function unlike(num,String){
-
+ 	var select_id = "${sessionScope.conlike}";
+	var like_ctn = select_id-1;
+	alert(select_id);
+	alert(like_ctn); 
 	url = "Unlike.hash?connum="+num+"&conhash="+String;
 	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 	//location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
@@ -501,45 +504,31 @@ function mapopen(latitude,longtitude,maptitle ) {
             </div>
           </div>
       
-<!-- <script>
-/* $(function(){
-	$(".like").click(function(){
-		var index = $(".like").index(this);
-		if($(".like:eq("+index+")").hasClass("hide")){
-			$(".like:eq("+index+")").removeClass("hide");
-			$(".unlike:eq("+index+")").addClass("hide");
-		}else{
-			$(".like:eq("+index+")").addClass("hide");
-			$(".unlike:eq("+index+")").removeClass("hide");
-		}
-	});
-}); */
+<script>
 
-/* $(function(){
-	$("#btn").click(function(){
-		var index = $("#btn").index(this);
-		if($("#btn:eq("+index+")").val()=='like'){
-			$("#btn:eq("+index+")").val('unlike');
-			$("#btn:eq("+index+")").css({"background-color" : "#ffa500"});
-			
-		}
-		else{
-			$("#btn:eq("+index+")").val('like');
-			$("#btn:eq("+index+")").css({"background-color" : "#7cfc00"});
-			
-		}
-	});
-}); */
+function callAjax(num,hash,like){
+	
+	var url="/INTERHASH-SPRING/LikeCheck.hash";
+	var params ="connum="+num+"&conhash="+hash;
+	var snum=$("#liketest").text();
 
-/* $(function(){
-	$('').click(function(){
-		unlike(this);
-	}
+	$.ajax({
+		type:"post"
+		,url:url
+		,data:params
+		,dataType:"json"
+ 		,success:function(args){
+ 			$('#liketest').text(args.data);
+ 		}
+	    ,error:function(request, status , err) {
+	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
+	    }
+	});
 }
- */
 
-</script> -->
- 
+
+</script>
+
 <form method='post' action='ContentView.hash'>
 
 <c:forEach var="con" items= '${content}' >
@@ -571,19 +560,20 @@ function mapopen(latitude,longtitude,maptitle ) {
     <input type="checkbox" class="hide"/>
     </div> --%>
 
-	<div class="w3-btn">
+	
         <%-- <button id="like_ajax" type="button" class="w3-theme-d1 w3-margin-bottom like" ><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button> --%>
     
   	<button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:like('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button> 
   	<button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlike('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button>
    
-   <%--  <input type="button" id="btn" class="btn1 btn2" value="like" onclick="javascript:like('${con.connum}')"/> --%>
+    <%-- <input type="button" id="btn" class="btn1 btn2" value="like" onclick="javascript:like('${con.connum}')"/> --%>
+    <input type="button" class="btn2" id="btn" name="btn1" value="like" onclick="javascript:callAjax('${con.connum}','${con.conhash}','${con.conlike}')" > <i id="liketest"> ${con.conlike} </i> 
 
     <button type="button" class="w3-theme-d3 w3-margin-bottom" onclick="location.href='Board.hash'"><i class="fa fa-comment"></i>  Comment ${con.connum}</button>  	
 
-	</div>
+	
 
-	<%-- <div id="board_img">
+<%-- 	 <div id="board_img">
 	<a href="ContentView.hash?connum=${con.connum}">
 		<img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />' />
 		</a>
@@ -626,10 +616,10 @@ function mapopen(latitude,longtitude,maptitle ) {
 			</div>
 		</div>  
 		</a>
-	</div> --%>
+	</div> --%> 
+	
 </div>
 </c:forEach>
-
 
 </form>
 </div>

@@ -22,10 +22,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="unlike" parameterType="int">
 		update contents set conlike=(conlike-1) where connum = #{connum}
 	</update>
-	<update id="adminlike" parameterType="String">
+<!-- 	<update id="adminlike" parameterType="String">
 		update adminhash set hashlikecount=(hashlikecount+1) where hashname = #{hashname}
-	</update>
+	</update> 
 	<update id="adminunlike" parameterType="String">
 		update adminhash set hashlikecount=(hashlikecount-1) where hashname = #{hashname}
-	</update>
+	</update> -->
 </mapper>

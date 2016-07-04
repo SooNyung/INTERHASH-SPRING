@@ -33,10 +33,10 @@ public class ConfirmDAO {
 	public void unlike(int connum){
 		session.update("Confirm.unlike",connum);
 	}
-	public void adminlike(String hashname){
+/*	public void adminlike(String hashname){
 		session.update("Confirm.adminlike",hashname);
 	}
 	public void adminunlike(String hashname){
 		session.update("Confirm.adminunlike",hashname);
-	}
+	}*/
 }

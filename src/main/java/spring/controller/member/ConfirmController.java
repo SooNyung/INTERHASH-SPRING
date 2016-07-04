@@ -1,17 +1,24 @@
 package spring.controller.member;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.tiles.request.jsp.extractor.SessionScopeExtractor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import mybatis.ConfirmDAO;
+import net.sf.json.JSONObject;
 
 @Controller
 public class ConfirmController {
@@ -60,18 +67,35 @@ public class ConfirmController {
 		
 		return "confirm/ConfirmNickname";
 	}
+	
 	@RequestMapping("/LikeCheck.hash")
-	private String like_check(@RequestParam("connum") int connum, @RequestParam("conhash") String hashname,
-			HttpSession session,Model model){
+	public void like_check(@RequestParam("connum") int connum, @RequestParam("conhash") String hashname,
+			HttpSession session,Model model,HttpServletResponse resp
+			) throws IOException{
+		
 		System.out.println("좋아요 눌렀을때!");
+
+		JSONObject jso = new JSONObject(); // JASON 객체생성
+		
 		model.addAttribute("connum",connum);
 		model.addAttribute("conhash",hashname);
 
+		
 		Dao.conlikePlus(connum);
-		Dao.adminlike(hashname);
+		System.out.println("method1");
+		/*Dao.adminlike(hashname);*/
+		System.out.println("method2");
 		int conlike = Dao.getConlike(connum);
 		session.setAttribute("conlike", conlike);
-		return "confirm/likeCheck";
+		
+		
+		jso.put("data", conlike); // jason은 map구조(키,값), data라는 key로 list데이터를 주입했다
+		System.out.println("jso ::: "+jso);
+		resp.setContentType("application/json;charset=utf-8");
+		PrintWriter out = resp.getWriter();
+		out.print(jso.toString());
+
+		//return "confirm/likeCheck";
 		//return "fixpage/boardDiv"; //보현test중
 	}
 	
@@ -83,7 +107,7 @@ public class ConfirmController {
 		model.addAttribute("conhash",hashname);
 
 		Dao.unlike(connum);
-		Dao.adminunlike(hashname);
+		/*Dao.adminunlike(hashname);*/
 		int conlike = Dao.getConlike(connum);
 		session.setAttribute("conlike", conlike);
 		return "confirm/unlike";
