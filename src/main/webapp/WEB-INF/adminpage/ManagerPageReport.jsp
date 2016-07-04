@@ -34,8 +34,10 @@ color:#7A7A7A;
 .border-round {
    border-radius: 7px !important
 }
+
+#text {text-align:center;}
 </style>
-</style>
+
 </head>
 <body>
 <div id ="view_div" class="box-shadow border-round white">
@@ -44,8 +46,8 @@ color:#7A7A7A;
 <hr/>
 <form method="post" action="ManagerPageMemberPro.hash">
 <input type="button" value="관리자페이지" onclick="javascript:window.location='ManagerPage.hash'">
-<table>
-<tr>
+<table id ="text">
+<tr bgcolor="#ffcccc">
 <td><b>email</b></td>
 <td><b>nickname</b></td>
 <td><b>신고횟수</b></td>
@@ -54,16 +56,16 @@ color:#7A7A7A;
 
 <c:forEach var="member" items="${report}">
 <tr>
-<td>
+<td width="150">
 ${member.email}
 </td>
-<td>
+<td width="150">
 ${member.connickname}
 </td>
-<td>
+<td width="150">
 ${member.conreportcount}
 </td>
-<td><input type="checkbox" name="delete" value="${member.email}"></td>
+<td width="150"><input type="checkbox" name="delete" value="${member.email}"></td>
 </tr>
 </c:forEach>
 </table>

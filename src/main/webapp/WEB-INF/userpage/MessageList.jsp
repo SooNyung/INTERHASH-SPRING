@@ -64,7 +64,12 @@ a:focus, a:hover {
 h2{
 text-align: center;
 }
-
+#buttonid {
+	color: white;
+	background-color: #FFCCCC;
+	border-radius: 7px !important;
+	padding:5px;
+}
 </style>
 
 </head>
@@ -77,6 +82,7 @@ text-align: center;
  -->
 
 <!-- <div id="bar"> -->
+
 <a id="rigth" href="MessageForm.hash"><spen class="fontawesome-envelope">Send Message</a><br>
 <!-- </div> -->
 <h2><spen id="heart" class="fontawesome-heart"></spen>Received messages<spen id="heart" class="fontawesome-heart"/></h2>
@@ -87,7 +93,9 @@ text-align: center;
 			<span><b id="fontsize">Sender |</b> <label id="fontsize">${list.sendNickname}(${list.sendEmail})</label></span><br> 
 			<span><b id="fontsize">From time |</b> <label id="fontsize">${sdf.format(list.sendDate)}</label></span><br><hr>
 				<span> <a href="MessageView.hash?messageNum=${list.messageNum}">
-				<input type="text" id="message" value="${list.messageContent}"></a><br>
+				<input type="text" id="message" value="${list.messageContent}"></a>
+				<input type="hidden" name="messageNum" value="${list.messageNum}">
+				<input type="button" id="buttonid" value="삭제" onclick="location.href='deleteMessage.hash?messageNum=${list.messageNum}'"> 
 			</span><br>
 		</div>
 		</c:if>
@@ -96,7 +104,6 @@ text-align: center;
 		<div>쪽지가 없습니다.</div>
 		</c:if>
 	</c:forEach>
-
 
 </body>
 </html>
