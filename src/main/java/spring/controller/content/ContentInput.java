@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -50,35 +51,40 @@ public class ContentInput {
 		return "userpage/TagCheck";
 	}
 	@RequestMapping("/ContentInputPro.hash")
-	public String file_upload(@RequestParam("conphoto") MultipartFile conphoto,@RequestParam("content") String content ,
-			@RequestParam("tag") String tag ,@RequestParam("maptitle") String maptitle,@RequestParam("mapplace") String mapplace, HttpServletRequest request
-			) {
+	public String file_upload(@RequestParam("conphoto") MultipartFile conphoto,@ModelAttribute("writeForm") ContentCommand content,  
+			HttpServletRequest request,@RequestParam("tag") String tag) {
 		
 		try {
 			
-			request.setAttribute("maptitle", maptitle);
-			request.setAttribute("mapplace", mapplace);
-			System.out.println(maptitle);		
-			
-			String map1 = mapplace;
-			map1 = map1.substring(1,map1.length()-1);
-			
-			
-			System.out.println(map1);
-			
-			String[] map2 = map1.split(", ");
-			
-			for(int i = 0; i <map2.length; i++)
-			{
-				System.out.println("위도,경도=" + map2[i].trim());
+			String map1 = content.getMapplace();
+			try{
+				map1 = map1.substring(1,map1.length()-1);
+			}catch(Exception e){
+				map1 = "none";
 			}
 			
-			String latitude = map2[0];
-			System.out.println("위도:"+latitude);
-			String longtitude = map2[1].trim();
-			System.out.println("경도:"+longtitude);
 			
-			request.setAttribute("file1",upload(conphoto,request,content,tag,maptitle,latitude,longtitude));
+			String latitude="";
+			String longtitude="";
+			
+			System.out.println(map1);
+			if(map1.equals("none")){
+				latitude="";
+				longtitude="";
+			}else{
+				String[] map2 = map1.split(", ");
+
+				for(int i = 0; i <map2.length; i++)
+				{
+					System.out.println("위도,경도=" + map2[i].trim());
+				}
+
+				latitude= map2[0];
+				System.out.println("위도:"+latitude);
+				longtitude = map2[1].trim();
+				System.out.println("경도:"+longtitude);
+			}
+			request.setAttribute("file1",upload(conphoto,request,content.getContent(),tag,content.getMaptitle(),latitude,longtitude));
 			request.setAttribute("real_name", real_name);
 			
 		} catch (Exception e) {
@@ -86,6 +92,8 @@ public class ContentInput {
 		}
 		return "redirect:Board.hash";
 	}
+
+	
 	String real_name;
 	private String upload(MultipartFile info,HttpServletRequest request,String content,String tag,String maptitle,String latitude,String longtitude) throws Exception{
 		

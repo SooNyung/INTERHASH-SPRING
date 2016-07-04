@@ -19,9 +19,18 @@ public class ContentCommand {
 	String longtitude;
 	String maptitle;	
 	ArrayList photolist;
+	String mapplace;
 	
 	
 	
+	public String getMapplace() {
+		return mapplace;
+	}
+
+	public void setMapplace(String mapplace) {
+		this.mapplace = mapplace;
+	}
+
 	public String getMaptitle() {
 		return maptitle;
 	}

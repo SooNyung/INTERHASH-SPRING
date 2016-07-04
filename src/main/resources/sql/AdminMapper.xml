@@ -3,7 +3,7 @@
 
 <mapper namespace="admin">
 <select id="admincount" resultType="spring.model.AdminCommand">
-		select * from ADMINHASH
+		select conhash, sum(conlike) as hashlike,count(connum) as hashcontent from contents group by conhash
 </select>
 
 <delete id="deleteMember" parameterType="String">
@@ -26,5 +26,13 @@ values(num_seq.nextval, #{drawalemail}, #{drawalcause}, sysdate)
 
 <select id ="report" resultType="spring.model.ContentCommand">
 select * from contents where conreportcount >= 1 
+</select>
+
+<select id="contentcount" resultType="int">
+select count(*) from contents
+</select>
+
+<select id = "likecount" resultType="int">
+select sum(conlike) from contents
 </select>
 </mapper>

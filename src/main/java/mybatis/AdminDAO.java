@@ -22,7 +22,7 @@ public class AdminDAO {
 		this.session=session;
 	}
 	
-	public List<AdminCommand> selectHash(){
+	public List<ContentCommand> selectHash(){
 		return session.selectList("admin.admincount");
 	}
 	
@@ -61,5 +61,17 @@ public class AdminDAO {
 	
 	public int memberCount(){
 		return session.selectOne("member.memberCount");
+	}
+	
+	public int contentCount(){
+		return session.selectOne("admin.contentcount");
+	}
+	
+	public int likeCount(){
+		return session.selectOne("admin.likecount");
+	}
+	
+	public int total_count(){
+		return session.selectOne("member.total_count");
 	}
 }

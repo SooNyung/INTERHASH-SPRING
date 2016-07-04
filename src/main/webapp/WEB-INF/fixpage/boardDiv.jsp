@@ -391,11 +391,11 @@ $(function(){
 }); 
 
 
-function modifycon(connum){
+/* function modifycon(connum){
    url="/INTERHASH/UpdateContent.hash?check=y&&connum="+connum
 }
-
- function modify(comnum,connum){
+ */
+  function modify(comnum,connum){
    url="updateCommentForm.hash?check=y&&comnum="+comnum+"&&connum="+connum;
    window.open(url,"post","toolbar=no ,width=400 ,height=150,directories=no,status=yes,menubar=no,scrollbars=no");
 } 
@@ -430,7 +430,42 @@ function mapopen(latitude,longtitude,maptitle){
 	//location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
 }
 
-
+ //comment delete
+function delete1(comnum, connum){
+ 	var com = comnum;
+	var con = connum;
+	var url = "/INTERHASH-SPRING/deleteComment.hash";
+	var params = "comnum="+comnum+"&connum="+connum;
+	$.ajax({
+		type:"post"
+		,url:url
+		,data:params
+		,dataType:"json"
+		,success:function(args){	
+			$("#test_div *").remove();
+			$("#comment_div *").remove();
+			for(var i=0;i<args.data.length;i++){
+				var check;
+				if(args.session==args.data[i].email){
+					$('#test_div').append(
+						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
+						'--!><span><label id="time">'+args.time+'</label></span><!--'+
+						'--!><span id="align_right"><a href="#" onclick="delete1('+args.data[i].comnum+','+args.data[i].connum+')">삭제</a><!--'+
+						'--!><a onclick="modify('+args.data[i].comnum+','+args.data[i].connum+')">수정</a><!--'+
+						'--!></span><br><div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+			}else{
+				$('#test_div').append(
+						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
+						'--!><span><label id="time">'+args.time+'</label></span><!--'+
+						'--!><span id="align_right"><!--'+
+						'--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></span><br><div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+			}
+			}
+		},error: function (xhr, status, err){
+			 alert(err);
+		} 	
+		});
+}   
 
 
 //comment insert
@@ -453,13 +488,13 @@ function insert(connum){
 					$('#test_div').append(
 						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
 						'--!><span><label id="time">'+args.test+'</label></span><!--'+
-						'--!><span id="align_right"><a href="#" onclick="delete('+args.data[i].comnum+','+args.data[i].conum+')">삭제</a><!--'+
+						'--!><span id="align_right"><a href="#" onclick="delete1('+args.data[i].comnum+','+args.data[i].connum+')">삭제</a><!--'+
 						'--!><a onclick="modify('+args.data[i].comnum+','+args.data[i].connum+')">수정</a><!--'+
 						'--!></span><br><div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
 			}else{
 				$('#test_div').append(
 						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
-						'--!><span><label id="time">'+args.data[i].commodifieddate+'</label></span><!--'+
+						'--!><span><label id="time">'+args.test+'</label></span><!--'+
 						'--!><span id="align_right"><!--'+
 						'--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></span><br><div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
 			}
@@ -566,7 +601,7 @@ function unlikeAjax(num,hash,like){
             <div id="writeform" border="1">
       <form action="ContentInputPro.hash" name="writeForm" method="post" enctype="multipart/form-data"> 
       <div id="wrap" style="width: 500px; ">
-         <textarea id="textfield" name="content" placeholder="내용을 입력하세요."></textarea>
+         <textarea style="resize: none; width:460px; height:80px;" id="textfield" name="content" placeholder="내용을 입력하세요."></textarea>
          <div class="photoBox" style="height: 100px; width: 100px;">
             <input class='fileData' id = "conphoto" name="conphoto" type="file"/> 
                <div id="blah_img" >
@@ -595,8 +630,7 @@ function unlikeAjax(num,hash,like){
              </div>
             </div> 
             
-            
-             
+                       
              <span id="submit"> 
          		<!--      <input type="submit" id="button" value="submit"/>  -->
          		<input type="image" src="image/logo/post.PNG"> 
@@ -619,16 +653,25 @@ function unlikeAjax(num,hash,like){
 <div id="board_div" class="container box-shadow border-round white">
 <table width="100%">
 <tr>  
-<td width="10%"><img src='<c:url value="/upload/${sessionScope.profilePhoto}"/>' alt="Avatar" class="left-align circle" style="width:50px"></td>
+<td width="10%">
+<c:set var= "temp" value="${con.email }" />
+<img src='<c:url value="/upload/${profilephoto.get(temp)}"/>' alt="Avatar" class="left-align circle" style="width:50px; height:50px;">
+
+</td>
 <td width="65%"><a id="View" target="_blank" href="#" onclick="window.open('ProfileView.hash?nickname=${con.connickname}','new','resizable=no width=700 height=500');return false"><b>${con.connickname}</b></a></td>
 <td width="35%"><b class="right-align opacity"><font color="#b2b2b2">${con.conmodifieddate}</font></b></td>
 </tr>
 </table>
    <hr color="#eee">
    <div class="content">
-   <div class="write">${con.content}&nbsp;&nbsp;&nbsp;-<a href="#" onclick= "javascript:mapopen('${con.latitude}','${con.longtitude}','${con.maptitle}')" ><font 
-
-color="#666"><b>${con.maptitle}</b>에서</font></a></div>
+   <div class="write">${con.content}&nbsp;&nbsp;&nbsp;
+   <c:if test="${!empty con.maptitle}">
+   -<a href="#" onclick= "javascript:mapopen('${con.latitude}','${con.longtitude}','${con.maptitle}')" >
+   <font color="#666"><b>${con.maptitle}</b>에서</font></a>
+   </c:if>
+   </div>
+   
+   
    <div class="w3-row-padding">
         <a href="ContentView.hash?connum=${con.connum}" class="img_link">
       <img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />'/>
