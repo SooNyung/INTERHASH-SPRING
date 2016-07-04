@@ -159,9 +159,17 @@ function modal_close(){
 @import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
 @import url(http://weloveiconfonts.com/api/?family=Font Awesome);
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
-
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
 [class*="Font Awesome-"]:before {
   font-family: 'Font Awesome', sans-serif;
+}
+
+.pro1 {
+/*    font-size: 16px; */
+   border: 0px;
+   font-family: 'Nanum Pen Script', serif;
+   font-size:20px;
+   color:#797D7F;
 }
    .background-color{color:#000 !important; background-color:#f5f7f8 !important}
    #board_div{
@@ -793,7 +801,7 @@ function unlikeAjax(num,hash,like){
       </a>  
     </div>
 
-    <p>#${con.conhash}</p>
+    <p class="pro1">#${con.conhash}</p>
 
    </div>
    
