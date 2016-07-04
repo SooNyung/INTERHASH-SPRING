@@ -3,15 +3,21 @@
 <%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
+
 <head>
+
+<link href='https://fonts.googleapis.com/css?family=Bad+Script' rel='stylesheet' type='text/css'>
 	<title>INTERHASH#</title>
 
 <style>
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 [class*="fontawesome-"]:before {
   font-family: 'FontAwesome', sans-serif;
 }
+
+
 
 * {
   box-sizing: border-box;
@@ -26,7 +32,7 @@ body {
    background-color: #FFFFFF; 
    color: #606468; 
 	/* color:#EAEAEA; */
-  font: 400 0.875rem/1.5 "Open Sans", sans-serif;
+ 
   margin: 0;
   min-height: 100%;
 }
@@ -166,7 +172,9 @@ h1 {
   letter-spacing: 7px;
   text-transform: uppercase;
   color: #263238;
+  font-family: 'Bad Script', cursive;
 }
+
 
 </style>
 <script>
@@ -213,6 +221,7 @@ function emailfail()
 <body onload="emailfail()" class="align">
 
   <div class="site__container">
+  <center>
 <h1>INTERHASH#</h1>
     <div class="grid__container">
 

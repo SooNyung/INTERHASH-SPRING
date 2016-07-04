@@ -26,7 +26,10 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 <title>에벌레</title>
 <style>
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
-
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+body{font-family: '돋음'; font-size:12px;}
+a:link,a{text-decoration:none;}
 h2{font-family: 'Bad Script', cursive;}
 .w3-theme-l5 {
    color: #000 !important;
@@ -210,7 +213,9 @@ padding: 0px 5px 0px 5px;}
 }
 
 .text-theme {
-   color: #607d8b !important
+   color: #607d8b !important;
+
+   
 }
 
 .accordian {
@@ -249,6 +254,8 @@ padding: 0px 5px 0px 5px;}
    color: #fff !important;
    background-color: #FFCCCC !important
 }
+
+button:hover{background-color: #B3B6B7 !important}
 
 .left-align {
    text-align: left
@@ -577,6 +584,15 @@ border-radius:7px;
 .pro {
 /*    font-size: 16px; */
    border: 0px;
+   font-family: 'Nanum Pen Script', serif;
+   font-size:20px;
+}
+
+.pro1 {
+/*    font-size: 16px; */
+   border: 0px;
+   font-family: 'Nanum Pen Script', serif;
+   font-size:30px;
 }
 
 #profileImg{
@@ -875,7 +891,7 @@ height:50px;
                  <p>
 
                   <i class="fa fa-pencil fa-fw margin-right text-theme"></i>
-                  ${memberinfo.nickname}
+                 <i class="pro"> ${memberinfo.nickname}</i>
                </p>
                 <p>
                   <i class="fa fa-birthday-cake fa-fw margin-right text-theme profile" id="birthday" style="display: none;"></i>
@@ -921,15 +937,15 @@ height:50px;
             <div class="accordion white border-round">
                <button onclick="myContent();"
                   class="btn-block theme-l1 left-align border-round">
-                  <i class="fa fa-circle-o-notch fa-fw"></i> 내 글 보기
+                  <i class="fa fa-circle-o-notch fa-fw"></i> <b>내 글 보기</b>
                </button>
                <button onclick="updateContent();"
                   class="btn-block theme-l1 left-align">
-                  <i class="fa fa-calendar-check-o fa-fw"></i> 최신 글 보기
+                  <i class="fa fa-calendar-check-o fa-fw"></i> <b>최신 글 보기</b>
                </button>
                <button onclick="myFunction();"
                   class="btn-block theme-l1 left-align border-round">
-                  <i class="fa fa-users fa-fw"></i> 인기 글 보기
+                  <i class="fa fa-users fa-fw"></i> <b>인기 글 보기</b>
                </button>
                <script>
                   function myContent() {
@@ -964,7 +980,7 @@ height:50px;
              <li><a href="Board.hash?hash=독도">#독도</a></li>
              <li><a href="Board.hash?hash=맥주">#맥주</a></li> -->   
             <span class="tag font-small w3-theme-d1 border-round">
-            <a id ="a" href="hashLike.hash?conhash=${tagname}" >#${tagname}</a></span>    
+            <a id ="a" class="pro1" href="hashLike.hash?conhash=${tagname}" >#${tagname}</a></span>    
             </c:forEach>            
           </p>
         </div>
