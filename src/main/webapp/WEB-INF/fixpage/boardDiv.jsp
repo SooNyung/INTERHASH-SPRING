@@ -546,12 +546,16 @@ function mapopen(latitude,longtitude,maptitle ) {
 	} */
 	
 function likeAjax(num,hash,like){
+		
+	alert("like function");	
 	
 	var url="/INTERHASH-SPRING/LikeCheck.hash";
 	var params ="connum="+num+"&conhash="+hash;
 	
-	var snum=$("#likep").text();
-	alert(snum);
+//	var snum=$('#likep').text();
+//	alert(snum);	
+	
+	alert( like );
 
 	$.ajax({
 		type:"post"
@@ -560,6 +564,9 @@ function likeAjax(num,hash,like){
 		,dataType:"json"
  		,success:function(args){
  			$('#likep').text(args.data);
+ 		
+//			("#(${con.connum}likep)").text(args.data);
+ 			alert("ajax안에"+ like ) ;
  		}
 	    ,error:function(request, status , err) {
 	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
@@ -568,6 +575,8 @@ function likeAjax(num,hash,like){
 }
 
 function unlikeAjax(num,hash,like){
+	
+	alert("unlike function");
 	
 	var url="/INTERHASH-SPRING/Unlike.hash";
 	var params ="connum="+num+"&conhash="+hash;
@@ -693,10 +702,10 @@ function unlikeAjax(num,hash,like){
    <div class="w3-btn">
     
      <%-- <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}','${con.conlike}')"><i class="fa fa-thumbs-up" id="likep" ></i>Like <i id="likep">${con.conlike}</i></button> 
-     <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}','${con.conlike}')"><i class="fa fa-thumbs-up"></i> Like <i id="likem"> ${con.conlike}</i></button> --%>    
+     <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}','${con.conlike}')"><i class="fa fa-thumbs-up"></i> Like <i id="likem"> ${con.conlike}</i></button>    --%>
     
-	 <input type="button" id="btn" name="btn1" value="like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}','${con.conlike}')" > <i id="${con.connum}likep"> ${con.conlike} </i>
-        
+	<input type="button" id="btn" name="btn1" value="like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}','${con.conlike}')" > <i id="likep"> ${con.conlike} </i>
+	
     <button type="button" class="w3-theme-d3 w3-margin-bottom" ><i class="fa fa-comment"></i> Comment ${con.connum}</button>     
    </div>
 
