@@ -541,87 +541,6 @@ function mapopen(latitude,longtitude,maptitle ) {
    //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
 }
 
-/* function like(num,String){
-	   var select_id = "${sessionScope.conlike}";//'#'+num+"like_bn";
-	   var like_cnt =select_id+1;//$(select_id).text();
-	   alert(select_id);
-	   
-	   //$(select_id).text(like_cnt+1);
-	   
-	   alert(like_cnt);
-	   url = "LikeCheck.hash?connum="+num+"&conhash="+String;
-	   newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
-	   //location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
-	}
-
-	function unlike(num,String){
-	   var select_id = "${sessionScope.conlike}";//'#'+num+"unlike_bn";
-	   var like_cnt =select_id-1;//$(select_id).text();
-	   alert(select_id);
-	   
-	   //$(select_id).text(like_cnt-1);
-	   
-	   alert(like_cnt);
-	   
-	   url = "Unlike.hash?connum="+num+"&conhash="+String;
-	   newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
-	   //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
-	} */
-	
-function likeAjax(num,hash,like){
-		
-	alert("like function");	
-	
-	var url="/INTERHASH-SPRING/LikeCheck.hash";
-	var params ="connum="+num+"&conhash="+hash;
-	
-//	var snum=$('#likep').text();
-//	alert(snum);	
-	
-	alert( like );
-
-	$.ajax({
-		type:"post"
-		,url:url
-		,data:params
-		,dataType:"json"
- 		,success:function(args){
- 			$('#likep').text(args.data);
- 		
-//			("#(${con.connum}likep)").text(args.data);
- 			alert("ajax안에"+ like ) ;
- 		}
-	    ,error:function(request, status , err) {
-	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
-	    }
-	});
-}
-
-function unlikeAjax(num,hash,like){
-	
-	alert("unlike function");
-	
-	var url="/INTERHASH-SPRING/Unlike.hash";
-	var params ="connum="+num+"&conhash="+hash;
-	
-	var snum=$("#likem").text();
-	alert(snum);
-
-	$.ajax({
-		type:"post"
-		,url:url
-		,data:params
-		,dataType:"json"
- 		,success:function(args){
- 			$('#likem').text(args.data);
- 		}
-	    ,error:function(request, status , err) {
-	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
-	    }
-	});
-}
-
-
 </script>
 </head>
 <body>
@@ -676,14 +595,20 @@ function unlikeAjax(num,hash,like){
             </div>
           </div>
       
-
+<!-- 좋아요 기능 function -->
 <script>
 
-function callAjax(num,hash,like){
+function likeAjax(num,hash,like){
+	
+	alert("like function");	
 	
 	var url="/INTERHASH-SPRING/LikeCheck.hash";
 	var params ="connum="+num+"&conhash="+hash;
-	var snum=$("#liketest").text();
+	
+//	var snum=$('#likep').text();
+//	alert(snum);	
+	
+	alert( like );
 
 	$.ajax({
 		type:"post"
@@ -691,7 +616,10 @@ function callAjax(num,hash,like){
 		,data:params
 		,dataType:"json"
  		,success:function(args){
- 			$('#liketest').text(args.data);
+ 			$('#likep').text(args.data);
+ 		
+//			("#(${con.connum}likep)").text(args.data);
+ 			alert("ajax안에"+ like ) ;
  		}
 	    ,error:function(request, status , err) {
 	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
@@ -699,6 +627,29 @@ function callAjax(num,hash,like){
 	});
 }
 
+function unlikeAjax(num,hash,like){
+	
+	alert("unlike function");
+	
+	var url="/INTERHASH-SPRING/Unlike.hash";
+	var params ="connum="+num+"&conhash="+hash;
+	
+	var snum=$("#likem").text();
+	alert(snum);
+
+	$.ajax({
+		type:"post"
+		,url:url
+		,data:params
+		,dataType:"json"
+ 		,success:function(args){
+ 			$('#likem').text(args.data);
+ 		}
+	    ,error:function(request, status , err) {
+	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
+	    }
+	});
+}
 
 </script>
 
