@@ -4,14 +4,53 @@
 
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
 <title>Insert title here</title>
 <style>
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
 input[name=hiddenCheck]{
 	color:red;
 }
 
-body{background-color:#FFCCCC}
+body{
+background-color:white;
+font-family: 'Indie Flower', cursive;
+}
+
+a {
+color:#8C8C8C;
+text-decoration: none;
+}
+a:focus, a:hover {
+  text-decoration: underline; 
+  color:#ea4c88;
+  
+}
+
+#heart{
+	color:#ea4c88;
+}
+#buttonid {
+	color: white;
+	background-color: #FFCCCC;
+	border-radius: 7px !important;
+	padding:5px;
+}
+#buttonid:hover {
+	color: white;
+	background-color: #FF9090;
+	border-radius: 7px !important;
+	padding:5px;
+}
+
+#rigth{
+	float: right;
+}
 </style>
 <script>
 var check = false;
@@ -62,22 +101,29 @@ function email(){
 <body>	
 
 <div align="center">
-<div><a href="MessageList.hash">받은쪽지  </a> | <a href="#"> 쪽지쓰기</a><br><br>	
+<div>
+<a id="rigth" href="MessageList.hash"><spen class="fontawesome-envelope"> Received messages </a>
+<br> 
+<h2><spen id="heart" class="fontawesome-heart"></spen>Send Message<spen id="heart" class="fontawesome-heart"/></h2>
+
+<!-- <a href="#"> Send message   </a><br><br> -->	
+
 
 </div>
 
 <form method="post" action="MessagePro.hash" onsubmit="return checkIt()">
-<div>받는사람 : 
+<div>Email : 
 <input type="email" id="receEmail" name="receEmail" value="${email}">
-<input type="button" onclick="email()" value="이메일검사">
+<input type="button" id="buttonid" onclick="email()" value="Confirm email">
+
 </div>
 <hr>
 
 <div><textarea name="messagecontent" rows="10" cols="50"></textarea></div><br>
 
 <div>
-<input type="submit" value="보내기">
-<input type="button" value="닫기" onclick="javascript:window.close()"/>
+<input type="submit" id="buttonid" value="Send">
+<input type="button" id="buttonid" value="Close" onclick="javascript:window.close()"/>
 </div>
 
 </form>

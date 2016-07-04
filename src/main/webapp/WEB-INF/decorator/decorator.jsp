@@ -584,6 +584,18 @@ width:50px;
 height:50px;
 }
 
+#buttonid {
+	color: white;
+	background-color: #FFCCCC;
+	border-radius: 7px !important;
+	padding:5px;
+}
+#buttonid:hover {
+	color: white;
+	background-color: #FF9090;
+	border-radius: 7px !important;
+	padding:5px;
+}
 
 </style>
 
@@ -672,12 +684,12 @@ height:50px;
 
    function Message(){
       url="MessageForm.hash";
-      window.open(url,"post","toolbar=no ,width=400 ,height=350,directories=no,status=yes,menubar=no,scrollbars=no");
+      window.open(url,"post","toolbar=no ,width=400 ,height=400,directories=no,status=yes,menubar=no,scrollbars=no");
       } 
    
    function MessageList(){
       url="MessageList.hash?check=y";
-      window.open(url,"post","toolbar=no ,width=400 ,height=350,directories=no,status=yes,menubar=no,scrollbars=no");
+      window.open(url,"post","toolbar=no ,width=400 ,height=400,directories=no,status=yes,menubar=no,scrollbars=no");
       } 
    
 
@@ -765,7 +777,7 @@ height:50px;
             class="padding-large margin-right"><h2>I N T E R H A S H #</h2></a></li>
          <li class="small">
          <div class="message">
-         <a href="#" onclick="window.open('MessageList.hash','new','width=400 height=350');return false" 
+         <a href="#" onclick="window.open('MessageList.hash','new','width=400 height=400');return false" 
          class="padding-large margin-right"  title="Messages">
            <img src ="image/logo/message .png" onmouseover="this.src='image/logo/message2.png'" onmouseout="this.src='image/logo/message .png'" width="30px" height="30px"/><span class="count badge right small circle pink">${messagecount}</span>
          </a>
@@ -774,8 +786,8 @@ height:50px;
             <ul class="sub">
                <table>   
                   <tr>
-                     <td>쪽지</td>
-                     <td class="w3-right"><button onclick="Message()">쪽지보내기</button></td>
+                     <td style="color:#8C8C8C;">Message</td>
+                     <td class="w3-right"><button id="buttonid" onclick="Message()">Send Message</button></td>
                   </tr>
                   <tr class="left-align">
                      <td colspan="2"><c:forEach var="message"
@@ -790,7 +802,7 @@ height:50px;
                   </tr>
 
                   <tr>
-                     <Td colspan="2"><hr><button onclick="MessageList()">모든 쪽지 보기</button></Td>
+                     <Td colspan="2"><hr><button id="buttonid" onclick="MessageList()">All Messages</button></Td>
                   </tr>
                </table>
             </ul></li>
