@@ -41,7 +41,7 @@ text-align:center;
 
 #view_div{
 	width:120%;
-	height:90%;
+	height:900px;
  	/* background-color: black; */
 	/* border:1px solid; */
 	padding:5px;
@@ -64,7 +64,7 @@ text-align:center;
 
 <div id ="div1" >
 <table>
-<tr height="30">
+<tr height="30" bgcolor="#ffcccc">
 <td><b>HashTag</b></td>
 <td><b>좋아요 수</b></td>
 <td><b>게시글 수</b></td>
@@ -89,12 +89,12 @@ ${hash.hashcontent}
 </table>
 </div>
 
-<hr width="70%">
+
 
 <div id ="div2">
-<h5>Total</h5>
+<h3>Total</h3>
 <table>
-<tr height="30">
+<tr height="30" bgcolor="#ffcccc">
 <td><b>방문자 수</b></td>
 <td><b>좋아요 수</b></td>
 <td><b>게시물 수</b></td>
@@ -108,20 +108,20 @@ ${hash.hashcontent}
 </table>
 </div>
 
-<hr width="70%">
+
 
 <div id ="div3">
-<h5>Today</h5>
+<h3>Today</h3>
 <table>
-<tr height="30">
+<tr height="30" bgcolor="#ffcccc">
 <td><b>방문자 수</b></td>
 <td><b>좋아요 수</b></td>
 <td><b>게시물 수</b></td>
 </tr>
 <tr height="30">
-<td>${total_count}</td>
-<td>${likecount}</td>
-<td>${contentcount}</td>
+<td>${today}</td>
+<td>${today_like}</td>
+<td>${today_content}</td>
 </tr>
 
 </table>

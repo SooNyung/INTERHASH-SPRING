@@ -74,4 +74,16 @@ public class AdminDAO {
 	public int total_count(){
 		return session.selectOne("member.total_count");
 	}
+	
+	public int today(){
+		return session.selectOne("member.today");
+	}
+	
+	public int today_like(){
+		return session.selectOne("admin.today_like");
+	}
+	
+	public int today_content(){
+		return session.selectOne("admin.today_content");
+	}
 }

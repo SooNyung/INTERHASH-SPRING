@@ -134,12 +134,14 @@ function modal_close(){
 </script>
 <style type="text/css">
 @import url(http://weloveiconfonts.com/api/?family=Font Awesome);
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
 [class*="Font Awesome-"]:before {
   font-family: 'Font Awesome', sans-serif;
 }
    .background-color{color:#000 !important; background-color:#f5f7f8 !important}
    #board_div{
-      width:500px;
+      width:115%;
       height:230px;
 /*        background-color: black;  */
       
@@ -589,7 +591,32 @@ function unlikeAjax(num,hash,like){
 	});
 }
 
+function checkIt(){
+	
+	var content = eval("document.writeForm");
+	var conphoto = eval("document.writeForm");
+	var tag = eval("document.writeForm");
+	
+	if(!writeForm.content.value){
+		alert("내용을 입력하세요~:)");
+		document.writeForm.content.focus(); 
+		return false;
+	}
 
+	if(!writeForm.conphoto.value){
+		alert("사진을 올려주세요~:)");
+		return false;
+	}
+	
+	
+	if(!writeForm.tag.value){
+		alert("태그를 선택해주세요~:)");
+		return false;
+	}
+	
+
+	return true;
+};
 </script>
 </head>
 <body>
@@ -599,7 +626,7 @@ function unlikeAjax(num,hash,like){
             <div class="container w3-padding">
            <!--    <h6 class="opacity">I love it!! InterHash~♡</h6> -->
             <div id="writeform" border="1">
-      <form action="ContentInputPro.hash" name="writeForm" method="post" enctype="multipart/form-data"> 
+      <form action="ContentInputPro.hash" name="writeForm" method="post" enctype="multipart/form-data" onSubmit="return checkIt()"> 
       <div id="wrap" style="width: 500px; ">
          <textarea style="resize: none; width:460px; height:80px;" id="textfield" name="content" placeholder="내용을 입력하세요."></textarea>
          <div class="photoBox" style="height: 100px; width: 100px;">
@@ -629,8 +656,7 @@ function unlikeAjax(num,hash,like){
                <img src ="image/logo/tag.png" width="25px" height="25px" onClick="tagCheck()">
              </div>
             </div> 
-            
-                       
+                 
              <span id="submit"> 
          		<!--      <input type="submit" id="button" value="submit"/>  -->
          		<input type="image" src="image/logo/post.PNG"> 

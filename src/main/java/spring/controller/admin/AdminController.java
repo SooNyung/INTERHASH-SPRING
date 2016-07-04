@@ -67,6 +67,9 @@ public class AdminController {
 		mv.addObject("contentcount",dao.contentCount());
 		mv.addObject("likecount",dao.likeCount());
 		mv.addObject("total_count",dao.total_count());
+		mv.addObject("today",dao.today());
+		mv.addObject("today_like",dao.today_like());
+		mv.addObject("today_content",dao.today_content());
 		System.out.println(dao.selectHash());
 		return mv;
 	}

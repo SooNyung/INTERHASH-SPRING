@@ -26,7 +26,10 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 <title>에벌레</title>
 <style>
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
-
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+body{font-family: '돋음'; font-size:12px;}
+a:link,a{text-decoration:none;}
 h2{font-family: 'Bad Script', cursive;}
 .w3-theme-l5 {
    color: #000 !important;
@@ -210,7 +213,9 @@ padding: 0px 5px 0px 5px;}
 }
 
 .text-theme {
-   color: #607d8b !important
+   color: #607d8b !important;
+
+   
 }
 
 .accordian {
@@ -577,6 +582,15 @@ border-radius:7px;
 .pro {
 /*    font-size: 16px; */
    border: 0px;
+   font-family: 'Nanum Pen Script', serif;
+   font-size:20px;
+}
+
+.pro1 {
+/*    font-size: 16px; */
+   border: 0px;
+   font-family: 'Nanum Pen Script', serif;
+   font-size:30px;
 }
 
 #profileImg{
@@ -863,7 +877,7 @@ height:50px;
                  <p>
 
                   <i class="fa fa-pencil fa-fw margin-right text-theme"></i>
-                  ${memberinfo.nickname}
+                 <i class="pro"> ${memberinfo.nickname}</i>
                </p>
                 <p>
                   <i class="fa fa-birthday-cake fa-fw margin-right text-theme profile" id="birthday" style="display: none;"></i>
@@ -952,7 +966,7 @@ height:50px;
              <li><a href="Board.hash?hash=독도">#독도</a></li>
              <li><a href="Board.hash?hash=맥주">#맥주</a></li> -->   
             <span class="tag font-small w3-theme-d1 border-round">
-            <a id ="a" href="hashLike.hash?conhash=${tagname}" >#${tagname}</a></span>    
+            <a id ="a" class="pro1" href="hashLike.hash?conhash=${tagname}" >#${tagname}</a></span>    
             </c:forEach>            
           </p>
         </div>
