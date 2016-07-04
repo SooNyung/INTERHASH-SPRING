@@ -156,6 +156,7 @@ function modal_close(){
 
 </script>
 <style type="text/css">
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
 @import url(http://weloveiconfonts.com/api/?family=Font Awesome);
 [class*="Font Awesome-"]:before {
   font-family: 'Font Awesome', sans-serif;
@@ -380,7 +381,13 @@ a:focus, a:hover {
  .border-round{border-radius:4px!important}
  .container{content:"";display:table;clear:both;padding:0.01em 16px; margin-left:0px;}
 .w3-col.m12{width:100px}
-html,body,h6{font-family: "Open Sans", sans-serif}
+html,body,h6{
+/* font-family: "Open Sans", sans-serif */
+font-family: 'Nanum Pen Script', serif;
+}
+body{
+font-size: 20px;
+}
 .w3-theme {color:#fff !important; background-color:#607d8b !important}
 .white{color:#000!important;background-color:#fff!important;}
 
