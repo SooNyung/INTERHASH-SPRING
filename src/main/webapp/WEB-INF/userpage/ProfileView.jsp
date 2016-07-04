@@ -86,7 +86,7 @@ input {
           flex: 1;
 /*    padding: 1rem 0; */
 	padding-bottom: 10px;
-	width:100%;
+	width:80%;
   
 }
 
