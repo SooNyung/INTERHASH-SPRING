@@ -255,6 +255,8 @@ padding: 0px 5px 0px 5px;}
    background-color: #FFCCCC !important
 }
 
+button:hover{background-color: #B3B6B7 !important}
+
 .left-align {
    text-align: left
 }
@@ -935,15 +937,15 @@ height:50px;
             <div class="accordion white border-round">
                <button onclick="myContent();"
                   class="btn-block theme-l1 left-align border-round">
-                  <i class="fa fa-circle-o-notch fa-fw"></i> 내 글 보기
+                  <i class="fa fa-circle-o-notch fa-fw"></i> <b>내 글 보기</b>
                </button>
                <button onclick="updateContent();"
                   class="btn-block theme-l1 left-align">
-                  <i class="fa fa-calendar-check-o fa-fw"></i> 최신 글 보기
+                  <i class="fa fa-calendar-check-o fa-fw"></i> <b>최신 글 보기</b>
                </button>
                <button onclick="myFunction();"
                   class="btn-block theme-l1 left-align border-round">
-                  <i class="fa fa-users fa-fw"></i> 인기 글 보기
+                  <i class="fa fa-users fa-fw"></i> <b>인기 글 보기</b>
                </button>
                <script>
                   function myContent() {

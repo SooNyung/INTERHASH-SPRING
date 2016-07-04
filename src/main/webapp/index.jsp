@@ -1,10 +1,8 @@
 <%@ page  contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<<<<<<< HEAD
-<%@ page isELIgnored="false"%>
-=======
 
->>>>>>> 50b6b682cdde0b2821d0653e891d873097838688
+<%@ page isELIgnored="false"%>
+
 <%@ page isELIgnored="false" %>
 
 <!DOCTYPE html>
