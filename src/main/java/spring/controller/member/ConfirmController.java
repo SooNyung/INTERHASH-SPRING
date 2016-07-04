@@ -3,6 +3,10 @@ package spring.controller.member;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import java.util.Map;
+
+
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -11,6 +15,7 @@ import org.apache.tiles.request.jsp.extractor.SessionScopeExtractor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -66,8 +71,6 @@ public class ConfirmController {
 		return "confirm/ConfirmNickname";
 	}
 	
-//	int togle = 1;
-	
 	@RequestMapping("/LikeCheck.hash")
 	public void like_check(@RequestParam("connum") int connum, @RequestParam("conhash") String hashname,
 			HttpSession session,Model model,HttpServletResponse resp
@@ -80,14 +83,15 @@ public class ConfirmController {
 		model.addAttribute("connum",connum);
 		model.addAttribute("conhash",hashname);
 
-		
-		Dao.conlikePlus(connum);
-		System.out.println("method1");
 		/*Dao.adminlike(hashname);*/
+		
+		System.out.println("method1");
+		Dao.conlikePlus(connum);
+
 		System.out.println("method2");
 		int conlike = Dao.getConlike(connum);
+				
 		session.setAttribute("conlike", conlike);
-		
 		
 		jso.put("data", conlike); // jason은 map구조(키,값), data라는 key로 list데이터를 주입했다
 		System.out.println("jso ::: "+jso);
@@ -111,7 +115,7 @@ public class ConfirmController {
 		model.addAttribute("conhash",hashname);
 
 		Dao.unlike(connum);
-		Dao.adminunlike(hashname);
+		/*Dao.adminunlike(hashname);*/
 		int conlike = Dao.getConlike(connum);
 		session.setAttribute("conlike", conlike);
 		

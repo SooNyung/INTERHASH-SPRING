@@ -120,8 +120,31 @@ function fileUploadPreview(thisObj, preViewer) {
 }
 function tagCheck() {
 
-   url = "TagCheck.hash?check=y";
-   newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	url = "TagCheck.hash?check=y";
+	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+}
+
+function like(num,String){
+	var select_id = "${sessionScope.conlike}";//'#'+num+"like_bn";
+	var like_cnt = select_id+1;//$(select_id).text();
+	alert(select_id);
+	
+	//$(select_id).text(like_cnt+1);
+	
+	alert(like_cnt);
+	url = "LikeCheck.hash?connum="+num+"&conhash="+String;
+	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	//location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
+}
+
+function unlike(num,String){
+ 	var select_id = "${sessionScope.conlike}";
+	var like_ctn = select_id-1;
+	alert(select_id);
+	alert(like_ctn); 
+	url = "Unlike.hash?connum="+num+"&conhash="+String;
+	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	//location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
 }
 
 function modal_close(){
@@ -133,6 +156,7 @@ function modal_close(){
 
 </script>
 <style type="text/css">
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
 @import url(http://weloveiconfonts.com/api/?family=Font Awesome);
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
 
@@ -359,7 +383,13 @@ a:focus, a:hover {
  .border-round{border-radius:4px!important}
  .container{content:"";display:table;clear:both;padding:0.01em 16px; margin-left:0px;}
 .w3-col.m12{width:100px}
-html,body,h6{font-family: "Open Sans", sans-serif}
+html,body,h6{
+/* font-family: "Open Sans", sans-serif */
+font-family: 'Nanum Pen Script', serif;
+}
+body{
+font-size: 20px;
+}
 .w3-theme {color:#fff !important; background-color:#607d8b !important}
 .white{color:#000!important;background-color:#fff!important;}
 
@@ -520,6 +550,7 @@ function mapopen(latitude,longtitude,maptitle ) {
    //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
 }
 
+<<<<<<< HEAD
 /* function like(num,String){
 	   var select_id = "${sessionScope.conlike}";//'#'+num+"like_bn";
 	   var like_cnt =select_id+1;//$(select_id).text();
@@ -617,6 +648,7 @@ function checkIt(){
 
 	return true;
 };
+
 </script>
 </head>
 <body>
@@ -670,8 +702,65 @@ function checkIt(){
             </div>
           </div>
       
-      
- 
+<!-- 좋아요 기능 function -->
+<script>
+
+function likeAjax(num,hash,like){
+	
+	alert("like function");	
+	
+	var url="/INTERHASH-SPRING/LikeCheck.hash";
+	var params ="connum="+num+"&conhash="+hash;
+	
+//	var snum=$('#likep').text();
+//	alert(snum);	
+	
+	alert( like );
+
+	$.ajax({
+		type:"post"
+		,url:url
+		,data:params
+		,dataType:"json"
+ 		,success:function(args){
+ //			$('#likep').text(args.data);
+ 		
+			$('{con.connum}likep').text(args.data);
+ 			alert("ajax안에"+ like ) ;
+ 		}
+	    ,error:function(request, status , err) {
+	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
+	    }
+	});
+}
+
+function unlikeAjax(num,hash,like){
+	
+	alert("unlike function");
+	
+	var url="/INTERHASH-SPRING/Unlike.hash";
+	var params ="connum="+num+"&conhash="+hash;
+	
+	var snum=$("#likem").text();
+	alert(snum);
+
+	$.ajax({
+		type:"post"
+		,url:url
+		,data:params
+		,dataType:"json"
+ 		,success:function(args){
+ 			$('#likem').text(args.data);
+ 		}
+	    ,error:function(request, status , err) {
+	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
+	    }
+	});
+}
+
+</script>
+
+
 <form method='post' action='ContentView.hash'>
 
 <c:forEach var="con" items= '${content}' >
@@ -716,13 +805,17 @@ function checkIt(){
     <input type="checkbox" class="hide"/>
     </div> --%>
 
+
+	
+        <%-- <button id="like_ajax" type="button" class="w3-theme-d1 w3-margin-bottom like" ><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button> --%>
+
    <div class="w3-btn">
     
      <%-- <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}','${con.conlike}')"><i class="fa fa-thumbs-up" id="likep" ></i>Like <i id="likep">${con.conlike}</i></button> 
-     <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}','${con.conlike}')"><i class="fa fa-thumbs-up"></i> Like <i id="likem"> ${con.conlike}</i></button> --%>    
+     <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}','${con.conlike}')"><i class="fa fa-thumbs-up"></i> Like <i id="likem"> ${con.conlike}</i></button>    --%>
     
-	 <input type="button" id="btn" name="btn1" value="like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}','${con.conlike}')" > <i id="likep"> ${con.conlike} </i>
-        
+	<input type="button" id="btn" name="btn1" value="like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}','${con.conlike}')" > <i id="likep"> ${con.conlike} </i>
+	
     <button type="button" class="w3-theme-d3 w3-margin-bottom" ><i class="fa fa-comment"></i> Comment ${con.connum}</button>     
    </div>
 
@@ -734,7 +827,56 @@ function checkIt(){
    <div id ="board_main">
    <a href="ContentView.hash?connum=${con.connum}">
    
-       <div id="board_subject">
+
+    <%-- <input type="button" id="btn" class="btn1 btn2" value="like" onclick="javascript:like('${con.connum}')"/> --%>
+
+<%-- 	 <div id="board_img">
+	<a href="ContentView.hash?connum=${con.connum}">
+		<img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />' />
+		</a>
+	</div>
+	<div id ="board_main">
+	<a href="ContentView.hash?connum=${con.connum}">
+	
+		 <div id="board_subject">
+			<div id="subject">
+			<label>'${con.connickname}'</label>
+			</div>
+			<div id="time">
+			<label>'${con.conmodifieddate}'</label>
+			</div>
+		</div>
+		<div id="board_content">
+			<label>'${con.content}'</label>
+			<br/>
+			<label> ${con.conhash} </label>
+
+		</div>
+ 		<div id="board_like">
+			<div id="like">
+				<div id="like_img">
+				</div>
+				<div id="like_text">
+					<p>123</p>
+				</div>
+				<div id="like_alpha">
+				</div>
+			</div>
+			<div id="commnet">
+				<div id="commnet_img">
+				</div>
+				<div id="commnet_text">
+				
+					
+				</div>
+				<P><a href="ContentView.hash?connum=${con.connum}"></a></P>
+			</div>
+		</div>  
+		</a>
+	</div> --%> 
+	
+
+ <%--       <div id="board_subject">
          <div id="subject">
          <label>'${con.connickname}'</label>
          </div>
@@ -770,9 +912,9 @@ function checkIt(){
       </div>  
       </a>
    </div> --%>
+
 </div>
 </c:forEach>
-
 
 </form>
 </div>
