@@ -68,7 +68,7 @@ function email(){
 
 <form method="post" action="MessagePro.hash" onsubmit="return checkIt()">
 <div>받는사람 : 
-<input type="email" id="receEmail" name="receEmail">
+<input type="email" id="receEmail" name="receEmail" value="${email}">
 <input type="button" onclick="email()" value="이메일검사">
 </div>
 <hr>

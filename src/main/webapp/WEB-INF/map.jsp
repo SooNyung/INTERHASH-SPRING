@@ -67,6 +67,8 @@
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9ee99f6f7e29a9a2459e7218773c63fe&libraries=services"></script>
 <script>
+
+
 // 마커를 담을 배열입니다
 var markers = [];
 
@@ -156,7 +158,7 @@ function displayPlaces(places) {
         // 마커와 검색결과 항목에 mouseover 했을때
         // 해당 장소에 인포윈도우에 장소명을 표시합니다
         // mouseout 했을 때는 인포윈도우를 닫습니다
-        (function(marker, title,places) {
+        (function(marker, title) {
             daum.maps.event.addListener(marker, 'mouseover', function() {
                 displayInfowindow(marker, title);
             });
@@ -166,7 +168,7 @@ function displayPlaces(places) {
             });
           
             daum.maps.event.addListener(marker, 'click', function() {
-                selectInfo(marker,title,placePosition);
+                selectInfo2(marker,title,placePosition);
             });
             
             daum.maps.event.addListener(map, 'click', function(mouseEvent) {        
@@ -193,7 +195,7 @@ function displayPlaces(places) {
             itemEl.onmouseout =  function () {
                 infowindow.close();
             };
-        })(marker, places[i].title,places[i].latitude);
+        })(marker, places[i].title);
 
         fragment.appendChild(itemEl);
     }
@@ -304,6 +306,17 @@ function selectInfo(marker, title,placePosition) {
 			//removeMarker();
 	opener.document.writeForm.maptitle.value = title;
 	opener.document.writeForm.mapplace.value = placePosition;
+}
+
+//마커클릭하면 꺼진다
+function selectInfo2(marker, title,placePosition) {
+	
+	ps.keywordSearch(title, placesSearchCB);
+			//removeMarker();
+	opener.document.writeForm.maptitle.value = title;
+	opener.document.writeForm.mapplace.value = placePosition;
+	
+	window.close();
 }
 
  // 검색결과 목록의 자식 Element를 제거하는 함수입니다

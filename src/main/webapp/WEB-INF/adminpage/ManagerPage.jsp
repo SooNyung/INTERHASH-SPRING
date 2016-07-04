@@ -6,8 +6,8 @@
 <title>°ü¸®ÀÚ</title>
 <style>
 #view_div{
-	width:580px;
-	height:780px;
+	width:120%;
+	height:90%;
  	/* background-color: black; */
 	/* border:1px solid; */
 	padding:5px;

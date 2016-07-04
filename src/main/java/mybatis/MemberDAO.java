@@ -1,6 +1,7 @@
 package mybatis;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import spring.controller.member.TempPasswd;
 import spring.model.MemberCommand;
 import spring.model.ProfilePhotoCommand;
+import spring.model.VisitCommand;
 
 @Repository
 public class MemberDAO {
@@ -98,6 +100,25 @@ public class MemberDAO {
 	public String selectPath(String email){
 		return session.selectOne("Profile.selectPath", email);
 	}
+	
+	public MemberCommand selectNick(String nickname) {
+		return session.selectOne("member.selectNick", nickname);
 
+	}
+	
+	public String photoView(String email){
+		return session.selectOne("member.photoView", email);
+	}
+	public List getPhotoPathMap(){
+		return session.selectList("member.getprofilepath");
+		
+		
+		
+	}
 
+	public int visitor(VisitCommand visit){
+		return session.insert("member.visitor", visit);
+		
+	}
+	
 }

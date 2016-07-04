@@ -15,6 +15,14 @@ public class CommentCommand{
 	String email;
 	String comip;
 	
+	@Override
+	public String toString() {
+		return "CommentCommand [comnum=" + comnum + ", comnick=" + comnick + ", comcontent=" + comcontent
+				+ ", comcreateddate=" + comcreateddate + ", commodifieddate=" + commodifieddate + ", comreportcount="
+				+ comreportcount + ", comblind=" + comblind + ", connum=" + connum + ", email=" + email + ", comip="
+				+ comip + "]";
+	}
+
 	public CommentCommand() {}
 	
 	public int getComnum() {

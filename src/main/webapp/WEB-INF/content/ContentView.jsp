@@ -141,7 +141,7 @@ color:#5AAEFF;
 
 </style>
 
-<script> 
+<!-- <script> 
 $(document).ready(function(){
 	var con = ${content.connum}
 	var texta = $('#comment_textarea').val();
@@ -149,7 +149,7 @@ $(document).ready(function(){
 	
 	
 });
-</script>
+</script> -->
 </head>
 <body>
 <div id="view_div">
@@ -167,7 +167,7 @@ $(document).ready(function(){
 	<c:if test="${sessionScope.memId==content.email}">
 	<div id="left_mod_del_rep">
 		<span id="align_right">/<a href="ContentDelete.hash?connum=${content.connum}">삭제하기</a></span>
-		<span id="align_right"><a href="ContentUpdate.hash?connum=${content.connum}">수정하기 </a></span>
+		<span id="align_right"><a onclick="javascript:location.href='ContentUpdate.hash?connum=${content.connum}'">수정하기 </a></span>
 	</div>
 	</c:if>
 		
@@ -217,7 +217,7 @@ $(document).ready(function(){
 	<div id="comment_submit">
 		<span id="align_right">
 		<input type="submit" value="개시"></span>
-		<input type="button" id="rptl" value="개시시" onclick="insert(${content.connum})"> 
+		<input type="button" id="rptl" value="개시시" onclick="javascript:insert(${content.connum})"> 
 	</div>
 	</form>
 	
@@ -235,17 +235,16 @@ $(document).ready(function(){
 	<span id="align_right">
 	
 		<c:if test="${sessionScope.memId==comment.email}">
-		<a href="deleteComment.hash?comnum=${comment.comnum}&&connum=${comment.connum}">삭제</a>
-		<a onclick="modify(${comment.comnum},${comment.connum})">수정</a>
+		<a href="#" onclick="delete1(${comment.comnum},${comment.connum})">삭제</a>
+		<a href="#" onclick="modify(${comment.comnum},${comment.connum})">수정</a>
 		</c:if	>
 		
 		<c:if test="${sessionScope.memId!=comment.email}">
 		<a onclick="reportCom(${comment.comnum})">신고</a>
 		</c:if>	
 	</span><br> 
-	<div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">${comment.comcontent}</textarea></div>
-	</div>
-	
+	<div id="test"><textarea id="comment_textara" borderStyle="none" cols=50 readonly="readonly" class="autosize">${comment.comcontent}</textarea></div>
+	</div>	
 	</c:forEach>  
 	</div>
 	

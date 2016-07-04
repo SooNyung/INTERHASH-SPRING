@@ -90,6 +90,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectCheck" parameterType="String" resultType="String">
 	select checked from usertable where email=#{email}
 	</select>
+	
+	<select id="selectNick" parameterType="String" resultType="spring.model.MemberCommand">
+	select * from usertable where nickname=#{nickname}
+	</select>
+	
+	<select id="photoView"  parameterType="String" resultType="String">
+	select path from profilePhoto where email=#{email}
+	</select>
 
 
+	<insert id ="visitor" parameterType="spring.model.VisitCommand">
+	insert into total_visit(email) values (#{email})
+	</insert>
+
+	<select id = "getprofilepath" resultType="Map">
+		select email, path from profilePhoto
+	</select>
+
+
+	<select id="total_count" resultType="int">
+	select count(*) from total_visit
+	</select>
+	
+<!-- 	<select id ="today" resultType="int">
+	select count(*) from total_visit where visit_date ='
+	</select>  -->
 </mapper>

@@ -27,5 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update> 
 	<update id="adminunlike" parameterType="String">
 		update adminhash set hashlikecount=(hashlikecount-1) where hashname = #{hashname}
+<<<<<<< HEAD
 	</update> -->
+
 </mapper>
