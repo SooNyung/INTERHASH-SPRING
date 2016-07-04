@@ -692,6 +692,11 @@ height:50px;
       window.open(url,"post","toolbar=no ,width=400 ,height=400,directories=no,status=yes,menubar=no,scrollbars=no");
       } 
    
+   function alarm(){
+	      url="Alarm.hash";
+	      window.open(url,"post","toolbar=no ,width=400 ,height=400,directories=no,status=yes,menubar=no,scrollbars=no");
+	      } 
+   
 
 
    $(document).ready(function() {
@@ -730,6 +735,18 @@ height:50px;
          });  
         });        
        }); 
+   
+   
+   $(document).ready(function(){           
+       $(".alarm").hover(function() {//마우스를 topnav에 오버시
+        $(this).parent().find("span").hide();      
+        $(this).parent().find(".sub").slideDown('normal').show();                   //subnav가 내려옴.
+        $(this).parent().hover(function() {  
+        }, function(){  
+         $(this).parent().find(".sub").slideUp('fast');                 //subnav에서 마우스 벗어났을 시 원위치시킴  
+        });  
+       });        
+      }); 
    
    
     $(document).ready(function(){  
@@ -776,6 +793,7 @@ height:50px;
          <li class="small"><a href="Board.hash"
             class="padding-large margin-right"><h2>I N T E R H A S H #</h2></a></li>
          <li class="small">
+         
          <div class="message">
          <a href="#" onclick="window.open('MessageList.hash','new','width=400 height=400');return false" 
          class="padding-large margin-right"  title="Messages">
@@ -806,14 +824,31 @@ height:50px;
                   </tr>
                </table>
             </ul></li>
-         <li class="small"><a href="#"
-            class="margin-right padding-large left-align" title="Alarm">
-            
-           <img src="image/logo/alarm1.png" onmouseover="this.src='image/logo/alarm.png'" onmouseout="this.src='image/logo/alarm1.png'" width="30px" height="30px"/></a></li>
+         <li class="small">
+         <div class="alarm">
+         <a href="#" class="margin-right padding-large left-align" title="Alarm">
+              <img src="image/logo/alarm1.png" onmouseover="this.src='image/logo/alarm.png'" onmouseout="this.src='image/logo/alarm1.png'" width="30px" height="30px"/>
+              </a>
+          </div>
+          <ul class="sub">
+               <table>   
+                  <tr>
+                     <td style="color:#8C8C8C;">Alarm</td>
+                     <td class="w3-right"><button id="buttonid" onclick="alarm()">All alarm</button></td>
+                  </tr>
+       				
+               </table>
+            </ul>
+          
+          
+          
+          </li>
 
          <li class="small right">
          <div class="topnav">   <a href="#" title="MyAccount"><img id ="profileImg" src='<c:url value="/upload/${sessionScope.profilePhoto}" />' class="circle" width="10%" height="10%">
            ${memberinfo.nickname}님</a></div>
+           
+           
             <ul class="account">
                <li><a href="UserInfoModifyForm.hash">회원정보수정</a></li>
                <li><a href="profile.hash">프로필수정</a></li>

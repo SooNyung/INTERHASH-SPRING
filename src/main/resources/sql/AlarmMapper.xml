@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="alarm">
+
+<select id="connum" parameterType="String" resultType="Integer">
+select connum from contents where email=#{email}
+</select>
+
+<select id="comnick" parameterType="Integer" resultType="String">
+select comnick from commenttable where connum=#{connum}
+</select>
+
+<select id="count" parameterType="String" resultType="Integer">
+select count from alarm where email=#{email}
+</select>
+
+</mapper>

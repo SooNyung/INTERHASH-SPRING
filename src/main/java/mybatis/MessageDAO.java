@@ -1,5 +1,6 @@
 package mybatis;
 
+import java.sql.Array;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -41,4 +42,15 @@ public class MessageDAO {
 		return session.insert("member.insert", command);
 	}*/
 	
+	public Array selectNum(String email){
+		return (Array) session.selectList("alarm.connum", email);
+	}
+	
+	public Array selectNick(int comnum){
+		return (Array) session.selectList("alarm.comnick", comnum);
+	}
+	
+	public int selectCount(String email){
+		return session.selectOne("alarm.count", email);
+	}
 }
