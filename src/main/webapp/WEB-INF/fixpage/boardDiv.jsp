@@ -10,7 +10,11 @@
 
 <link rel="stylesheet" href='<c:url value="modal/magnific-popup.css"/>' >
 
-
+<link rel='stylesheet'
+   href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet"
+   href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<link href='https://fonts.googleapis.com/css?family=Bad+Script' rel='stylesheet' type='text/css'>
 <script src='<c:url value="modal/jquery.magnific-popup.min.js"/>'></script>
 
 
@@ -371,19 +375,24 @@ function modal_close(){
 }
 
 a {
-  color: #C2C2C2;
+  color: #797D7F;
   outline: 0;
   text-decoration: none;
 }
 
 #View {
-  color: #C2C2C2;
+  color: #797D7F;
   outline: 0;
-  text-decoration: none;
+  /* text-decoration: none; */
+  font-weight: bold;
 }
+
+/* #View:hover{
+	color:#ffcccc;
+} */
 a:focus, a:hover {
-  text-decoration: underline; 
-  color:#ea4c88;
+ /*  text-decoration: underline;  */
+  color:#ffcccc;
   
 }
 
@@ -419,6 +428,8 @@ hr{border-top:1px solid; background-color:#eee;}
 .w3-btn{pointer-events:none;
 box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 -webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
+
+.na{font-weight:bold; font-size:15px;}
 </style>
 
 <script>
@@ -558,7 +569,7 @@ function mapopen(latitude,longtitude,maptitle ) {
    //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
 }
 
-<<<<<<< HEAD
+
 /* function like(num,String){
 	   var select_id = "${sessionScope.conlike}";//'#'+num+"like_bn";
 	   var like_cnt =select_id+1;//$(select_id).text();
@@ -781,7 +792,7 @@ function unlikeAjax(num,hash,like){
 <img src='<c:url value="/upload/${profilephoto.get(temp)}"/>' alt="Avatar" class="left-align circle" style="width:50px; height:50px;">
 
 </td>
-<td width="65%"><a id="View" target="_blank" href="#" onclick="window.open('ProfileView.hash?nickname=${con.connickname}','new','resizable=no width=700 height=500');return false"><b>${con.connickname}</b></a></td>
+<td width="65%"><a id="View" target="_blank" href="#" onclick="window.open('ProfileView.hash?nickname=${con.connickname}','new','resizable=no width=700 height=500');return false">${con.connickname}</a></td>
 <td width="35%"><b class="right-align opacity"><font color="#b2b2b2">${con.conmodifieddate}</font></b></td>
 </tr>
 </table>
