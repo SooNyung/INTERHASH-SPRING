@@ -313,16 +313,6 @@ public class MemberController {
 		session.setAttribute("mesagelist",mdao.getMessageList(email));
 		session.setAttribute("num",1);
 
-
-		session.setAttribute("hashlist", list);
-		session.setAttribute("mesagelist", mdao.getMessageList(email));
-		session.setAttribute("num", 1);
-
-
-		session.setAttribute("hashlist", list);
-		session.setAttribute("mesagelist", mdao.getMessageList(email));
-		session.setAttribute("num", 1);
-
 		return mv;
 	}
 

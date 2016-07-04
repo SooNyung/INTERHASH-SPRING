@@ -120,8 +120,31 @@ function fileUploadPreview(thisObj, preViewer) {
 }
 function tagCheck() {
 
-   url = "TagCheck.hash?check=y";
-   newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	url = "TagCheck.hash?check=y";
+	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+}
+
+function like(num,String){
+	var select_id = "${sessionScope.conlike}";//'#'+num+"like_bn";
+	var like_cnt = select_id+1;//$(select_id).text();
+	alert(select_id);
+	
+	//$(select_id).text(like_cnt+1);
+	
+	alert(like_cnt);
+	url = "LikeCheck.hash?connum="+num+"&conhash="+String;
+	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	//location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
+}
+
+function unlike(num,String){
+ 	var select_id = "${sessionScope.conlike}";
+	var like_ctn = select_id-1;
+	alert(select_id);
+	alert(like_ctn); 
+	url = "Unlike.hash?connum="+num+"&conhash="+String;
+	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	//location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
 }
 
 function modal_close(){
@@ -653,8 +676,33 @@ function unlikeAjax(num,hash,like){
             </div>
           </div>
       
-      
- 
+
+<script>
+
+function callAjax(num,hash,like){
+	
+	var url="/INTERHASH-SPRING/LikeCheck.hash";
+	var params ="connum="+num+"&conhash="+hash;
+	var snum=$("#liketest").text();
+
+	$.ajax({
+		type:"post"
+		,url:url
+		,data:params
+		,dataType:"json"
+ 		,success:function(args){
+ 			$('#liketest').text(args.data);
+ 		}
+	    ,error:function(request, status , err) {
+	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
+	    }
+	});
+}
+
+
+</script>
+
+
 <form method='post' action='ContentView.hash'>
 
 <c:forEach var="con" items= '${content}' >
@@ -699,6 +747,10 @@ function unlikeAjax(num,hash,like){
     <input type="checkbox" class="hide"/>
     </div> --%>
 
+
+	
+        <%-- <button id="like_ajax" type="button" class="w3-theme-d1 w3-margin-bottom like" ><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button> --%>
+
    <div class="w3-btn">
     
      <%-- <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}','${con.conlike}')"><i class="fa fa-thumbs-up" id="likep" ></i>Like <i id="likep">${con.conlike}</i></button> 
@@ -717,7 +769,61 @@ function unlikeAjax(num,hash,like){
    <div id ="board_main">
    <a href="ContentView.hash?connum=${con.connum}">
    
-       <div id="board_subject">
+
+    <%-- <input type="button" id="btn" class="btn1 btn2" value="like" onclick="javascript:like('${con.connum}')"/> --%>
+    <input type="button" class="btn2" id="btn" name="btn1" value="like" onclick="javascript:callAjax('${con.connum}','${con.conhash}','${con.conlike}')" > <i id="liketest"> ${con.conlike} </i> 
+
+    <button type="button" class="w3-theme-d3 w3-margin-bottom" onclick="location.href='Board.hash'"><i class="fa fa-comment"></i>  Comment ${con.connum}</button>  	
+
+	
+
+<%-- 	 <div id="board_img">
+	<a href="ContentView.hash?connum=${con.connum}">
+		<img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />' />
+		</a>
+	</div>
+	<div id ="board_main">
+	<a href="ContentView.hash?connum=${con.connum}">
+	
+		 <div id="board_subject">
+			<div id="subject">
+			<label>'${con.connickname}'</label>
+			</div>
+			<div id="time">
+			<label>'${con.conmodifieddate}'</label>
+			</div>
+		</div>
+		<div id="board_content">
+			<label>'${con.content}'</label>
+			<br/>
+			<label> ${con.conhash} </label>
+
+		</div>
+ 		<div id="board_like">
+			<div id="like">
+				<div id="like_img">
+				</div>
+				<div id="like_text">
+					<p>123</p>
+				</div>
+				<div id="like_alpha">
+				</div>
+			</div>
+			<div id="commnet">
+				<div id="commnet_img">
+				</div>
+				<div id="commnet_text">
+				
+					
+				</div>
+				<P><a href="ContentView.hash?connum=${con.connum}"></a></P>
+			</div>
+		</div>  
+		</a>
+	</div> --%> 
+	
+
+ <%--       <div id="board_subject">
          <div id="subject">
          <label>'${con.connickname}'</label>
          </div>
@@ -753,9 +859,9 @@ function unlikeAjax(num,hash,like){
       </div>  
       </a>
    </div> --%>
+
 </div>
 </c:forEach>
-
 
 </form>
 </div>

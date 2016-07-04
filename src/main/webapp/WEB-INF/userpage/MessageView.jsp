@@ -4,9 +4,32 @@
 <html>
 
 <head>
+<link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
 <style>
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+body{
+font-family: 'Indie Flower', cursive;
+}
 #fontsize{
 font-size:15px;}
+#buttonid {
+	color: white;
+	background-color: #FFCCCC;
+	border-radius: 7px !important;
+	padding:5px;
+}
+#buttonid:hover {
+	color: white;
+	background-color: #FF9090;
+	border-radius: 7px !important;
+	padding:5px;
+}
+#heart{
+	color:#ea4c88;
+}
 </style>
 <script>
 
@@ -21,13 +44,14 @@ function ReMessage(sendEmail,sendNick){
 
 <body>	
 <form method="post" action="deleteMessage.hash">
-<input type="button" value="답장" onclick="ReMessage('${messageone.sendEmail}','${messageone.sendNickname}')">
-<input type="submit" value="삭제"> 
-<input type="button" onclick="javascript:history.go(-1)" value="닫기">
+<input type="button" id="buttonid" value="답장" onclick="ReMessage('${messageone.sendEmail}','${messageone.sendNickname}')">
+<input type="submit" id="buttonid" value="삭제"> 
+<input type="button" id="buttonid" onclick="javascript:history.go(-1)" value="닫기">
+
 <hr>
 <input type="hidden" name="messageNum" value="${messageone.messageNum}">
-<div><b id="fontsize">보낸사람</b> <label id="fontsize">${messageone.receNickname}(${messageone.receNickname})</label></div>
-<div><b id="fontsize">받은날짜</b> <label id="fontsize">${sdf.format(messageone.sendDate)}</label></div>
+<div><b id="fontsize">Sender</b> <label id="fontsize">${messageone.receNickname}(${messageone.receNickname})</label><spen id="heart" class="fontawesome-heart"></spen></div>
+<div><b id="fontsize">From time</b> <label id="fontsize">${sdf.format(messageone.sendDate)}</label></div>
 
 <hr>
 <div>${messageone.messageContent}</div>
