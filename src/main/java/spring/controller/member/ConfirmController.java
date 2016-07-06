@@ -105,7 +105,7 @@ public class ConfirmController {
 	}
 	
 	@RequestMapping("/Unlike.hash")
-	private String unlike(@RequestParam("connum") int connum, @RequestParam("conhash") String hashname,
+	private void unlike(@RequestParam("connum") int connum, @RequestParam("conhash") String hashname,
 			HttpSession session,Model model,HttpServletResponse resp
 			) throws IOException{
 		System.out.println("좋아요 2번째 눌렀을때!");
@@ -128,6 +128,6 @@ public class ConfirmController {
 		out.print(jso.toString());
 		
 		//return "confirm/unlike";
-		return "fixpage/boardDiv"; //보현test중
+		//return "fixpage/boardDiv"; //보현test중
 	}
 }
