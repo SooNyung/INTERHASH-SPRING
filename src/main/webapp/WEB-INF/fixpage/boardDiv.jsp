@@ -582,8 +582,6 @@ function insert1(connum){
 			} 
 	});
 }
-<<<<<<< HEAD
-=======
 
 function Map(){
    url="template2.hash";
@@ -696,7 +694,6 @@ function checkIt(){
 	return true;
 };
 
->>>>>>> 6c9c7af9abcded8e544baf5d9afcc285809d743c
 </script>
 </head>
 <body>
@@ -710,6 +707,9 @@ function checkIt(){
       <div id="wrap" style="width: 500px; ">
          <textarea style="resize: none; width:460px; height:80px;" id="textfield" name="content" placeholder="내용을 입력하세요."></textarea>
          <div class="photoBox" style="height: 100px; width: 100px;">
+         
+         <input type="text" name="tag" size="30" readonly style="border:0px; color:#FF73B8;" id="tag">
+         
             <input class='fileData' id = "conphoto" name="conphoto" type="file"/> 
                <div id="blah_img" >
                   <img id="blah" src="" alt="no image"/>
@@ -728,9 +728,9 @@ function checkIt(){
             <input type="hidden" name="mapplace" />          
             </span> 
             
-            <div id="taglist" style="width: 110px; float:left; padding-right:180px; padding-bottom:0px">
+            <div id="taglist" style="width:23px; float:left; padding-right:230px; padding-bottom:0px">
             <div style="float:left">
-               <input type="text" name="tag" size="7" readonly>
+               
             </div>
              <div style="float:right">  
                <img src ="image/logo/tag.png" width="25px" height="25px" onClick="tagCheck()">
