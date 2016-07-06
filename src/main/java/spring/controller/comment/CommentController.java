@@ -62,12 +62,11 @@ public class CommentController {
 	
 	@RequestMapping("/InsertComment.hash")
 	public void interC(@RequestParam("connum") int connum,	
-			CommentCommand commentdto,
 			AlarmCommand dto,
 			HttpServletResponse resp,
 			HttpServletRequest request
 			) throws Exception{
-
+System.out.println("test1");
 	SimpleDateFormat sdf= new SimpleDateFormat("YY-MM-dd HH:mm");
 	String comnick = (String) request.getSession().getAttribute("nickName");
 	String comcontent = request.getParameter("comcontent");
@@ -76,7 +75,7 @@ public class CommentController {
 
 	String comip = request.getRemoteAddr();
 	String email = (String) request.getSession().getAttribute("memId");
-
+	
 	CommentCommand commentdto1 = new CommentCommand();
 	commentdto1.setComnick(comnick);
 	commentdto1.setComcontent(comcontent);
@@ -85,20 +84,13 @@ public class CommentController {
 	commentdto1.setConnum(connum);
 	
 	int result = commentdao.insertComment(commentdto1);
-	//수정
-	System.out.println(comnick);//글번호
-	System.out.println(email);//보낸이메일
-	System.out.println(receivedemail);
-	
 
 	dto.setComnick(comnick);
 	dto.setConnum(connum);
 	dto.setReceivedemail(receivedemail);
 	
-	
 	int alarm = alarmdao.Alarm(dto);
-	int result1 = commentdao.insertComment(commentdto);
-	
+
 	ArrayList array = (ArrayList)commentdao.getComments(connum);
 
 	String test= "";
@@ -115,7 +107,6 @@ public class CommentController {
 	for(int i=0; i<jk.size(); i++){
 		testy = sdf.format(jk.get(i));
 		jso.put("time", testy);
-		System.out.println("test3");
 
 	}
 	jso.put("data", array);

@@ -582,8 +582,6 @@ function insert1(connum){
 			} 
 	});
 }
-<<<<<<< HEAD
-=======
 
 function Map(){
    url="template2.hash";
@@ -598,32 +596,7 @@ function mapopen(latitude,longtitude,maptitle ) {
 }
 
 
-/* function like(num,String){
-	   var select_id = "${sessionScope.conlike}";//'#'+num+"like_bn";
-	   var like_cnt =select_id+1;//$(select_id).text();
-	   alert(select_id);
-	   
-	   //$(select_id).text(like_cnt+1);
-	   
-	   alert(like_cnt);
-	   url = "LikeCheck.hash?connum="+num+"&conhash="+String;
-	   newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
-	   //location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
-	}
 
-	function unlike(num,String){
-	   var select_id = "${sessionScope.conlike}";//'#'+num+"unlike_bn";
-	   var like_cnt =select_id-1;//$(select_id).text();
-	   alert(select_id);
-	   
-	   //$(select_id).text(like_cnt-1);
-	   
-	   alert(like_cnt);
-	   
-	   url = "Unlike.hash?connum="+num+"&conhash="+String;
-	   newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
-	   //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
-	} */
 	
 function likeAjax(num,hash,like){
 	
@@ -696,7 +669,7 @@ function checkIt(){
 	return true;
 };
 
->>>>>>> 6c9c7af9abcded8e544baf5d9afcc285809d743c
+
 </script>
 </head>
 <body>
