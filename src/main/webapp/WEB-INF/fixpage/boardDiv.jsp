@@ -391,12 +391,9 @@ $(function(){
 }); 
 
 
-/* function modifycon(connum){
-   url="/INTERHASH/UpdateContent.hash?check=y&&connum="+connum
-}
- */
-  function modify(comnum,connum){
-   url="updateCommentForm.hash?check=y&&comnum="+comnum+"&&connum="+connum;
+
+  function modify(comnum,connum,i){
+   url="updateCommentForm.hash?check=y&&comnum="+comnum+"&&connum="+connum+"&&i="+i;
    window.open(url,"post","toolbar=no ,width=400 ,height=150,directories=no,status=yes,menubar=no,scrollbars=no");
 } 
 
@@ -430,7 +427,7 @@ function mapopen(latitude,longtitude,maptitle){
 	//location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
 }
 
- //comment delete
+ //comment 
 function delete1(comnum, connum){
  	var com = comnum;
 	var con = connum;
@@ -449,16 +446,16 @@ function delete1(comnum, connum){
 				if(args.session==args.data[i].email){
 					$('#test_div').append(
 						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
-						'--!><span><label id="time">'+args.time+'</label></span><!--'+
+						'--!><span><label id="time'+i+'">'+args.time+'</label></span><!--'+
 						'--!><span id="align_right"><a href="#" onclick="delete1('+args.data[i].comnum+','+args.data[i].connum+')">삭제</a><!--'+
-						'--!><a onclick="modify('+args.data[i].comnum+','+args.data[i].connum+')">수정</a><!--'+
-						'--!></span><br><div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+						'--!><a href="#" onclick="modify('+args.data[i].comnum+','+args.data[i].connum+','+i+')">수정</a><!--'+
+						'--!></span><br><div id="test"><textarea id="textaa'+i+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
 			}else{
 				$('#test_div').append(
 						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
-						'--!><span><label id="time">'+args.time+'</label></span><!--'+
+						'--!><span><label id="time'+i+'">'+args.time+'</label></span><!--'+
 						'--!><span id="align_right"><!--'+
-						'--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></span><br><div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+						'--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></span><br><div id="test"><textarea id="textaa'+i+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
 			}
 			}
 		},error: function (xhr, status, err){
@@ -468,9 +465,42 @@ function delete1(comnum, connum){
 }   
 
 
+
+	
+
+function Map(){
+   url="template2.hash";
+   window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
+   } 
+
+function mapopen(latitude,longtitude,maptitle ) {
+   
+   url = "mapopen.hash?latitude="+ latitude + "&longtitude="+longtitude+"&maptitle="+maptitle;
+   newwindow=window.open(url,"post","toolbar=no ,width=500 ,height=400 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+   //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
+}
+
+	
+
+function deleteCon(connum){
+	
+ 	var connum = connum;
+ 	
+	 if(confirm("삭제하시겠습니까?")){
+	 	location.href="ContentDelete.hash?connum="+connum;	
+	     alert("삭제되었습니다.");
+	      return true;
+	 }	 
+	 else{
+	      return false;
+	 } 
+	 
+	}
+	
+
 //comment insert
-function insert(connum){
- 	var con = connum;
+function insert1(connum){
+	var con = connum;
 	var url = "/INTERHASH-SPRING/InsertComment.hash";
 	var texta = $('#comment_textarea').val();
 	var params = "connum="+con+"&comcontent="+texta; 
@@ -487,109 +517,24 @@ function insert(connum){
 				if(args.session==args.data[i].email){
 					$('#test_div').append(
 						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
-						'--!><span><label id="time">'+args.test+'</label></span><!--'+
+						'--!><span><label id="time'+i+'">'+args.time+'</label></span><!--'+
 						'--!><span id="align_right"><a href="#" onclick="delete1('+args.data[i].comnum+','+args.data[i].connum+')">삭제</a><!--'+
-						'--!><a onclick="modify('+args.data[i].comnum+','+args.data[i].connum+')">수정</a><!--'+
-						'--!></span><br><div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+						'--!><a href="#" onclick="modify('+args.data[i].comnum+','+args.data[i].connum+','+i+')">수정</a><!--'+
+						'--!></span><br><div id="test"><textarea id="textaa'+i+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
 			}else{
 				$('#test_div').append(
 						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
-						'--!><span><label id="time">'+args.test+'</label></span><!--'+
+						'--!><span><label id="time'+i+'">'+args.test+'</label></span><!--'+
 						'--!><span id="align_right"><!--'+
-						'--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></span><br><div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+						'--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></span><br><div id="test"><textarea id="textaa'+i+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
 			}
 			}
 		}
 			,error: function (xhr, status, err){
-				 alert(err);
+				alert(err);
 			} 
 	});
 }
-
-function Map(){
-   url="template2.hash";
-   window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
-   } 
-
-function mapopen(latitude,longtitude,maptitle ) {
-   
-   url = "mapopen.hash?latitude="+ latitude + "&longtitude="+longtitude+"&maptitle="+maptitle;
-   newwindow=window.open(url,"post","toolbar=no ,width=500 ,height=400 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
-   //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
-}
-
-/* function like(num,String){
-	   var select_id = "${sessionScope.conlike}";//'#'+num+"like_bn";
-	   var like_cnt =select_id+1;//$(select_id).text();
-	   alert(select_id);
-	   
-	   //$(select_id).text(like_cnt+1);
-	   
-	   alert(like_cnt);
-	   url = "LikeCheck.hash?connum="+num+"&conhash="+String;
-	   newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
-	   //location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
-	}
-
-	function unlike(num,String){
-	   var select_id = "${sessionScope.conlike}";//'#'+num+"unlike_bn";
-	   var like_cnt =select_id-1;//$(select_id).text();
-	   alert(select_id);
-	   
-	   //$(select_id).text(like_cnt-1);
-	   
-	   alert(like_cnt);
-	   
-	   url = "Unlike.hash?connum="+num+"&conhash="+String;
-	   newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
-	   //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
-	} */
-	
-function likeAjax(num,hash,like){
-	
-	var url="/INTERHASH-SPRING/LikeCheck.hash";
-	var params ="connum="+num+"&conhash="+hash;
-	
-	var snum=$("#likep").text();
-	alert(snum);
-
-	$.ajax({
-		type:"post"
-		,url:url
-		,data:params
-		,dataType:"json"
- 		,success:function(args){
- 			$('#likep').text(args.data);
- 		}
-	    ,error:function(request, status , err) {
-	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
-	    }
-	});
-}
-
-function unlikeAjax(num,hash,like){
-	
-	var url="/INTERHASH-SPRING/Unlike.hash";
-	var params ="connum="+num+"&conhash="+hash;
-	
-	var snum=$("#likem").text();
-	alert(snum);
-
-	$.ajax({
-		type:"post"
-		,url:url
-		,data:params
-		,dataType:"json"
- 		,success:function(args){
- 			$('#likem').text(args.data);
- 		}
-	    ,error:function(request, status , err) {
-	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
-	    }
-	});
-}
-
-
 </script>
 </head>
 <body>

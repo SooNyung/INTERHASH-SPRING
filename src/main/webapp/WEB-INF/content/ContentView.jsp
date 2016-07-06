@@ -141,15 +141,9 @@ color:#5AAEFF;
 
 </style>
 
-<!-- <script> 
-$(document).ready(function(){
-	var con = ${content.connum}
-	var texta = $('#comment_textarea').val();
-	$('#rptl').attr('onclick','test(con,texta)');
-	
-	
-});
-</script> -->
+<script> 
+
+</script>
 </head>
 <body>
 <div id="view_div">
@@ -166,7 +160,7 @@ $(document).ready(function(){
 
 	<c:if test="${sessionScope.memId==content.email}">
 	<div id="left_mod_del_rep">
-		<span id="align_right">/<a href="ContentDelete.hash?connum=${content.connum}">삭제하기</a></span>
+		<span id="align_right">/<a href="#" onclick="deleteCon(${content.connum})">삭제하기</a></span>
 		<span id="align_right"><a onclick="javascript:location.href='ContentUpdate.hash?connum=${content.connum}'">수정하기 </a></span>
 	</div>
 	</c:if>
@@ -217,7 +211,7 @@ $(document).ready(function(){
 	<div id="comment_submit">
 		<span id="align_right">
 		<input type="submit" value="개시"></span>
-		<input type="button" id="rptl" value="개시시" onclick="javascript:insert(${content.connum})"> 
+		<input type="button" id="rptl" value="개시시" onclick="javascript:insert1(${content.connum})"> 
 	</div>
 	</form>
 	
