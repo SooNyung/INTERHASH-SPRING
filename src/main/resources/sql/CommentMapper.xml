@@ -9,8 +9,8 @@
 	
 	<insert id="insertComment" parameterType="spring.model.CommentCommand">
 		insert into COMMENTTABLE values(COMMENTTABLE_SEQ.NEXTVAL,#{comnick},#{comcontent},sysdate,sysdate,0,'0',#{connum},#{email},#{comip})
-	</insert>
-
+	</insert> 
+	
 	<delete id="deleteComment" parameterType="integer">
 		delete from commenttable where comnum=#{comnum}
 	</delete>
@@ -20,7 +20,7 @@
 	</select>
 	
 	<update id="updateComment" parameterType="spring.model.CommentCommand">
-		update commenttable set comcontent=#{comcontent}, commodifieddate=sysdate where comnum = #{comnum}
+		update commenttable set comcontent=#{comcontent}, comcreateddate=sysdate where comnum = #{comnum}
 	</update>
 	
 	<select id="commentcount" parameterType="integer" resultType="integer">
@@ -33,6 +33,10 @@
 	
 	<select id="test" resultType="String">
 		select email from commenttable;
+	</select>
+	
+	<select id="date" parameterType="int" resultType="java.sql.Date">
+		select comcreateddate from commenttable where connum=#{connum}
 	</select>
 </mapper>
 

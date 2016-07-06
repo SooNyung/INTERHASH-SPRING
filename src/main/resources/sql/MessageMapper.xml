@@ -18,8 +18,7 @@
 	</select>
 
 	<delete id="deleteMessage" parameterType="int">
-		delete from message
-		where messageNum=#{messageNum}
+		delete from message where messageNum=#{messageNum}
 	</delete>
 	
 	<select id="MessageOne" parameterType="int" resultType="spring.model.MessageCommand">

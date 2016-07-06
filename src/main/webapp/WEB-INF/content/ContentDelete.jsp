@@ -2,4 +2,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false" %>
 
-<meta http-equiv="Refresh" content="0;url=/INTERHASH/Board.hash" >
+<meta http-equiv="Refresh" content="0;url=/INTERHASH-SPRING/Board.hash" >
