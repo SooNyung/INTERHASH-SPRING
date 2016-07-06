@@ -99,6 +99,9 @@ public class ConfirmController {
 		resp.setContentType("application/json;charset=utf-8");
 		PrintWriter out = resp.getWriter();
 		out.print(jso.toString());
+		
+		
+		
 
 		//return "confirm/likeCheck";
 		//return "fixpage/boardDiv"; //보현test중
@@ -126,6 +129,8 @@ public class ConfirmController {
 		resp.setContentType("application/json;charset=utf-8");
 		PrintWriter out = resp.getWriter();
 		out.print(jso.toString());
+		
+	
 		
 		//return "confirm/unlike";
 		//return "fixpage/boardDiv"; //보현test중

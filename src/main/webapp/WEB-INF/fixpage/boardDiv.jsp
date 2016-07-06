@@ -30,7 +30,7 @@ $(function() {
      });
        
 });
-$(function(){
+/* $(function(){
    $(".like").click(function(){
       var index = $(".like").index(this);
       if($(".like:eq("+index+")").hasClass("hide")){
@@ -53,7 +53,17 @@ $(function(){
          $(".like:eq("+indexu+")").removeClass("hide");
       }
    });
-});
+}); */
+
+
+/*   	$(function(){
+	   $(".unlike").click(function(){
+	       var indexu = $(".unlike").index(this); 
+	         $(".unlike").addClass("hide");
+	         $(".like").removeClass("hide");
+	});
+});  
+   */
 
 function readURL(input) {
     if (input.files && input.files[0]) {
@@ -335,7 +345,7 @@ function modal_close(){
    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
    box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
 }
-.hide { display: none; }
+ .hide { display: none; } 
 .photoBox .fileData {
    display: none;
 }
@@ -592,50 +602,6 @@ function mapopen(latitude,longtitude,maptitle ) {
 	   newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 	   //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
 	} */
-	
-function likeAjax(num,hash,like){
-	
-	var url="/INTERHASH-SPRING/LikeCheck.hash";
-	var params ="connum="+num+"&conhash="+hash;
-//	var snum=$("#likem").text();
-
-	$.ajax({
-		type:"post"
-		,url:url
-		,data:params
-		,dataType:"json"
- 		,success:function(args){
-
-			$('#likem').text(args.data);
-
- 		}
-	    ,error:function(request, status , err) {
-	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
-	    }
-	});
-}
-
-function unlikeAjax(num,hash,like){
-	
-	var url="/INTERHASH-SPRING/Unlike.hash";
-	var params ="connum="+num+"&conhash="+hash;
-//	var snum=$("#likep").text();
-
-	$.ajax({
-		type:"post"
-		,url:url
-		,data:params
-		,dataType:"json"
- 		,success:function(args){
- 			
- 			$('#likep').text(args.data);
- 
- 		}
-	    ,error:function(request, status , err) {
-	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
-	    }
-	});
-}
 
 function checkIt(){
 	
@@ -720,19 +686,34 @@ function checkIt(){
 <!-- 좋아요 기능 function -->
 <script>
 
-function likeAjax(num,hash,like){
+function unlikeAjax(num,hash,like){
 	
-	alert("like function");	
+	$(".like").show(); //보이기
+    $(".unlike").hide(); //숨기기
+	var url="/INTERHASH-SPRING/Unlike.hash";
+	var params ="connum="+num+"&conhash="+hash;
 	
+	$.ajax({
+		type:"post"
+		,url:url
+		,data:params
+		,dataType:"json"
+ 		,success:function(args){
+ 			
+ 			$('#liketest').text(args.data);
+ 		}
+	    ,error:function(request, status , err) {
+	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
+	    }
+	});
+}
+
+function callAjax(num,hash){
+	
+	$(".unlike").show(); //보이기
+    $(".like").hide(); //숨기기
 	var url="/INTERHASH-SPRING/LikeCheck.hash";
 	var params ="connum="+num+"&conhash="+hash;
-//	var test = $(this).text(num);
-	
-//	var snum=$('#likep').text();
-//	alert(snum);	
-	
-//	alert( like );
-//	alert(${sessionScope.connum});
 
 	$.ajax({
 		type:"post"
@@ -740,7 +721,6 @@ function likeAjax(num,hash,like){
 		,data:params
 		,dataType:"json"
  		,success:function(args){
- 			//$('#liketest').eq(num).text(args.data);
  			$("#liketest").text(args.data);
 
  		}
@@ -750,31 +730,6 @@ function likeAjax(num,hash,like){
 	});
 }
 
-function unlikeAjax(num,hash,like){
-	
-	alert("unlike function");
-	
-	var url="/INTERHASH-SPRING/Unlike.hash";
-	var params ="connum="+num+"&conhash="+hash;
-	
-//	var test = $(this).text(num);
-	
-	$.ajax({
-		type:"post"
-		,url:url
-		,data:params
-		,dataType:"json"
- 		,success:function(args){
- 			
- 			alert("unlike ajax!");
- 			$('#likep').text(args.data);
- //			#test.text(args.data);
- 		}
-	    ,error:function(request, status , err) {
-	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
-	    }
-	});
-}
 
 </script>
 
@@ -828,13 +783,13 @@ function unlikeAjax(num,hash,like){
         <%-- <button id="like_ajax" type="button" class="w3-theme-d1 w3-margin-bottom like" ><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button> --%>
 
    <div class="w3-btn">
-    
 
-     <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>Like <i id="likep">${con.conlike}</i></button> 
-     <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="likem"> ${con.conlike}</i></button>  
 
-    
-	 <%-- <input type="button" id="btn" name="btn1" value="like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}','${con.conlike}')" > <i id="likep"> ${con.conlike} </i> --%>
+     <%-- <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:callAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>Like <i id="liketest">${con.conlike}</i></button> 
+     <button type="button" class="w3-theme-d2 w3-margin-bottom unlike" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="liketest"> ${con.conlike}</i></button> --%>  
+	
+	<!-- <button type="button" class="w3-theme-d1 w3-margin-bottom like" > --><i class="w3-theme-d2 fa fa-thumbs-up"> Like <i id="likep">${con.conlike} </i> &nbsp</i> &nbsp
+   <%--  <input type="button" id="btn3" class="btn4" onclick="javascript:callAjax('${con.connum}','${con.conhash}')"><i id="liketest">${con.conlike}</i> --%>
         
    
    <%-- <div id="board_img">
@@ -844,13 +799,11 @@ function unlikeAjax(num,hash,like){
    </div>
    <div id ="board_main">
    <a href="ContentView.hash?connum=${con.connum}">
-   
+  --%> 
 
   
 
-    <%-- <input type="button" class="btn2" id="btn" name="btn1" value="like" onclick="javascript:callAjax('${con.connum}','${con.conhash}')" > <i id="liketest"> ${con.conlike} </i> --%>
-	<input type="button" class="btn2" id="btn" name="btn1" value="like"  onclick="javascript:callAjax('${con.connum}','${con.conhash}')"><i id="liketest">${con.conlike}</i>
-    <button type="button" class="w3-theme-d3 w3-margin-bottom" onclick="location.href='Board.hash'"><i class="fa fa-comment"></i>  Comment ${con.connum}</button>  	
+    <!-- <button type="button" class="w3-theme-d3 w3-margin-bottom" > --><i class="fa fa-comment"></i> Comment ${con.connum}  	
 	
 	</div>
 

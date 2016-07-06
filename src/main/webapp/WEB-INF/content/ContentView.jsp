@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>View</title>
 <style>
 .box-shadow{box-shadow:0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)!important;margin-top:0px;}
@@ -15,10 +16,14 @@
 html,body,h6{font-family: "Open Sans", sans-serif}
 .w3-theme {color:#fff !important; background-color:#607d8b !important}
 .white{color:#000!important;background-color:#fff!important;}
-#img{
+	
+	#img
+	{
 		width: 350px;
 		height:300px;
-		margin:auto;}
+		margin:auto;
+	}
+		
 #nickname{
 font-size:15px;
 }
@@ -139,6 +144,8 @@ color:#5AAEFF;
 	
 	#test{border-bottom:1px solid;}
 
+
+
 </style>
 
 <!-- <script> 
@@ -150,6 +157,7 @@ $(document).ready(function(){
 	
 });
 </script> -->
+
 </head>
 <body>
 <div id="view_div">
@@ -193,14 +201,24 @@ $(document).ready(function(){
 	
 	<div id="left_good_re">
 		<label id="align_right">댓글 수: ${count}</label>
-		<!-- <label id="align_right">좋아요/</label> --> 
+<!-- 	<label id="align_left">
+     	</label> -->
+     			
 	</div>
+	
+	<button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:callAjax('${content.connum}','${content.conhash}')">
+     	<i class="fa fa-thumbs-up"></i> Like </button>
+     	<button type="button" class="w3-theme-d3 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${content.connum}','${content.conhash}')">
+     	<i class="fa fa-thumbs-up"></i> Like </button>  
+    
+     <i id="liketest"> ${content.conlike}</i>
+     	
 	</form>
 </div>
 
 <div id="view_right" class="box-shadow border-round white">
-	<input type=button onclick="modal_close()" value="X" style="float:right">
-	
+	<!-- <input type=button onclick="modal_close()" value="X" style="float:right"> -->
+	<input type=button onclick="location.href='Board.hash'" value="X" style="float:right">
 	
 	<form method="post" action="InsertComment.hash">
 	<input type=hidden name=connum value="${content.connum}">
