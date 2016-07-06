@@ -17,7 +17,6 @@ public class CommentDAO {
 	}
 	
 	public int insertComment(CommentCommand dto){
-		System.out.println("::::::::::::::::::::::::::");
 		return session.insert("Comment.insertComment",dto);
 	}
 	
@@ -41,13 +40,13 @@ public class CommentDAO {
 		return session.selectOne("Comment.commentcount",connum);
 	}
 	
-	/*public List<String> getCommentstr(int connum){
-		return session.selectList("Comment.getCommentStr",connum);
-	}
-	*/
 	public List<String> testcomment(){
-		return session.selectList("Comment.test");
-		
+		return session.selectList("Comment.test");	
 	} 
+	
+	public List date(int connum){
+		return session.selectList("Comment.date",connum);
+	}
+
 	
 }

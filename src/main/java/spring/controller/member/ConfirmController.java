@@ -121,5 +121,6 @@ public class ConfirmController {
 		resp.setContentType("application/json;charset=utf-8");
 		PrintWriter out = resp.getWriter();
 		out.print(jso.toString());
+
 	}
 }

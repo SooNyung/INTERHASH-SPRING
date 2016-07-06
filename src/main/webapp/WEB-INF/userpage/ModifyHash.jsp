@@ -153,7 +153,7 @@ h1 {
 	font-family: 'Indie Flower', cursive;
 }
 </style>
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script>
 	window.onload = function checkHash() {
 		var hasharr = "${c.hash}"; //hasharr에 저장됨

@@ -30,7 +30,7 @@ $(function() {
      });
        
 });
-$(function(){
+/* $(function(){
    $(".like").click(function(){
       var index = $(".like").index(this);
       if($(".like:eq("+index+")").hasClass("hide")){
@@ -53,7 +53,22 @@ $(function(){
          $(".like:eq("+indexu+")").removeClass("hide");
       }
    });
+}); */
+
+/* $(function(){
+      $(".like").click(function(){
+            $(".like").addClass("hide");
+        
+   });
 });
+     $(function(){
+      $(".unlike").click(function(){
+          var indexu = $(".unlike").index(this); 
+            $(".unlike").addClass("hide");
+            $(".like").removeClass("hide");
+   });
+});  
+  */
 
 function readURL(input) {
     if (input.files && input.files[0]) {
@@ -564,6 +579,35 @@ function mapopen(latitude,longtitude,maptitle ) {
    newwindow=window.open(url,"post","toolbar=no ,width=500 ,height=400 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
    //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
 }
+
+
+/* function like(num,String){
+      var select_id = "${sessionScope.conlike}";//'#'+num+"like_bn";
+      var like_cnt =select_id+1;//$(select_id).text();
+      alert(select_id);
+      
+      //$(select_id).text(like_cnt+1);
+      
+      alert(like_cnt);
+      url = "LikeCheck.hash?connum="+num+"&conhash="+String;
+      newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+      //location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
+   }
+
+   function unlike(num,String){
+      var select_id = "${sessionScope.conlike}";//'#'+num+"unlike_bn";
+      var like_cnt =select_id-1;//$(select_id).text();
+      alert(select_id);
+      
+      //$(select_id).text(like_cnt-1);
+      
+      alert(like_cnt);
+      
+      url = "Unlike.hash?connum="+num+"&conhash="+String;
+      newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+      //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
+   } */
+
 function checkIt(){
    
    var content = eval("document.writeForm");
@@ -734,15 +778,20 @@ function callAjax(num,hash){
     <button type="button" id="btn2" class="w3-btn w3-theme-d2 w3-margin-bottom hide" onclick="javascript:unlike('${con.connum}')"> un_like </button>
     <input type="checkbox" class="hide"/>
     </div> --%>
+
+
    
         <%-- <button id="like_ajax" type="button" class="w3-theme-d1 w3-margin-bottom like" ><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button> --%>
 
    <div class="w3-btn">
+    
+
       <%-- <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>Like <i id="likep">${con.conlike}</i></button> 
      <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="likem"> ${con.conlike}</i></button>   --%>
    
    <!-- <button type="button" class="w3-theme-d1 w3-margin-bottom like" > --><i class="w3-theme-d2 fa fa-thumbs-up"> Like <i id="likep">${con.conlike} </i> &nbsp</i> &nbsp
-   <!-- <button type="button" class="w3-theme-d3 w3-margin-bottom" > --><i class="fa fa-comment"></i> Comment ${con.connum} 
+   <%--  <input type="button" id="btn3" class="btn4" onclick="javascript:callAjax('${con.connum}','${con.conhash}')"><i id="liketest">${con.conlike}</i> --%>
+        
    
    <%-- <div id="board_img">
    <a href="ContentView.hash?connum=${con.connum}">
@@ -752,6 +801,11 @@ function callAjax(num,hash){
    <div id ="board_main">
    <a href="ContentView.hash?connum=${con.connum}">
   --%> 
+
+  
+
+    <!-- <button type="button" class="w3-theme-d3 w3-margin-bottom" > --><i class="fa fa-comment"></i> Comment ${con.connum}     
+   
    </div>
 
 

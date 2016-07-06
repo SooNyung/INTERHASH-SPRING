@@ -28,8 +28,6 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 @import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
-body{font-family: '돋음'; font-size:12px;}
-a:link,a{text-decoration:none;}
 h2{font-family: 'Bad Script', cursive;}
 .w3-theme-l5 {
    color: #000 !important;
@@ -213,9 +211,7 @@ padding: 0px 5px 0px 5px;}
 }
 
 .text-theme {
-   color: #607d8b !important;
-
-   
+   color: #607d8b !important
 }
 
 .accordian {
@@ -254,8 +250,6 @@ padding: 0px 5px 0px 5px;}
    color: #fff !important;
    background-color: #FFCCCC !important
 }
-
-button:hover{background-color: #B3B6B7 !important}
 
 .left-align {
    text-align: left
@@ -326,7 +320,6 @@ button:hover{background-color: #B3B6B7 !important}
    height: 30px;
    /*    border:1px solid #bcbcbc; */
 }
-
 #jb-right{
 margin-right:60px;
    width:20%;
@@ -352,6 +345,9 @@ margin-right:60px;
    float: left;
    /*      border: 1px solid #bcbcbc; */
 }
+
+
+
 
 #jb-footer {
    width: 100%;
@@ -461,7 +457,6 @@ border-radius:7px;
    z-index: 500;
 }
 
-
 .navbar li .al {
    background: rgb(255, 240, 245);
    display: none; /* 평상시에는 서브메뉴가 안보이게 하기 */
@@ -476,10 +471,11 @@ border-radius:7px;
    overflow: hidden;
    z-index: 500;
 }
-/* .navbar li:hover ul {
+
+/*  .navbar li:hover ul {
    display: block; /* 마우스 커서 올리면 서브메뉴 보이게 하기 */
-}
- */
+} */
+
 
 .badge {
    color: #b2b2b2;
@@ -516,8 +512,8 @@ border-radius:7px;
    border-radius:7px;
    background-color:#ff6088;
 }
-#up{width:25%; height:300px; margin-top:10px; padding:10px 0px 20px 0px; }
-#down{width:25%; height:400px; padding:10px 0px 20px 0px;}
+#up{width:90%; height:300px; margin-top:10px; padding:10px 0px 20px 0px; }
+#down{width:90%; height:400px; padding:10px 0px 20px 0px;}
 
 
 
@@ -603,31 +599,30 @@ border-radius:7px;
    font-size:20px;
 }
 
+
 .pro1 {
 /*    font-size: 16px; */
    border: 0px;
    font-family: 'Nanum Pen Script', serif;
-   font-size:30px;
+   font-size:25px;
 }
-
 #profileImg{
 width:50px;
 height:50px;
 }
 
 #buttonid {
-	color: white;
-	background-color: #FFCCCC;
-	border-radius: 7px !important;
-	padding:5px;
+   color: white;
+   background-color: #FFCCCC;
+   border-radius: 7px !important;
+   padding:5px;
 }
 #buttonid:hover {
-	color: white;
-	background-color: #FF9090;
-	border-radius: 7px !important;
-	padding:5px;
+   color: white;
+   background-color: #FF9090;
+   border-radius: 7px !important;
+   padding:5px;
 }
-
 </style>
 
     <script>
@@ -715,30 +710,22 @@ height:50px;
 
    function Message(){
       url="MessageForm.hash";
-      window.open(url,"post","toolbar=no ,width=400 ,height=400,directories=no,status=yes,menubar=no,scrollbars=no");
+      window.open(url,"post","toolbar=no ,width=400 ,height=350,directories=no,status=yes,menubar=no,scrollbars=no");
       } 
    
    function MessageList(){
       url="MessageList.hash?check=y";
-      window.open(url,"post","toolbar=no ,width=400 ,height=400,directories=no,status=yes,menubar=no,scrollbars=no");
+      window.open(url,"post","toolbar=no ,width=400 ,height=350,directories=no,status=yes,menubar=no,scrollbars=no");
       } 
    
-/* <<<<<<< HEAD
    function alarmList(){
-	      url="alarmlist.hash?check=y";
-	      window.open(url,"post","toolbar=no ,width=500 ,height=400,directories=no,status=yes,menubar=no,scrollbars=no");
-=======
-   function alarm(){
-	      url="Alarm.hash";
-	      window.open(url,"post","toolbar=no ,width=400 ,height=400,directories=no,status=yes,menubar=no,scrollbars=no");
->>>>>>> 153dd04795e20f0b97c17935dcd44da8e5a77643
-	      } 
-   
- */
+         url="alarmlist.hash?check=y";
+         window.open(url,"post","toolbar=no ,width=500 ,height=400,directories=no,status=yes,menubar=no,scrollbars=no");
+         }
 
    $(document).ready(function() {
       if ($('#jb-content').outerHeight(true) < 800) {
-         $("#jb-content").css("height", "900px");
+         $("#jb-content").css("height", "800px");
       }else{
          var g = $('#jb-content').outerHeight(true);
          $('#main').css("height", g);
@@ -770,8 +757,7 @@ height:50px;
          }, function(){  
           $(this).parent().find(".sub").slideUp('fast');                 //subnav에서 마우스 벗어났을 시 원위치시킴  
          });  
-        });    
-        
+        });  
         
         $(".alarm").hover(function() {//마우스를 topnav에 오버시
             $(this).parent().find("span").hide();      
@@ -782,18 +768,6 @@ height:50px;
             });  
            });
        }); 
-   
-   
-   $(document).ready(function(){           
-       $(".alarm").hover(function() {//마우스를 topnav에 오버시
-        $(this).parent().find("span").hide();      
-        $(this).parent().find(".sub").slideDown('normal').show();                   //subnav가 내려옴.
-        $(this).parent().hover(function() {  
-        }, function(){  
-         $(this).parent().find(".sub").slideUp('fast');                 //subnav에서 마우스 벗어났을 시 원위치시킴  
-        });  
-       });        
-      }); 
    
    
     $(document).ready(function(){  
@@ -819,8 +793,8 @@ height:50px;
                 $(this).attr("type","font");
              } 
            });
-         var chat_url = "http://192.168.50.42:8080/?id="+ encodeURIComponent("${sessionScope.nickName }");
-         $('#chat_table').attr('src',chat_url); 	
+         
+          
          });
 
 
@@ -840,9 +814,8 @@ height:50px;
          <li class="small"><a href="Board.hash"
             class="padding-large margin-right"><h2>I N T E R H A S H #</h2></a></li>
          <li class="small">
-         
          <div class="message">
-         <a href="#" onclick="window.open('MessageList.hash','new','width=400 height=400');return false" 
+         <a href="#" onclick="window.open('MessageList.hash','new','width=400 height=350');return false" 
          class="padding-large margin-right"  title="Messages">
            <img src ="image/logo/message .png" onmouseover="this.src='image/logo/message2.png'" onmouseout="this.src='image/logo/message .png'" width="30px" height="30px"/><span class="count badge right small circle pink">${messagecount}</span>
          </a>
@@ -851,8 +824,8 @@ height:50px;
             <ul class="sub">
                <table>   
                   <tr>
-                     <td style="color:#8C8C8C;">Message</td>
-                     <td class="w3-right"><button id="buttonid" onclick="Message()">Send Message</button></td>
+                     <td>쪽지</td>
+                     <td class="w3-right"><button id="buttonid" onclick="Message()">쪽지보내기</button></td>
                   </tr>
                   <tr class="left-align">
                      <td colspan="2"><c:forEach var="message"
@@ -867,12 +840,13 @@ height:50px;
                   </tr>
 
                   <tr>
-                     <Td colspan="2"><hr><button id="buttonid" onclick="MessageList()">All Messages</button></Td>
+                     <Td colspan="2"><hr><button id="buttonid" onclick="MessageList()">모든 쪽지 보기</button></Td>
                   </tr>
                </table>
             </ul></li>
+          
          <li class="small">
-<%-- <<<<<<< HEAD
+
           <div class="alarm">
           <a href="#"   onclick="window.open('alarmlist.hash','new','width=500 height=400');return false"
           class="margin-right padding-large" title="Alarm">         
@@ -902,35 +876,11 @@ height:50px;
                </table>
             </ul>
           
-		</li>
-
-
-=======
-         <div class="alarm">
-         <a href="#" class="margin-right padding-large left-align" title="Alarm">
-              <img src="image/logo/alarm1.png" onmouseover="this.src='image/logo/alarm.png'" onmouseout="this.src='image/logo/alarm1.png'" width="30px" height="30px"/>
-              </a>
-          </div>
-          <ul class="sub">
-               <table>   
-                  <tr>
-                     <td style="color:#8C8C8C;">Alarm</td>
-                     <td class="w3-right"><button id="buttonid" onclick="alarm()">All alarm</button></td>
-                  </tr>
-       				
-               </table>
-            </ul>
-          
-          
-          
-          </li>
->>>>>>> 153dd04795e20f0b97c17935dcd44da8e5a77643 --%>
+      </li>
 
          <li class="small right">
          <div class="topnav">   <a href="#" title="MyAccount"><img id ="profileImg" src='<c:url value="/upload/${sessionScope.profilePhoto}" />' class="circle" width="10%" height="10%">
            ${memberinfo.nickname}님</a></div>
-           
-           
             <ul class="account">
                <li><a href="UserInfoModifyForm.hash">회원정보수정</a></li>
                <li><a href="profile.hash">프로필수정</a></li>
@@ -943,7 +893,7 @@ height:50px;
                <input type="text" name="hash" />
                </div>
                <div style="float:right;">
-                <input type="image" src ="image/logo/search.png" width="30px" height="30px"/>
+                <input type="image" src ="image/logo/search.png" class="circle" width="30px" height="30px"/>
             </div>
             </form>
          </div>
@@ -1094,18 +1044,17 @@ height:50px;
   </div>
      
    <div id="jb-right">
-   	<div style="width:100%; height: 350px; ">
-   	<div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
-   	</div>
-   	<div style="width:100%; ">
-	<div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">
-		<div style="height:100%">
-			<iframe id='chat_table' style="height:100%" src= "" >
-			</iframe>
-		</div>
-	</div>
-	</div>
-
+      <div style="width:100%; height: 350px; ">
+      <div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
+      </div>
+      <div style="width:100%; ">
+   <div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">
+      <div style="height:100%">
+         <iframe style="height:100%" src= "http://192.168.50.42:8080/?id=${sessionScope.nickName }">
+         </iframe>
+      </div>
+   </div>
+   </div>
    </div>
    </div>
       
