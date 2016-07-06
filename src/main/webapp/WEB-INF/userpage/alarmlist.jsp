@@ -91,7 +91,7 @@ text-align: center;
 		<div>
 			<span><b id="fontsize">Sender |</b> <label id="fontsize">${list.comnick}</label></span><br> 
 			<span><b id="fontsize">From time |</b> 
-		<label id="fontsize"> ${sdf.format(list.alarmdate)} </label>
+<%-- 		<label id="fontsize"> ${sdf.format(list.alarmdate)} </label> --%>
 			</span><br><hr>
 				<span>  <a href="ContentView.hash?connum=${list.connum}" 
 				onClick="window.open(this.href, '', 'width=1000, height=650'); return false;">

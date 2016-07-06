@@ -890,7 +890,7 @@ height:50px;
                </div>
                <div style="float:right;">
                 <input type="image" src ="image/logo/search.png" width="30px" height="30px"/>
-            </div>
+            	</div>
             </form>
          </div>
 
