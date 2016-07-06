@@ -199,6 +199,8 @@ color:#5AAEFF;
 	<form method="post" action="InsertComment.hash">
 	<input type=hidden name=connum value="${content.connum}">
 	<input type=hidden name=comnick value="${sessionScope.nickName}">
+
+	
 	<div id="right_nick">
 		<span id ="align_left"><b>${sessionScope.nickName}</b>님</span>
 		<!-- <span id="align_right"><input type="button" onclick="back()" value="닫기버튼"></span> -->
@@ -238,8 +240,7 @@ color:#5AAEFF;
 		</c:if>	
 	</span><br> 
 	<div id="test"><textarea id="comment_textara" borderStyle="none" cols=50 readonly="readonly" class="autosize">${comment.comcontent}</textarea></div>
-	</div>
-	
+	</div>	
 	</c:forEach>  
 	</div>
 	

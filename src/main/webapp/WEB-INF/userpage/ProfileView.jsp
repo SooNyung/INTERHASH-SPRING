@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page isELIgnored="false" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,12 +11,14 @@
 	href='https://fonts.googleapis.com/css?family=Open+Sans'>
 <link rel="stylesheet"
 	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
 <style>
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
 @import url(http://weloveiconfonts.com/api/?family=entypo);
 @import url(http://weloveiconfonts.com/api/?family=maki);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
-
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
 
 [class*="fontawesome-"]:before {
   font-family: 'FontAwesome', sans-serif;
@@ -52,9 +55,13 @@ body {
    background-color: #FFFFFF; 
    color: #606468; 
 	/* color:#EAEAEA; */
-  font: 400 0.875rem/1.5 "Open Sans", sans-serif;
+/*   font: 400 0.875rem/1.5 "Open Sans", sans-serif; */
   margin: 0;
   min-height: 100%;
+  	
+	
+font-family: 'Nanum Brush Script', serif;
+font-size: 20px;
 }
 
 a {
@@ -86,7 +93,7 @@ input {
           flex: 1;
 /*    padding: 1rem 0; */
 	padding-bottom: 10px;
-	width:100%;
+	width:80%;
   
 }
 
@@ -246,6 +253,9 @@ font{
 	border-radius: 7px !important;
 	padding:5px;
 }
+/* h1{
+font-family: 'Indie Flower', cursive;
+} */
 
 </style>
 <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script> 
@@ -300,7 +310,7 @@ function readURL(input) {
 <body class ="align">
 
   <div class="site__container box-shadow border-round white">
-<h1>${c.nickname}님의 PROFILE</h1>
+<h1>${c.nickname}'s PROFILE</h1>
     <div class="grid__container">
     <form action="MessageForm.hash?email=${c.email}" name="userinput" method="post" class="form form--login" enctype="multipart/form-data">
    		 <center>

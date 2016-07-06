@@ -67,6 +67,8 @@
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9ee99f6f7e29a9a2459e7218773c63fe&libraries=services"></script>
 <script>
+
+
 // 마커를 담을 배열입니다
 var markers = [];
 

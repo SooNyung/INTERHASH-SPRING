@@ -120,8 +120,31 @@ function fileUploadPreview(thisObj, preViewer) {
 }
 function tagCheck() {
 
-   url = "TagCheck.hash?check=y";
-   newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	url = "TagCheck.hash?check=y";
+	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+}
+
+function like(num,String){
+	var select_id = "${sessionScope.conlike}";//'#'+num+"like_bn";
+	var like_cnt = select_id+1;//$(select_id).text();
+	alert(select_id);
+	
+	//$(select_id).text(like_cnt+1);
+	
+	alert(like_cnt);
+	url = "LikeCheck.hash?connum="+num+"&conhash="+String;
+	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	//location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
+}
+
+function unlike(num,String){
+ 	var select_id = "${sessionScope.conlike}";
+	var like_ctn = select_id-1;
+	alert(select_id);
+	alert(like_ctn); 
+	url = "Unlike.hash?connum="+num+"&conhash="+String;
+	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	//location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
 }
 
 function modal_close(){
@@ -133,13 +156,24 @@ function modal_close(){
 
 </script>
 <style type="text/css">
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
 @import url(http://weloveiconfonts.com/api/?family=Font Awesome);
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
 [class*="Font Awesome-"]:before {
   font-family: 'Font Awesome', sans-serif;
 }
+
+.pro1 {
+/*    font-size: 16px; */
+   border: 0px;
+   font-family: 'Nanum Pen Script', serif;
+   font-size:20px;
+   color:#797D7F;
+}
    .background-color{color:#000 !important; background-color:#f5f7f8 !important}
    #board_div{
-      width:500px;
+      width:115%;
       height:230px;
 /*        background-color: black;  */
       
@@ -337,19 +371,24 @@ function modal_close(){
 }
 
 a {
-  color: #C2C2C2;
+  color: #797D7F;
   outline: 0;
   text-decoration: none;
 }
 
 #View {
-  color: #C2C2C2;
+  color: #797D7F;
   outline: 0;
-  text-decoration: none;
+  /* text-decoration: none; */
+  font-weight: bold;
 }
+
+/* #View:hover{
+	color:#ffcccc;
+} */
 a:focus, a:hover {
-  text-decoration: underline; 
-  color:#ea4c88;
+ /*  text-decoration: underline;  */
+  color:#ffcccc;
   
 }
 
@@ -357,7 +396,13 @@ a:focus, a:hover {
  .border-round{border-radius:4px!important}
  .container{content:"";display:table;clear:both;padding:0.01em 16px; margin-left:0px;}
 .w3-col.m12{width:100px}
-html,body,h6{font-family: "Open Sans", sans-serif}
+html,body,h6{
+/* font-family: "Open Sans", sans-serif */
+font-family: 'Nanum Pen Script', serif;
+}
+body{
+font-size: 20px;
+}
 .w3-theme {color:#fff !important; background-color:#607d8b !important}
 .white{color:#000!important;background-color:#fff!important;}
 
@@ -379,6 +424,8 @@ hr{border-top:1px solid; background-color:#eee;}
 .w3-btn{pointer-events:none;
 box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 -webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
+
+.na{font-weight:bold; font-size:15px;}
 </style>
 
 <script>
@@ -535,6 +582,121 @@ function insert1(connum){
 			} 
 	});
 }
+<<<<<<< HEAD
+=======
+
+function Map(){
+   url="template2.hash";
+   window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
+   } 
+
+function mapopen(latitude,longtitude,maptitle ) {
+   
+   url = "mapopen.hash?latitude="+ latitude + "&longtitude="+longtitude+"&maptitle="+maptitle;
+   newwindow=window.open(url,"post","toolbar=no ,width=500 ,height=400 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+   //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
+}
+
+
+/* function like(num,String){
+	   var select_id = "${sessionScope.conlike}";//'#'+num+"like_bn";
+	   var like_cnt =select_id+1;//$(select_id).text();
+	   alert(select_id);
+	   
+	   //$(select_id).text(like_cnt+1);
+	   
+	   alert(like_cnt);
+	   url = "LikeCheck.hash?connum="+num+"&conhash="+String;
+	   newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	   //location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
+	}
+
+	function unlike(num,String){
+	   var select_id = "${sessionScope.conlike}";//'#'+num+"unlike_bn";
+	   var like_cnt =select_id-1;//$(select_id).text();
+	   alert(select_id);
+	   
+	   //$(select_id).text(like_cnt-1);
+	   
+	   alert(like_cnt);
+	   
+	   url = "Unlike.hash?connum="+num+"&conhash="+String;
+	   newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	   //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
+	} */
+	
+function likeAjax(num,hash,like){
+	
+	var url="/INTERHASH-SPRING/LikeCheck.hash";
+	var params ="connum="+num+"&conhash="+hash;
+//	var snum=$("#likem").text();
+
+	$.ajax({
+		type:"post"
+		,url:url
+		,data:params
+		,dataType:"json"
+ 		,success:function(args){
+
+			$('#likem').text(args.data);
+
+ 		}
+	    ,error:function(request, status , err) {
+	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
+	    }
+	});
+}
+
+function unlikeAjax(num,hash,like){
+	
+	var url="/INTERHASH-SPRING/Unlike.hash";
+	var params ="connum="+num+"&conhash="+hash;
+//	var snum=$("#likep").text();
+
+	$.ajax({
+		type:"post"
+		,url:url
+		,data:params
+		,dataType:"json"
+ 		,success:function(args){
+ 			
+ 			$('#likep').text(args.data);
+ 
+ 		}
+	    ,error:function(request, status , err) {
+	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
+	    }
+	});
+}
+
+function checkIt(){
+	
+	var content = eval("document.writeForm");
+	var conphoto = eval("document.writeForm");
+	var tag = eval("document.writeForm");
+	
+	if(!writeForm.content.value){
+		alert("내용을 입력하세요~:)");
+		document.writeForm.content.focus(); 
+		return false;
+	}
+
+	if(!writeForm.conphoto.value){
+		alert("사진을 올려주세요~:)");
+		return false;
+	}
+	
+	
+	if(!writeForm.tag.value){
+		alert("태그를 선택해주세요~:)");
+		return false;
+	}
+	
+
+	return true;
+};
+
+>>>>>>> 6c9c7af9abcded8e544baf5d9afcc285809d743c
 </script>
 </head>
 <body>
@@ -544,9 +706,9 @@ function insert1(connum){
             <div class="container w3-padding">
            <!--    <h6 class="opacity">I love it!! InterHash~♡</h6> -->
             <div id="writeform" border="1">
-      <form action="ContentInputPro.hash" name="writeForm" method="post" enctype="multipart/form-data"> 
+      <form action="ContentInputPro.hash" name="writeForm" method="post" enctype="multipart/form-data" onSubmit="return checkIt()"> 
       <div id="wrap" style="width: 500px; ">
-         <textarea id="textfield" name="content" placeholder="내용을 입력하세요."></textarea>
+         <textarea style="resize: none; width:460px; height:80px;" id="textfield" name="content" placeholder="내용을 입력하세요."></textarea>
          <div class="photoBox" style="height: 100px; width: 100px;">
             <input class='fileData' id = "conphoto" name="conphoto" type="file"/> 
                <div id="blah_img" >
@@ -574,9 +736,7 @@ function insert1(connum){
                <img src ="image/logo/tag.png" width="25px" height="25px" onClick="tagCheck()">
              </div>
             </div> 
-            
-            
-             
+                 
              <span id="submit"> 
          		<!--      <input type="submit" id="button" value="submit"/>  -->
          		<input type="image" src="image/logo/post.PNG"> 
@@ -590,8 +750,68 @@ function insert1(connum){
             </div>
           </div>
       
-      
- 
+<!-- 좋아요 기능 function -->
+<script>
+
+function likeAjax(num,hash,like){
+	
+	alert("like function");	
+	
+	var url="/INTERHASH-SPRING/LikeCheck.hash";
+	var params ="connum="+num+"&conhash="+hash;
+//	var test = $(this).text(num);
+	
+//	var snum=$('#likep').text();
+//	alert(snum);	
+	
+//	alert( like );
+//	alert(${sessionScope.connum});
+
+	$.ajax({
+		type:"post"
+		,url:url
+		,data:params
+		,dataType:"json"
+ 		,success:function(args){
+ 			//$('#liketest').eq(num).text(args.data);
+ 			$("#liketest").text(args.data);
+
+ 		}
+	    ,error:function(request, status , err) {
+	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
+	    }
+	});
+}
+
+function unlikeAjax(num,hash,like){
+	
+	alert("unlike function");
+	
+	var url="/INTERHASH-SPRING/Unlike.hash";
+	var params ="connum="+num+"&conhash="+hash;
+	
+//	var test = $(this).text(num);
+	
+	$.ajax({
+		type:"post"
+		,url:url
+		,data:params
+		,dataType:"json"
+ 		,success:function(args){
+ 			
+ 			alert("unlike ajax!");
+ 			$('#likep').text(args.data);
+ //			#test.text(args.data);
+ 		}
+	    ,error:function(request, status , err) {
+	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
+	    }
+	});
+}
+
+</script>
+
+
 <form method='post' action='ContentView.hash'>
 
 <c:forEach var="con" items= '${content}' >
@@ -604,22 +824,27 @@ function insert1(connum){
 <img src='<c:url value="/upload/${profilephoto.get(temp)}"/>' alt="Avatar" class="left-align circle" style="width:50px; height:50px;">
 
 </td>
-<td width="65%"><a id="View" target="_blank" href="#" onclick="window.open('ProfileView.hash?nickname=${con.connickname}','new','resizable=no width=700 height=500');return false"><b>${con.connickname}</b></a></td>
+<td width="65%"><a id="View" target="_blank" href="#" onclick="window.open('ProfileView.hash?nickname=${con.connickname}','new','resizable=no width=700 height=500');return false">${con.connickname}</a></td>
 <td width="35%"><b class="right-align opacity"><font color="#b2b2b2">${con.conmodifieddate}</font></b></td>
 </tr>
 </table>
    <hr color="#eee">
    <div class="content">
-   <div class="write">${con.content}&nbsp;&nbsp;&nbsp;-<a href="#" onclick= "javascript:mapopen('${con.latitude}','${con.longtitude}','${con.maptitle}')" ><font 
-
-color="#666"><b>${con.maptitle}</b>에서</font></a></div>
+   <div class="write">${con.content}&nbsp;&nbsp;&nbsp;
+   <c:if test="${!empty con.maptitle}">
+   -<a href="#" onclick= "javascript:mapopen('${con.latitude}','${con.longtitude}','${con.maptitle}')" >
+   <font color="#666"><b>${con.maptitle}</b>에서</font></a>
+   </c:if>
+   </div>
+   
+   
    <div class="w3-row-padding">
         <a href="ContentView.hash?connum=${con.connum}" class="img_link">
       <img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />'/>
       </a>  
     </div>
 
-    <p>#${con.conhash}</p>
+    <p class="pro1">#${con.conhash}</p>
 
    </div>
    
@@ -631,16 +856,20 @@ color="#666"><b>${con.maptitle}</b>에서</font></a></div>
     <input type="checkbox" class="hide"/>
     </div> --%>
 
+
+	
+        <%-- <button id="like_ajax" type="button" class="w3-theme-d1 w3-margin-bottom like" ><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button> --%>
+
    <div class="w3-btn">
     
-     <%-- <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}','${con.conlike}')"><i class="fa fa-thumbs-up" id="likep" ></i>Like <i id="likep">${con.conlike}</i></button> 
-     <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}','${con.conlike}')"><i class="fa fa-thumbs-up"></i> Like <i id="likem"> ${con.conlike}</i></button> --%>    
-    
-	 <input type="button" id="btn" name="btn1" value="like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}','${con.conlike}')" > <i id="likep"> ${con.conlike} </i>
-        
-    <button type="button" class="w3-theme-d3 w3-margin-bottom" ><i class="fa fa-comment"></i> Comment ${con.connum}</button>     
-   </div>
 
+     <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>Like <i id="likep">${con.conlike}</i></button> 
+     <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="likem"> ${con.conlike}</i></button>  
+
+    
+	 <%-- <input type="button" id="btn" name="btn1" value="like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}','${con.conlike}')" > <i id="likep"> ${con.conlike} </i> --%>
+        
+   
    <%-- <div id="board_img">
    <a href="ContentView.hash?connum=${con.connum}">
       <img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />' />
@@ -649,7 +878,63 @@ color="#666"><b>${con.maptitle}</b>에서</font></a></div>
    <div id ="board_main">
    <a href="ContentView.hash?connum=${con.connum}">
    
-       <div id="board_subject">
+
+  
+
+    <%-- <input type="button" class="btn2" id="btn" name="btn1" value="like" onclick="javascript:callAjax('${con.connum}','${con.conhash}')" > <i id="liketest"> ${con.conlike} </i> --%>
+	<input type="button" class="btn2" id="btn" name="btn1" value="like"  onclick="javascript:callAjax('${con.connum}','${con.conhash}')"><i id="liketest">${con.conlike}</i>
+    <button type="button" class="w3-theme-d3 w3-margin-bottom" onclick="location.href='Board.hash'"><i class="fa fa-comment"></i>  Comment ${con.connum}</button>  	
+	
+	</div>
+
+
+<%-- 	 <div id="board_img">
+	<a href="ContentView.hash?connum=${con.connum}">
+		<img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />' />
+		</a>
+	</div>
+	<div id ="board_main">
+	<a href="ContentView.hash?connum=${con.connum}">
+	
+		 <div id="board_subject">
+			<div id="subject">
+			<label>'${con.connickname}'</label>
+			</div>
+			<div id="time">
+			<label>'${con.conmodifieddate}'</label>
+			</div>
+		</div>
+		<div id="board_content">
+			<label>'${con.content}'</label>
+			<br/>
+			<label> ${con.conhash} </label>
+
+		</div>
+ 		<div id="board_like">
+			<div id="like">
+				<div id="like_img">
+				</div>
+				<div id="like_text">
+					<p>123</p>
+				</div>
+				<div id="like_alpha">
+				</div>
+			</div>
+			<div id="commnet">
+				<div id="commnet_img">
+				</div>
+				<div id="commnet_text">
+				
+					
+				</div>
+				<P><a href="ContentView.hash?connum=${con.connum}"></a></P>
+			</div>
+		</div>  
+		</a>
+	</div> --%> 
+	
+
+ <%--       <div id="board_subject">
          <div id="subject">
          <label>'${con.connickname}'</label>
          </div>
@@ -685,9 +970,9 @@ color="#666"><b>${con.maptitle}</b>에서</font></a></div>
       </div>  
       </a>
    </div> --%>
+
 </div>
 </c:forEach>
-
 
 </form>
 </div>

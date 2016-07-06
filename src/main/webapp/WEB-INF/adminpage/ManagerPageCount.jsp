@@ -20,14 +20,38 @@ width:100px;
 text-align:center;
 }
 
-#div1{ float:left; width:50%;}
-#div2{ float:right; width:50%;}
+#div1{ float:left; width:100%;}
+#div2{ float:left; width:100%;}
+#div3{ float:left; width:100%;}
 
+.white {
+   color: #000 !important;
+   background-color: #fff !important;
+}
 
+.box-shadow {
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+      rgba(0, 0, 0, 0.19) !important;
+   margin-top: 0px;
+}
+
+.border-round {
+   border-radius: 7px !important
+}
+
+#view_div{
+	width:120%;
+	height:900px;
+ 	/* background-color: black; */
+	/* border:1px solid; */
+	padding:5px;
+	margin-top:10px;
+	}
 
 </style>
 </head>
 <body>
+<div id ="view_div" class="box-shadow border-round white">
 <center>
 <h3>통계</h3>
 <hr/>
@@ -38,9 +62,9 @@ text-align:center;
 
 <p>
 
-<div id ="div1">
-<table border="1">
-<tr height="30">
+<div id ="div1" >
+<table>
+<tr height="30" bgcolor="#ffcccc">
 <td><b>HashTag</b></td>
 <td><b>좋아요 수</b></td>
 <td><b>게시글 수</b></td>
@@ -48,13 +72,16 @@ text-align:center;
 <c:forEach var="hash" items="${content}">
 <tr>
 <td>
-${hash.hashName}
+${hash.conhash}
+
 </td>
 <td>
-${hash.hashLikeCount}
+${hash.hashlike}
+
 </td>
 <td>
-${hash.hashContentCount}
+${hash.hashcontent}
+
 </td>
 
 </tr>
@@ -62,16 +89,44 @@ ${hash.hashContentCount}
 </table>
 </div>
 
+
+
 <div id ="div2">
-<table border="1">
-<tr height="30">
+<h3>Total</h3>
+<table>
+<tr height="30" bgcolor="#ffcccc">
 <td><b>방문자 수</b></td>
-<td><b>게시물 수</b></td>
 <td><b>좋아요 수</b></td>
+<td><b>게시물 수</b></td>
 </tr>
+<tr height="30">
+<td>${total_count}</td>
+<td>${likecount}</td>
+<td>${contentcount}</td>
+</tr>
+
 </table>
 </div>
 
 
+
+<div id ="div3">
+<h3>Today</h3>
+<table>
+<tr height="30" bgcolor="#ffcccc">
+<td><b>방문자 수</b></td>
+<td><b>좋아요 수</b></td>
+<td><b>게시물 수</b></td>
+</tr>
+<tr height="30">
+<td>${today}</td>
+<td>${today_like}</td>
+<td>${today_content}</td>
+</tr>
+
+</table>
+</div>
+
+</div>
 </body>
 </html>

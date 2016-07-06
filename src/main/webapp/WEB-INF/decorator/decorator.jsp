@@ -26,7 +26,8 @@ body{padding:0px;margin:0px;width:100%;height:100%;}
 <title>에벌레</title>
 <style>
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
-
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
 h2{font-family: 'Bad Script', cursive;}
 .w3-theme-l5 {
    color: #000 !important;
@@ -321,7 +322,6 @@ padding: 0px 5px 0px 5px;}
 }
 
 #jb-right{
-margin-right:60px;
    width:20%;
    height:100%;
    float:right;
@@ -454,10 +454,25 @@ border-radius:7px;
    z-index: 500;
 }
 
-/* .navbar li:hover ul {
-   display: block; /* 마우스 커서 올리면 서브메뉴 보이게 하기 */
+.navbar li .al {
+   background: rgb(255, 240, 245);
+   display: none; /* 평상시에는 서브메뉴가 안보이게 하기 */
+   height: 280px;
+   padding: 0px;
+   margin: 0px;
+   margin-left: 0px;
+   border: 0px;
+   border-radius:7px;
+   position: absolute;
+   width: 200px;
+   overflow: hidden;
+   z-index: 500;
 }
- */
+
+/*  .navbar li:hover ul {
+   display: block; /* 마우스 커서 올리면 서브메뉴 보이게 하기 */
+} */
+
 
 .badge {
    color: #b2b2b2;
@@ -494,8 +509,8 @@ border-radius:7px;
    border-radius:7px;
    background-color:#ff6088;
 }
-#up{width:25%; height:300px; margin-top:10px; padding:10px 0px 20px 0px; }
-#down{width:25%; height:400px; padding:10px 0px 20px 0px;}
+#up{width:90%; height:300px; margin-top:10px; padding:10px 0px 20px 0px; }
+#down{width:90%; height:400px; padding:10px 0px 20px 0px;}
 
 
 
@@ -577,14 +592,34 @@ border-radius:7px;
 .pro {
 /*    font-size: 16px; */
    border: 0px;
+   font-family: 'Nanum Pen Script', serif;
+   font-size:20px;
 }
 
+
+.pro1 {
+/*    font-size: 16px; */
+   border: 0px;
+   font-family: 'Nanum Pen Script', serif;
+   font-size:25px;
+}
 #profileImg{
 width:50px;
 height:50px;
 }
 
-
+#buttonid {
+	color: white;
+	background-color: #FFCCCC;
+	border-radius: 7px !important;
+	padding:5px;
+}
+#buttonid:hover {
+	color: white;
+	background-color: #FF9090;
+	border-radius: 7px !important;
+	padding:5px;
+}
 </style>
 
     <script>
@@ -680,7 +715,9 @@ height:50px;
       window.open(url,"post","toolbar=no ,width=400 ,height=350,directories=no,status=yes,menubar=no,scrollbars=no");
       } 
    
-
+   function alarmList(){
+	      url="alarmlist.hash?check=y";
+	      window.open(url,"post","toolbar=no ,width=500 ,height=400,directories=no,status=yes,menubar=no,scrollbars=no");}
 
    $(document).ready(function() {
       if ($('#jb-content').outerHeight(true) < 800) {
@@ -716,7 +753,16 @@ height:50px;
          }, function(){  
           $(this).parent().find(".sub").slideUp('fast');                 //subnav에서 마우스 벗어났을 시 원위치시킴  
          });  
-        });        
+        });  
+        
+        $(".alarm").hover(function() {//마우스를 topnav에 오버시
+            $(this).parent().find("span").hide();      
+            $(this).parent().find(".al").slideDown('normal').show();                   //subnav가 내려옴.
+            $(this).parent().hover(function() {  
+            }, function(){  
+             $(this).parent().find(".al").slideUp('fast');                 //subnav에서 마우스 벗어났을 시 원위치시킴  
+            });  
+           });
        }); 
    
    
@@ -743,8 +789,8 @@ height:50px;
                 $(this).attr("type","font");
              } 
            });
-         var chat_url = "http://192.168.50.42:8080/?id="+ encodeURIComponent("${sessionScope.nickName }");
-         $('#chat_table').attr('src',chat_url); 	
+         
+          
          });
 
 
@@ -775,7 +821,7 @@ height:50px;
                <table>   
                   <tr>
                      <td>쪽지</td>
-                     <td class="w3-right"><button onclick="Message()">쪽지보내기</button></td>
+                     <td class="w3-right"><button id="buttonid" onclick="Message()">쪽지보내기</button></td>
                   </tr>
                   <tr class="left-align">
                      <td colspan="2"><c:forEach var="message"
@@ -790,14 +836,43 @@ height:50px;
                   </tr>
 
                   <tr>
-                     <Td colspan="2"><hr><button onclick="MessageList()">모든 쪽지 보기</button></Td>
+                     <Td colspan="2"><hr><button id="buttonid" onclick="MessageList()">모든 쪽지 보기</button></Td>
                   </tr>
                </table>
             </ul></li>
-         <li class="small"><a href="#"
-            class="margin-right padding-large left-align" title="Alarm">
-            
-           <img src="image/logo/alarm1.png" onmouseover="this.src='image/logo/alarm.png'" onmouseout="this.src='image/logo/alarm1.png'" width="30px" height="30px"/></a></li>
+          
+         <li class="small">
+
+          <div class="alarm">
+          <a href="#"   onclick="window.open('alarmlist.hash','new','width=500 height=400');return false"
+          class="margin-right padding-large" title="Alarm">         
+           <img src="image/logo/alarm1.png" onmouseover="this.src='image/logo/alarm.png'" onmouseout="this.src='image/logo/alarm1.png'" width="30px" height="30px"/>
+           <span class="count badge right small circle pink">${count}</span></a>
+          </div>
+          <ul class="al">
+               <table>   
+                  <tr>
+                     <td style="color:#8C8C8C;">Alarm</td>
+                     
+                  </tr>
+                  <tr class="left-align">
+                     <td colspan="2"><c:forEach var="alarm"
+                           items="${sessionScope.alarmlist}" begin="0" end="2">
+                           <li><a 
+                              href="#"
+                              onclick="window.open('ContentView.hash?connum=${alarm.connum}','new','width=1000 height=650');return false">
+                              <img  src="image/logo/img_avatar5.png" class="left-align circle "
+                                 width="15%" height="15%"><b>${alarm.comnick}</b>님이 회원님의 게시글에 댓글을 남겼습니다.</a></li>
+                        </c:forEach></td>
+                  </tr>
+
+                  <tr>
+                     <Td colspan="2"><hr><button id="buttonid" onclick="alarmList()">All Alarm</button></Td>
+                  </tr>
+               </table>
+            </ul>
+          
+		</li>
 
          <li class="small right">
          <div class="topnav">   <a href="#" title="MyAccount"><img id ="profileImg" src='<c:url value="/upload/${sessionScope.profilePhoto}" />' class="circle" width="10%" height="10%">
@@ -848,7 +923,7 @@ height:50px;
 
    <!-- main -->
    <div id="main">
-   <div id=sidebar_content style="float:left; width:75%">
+   <div id=sidebar_content style="float:left; width:80%">
       <div id="jb-sidebar">
          <!-- Profile -->
          <div class="box-shadow border-round white padding">
@@ -863,7 +938,7 @@ height:50px;
                  <p>
 
                   <i class="fa fa-pencil fa-fw margin-right text-theme"></i>
-                  ${memberinfo.nickname}
+                 <i class="pro"> ${memberinfo.nickname}</i>
                </p>
                 <p>
                   <i class="fa fa-birthday-cake fa-fw margin-right text-theme profile" id="birthday" style="display: none;"></i>
@@ -909,15 +984,15 @@ height:50px;
             <div class="accordion white border-round">
                <button onclick="myContent();"
                   class="btn-block theme-l1 left-align border-round">
-                  <i class="fa fa-circle-o-notch fa-fw"></i> 내 글 보기
+                  <i class="fa fa-circle-o-notch fa-fw"></i> <b>내 글 보기</b>
                </button>
                <button onclick="updateContent();"
                   class="btn-block theme-l1 left-align">
-                  <i class="fa fa-calendar-check-o fa-fw"></i> 최신 글 보기
+                  <i class="fa fa-calendar-check-o fa-fw"></i> <b>최신 글 보기</b>
                </button>
                <button onclick="myFunction();"
                   class="btn-block theme-l1 left-align border-round">
-                  <i class="fa fa-users fa-fw"></i> 인기 글 보기
+                  <i class="fa fa-users fa-fw"></i> <b>인기 글 보기</b>
                </button>
                <script>
                   function myContent() {
@@ -952,7 +1027,7 @@ height:50px;
              <li><a href="Board.hash?hash=독도">#독도</a></li>
              <li><a href="Board.hash?hash=맥주">#맥주</a></li> -->   
             <span class="tag font-small w3-theme-d1 border-round">
-            <a id ="a" href="hashLike.hash?conhash=${tagname}" >#${tagname}</a></span>    
+            <a id ="a" class="pro1" href="hashLike.hash?conhash=${tagname}" >#${tagname}</a></span>    
             </c:forEach>            
           </p>
         </div>
@@ -965,18 +1040,17 @@ height:50px;
   </div>
      
    <div id="jb-right">
-   	<div style="width:100%; height: 350px; ">
-   	<div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
-   	</div>
-   	<div style="width:100%; ">
-	<div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">
-		<div style="height:100%">
-			<iframe id='chat_table' style="height:100%" src= "" >
-			</iframe>
-		</div>
-	</div>
-	</div>
-
+      <div style="width:100%; height: 350px; ">
+      <div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
+      </div>
+      <div style="width:100%; ">
+   <div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">
+      <div style="height:100%">
+         <iframe style="height:100%" src= "http://192.168.50.42:8080/?id=${sessionScope.nickName }">
+         </iframe>
+      </div>
+   </div>
+   </div>
    </div>
    </div>
       

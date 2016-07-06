@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import mybatis.MemberDAO;
 import spring.model.MemberCommand;
+import spring.model.VisitCommand;
 
 @Controller
 public class LoginController {
@@ -43,9 +44,12 @@ public class LoginController {
 
 	//·Î±×ÀÎ
 	@RequestMapping("/LoginPro.hash")
-	private ModelAndView login(@ModelAttribute("userinput")MemberCommand info, String email, HttpSession session) {
-		ModelAndView mv = new ModelAndView("redirect:Board.hash");
+	private ModelAndView login(@ModelAttribute("userinput")MemberCommand info, String email, HttpSession session,
+			VisitCommand visit) {
 		
+
+		ModelAndView mv = new ModelAndView("redirect:Board.hash");
+
 		int result = dao.login(info);
 
 		String nick = dao.nick(info) ;
@@ -60,7 +64,11 @@ public class LoginController {
 		if(result == 1)
 		{
 			String path = dao.selectPath(email);
+			
 			System.out.println("path ::: " + path);
+			
+			dao.visitor(visit);
+			
 			
 			session.setAttribute("memId", info.getEmail());
 			session.setAttribute("nickName", nick);

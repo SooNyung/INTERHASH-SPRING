@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import spring.model.AdminCommand;
+import spring.model.AlarmCommand;
 import spring.model.ContentCommand;
 import spring.model.MemberCommand;
+import spring.model.MessageCommand;
 import spring.model.WithdrawalCommand;
 
 @Repository
@@ -22,7 +24,7 @@ public class AdminDAO {
 		this.session=session;
 	}
 	
-	public List<AdminCommand> selectHash(){
+	public List<ContentCommand> selectHash(){
 		return session.selectList("admin.admincount");
 	}
 	
@@ -61,5 +63,50 @@ public class AdminDAO {
 	
 	public int memberCount(){
 		return session.selectOne("member.memberCount");
+	}
+	
+	public int contentCount(){
+		return session.selectOne("admin.contentcount");
+	}
+	
+	public int likeCount(){
+		return session.selectOne("admin.likecount");
+	}
+	
+	public int total_count(){
+		return session.selectOne("member.total_count");
+	}
+	
+	public int today(){
+		return session.selectOne("member.today");
+	}
+	
+	public int today_like(){
+		return session.selectOne("admin.today_like");
+	}
+	
+	public int today_content(){
+		return session.selectOne("admin.today_content");
+	}
+	
+	//¾Ë¶÷
+	public int Alarm(AlarmCommand dto){
+		return session.insert("alarm.insert",dto);
+	}
+	
+	public String receivedEmail(int connum){
+		return session.selectOne("alarm.receivedemail",connum);
+	}
+	
+	public List<AlarmCommand> AlarmAll(String email){
+		return session.selectList("alarm.all",email);
+	}
+	
+	public int alarm_count(String email){
+		return session.selectOne("alarm.count",email);
+	}
+	
+	public int alarm_delete(int connum) {
+		return session.delete("alarm.alarmdelete", connum);
 	}
 }

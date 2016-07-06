@@ -83,25 +83,27 @@ text-align: center;
 
 <!-- <div id="bar"> -->
 
-<a id="rigth" href="MessageForm.hash"><spen class="fontawesome-envelope">Send Message</a><br>
 <!-- </div> -->
-<h2><spen id="heart" class="fontawesome-heart"></spen>Received messages<spen id="heart" class="fontawesome-heart"/></h2>
+<h2><spen id="heart" class="fontawesome-heart"></spen>Alarm<spen id="heart" class="fontawesome-heart"/></h2>
 <hr>
-	<c:forEach var="list" items="${messageList}">
+	<c:forEach var="list" items="${alarmlist}">
 		<c:if test="${list!=null}">
 		<div>
-			<span><b id="fontsize">Sender |</b> <label id="fontsize">${list.sendNickname}(${list.sendEmail})</label></span><br> 
-			<span><b id="fontsize">From time |</b> <label id="fontsize">${sdf.format(list.sendDate)}</label></span><br><hr>
-				<span> <a href="MessageView.hash?messageNum=${list.messageNum}">
-				<input type="text" id="message" value="${list.messageContent}"></a>
-				<input type="hidden" name="messageNum" value="${list.messageNum}">
-				<input type="button" id="buttonid" value="삭제" onclick="location.href='deleteMessage.hash?messageNum=${list.messageNum}'"> 
+			<span><b id="fontsize">Sender |</b> <label id="fontsize">${list.comnick}</label></span><br> 
+			<span><b id="fontsize">From time |</b> 
+		<label id="fontsize"> ${sdf.format(list.alarmdate)} </label>
+			</span><br><hr>
+				<span>  <a href="ContentView.hash?connum=${list.connum}" 
+				onClick="window.open(this.href, '', 'width=1000, height=650'); return false;">
+				<b>${list.comnick}</b>님이 회원님의 게시글에 댓글을 남겼습니다.</a>
+			
+				<input type="button" id="buttonid" value="삭제" onclick="location.href='alarmdelete.hash?connum=${list.connum}'"> 
 			</span><br>
 		</div>
 		</c:if>
 		
 		<c:if test="${list==null}">
-		<div>쪽지가 없습니다.</div>
+		<div>알림이 없습니다.</div>
 		</c:if>
 	</c:forEach>
 

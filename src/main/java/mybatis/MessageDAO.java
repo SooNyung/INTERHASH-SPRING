@@ -1,5 +1,6 @@
 package mybatis;
 
+import java.sql.Array;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;

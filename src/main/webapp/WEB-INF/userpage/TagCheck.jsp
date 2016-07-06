@@ -40,6 +40,7 @@
 
 html {
 	height: 100%;
+	width: 100%;
 }
 
 body {
@@ -72,6 +73,7 @@ input[type="button"]:focus, input[type="button"]:hover{
 	-ms-flex: 1;
 	flex: 1;
 	padding: 3rem 0;
+	height: 50%;
 }
 
 input {
@@ -170,7 +172,6 @@ label:focus, label:hover {
 <body class="align">
 	  <div class="site__container box-shadow border-round white">
 		<div class="grid__container">
-			<h1>Please check your HASHTAG!</h1>
 			 <form name="tagcheck" method="post" class="form form--login">
 			<div class="form__field">
 				<input type="checkbox" name="hash" id="tkfkd" value="사랑" onClick="javascript:checkOnly(this);"

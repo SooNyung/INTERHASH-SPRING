@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="alarm">
+<insert id="insert" parameterType="spring.model.AlarmCommand">
+		insert into alarm
+		values(#{receivedemail},#{comnick},#{connum},sysdate)
+	</insert>
+
+<select id="receivedemail" parameterType="spring.model.ContentCommand"  resultType="string">
+	select email from contents where connum=#{connum}
+</select>
+
+<select id="all" parameterType="string" resultType="spring.model.AlarmCommand">
+	select * from alarm where receivedemail=#{email}
+</select>
+
+<select id="count" parameterType="string" resultType="int">
+	select count(*) from alarm where receivedemail=#{email}
+</select>
+
+<select id="alarmdelete" parameterType="int" resultType="spring.model.AlarmCommand">
+	delete from alarm where connum=#{connum}
+</select>
+
+
+</mapper>
