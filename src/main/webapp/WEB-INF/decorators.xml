@@ -46,6 +46,7 @@
 		<!-- 좋아요 test -->
 		<pattern>/LikeCheck.hash*</pattern>
 		<pattern>/Unlike.hash*</pattern>
+		<pattern>/alarmdelete.hash*</pattern>
 	</excludes>
  
 </decorators>

@@ -126,7 +126,7 @@ label:focus, label:hover {
 <script type="text/javascript">
 	function checkOnly(chk) {
 
-		var obj = document.getElementsByName("favorite");
+		var obj = document.getElementsByName("hash");
 
 		for (var i = 0; i < obj.length; i++) {
 			if (obj[i] != chk) {

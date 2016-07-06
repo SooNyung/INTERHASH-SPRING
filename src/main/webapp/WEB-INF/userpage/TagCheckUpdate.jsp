@@ -5,10 +5,129 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Tag check</title>
+<style>
+<style>
+[class*="fontawesome-"]:before {
+	font-family: 'FontAwesome', sans-serif;
+}
+
+.form__field {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	margin-bottom: 1rem;
+}
+
+.align {
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	/* background-color: #2c3338; */
+	background-color: #FFFFFF;
+	color: #606468;
+	/* color:#EAEAEA; */
+	font: 400 0.875rem/1.5 "Open Sans", sans-serif;
+	margin: 0;
+	/*   min-height: 100%; */
+}
+
+input[type="button"] {
+	border-radius: 0.25rem;
+	margin-left:110px;
+	padding: 1rem;
+	background-color: #ea4c88;
+	color: #eee;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+
+input[type="button"]:focus, input[type="button"]:hover{
+	background-color: #d44179;
+}
+.site__container {
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	padding: 3rem 0;
+	height: 50%;
+}
+
+input {
+	border: 0;
+	color: inherit;
+	font: inherit;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	-webkit-transition: background-color .3s;
+	transition: background-color .3s;
+}
+
+.text--center {
+	text-align: center;
+}
+
+.grid__container {
+	margin: 0 auto;
+	max-width: 50rem;
+	width: 400px;
+}
+
+label {
+	background-color: #FFCCCC;
+	color: white;
+	font-weight: bold;
+	/*   background-color:#DBDBDB; */
+	border-bottom-right-radius: 0;
+	border-top-right-radius: 0;
+	padding-left: 1.25rem;
+	padding-right: 1.25rem;
+	border-radius: 0.25rem;
+	padding: 1rem;
+	margin: 5px;
+}
+
+label:focus, label:hover {
+	background-color: #ea4c88;
+	color: #eee;
+	font-weight: bold;
+}
+
+:checked+label {
+	background-color: #ea4c88;
+	color: #eee;
+	font-weight: bold;
+}
+</style>
 <script type="text/javascript">
 	function checkOnly(chk) {
 
-		var obj = document.getElementsByName("favorite");
+		var obj = document.getElementsByName("hash");
 
 		for (var i = 0; i < obj.length; i++) {
 			if (obj[i] != chk) {
@@ -36,10 +155,10 @@
 		var a = "asfasdf";
 		//alert(document.tagcheck.val.value);
 		//opener.document.fo.aaaaa.value = document.tagcheck.favorite.value;
-		var obj = document.getElementsByName("favorite");
+		var obj = document.getElementsByName("hash");
 		for (var i = 0; i < obj.length; i++) {
 			if (obj[i].checked == true) {
-				opener.document.UpdateContent.updatetag.value = document.getElementsByName("favorite")[i].value;
+				opener.document.UpdateContent.updatetag.value = document.getElementsByName("hash")[i].value;
 				break;
 			}
 		}
@@ -50,295 +169,105 @@
 	
 </script>
 </head>
-<body>
-	<form method="post" name="tagcheck">
-		<table>
-			<tr>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="사랑" onClick="javascript:checkOnly(this);">사랑</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="뉴스" onClick="javascript:checkOnly(this);">뉴스</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="유머" onClick="javascript:checkOnly(this);">유머</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="여행" onClick="javascript:checkOnly(this);">여행</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="영화" onClick="javascript:checkOnly(this);">영화</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="다이어트" onClick="javascript:checkOnly(this);">다이어트</td>
-			</tr>
-			<tr>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="커피" onClick="javascript:checkOnly(this);">커피</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="친구" onClick="javascript:checkOnly(this);">친구</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="악세서리" onClick="javascript:checkOnly(this);">악세서리</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="생활용품" onClick="javascript:checkOnly(this);">생활용품</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="인터넷" onClick="javascript:checkOnly(this);">인터넷</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="앱" onClick="javascript:checkOnly(this);">앱</td>
-			</tr>
-			<tr>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="IT" onClick="javascript:checkOnly(this);">IT</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="성형" onClick="javascript:checkOnly(this);">성형</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="데일리" onClick="javascript:checkOnly(this);">데일리</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="가족" onClick="javascript:checkOnly(this);">가족</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="동물" onClick="javascript:checkOnly(this);">동물</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="예술" onClick="javascript:checkOnly(this);">예술</td>
-			</tr>
-			<tr>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="패션" onClick="javascript:checkOnly(this);">패션</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="돈" onClick="javascript:checkOnly(this);">돈</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="운동" onClick="javascript:checkOnly(this);">운동</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="음악" onClick="javascript:checkOnly(this);">음악</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="카드" onClick="javascript:checkOnly(this);">카드</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="TV" onClick="javascript:checkOnly(this);">TV</td>
-			</tr>
-				<tr>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="결혼" onClick="javascript:checkOnly(this);">결혼</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="심리학" onClick="javascript:checkOnly(this);">심리학</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="요리" onClick="javascript:checkOnly(this);">요리</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="카메라" onClick="javascript:checkOnly(this);">카메라</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="맛집" onClick="javascript:checkOnly(this);">맛집</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="낮" onClick="javascript:checkOnly(this);">낮</td>
-			</tr>
-				<tr>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="자연" onClick="javascript:checkOnly(this);">자연</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="캠핑" onClick="javascript:checkOnly(this);">캠핑</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="금융" onClick="javascript:checkOnly(this);">금융</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="책" onClick="javascript:checkOnly(this);">책</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="영어" onClick="javascript:checkOnly(this);">영어</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="DIY" onClick="javascript:checkOnly(this);">DIY</td>
-			</tr>
-				<tr>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="남녀차이" onClick="javascript:checkOnly(this);">남녀차이</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="대학" onClick="javascript:checkOnly(this);">대학</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="학생" onClick="javascript:checkOnly(this);">학생</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="고등학교" onClick="javascript:checkOnly(this);">고등학교</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="피부" onClick="javascript:checkOnly(this);">피부</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="메이크업" onClick="javascript:checkOnly(this);">메이크업</td>
-			</tr>
-				<tr>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="자전거" onClick="javascript:checkOnly(this);">자전거</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="자동차" onClick="javascript:checkOnly(this);">자동차</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="웹툰" onClick="javascript:checkOnly(this);">웹툰</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="감성" onClick="javascript:checkOnly(this);">감성</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="일상" onClick="javascript:checkOnly(this);">일상</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="셀카" onClick="javascript:checkOnly(this);">셀카</td>
-			</tr>
-				<tr>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="포토샵" onClick="javascript:checkOnly(this);">포토샵</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="요가" onClick="javascript:checkOnly(this);">요가</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="가요" onClick="javascript:checkOnly(this);">가요</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="뷰티" onClick="javascript:checkOnly(this);">뷰티</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="정치" onClick="javascript:checkOnly(this);">정치</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="밤" onClick="javascript:checkOnly(this);">밤</td>
-			</tr>
-				<tr>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="창작" onClick="javascript:checkOnly(this);">창작</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="댄스" onClick="javascript:checkOnly(this);">댄스</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="해산물" onClick="javascript:checkOnly(this);">해산물</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="키즈" onClick="javascript:checkOnly(this);">키즈</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="부모" onClick="javascript:checkOnly(this);">부모</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="카페" onClick="javascript:checkOnly(this);">카페</td>
-			</tr>
-				<tr>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="모바일" onClick="javascript:checkOnly(this);">모바일</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="아이폰" onClick="javascript:checkOnly(this);">아이폰</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="안드로이드" onClick="javascript:checkOnly(this);">안드로이드</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="헤어스타일" onClick="javascript:checkOnly(this);">헤어스타일</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="미용" onClick="javascript:checkOnly(this);">미용</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="음식" onClick="javascript:checkOnly(this);">음식</td>
-			</tr>
-			<tr>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="신발" onClick="javascript:checkOnly(this);">신발</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="사진" onClick="javascript:checkOnly(this);">사진</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="술" onClick="javascript:checkOnly(this);">술</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="시계" onClick="javascript:checkOnly(this);">시계</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="가방" onClick="javascript:checkOnly(this);">가방</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="시" onClick="javascript:checkOnly(this);">시</td>
-			</tr>
-				<tr>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="미술" onClick="javascript:checkOnly(this);">미술</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="네일" onClick="javascript:checkOnly(this);">네일</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="타투" onClick="javascript:checkOnly(this);">타투</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="인터넷스타" onClick="javascript:checkOnly(this);">인터넷스타</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="축제" onClick="javascript:checkOnly(this);">축제</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="전시회" onClick="javascript:checkOnly(this);">전시회</td>
-			</tr>
-				<tr>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="클럽" onClick="javascript:checkOnly(this);">클럽</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="병원" onClick="javascript:checkOnly(this);">병원</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="건강" onClick="javascript:checkOnly(this);">건강</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="디자인" onClick="javascript:checkOnly(this);">디자인</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="과학" onClick="javascript:checkOnly(this);">과학</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="수학" onClick="javascript:checkOnly(this);">수학</td>
-			</tr>
-				<tr>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="언어" onClick="javascript:checkOnly(this);">언어</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="이름" onClick="javascript:checkOnly(this);">이름</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="문화" onClick="javascript:checkOnly(this);">문화</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="드라마" onClick="javascript:checkOnly(this);">드라마</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="인형" onClick="javascript:checkOnly(this);">인형</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="과제" onClick="javascript:checkOnly(this);">과제</td>
-			</tr>
-				<tr>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="만화" onClick="javascript:checkOnly(this);">만화</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="뮤지컬" onClick="javascript:checkOnly(this);">뮤지컬</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="해외" onClick="javascript:checkOnly(this);">해외</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="국내" onClick="javascript:checkOnly(this);">국내</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="브랜드" onClick="javascript:checkOnly(this);">브랜드</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="명품" onClick="javascript:checkOnly(this);">명품</td>
-			</tr>
-				<tr>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="음료" onClick="javascript:checkOnly(this);">음료</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="스포츠" onClick="javascript:checkOnly(this);">스포츠</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="게임" onClick="javascript:checkOnly(this);">게임</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="컴퓨터" onClick="javascript:checkOnly(this);">컴퓨터</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="베이커리" onClick="javascript:checkOnly(this);">베이커리</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="수업" onClick="javascript:checkOnly(this);">수업</td>
-			</tr>
-				<tr>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="사계절" onClick="javascript:checkOnly(this);">사계절</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="봄" onClick="javascript:checkOnly(this);">봄</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="여름" onClick="javascript:checkOnly(this);">여름</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="가을" onClick="javascript:checkOnly(this);">가을</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="겨울" onClick="javascript:checkOnly(this);">겨울</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="연예인" onClick="javascript:checkOnly(this);">연예인</td>
-			</tr>
-				<tr>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="무술" onClick="javascript:checkOnly(this);">무술</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="악기" onClick="javascript:checkOnly(this);">악기</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="감정" onClick="javascript:checkOnly(this);">감정</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="침대" onClick="javascript:checkOnly(this);">침대</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="인테리어" onClick="javascript:checkOnly(this);">인테리어</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="집" onClick="javascript:checkOnly(this);">집</td>
-			</tr>
-				<tr>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="모델" onClick="javascript:checkOnly(this);">모델</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="안경" onClick="javascript:checkOnly(this);">안경</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="가수" onClick="javascript:checkOnly(this);">가수</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="배우" onClick="javascript:checkOnly(this);">배우</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="연극" onClick="javascript:checkOnly(this);">연극</td>
-				<td><input type="checkbox" name="favorite" id="favorite"
-					value="새벽" onClick="javascript:checkOnly(this);">새벽</td>
-			</tr>
+<body class="align">
+	  <div class="site__container box-shadow border-round white">
+		<div class="grid__container">
+			 <form method="post" name="tagcheck" class="form form--login">
+			<div class="form__field">
+				<input type="checkbox" name="hash" id="tkfkd" value="사랑" onClick="javascript:checkOnly(this);"
+					style="display: none"> <label id="check" for="tkfkd">#사랑</label>
+				<input type="checkbox" name="hash" id="qbxl" value="뷰티" onClick="javascript:checkOnly(this);"
+					style="display: none"> <label id="check" for="qbxl">#뷰티</label>
+				<input type="checkbox" name="hash" id="dnwjd" value="우정" onClick="javascript:checkOnly(this);"
+					style="display: none"> <label id="check" for="dnwjd">#우정</label>
+				<input type="checkbox" name="hash" id="dugod" value="여행" onClick="javascript:checkOnly(this);"
+					style="display: none"> <label id="check" for="dugod">#여행</label>
+				<input type="checkbox" name="hash" id="djsdj" value="언어" onClick="javascript:checkOnly(this);"
+					style="display: none"> <label id="check" for="djsdj">#언어</label>
+			</div>
+
+			<div class="form__field">
+				<input type="checkbox" name="hash" id="dmatlr" value="음식" onClick="javascript:checkOnly(this);" style="display:none">
+				<label for="dmatlr">#음식</label>
+				 <input type="checkbox" name="hash" id="votus" value="패션" onClick="javascript:checkOnly(this);"style="display:none">
+				<label for="votus">#패션</label>
+				<input type="checkbox" name="hash" id="dbaj" value="유머" onClick="javascript:checkOnly(this);" style="display:none">
+				<label for="dbaj">#유머</label>
+				<input type="checkbox" name="hash" id="dmlfy" value="건강" onClick="javascript:checkOnly(this);" style="display:none">
+				<label for="dmlfy">#건강</label>
+				<input type="checkbox" name="hash" id="rpdla" value="게임" onClick="javascript:checkOnly(this);" style="display:none">
+				<label for="rpdla">#게임</label>
+			</div>
 			
-			<tr>
-				<td align="center">
-				<input id="checkButton" type="button" name="Submit" value="확인" onClick="sendValue()"></td>
-			</tr>
-		</table>
-	</form>
+			<div class="form__field">
+				 <input type="checkbox" name="hash" id="gkrry" value="학교" onClick="javascript:checkOnly(this);" style="display:none">
+				<label for="gkrry">#학교</label>
+				 <input type="checkbox" name="hash" id="gosemvhs" value="핸드폰" onClick="javascript:checkOnly(this);" style="display:none">
+				<label for="gosemvhs">#핸드폰</label>
+				<input type="checkbox" name="hash" id="tkwls" value="사진" onClick="javascript:checkOnly(this);" style="display:none">
+				<label for="tkwls">#사진</label>
+				<input type="checkbox" name="hash" id="dodhksehdanf" value="애완동물" onClick="javascript:checkOnly(this);" style="display:none">
+				<label for="dodhksehdanf"> #애완동물 </label>				
+			</div>
+			
+			<div class="form__field">
+				<input type="checkbox" name="hash" id="dkrtptjfl" value="악세서리" onClick="javascript:checkOnly(this);" style="display:none">
+				<label for="dkrtptjfl">#악세서리</label>
+				<input type="checkbox" name="hash" id="cnlal" value="취미" onClick="javascript:checkOnly(this);" style="display:none">
+				<label for="cnlal">#취미</label>
+				<input type="checkbox" name="hash" id="dmadkr" value="음악" onClick="javascript:checkOnly(this);" style="display:none">
+				<label for="dmadkr">#음악</label>
+				<input type="checkbox" name="hash" id="ck" value="차" onClick="javascript:checkOnly(this);" style="display:none">
+				<label for="ck">#차</label>
+				<input type="checkbox" name="hash" id="Rna" value="꿈" onClick="javascript:checkOnly(this);" style="display:none">
+				<label for="Rna">#꿈</label>
+			
+				
+			</div>
+				
+			<div class="form__field">
+				<input type="checkbox" name="hash" id="ehtj" value="도서" onClick="javascript:checkOnly(this);" style="display:none">
+				<label for="ehtj">#도서</label>
+				<input type="checkbox" name="hash" id="ehs" value="돈" onClick="javascript:checkOnly(this);" style="display:none">
+				<label for="ehs">#돈</label>
+				<input type="checkbox" name="hash" id="epdlffl" value="데일리" onClick="javascript:checkOnly(this);" style="display:none">
+				<label for="epdlffl">#데일리</label>
+				<input type="checkbox" name="hash" id="ansghktodghkf" value="문화생활" onClick="javascript:checkOnly(this);" style="display:none">
+				<label for="ansghktodghkf">#문화생활</label>
+			</div>
+			
+			<div class="form__field">
+				<input type="checkbox" name="hash" id="todghkfdydvna" value="생활용품" onClick="javascript:checkOnly(this);" style="display:none">
+				<label for="todghkfdydvna">#생활용품</label>
+				<input type="checkbox" name="hash" id="zkvp" value="카페" onClick="javascript:checkOnly(this);" style="display:none">
+				<label for="zkvp">#카페</label>
+				<input type="checkbox" name="hash" id="dmawn" value="음주" onClick="javascript:checkOnly(this);" style="display:none">
+				<label for="dmawn">#음주</label>
+				<input type="checkbox" name="hash" id="skfTl" value="날씨" onClick="javascript:checkOnly(this);" style="display:none">
+				<label for="skfTl">#날씨</label>
+			</div>
+			
+			<div class="form__field">
+				<input type="checkbox" name="hash" id="tv" value="TV" onClick="javascript:checkOnly(this);" style="display:none">
+				<label for="tv">#TV</label>
+				<input type="checkbox" name="hash" id="rkwhr" value="가족" onClick="javascript:checkOnly(this);" style="display:none">
+				<label for="rkwhr">#가족</label>
+				<input type="checkbox" name="hash" id="dPtnf" value="예술" onClick="javascript:checkOnly(this);" style="display:none">
+				<label for="dPtnf">#예술</label>
+				<input type="checkbox" name="hash" id="dusdPdls" value="연예인" onClick="javascript:checkOnly(this);" style="display:none">
+				<label for="dusdPdls">#연예인</label>
+				<input type="checkbox" name="hash" id="cnrwp" value="축제" onClick="javascript:checkOnly(this);" style="display:none">
+				<label for="cnrwp">#축제</label>
+				
+			</div>
+			<input type="hidden" name="email" value="${c.email}">
+			
+<!-- 			<input type="submit" value=" MODIFY HASHTAG "> -->
+			<input id="checkButton" type="button" name="Submit" value="확인" onClick="sendValue()">
+
+			</form>
+		</div>
+	</div>
+
 </body>
 </html>
