@@ -113,7 +113,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select count(*) from total_visit
 	</select>
 	
-<!-- 	<select id ="today" resultType="int">
-	select count(*) from total_visit where visit_date ='
-	</select>  -->
+ 	<select id ="today" resultType="int">
+	select count(*) from total_visit WHERE visit_date >= TO_DATE('2016'||'-07-06','YYYY-MM-DD')
+	</select> 
 </mapper>

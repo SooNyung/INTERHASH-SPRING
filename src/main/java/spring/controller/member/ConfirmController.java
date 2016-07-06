@@ -83,17 +83,19 @@ public class ConfirmController {
 		model.addAttribute("connum",connum);
 		model.addAttribute("conhash",hashname);
 
+//		Dao.adminlike(hashname);
 		
-		Dao.conlikePlus(connum);
 		System.out.println("method1");
-		/*Dao.adminlike(hashname);*/
+		Dao.conlikePlus(connum);
+
 		System.out.println("method2");
 		int conlike = Dao.getConlike(connum);
+				
 		session.setAttribute("conlike", conlike);
-		
 		
 		jso.put("data", conlike); // jason은 map구조(키,값), data라는 key로 list데이터를 주입했다
 		System.out.println("jso ::: "+jso);
+		
 		resp.setContentType("application/json;charset=utf-8");
 		PrintWriter out = resp.getWriter();
 		out.print(jso.toString());
@@ -114,7 +116,8 @@ public class ConfirmController {
 		model.addAttribute("conhash",hashname);
 
 		Dao.unlike(connum);
-		/*Dao.adminunlike(hashname);*/
+//		Dao.adminunlike(hashname);
+		
 		int conlike = Dao.getConlike(connum);
 		session.setAttribute("conlike", conlike);
 		

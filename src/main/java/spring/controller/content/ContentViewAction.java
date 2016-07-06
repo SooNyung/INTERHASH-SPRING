@@ -102,12 +102,16 @@ public class ContentViewAction {
 		SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:mm");
 		content = contentdao.getContent(connum);
 		String conhash = content.getConhash();
+		String email = content.getEmail();
 		conhash = conhash.replaceAll(",", "");
 		content.setConhash(conhash);
+		//content.setEmail(email);
+		//System.out.println(email);
 	
 		ArrayList<CommentCommand> array = (ArrayList) commentdao.getComments(connum);
 		
 		int count = commentdao.commentcount(connum);
+		
 		
 		mav.addObject("content", content);
 		mav.addObject("sdf", sdf);

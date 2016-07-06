@@ -46,8 +46,10 @@ public class LoginController {
 	@RequestMapping("/LoginPro.hash")
 	private ModelAndView login(@ModelAttribute("userinput")MemberCommand info, String email, HttpSession session,
 			VisitCommand visit) {
-		ModelAndView mv = new ModelAndView("redirect:Board.hash");
 		
+
+		ModelAndView mv = new ModelAndView("redirect:Board.hash");
+
 		int result = dao.login(info);
 
 		String nick = dao.nick(info) ;

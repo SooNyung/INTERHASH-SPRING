@@ -40,7 +40,15 @@ width:100px;
 .border-round {
    border-radius: 7px !important
 }
+
+#text{text-align:center;}
+
+
+a:hover{color:#ff6088; font-weight: bold;}
+a:link{text-decoration:none; }
+
 </style>
+
 
 </head>
 <body>
@@ -52,12 +60,12 @@ width:100px;
 <form method="post" action="ManagerPageMemberPro.hash">
 <input type="button" value="관리자페이지" onclick="javascript:window.location='ManagerPage.hash'">
 <br>
-<table>
-<tr>
-<td><b>email</b></td>
-<td><b>nickname</b></td>
-<td><b>신고횟수</b></td>
-<td><b>회원삭제</b></td>
+<table id ="text">
+<tr bgcolor="#ffcccc">
+<td width="150"><b>email</b></td>
+<td width="150"><b>nickname</b></td>
+<td width="150"><b>신고횟수</b></td>
+<td width="100"><b>회원삭제</b></td>
 </tr>
 <c:forEach var="member" items="${array}">
 <tr>
@@ -65,7 +73,8 @@ width:100px;
 ${member.email}
 </td>
 <td>
-${member.nickname}
+<a target="_blank" href="#" onclick="window.open('ProfileView.hash?nickname=${member.nickname}','new','resizable=no width=700 height=500');return false">${member.nickname}</a>
+
 </td>
 <td>
 ${member.reportcount}

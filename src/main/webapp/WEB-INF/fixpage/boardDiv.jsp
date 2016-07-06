@@ -156,13 +156,24 @@ function modal_close(){
 
 </script>
 <style type="text/css">
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
 @import url(http://weloveiconfonts.com/api/?family=Font Awesome);
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
 [class*="Font Awesome-"]:before {
   font-family: 'Font Awesome', sans-serif;
 }
+
+.pro1 {
+/*    font-size: 16px; */
+   border: 0px;
+   font-family: 'Nanum Pen Script', serif;
+   font-size:20px;
+   color:#797D7F;
+}
    .background-color{color:#000 !important; background-color:#f5f7f8 !important}
    #board_div{
-      width:500px;
+      width:115%;
       height:230px;
 /*        background-color: black;  */
       
@@ -360,19 +371,24 @@ function modal_close(){
 }
 
 a {
-  color: #C2C2C2;
+  color: #797D7F;
   outline: 0;
   text-decoration: none;
 }
 
 #View {
-  color: #C2C2C2;
+  color: #797D7F;
   outline: 0;
-  text-decoration: none;
+  /* text-decoration: none; */
+  font-weight: bold;
 }
+
+/* #View:hover{
+	color:#ffcccc;
+} */
 a:focus, a:hover {
-  text-decoration: underline; 
-  color:#ea4c88;
+ /*  text-decoration: underline;  */
+  color:#ffcccc;
   
 }
 
@@ -380,7 +396,13 @@ a:focus, a:hover {
  .border-round{border-radius:4px!important}
  .container{content:"";display:table;clear:both;padding:0.01em 16px; margin-left:0px;}
 .w3-col.m12{width:100px}
-html,body,h6{font-family: "Open Sans", sans-serif}
+html,body,h6{
+/* font-family: "Open Sans", sans-serif */
+font-family: 'Nanum Pen Script', serif;
+}
+body{
+font-size: 20px;
+}
 .w3-theme {color:#fff !important; background-color:#607d8b !important}
 .white{color:#000!important;background-color:#fff!important;}
 
@@ -402,6 +424,8 @@ hr{border-top:1px solid; background-color:#eee;}
 .w3-btn{pointer-events:none;
 box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 -webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
+
+.na{font-weight:bold; font-size:15px;}
 </style>
 
 <script>
@@ -541,6 +565,7 @@ function mapopen(latitude,longtitude,maptitle ) {
    //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
 }
 
+
 /* function like(num,String){
 	   var select_id = "${sessionScope.conlike}";//'#'+num+"like_bn";
 	   var like_cnt =select_id+1;//$(select_id).text();
@@ -612,6 +637,32 @@ function unlikeAjax(num,hash,like){
 	});
 }
 
+function checkIt(){
+	
+	var content = eval("document.writeForm");
+	var conphoto = eval("document.writeForm");
+	var tag = eval("document.writeForm");
+	
+	if(!writeForm.content.value){
+		alert("내용을 입력하세요~:)");
+		document.writeForm.content.focus(); 
+		return false;
+	}
+
+	if(!writeForm.conphoto.value){
+		alert("사진을 올려주세요~:)");
+		return false;
+	}
+	
+	
+	if(!writeForm.tag.value){
+		alert("태그를 선택해주세요~:)");
+		return false;
+	}
+	
+
+	return true;
+};
 
 </script>
 </head>
@@ -622,7 +673,7 @@ function unlikeAjax(num,hash,like){
             <div class="container w3-padding">
            <!--    <h6 class="opacity">I love it!! InterHash~♡</h6> -->
             <div id="writeform" border="1">
-      <form action="ContentInputPro.hash" name="writeForm" method="post" enctype="multipart/form-data"> 
+      <form action="ContentInputPro.hash" name="writeForm" method="post" enctype="multipart/form-data" onSubmit="return checkIt()"> 
       <div id="wrap" style="width: 500px; ">
          <textarea style="resize: none; width:460px; height:80px;" id="textfield" name="content" placeholder="내용을 입력하세요."></textarea>
          <div class="photoBox" style="height: 100px; width: 100px;">
@@ -652,8 +703,7 @@ function unlikeAjax(num,hash,like){
                <img src ="image/logo/tag.png" width="25px" height="25px" onClick="tagCheck()">
              </div>
             </div> 
-            
-                       
+                 
              <span id="submit"> 
          		<!--      <input type="submit" id="button" value="submit"/>  -->
          		<input type="image" src="image/logo/post.PNG"> 
@@ -667,22 +717,23 @@ function unlikeAjax(num,hash,like){
             </div>
           </div>
       
-
+<!-- 좋아요 기능 function -->
 <script>
 
-/*  $(function(){
-	$(".btn2").click(function(){
-		if($(".btn2").val()=="like"){
-			$(".btn2").val()=="unlike";
-		}
-	});
-});  */
-
- function callAjax(num,hash){
+function likeAjax(num,hash,like){
+	
+	alert("like function");	
 	
 	var url="/INTERHASH-SPRING/LikeCheck.hash";
 	var params ="connum="+num+"&conhash="+hash;
-	//var snum=$("#liketest").text();
+//	var test = $(this).text(num);
+	
+//	var snum=$('#likep').text();
+//	alert(snum);	
+	
+//	alert( like );
+//	alert(${sessionScope.connum});
+
 	$.ajax({
 		type:"post"
 		,url:url
@@ -691,6 +742,7 @@ function unlikeAjax(num,hash,like){
  		,success:function(args){
  			//$('#liketest').eq(num).text(args.data);
  			$("#liketest").text(args.data);
+
  		}
 	    ,error:function(request, status , err) {
 	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
@@ -698,6 +750,31 @@ function unlikeAjax(num,hash,like){
 	});
 }
 
+function unlikeAjax(num,hash,like){
+	
+	alert("unlike function");
+	
+	var url="/INTERHASH-SPRING/Unlike.hash";
+	var params ="connum="+num+"&conhash="+hash;
+	
+//	var test = $(this).text(num);
+	
+	$.ajax({
+		type:"post"
+		,url:url
+		,data:params
+		,dataType:"json"
+ 		,success:function(args){
+ 			
+ 			alert("unlike ajax!");
+ 			$('#likep').text(args.data);
+ //			#test.text(args.data);
+ 		}
+	    ,error:function(request, status , err) {
+	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
+	    }
+	});
+}
 
 </script>
 
@@ -714,7 +791,7 @@ function unlikeAjax(num,hash,like){
 <img src='<c:url value="/upload/${profilephoto.get(temp)}"/>' alt="Avatar" class="left-align circle" style="width:50px; height:50px;">
 
 </td>
-<td width="65%"><a id="View" target="_blank" href="#" onclick="window.open('ProfileView.hash?nickname=${con.connickname}','new','resizable=no width=700 height=500');return false"><b>${con.connickname}</b></a></td>
+<td width="65%"><a id="View" target="_blank" href="#" onclick="window.open('ProfileView.hash?nickname=${con.connickname}','new','resizable=no width=700 height=500');return false">${con.connickname}</a></td>
 <td width="35%"><b class="right-align opacity"><font color="#b2b2b2">${con.conmodifieddate}</font></b></td>
 </tr>
 </table>
@@ -734,7 +811,7 @@ function unlikeAjax(num,hash,like){
       </a>  
     </div>
 
-    <p>#${con.conhash}</p>
+    <p class="pro1">#${con.conhash}</p>
 
    </div>
    
@@ -752,6 +829,7 @@ function unlikeAjax(num,hash,like){
 
    <div class="w3-btn">
     
+
      <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>Like <i id="likep">${con.conlike}</i></button> 
      <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="likem"> ${con.conlike}</i></button>  
 
@@ -759,8 +837,6 @@ function unlikeAjax(num,hash,like){
 	 <%-- <input type="button" id="btn" name="btn1" value="like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}','${con.conlike}')" > <i id="likep"> ${con.conlike} </i> --%>
         
    
-   
-
    <%-- <div id="board_img">
    <a href="ContentView.hash?connum=${con.connum}">
       <img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />' />
@@ -770,12 +846,14 @@ function unlikeAjax(num,hash,like){
    <a href="ContentView.hash?connum=${con.connum}">
    
 
-    <%-- <input type="button" id="btn" class="btn1 btn2" value="like" onclick="javascript:like('${con.connum}')"/> --%>
+  
+
     <%-- <input type="button" class="btn2" id="btn" name="btn1" value="like" onclick="javascript:callAjax('${con.connum}','${con.conhash}')" > <i id="liketest"> ${con.conlike} </i> --%>
 	<input type="button" class="btn2" id="btn" name="btn1" value="like"  onclick="javascript:callAjax('${con.connum}','${con.conhash}')"><i id="liketest">${con.conlike}</i>
     <button type="button" class="w3-theme-d3 w3-margin-bottom" onclick="location.href='Board.hash'"><i class="fa fa-comment"></i>  Comment ${con.connum}</button>  	
 	
 	</div>
+
 
 <%-- 	 <div id="board_img">
 	<a href="ContentView.hash?connum=${con.connum}">

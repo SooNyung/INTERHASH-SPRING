@@ -24,6 +24,7 @@
 		<pattern>/TagCheck.hash*</pattern>
 		<pattern>/MessageForm.hash*</pattern>
 		<pattern>/mapopen.hash*</pattern>
+		<pattern>/alarmlist.hash*</pattern>
 		<!-- <pattern>/Logout.hash</pattern> -->
 		<pattern>/Logout.hash*</pattern>
 		<pattern>/LoginFailPro.hash*</pattern>

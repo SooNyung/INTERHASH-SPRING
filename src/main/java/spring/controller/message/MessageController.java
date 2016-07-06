@@ -126,10 +126,10 @@ public class MessageController {
 	
 	@RequestMapping("/deleteMessage.hash")
 	public ModelAndView deleteMessage(
-			@ModelAttribute("messagedto") MessageCommand messagedto,
-			HttpServletRequest request){
+			@ModelAttribute("messagedto") MessageCommand messagedto, HttpServletRequest request){
 		ModelAndView mav = new ModelAndView("userpage/MessageList");
 		int messagenum = Integer.parseInt(request.getParameter("messageNum"));
+		System.out.println("메시지="+messagenum);
 		String email = (String) request.getSession().getAttribute("memId");
 		SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:mm");
 		//메시지 삭제 쿼리
