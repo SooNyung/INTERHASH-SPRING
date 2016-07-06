@@ -23,16 +23,5 @@
 	delete from alarm where connum=#{connum}
 </select>
 
-<select id="connum" parameterType="String" resultType="Integer">
-select connum from contents where email=#{email}
-</select>
-
-<select id="comnick" parameterType="Integer" resultType="String">
-select comnick from commenttable where connum=#{connum}
-</select>
-
-<select id="count" parameterType="String" resultType="Integer">
-select count from alarm where email=#{email}
-</select>
 
 </mapper>
