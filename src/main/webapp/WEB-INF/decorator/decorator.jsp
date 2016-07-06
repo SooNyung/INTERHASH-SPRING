@@ -461,6 +461,21 @@ border-radius:7px;
    z-index: 500;
 }
 
+
+.navbar li .al {
+   background: rgb(255, 240, 245);
+   display: none; /* 평상시에는 서브메뉴가 안보이게 하기 */
+   height: 280px;
+   padding: 0px;
+   margin: 0px;
+   margin-left: 0px;
+   border: 0px;
+   border-radius:7px;
+   position: absolute;
+   width: 200px;
+   overflow: hidden;
+   z-index: 500;
+}
 /* .navbar li:hover ul {
    display: block; /* 마우스 커서 올리면 서브메뉴 보이게 하기 */
 }
@@ -708,6 +723,11 @@ height:50px;
       window.open(url,"post","toolbar=no ,width=400 ,height=400,directories=no,status=yes,menubar=no,scrollbars=no");
       } 
    
+   function alarmList(){
+	      url="alarmlist.hash?check=y";
+	      window.open(url,"post","toolbar=no ,width=500 ,height=400,directories=no,status=yes,menubar=no,scrollbars=no");
+	      } 
+   
 
 
    $(document).ready(function() {
@@ -744,7 +764,17 @@ height:50px;
          }, function(){  
           $(this).parent().find(".sub").slideUp('fast');                 //subnav에서 마우스 벗어났을 시 원위치시킴  
          });  
-        });        
+        });    
+        
+        
+        $(".alarm").hover(function() {//마우스를 topnav에 오버시
+            $(this).parent().find("span").hide();      
+            $(this).parent().find(".al").slideDown('normal').show();                   //subnav가 내려옴.
+            $(this).parent().hover(function() {  
+            }, function(){  
+             $(this).parent().find(".al").slideUp('fast');                 //subnav에서 마우스 벗어났을 시 원위치시킴  
+            });  
+           });
        }); 
    
    
@@ -822,10 +852,39 @@ height:50px;
                   </tr>
                </table>
             </ul></li>
-         <li class="small"><a href="#"
-            class="margin-right padding-large left-align" title="Alarm">
-            
-           <img src="image/logo/alarm1.png" onmouseover="this.src='image/logo/alarm.png'" onmouseout="this.src='image/logo/alarm1.png'" width="30px" height="30px"/></a></li>
+         <li class="small">
+          <div class="alarm">
+          <a href="#"   onclick="window.open('alarmlist.hash','new','width=500 height=400');return false"
+          class="margin-right padding-large" title="Alarm">         
+           <img src="image/logo/alarm1.png" onmouseover="this.src='image/logo/alarm.png'" onmouseout="this.src='image/logo/alarm1.png'" width="30px" height="30px"/>
+           <span class="count badge right small circle pink">${count}</span></a>
+          </div>
+          <ul class="al">
+               <table>   
+                  <tr>
+                     <td style="color:#8C8C8C;">Alarm</td>
+                     
+                  </tr>
+                  <tr class="left-align">
+                     <td colspan="2"><c:forEach var="alarm"
+                           items="${sessionScope.alarmlist}" begin="0" end="2">
+                           <li><a 
+                              href="#"
+                              onclick="window.open('ContentView.hash?connum=${alarm.connum}','new','width=1000 height=650');return false">
+                              <img  src="image/logo/img_avatar5.png" class="left-align circle "
+                                 width="15%" height="15%"><b>${alarm.comnick}</b>님이 회원님의 게시글에 댓글을 남겼습니다.</a></li>
+                        </c:forEach></td>
+                  </tr>
+
+                  <tr>
+                     <Td colspan="2"><hr><button id="buttonid" onclick="alarmList()">All Alarm</button></Td>
+                  </tr>
+               </table>
+            </ul>
+          
+		</li>
+
+
 
          <li class="small right">
          <div class="topnav">   <a href="#" title="MyAccount"><img id ="profileImg" src='<c:url value="/upload/${sessionScope.profilePhoto}" />' class="circle" width="10%" height="10%">

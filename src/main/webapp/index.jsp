@@ -3,7 +3,6 @@
 
 <%@ page isELIgnored="false"%>
 
-<%@ page isELIgnored="false" %>
 
 <!DOCTYPE html>
 <html>

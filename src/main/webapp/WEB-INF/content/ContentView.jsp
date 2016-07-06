@@ -205,6 +205,8 @@ $(document).ready(function(){
 	<form method="post" action="InsertComment.hash">
 	<input type=hidden name=connum value="${content.connum}">
 	<input type=hidden name=comnick value="${sessionScope.nickName}">
+
+	
 	<div id="right_nick">
 		<span id ="align_left"><b>${sessionScope.nickName}</b>님</span>
 		<!-- <span id="align_right"><input type="button" onclick="back()" value="닫기버튼"></span> -->

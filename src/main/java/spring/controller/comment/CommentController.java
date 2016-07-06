@@ -19,10 +19,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import mybatis.AdminDAO;
 import mybatis.CommentDAO;
 import mybatis.ContentDAO;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import spring.model.AlarmCommand;
 import spring.model.CommentCommand;
 import spring.model.ContentCommand;
 
@@ -36,6 +38,8 @@ public class CommentController {
 	@Autowired
 	private ContentDAO contentdao;
 
+	@Autowired
+	private AdminDAO alarmdao;
 	
 	public void setDao(CommentDAO commentdao) {
 		this.commentdao = commentdao;
@@ -58,8 +62,9 @@ public class CommentController {
 
 	
 	@RequestMapping("/InsertComment.hash")
-	public void interC(@RequestParam("connum") int connum,
+	public void interC(@RequestParam("connum") int connum,	
 			CommentCommand commentdto,
+			AlarmCommand dto,
 			HttpServletResponse resp,
 			HttpServletRequest request
 			) throws Exception{
@@ -69,14 +74,32 @@ public class CommentController {
 	String comnick = (String) request.getSession().getAttribute("nickName");
 	String comcontent = request.getParameter("comcontent");
 	
+	String receivedemail = alarmdao.receivedEmail(connum);
+
+	
 	String comip = request.getRemoteAddr();
 	String email = (String) request.getSession().getAttribute("memId");
+	
+	
+	//수정
+
+
+	System.out.println(comnick);//글번호
+	System.out.println(email);//보낸이메일
+	System.out.println(receivedemail);
 	
 	commentdto.setComnick(comnick);
 	commentdto.setComcontent(comcontent);
 	commentdto.setEmail(email);
 	commentdto.setComip(comip);
 	
+
+	dto.setComnick(comnick);
+	dto.setConnum(connum);
+	dto.setReceivedemail(receivedemail);
+	
+	
+	int alarm = alarmdao.Alarm(dto);
 	int result = commentdao.insertComment(commentdto);
 	
 	ArrayList array = (ArrayList)commentdao.getComments(connum);

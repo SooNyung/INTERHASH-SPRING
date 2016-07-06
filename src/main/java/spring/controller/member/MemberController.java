@@ -1,6 +1,7 @@
 package spring.controller.member;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -22,12 +23,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.lowagie.text.pdf.hyphenation.TernaryTree.Iterator;
 
+import mybatis.AdminDAO;
 import mybatis.ContentDAO;
 import mybatis.MemberDAO;
 import mybatis.MessageDAO;
 import mybatis.PhotoDAO;
 import spring.model.ContentCommand;
 import spring.model.MemberCommand;
+import spring.model.MessageCommand;
 import spring.model.ProfilePhotoCommand;
 
 @Controller
@@ -41,6 +44,14 @@ public class MemberController {
 
 	@Autowired
 	ContentDAO cdao;
+	
+	@Autowired
+	AdminDAO alarmdao;
+
+
+	public void setAlarmdao(AdminDAO alarmdao) {
+		this.alarmdao = alarmdao;
+	}
 
 	public void setPdao(PhotoDAO pdao) {
 		this.pdao = pdao;
@@ -311,6 +322,8 @@ public class MemberController {
 
 		session.setAttribute("hashlist",list);
 		session.setAttribute("mesagelist",mdao.getMessageList(email));
+		session.setAttribute("alarmlist",alarmdao.AlarmAll(email));
+		session.setAttribute("count",alarmdao.alarm_count(email));
 		session.setAttribute("num",1);
 
 		return mv;
@@ -335,6 +348,8 @@ public class MemberController {
 		List<String> list = Arrays.asList(hashlist);
 		session.setAttribute("hashlist", list);
 		session.setAttribute("mesagelist", mdao.getMessageList(email));
+		session.setAttribute("alarmlist",alarmdao.AlarmAll(email));
+		session.setAttribute("count",alarmdao.alarm_count(email));
 		session.setAttribute("num", 1);
 		return "fixpage/boardDiv";
 	}
@@ -359,6 +374,9 @@ public class MemberController {
 		List<String> list = Arrays.asList(hashlist);
 		session.setAttribute("hashlist", list);
 		session.setAttribute("mesagelist", mdao.getMessageList(email));
+		session.setAttribute("alarmlist",alarmdao.AlarmAll(email));
+		session.setAttribute("count",alarmdao.alarm_count(email));
+	
 		session.setAttribute("num", 1);
 		return "fixpage/boardDiv";
 	}
@@ -373,5 +391,45 @@ public class MemberController {
 		mv.addObject("c", command);
 		return mv;
 	}
+	
+	
+	@RequestMapping("/alarmlist.hash")
+	public ModelAndView MessageList(
+			@ModelAttribute("messagedto") MessageCommand messagedto,HttpSession session,
+			HttpServletRequest request){
+				ModelAndView mav = new ModelAndView("userpage/alarmlist");
+				
+				String email = (String) request.getSession().getAttribute("memId");
+				SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:MM");
+				
+			
+				session.setAttribute("sdf",sdf);
+				session.setAttribute("alarmlist",alarmdao.AlarmAll(email));
 
+			
+				return mav;
+	}
+	
+	@RequestMapping("/alarmdelete.hash")
+	public ModelAndView alarmdelete(
+			@ModelAttribute("messagedto") MessageCommand messagedto,HttpSession session,
+			int connum,
+			HttpServletRequest request){
+				ModelAndView mav = new ModelAndView("userpage/alarmlist");
+				
+				String email = (String) request.getSession().getAttribute("memId");
+				SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:MM");
+				System.out.println(connum);
+				
+
+				int result = alarmdao.alarm_delete(connum);;
+
+				List alarmList = alarmdao.AlarmAll(email);
+				
+				
+				mav.addObject("alarmList",alarmList);
+				mav.addObject("result",result);	
+				System.out.println("삭제성공");
+				return mav;
+	}
 }
