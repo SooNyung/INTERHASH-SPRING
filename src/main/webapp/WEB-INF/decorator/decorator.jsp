@@ -320,8 +320,8 @@ padding: 0px 5px 0px 5px;}
    height: 30px;
    /*    border:1px solid #bcbcbc; */
 }
-
 #jb-right{
+margin-right:60px;
    width:20%;
    height:100%;
    float:right;
@@ -345,6 +345,9 @@ padding: 0px 5px 0px 5px;}
    float: left;
    /*      border: 1px solid #bcbcbc; */
 }
+
+
+
 
 #jb-footer {
    width: 100%;
@@ -609,16 +612,16 @@ height:50px;
 }
 
 #buttonid {
-	color: white;
-	background-color: #FFCCCC;
-	border-radius: 7px !important;
-	padding:5px;
+   color: white;
+   background-color: #FFCCCC;
+   border-radius: 7px !important;
+   padding:5px;
 }
 #buttonid:hover {
-	color: white;
-	background-color: #FF9090;
-	border-radius: 7px !important;
-	padding:5px;
+   color: white;
+   background-color: #FF9090;
+   border-radius: 7px !important;
+   padding:5px;
 }
 </style>
 
@@ -716,8 +719,9 @@ height:50px;
       } 
    
    function alarmList(){
-	      url="alarmlist.hash?check=y";
-	      window.open(url,"post","toolbar=no ,width=500 ,height=400,directories=no,status=yes,menubar=no,scrollbars=no");}
+         url="alarmlist.hash?check=y";
+         window.open(url,"post","toolbar=no ,width=500 ,height=400,directories=no,status=yes,menubar=no,scrollbars=no");
+         }
 
    $(document).ready(function() {
       if ($('#jb-content').outerHeight(true) < 800) {
@@ -872,7 +876,7 @@ height:50px;
                </table>
             </ul>
           
-		</li>
+      </li>
 
          <li class="small right">
          <div class="topnav">   <a href="#" title="MyAccount"><img id ="profileImg" src='<c:url value="/upload/${sessionScope.profilePhoto}" />' class="circle" width="10%" height="10%">
@@ -889,8 +893,8 @@ height:50px;
                <input type="text" name="hash" />
                </div>
                <div style="float:right;">
-                <input type="image" src ="image/logo/search.png" width="30px" height="30px"/>
-            	</div>
+                <input type="image" src ="image/logo/search.png" class="circle" width="30px" height="30px"/>
+            </div>
             </form>
          </div>
 
@@ -923,7 +927,7 @@ height:50px;
 
    <!-- main -->
    <div id="main">
-   <div id=sidebar_content style="float:left; width:80%">
+   <div id=sidebar_content style="float:left; width:75%">
       <div id="jb-sidebar">
          <!-- Profile -->
          <div class="box-shadow border-round white padding">

@@ -17,7 +17,6 @@ public class CommentDAO {
 	}
 	
 	public int insertComment(CommentCommand dto){
-		System.out.println("insert ¸Þ¼­µå");
 		return session.insert("Comment.insertComment",dto);
 	}
 	
