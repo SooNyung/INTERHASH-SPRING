@@ -1,5 +1,6 @@
 package spring.model;
 
+<<<<<<< HEAD
 import java.sql.Date;
 
 public class AlarmCommand {
@@ -35,6 +36,22 @@ public class AlarmCommand {
 	}
 	public void setConnum(int connum) {
 		this.connum = connum;
+=======
+public class AlarmCommand {
+	private String email;
+	private int count;
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+>>>>>>> 153dd04795e20f0b97c17935dcd44da8e5a77643
 	}
 	
 	
