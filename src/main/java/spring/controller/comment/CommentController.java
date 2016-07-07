@@ -93,28 +93,12 @@ System.out.println("test1");
 
 	ArrayList array = (ArrayList)commentdao.getComments(connum);
 
-	String test= "";
-	for(int i=0; i<array.size(); i++){
-		CommentCommand c = (CommentCommand) array.get(i);
-		test = sdf.format(c.getComcreateddate());
-	}
+		JSONObject jso = new JSONObject();
 	
-	String testy="";
-	
-	JSONObject jso = new JSONObject();
-
-	ArrayList jk = (ArrayList)commentdao.date(connum);
-	for(int i=0; i<jk.size(); i++){
-		testy = sdf.format(jk.get(i));
-		jso.put("time", testy);
-
-	}
 	jso.put("data", array);
 	jso.put("session",email);
-/*	jso.put("test", test);*/
-	
+
 	resp.setContentType("application/json;charset=utf-8");
-	
 	
 	PrintWriter out = resp.getWriter();
 		

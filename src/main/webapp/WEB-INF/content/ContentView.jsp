@@ -27,6 +27,7 @@ html,body,h6{font-family: "Open Sans", sans-serif}
 #nickname{
 font-size:15px;
 }
+
 #time{
 color:gray;
 font-size:14px; 
@@ -146,17 +147,10 @@ color:#5AAEFF;
 
 
 
+	
 </style>
 
-<!-- <script> 
-$(document).ready(function(){
-   var con = ${content.connum}
-   var texta = $('#comment_textarea').val();
-   $('#rptl').attr('onclick','test(con,texta)');
-   
-   
-});
-</script> -->
+
 
 </head>
 <body>
@@ -164,62 +158,51 @@ $(document).ready(function(){
 <!-- <form name="view"> -->
 
 <div id="view_left" class="box-shadow border-round white">
-   <form>
-   <div id="left_nickndate">
-      <span id ="align_left"><b>${sessionScope.nickName}</b>님</span>
-      
-   <span id="align_right"><label id="time">${sdf.format(content.conmodifieddate)}</label></span>
-      
-   </div>
+	<form>
+	<div id="left_nickndate">
+		<span id ="align_left"><b>${sessionScope.nickName}</b>님</span>
+		
+	<span id="align_right"><label id="time">${sdf.format(content.conmodifieddate)}</label></span>
+		
+	</div>
 
+	<c:if test="${sessionScope.memId==content.email}">
+	<div id="left_mod_del_rep">
+		<span id="align_right">/<a href="#" onclick="deleteCon(${content.connum})">삭제하기</a></span>
+		<span id="align_right"><a href="#" onclick="modifyCon(${content.connum})">수정하기 </a></span>
+	</div>
+	</c:if>
+		
+	<c:if test="${sessionScope.memId!=content.email}">
+	<div id="left_mod_del_rep">
+		<span id="align_right"><a onclick="report(${content.connum})">신고하기</a></span>
+	</div>
+	</c:if>	
+	
+	<div id="content_photo" style="height:490px; overflow-x:auto">
 
-   <c:if test="${sessionScope.memId==content.email}">
-   <div id="left_mod_del_rep">
-      <span id="align_right">/<a href="ContentDelete.hash?connum=${content.connum}">삭제하기</a></span>
-      <span id="align_right"><a onclick="javascript:location.href='ContentUpdate.hash?connum=${content.connum}'">수정하기 </a></span>
-   </div>
-   </c:if>
-      
-   <c:if test="${sessionScope.memId!=content.email}">
-   <div id="left_mod_del_rep">
-      <span id="align_right"><a onclick="report(${content.connum})">신고하기</a></span>
-   </div>
-   </c:if>   
-   
-   <div id="content_photo" style="height:490px; overflow-x:auto">
+		<%-- <label id="content1">${content.content}<br></label> --%>
+		<input type="text" id="content1" name="content1" style="border:0px" readonly value="${content.content}"><br>
 
+		<label id="hash">#${content.conhash}</label><br><br>
+		
+		<c:forEach var="photo" items="${content.photolist}">
+		
+		<img id="img" src='<c:url value="/upload/${content.photolist[0].realpath }" />'/>
 
-      <label>${content.content}<br></label><br>
+		</c:forEach>
 
-      <label id="hash">#${content.conhash}</label><br><br>
-      
-      <c:forEach var="photo" items="${content.photolist}">
-      
-      <img id="img" src='<c:url value="/upload/${content.photolist[0].realpath }" />'/>
-
-      </c:forEach>
-
-   </div>
-   
-   <div id="left_good_re">
-      <label id="align_right">댓글 수: ${count}</label>
-<!--    <label id="align_left">
-        </label> -->
-   </div>
-   
-   <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:callAjax('${content.connum}','${content.conhash}')">
-        <i class="fa fa-thumbs-up"></i> Like </button>
-        <button type="button" class="w3-theme-d2 w3-margin-bottom unlike" onclick="javascript:unlikeAjax('${content.connum}','${content.conhash}')">
-        <i class="fa fa-thumbs-up"></i> UnLike </button>  
-    
-     	<i id="liketest"> ${content.conlike}</i>
-        
-   </form>
+	</div>
+	
+	<div id="left_good_re">
+		<label id="align_right">댓글 수: ${count}</label>
+		<!-- <label id="align_right">좋아요/</label> --> 
+	</div>
+	</form>
 </div>
 
 <div id="view_right" class="box-shadow border-round white">
-
-	<input type=button onclick="location.href='Board.hash'" value="X" style="float:right">
+	<input type=button onclick="modal_close()" value="X" style="float:right">
 	
 	
 	<form method="post" action="InsertComment.hash">
@@ -238,8 +221,7 @@ $(document).ready(function(){
 	
 	<div id="comment_submit">
 		<span id="align_right">
-		<input type="submit" value="개시"></span>
-		<input type="button" id="rptl" value="개시시" onclick="javascript:insert1(${content.connum})"> 
+		<input type="button" id="rptl" value="개시시" onclick="javascript:insert1(${content.connum})"> </span>
 	</div>
 	</form>
 	
@@ -269,9 +251,16 @@ $(document).ready(function(){
 	</div>	
 	</c:forEach>  
 	</div>
+	
+   <form>
+   <div id="left_nickndate">
+      <span id ="align_left"><b>${sessionScope.nickName}</b>님</span>
+   </div>      
+   </form>
 
-   
 </div>
+
+
 
 </div>
 
