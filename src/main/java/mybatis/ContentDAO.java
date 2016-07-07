@@ -84,7 +84,6 @@ public class ContentDAO {
 	}
 
 	public List<ContentCommand> hashLike(String conhash){
-		System.out.println("zzz"+conhash);
 		return session.selectList("writecontent.hashLike",conhash);
 	}
 	
