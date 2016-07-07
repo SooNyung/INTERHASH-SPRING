@@ -139,6 +139,7 @@ color:#5AAEFF;
 	
 	#test{border-bottom:1px solid;}
 
+	
 </style>
 
 <script> 
@@ -161,7 +162,7 @@ color:#5AAEFF;
 	<c:if test="${sessionScope.memId==content.email}">
 	<div id="left_mod_del_rep">
 		<span id="align_right">/<a href="#" onclick="deleteCon(${content.connum})">삭제하기</a></span>
-		<span id="align_right"><a onclick="javascript:location.href='ContentUpdate.hash?connum=${content.connum}'">수정하기 </a></span>
+		<span id="align_right"><a href="#" onclick="modifyCon(${content.connum})">수정하기 </a></span>
 	</div>
 	</c:if>
 		
@@ -173,7 +174,8 @@ color:#5AAEFF;
 	
 	<div id="content_photo" style="height:490px; overflow-x:auto">
 
-		<label>${content.content}<br></label><br>
+		<%-- <label id="content1">${content.content}<br></label> --%>
+		<input type="text" id="content1" name="content1" style="border:0px" readonly value="${content.content}"><br>
 
 		<label id="hash">#${content.conhash}</label><br><br>
 		
@@ -212,8 +214,7 @@ color:#5AAEFF;
 	
 	<div id="comment_submit">
 		<span id="align_right">
-		<input type="submit" value="개시"></span>
-		<input type="button" id="rptl" value="개시시" onclick="javascript:insert1(${content.connum})"> 
+		<input type="button" id="rptl" value="개시시" onclick="javascript:insert1(${content.connum})"> </span>
 	</div>
 	</form>
 	

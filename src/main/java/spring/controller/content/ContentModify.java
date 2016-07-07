@@ -1,9 +1,12 @@
 package spring.controller.content;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import jdk.nashorn.internal.ir.RuntimeNode.Request;
 import mybatis.CommentDAO;
 import mybatis.ContentDAO;
+import net.sf.json.JSONObject;
 import spring.model.CommentCommand;
 import spring.model.ContentCommand;
 
@@ -40,7 +44,40 @@ public class ContentModify {
 	}
 	
 
+	
 	@RequestMapping("/ContentUpdate.hash")
+	public void UpdateForm(HttpServletRequest request,
+			HttpServletResponse resp,
+			@RequestParam("connum") int connum
+			) throws IOException{
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:mm");
+		
+		ContentCommand contentdto =  contentdao.getContent(connum);
+		String conhash = contentdto.getConhash();
+		conhash = conhash.replaceAll(",", "");
+		contentdto.setConhash(conhash);
+		
+		ArrayList<CommentCommand> array = (ArrayList) commentdao.getComments(connum);
+		
+		int count = commentdao.commentcount(connum);
+		
+		request.setAttribute("count", count);
+		
+		resp.setContentType("application/json;charset=utf-8");
+		
+		JSONObject jso = new JSONObject();
+		
+		jso.put("data", array);
+		
+		
+		
+		PrintWriter out = resp.getWriter();
+		
+		out.print(jso.toString());
+		
+	}
+/*	@RequestMapping("/ContentUpdate.hash")
 	public ModelAndView UpdateForm(
 			ContentCommand contentdto,
 			HttpServletRequest request){
@@ -65,7 +102,7 @@ public class ContentModify {
 		mav.addObject("count", count);
 		
 		return mav;
-	}
+	}*/
 	
 	@RequestMapping("/UpdateTagCheck.hash")
 	private String tag_check(@RequestParam("check") String check,Model model){
@@ -73,6 +110,30 @@ public class ContentModify {
 		return "userpage/TagCheckUpdate";
 	}
 	
+	
+	@RequestMapping("/ContentUpdatePro.hash")
+	public void updatePro(
+			HttpServletResponse resp,
+			@RequestParam("connum") int connum,
+			@RequestParam("content") String content
+			) throws IOException{
+
+		ContentCommand contentdto = new ContentCommand();
+
+		contentdto.setContent(content);
+		contentdto.setConnum(connum);
+		
+		int result = contentdao.modifyContent(contentdto);
+		JSONObject jso = new JSONObject();
+		
+		PrintWriter out = resp.getWriter();
+		
+		/*jso.put("result", result);*/
+		
+		out.print(jso.toString());
+
+	}
+/*	
 	@RequestMapping("/ContentUpdatePro.hash")
 	public ModelAndView UpdatePro(
 			ContentCommand contentdto,
@@ -103,7 +164,7 @@ public class ContentModify {
 		mav.addObject("conhash", conhash);
 		mav.addObject("count", count);
 		return mav;
-	}
+	}*/
 
 
 	

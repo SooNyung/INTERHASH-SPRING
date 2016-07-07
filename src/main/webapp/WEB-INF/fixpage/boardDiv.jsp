@@ -583,6 +583,82 @@ function insert1(connum){
 	});
 }
 
+
+
+function modifyCon(connum){
+	var connum = connum;
+	var url = "/INTERHASH-SPRING/ContentUpdate.hash";
+	var params = "connum="+connum;
+	
+	$.ajax({
+		type:"post",
+		url:url,
+		data:params,
+		dataType:"json",
+		success:function(args){	
+			
+			$("#content1").attr("type","textarea");
+			$("#content1").attr("readonly",false);
+			$("#content1").css("border","1px");
+			
+			$("#left_mod_del_rep *").remove();
+			$("#left_mod_del_rep").append("<input id='align_right' type='button' value='수정버튼' onclick='modifypro("+connum+")'>");
+			
+			$("#test_div *").remove();
+			$("#comment_div *").remove();
+			for(var i=0;i<args.data.length;i++){
+				var check;
+				if(args.session==args.data[i].email){
+					$('#test_div').append(
+						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
+						'--!><span><label id="time'+i+'">'+args.time+'</label></span><!--'+
+						'--!><span id="align_right"><a href="#" onclick="delete1('+args.data[i].comnum+','+args.data[i].connum+')">삭제</a><!--'+
+						'--!><a href="#" onclick="modify('+args.data[i].comnum+','+args.data[i].connum+','+i+')">수정</a><!--'+
+						'--!></span><br><div id="test"><textarea id="textaa'+i+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+			}else{
+				$('#test_div').append(
+						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
+						'--!><span><label id="time'+i+'">'+args.test+'</label></span><!--'+
+						'--!><span id="align_right"><!--'+
+						'--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></span><br><div id="test"><textarea id="textaa'+i+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+			}
+			}
+		}
+			,error: function (xhr, status, err){
+				alert(err);
+			} 
+	});
+}
+
+function modifypro(connum){
+	var content1 = document.getElementsByName('content1')[0].value;
+	var connum = connum;
+	var url = "/INTERHASH-SPRING/ContentUpdatePro.hash";
+	var params = "content="+content1+"&connum="+connum;
+	$.ajax({
+		type:"post",
+		url:url,
+		data:params,
+		dataType:"json",
+		success:function(args){	
+			alert('성공');
+			$("#content1").attr("type","textarea");
+			$("#content1").attr("readonly",true);
+			$("#content1").css("border","1px");
+			
+			$("#left_mod_del_rep *").remove();
+			$("#left_mod_del_rep").append("<span id='align_right'>/<a href='#' onclick='deleteCon("+connum+")'>삭제하기</a></span><!--"+
+					"--!><span id='align_right'><a href='#' onclick='modifyCon("+connum+")'>수정하기 </a></span>")
+		}
+			,error: function (xhr, status, err){
+				alert(err);
+				alert('실패');
+			} 
+	});
+	
+}
+
+
 function Map(){
    url="template2.hash";
    window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
