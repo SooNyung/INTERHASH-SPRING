@@ -601,8 +601,7 @@ function modifyCon(connum){
 		url:url,
 		data:params,
 		dataType:"json",
-		success:function(args){	
-			
+		success:function(args){
 			$("#content1").attr("type","textarea");
 			$("#content1").attr("readonly",false);
 			$("#content1").css("border","1px");
@@ -639,7 +638,7 @@ function modifyCon(connum){
 	});
 }
 
-function modifypro(connum, conhash){
+function modifypro(connum){
 	var content1 = document.getElementsByName('content1')[0].value;
 	var conhash = document.getElementsByName('tag')[0].value;
 	var connum = connum;
