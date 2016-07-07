@@ -315,6 +315,8 @@ function selectInfo2(marker, title,placePosition) {
 			//removeMarker();
 	opener.document.writeForm.maptitle.value = title;
 	opener.document.writeForm.mapplace.value = placePosition;
+/*  	opener.document.jinkyoung.maptitle.value= title;
+	opener.document.jinkyoung.maptitle.value = placePosition; */
 	
 
 }
