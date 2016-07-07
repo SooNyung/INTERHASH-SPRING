@@ -125,6 +125,8 @@ public class ContentModify {
 		contentdto.setConnum(connum);
 		contentdto.setConhash(conhash);
 		
+		
+		
 		int result = contentdao.modifyContent(contentdto);
 		JSONObject jso = new JSONObject();
 		
