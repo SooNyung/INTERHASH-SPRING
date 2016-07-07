@@ -73,7 +73,7 @@ public class LoginController {
 			session.setAttribute("memId", info.getEmail());
 			session.setAttribute("nickName", nick);
 			session.setAttribute("profilePhoto", path);
-//			session.setAttribute("test1", 0);
+//			session.setAttribute("togle", "on");
 
 			System.out.println("로그인 성공");	
 			return mv;		

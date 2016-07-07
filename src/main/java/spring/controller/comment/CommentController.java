@@ -83,16 +83,6 @@ System.out.println("test1");
 	commentdto1.setComip(comip);
 	commentdto1.setConnum(connum);
 	
-
-	//수정
-
-
-	System.out.println(comnick);//글번호
-	System.out.println(email);//보낸이메일
-	System.out.println(receivedemail);
-	
-
-
 	int result = commentdao.insertComment(commentdto1);
 
 	dto.setComnick(comnick);
@@ -100,9 +90,6 @@ System.out.println("test1");
 	dto.setReceivedemail(receivedemail);
 	
 	int alarm = alarmdao.Alarm(dto);
-
-	System.out.println("zzzz");
-
 
 	ArrayList array = (ArrayList)commentdao.getComments(connum);
 
