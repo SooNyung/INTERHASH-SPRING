@@ -531,7 +531,6 @@ function delete1(comnum, connum){
 
 
 //comment insert
-<<<<<<< HEAD
 function insert1(connum){
 	var con = connum;
 	var url = "/INTERHASH-SPRING/InsertComment.hash";
@@ -603,7 +602,6 @@ function insert(connum){
              alert(err);
          } 
    });
->>>>>>> 2931d38e71eafcf45b2a139e3f89d9c984c2b226
 }
 
 function Map(){
