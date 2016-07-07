@@ -116,16 +116,67 @@ public class ContentModify {
 			HttpServletResponse resp,
 			@RequestParam("connum") int connum,
 			@RequestParam("content") String content,
-			@RequestParam("conhash") String conhash
+			@RequestParam("conhash") String conhash,
+			@RequestParam("maptitle") String maptitle,
+			@RequestParam("mapplace") String mapplace,HttpServletRequest request
 			) throws IOException{
 
-		ContentCommand contentdto = new ContentCommand();
+		
+			ContentCommand contentdto = new ContentCommand();
 
-		contentdto.setContent(content);
-		contentdto.setConnum(connum);
-		contentdto.setConhash(conhash);
+				contentdto.setContent(content);
+				contentdto.setConnum(connum);
+				contentdto.setConhash(conhash);
+				contentdto.setMaptitle(maptitle);
+		
+		//위치 
+				try {
+					
+					String map1 = mapplace;
+					try{
+						map1 = map1.substring(1,map1.length()-1);
+					}catch(Exception e){
+						map1 = "none";
+					}
+					
+					
+					String latitude="";
+					String longtitude="";
+					
+					System.out.println(map1);
+					if(map1.equals("none")){
+						latitude="";
+						longtitude="";
+					}else{
+						String[] map2 = map1.split(", ");
+
+/*						for(int i = 0; i <map2.length; i++)
+						{
+							System.out.println("위도,경도=" + map2[i].trim());
+						}
+*/
+						System.out.println(maptitle);
+						latitude= map2[0];
+						System.out.println("위도:"+latitude);
+						longtitude = map2[1].trim();
+						System.out.println("경도:"+longtitude);
+						
+						contentdto.setLatitude(latitude);
+						contentdto.setLongtitude(longtitude);
+						
+						request.setAttribute("latitude", latitude);
+						request.setAttribute("longtitude", longtitude);
+						request.setAttribute("maptitle", maptitle);
+					}
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+		
 		
 		int result = contentdao.modifyContent(contentdto);
+		System.out.println("zzz");
 		JSONObject jso = new JSONObject();
 		
 		PrintWriter out = resp.getWriter();

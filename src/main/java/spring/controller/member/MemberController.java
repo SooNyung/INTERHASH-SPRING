@@ -360,8 +360,9 @@ public class MemberController {
 
 		String email = (String) session.getAttribute("memId");
 		MemberCommand command = dao.getMemberInfo(email);
-		System.out.println(conhash);
+	
 		session.setAttribute("content", cdao.hashLike(conhash));
+		
 		session.setAttribute("memberinfo", command);
 		session.setAttribute("messagecount", mdao.getMessageCount(email));
 		String checked = dao.selectCheck(email);
