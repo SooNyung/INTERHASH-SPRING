@@ -8,6 +8,7 @@
  
 	<excludes>
 		<pattern>/template2.hash*</pattern>
+		<pattern>/template1.hash*</pattern>
 	 	<pattern>/ReportForm.hash*</pattern>
 		<pattern>/updateCommentForm.hash*</pattern>
 		<pattern>/ConfirmNickname.hash*</pattern>
@@ -25,6 +26,7 @@
 		<pattern>/MessageForm.hash*</pattern>
 		<pattern>/mapopen.hash*</pattern>
 		<pattern>/alarmlist.hash*</pattern>
+		
 		<!-- <pattern>/Logout.hash</pattern> -->
 		<pattern>/Logout.hash*</pattern>
 		<pattern>/LoginFailPro.hash*</pattern>
@@ -35,8 +37,7 @@
 		<pattern>/deleteMessage.hash*</pattern>
 		<pattern>/ReMessageForm.hash*</pattern>
 		<pattern>/ReMessagePro.hash*</pattern>
-		<pattern>/ContentView.hash*</pattern>
-		
+		<pattern>/ContentView.hash*</pattern>		
 		<pattern>/FindPasswordForm.hash*</pattern>
 		<pattern>/FindPasswordPro.hash*</pattern>  
 		<pattern>/ReportProCom.hash*</pattern>

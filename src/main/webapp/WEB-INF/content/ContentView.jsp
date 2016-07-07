@@ -179,7 +179,9 @@ $(document).ready(function(){
 	
 	<div id="content_photo" style="height:490px; overflow-x:auto">
 
-		<label>${content.content}<br></label><br>
+		<label>${content.content}<br></label>
+		<label>-<a href="#" onclick= "javascript:mapopen('${content.latitude}','${content.longtitude}','${content.maptitle}')" >
+   <font color="#666"><b>${content.maptitle}</b>에서</font></a><br></label><br>
 
 		<label id="hash">#${content.conhash}</label><br><br>
 		

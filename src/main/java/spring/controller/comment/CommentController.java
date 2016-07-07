@@ -93,15 +93,16 @@ public class CommentController {
 	commentdto.setEmail(email);
 	commentdto.setComip(comip);
 	
-
+	System.out.println("commentdto:::"+commentdto);
 	dto.setComnick(comnick);
 	dto.setConnum(connum);
 	dto.setReceivedemail(receivedemail);
 	
 	
 	int alarm = alarmdao.Alarm(dto);
-	int result = commentdao.insertComment(commentdto);
 	
+	int result = commentdao.insertComment(commentdto);
+	System.out.println("zzzz");
 	ArrayList array = (ArrayList)commentdao.getComments(connum);
 
 	String test= "";
