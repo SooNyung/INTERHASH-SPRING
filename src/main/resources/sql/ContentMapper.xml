@@ -4,48 +4,66 @@
 <mapper namespace="writecontent">
 
 	<select id="getContent" resultType="spring.model.ContentCommand">
-		select * from contents order by conmodifieddate desc
+		select * from contents order
+		by conmodifieddate desc
 	</select>
-	
+
 	<select id="getContentByHash" parameterType="String"
 		resultType="spring.model.ContentCommand">
 		select * from contents where conhash like '%' || #{hash} ||
 		'%' order by conmodifieddate desc
 	</select>
-	
+
 	<insert id="insertContent" parameterType="spring.model.ContentCommand">
 		insert into contents
 		values (connum_seq.nextval, #{content}, #{conhash}, #{concreateddate},
 		#{conmodifieddate},#{conip},0,'0',#{email},#{connickname},0,#{latitude},#{longtitude},#{maptitle})
 	</insert>
-	
+
 	<insert id="insertPhoto" parameterType="spring.model.PhotoCommand">
 		insert into photo
 		values(photo_seq.nextval, #{photoname},#{realpath},
 		#{photosize},connum_seq.currval,#{email},#{serverpath})
 	</insert>
 
-	<select id="selectPhoto" parameterType="int" resultType="spring.model.PhotoCommand">
+	<select id="selectPhoto" parameterType="int"
+		resultType="spring.model.PhotoCommand">
 		select * from photo where connum=#{connum}
 	</select>
-	
-	<select id="getContentone" parameterType="integer" resultType="spring.model.ContentCommand">
+
+	<select id="getContentone" parameterType="integer"
+		resultType="spring.model.ContentCommand">
 		select * from contents where connum = #{connum}
 	</select>
-	
+
 	<delete id="deleteContent" parameterType="int">
-		delete from contents where connum = #{connum}
+		delete from contents
+		where connum = #{connum}
 	</delete>
-	
+
 	<update id="updateContent" parameterType="spring.model.ContentCommand">
-		update contents set content=#{content} where connum=#{connum}
+		update contents set
+		content=#{content} where connum=#{connum}
+		update contents set content=#{content}, conhash=#{conhash} where connum=#{connum}
 	</update>
-<!-- 추가 -->	
-	<select id ="myContent" parameterType= "string" resultType="spring.model.ContentCommand">
-		select * from contents where email =#{email} order by conmodifieddate desc
+	<!-- 추가 -->
+	<select id="myContent" parameterType="string"
+		resultType="spring.model.ContentCommand">
+		select * from contents where email =#{email} order by
+		conmodifieddate desc
 	</select>
-	<select id ="hashLike" parameterType= "string" resultType="spring.model.ContentCommand">
-		select * from contents where conhash =#{conhash} order by conmodifieddate desc
+	<select id="hashLike" parameterType="string"
+		resultType="spring.model.ContentCommand">
+		select * from contents where conhash =#{conhash} order by
+		conmodifieddate desc
+	</select>
+
+	<select id="search" parameterType="String" resultType="spring.model.ContentCommand">
+		select *
+		from contents where content like '%' || #{searchname} || '%' 
+		or connickname like '%' || #{searchname} || '%'
+		or conhash like '%' || #{searchname} || '%' 
+		or maptitle like '%' || #{searchname} || '%'
 	</select>
 	<select id ="" parameterType ="">
 	
@@ -55,6 +73,11 @@
 	</insert>
 	<update id="">
 	</update>
+		
+	<select id ="hashLike" parameterType= "spring.model.ContentCommand" resultType="spring.model.ContentCommand">
+		select * from contents where conhash like '%' || #{conhash} || '%' order by conmodifieddate desc
+	</select>
+
 </mapper>
 
 

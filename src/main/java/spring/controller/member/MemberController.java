@@ -353,13 +353,39 @@ public class MemberController {
 		session.setAttribute("num", 1);
 		return "fixpage/boardDiv";
 	}
+	
+	@RequestMapping("/Search.hash")
+	public String search(Model model, HttpSession session,String searchname){
+		String email = (String) session.getAttribute("memId");
+		MemberCommand command = dao.getMemberInfo(email);
+		session.setAttribute("content", cdao.search(searchname));
+	/*	session.setAttribute("content", cdao.myContent(email));*/
+		session.setAttribute("memberinfo", command);
+		session.setAttribute("messagecount", mdao.getMessageCount(email));
+		String checked = dao.selectCheck(email);
+		session.setAttribute("checked", checked);
+		String hash = command.getHash();
+		hash = hash.substring(1, hash.length() - 1);
+		String[] hashlist = hash.split(",");
+		for (int i = 0; i < hashlist.length; i++) {
+			hashlist[i] = hashlist[i].trim();
+		}
+		List<String> list = Arrays.asList(hashlist);
+		session.setAttribute("hashlist", list);
+		session.setAttribute("mesagelist", mdao.getMessageList(email));
+		session.setAttribute("alarmlist",alarmdao.AlarmAll(email));
+		session.setAttribute("count",alarmdao.alarm_count(email));
+		session.setAttribute("num", 1);
+		return "fixpage/boardDiv";
+	}
 
 	// hash≈¨∏Ø
 	@RequestMapping("/hashLike.hash")
-	public String hashlike(Model model, HttpSession session, String conhash) {
+	public String hashlike(Model model, HttpSession session, @RequestParam("conhash") String conhash) {
 
 		String email = (String) session.getAttribute("memId");
 		MemberCommand command = dao.getMemberInfo(email);
+		System.out.println(conhash);
 		session.setAttribute("content", cdao.hashLike(conhash));
 		session.setAttribute("memberinfo", command);
 		session.setAttribute("messagecount", mdao.getMessageCount(email));

@@ -84,7 +84,12 @@ public class ContentDAO {
 	}
 
 	public List<ContentCommand> hashLike(String conhash){
+		System.out.println("zzz"+conhash);
 		return session.selectList("writecontent.hashLike",conhash);
+	}
+	
+	public List<ContentCommand> search(String searchname) {
+		return session.selectList("writecontent.search", searchname);
 	}
 	
 /*	public ContentCommand getContent(int connum) throws Exception {

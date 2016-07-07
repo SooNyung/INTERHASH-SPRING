@@ -113,13 +113,15 @@ public class ContentModify {
 	public void updatePro(
 			HttpServletResponse resp,
 			@RequestParam("connum") int connum,
-			@RequestParam("content") String content
+			@RequestParam("content") String content,
+			@RequestParam("conhash") String conhash
 			) throws IOException{
 
 		ContentCommand contentdto = new ContentCommand();
 
 		contentdto.setContent(content);
 		contentdto.setConnum(connum);
+		contentdto.setConhash(conhash);
 		
 		int result = contentdao.modifyContent(contentdto);
 		JSONObject jso = new JSONObject();
