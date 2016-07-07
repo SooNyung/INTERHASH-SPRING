@@ -42,8 +42,6 @@
 	</delete>
 
 	<update id="updateContent" parameterType="spring.model.ContentCommand">
-		update contents set
-		content=#{content} where connum=#{connum}
 		update contents set content=#{content}, conhash=#{conhash} where connum=#{connum}
 	</update>
 	<!-- 추가 -->

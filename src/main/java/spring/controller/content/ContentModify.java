@@ -123,16 +123,18 @@ public class ContentModify {
 		contentdto.setConnum(connum);
 		contentdto.setConhash(conhash);
 		
-		
-		
+		System.out.println("contentdto:::::::::::"+contentdto);
 		int result = contentdao.modifyContent(contentdto);
+		
+		System.out.println("test3");
 		JSONObject jso = new JSONObject();
-		
+		System.out.println("test4");
 		PrintWriter out = resp.getWriter();
-		
+		System.out.println("test5");
 		/*jso.put("result", result);*/
-		
+		System.out.println("test6");
 		out.print(jso.toString());
+		System.out.println("test7");
 
 	}
 /*	

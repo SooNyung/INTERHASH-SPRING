@@ -669,6 +669,7 @@ function modifypro(connum){
 			$("#left_mod_del_rep *").remove();
 			$("#left_mod_del_rep").append("<span id='align_right'>/<a href='#' onclick='deleteCon("+connum+")'>삭제하기</a></span><!--"+
 					"--!><span id='align_right'><a href='#' onclick='modifyCon("+connum+")'>수정하기 </a></span>")
+					
 		}
 			,error: function (xhr, status, err){
 				alert(err);
