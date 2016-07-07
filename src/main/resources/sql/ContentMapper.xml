@@ -55,6 +55,9 @@
 		or connickname like '%' || #{searchname} || '%'
 		or conhash like '%' || #{searchname} || '%' 
 		or maptitle like '%' || #{searchname} || '%'
+		order by
+		conmodifieddate desc
+		
 	</select>
 		
 	<select id ="hashLike" parameterType= "spring.model.ContentCommand" resultType="spring.model.ContentCommand">
