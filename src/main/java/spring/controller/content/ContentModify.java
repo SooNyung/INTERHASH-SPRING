@@ -120,6 +120,8 @@ public class ContentModify {
 			) throws IOException{
 
 		
+		System.out.println(maptitle);
+		System.out.println(mapplace);
 			ContentCommand contentdto = new ContentCommand();
 
 				contentdto.setContent(content);
@@ -174,6 +176,7 @@ public class ContentModify {
 		
 		
 		System.out.println("contentdto:::::::::::"+contentdto);
+
 		int result = contentdao.modifyContent(contentdto);
 
 

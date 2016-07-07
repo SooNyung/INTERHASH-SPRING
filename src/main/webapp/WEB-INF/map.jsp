@@ -168,7 +168,7 @@ function displayPlaces(places) {
             });
           
             daum.maps.event.addListener(marker, 'click', function() {
-                selectInfo2(marker,title,placePosition);
+                selectInfo(marker,title,placePosition);
             });
             
             daum.maps.event.addListener(map, 'click', function(mouseEvent) {        
@@ -185,7 +185,7 @@ function displayPlaces(places) {
             });
             
             itemEl.onclick =  function () {
-            	selectInfo(marker, title);
+            	selectInfo2(marker, title);
             };
 
             itemEl.onmouseover =  function () {
@@ -306,18 +306,19 @@ function selectInfo(marker, title,placePosition) {
 			//removeMarker();
 	opener.document.writeForm.maptitle.value = title;
 	opener.document.writeForm.mapplace.value = placePosition;
+	
+	window.close();
 }
 
-//마커클릭하면 꺼진다
 function selectInfo2(marker, title,placePosition) {
-	
 	ps.keywordSearch(title, placesSearchCB);
 			//removeMarker();
 	opener.document.writeForm.maptitle.value = title;
 	opener.document.writeForm.mapplace.value = placePosition;
 	
-	window.close();
+
 }
+
 
  // 검색결과 목록의 자식 Element를 제거하는 함수입니다
 function removeAllChildNods(el) {   

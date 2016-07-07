@@ -671,9 +671,9 @@ function modifypro(connum){
 					"--!><span id='align_right'><a href='#' onclick='modifyCon("+connum+")'>수정하기 </a></span>")
 					
 
-			$("#place").remove();
-			$("#place").append("<a href='#' onclick= 'javascript:mapopen("+${latitude}+","+${longtitude}+","+${maptitle}+")'>
-			'<font color="#666"><b>'+${maptitle}+'</b>에서</font></a>");
+/* 			$("#place *").remove();
+			$("#place *").append("<a href='#' onclick= 'javascript:mapopen("+${latitude}+","+${longtitude}+","+${maptitle}+")'>
+					'<font color="#666"><b>'+${maptitle}+'</b>에서</font></a>"); */
 
 		}
 			,error: function (xhr, status, err){
