@@ -184,7 +184,9 @@ color:#5AAEFF;
 		<%-- <label id="content1">${content.content}<br></label> --%>
 		<input type="text" id="content1" name="content1" style="border:0px" readonly value="${content.content}"><br>
 
-		<label id="hash">#${content.conhash}</label><br><br>
+		<div id="tagtest">
+		<input type="text" name="tag" size="30" readonly style="border:0px; color:#FF73B8;" id="tag" value="${content.conhash}"><br><br>
+		</div>
 		
 		<c:forEach var="photo" items="${content.photolist}">
 		
@@ -221,7 +223,7 @@ color:#5AAEFF;
 	
 	<div id="comment_submit">
 		<span id="align_right">
-		<input type="button" id="rptl" value="개시시" onclick="javascript:insert1(${content.connum})"> </span>
+		<input type="button" id="rptl" value="개시" onclick="javascript:insert1(${content.connum})"> </span>
 	</div>
 	</form>
 	

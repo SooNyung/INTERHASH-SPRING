@@ -124,6 +124,12 @@ function tagCheck() {
 	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 }
 
+function tagCheckUpdate() {
+
+	url = "TagCheckUpdate.hash?check=y";
+	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+}
+
 function like(num,String){
 	var select_id = "${sessionScope.conlike}";//'#'+num+"like_bn";
 	var like_cnt = select_id+1;//$(select_id).text();
@@ -603,7 +609,10 @@ function modifyCon(connum){
 			
 			$("#left_mod_del_rep *").remove();
 			$("#left_mod_del_rep").append("<input id='align_right' type='button' value='수정버튼' onclick='modifypro("+connum+")'>");
+		
+			$("#left_mod_del_rep").append("<img src ='image/logo/tag.png' width='25px' height='25px' onClick='tagCheckUpdate()'>");
 			
+
 			$("#test_div *").remove();
 			$("#comment_div *").remove();
 			for(var i=0;i<args.data.length;i++){
@@ -761,6 +770,7 @@ function checkIt(){
          <div class="photoBox" style="height: 100px; width: 100px;">
          
         <input type="text" name="tag" size="30" readonly style="border:0px; color:#FF73B8;" id="tag">
+      
          
             <input class='fileData' id = "conphoto" name="conphoto" type="file"/> 
                <div id="blah_img" >
