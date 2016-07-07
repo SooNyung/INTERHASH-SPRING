@@ -61,8 +61,8 @@ function readURL(input) {
        reader.onload = function (e) {
 
              $('#blah').attr('src', e.target.result); 
-             $('#blah').attr('height', '100px');
-             $('#blah').attr('width', '150px');
+             $('#blah').attr('height', '80px');
+             $('#blah').attr('width', '120px');
         }
 
       reader.readAsDataURL(input.files[0]);
@@ -121,6 +121,12 @@ function fileUploadPreview(thisObj, preViewer) {
 function tagCheck() {
 
 	url = "TagCheck.hash?check=y";
+	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+}
+
+function tagCheckUpdate() {
+
+	url = "TagCheckUpdate.hash?check=y";
 	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 }
 
@@ -603,7 +609,10 @@ function modifyCon(connum){
 			
 			$("#left_mod_del_rep *").remove();
 			$("#left_mod_del_rep").append("<input id='align_right' type='button' value='수정버튼' onclick='modifypro("+connum+")'>");
+		
+			$("#left_mod_del_rep").append("<img src ='image/logo/tag.png' width='25px' height='25px' onClick='tagCheckUpdate()'>");
 			
+
 			$("#test_div *").remove();
 			$("#comment_div *").remove();
 			for(var i=0;i<args.data.length;i++){
@@ -630,11 +639,12 @@ function modifyCon(connum){
 	});
 }
 
-function modifypro(connum){
+function modifypro(connum, conhash){
 	var content1 = document.getElementsByName('content1')[0].value;
+	var conhash = document.getElementsByName('tag')[0].value;
 	var connum = connum;
 	var url = "/INTERHASH-SPRING/ContentUpdatePro.hash";
-	var params = "content="+content1+"&connum="+connum;
+	var params = "content="+content1+"&connum="+connum+"&conhash="+conhash;
 	$.ajax({
 		type:"post",
 		url:url,
@@ -713,6 +723,7 @@ function checkIt(){
          <div class="photoBox" style="height: 100px; width: 100px;">
          
         <input type="text" name="tag" size="30" readonly style="border:0px; color:#FF73B8;" id="tag">
+      
          
             <input class='fileData' id = "conphoto" name="conphoto" type="file"/> 
                <div id="blah_img" >
@@ -835,7 +846,7 @@ function unlikeAjax(num,hash,like){
       </a>  
     </div>
 
-    <p class="pro1">#${con.conhash}</p>
+    <p class="pro1">${con.conhash}</p>
 
    </div>
    

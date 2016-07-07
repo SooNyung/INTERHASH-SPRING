@@ -208,6 +208,11 @@ function back(){
 		<textarea name="content" rows="5" cols="52" value="${content.content}">${content.content}</textarea><br>
 
 
+	<label>-<a href="#" onclick= "javascript:Map()" >
+   <font color="#666"><b>${content.maptitle}</b>에서</font></a><br></label>
+     <input type="text" name="maptitle" size="10px" readonly/>로 수정합니다.<br>
+     <input type="hidden" name="mapplace" />    
+     
 		<label id="hash">#${content.conhash}</label><br>
 		
 		<c:forEach var="photo" items="${content.photolist}">

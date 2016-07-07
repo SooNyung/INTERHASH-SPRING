@@ -50,6 +50,13 @@ public class ContentInput {
 		model.addAttribute("check","y");
 		return "userpage/TagCheck";
 	}
+	
+	@RequestMapping("/TagCheckUpdate.hash")
+	private String tag_checkUpdate(@RequestParam("check") String check,Model model){
+		model.addAttribute("check","y");
+		return "userpage/TagCheckUpdate";
+	}
+	
 	@RequestMapping("/ContentInputPro.hash")
 	public String file_upload(@RequestParam("conphoto") MultipartFile conphoto,@ModelAttribute("writeForm") ContentCommand content,  
 			HttpServletRequest request,@RequestParam("tag") String tag) {
