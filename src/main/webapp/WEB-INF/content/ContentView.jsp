@@ -144,13 +144,8 @@ color:#5AAEFF;
    }
    
    #test{border-bottom:1px solid;}
-
-
-
 	
 </style>
-
-
 
 </head>
 <body>
