@@ -178,6 +178,7 @@ color:#5AAEFF;
 
 		<input type="text" id="content1" name="content1" style="border:0px" readonly value="${content.content}"><br>
 		<label>-<a href="#" onclick= "javascript:mapopen('${content.latitude}','${content.longtitude}','${content.maptitle}')" >
+		<input type="hidden" name="maptitle" value="${content.maptitle}">
    <font color="#666"><b>${content.maptitle}</b>에서</font></a><br></label><br>
 
 		<div id="tagtest">
