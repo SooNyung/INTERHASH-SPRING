@@ -4,8 +4,7 @@
 <mapper namespace="writecontent">
 
 	<select id="getContent" resultType="spring.model.ContentCommand">
-		select * from contents order
-		by conmodifieddate desc
+		select * from contents order by conmodifieddate desc
 	</select>
 
 	<select id="getContentByHash" parameterType="String"
@@ -37,8 +36,7 @@
 	</select>
 
 	<delete id="deleteContent" parameterType="int">
-		delete from contents
-		where connum = #{connum}
+		delete from contents where connum = #{connum}
 	</delete>
 
 	<update id="updateContent" parameterType="spring.model.ContentCommand">
