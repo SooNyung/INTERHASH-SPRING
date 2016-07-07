@@ -172,7 +172,6 @@ $(document).ready(function(){
       
    </div>
 
-
    <c:if test="${sessionScope.memId==content.email}">
    <div id="left_mod_del_rep">
       <span id="align_right">/<a href="ContentDelete.hash?connum=${content.connum}">삭제하기</a></span>
@@ -187,7 +186,6 @@ $(document).ready(function(){
    </c:if>   
    
    <div id="content_photo" style="height:490px; overflow-x:auto">
-
 
       <label>${content.content}<br></label><br>
 
@@ -205,6 +203,11 @@ $(document).ready(function(){
       <label id="align_right">댓글 수: ${count}</label>
 <!--    <label id="align_left">
         </label> -->
+        
+        
+        
+        
+              
    </div>
    
    <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:callAjax('${content.connum}','${content.conhash}')">
@@ -212,63 +215,18 @@ $(document).ready(function(){
         <button type="button" class="w3-theme-d2 w3-margin-bottom unlike" onclick="javascript:unlikeAjax('${content.connum}','${content.conhash}')">
         <i class="fa fa-thumbs-up"></i> UnLike </button>  
     
-     	<i id="liketest"> ${content.conlike}</i>
+     <i id="liketest"> ${content.conlike}</i>
         
    </form>
 </div>
 
 <div id="view_right" class="box-shadow border-round white">
-
-	<input type=button onclick="location.href='Board.hash'" value="X" style="float:right">
-	
-	
-	<form method="post" action="InsertComment.hash">
-	<input type=hidden name=connum value="${content.connum}">
-	<input type=hidden name=comnick value="${sessionScope.nickName}">
-
-	
-	<div id="right_nick">
-		<span id ="align_left"><b>${sessionScope.nickName}</b>님</span>
-		<!-- <span id="align_right"><input type="button" onclick="back()" value="닫기버튼"></span> -->
-		
-	</div>
-	<div id="comment_content">
-		<textarea id="comment_textarea" name="comcontent" placeholder="댓글을 입력해주세요"></textarea>
-	</div>
-	
-	<div id="comment_submit">
-		<span id="align_right">
-		<input type="submit" value="개시"></span>
-		<input type="button" id="rptl" value="개시시" onclick="javascript:insert1(${content.connum})"> 
-	</div>
-	</form>
-	
-	<div id="comment_view" style="height:460px; overflow-x:auto" onchange="reload();">
-	
-	<div id="test_div"></div>
- 	<c:forEach var="comment" items="${comment}">
-		
-	<div id="comment_div">   
-	<input type=hidden name=comnum value="${comment.comnum}">
-	<span><b id="nickname">${comment.comnick}</b></span>
-	
-	<span><label id="time">${sdf.format(comment.commodifieddate)}</label></span>
-	
-	<span id="align_right">
-	
-		<c:if test="${sessionScope.memId==comment.email}">
-		<a href="#" onclick="delete1(${comment.comnum},${comment.connum})">삭제</a>
-		<a href="#" onclick="modify(${comment.comnum},${comment.connum})">수정</a>
-		</c:if	>
-		
-		<c:if test="${sessionScope.memId!=comment.email}">
-		<a onclick="reportCom(${comment.comnum})">신고</a>
-		</c:if>	
-	</span><br> 
-	<div id="test"><textarea id="comment_textara" borderStyle="none" cols=50 readonly="readonly" class="autosize">${comment.comcontent}</textarea></div>
-	</div>	
-	</c:forEach>  
-	</div>
+   <!-- <input type=button onclick="modal_close()" value="X" style="float:right"> -->
+   <input type=button onclick="location.href='Board.hash'" value="X" style="float:right">
+   
+   <form method="post" action="InsertComment.hash">
+   <input type=hidden name=connum value="${content.connum}">
+   <input type=hidden name=comnick value="${sessionScope.nickName}">
 
    
    <div id="right_nick">
@@ -313,6 +271,8 @@ $(document).ready(function(){
    </div>   
    </c:forEach>  
    </div>
+   
+
    
 </div>
 
