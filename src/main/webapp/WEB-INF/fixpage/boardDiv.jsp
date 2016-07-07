@@ -531,43 +531,6 @@ function delete1(comnum, connum){
 
 
 //comment insert
-<<<<<<< HEAD
-function insert1(connum){
-	var con = connum;
-	var url = "/INTERHASH-SPRING/InsertComment.hash";
-	var texta = $('#comment_textarea').val();
-	var params = "connum="+con+"&comcontent="+texta; 
-	$.ajax({
-		type:"post",
-		url:url,
-		data:params,
-		dataType:"json",
-		success:function(args){	
-			$("#test_div *").remove();
-			$("#comment_div *").remove();
-			for(var i=0;i<args.data.length;i++){
-				var check;
-				if(args.session==args.data[i].email){
-					$('#test_div').append(
-						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
-						'--!><span><label id="time'+i+'">'+args.time+'</label></span><!--'+
-						'--!><span id="align_right"><a href="#" onclick="delete1('+args.data[i].comnum+','+args.data[i].connum+')">삭제</a><!--'+
-						'--!><a href="#" onclick="modify('+args.data[i].comnum+','+args.data[i].connum+','+i+')">수정</a><!--'+
-						'--!></span><br><div id="test"><textarea id="textaa'+i+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
-			}else{
-				$('#test_div').append(
-						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
-						'--!><span><label id="time'+i+'">'+args.test+'</label></span><!--'+
-						'--!><span id="align_right"><!--'+
-						'--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></span><br><div id="test"><textarea id="textaa'+i+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
-			}
-			}
-		}
-			,error: function (xhr, status, err){
-				alert(err);
-			} 
-	});
-=======
 function insert(connum){
     var con = connum;
    var url = "/INTERHASH-SPRING/InsertComment.hash";
@@ -603,7 +566,6 @@ function insert(connum){
              alert(err);
          } 
    });
->>>>>>> 2931d38e71eafcf45b2a139e3f89d9c984c2b226
 }
 
 function Map(){
@@ -686,9 +648,6 @@ function checkIt(){
       <div id="wrap" style="width: 500px; ">
          <textarea style="resize: none; width:460px; height:80px;" id="textfield" name="content" placeholder="내용을 입력하세요."></textarea>
          <div class="photoBox" style="height: 100px; width: 100px;">
-         
-        <input type="text" name="tag" size="30" readonly style="border:0px; color:#FF73B8;" id="tag">
-         
             <input class='fileData' id = "conphoto" name="conphoto" type="file"/> 
                <div id="blah_img" >
                   <img id="blah" src="" alt="no image"/>
@@ -707,9 +666,9 @@ function checkIt(){
             <input type="hidden" name="mapplace" />          
             </span> 
             
-            <div id="taglist" style="width:23px; float:left; padding-right:230px; padding-bottom:0px">
+            <div id="taglist" style="width: 110px; float:left; padding-right:180px; padding-bottom:0px">
             <div style="float:left">
-               
+               <input type="text" name="tag" size="7" readonly>
             </div>
              <div style="float:right">  
                <img src ="image/logo/tag.png" width="25px" height="25px" onClick="tagCheck()">

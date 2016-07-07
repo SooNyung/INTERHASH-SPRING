@@ -251,6 +251,9 @@ padding: 0px 5px 0px 5px;}
    background-color: #FFCCCC !important
 }
 
+
+/* button:hover{background-color: #B3B6B7 !important} */
+
 .left-align {
    text-align: left
 }
@@ -719,9 +722,15 @@ height:50px;
       } 
    
    function alarmList(){
-         url="alarmlist.hash?check=y";
-         window.open(url,"post","toolbar=no ,width=500 ,height=400,directories=no,status=yes,menubar=no,scrollbars=no");
-         }
+
+	      url="alarmlist.hash?check=y";
+	      window.open(url,"post","toolbar=no ,width=500 ,height=400,directories=no,status=yes,menubar=no,scrollbars=no");
+   function alarm(){
+	      url="Alarm.hash";
+	      window.open(url,"post","toolbar=no ,width=400 ,height=400,directories=no,status=yes,menubar=no,scrollbars=no");
+	      } 
+   
+
 
    $(document).ready(function() {
       if ($('#jb-content').outerHeight(true) < 800) {
@@ -876,7 +885,10 @@ height:50px;
                </table>
             </ul>
           
-      </li>
+
+		</li>
+
+
 
          <li class="small right">
          <div class="topnav">   <a href="#" title="MyAccount"><img id ="profileImg" src='<c:url value="/upload/${sessionScope.profilePhoto}" />' class="circle" width="10%" height="10%">
