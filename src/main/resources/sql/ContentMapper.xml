@@ -47,6 +47,14 @@
 	<select id ="hashLike" parameterType= "string" resultType="spring.model.ContentCommand">
 		select * from contents where conhash =#{conhash} order by conmodifieddate desc
 	</select>
+	<select id ="" parameterType ="">
+	
+	</select>
+	<insert id ="">
+	
+	</insert>
+	<update id="">
+	</update>
 </mapper>
 
 
