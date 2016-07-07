@@ -639,11 +639,12 @@ function modifyCon(connum){
 	});
 }
 
-function modifypro(connum){
+function modifypro(connum, conhash){
 	var content1 = document.getElementsByName('content1')[0].value;
+	var conhash = document.getElementsByName('tag')[0].value;
 	var connum = connum;
 	var url = "/INTERHASH-SPRING/ContentUpdatePro.hash";
-	var params = "content="+content1+"&connum="+connum;
+	var params = "content="+content1+"&connum="+connum+"&conhash="+conhash;
 	$.ajax({
 		type:"post",
 		url:url,
@@ -906,7 +907,7 @@ function unlikeAjax(num,hash,like){
       </a>  
     </div>
 
-    <p class="pro1">#${con.conhash}</p>
+    <p class="pro1">${con.conhash}</p>
 
    </div>
    

@@ -125,7 +125,7 @@ label:focus, label:hover {
 }
 </style>
 <script type="text/javascript">
-		var checkflag = "false";
+		var flag = "false";
 
 	function check(field) {
 		if (checkflag == "false") {
@@ -154,7 +154,7 @@ function sendValue(){
 			      
 			    }
 			  }
-			 opener.document.UpdateContent.updatetag.value = checkList;
+			 opener.document.jinkyung.tag.value = checkList;
 			 window.close();
 		}
 	

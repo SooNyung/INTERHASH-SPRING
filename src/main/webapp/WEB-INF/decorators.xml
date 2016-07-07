@@ -40,7 +40,7 @@
 		<pattern>/FindPasswordForm.hash*</pattern>
 		<pattern>/FindPasswordPro.hash*</pattern>  
 		<pattern>/ReportProCom.hash*</pattern>
-		<pattern>/UpdateTagCheck.hash*</pattern>
+		<pattern>/TagCheckUpdate.hash*</pattern>
 		<pattern>/ProfileView.hash*</pattern>
 		
 		<!-- 좋아요 test -->

@@ -158,7 +158,7 @@ color:#5AAEFF;
 <!-- <form name="view"> -->
 
 <div id="view_left" class="box-shadow border-round white">
-	<form>
+	<form name="jinkyung">
 	<div id="left_nickndate">
 		<span id ="align_left"><b>${sessionScope.nickName}</b>님</span>
 		
