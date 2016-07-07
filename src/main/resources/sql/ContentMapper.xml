@@ -59,7 +59,7 @@
 		
 	</select>
 	
-	<select id ="search_date" parameterType ="String" resultType="">
+	<select id ="search_date" parameterType ="String" resultType="String">
 		select * from popular where (pop_date between to_date(TO_CHAR(sysdate, 'YYYYMMDD'),'yyyymmdd') 
 		and	to_date(TO_CHAR(sysdate, 'YYYYMMDD'),'yyyymmdd')+1) and connum = 87
 	</select>
