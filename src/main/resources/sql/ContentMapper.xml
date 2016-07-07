@@ -44,6 +44,7 @@
 	<update id="updateContent" parameterType="spring.model.ContentCommand">
 		update contents set
 		content=#{content} where connum=#{connum}
+		update contents set content=#{content}, conhash=#{conhash} where connum=#{connum}
 	</update>
 	<!-- 추가 -->
 	<select id="myContent" parameterType="string"
@@ -63,6 +64,10 @@
 		or connickname like '%' || #{searchname} || '%'
 		or conhash like '%' || #{searchname} || '%' 
 		or maptitle like '%' || #{searchname} || '%'
+	</select>
+		
+	<select id ="hashLike" parameterType= "spring.model.ContentCommand" resultType="spring.model.ContentCommand">
+		select * from contents where conhash like '%' || #{conhash} || '%' order by conmodifieddate desc
 	</select>
 
 

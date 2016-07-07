@@ -738,7 +738,7 @@ height:50px;
    
    $(document).ready(function(){  
          
-        $(".topnav").hover(function() {                    //마우스를 topnav에 오버시
+        $(".topnav").click(function() {                    //마우스를 topnav에 오버시
          $(this).parent().find(".account").slideDown('normal').show();                   //subnav가 내려옴.
          $(this).parent().hover(function() {  
          }, function(){  
@@ -750,8 +750,8 @@ height:50px;
    
 
    $(document).ready(function(){           
-        $(".message").hover(function() {//마우스를 topnav에 오버시
-         $(this).parent().find("span").hide();      
+        $(".message").click(function() {//마우스를 topnav에 오버시
+         $(this).parent().find("a span").hide();      
          $(this).parent().find(".sub").slideDown('normal').show();                   //subnav가 내려옴.
          $(this).parent().hover(function() {  
          }, function(){  
@@ -759,8 +759,8 @@ height:50px;
          });  
         });  
         
-        $(".alarm").hover(function() {//마우스를 topnav에 오버시
-            $(this).parent().find("span").hide();      
+        $(".alarm").click(function() {//마우스를 topnav에 오버시
+            $(this).parent().find("a span").hide();      
             $(this).parent().find(".al").slideDown('normal').show();                   //subnav가 내려옴.
             $(this).parent().hover(function() {  
             }, function(){  
@@ -815,7 +815,7 @@ height:50px;
             class="padding-large margin-right"><h2>I N T E R H A S H #</h2></a></li>
          <li class="small">
          <div class="message">
-         <a href="#" onclick="window.open('MessageList.hash','new','width=400 height=350');return false" 
+         <a href="#" 
          class="padding-large margin-right"  title="Messages">
            <img src ="image/logo/message .png" onmouseover="this.src='image/logo/message2.png'" onmouseout="this.src='image/logo/message .png'" width="30px" height="30px"/><span class="count badge right small circle pink">${messagecount}</span>
          </a>
@@ -848,7 +848,7 @@ height:50px;
          <li class="small">
 
           <div class="alarm">
-          <a href="#"   onclick="window.open('alarmlist.hash','new','width=500 height=400');return false"
+          <a href="#" 
           class="margin-right padding-large" title="Alarm">         
            <img src="image/logo/alarm1.png" onmouseover="this.src='image/logo/alarm.png'" onmouseout="this.src='image/logo/alarm1.png'" width="30px" height="30px"/>
            <span class="count badge right small circle pink">${count}</span></a>

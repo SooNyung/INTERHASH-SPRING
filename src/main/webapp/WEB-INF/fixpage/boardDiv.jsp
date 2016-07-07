@@ -30,7 +30,7 @@ $(function() {
      });
        
 });
-$(function(){
+/* $(function(){
    $(".like").click(function(){
       var index = $(".like").index(this);
       if($(".like:eq("+index+")").hasClass("hide")){
@@ -53,7 +53,7 @@ $(function(){
          $(".like:eq("+indexu+")").removeClass("hide");
       }
    });
-});
+}); */
 
 function readURL(input) {
     if (input.files && input.files[0]) {
@@ -61,8 +61,8 @@ function readURL(input) {
        reader.onload = function (e) {
 
              $('#blah').attr('src', e.target.result); 
-             $('#blah').attr('height', '100px');
-             $('#blah').attr('width', '150px');
+             $('#blah').attr('height', '80px');
+             $('#blah').attr('width', '120px');
         }
 
       reader.readAsDataURL(input.files[0]);
@@ -121,6 +121,12 @@ function fileUploadPreview(thisObj, preViewer) {
 function tagCheck() {
 
 	url = "TagCheck.hash?check=y";
+	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+}
+
+function tagCheckUpdate() {
+
+	url = "TagCheckUpdate.hash?check=y";
 	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 }
 
@@ -520,6 +526,12 @@ function Map(){
    window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
    } 
 
+function MapUpdate(){
+	url="template2.hash";
+	window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
+	}  
+
+
 function mapopen(latitude,longtitude,maptitle ) {
    
    url = "mapopen.hash?latitude="+ latitude + "&longtitude="+longtitude+"&maptitle="+maptitle;
@@ -595,14 +607,17 @@ function modifyCon(connum){
 		url:url,
 		data:params,
 		dataType:"json",
-		success:function(args){	
-			
+		success:function(args){
 			$("#content1").attr("type","textarea");
 			$("#content1").attr("readonly",false);
 			$("#content1").css("border","1px");
 			
 			$("#left_mod_del_rep *").remove();
 			$("#left_mod_del_rep").append("<input id='align_right' type='button' value='수정버튼' onclick='modifypro("+connum+")'>");
+		
+			$("#left_mod_del_rep").append("<img src ='image/logo/tag.png' width='25px' height='25px' onClick='tagCheckUpdate()'>");
+			$("#left_mod_del_rep").append("<img src ='image/logo/place.png' width='25px' height='25px' onClick='MapUpdate()'>");
+
 			
 			$("#test_div *").remove();
 			$("#comment_div *").remove();
@@ -632,9 +647,14 @@ function modifyCon(connum){
 
 function modifypro(connum){
 	var content1 = document.getElementsByName('content1')[0].value;
+	var conhash = document.getElementsByName('tag')[0].value;
+	var maptitle = document.getElementsByName('maptitle')[0].value;
+	var mapplace = document.getElementsByName('mapplace')[0].value;
+	
 	var connum = connum;
 	var url = "/INTERHASH-SPRING/ContentUpdatePro.hash";
-	var params = "content="+content1+"&connum="+connum;
+	var params = "content="+content1+"&connum="+connum+"&conhash="+conhash+"&maptitle="+maptitle+"&mapplace="+mapplace;
+	
 	$.ajax({
 		type:"post",
 		url:url,
@@ -670,54 +690,6 @@ function mapopen(latitude,longtitude,maptitle ) {
    newwindow=window.open(url,"post","toolbar=no ,width=500 ,height=400 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
    //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
 }
-
-
-
-	
-function likeAjax(num,hash,like){
-	
-	var url="/INTERHASH-SPRING/LikeCheck.hash";
-	var params ="connum="+num+"&conhash="+hash;
-//	var snum=$("#likem").text();
-
-	$.ajax({
-		type:"post"
-		,url:url
-		,data:params
-		,dataType:"json"
- 		,success:function(args){
-
-			$('#likem').text(args.data);
-
- 		}
-	    ,error:function(request, status , err) {
-	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
-	    }
-	});
-}
-
-function unlikeAjax(num,hash,like){
-	
-	var url="/INTERHASH-SPRING/Unlike.hash";
-	var params ="connum="+num+"&conhash="+hash;
-//	var snum=$("#likep").text();
-
-	$.ajax({
-		type:"post"
-		,url:url
-		,data:params
-		,dataType:"json"
- 		,success:function(args){
- 			
- 			$('#likep').text(args.data);
- 
- 		}
-	    ,error:function(request, status , err) {
-	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
-	    }
-	});
-}
-
 function checkIt(){
 	
 	var content = eval("document.writeForm");
@@ -761,6 +733,7 @@ function checkIt(){
          <div class="photoBox" style="height: 100px; width: 100px;">
          
         <input type="text" name="tag" size="30" readonly style="border:0px; color:#FF73B8;" id="tag">
+      
          
             <input class='fileData' id = "conphoto" name="conphoto" type="file"/> 
                <div id="blah_img" >
@@ -807,17 +780,10 @@ function checkIt(){
 
 function likeAjax(num,hash,like){
 	
-	alert("like function");	
-	
+	$(".unlike").show();
+	$(".like").hide();
 	var url="/INTERHASH-SPRING/LikeCheck.hash";
 	var params ="connum="+num+"&conhash="+hash;
-//	var test = $(this).text(num);
-	
-//	var snum=$('#likep').text();
-//	alert(snum);	
-	
-//	alert( like );
-//	alert(${sessionScope.connum});
 
 	$.ajax({
 		type:"post"
@@ -825,8 +791,7 @@ function likeAjax(num,hash,like){
 		,data:params
 		,dataType:"json"
  		,success:function(args){
- 			//$('#liketest').eq(num).text(args.data);
- 			$("#liketest").text(args.data);
+ 			$("#like").text(args.data);
 
  		}
 	    ,error:function(request, status , err) {
@@ -837,12 +802,10 @@ function likeAjax(num,hash,like){
 
 function unlikeAjax(num,hash,like){
 	
-	alert("unlike function");
-	
+	$(".like").show();
+	$(".unlike").hide();
 	var url="/INTERHASH-SPRING/Unlike.hash";
 	var params ="connum="+num+"&conhash="+hash;
-	
-//	var test = $(this).text(num);
 	
 	$.ajax({
 		type:"post"
@@ -850,10 +813,7 @@ function unlikeAjax(num,hash,like){
 		,data:params
 		,dataType:"json"
  		,success:function(args){
- 			
- 			alert("unlike ajax!");
- 			$('#likep').text(args.data);
- //			#test.text(args.data);
+ 			$('#like').text(args.data);
  		}
 	    ,error:function(request, status , err) {
 	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
@@ -896,7 +856,7 @@ function unlikeAjax(num,hash,like){
       </a>  
     </div>
 
-    <p class="pro1">#${con.conhash}</p>
+    <p class="pro1">${con.conhash}</p>
 
    </div>
    
@@ -915,12 +875,16 @@ function unlikeAjax(num,hash,like){
    <div class="w3-btn">
     
 
-     <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>Like <i id="likep">${con.conlike}</i></button> 
+     <%-- <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>Like <i id="likep">${con.conlike}</i></button> 
      <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="likem"> ${con.conlike}</i></button>  
-
-    
+ 	 <button type="button" class="w3-theme-d3 w3-margin-bottom" onclick="location.href='Board.hash'"><i class="fa fa-comment"></i>  Comment ${con.connum}</button>  --%>
+ 		
+ 		<div align=center>
+ 	 	<i class="fa fa-thumbs-up w3-theme-d2 w3-margin-bottom"  id="like">&nbsp Like ${con.conlike} &nbsp </i>&nbsp &nbsp
+ 	 	<i class="fa fa-comment w3-theme-d2 w3-margin-bottom">&nbsp Comment ${con.connum} &nbsp </i>  
+    	</div>
+    	 
 	 <%-- <input type="button" id="btn" name="btn1" value="like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}','${con.conlike}')" > <i id="likep"> ${con.conlike} </i> --%>
-        
    
    <%-- <div id="board_img">
    <a href="ContentView.hash?connum=${con.connum}">
@@ -928,14 +892,8 @@ function unlikeAjax(num,hash,like){
       </a>
    </div>
    <div id ="board_main">
-   <a href="ContentView.hash?connum=${con.connum}">
+   <a href="ContentView.hash?connum=${con.connum}"> --%>
    
-
-  
-
-    <%-- <input type="button" class="btn2" id="btn" name="btn1" value="like" onclick="javascript:callAjax('${con.connum}','${con.conhash}')" > <i id="liketest"> ${con.conlike} </i> --%>
-	<input type="button" class="btn2" id="btn" name="btn1" value="like"  onclick="javascript:callAjax('${con.connum}','${con.conhash}')"><i id="liketest">${con.conlike}</i>
-    <button type="button" class="w3-theme-d3 w3-margin-bottom" onclick="location.href='Board.hash'"><i class="fa fa-comment"></i>  Comment ${con.connum}</button>  	
 	
 	</div>
 
