@@ -129,6 +129,7 @@ h2{font-family: 'Bad Script', cursive;}
 .small {
    display: inline !important;
    float: left;
+   padding:0px 0px 0px 0px;
 }
 
 .circle {
@@ -251,6 +252,9 @@ padding: 0px 5px 0px 5px;}
    background-color: #FFCCCC !important
 }
 
+
+/* button:hover{background-color: #B3B6B7 !important} */
+
 .left-align {
    text-align: left
 }
@@ -320,8 +324,8 @@ padding: 0px 5px 0px 5px;}
    height: 30px;
    /*    border:1px solid #bcbcbc; */
 }
-
 #jb-right{
+margin-right:60px;
    width:20%;
    height:100%;
    float:right;
@@ -345,6 +349,9 @@ padding: 0px 5px 0px 5px;}
    float: left;
    /*      border: 1px solid #bcbcbc; */
 }
+
+
+
 
 #jb-footer {
    width: 100%;
@@ -609,16 +616,16 @@ height:50px;
 }
 
 #buttonid {
-	color: white;
-	background-color: #FFCCCC;
-	border-radius: 7px !important;
-	padding:5px;
+   color: white;
+   background-color: #FFCCCC;
+   border-radius: 7px !important;
+   padding:5px;
 }
 #buttonid:hover {
-	color: white;
-	background-color: #FF9090;
-	border-radius: 7px !important;
-	padding:5px;
+   color: white;
+   background-color: #FF9090;
+   border-radius: 7px !important;
+   padding:5px;
 }
 </style>
 
@@ -716,8 +723,18 @@ height:50px;
       } 
    
    function alarmList(){
+
 	      url="alarmlist.hash?check=y";
-	      window.open(url,"post","toolbar=no ,width=500 ,height=400,directories=no,status=yes,menubar=no,scrollbars=no");}
+	      window.open(url,"post","toolbar=no ,width=500 ,height=400,directories=no,status=yes,menubar=no,scrollbars=no");
+
+	      }
+
+   function alarm(){
+	      url="Alarm.hash";
+	      window.open(url,"post","toolbar=no ,width=400 ,height=400,directories=no,status=yes,menubar=no,scrollbars=no");
+	      } 
+   
+
 
    $(document).ready(function() {
       if ($('#jb-content').outerHeight(true) < 800) {
@@ -734,7 +751,7 @@ height:50px;
    
    $(document).ready(function(){  
          
-        $(".topnav").hover(function() {                    //마우스를 topnav에 오버시
+        $(".topnav").click(function() {  //마우스를 topnav에 오버시     
          $(this).parent().find(".account").slideDown('normal').show();                   //subnav가 내려옴.
          $(this).parent().hover(function() {  
          }, function(){  
@@ -746,16 +763,19 @@ height:50px;
    
 
    $(document).ready(function(){           
-        $(".message").hover(function() {//마우스를 topnav에 오버시
-         $(this).parent().find("span").hide();      
+        $(".message").click(function() {//마우스를 topnav에 오버시    
+         ${this}.parent().find("a span").hide();
          $(this).parent().find(".sub").slideDown('normal').show();                   //subnav가 내려옴.
          $(this).parent().hover(function() {  
          }, function(){  
           $(this).parent().find(".sub").slideUp('fast');                 //subnav에서 마우스 벗어났을 시 원위치시킴  
          });  
-        });  
+        }); 
         
-        $(".alarm").hover(function() {//마우스를 topnav에 오버시
+
+        
+	
+        $(".alarm").click(function() {//마우스를 topnav에 오버시
             $(this).parent().find("span").hide();      
             $(this).parent().find(".al").slideDown('normal').show();                   //subnav가 내려옴.
             $(this).parent().hover(function() {  
@@ -763,6 +783,8 @@ height:50px;
              $(this).parent().find(".al").slideUp('fast');                 //subnav에서 마우스 벗어났을 시 원위치시킴  
             });  
            });
+        
+       
        }); 
    
    
@@ -811,9 +833,10 @@ height:50px;
             class="padding-large margin-right"><h2>I N T E R H A S H #</h2></a></li>
          <li class="small">
          <div class="message">
-         <a href="#" onclick="window.open('MessageList.hash','new','width=400 height=350');return false" 
+         <a href="#" 
          class="padding-large margin-right"  title="Messages">
-           <img src ="image/logo/message .png" onmouseover="this.src='image/logo/message2.png'" onmouseout="this.src='image/logo/message .png'" width="30px" height="30px"/><span class="count badge right small circle pink">${messagecount}</span>
+           <img src ="image/logo/message .png" onmouseover="this.src='image/logo/message2.png'" onmouseout="this.src='image/logo/message .png'" width="30px" height="30px"/>
+           <span class="count badge right small circle pink">${messagecount}</span>
          </a>
          </div>
       
@@ -844,7 +867,7 @@ height:50px;
          <li class="small">
 
           <div class="alarm">
-          <a href="#"   onclick="window.open('alarmlist.hash','new','width=500 height=400');return false"
+          <a href="#"  
           class="margin-right padding-large" title="Alarm">         
            <img src="image/logo/alarm1.png" onmouseover="this.src='image/logo/alarm.png'" onmouseout="this.src='image/logo/alarm1.png'" width="30px" height="30px"/>
            <span class="count badge right small circle pink">${count}</span></a>
@@ -872,7 +895,10 @@ height:50px;
                </table>
             </ul>
           
+
 		</li>
+
+
 
          <li class="small right">
          <div class="topnav">   <a href="#" title="MyAccount"><img id ="profileImg" src='<c:url value="/upload/${sessionScope.profilePhoto}" />' class="circle" width="10%" height="10%">
@@ -889,8 +915,8 @@ height:50px;
                <input type="text" name="hash" />
                </div>
                <div style="float:right;">
-                <input type="image" src ="image/logo/search.png" width="30px" height="30px"/>
-            	</div>
+                <input type="image" src ="image/logo/search.png" class="circle" width="30px" height="30px"/>
+            </div>
             </form>
          </div>
 
@@ -923,7 +949,7 @@ height:50px;
 
    <!-- main -->
    <div id="main">
-   <div id=sidebar_content style="float:left; width:80%">
+   <div id=sidebar_content style="float:left; width:75%">
       <div id="jb-sidebar">
          <!-- Profile -->
          <div class="box-shadow border-round white padding">
@@ -1027,7 +1053,7 @@ height:50px;
              <li><a href="Board.hash?hash=독도">#독도</a></li>
              <li><a href="Board.hash?hash=맥주">#맥주</a></li> -->   
             <span class="tag font-small w3-theme-d1 border-round">
-            <a id ="a" class="pro1" href="hashLike.hash?conhash=${tagname}" >#${tagname}</a></span>    
+            <a id ="a" class="pro1" href="hashLike.hash?conhash=${tagname}" >${tagname}</a></span>    
             </c:forEach>            
           </p>
         </div>

@@ -151,21 +151,23 @@ label:focus, label:hover {
 			checkflag = "false";
 		}
 	};
-	function sendValue(){
-		var a = "asfasdf";
-		//alert(document.tagcheck.val.value);
-		//opener.document.fo.aaaaa.value = document.tagcheck.favorite.value;
+function sendValue(){
+		
 		var obj = document.getElementsByName("hash");
-		for (var i = 0; i < obj.length; i++) {
-			if (obj[i].checked == true) {
-				opener.document.UpdateContent.updatetag.value = document.getElementsByName("hash")[i].value;
-				break;
-			}
+		var chklen = obj.length;
+		var checkList ="";
+			// 체크박스의 갯수를 변수에 담는다.
+			 
+			// 체크박스 갯수만큼 for 문을 돌려 체크된 넘의 value값을 가져온다.
+			 for(i=0; i<chklen; i++){
+			    if(obj[i].checked == true){
+			      checkList+="#"+obj[i].value+" ";
+			      
+			    }
+			  }
+			 opener.document.UpdateContent.updatetag.value = checkList;
+			 window.close();
 		}
-		//opener.document.fo.aaaaa.value = document.getElementsByName("favorite")[0].value;
-		/* self.opener = self; */
-		window.close();
-	}
 	
 </script>
 </head>

@@ -313,9 +313,9 @@ function selectInfo2(marker, title,placePosition) {
 	
 	ps.keywordSearch(title, placesSearchCB);
 			//removeMarker();
-	opener.document.writeForm.maptitle.value = title;
-	opener.document.writeForm.mapplace.value = placePosition;
 
+	opener.document.UpdateContent.maptitle.value = title;
+	opener.document.UpdateContent.mapplace.value = placePosition;
 	
 	window.close();
 }
