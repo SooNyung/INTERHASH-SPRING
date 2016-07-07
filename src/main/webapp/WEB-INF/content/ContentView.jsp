@@ -208,7 +208,7 @@ color:#5AAEFF;
 </div>
 
 <div id="view_right" class="box-shadow border-round white">
-	<input type=button onclick="location.href='Board.hash'" value="X" style="float:right">
+	<input type=button onclick="location.href='Board.hash'" class="w3-theme-d1 w3-margin-bottom" value="X" style="float:right">
 	
 	
 	<form method="post" action="InsertComment.hash">
@@ -227,7 +227,7 @@ color:#5AAEFF;
 	
 	<div id="comment_submit">
 		<span id="align_right">
-		<input type="button" id="rptl" value="개시" onclick="javascript:insert1(${content.connum})"> </span>
+		<input type="button" id="rptl" value="개시" class="w3-theme-d1 w3-margin-bottom" onclick="javascript:insert1(${content.connum})"> </span>
 	</div>
 	</form>
 	
