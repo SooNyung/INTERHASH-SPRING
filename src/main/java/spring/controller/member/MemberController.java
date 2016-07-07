@@ -356,10 +356,11 @@ public class MemberController {
 
 	// hash≈¨∏Ø
 	@RequestMapping("/hashLike.hash")
-	public String hashlike(Model model, HttpSession session, String conhash) {
+	public String hashlike(Model model, HttpSession session, @RequestParam("conhash") String conhash) {
 
 		String email = (String) session.getAttribute("memId");
 		MemberCommand command = dao.getMemberInfo(email);
+		System.out.println(conhash);
 		session.setAttribute("content", cdao.hashLike(conhash));
 		session.setAttribute("memberinfo", command);
 		session.setAttribute("messagecount", mdao.getMessageCount(email));
