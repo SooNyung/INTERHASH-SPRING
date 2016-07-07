@@ -271,49 +271,6 @@ $(document).ready(function(){
 	</div>
 
    
-   <div id="right_nick">
-      <span id ="align_left"><b>${sessionScope.nickName}</b>님</span>
-      <!-- <span id="align_right"><input type="button" onclick="back()" value="닫기버튼"></span> -->
-      
-   </div>
-   <div id="comment_content">
-      <textarea id="comment_textarea" name="comcontent" placeholder="댓글을 입력해주세요"></textarea>
-   </div>
-   
-   <div id="comment_submit">
-      <span id="align_right">
-      <input type="submit" value="개시"></span>
-      <input type="button" id="rptl" value="개시시" onclick="javascript:insert(${content.connum})"> 
-   </div>
-   </form>
-   
-   <div id="comment_view" style="height:460px; overflow-x:auto" onchange="reload();">
-   
-   <div id="test_div"></div>
-    <c:forEach var="comment" items="${comment}">
-      
-   <div id="comment_div">   
-   <input type=hidden name=comnum value="${comment.comnum}">
-   <span><b id="nickname">${comment.comnick}</b></span>
-   
-   <span><label id="time">${sdf.format(comment.commodifieddate)}</label></span>
-   
-   <span id="align_right">
-   
-      <c:if test="${sessionScope.memId==comment.email}">
-      <a href="#" onclick="delete1(${comment.comnum},${comment.connum})">삭제</a>
-      <a href="#" onclick="modify(${comment.comnum},${comment.connum})">수정</a>
-      </c:if   >
-      
-      <c:if test="${sessionScope.memId!=comment.email}">
-      <a onclick="reportCom(${comment.comnum})">신고</a>
-      </c:if>   
-   </span><br> 
-   <div id="test"><textarea id="comment_textara" borderStyle="none" cols=50 readonly="readonly" class="autosize">${comment.comcontent}</textarea></div>
-   </div>   
-   </c:forEach>  
-   </div>
-   
 </div>
 
 </div>
