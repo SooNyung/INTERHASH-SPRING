@@ -251,13 +251,13 @@ color:#5AAEFF;
 	</div>	
 	</c:forEach>  
 	</div>
+	
    <form>
    <div id="left_nickndate">
       <span id ="align_left"><b>${sessionScope.nickName}</b>님</span>
-      
-      
    </div>      
    </form>
+
 </div>
 
 
