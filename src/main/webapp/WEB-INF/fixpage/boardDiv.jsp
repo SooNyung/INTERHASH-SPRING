@@ -526,6 +526,12 @@ function Map(){
    window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
    } 
 
+function MapUpdate(){
+	url="template2.hash";
+	window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
+	}  
+
+
 function mapopen(latitude,longtitude,maptitle ) {
    
    url = "mapopen.hash?latitude="+ latitude + "&longtitude="+longtitude+"&maptitle="+maptitle;
@@ -611,8 +617,9 @@ function modifyCon(connum){
 			$("#left_mod_del_rep").append("<input id='align_right' type='button' value='수정버튼' onclick='modifypro("+connum+")'>");
 		
 			$("#left_mod_del_rep").append("<img src ='image/logo/tag.png' width='25px' height='25px' onClick='tagCheckUpdate()'>");
-			
+			$("#left_mod_del_rep").append("<img src ='image/logo/place.png' width='25px' height='25px' onClick='MapUpdate()'>");
 
+			
 			$("#test_div *").remove();
 			$("#comment_div *").remove();
 			for(var i=0;i<args.data.length;i++){
@@ -642,9 +649,13 @@ function modifyCon(connum){
 function modifypro(connum, conhash){
 	var content1 = document.getElementsByName('content1')[0].value;
 	var conhash = document.getElementsByName('tag')[0].value;
+	var maptitle = document.getElementsByName('maptitle')[0].value;
+	var mapplace = document.getElementsByName('mapplace')[0].value;
+	
 	var connum = connum;
 	var url = "/INTERHASH-SPRING/ContentUpdatePro.hash";
-	var params = "content="+content1+"&connum="+connum+"&conhash="+conhash;
+	var params = "content="+content1+"&connum="+connum+"&conhash="+conhash+"&maptitle="+maptitle+"&mapplace="+mapplace;
+	
 	$.ajax({
 		type:"post",
 		url:url,

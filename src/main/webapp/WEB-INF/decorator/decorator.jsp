@@ -751,7 +751,7 @@ height:50px;
 
    $(document).ready(function(){           
         $(".message").click(function() {//마우스를 topnav에 오버시
-         $(this).parent().find("span").hide();      
+         $(this).parent().find("a span").hide();      
          $(this).parent().find(".sub").slideDown('normal').show();                   //subnav가 내려옴.
          $(this).parent().hover(function() {  
          }, function(){  
@@ -760,7 +760,7 @@ height:50px;
         });  
         
         $(".alarm").click(function() {//마우스를 topnav에 오버시
-            $(this).parent().find("span").hide();      
+            $(this).parent().find("a span").hide();      
             $(this).parent().find(".al").slideDown('normal').show();                   //subnav가 내려옴.
             $(this).parent().hover(function() {  
             }, function(){  
