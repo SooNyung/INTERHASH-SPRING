@@ -88,6 +88,10 @@ public class ContentDAO {
 		return session.selectList("writecontent.hashLike",conhash);
 	}
 	
+	public List<ContentCommand> search(String searchname) {
+		return session.selectList("writecontent.search", searchname);
+	}
+	
 /*	public ContentCommand getContent(int connum) throws Exception {
 		ContentCommand content = null;
 		

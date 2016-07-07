@@ -32,7 +32,7 @@
 	</select>
 	
 	<select id="test" resultType="String">
-		select email from commenttable;
+		select email from commenttable
 	</select>
 	
 	<select id="date" parameterType="int" resultType="java.sql.Date">

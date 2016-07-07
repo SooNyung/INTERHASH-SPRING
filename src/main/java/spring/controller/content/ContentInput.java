@@ -57,6 +57,12 @@ public class ContentInput {
 		return "userpage/TagCheckUpdate";
 	}
 	
+	@RequestMapping("/MapUpdate.hash")
+	private String mapUpdate(@RequestParam("check") String check,Model model){
+		model.addAttribute("check","y");
+		return "userpage/TagCheckUpdate";
+	}
+	
 	@RequestMapping("/ContentInputPro.hash")
 	public String file_upload(@RequestParam("conphoto") MultipartFile conphoto,@ModelAttribute("writeForm") ContentCommand content,  
 			HttpServletRequest request,@RequestParam("tag") String tag) {
