@@ -61,8 +61,8 @@ function readURL(input) {
        reader.onload = function (e) {
 
              $('#blah').attr('src', e.target.result); 
-             $('#blah').attr('height', '100px');
-             $('#blah').attr('width', '150px');
+             $('#blah').attr('height', '80px');
+             $('#blah').attr('width', '120px');
         }
 
       reader.readAsDataURL(input.files[0]);
