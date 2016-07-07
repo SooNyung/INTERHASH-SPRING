@@ -319,6 +319,7 @@ function modal_close(){
 }
 
 #imageon {
+ 
    height: 30px;
    background: #ffffff;
 }
@@ -394,15 +395,15 @@ a {
 #View {
   color: #797D7F;
   outline: 0;
-  /* text-decoration: none; */
+   text-decoration: none; 
   font-weight: bold;
 }
 
 /* #View:hover{
    color:#ffcccc;
 } */
-a:focus, a:hover {
- /*  text-decoration: underline;  */
+a,a:focus, a:hover {
+   text-decoration: none;  
   color:#ffcccc;
   
 }
@@ -660,6 +661,7 @@ function checkIt(){
              <img src='<c:url value="/image/logo/photo.png" />' width="30px" height="30px" onclick="$('.fileData:last').click();" /> 
             </span> 
             
+
             <span id="imageon" style="width: 50px; float: left;">
             <img src='<c:url value="/image/logo/place.png" />' width="30px" height="30px" onclick="Map()" />
            <input type="hidden" name="maptitle" size="10px" readonly/>
@@ -669,15 +671,32 @@ function checkIt(){
             <div id="taglist" style="width: 110px; float:left; padding-right:180px; padding-bottom:0px">
             <div style="float:left">
                <input type="text" name="tag" size="7" readonly>
+
+
+
+            <div id="taglist" style="width:23px; float:left; padding-right:230px; padding-bottom:0px">
+            <div style="float:left">
+
+            
             </div>
              <div style="float:right">  
-               <img src ="image/logo/tag.png" width="25px" height="25px" onClick="tagCheck()">
+               <img src ="image/logo/tag.png" width="25px" height="25px" onClick="tagCheck()">             
              </div>
+             
             </div> 
-                 
-             <span id="submit"> 
-               <!--      <input type="submit" id="button" value="submit"/>  -->
-               <input type="image" src="image/logo/post.PNG"> 
+
+               
+               <span id="imageon" style="float: left; padding-left:30px;">
+            <img src='<c:url value="/image/logo/place.png" />' width="30px" height="30px" onclick="Map()" />
+            <span><input type="text" style="border: 0px;" value="위치 설정한 곳" name="maptitle" size="11px" readonly/>에서 </span>
+            <input type="hidden" name="mapplace" />          
+            </span> 
+               
+             <span id="submit" style="float:right"> 
+         		<!--      <input type="submit" id="button" value="submit"/>  -->
+         		<input type="image" src="image/logo/post.PNG"> 
+
+
          
              </span>
          </div>
