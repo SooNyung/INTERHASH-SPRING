@@ -14,10 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.method.support.ModelAndViewContainer;
 import org.springframework.web.servlet.ModelAndView;
 
-import jdk.nashorn.internal.ir.RuntimeNode.Request;
 import mybatis.CommentDAO;
 import mybatis.ContentDAO;
 import net.sf.json.JSONObject;
@@ -175,15 +173,20 @@ public class ContentModify {
 
 		
 		
+		System.out.println("contentdto:::::::::::"+contentdto);
 		int result = contentdao.modifyContent(contentdto);
-		System.out.println("zzz");
+
+
+
+		System.out.println("test3");
 		JSONObject jso = new JSONObject();
-		
+		System.out.println("test4");
 		PrintWriter out = resp.getWriter();
-		
+		System.out.println("test5");
 		/*jso.put("result", result);*/
-		
+		System.out.println("test6");
 		out.print(jso.toString());
+		System.out.println("test7");
 
 	}
 /*	
