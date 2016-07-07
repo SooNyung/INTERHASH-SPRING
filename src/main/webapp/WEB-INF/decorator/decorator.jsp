@@ -129,7 +129,6 @@ h2{font-family: 'Bad Script', cursive;}
 .small {
    display: inline !important;
    float: left;
-   padding:0px 0px 0px 0px;
 }
 
 .circle {
@@ -251,9 +250,6 @@ padding: 0px 5px 0px 5px;}
    color: #fff !important;
    background-color: #FFCCCC !important
 }
-
-
-/* button:hover{background-color: #B3B6B7 !important} */
 
 .left-align {
    text-align: left
@@ -723,18 +719,9 @@ height:50px;
       } 
    
    function alarmList(){
-
-	      url="alarmlist.hash?check=y";
-	      window.open(url,"post","toolbar=no ,width=500 ,height=400,directories=no,status=yes,menubar=no,scrollbars=no");
-
-	      }
-
-   function alarm(){
-	      url="Alarm.hash";
-	      window.open(url,"post","toolbar=no ,width=400 ,height=400,directories=no,status=yes,menubar=no,scrollbars=no");
-	      } 
-   
-
+         url="alarmlist.hash?check=y";
+         window.open(url,"post","toolbar=no ,width=500 ,height=400,directories=no,status=yes,menubar=no,scrollbars=no");
+         }
 
    $(document).ready(function() {
       if ($('#jb-content').outerHeight(true) < 800) {
@@ -751,7 +738,7 @@ height:50px;
    
    $(document).ready(function(){  
          
-        $(".topnav").click(function() {  //마우스를 topnav에 오버시     
+        $(".topnav").hover(function() {                    //마우스를 topnav에 오버시
          $(this).parent().find(".account").slideDown('normal').show();                   //subnav가 내려옴.
          $(this).parent().hover(function() {  
          }, function(){  
@@ -763,19 +750,16 @@ height:50px;
    
 
    $(document).ready(function(){           
-        $(".message").click(function() {//마우스를 topnav에 오버시    
-         ${this}.parent().find("a span").hide();
+        $(".message").hover(function() {//마우스를 topnav에 오버시
+         $(this).parent().find("span").hide();      
          $(this).parent().find(".sub").slideDown('normal').show();                   //subnav가 내려옴.
          $(this).parent().hover(function() {  
          }, function(){  
           $(this).parent().find(".sub").slideUp('fast');                 //subnav에서 마우스 벗어났을 시 원위치시킴  
          });  
-        }); 
+        });  
         
-
-        
-	
-        $(".alarm").click(function() {//마우스를 topnav에 오버시
+        $(".alarm").hover(function() {//마우스를 topnav에 오버시
             $(this).parent().find("span").hide();      
             $(this).parent().find(".al").slideDown('normal').show();                   //subnav가 내려옴.
             $(this).parent().hover(function() {  
@@ -783,8 +767,6 @@ height:50px;
              $(this).parent().find(".al").slideUp('fast');                 //subnav에서 마우스 벗어났을 시 원위치시킴  
             });  
            });
-        
-       
        }); 
    
    
@@ -833,10 +815,9 @@ height:50px;
             class="padding-large margin-right"><h2>I N T E R H A S H #</h2></a></li>
          <li class="small">
          <div class="message">
-         <a href="#" 
+         <a href="#" onclick="window.open('MessageList.hash','new','width=400 height=350');return false" 
          class="padding-large margin-right"  title="Messages">
-           <img src ="image/logo/message .png" onmouseover="this.src='image/logo/message2.png'" onmouseout="this.src='image/logo/message .png'" width="30px" height="30px"/>
-           <span class="count badge right small circle pink">${messagecount}</span>
+           <img src ="image/logo/message .png" onmouseover="this.src='image/logo/message2.png'" onmouseout="this.src='image/logo/message .png'" width="30px" height="30px"/><span class="count badge right small circle pink">${messagecount}</span>
          </a>
          </div>
       
@@ -867,7 +848,7 @@ height:50px;
          <li class="small">
 
           <div class="alarm">
-          <a href="#"  
+          <a href="#"   onclick="window.open('alarmlist.hash','new','width=500 height=400');return false"
           class="margin-right padding-large" title="Alarm">         
            <img src="image/logo/alarm1.png" onmouseover="this.src='image/logo/alarm.png'" onmouseout="this.src='image/logo/alarm1.png'" width="30px" height="30px"/>
            <span class="count badge right small circle pink">${count}</span></a>
@@ -895,10 +876,7 @@ height:50px;
                </table>
             </ul>
           
-
-		</li>
-
-
+      </li>
 
          <li class="small right">
          <div class="topnav">   <a href="#" title="MyAccount"><img id ="profileImg" src='<c:url value="/upload/${sessionScope.profilePhoto}" />' class="circle" width="10%" height="10%">
@@ -1053,7 +1031,7 @@ height:50px;
              <li><a href="Board.hash?hash=독도">#독도</a></li>
              <li><a href="Board.hash?hash=맥주">#맥주</a></li> -->   
             <span class="tag font-small w3-theme-d1 border-round">
-            <a id ="a" class="pro1" href="hashLike.hash?conhash=${tagname}" >${tagname}</a></span>    
+            <a id ="a" class="pro1" href="hashLike.hash?conhash=${tagname}" >#${tagname}</a></span>    
             </c:forEach>            
           </p>
         </div>

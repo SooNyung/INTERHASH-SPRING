@@ -95,13 +95,11 @@ public class ContentViewAction {
 	
 	@RequestMapping("/ContentView.hash")
 	public ModelAndView contentView(@ModelAttribute("contentdao") ContentCommand content,
-			@ModelAttribute("commentdto") CommentCommand comment, HttpServletRequest request,HttpServletResponse resp,@RequestParam("connum")int connum,
-			String maptitle,String longtitude, String latitude) throws Exception {
+			@ModelAttribute("commentdto") CommentCommand comment, HttpServletRequest request,HttpServletResponse resp,@RequestParam("connum")int connum) throws Exception {
 		ModelAndView mav = new ModelAndView("content/ContentView");
 		/*int connum = Integer.parseInt(request.getParameter("connum"));*/
 	
 		SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:mm");
-		
 		content = contentdao.getContent(connum);
 		String conhash = content.getConhash();
 		String email = content.getEmail();
@@ -114,9 +112,7 @@ public class ContentViewAction {
 		
 		int count = commentdao.commentcount(connum);
 		
-		mav.addObject("maptitle", maptitle);
-		mav.addObject("longtitude",longtitude);
-		mav.addObject("latitude", latitude);
+		
 		mav.addObject("content", content);
 		mav.addObject("sdf", sdf);
 		mav.addObject("comment", array);
