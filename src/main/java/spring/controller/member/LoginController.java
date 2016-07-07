@@ -16,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import mybatis.MemberDAO;
@@ -33,8 +32,6 @@ public class LoginController {
 		this.dao = dao;
 	}
 	
-	
-
 	// 로그인폼
 	@RequestMapping("/LoginForm.hash")
 	private String login(HttpSession session) 
@@ -57,6 +54,7 @@ public class LoginController {
 		String pw = dao.findPassword(info);
 		System.out.println("pw ::: " + pw );
 		
+		
 		//System.out.println("dao.nick(info) ::: " + nick);
 		//System.out.println("dao.login(info) :: " + result);
 		
@@ -68,12 +66,10 @@ public class LoginController {
 			System.out.println("path ::: " + path);
 			
 			dao.visitor(visit);
-			
-			
+
 			session.setAttribute("memId", info.getEmail());
 			session.setAttribute("nickName", nick);
 			session.setAttribute("profilePhoto", path);
-//			session.setAttribute("togle", "on");
 
 			System.out.println("로그인 성공");	
 			return mv;		
