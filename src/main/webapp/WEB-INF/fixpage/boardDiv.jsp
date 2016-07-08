@@ -474,7 +474,6 @@ function Map(){
 
 
 function mapopen(latitude,longtitude,maptitle){
-	
 	url = "mapopen.hash?latitude="+ latitude + "&longtitude="+longtitude+"&maptitle="+maptitle;
 	newwindow=window.open(url,"post","toolbar=no ,width=500 ,height=400 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 	//location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
@@ -533,7 +532,6 @@ function MapUpdate(){
 
 
 function mapopen(latitude,longtitude,maptitle ) {
-   
    url = "mapopen.hash?latitude="+ latitude + "&longtitude="+longtitude+"&maptitle="+maptitle;
    newwindow=window.open(url,"post","toolbar=no ,width=500 ,height=400 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
    //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
@@ -542,9 +540,7 @@ function mapopen(latitude,longtitude,maptitle ) {
 	
 
 function deleteCon(connum){
-	
  	var connum = connum;
- 	
 	 if(confirm("삭제하시겠습니까?")){
 	 	location.href="ContentDelete.hash?connum="+connum;	
 	     alert("삭제되었습니다.");
@@ -553,7 +549,6 @@ function deleteCon(connum){
 	 else{
 	      return false;
 	 } 
-	 
 	}
 	
 
@@ -598,10 +593,11 @@ function insert1(connum){
 
 
 function modifyCon(connum){
-	var connum = connum;
+	
+alert('여기');
+	 var connum = connum;
 	var url = "/INTERHASH-SPRING/ContentUpdate.hash";
 	var params = "connum="+connum;
-	
 	$.ajax({
 		type:"post",
 		url:url,
@@ -642,11 +638,13 @@ function modifyCon(connum){
 			,error: function (xhr, status, err){
 				alert(err);
 			} 
-	});
+	}); 
 }
 
 function modifypro(connum){
-	var content1 = document.getElementsByName('content1')[0].value;
+	
+
+  	var content1 = document.getElementsByName('content1')[0].value;
 	var conhash = document.getElementsByName('tag')[0].value;
 	var maptitle = document.getElementsByName('maptitle')[0].value;
 	var mapplace = document.getElementsByName('mapplace')[0].value;
@@ -671,17 +669,17 @@ function modifypro(connum){
 					"--!><span id='align_right'><a href='#' onclick='modifyCon("+connum+")'>수정하기 </a></span>")
 					
 
-			$("#place").remove();
-			$("#place").append("<a href='#' onclick= 'javascript:mapopen("+${latitude}+","+${longtitude}+","+${maptitle}+")'>
+	/* 		$("#place *").remove();
+		 	$("#place").append("<a href='#' onclick= 'javascript:mapopen("+${latitude}+","+${longtitude}+","+${maptitle}+")'>
 			'<font color="#666"><b>'+${maptitle}+'</b>에서</font></a>");
-
+  */
 		}
 			,error: function (xhr, status, err){
 				alert(err);
 				alert('실패');
 			} 
-	});
-	
+	});  
+	 
 }
 
 
