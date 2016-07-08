@@ -48,6 +48,7 @@
 		select * from contents where email =#{email} order by
 		conmodifieddate desc
 	</select>
+	
 	<select id="search" parameterType="String" resultType="spring.model.ContentCommand">
 		select *
 		from contents where content like '%' || #{searchname} || '%' 
@@ -55,8 +56,7 @@
 		or conhash like '%' || #{searchname} || '%' 
 		or maptitle like '%' || #{searchname} || '%'
 		order by
-		conmodifieddate desc
-		
+		conmodifieddate desc		
 	</select>
 	
 	<select id ="search_date" parameterType ="String" resultType="String">

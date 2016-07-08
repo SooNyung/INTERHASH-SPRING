@@ -70,7 +70,7 @@ System.out.println("test1");
 	SimpleDateFormat sdf= new SimpleDateFormat("YY-MM-dd HH:mm");
 	String comnick = (String) request.getSession().getAttribute("nickName");
 	String comcontent = request.getParameter("comcontent");
-
+	int kinds = 0;
 	String receivedemail = alarmdao.receivedEmail(connum);
 
 	String comip = request.getRemoteAddr();
@@ -85,6 +85,7 @@ System.out.println("test1");
 	
 	int result = commentdao.insertComment(commentdto1);
 
+	dto.setKinds(kinds);
 	dto.setComnick(comnick);
 	dto.setConnum(connum);
 	dto.setReceivedemail(receivedemail);

@@ -4,7 +4,7 @@
 <mapper namespace="alarm">
 <insert id="insert" parameterType="spring.model.AlarmCommand">
 		insert into alarm
-		values(alarmnum_seq.nextval,#{receivedemail},#{comnick},#{connum},sysdate)
+		values(#{receivedemail},#{comnick},#{connum},sysdate,0,#{kinds})
 	</insert>
 
 <select id="receivedemail" parameterType="spring.model.ContentCommand"  resultType="string">

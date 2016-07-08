@@ -3,20 +3,15 @@ package spring.model;
 import java.sql.Date;
 
 public class AlarmCommand {
-	private int alarmnum;
+	
 	private String receivedemail;
 	private String comnick;
 	private int connum;
 	private Date alarmdate;
+	private int alarmnum;
+	private int kinds;
 	
-	
-	
-	public int getAlarmnum() {
-		return alarmnum;
-	}
-	public void setAlarmnum(int alarmnum) {
-		this.alarmnum = alarmnum;
-	}
+
 	public Date getAlarmdate() {
 		return alarmdate;
 	}
@@ -43,7 +38,18 @@ public class AlarmCommand {
 	public void setConnum(int connum) {
 		this.connum = connum;
 	}
-	
+	public int getAlarmnum() {
+		return alarmnum;
+	}
+	public void setAlarmnum(int alarmnum) {
+		this.alarmnum = alarmnum;
+	}
+	public int getKinds() {
+		return kinds;
+	}
+	public void setKinds(int kinds) {
+		this.kinds = kinds;
+	}
 	
 
 }
