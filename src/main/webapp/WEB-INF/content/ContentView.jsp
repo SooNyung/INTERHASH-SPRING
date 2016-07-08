@@ -144,7 +144,7 @@ color:#5AAEFF;
    }
    
    #test{border-bottom:1px solid;}
-	
+
 </style>
 
 </head>
@@ -177,8 +177,10 @@ color:#5AAEFF;
 	<div id="content_photo" style="height:490px; overflow-x:auto">
 
 		<input type="text" id="content1" name="content1" style="border:0px" readonly value="${content.content}"><br>
+		<c:if test="${!empty content.maptitle}">
 		<div id="place">-<a href="#" onclick= "javascript:mapopen('${content.latitude}','${content.longtitude}','${content.maptitle}')" >
    <font color="#666"><b>${content.maptitle}</b>에서</font></a><br></div><br>
+   		</c:if>
 
 		<div id="tagtest">
 		<input type="text" name="tag" size="30" readonly style="border:0px; color:#FF73B8;" id="tag" value="${content.conhash}"><br><br>
@@ -187,6 +189,7 @@ color:#5AAEFF;
 		<c:forEach var="photo" items="${content.photolist}">
 		
 		<img id="img" src='<c:url value="/upload/${content.photolist[0].realpath }" />'/>
+
 
 		</c:forEach>
 
@@ -263,6 +266,7 @@ color:#5AAEFF;
       <span id ="align_left"><b>${sessionScope.nickName}</b>님</span>
    </div>      
    </form>
+
 
 </div>
 

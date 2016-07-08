@@ -4,15 +4,15 @@
 <mapper namespace="alarm">
 <insert id="insert" parameterType="spring.model.AlarmCommand">
 		insert into alarm
-		values(#{receivedemail},#{comnick},#{connum},sysdate)
+		values(alarmnum_seq.nextval,#{receivedemail},#{comnick},#{connum},sysdate)
 	</insert>
 
 <select id="receivedemail" parameterType="spring.model.ContentCommand"  resultType="string">
-	select email from contents where connum=#{connum}
+	select email from contents where connum=#{connum} 
 </select>
 
 <select id="all" parameterType="string" resultType="spring.model.AlarmCommand">
-	select * from alarm where receivedemail=#{email}
+	select * from alarm where receivedemail=#{email} order by alarmdate desc
 </select>
 
 <select id="count" parameterType="string" resultType="int">

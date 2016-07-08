@@ -84,14 +84,14 @@ text-align: center;
 <!-- <div id="bar"> -->
 
 <!-- </div> -->
-<h2><spen id="heart" class="fontawesome-heart"></spen>Alarm<spen id="heart" class="fontawesome-heart"/></h2>
+<h2><span id="heart" class="fontawesome-heart"></span>Alarm<span id="heart" class="fontawesome-heart"/></h2>
 <hr>
 	<c:forEach var="list" items="${alarmlist}">
 		<c:if test="${list!=null}">
 		<div>
 			<span><b id="fontsize">Sender |</b> <label id="fontsize">${list.comnick}</label></span><br> 
 			<span><b id="fontsize">From time |</b> 
-<%-- 		<label id="fontsize"> ${sdf.format(list.alarmdate)} </label> --%>
+	<label id="fontsize"> ${list.alarmdate} </label>
 			</span><br><hr>
 				<span>  <a href="ContentView.hash?connum=${list.connum}" 
 				onClick="window.open(this.href, '', 'width=1000, height=650'); return false;">

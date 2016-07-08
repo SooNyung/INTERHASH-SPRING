@@ -251,6 +251,10 @@ padding: 0px 5px 0px 5px;}
    background-color: #FFCCCC !important
 }
 
+
+/* button:hover{background-color: #B3B6B7 !important} */
+
+
 .left-align {
    text-align: left
 }
@@ -817,7 +821,8 @@ height:50px;
          <div class="message">
          <a href="#" 
          class="padding-large margin-right"  title="Messages">
-           <img src ="image/logo/message .png" onmouseover="this.src='image/logo/message2.png'" onmouseout="this.src='image/logo/message .png'" width="30px" height="30px"/><span class="count badge right small circle pink">${messagecount}</span>
+           <img src ="image/logo/message .png" onmouseover="this.src='image/logo/message2.png'" onmouseout="this.src='image/logo/message .png'" width="30px" height="30px"/>
+           <span class="count badge right small circle pink">${messagecount}</span>
          </a>
          </div>
       
@@ -888,9 +893,9 @@ height:50px;
             </ul></li>
 
          <div id="jb_search">
-            <form method="post" action="Search.hash">
+            <form method="post" action="Board.hash">
               <div style="float:left">
-               <input type="text" name="searchname" />
+               <input type="text" name="hash" />
                </div>
                <div style="float:right;">
                 <input type="image" src ="image/logo/search.png" class="circle" width="30px" height="30px"/>
