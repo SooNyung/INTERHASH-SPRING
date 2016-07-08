@@ -251,11 +251,10 @@ padding: 0px 5px 0px 5px;}
    background-color: #FFCCCC !important
 }
 
-<<<<<<< HEAD
+
 /* button:hover{background-color: #B3B6B7 !important} */
 
-=======
->>>>>>> b045f0865ea69fe8fdb30c34212fbaf1bd55146d
+
 .left-align {
    text-align: left
 }

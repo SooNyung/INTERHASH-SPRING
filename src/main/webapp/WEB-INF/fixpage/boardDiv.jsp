@@ -564,7 +564,7 @@ function mapopen(latitude,longtitude,maptitle ) {
    
    url = "mapopen.hash?latitude="+ latitude + "&longtitude="+longtitude+"&maptitle="+maptitle;
    newwindow=window.open(url,"post","toolbar=no ,width=500 ,height=400 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
-   //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
+
 }
 
 function checkIt(){
@@ -651,11 +651,35 @@ function checkIt(){
       
 <!-- 좋아요 기능 function -->
 <script>
+function likeAjax(num,hash){
+	
+	$(".unlike").show(); //보이기
+    $(".like").hide(); //숨기기
+    //$('.unlike').attr('disabled',false);
+	var url="/INTERHASH-SPRING/LikeCheck.hash";
+	var params ="connum="+num+"&conhash="+hash;
+
+	$.ajax({
+		type:"post"
+		,url:url
+		,data:params
+		,dataType:"json"
+ 		,success:function(args){
+ 			$("#like").text(args.data);
+ 			//$('.like').attr('disabled',true);  //버튼 비활성화
+
+ 		}
+	    ,error:function(request, status , err) {
+	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
+	    }
+	});
+}
 
 function unlikeAjax(num,hash,like){
 	
 	$(".like").show(); //보이기
     $(".unlike").hide(); //숨기기
+    //$('.like').attr('disabled',false);
 	var url="/INTERHASH-SPRING/Unlike.hash";
 	var params ="connum="+num+"&conhash="+hash;
 	
@@ -666,38 +690,14 @@ function unlikeAjax(num,hash,like){
 		,dataType:"json"
  		,success:function(args){
  			
- 			$('#liketest').text(args.data);
+ 			$('#like').text(args.data);
+ 			//$('.unlike').attr('disabled',true);  //버튼 비활성화
  		}
 	    ,error:function(request, status , err) {
 	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
 	    }
 	});
 }
-
-function callAjax(num,hash){
-	
-	$(".unlike").show(); //보이기
-    $(".like").hide(); //숨기기
-	var url="/INTERHASH-SPRING/LikeCheck.hash";
-	var params ="connum="+num+"&conhash="+hash;
-
-	$.ajax({
-		type:"post"
-		,url:url
-		,data:params
-		,dataType:"json"
- 		,success:function(args){
- 			$("#liketest").text(args.data);
-
- 		}
-	    ,error:function(request, status , err) {
-	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
-	    }
-	});
-}
-
-
-
 </script>
 
 
@@ -756,7 +756,7 @@ function callAjax(num,hash){
      <%-- <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:callAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>Like <i id="liketest">${con.conlike}</i></button> 
      <button type="button" class="w3-theme-d2 w3-margin-bottom unlike" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="liketest"> ${con.conlike}</i></button> --%>  
 	
-	<!-- <button type="button" class="w3-theme-d1 w3-margin-bottom like" > --><i class="w3-theme-d2 fa fa-thumbs-up"> Like <i id="likep">${con.conlike} </i> &nbsp</i> &nbsp
+	<!-- <button type="button" class="w3-theme-d1 w3-margin-bottom like" > --><i class="w3-theme-d2 fa fa-thumbs-up"> Like <i id="like">${con.conlike} </i> &nbsp</i> &nbsp
   
    <%--  <input type="button" id="btn3" class="btn4" onclick="javascript:callAjax('${con.connum}','${con.conhash}')"><i id="liketest">${con.conlike}</i> --%>
         
