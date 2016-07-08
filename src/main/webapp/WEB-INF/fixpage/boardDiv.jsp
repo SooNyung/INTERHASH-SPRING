@@ -694,7 +694,7 @@ function mapopen(latitude,longtitude,maptitle ) {
    
    url = "mapopen.hash?latitude="+ latitude + "&longtitude="+longtitude+"&maptitle="+maptitle;
    newwindow=window.open(url,"post","toolbar=no ,width=500 ,height=400 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
-   //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
+
 }
 function checkIt(){
 	
@@ -784,10 +784,12 @@ function checkIt(){
 <!-- 좋아요 기능 function -->
 <script>
 
-function likeAjax(num,hash,like){
+function likeAjax(num,hash){
 	
-	$(".unlike").show();
-	$(".like").hide();
+	$(".unlike").show(); //보이기
+    $(".like").hide(); //숨기기
+    //$('.unlike').attr('disabled',false);
+
 	var url="/INTERHASH-SPRING/LikeCheck.hash";
 	var params ="connum="+num+"&conhash="+hash;
 
@@ -808,8 +810,11 @@ function likeAjax(num,hash,like){
 
 function unlikeAjax(num,hash,like){
 	
-	$(".like").show();
-	$(".unlike").hide();
+
+	$(".like").show(); //보이기
+    $(".unlike").hide(); //숨기기
+    //$('.like').attr('disabled',false);
+
 	var url="/INTERHASH-SPRING/Unlike.hash";
 	var params ="connum="+num+"&conhash="+hash;
 	
@@ -820,6 +825,8 @@ function unlikeAjax(num,hash,like){
 		,dataType:"json"
  		,success:function(args){
  			$('#like').text(args.data);
+ 			//$('.unlike').attr('disabled',true);  //버튼 비활성화
+
  		}
 	    ,error:function(request, status , err) {
 	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
@@ -879,18 +886,18 @@ function unlikeAjax(num,hash,like){
         <%-- <button id="like_ajax" type="button" class="w3-theme-d1 w3-margin-bottom like" ><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button> --%>
 
    <div class="w3-btn">
-    
 
-     <%-- <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>Like <i id="likep">${con.conlike}</i></button> 
-     <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="likem"> ${con.conlike}</i></button>  
+     <%-- <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>Like <i id="like">${con.conlike}</i></button> 
+     <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="like"> ${con.conlike}</i></button>  
  	 <button type="button" class="w3-theme-d3 w3-margin-bottom" onclick="location.href='Board.hash'"><i class="fa fa-comment"></i>  Comment ${con.connum}</button>  --%>
  		
  		<div align=center>
  	 	<i class="fa fa-thumbs-up w3-theme-d2 w3-margin-bottom"  id="like">&nbsp Like ${con.conlike} &nbsp </i>&nbsp &nbsp
  	 	<i class="fa fa-comment w3-theme-d2 w3-margin-bottom">&nbsp Comment ${con.connum} &nbsp </i>  
-    	</div>
+    	</div> 
     	 
 	 <%-- <input type="button" id="btn" name="btn1" value="like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}','${con.conlike}')" > <i id="likep"> ${con.conlike} </i> --%>
+
    
    <%-- <div id="board_img">
    <a href="ContentView.hash?connum=${con.connum}">

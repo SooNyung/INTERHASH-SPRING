@@ -70,7 +70,7 @@ public class ConfirmController {
 		
 		return "confirm/ConfirmNickname";
 	}
-	
+
 	@RequestMapping("/LikeCheck.hash")
 	public void like_check(@RequestParam("connum") int connum, @RequestParam("conhash") String hashname,
 			HttpSession session,Model model,HttpServletResponse resp
@@ -84,7 +84,7 @@ public class ConfirmController {
 		model.addAttribute("conhash",hashname);
 
 //		Dao.adminlike(hashname);
-		
+
 		Dao.conlikePlus(connum);
 		int conlike = Dao.getConlike(connum);
 		session.setAttribute("conlike", conlike);
@@ -121,6 +121,5 @@ public class ConfirmController {
 		resp.setContentType("application/json;charset=utf-8");
 		PrintWriter out = resp.getWriter();
 		out.print(jso.toString());
-
 	}
 }
