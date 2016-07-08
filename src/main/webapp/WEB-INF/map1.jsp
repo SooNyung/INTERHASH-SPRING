@@ -301,12 +301,6 @@ function displayInfowindow(marker, title) {
     infowindow.open(map, marker);    
 }
 
-function selectInfo(marker, title,placePosition) {
-	ps.keywordSearch(title, placesSearchCB);
-			//removeMarker();
-	opener.document.writeForm.maptitle.value = title;
-	opener.document.writeForm.mapplace.value = placePosition;
-}
 
 //마커클릭하면 꺼진다
 function selectInfo2(marker, title,placePosition) {
