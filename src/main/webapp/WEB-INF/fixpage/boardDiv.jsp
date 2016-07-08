@@ -30,7 +30,7 @@ $(function() {
      });
        
 });
-/* $(function(){
+ $(function(){
    $(".like").click(function(){
       var index = $(".like").index(this);
       if($(".like:eq("+index+")").hasClass("hide")){
@@ -53,7 +53,7 @@ $(function(){
          $(".like:eq("+indexu+")").removeClass("hide");
       }
    });
-}); */
+});
 
 function readURL(input) {
     if (input.files && input.files[0]) {
@@ -782,25 +782,25 @@ function checkIt(){
           </div>
       
 <!-- 좋아요 기능 function -->
-<script>
+<script> //보현 되는거
 
 function likeAjax(num,hash){
 	
-	$(".unlike").show(); //보이기
-    $(".like").hide(); //숨기기
-    //$('.unlike').attr('disabled',false);
+//	$(".unlike").show(); //보이기
+//  $(".like").hide(); //숨기기
+//  $('.unlike').attr('disabled',false);
 
 	var url="/INTERHASH-SPRING/LikeCheck.hash";
 	var params ="connum="+num+"&conhash="+hash;
-
+	var like = '#'+num+'unlike' ;
+	
 	$.ajax({
 		type:"post"
 		,url:url
 		,data:params
 		,dataType:"json"
  		,success:function(args){
- 			$("#like").text(args.data);
-
+ 			$(like).text(args.data);
  		}
 	    ,error:function(request, status , err) {
 	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
@@ -811,12 +811,13 @@ function likeAjax(num,hash){
 function unlikeAjax(num,hash,like){
 	
 
-	$(".like").show(); //보이기
-    $(".unlike").hide(); //숨기기
-    //$('.like').attr('disabled',false);
+//	$(".like").show(); //보이기
+//  $(".unlike").hide(); //숨기기
+//  $('.like').attr('disabled',false);
 
 	var url="/INTERHASH-SPRING/Unlike.hash";
 	var params ="connum="+num+"&conhash="+hash;
+	var unlike = '#'+num+'like' ;
 	
 	$.ajax({
 		type:"post"
@@ -824,9 +825,8 @@ function unlikeAjax(num,hash,like){
 		,data:params
 		,dataType:"json"
  		,success:function(args){
- 			$('#like').text(args.data);
+ 			$(unlike).text(args.data);
  			//$('.unlike').attr('disabled',true);  //버튼 비활성화
-
  		}
 	    ,error:function(request, status , err) {
 	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
@@ -834,6 +834,7 @@ function unlikeAjax(num,hash,like){
 	});
 }
 
+//보현 되는거
 </script>
 
 
@@ -881,23 +882,20 @@ function unlikeAjax(num,hash,like){
     <input type="checkbox" class="hide"/>
     </div> --%>
 
-
-	
-        <%-- <button id="like_ajax" type="button" class="w3-theme-d1 w3-margin-bottom like" ><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button> --%>
-
    <div class="w3-btn">
 
-     <%-- <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>Like <i id="like">${con.conlike}</i></button> 
-     <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="like"> ${con.conlike}</i></button>  
- 	 <button type="button" class="w3-theme-d3 w3-margin-bottom" onclick="location.href='Board.hash'"><i class="fa fa-comment"></i>  Comment ${con.connum}</button>  --%>
- 		
- 		<div align=center>
+ 		<!-- 좋아요 표시만 되는거 -->
+ 		<!-- <div align=center>
  	 	<i class="fa fa-thumbs-up w3-theme-d2 w3-margin-bottom"  id="like">&nbsp Like ${con.conlike} &nbsp </i>&nbsp &nbsp
  	 	<i class="fa fa-comment w3-theme-d2 w3-margin-bottom">&nbsp Comment ${con.connum} &nbsp </i>  
-    	</div> 
-    	 
-	 <%-- <input type="button" id="btn" name="btn1" value="like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}','${con.conlike}')" > <i id="likep"> ${con.conlike} </i> --%>
-
+    	</div>  -->
+    
+   <!-- 보현 좋아요 되는거 -->	
+     <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"> Like <i id="${con.connum}like"> ${con.conlike} </i></i></button> 
+     <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"> Like <i  id="${con.connum}unlike"> ${con.conlike} </i></i></button>
+     
+     <button type="button" class="w3-theme-d3 w3-margin-bottom" onclick="location.href='ContentView.hash'"><i class="fa fa-comment"></i>  Comment ${con.connum} </button>
+	<!-- 보현 좋아요 되는거 -->	
    
    <%-- <div id="board_img">
    <a href="ContentView.hash?connum=${con.connum}">

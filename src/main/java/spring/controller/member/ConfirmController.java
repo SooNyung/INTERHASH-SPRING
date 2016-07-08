@@ -70,7 +70,7 @@ public class ConfirmController {
 		
 		return "confirm/ConfirmNickname";
 	}
-
+	
 	@RequestMapping("/LikeCheck.hash")
 	public void like_check(@RequestParam("connum") int connum, @RequestParam("conhash") String hashname,
 			HttpSession session,Model model,HttpServletResponse resp
