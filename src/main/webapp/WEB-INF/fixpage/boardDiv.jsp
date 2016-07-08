@@ -13,7 +13,6 @@
 
 <script src='<c:url value="modal/jquery.magnific-popup.min.js"/>'></script>
 
-
 <c:if test ="${sessionScope.memId==null}">
 <script>
 alert("비밀번호가 틀립니다.");
