@@ -20,7 +20,7 @@
 </select>
 
 <select id="alarmdelete" parameterType="int" resultType="spring.model.AlarmCommand">
-	delete from alarm where connum=#{connum}
+	delete from alarm where alarmnum=#{alarmnum}
 </select>
 
 

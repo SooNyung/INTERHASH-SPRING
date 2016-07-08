@@ -3,6 +3,7 @@ package spring.model;
 import java.sql.Date;
 
 public class AlarmCommand {
+	private int alarmnum;
 	private String receivedemail;
 	private String comnick;
 	private int connum;
@@ -10,6 +11,12 @@ public class AlarmCommand {
 	
 	
 	
+	public int getAlarmnum() {
+		return alarmnum;
+	}
+	public void setAlarmnum(int alarmnum) {
+		this.alarmnum = alarmnum;
+	}
 	public Date getAlarmdate() {
 		return alarmdate;
 	}

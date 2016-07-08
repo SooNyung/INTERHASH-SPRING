@@ -97,7 +97,7 @@ text-align: center;
 				onClick="window.open(this.href, '', 'width=1000, height=650'); return false;">
 				<b>${list.comnick}</b>님이 회원님의 게시글에 댓글을 남겼습니다.</a>
 			
-				<input type="button" id="buttonid" value="삭제" onclick="location.href='alarmdelete.hash?connum=${list.connum}'"> 
+				<input type="button" id="buttonid" value="삭제" onclick="location.href='alarmdelete.hash?alarmnum=${list.alarmnum}'"> 
 			</span><br>
 		</div>
 		</c:if>
