@@ -440,16 +440,16 @@ public class MemberController {
 	@RequestMapping("/alarmdelete.hash")
 	public ModelAndView alarmdelete(
 			@ModelAttribute("messagedto") MessageCommand messagedto,HttpSession session,
-			int connum,
+			int alarmnum,
 			HttpServletRequest request){
 				ModelAndView mav = new ModelAndView("userpage/alarmlist");
 				
 				String email = (String) request.getSession().getAttribute("memId");
 				SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:MM");
-				System.out.println(connum);
+				System.out.println(alarmnum);
 				
 
-				int result = alarmdao.alarm_delete(connum);;
+				int result = alarmdao.alarm_delete(alarmnum);;
 
 				List alarmList = alarmdao.AlarmAll(email);
 				

@@ -93,12 +93,23 @@ text-align: center;
 			<span><b id="fontsize">From time |</b> 
 	<label id="fontsize"> ${list.alarmdate} </label>
 			</span><br><hr>
+			
+			<c:if test="${list.kinds == 0}">
 				<span>  <a href="ContentView.hash?connum=${list.connum}" 
 				onClick="window.open(this.href, '', 'width=1000, height=650'); return false;">
-				<b>${list.comnick}</b>님이 회원님의 게시글에 댓글을 남겼습니다.</a>
-			
-				<input type="button" id="buttonid" value="삭제" onclick="location.href='alarmdelete.hash?connum=${list.connum}'"> 
+				<b>${list.comnick}</b>님이 회원님의 게시글에 댓글을 남겼습니다.</a>			
+				<input type="button" id="buttonid" value="삭제" onclick="location.href='alarmdelete.hash?alarmnum=${list.alarmnum}'"> 
 			</span><br>
+			</c:if>
+			
+			<c:if test="${list.kinds == 1}">
+				<span>  <a href="ContentView.hash?connum=${list.connum}" 
+				onClick="window.open(this.href, '', 'width=1000, height=650'); return false;">
+				<b>${list.comnick}</b>님이 회원님의 게시글을 좋아합니다.</a>		
+				<input type="button" id="buttonid" value="삭제" onclick="location.href='alarmdelete.hash?alarmnum=${list.alarmnum}'"> 
+			</span><br>
+			</c:if>
+			
 		</div>
 		</c:if>
 		

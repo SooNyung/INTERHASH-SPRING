@@ -764,7 +764,7 @@ function checkIt(){
                
             </div>
              <div style="float:right">  
-               <img src ="image/logo/tag.png" width="25px" height="25px" onClick="tagCheck()">
+               <img src ="image/logo/tag.png" width="30px" height="30px" onClick="tagCheck()">
              </div>
             </div> 
                  

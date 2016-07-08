@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.poi.util.SystemOutLogger;
 import org.apache.tiles.request.jsp.extractor.SessionScopeExtractor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -20,8 +22,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import mybatis.AdminDAO;
 import mybatis.ConfirmDAO;
 import net.sf.json.JSONObject;
+import spring.model.AlarmCommand;
 
 @Controller
 public class ConfirmController {
@@ -32,6 +36,9 @@ public class ConfirmController {
 	public void setDao(ConfirmDAO Dao){
 		this.Dao = Dao;
 	}
+	
+	@Autowired
+	private AdminDAO alarmdao;
 	
 	@RequestMapping(value="/ConfirmEmail.hash", method=RequestMethod.GET )
 	private String email(HttpServletRequest request ,HttpSession session){
@@ -73,12 +80,23 @@ public class ConfirmController {
 	
 	@RequestMapping("/LikeCheck.hash")
 	public void like_check(@RequestParam("connum") int connum, @RequestParam("conhash") String hashname,
-			HttpSession session,Model model,HttpServletResponse resp
+			HttpSession session,Model model,HttpServletResponse resp,AlarmCommand dto,
+			HttpServletRequest request
 			) throws IOException{
 		
 		System.out.println("좋아요 눌렀을때!");
 
 		JSONObject jso = new JSONObject(); // JASON 객체생성
+	
+		
+		//알림
+		int kinds = 1;
+		String comnick = (String) request.getSession().getAttribute("nickName");
+		System.out.println(comnick);
+		String receivedemail = alarmdao.receivedEmail(connum);
+		System.out.println(receivedemail);
+		String confirmemail = alarmdao.confirm(comnick);
+		System.out.println(confirmemail);
 		
 		model.addAttribute("connum",connum);
 		model.addAttribute("conhash",hashname);
@@ -94,6 +112,18 @@ public class ConfirmController {
 		
 		resp.setContentType("application/json;charset=utf-8");
 		PrintWriter out = resp.getWriter();
+		
+		dto.setKinds(kinds);
+		dto.setComnick(comnick);
+		dto.setConnum(connum);
+		dto.setReceivedemail(receivedemail);
+		
+		
+		if(!((confirmemail).equals(receivedemail))){
+			int alarm = alarmdao.Alarm(dto);
+			System.out.println("알림성공");
+		}
+		
 		out.print(jso.toString());
 
 	}

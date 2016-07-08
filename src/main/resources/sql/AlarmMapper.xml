@@ -4,7 +4,7 @@
 <mapper namespace="alarm">
 <insert id="insert" parameterType="spring.model.AlarmCommand">
 		insert into alarm
-		values(alarmnum_seq.nextval,#{receivedemail},#{comnick},#{connum},sysdate)
+		values(#{receivedemail},#{comnick},#{connum},sysdate,alarmnum.nextval,#{kinds})
 	</insert>
 
 <select id="receivedemail" parameterType="spring.model.ContentCommand"  resultType="string">
@@ -20,8 +20,10 @@
 </select>
 
 <select id="alarmdelete" parameterType="int" resultType="spring.model.AlarmCommand">
-	delete from alarm where connum=#{connum}
+	delete from alarm where alarmnum=#{alarmnum}
 </select>
 
-
+<select id ="confirm" parameterType="String" resultType="String">
+	select email from usertable where nickname = #{comnick}
+</select>
 </mapper>
