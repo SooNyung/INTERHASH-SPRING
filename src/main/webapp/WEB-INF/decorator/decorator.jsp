@@ -865,8 +865,8 @@ height:50px;
                      
                   </tr>
                   <tr class="left-align">
-                     <td colspan="2"><c:forEach var="alarm"
-                           items="${sessionScope.alarmlist}" begin="0" end="2">
+                     <td colspan="2">
+                     <c:forEach var="alarm"    items="${sessionScope.alarmlist}" begin="0" end="2">
                            <c:if test="${alarm.kinds == 0}">
                            <li><a 
                               href="#"

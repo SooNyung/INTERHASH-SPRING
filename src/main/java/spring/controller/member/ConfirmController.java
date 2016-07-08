@@ -95,6 +95,8 @@ public class ConfirmController {
 		System.out.println(comnick);
 		String receivedemail = alarmdao.receivedEmail(connum);
 		System.out.println(receivedemail);
+		String confirmemail = alarmdao.confirm(comnick);
+		System.out.println(confirmemail);
 		
 		model.addAttribute("connum",connum);
 		model.addAttribute("conhash",hashname);
@@ -116,8 +118,12 @@ public class ConfirmController {
 		dto.setConnum(connum);
 		dto.setReceivedemail(receivedemail);
 		
-		int alarm = alarmdao.Alarm(dto);
-		System.out.println("알림성공");
+		
+		if(!((confirmemail).equals(receivedemail))){
+			int alarm = alarmdao.Alarm(dto);
+			System.out.println("알림성공");
+		}
+		
 		out.print(jso.toString());
 
 	}

@@ -23,5 +23,7 @@
 	delete from alarm where alarmnum=#{alarmnum}
 </select>
 
-
+<select id ="confirm" parameterType="String" resultType="String">
+	select email from usertable where nickname = #{comnick}
+</select>
 </mapper>

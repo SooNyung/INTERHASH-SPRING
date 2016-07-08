@@ -109,4 +109,8 @@ public class AdminDAO {
 	public int alarm_delete(int connum) {
 		return session.delete("alarm.alarmdelete", connum);
 	}
+	
+	public String confirm(String comnick) {
+		return session.selectOne("alarm.confirm", comnick);
+	}
 }
