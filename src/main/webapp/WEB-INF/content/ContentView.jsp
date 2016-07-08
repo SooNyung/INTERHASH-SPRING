@@ -9,6 +9,7 @@
 
 <title>View</title>
 <style>
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
 .box-shadow{box-shadow:0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)!important;margin-top:0px;}
  .border-round{border-radius:4px!important}
  .container{content:"";display:table;clear:both;padding:0.01em 16px; margin-left:0px;}
@@ -16,7 +17,9 @@
 html,body,h6{font-family: "Open Sans", sans-serif}
 .w3-theme {color:#fff !important; background-color:#607d8b !important}
 .white{color:#000!important;background-color:#fff!important;}
-   
+   [class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
    #img
    {
       width: 350px;
@@ -104,6 +107,7 @@ color:#5AAEFF;
 
    background-color:white;
    }
+
    #comment_content{
    width:360px;
    height:60px;
@@ -123,7 +127,8 @@ color:#5AAEFF;
    margin:5px;
    /* border:2px solid; */
    background-color:white;
-   }
+   border:0px;
+   } 
    
    #comment_view{
    width:360px;
@@ -144,7 +149,42 @@ color:#5AAEFF;
    }
    
    #test{border-bottom:1px solid;}
+   
+   #comment_view, #comment_textara{
+   background-color: #FFFAFB;
+   }
+   #comment_textara{
+   	width: 95%;
+   	border: none;
+   }
+   #nickname{
+   	color:#FF6088;
+   }
+   #rptl {
+	color: white;
+	background-color: #FFCCCC;
+	border-radius: 7px !important;
+}
+#rptl:hover {
+	color: white;
+	background-color: #FF9090;
+	border-radius: 7px !important;
+}
 
+#com_modi, #com_delete, #com_report{
+
+	text-decoration: none;
+	color:#BDBDBD;
+	font-size: 17px;
+}
+
+#com_modi:hover, #com_delete:hover, #com_report:hover{
+	color:#ea4c88;
+}
+#time {
+	font-size: 11px;
+}
+	
 </style>
 
 </head>
@@ -230,9 +270,11 @@ color:#5AAEFF;
 	
 	<div id="comment_submit">
 		<span id="align_right">
-		<input type="button" id="rptl" value="개시" class="w3-theme-d1 w3-margin-bottom" onclick="javascript:insert1(${content.connum})"> </span>
+		<input type="button" id="rptl" value="등록" onclick="javascript:insert1(${content.connum})"> </span>
+		<br>
 	</div>
 	</form>
+	
 	
 	<div id="comment_view" style="height:460px; overflow-x:auto" onchange="reload();">
 	
@@ -248,12 +290,15 @@ color:#5AAEFF;
 	<span id="align_right">
 	
 		<c:if test="${sessionScope.memId==comment.email}">
-		<a href="#" onclick="delete1(${comment.comnum},${comment.connum})">삭제</a>
-		<a href="#" onclick="modify(${comment.comnum},${comment.connum})">수정</a>
-		</c:if	>
+		<a href="#" id="com_modi" onclick="modify(${comment.comnum},${comment.connum})">
+			<label for="com_modi" class="fontawesome-pencil"></label></a>&nbsp;
+			<a href="#" id="com_delete" onclick="delete1(${comment.comnum},${comment.connum})">
+			<label for="com_delete" class="fontawesome-trash"></label></a>
+		</c:if>
 		
 		<c:if test="${sessionScope.memId!=comment.email}">
-		<a onclick="reportCom(${comment.comnum})">신고</a>
+		<a href="#" id="com_report" onclick="reportCom(${comment.comnum})">
+			<label for="com_report" class="fontawesome-bullhorn"></label></a>
 		</c:if>	
 	</span><br> 
 	<div id="test"><textarea id="comment_textara" borderStyle="none" cols=50 readonly="readonly" class="autosize">${comment.comcontent}</textarea></div>
