@@ -670,18 +670,11 @@ function modifypro(connum){
 			$("#left_mod_del_rep").append("<span id='align_right'>/<a href='#' onclick='deleteCon("+connum+")'>삭제하기</a></span><!--"+
 					"--!><span id='align_right'><a href='#' onclick='modifyCon("+connum+")'>수정하기 </a></span>")
 					
-
-<<<<<<< HEAD
 			/* $("#place").remove();
 			$("#place").append("<a href='#' onclick= 'javascript:mapopen("+${latitude}+","+${longtitude}+","+${maptitle}+")'>
 			'<font color="#666"><b>'+${maptitle}+'</b>에서</font></a>");
  */
-=======
-/* 			$("#place *").remove();
-			$("#place *").append("<a href='#' onclick= 'javascript:mapopen("+${latitude}+","+${longtitude}+","+${maptitle}+")'>
-					'<font color="#666"><b>'+${maptitle}+'</b>에서</font></a>"); */
 
->>>>>>> b67f5059754164204e7a9fe9d005d54564ebf82b
 		}
 			,error: function (xhr, status, err){
 				alert(err);
