@@ -168,7 +168,7 @@ function displayPlaces(places) {
             });
           
             daum.maps.event.addListener(marker, 'click', function() {
-                selectInfo(marker,title,placePosition);
+                selectInfo2(marker,title,placePosition);
             });
             
             daum.maps.event.addListener(map, 'click', function(mouseEvent) {        
@@ -185,7 +185,7 @@ function displayPlaces(places) {
             });
             
             itemEl.onclick =  function () {
-            	selectInfo2(marker, title);
+            	selectInfo(marker, title);
             };
 
             itemEl.onmouseover =  function () {
@@ -301,26 +301,18 @@ function displayInfowindow(marker, title) {
     infowindow.open(map, marker);    
 }
 
-function selectInfo(marker, title,placePosition) {
+
+//마커클릭하면 꺼진다
+function selectInfo2(marker, title,placePosition) {
+	
 	ps.keywordSearch(title, placesSearchCB);
 			//removeMarker();
-	opener.document.writeForm.maptitle.value = title;
-	opener.document.writeForm.mapplace.value = placePosition;
+
+	opener.document.UpdateContent.maptitle.value = title;
+	opener.document.UpdateContent.mapplace.value = placePosition;
 	
 	window.close();
 }
-
-function selectInfo2(marker, title,placePosition) {
-	ps.keywordSearch(title, placesSearchCB);
-			//removeMarker();
-	opener.document.writeForm.maptitle.value = title;
-	opener.document.writeForm.mapplace.value = placePosition;
-/*  	opener.document.jinkyoung.maptitle.value= title;
-	opener.document.jinkyoung.maptitle.value = placePosition; */
-	
-
-}
-
 
  // 검색결과 목록의 자식 Element를 제거하는 함수입니다
 function removeAllChildNods(el) {   

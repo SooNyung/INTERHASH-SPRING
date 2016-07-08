@@ -326,7 +326,7 @@ function readURL(input) {
                <p>
                   <i class="fa fa-pencil fa-fw margin-right text-theme"></i>
                   ${c.nickname}
-                  <span><input type="submit" value="Send Message" id="buttonid"> </span>
+                  <span><input type="submit" value="Send Message" id="buttonid" style="cursor:pointer"> </span>
                 </p>
                
 
@@ -367,7 +367,7 @@ function readURL(input) {
                </p>
                
                <p>
-               <input type="button" value="Close" onClick="window.close()">
+               <input type="button" value="Close" onClick="window.close()" style="cursor:pointer">
                </p>
                
                </form>

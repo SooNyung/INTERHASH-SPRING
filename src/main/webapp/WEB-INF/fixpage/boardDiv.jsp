@@ -55,16 +55,14 @@ $(function(){
    });
 }); */
 
-
-
 function readURL(input) {
     if (input.files && input.files[0]) {
     var reader = new FileReader();
        reader.onload = function (e) {
 
              $('#blah').attr('src', e.target.result); 
-             $('#blah').attr('height', '100px');
-             $('#blah').attr('width', '150px');
+             $('#blah').attr('height', '80px');
+             $('#blah').attr('width', '120px');
         }
 
       reader.readAsDataURL(input.files[0]);
@@ -122,31 +120,37 @@ function fileUploadPreview(thisObj, preViewer) {
 }
 function tagCheck() {
 
-   url = "TagCheck.hash?check=y";
-   newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	url = "TagCheck.hash?check=y";
+	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+}
+
+function tagCheckUpdate() {
+
+	url = "TagCheckUpdate.hash?check=y";
+	newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 }
 
 function like(num,String){
-   var select_id = "${sessionScope.conlike}";//'#'+num+"like_bn";
-   var like_cnt = select_id+1;//$(select_id).text();
-   alert(select_id);
-   
-   //$(select_id).text(like_cnt+1);
-   
-   alert(like_cnt);
-   url = "LikeCheck.hash?connum="+num+"&conhash="+String;
-   newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
-   //location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
+	var select_id = "${sessionScope.conlike}";//'#'+num+"like_bn";
+	var like_cnt = select_id+1;//$(select_id).text();
+	alert(select_id);
+	
+	//$(select_id).text(like_cnt+1);
+	
+	alert(like_cnt);
+	url = "LikeCheck.hash?connum="+num+"&conhash="+String;
+	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	//location.href ="LikeCheck.hash?connum="+num+"&conhash="+String; //보현test중
 }
 
 function unlike(num,String){
-    var select_id = "${sessionScope.conlike}";
-   var like_ctn = select_id-1;
-   alert(select_id);
-   alert(like_ctn); 
-   url = "Unlike.hash?connum="+num+"&conhash="+String;
-   newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
-   //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
+ 	var select_id = "${sessionScope.conlike}";
+	var like_ctn = select_id-1;
+	alert(select_id);
+	alert(like_ctn); 
+	url = "Unlike.hash?connum="+num+"&conhash="+String;
+	newwindow=window.open(url,"post","toolbar=no ,width=200 ,height=100 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	//location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
 }
 
 function modal_close(){
@@ -337,7 +341,7 @@ function modal_close(){
    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
    box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
 }
- .hide { display: none; } 
+.hide { display: none; }
 .photoBox .fileData {
    display: none;
 }
@@ -386,7 +390,7 @@ a {
 }
 
 /* #View:hover{
-   color:#ffcccc;
+	color:#ffcccc;
 } */
 a:focus, a:hover {
  /*  text-decoration: underline;  */
@@ -440,12 +444,9 @@ $(function(){
 }); 
 
 
-/* function modifycon(connum){
-   url="/INTERHASH/UpdateContent.hash?check=y&&connum="+connum
-}
- */
-  function modify(comnum,connum){
-   url="updateCommentForm.hash?check=y&&comnum="+comnum+"&&connum="+connum;
+
+  function modify(comnum,connum,i){
+   url="updateCommentForm.hash?check=y&&comnum="+comnum+"&&connum="+connum+"&&i="+i;
    window.open(url,"post","toolbar=no ,width=400 ,height=150,directories=no,status=yes,menubar=no,scrollbars=no");
 } 
 
@@ -466,56 +467,95 @@ function back(){
 }
 
 function Map(){
-   url="template2.hash";
-   window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
-   }  
+	url="template2.hash";
+	window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
+	}  
 
 
 
 function mapopen(latitude,longtitude,maptitle){
+	
+	url = "mapopen.hash?latitude="+ latitude + "&longtitude="+longtitude+"&maptitle="+maptitle;
+	newwindow=window.open(url,"post","toolbar=no ,width=500 ,height=400 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+	//location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
+}
+
+ //comment 
+function delete1(comnum, connum){
+ 	var com = comnum;
+	var con = connum;
+	var url = "/INTERHASH-SPRING/deleteComment.hash";
+	var params = "comnum="+comnum+"&connum="+connum;
+	$.ajax({
+		type:"post"
+		,url:url
+		,data:params
+		,dataType:"json"
+		,success:function(args){	
+			$("#test_div *").remove();
+			$("#comment_div *").remove();
+			for(var i=0;i<args.data.length;i++){
+				var check;
+				if(args.session==args.data[i].email){
+					$('#test_div').append(
+						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
+						'--!><span><label id="time'+i+'">'+args.time+'</label></span><!--'+
+						'--!><span id="align_right"><a href="#" onclick="delete1('+args.data[i].comnum+','+args.data[i].connum+')">삭제</a><!--'+
+						'--!><a href="#" onclick="modify('+args.data[i].comnum+','+args.data[i].connum+','+i+')">수정</a><!--'+
+						'--!></span><br><div id="test"><textarea id="textaa'+i+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+			}else{
+				$('#test_div').append(
+						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
+						'--!><span><label id="time'+i+'">'+args.time+'</label></span><!--'+
+						'--!><span id="align_right"><!--'+
+						'--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></span><br><div id="test"><textarea id="textaa'+i+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+			}
+			}
+		},error: function (xhr, status, err){
+			 alert(err);
+		} 	
+		});
+}   
+
+
+
+	
+
+function Map(){
+   url="template2.hash";
+   window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
+   } 
+
+function MapUpdate(){
+	url="template2.hash";
+	window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
+	}  
+
+
+function mapopen(latitude,longtitude,maptitle ) {
    
    url = "mapopen.hash?latitude="+ latitude + "&longtitude="+longtitude+"&maptitle="+maptitle;
    newwindow=window.open(url,"post","toolbar=no ,width=500 ,height=400 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
    //location.href ="Unlike.hash?connum="+num+"&conhash="+String; //보현test중
 }
 
- //comment delete
-function delete1(comnum, connum){
-    var com = comnum;
-   var con = connum;
-   var url = "/INTERHASH-SPRING/deleteComment.hash";
-   var params = "comnum="+comnum+"&connum="+connum;
-   $.ajax({
-      type:"post"
-      ,url:url
-      ,data:params
-      ,dataType:"json"
-      ,success:function(args){   
-         $("#test_div *").remove();
-         $("#comment_div *").remove();
-         for(var i=0;i<args.data.length;i++){
-            var check;
-            if(args.session==args.data[i].email){
-               $('#test_div').append(
-                  '<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
-                  '--!><span><label id="time">'+args.time+'</label></span><!--'+
-                  '--!><span id="align_right"><a href="#" onclick="delete1('+args.data[i].comnum+','+args.data[i].connum+')">삭제</a><!--'+
-                  '--!><a onclick="modify('+args.data[i].comnum+','+args.data[i].connum+')">수정</a><!--'+
-                  '--!></span><br><div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
-         }else{
-            $('#test_div').append(
-                  '<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
-                  '--!><span><label id="time">'+args.time+'</label></span><!--'+
-                  '--!><span id="align_right"><!--'+
-                  '--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></span><br><div id="test"><textarea borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
-         }
-         }
-      },error: function (xhr, status, err){
-          alert(err);
-      }    
-      });
-}   
+	
 
+function deleteCon(connum){
+	
+ 	var connum = connum;
+ 	
+	 if(confirm("삭제하시겠습니까?")){
+	 	location.href="ContentDelete.hash?connum="+connum;	
+	     alert("삭제되었습니다.");
+	      return true;
+	 }	 
+	 else{
+	      return false;
+	 } 
+	 
+	}
+	
 
 //comment insert
 function insert1(connum){
@@ -553,6 +593,96 @@ function insert1(connum){
 				alert(err);
 			} 
 	});
+}
+
+
+
+function modifyCon(connum){
+	var connum = connum;
+	var url = "/INTERHASH-SPRING/ContentUpdate.hash";
+	var params = "connum="+connum;
+	
+	$.ajax({
+		type:"post",
+		url:url,
+		data:params,
+		dataType:"json",
+		success:function(args){
+			$("#content1").attr("type","textarea");
+			$("#content1").attr("readonly",false);
+			$("#content1").css("border","1px");
+			
+			$("#left_mod_del_rep *").remove();
+			$("#left_mod_del_rep").append("<input id='align_right' type='button' value='수정버튼' onclick='modifypro("+connum+")'>");
+		
+			$("#left_mod_del_rep").append("<img src ='image/logo/tag.png' width='25px' height='25px' onClick='tagCheckUpdate()'>");
+			$("#left_mod_del_rep").append("<img src ='image/logo/place.png' width='25px' height='25px' onClick='MapUpdate()'>");
+
+			
+			$("#test_div *").remove();
+			$("#comment_div *").remove();
+			for(var i=0;i<args.data.length;i++){
+				var check;
+				if(args.session==args.data[i].email){
+					$('#test_div').append(
+						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
+						'--!><span><label id="time'+i+'">'+args.time+'</label></span><!--'+
+						'--!><span id="align_right"><a href="#" onclick="delete1('+args.data[i].comnum+','+args.data[i].connum+')">삭제</a><!--'+
+						'--!><a href="#" onclick="modify('+args.data[i].comnum+','+args.data[i].connum+','+i+')">수정</a><!--'+
+						'--!></span><br><div id="test"><textarea id="textaa'+i+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+			}else{
+				$('#test_div').append(
+						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
+						'--!><span><label id="time'+i+'">'+args.test+'</label></span><!--'+
+						'--!><span id="align_right"><!--'+
+						'--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></span><br><div id="test"><textarea id="textaa'+i+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+			}
+			}
+		}
+			,error: function (xhr, status, err){
+				alert(err);
+			} 
+	});
+}
+
+function modifypro(connum){
+	var content1 = document.getElementsByName('content1')[0].value;
+	var conhash = document.getElementsByName('tag')[0].value;
+	var maptitle = document.getElementsByName('maptitle')[0].value;
+	var mapplace = document.getElementsByName('mapplace')[0].value;
+	
+	var connum = connum;
+	var url = "/INTERHASH-SPRING/ContentUpdatePro.hash";
+	var params = "content="+content1+"&connum="+connum+"&conhash="+conhash+"&maptitle="+maptitle+"&mapplace="+mapplace;
+	
+	$.ajax({
+		type:"post",
+		url:url,
+		data:params,
+		dataType:"json",
+		success:function(args){	
+			alert('성공');
+			$("#content1").attr("type","textarea");
+			$("#content1").attr("readonly",true);
+			$("#content1").css("border","1px");
+			
+			$("#left_mod_del_rep *").remove();
+			$("#left_mod_del_rep").append("<span id='align_right'>/<a href='#' onclick='deleteCon("+connum+")'>삭제하기</a></span><!--"+
+					"--!><span id='align_right'><a href='#' onclick='modifyCon("+connum+")'>수정하기 </a></span>")
+					
+			/* $("#place").remove();
+			$("#place").append("<a href='#' onclick= 'javascript:mapopen("+${latitude}+","+${longtitude}+","+${maptitle}+")'>
+			'<font color="#666"><b>'+${maptitle}+'</b>에서</font></a>");
+ */
+
+		}
+			,error: function (xhr, status, err){
+				alert(err);
+				alert('실패');
+			} 
+	});
+	
+}
 
 
 function Map(){
@@ -566,32 +696,33 @@ function mapopen(latitude,longtitude,maptitle ) {
    newwindow=window.open(url,"post","toolbar=no ,width=500 ,height=400 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 
 }
-
 function checkIt(){
-   
-   var content = eval("document.writeForm");
-   var conphoto = eval("document.writeForm");
-   var tag = eval("document.writeForm");
-   
-   if(!writeForm.content.value){
-      alert("내용을 입력하세요~:)");
-      document.writeForm.content.focus(); 
-      return false;
-   }
+	
+	var content = eval("document.writeForm");
+	var conphoto = eval("document.writeForm");
+	var tag = eval("document.writeForm");
+	
+	if(!writeForm.content.value){
+		alert("내용을 입력하세요~:)");
+		document.writeForm.content.focus(); 
+		return false;
+	}
 
-   if(!writeForm.conphoto.value){
-      alert("사진을 올려주세요~:)");
-      return false;
-   }
-   
-   
-   if(!writeForm.tag.value){
-      alert("태그를 선택해주세요~:)");
-      return false;
-   }
-   
-   return true;
+	if(!writeForm.conphoto.value){
+		alert("사진을 올려주세요~:)");
+		return false;
+	}
+	
+	
+	if(!writeForm.tag.value){
+		alert("태그를 선택해주세요~:)");
+		return false;
+	}
+	
+
+	return true;
 };
+
 
 </script>
 </head>
@@ -608,6 +739,7 @@ function checkIt(){
          <div class="photoBox" style="height: 100px; width: 100px;">
          
         <input type="text" name="tag" size="30" readonly style="border:0px; color:#FF73B8;" id="tag">
+      
          
             <input class='fileData' id = "conphoto" name="conphoto" type="file"/> 
                <div id="blah_img" >
@@ -651,11 +783,13 @@ function checkIt(){
       
 <!-- 좋아요 기능 function -->
 <script>
+
 function likeAjax(num,hash){
 	
 	$(".unlike").show(); //보이기
     $(".like").hide(); //숨기기
     //$('.unlike').attr('disabled',false);
+
 	var url="/INTERHASH-SPRING/LikeCheck.hash";
 	var params ="connum="+num+"&conhash="+hash;
 
@@ -666,7 +800,6 @@ function likeAjax(num,hash){
 		,dataType:"json"
  		,success:function(args){
  			$("#like").text(args.data);
- 			//$('.like').attr('disabled',true);  //버튼 비활성화
 
  		}
 	    ,error:function(request, status , err) {
@@ -677,9 +810,11 @@ function likeAjax(num,hash){
 
 function unlikeAjax(num,hash,like){
 	
+
 	$(".like").show(); //보이기
     $(".unlike").hide(); //숨기기
     //$('.like').attr('disabled',false);
+
 	var url="/INTERHASH-SPRING/Unlike.hash";
 	var params ="connum="+num+"&conhash="+hash;
 	
@@ -689,15 +824,16 @@ function unlikeAjax(num,hash,like){
 		,data:params
 		,dataType:"json"
  		,success:function(args){
- 			
  			$('#like').text(args.data);
  			//$('.unlike').attr('disabled',true);  //버튼 비활성화
+
  		}
 	    ,error:function(request, status , err) {
 	    	alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
 	    }
 	});
 }
+
 </script>
 
 
@@ -733,7 +869,7 @@ function unlikeAjax(num,hash,like){
       </a>  
     </div>
 
-    <p class="pro1">#${con.conhash}</p>
+    <p class="pro1">${con.conhash}</p>
 
    </div>
    
@@ -746,20 +882,22 @@ function unlikeAjax(num,hash,like){
     </div> --%>
 
 
-   
+	
         <%-- <button id="like_ajax" type="button" class="w3-theme-d1 w3-margin-bottom like" ><i class="fa fa-thumbs-up"></i>  Like ${con.conlike}</button> --%>
 
    <div class="w3-btn">
 
+     <%-- <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>Like <i id="likep">${con.conlike}</i></button> 
+     <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="likem"> ${con.conlike}</i></button>  
+ 	 <button type="button" class="w3-theme-d3 w3-margin-bottom" onclick="location.href='Board.hash'"><i class="fa fa-comment"></i>  Comment ${con.connum}</button>  --%>
+ 		
+ 		<div align=center>
+ 	 	<i class="fa fa-thumbs-up w3-theme-d2 w3-margin-bottom"  id="like">&nbsp Like ${con.conlike} &nbsp </i>&nbsp &nbsp
+ 	 	<i class="fa fa-comment w3-theme-d2 w3-margin-bottom">&nbsp Comment ${con.connum} &nbsp </i>  
+    	</div>
+    	 
+	 <%-- <input type="button" id="btn" name="btn1" value="like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}','${con.conlike}')" > <i id="likep"> ${con.conlike} </i> --%>
 
-
-     <%-- <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:callAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>Like <i id="liketest">${con.conlike}</i></button> 
-     <button type="button" class="w3-theme-d2 w3-margin-bottom unlike" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="liketest"> ${con.conlike}</i></button> --%>  
-	
-	<!-- <button type="button" class="w3-theme-d1 w3-margin-bottom like" > --><i class="w3-theme-d2 fa fa-thumbs-up"> Like <i id="like">${con.conlike} </i> &nbsp</i> &nbsp
-  
-   <%--  <input type="button" id="btn3" class="btn4" onclick="javascript:callAjax('${con.connum}','${con.conhash}')"><i id="liketest">${con.conlike}</i> --%>
-        
    
    <%-- <div id="board_img">
    <a href="ContentView.hash?connum=${con.connum}">
@@ -767,12 +905,8 @@ function unlikeAjax(num,hash,like){
       </a>
    </div>
    <div id ="board_main">
-   <a href="ContentView.hash?connum=${con.connum}">
-  --%> 
-
-  
-
-    <!-- <button type="button" class="w3-theme-d3 w3-margin-bottom" > --><i class="fa fa-comment"></i> Comment ${con.connum}  	
+   <a href="ContentView.hash?connum=${con.connum}"> --%>
+   
 	
 	</div>
 
@@ -822,7 +956,6 @@ function unlikeAjax(num,hash,like){
 		</a>
 	</div> --%> 
 	
-
 
  <%--       <div id="board_subject">
          <div id="subject">

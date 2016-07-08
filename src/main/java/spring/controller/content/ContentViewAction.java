@@ -95,7 +95,8 @@ public class ContentViewAction {
 	
 	@RequestMapping("/ContentView.hash")
 	public ModelAndView contentView(@ModelAttribute("contentdao") ContentCommand content,
-			@ModelAttribute("commentdto") CommentCommand comment, HttpServletRequest request,HttpServletResponse resp,@RequestParam("connum")int connum) throws Exception {
+			@ModelAttribute("commentdto") CommentCommand comment, HttpServletRequest request,HttpServletResponse resp,
+			@RequestParam("connum")int connum) throws Exception {
 		ModelAndView mav = new ModelAndView("content/ContentView");
 		/*int connum = Integer.parseInt(request.getParameter("connum"));*/
 	
