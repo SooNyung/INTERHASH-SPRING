@@ -186,7 +186,6 @@ color:#5AAEFF;
 }
 	
 </style>
-
 </head>
 <body>
 <div id="view_div">
@@ -230,29 +229,27 @@ color:#5AAEFF;
 		
 		<img id="img" src='<c:url value="/upload/${content.photolist[0].realpath }" />'/>
 
-
 		</c:forEach>
 
 	</div>
 	
 	<div id="left_good_re">
-		<label id="align_right">댓글 수: ${count}</label>
+		<label id="align_right"> 댓글  ${count} </label>
 		<!-- <label id="align_right">좋아요/</label> --> 
 	</div>
-	<div>
-	  <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${content.connum}','${content.conhash}')">
-        <i class="fa fa-thumbs-up"></i> Like </button>
-        <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${content.connum}','${content.conhash}')">
-        <i class="fa fa-thumbs-up"></i> Like </button>  
+	<div align=right>
+	  <%-- <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${content.connum}','${content.conhash}')"> --%>
+        <i class="fa fa-thumbs-up ">Like  ${content.conlike}&nbsp&nbsp </i>  
+        <%-- <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${content.connum}','${content.conhash}')">
+        <i class="fa fa-thumbs-up"></i> Like </button>  --%> 
     
-     <i id="like"> ${content.conlike}</i>
+     <%-- <i id="like">  ${content.conlike}</i> --%>
      </div>
 	</form>
 </div>
 
 <div id="view_right" class="box-shadow border-round white">
 	<input type=button onclick="location.href='Board.hash'" class="w3-theme-d1 w3-margin-bottom" value="X" style="float:right">
-	
 	
 	<form method="post" action="InsertComment.hash">
 	<input type=hidden name=connum value="${content.connum}">

@@ -352,7 +352,7 @@ function modal_close(){
 }
 
 #button:hover {
-	background-color: #FF9090;
+background-color: #FF9090;
 }
 .hide { display: none; }
 .photoBox .fileData {
