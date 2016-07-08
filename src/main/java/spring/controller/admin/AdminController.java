@@ -1,10 +1,7 @@
 package spring.controller.admin;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,13 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import mybatis.AdminDAO;
 import mybatis.LogonDAO;
 import mybatis.WithdrawalDAO;
-import spring.model.ContentCommand;
+import spring.model.AdminCommand;
 import spring.model.MemberCommand;
 import spring.model.WithdrawalCommand;
 
@@ -68,9 +64,13 @@ public class AdminController {
 		mv.addObject("likecount",dao.likeCount());
 		mv.addObject("total_count",dao.total_count());
 		mv.addObject("today",dao.today());
-		mv.addObject("today_like",dao.today_like());
+		try{
+			mv.addObject("today_like",dao.today_like());
+		}catch(Exception e){
+			mv.addObject("today_like",0);
+		}
 		mv.addObject("today_content",dao.today_content());
-		System.out.println(dao.selectHash());
+		AdminCommand com = (AdminCommand)dao.selectHash().get(0);
 		return mv;
 	}
 	
@@ -139,7 +139,7 @@ public class AdminController {
 	 public ModelAndView toExcel(HttpServletRequest req, HttpSession session) {
 	ModelAndView result = new ModelAndView();
 	
-	List<MemberCommand> list = dao.selectMember(); //쿼리
+	List<MemberCommand> list = dao.selectMember();
 	
 	return new ModelAndView("excelView", "member", list);
 	}
@@ -148,17 +148,17 @@ public class AdminController {
 	 public ModelAndView withdrawl(HttpServletRequest req, HttpSession session) {
 	ModelAndView result = new ModelAndView();
 	
-	List<WithdrawalCommand> list = wdao.selectMember(); //쿼리
+	List<WithdrawalCommand> list = wdao.selectMember();
 
 	return new ModelAndView("withdrawl", "Withdrawal", list);
 	}
 	
-	@RequestMapping(value="/template2.hash")//get방식으로 요청이 들어올때 다음생성자를 실행한다.
+	@RequestMapping(value="/template2.hash")
 	public String form1() {
 		return "map";
 	}
 	
-	@RequestMapping(value="/map.hash")//get방식으로 요청이 들어올때 다음생성자를 실행한다.
+	@RequestMapping(value="/map.hash")
 	public String map(HttpServletRequest req) {
 	
 		return "adminpage/test";

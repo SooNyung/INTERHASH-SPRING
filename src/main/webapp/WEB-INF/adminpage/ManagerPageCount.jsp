@@ -41,7 +41,7 @@ text-align:center;
 
 #view_div{
 	width:120%;
-	height:900px;
+	height:1100px;
  	/* background-color: black; */
 	/* border:1px solid; */
 	padding:5px;
