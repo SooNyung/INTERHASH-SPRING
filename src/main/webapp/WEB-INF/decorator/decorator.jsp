@@ -251,6 +251,10 @@ padding: 0px 5px 0px 5px;}
    background-color: #FFCCCC !important
 }
 
+
+/* button:hover{background-color: #B3B6B7 !important} */
+
+
 .left-align {
    text-align: left
 }

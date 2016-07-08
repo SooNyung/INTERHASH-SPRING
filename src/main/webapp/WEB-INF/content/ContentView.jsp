@@ -144,7 +144,7 @@ color:#5AAEFF;
    }
    
    #test{border-bottom:1px solid;}
-	
+
 </style>
 
 </head>
@@ -189,6 +189,7 @@ color:#5AAEFF;
 		<c:forEach var="photo" items="${content.photolist}">
 		
 		<img id="img" src='<c:url value="/upload/${content.photolist[0].realpath }" />'/>
+
 
 		</c:forEach>
 
@@ -265,6 +266,7 @@ color:#5AAEFF;
       <span id ="align_left"><b>${sessionScope.nickName}</b>님</span>
    </div>      
    </form>
+
 
 </div>
 
