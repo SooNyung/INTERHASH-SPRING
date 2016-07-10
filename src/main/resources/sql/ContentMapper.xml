@@ -78,13 +78,13 @@
 		and	to_date(TO_CHAR(sysdate, 'YYYYMMDD'),'yyyymmdd')+1) and connum = #{connum}
 	</update>
 	<select id="getpopularcontent" resultType="spring.model.ContentCommand">
-select * from(
+select connum,content,conhash,CONCREATEDDATE,conip,conreportcount,conblind,email,connickname,conlike from(
 select rownum as rn,connum,content,conhash,CONCREATEDDATE,conip,conreportcount,conblind,email,connickname,conlike from contents, 
 (select connum as connum1, mycol  from
 (select connum,sum(pop_count) ,sum(pop_like), pop_like, pop_count, mycol  from (
 select rownum as rn, connum,pop_count,pop_like,(pop_count+ (pop_like*10)) as mycol from popular where pop_date between to_date(TO_CHAR(sysdate, 'YYYYMMDD'),'yyyymmdd')-3 
 and	to_date(TO_CHAR(sysdate, 'YYYYMMDD'),'yyyymmdd')+4 )
-group by connum,pop_like,pop_count,mycol) order by (pop_count+ (pop_like*10)) desc) where connum = connum1) where rn between 1 and 10;
+group by connum,pop_like,pop_count,mycol) order by (pop_count+ (pop_like*10)) desc) where connum = connum1) where rn between 1 and 10
 	</select>
 		
 	<select id ="hashLike" parameterType= "spring.model.ContentCommand" resultType="spring.model.ContentCommand">
