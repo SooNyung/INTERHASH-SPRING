@@ -1064,9 +1064,9 @@ height:50px;
       	<p>인기글</p>
       	<c:forEach var = "pop_con" items= "${popcontent }" >
       		<div>
-      			<p>
+      		<a href="ContentView.hash?connum=${pop_con.connum}" class= "img_link">
       			${pop_con.content }
-      			</p>
+      		</a>
       		</div>
       	</c:forEach>
       </div>

@@ -93,7 +93,7 @@ public class ContentDAO {
 	
 	//popular 테이블의 해당 날짜의 게시물 번호가 있는지 체크
 	public int getdate(int connum){
-		return session.selectOne("writecontent.getdate",connum);
+		return session.selectOne("writecontent.search_date",connum);
 	}
 	//popular 테이블의 해당 날짜와 게시물 번호가 없을 경우 추가
 	public int insertpop(int connum){
