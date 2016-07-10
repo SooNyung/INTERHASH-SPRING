@@ -304,7 +304,7 @@ public class MemberController {
 		for(int i=0;i<listtt.size();i++) {
 			map2.put(mapp.get(i).get("EMAIL"), mapp.get(i).get("PATH"));
 		}
-		
+		List poplist = cdao.getPopContents();
 		mv.addObject("profilephoto", map2);
 		session.setAttribute("profilephoto", map2);
 
@@ -325,7 +325,7 @@ public class MemberController {
 		session.setAttribute("alarmlist",alarmdao.AlarmAll(email));
 		session.setAttribute("count",alarmdao.alarm_count(email));
 		session.setAttribute("num",1);
-
+		session.setAttribute("popcontent", poplist);
 		return mv;
 	}
 

@@ -1060,7 +1060,16 @@ height:50px;
      
    <div id="jb-right">
       <div style="width:100%; height: 350px; ">
-      <div id ="up" class="box-shadow border-round white padding" style="position:fixed;">인기글</div>
+      <div id ="up" class="box-shadow border-round white padding" style="position:fixed;">
+      	<p>인기글</p>
+      	<c:forEach var = "pop_con" items= "${popcontent }" >
+      		<div>
+      			<p>
+      			${pop_con.content }
+      			</p>
+      		</div>
+      	</c:forEach>
+      </div>
       </div>
       <div style="width:100%; ">
    <div id ="down"  class="box-shadow border-round white padding" style="position:fixed;">
