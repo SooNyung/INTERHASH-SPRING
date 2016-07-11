@@ -77,8 +77,13 @@
 		 update popular set pop_like = pop_like + 1 where (pop_date between to_date(TO_CHAR(sysdate, 'YYYYMMDD'),'yyyymmdd') 
 		and	to_date(TO_CHAR(sysdate, 'YYYYMMDD'),'yyyymmdd')+1) and connum = #{connum}
 	</update>
+	<!-- 인기글 테이블의 좋아요 수 감소 -->
+	<update id="update_likedown" parameterType="int">
+		 update popular set pop_like = pop_like - 1 where (pop_date between to_date(TO_CHAR(sysdate, 'YYYYMMDD'),'yyyymmdd') 
+		and	to_date(TO_CHAR(sysdate, 'YYYYMMDD'),'yyyymmdd')+1) and connum = #{connum}
+	</update>
 	<select id="getpopularcontent" resultType="spring.model.ContentCommand">
-select connum,content,conhash,CONCREATEDDATE,conip,conreportcount,conblind,email,connickname,conlike from(
+select distinct connum,content,conhash,CONCREATEDDATE,conip,conreportcount,conblind,email,connickname,conlike from(
 select rownum as rn,connum,content,conhash,CONCREATEDDATE,conip,conreportcount,conblind,email,connickname,conlike from contents, 
 (select connum as connum1, mycol  from
 (select connum,sum(pop_count) ,sum(pop_like), pop_like, pop_count, mycol  from (

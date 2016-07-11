@@ -899,9 +899,9 @@ height:50px;
             </ul></li>
 
          <div id="jb_search">
-            <form method="post" action="Board.hash">
+            <form method="post" action="Search.hash">
               <div style="float:left">
-               <input type="text" name="hash" />
+               <input type="text" name="searchname" />
                </div>
                <div style="float:right;">
                 <input type="image" src ="image/logo/search.png" class="circle" width="30px" height="30px"/>
