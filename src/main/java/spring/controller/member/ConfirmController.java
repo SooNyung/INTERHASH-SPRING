@@ -159,4 +159,29 @@ public class ConfirmController {
 		PrintWriter out = resp.getWriter();
 		out.print(jso.toString());
 	}
+	
+	@RequestMapping("/Xclose.hash")
+	private void close(@RequestParam("connum") int connum, HttpSession session,Model model,HttpServletResponse resp
+			) throws IOException{
+		System.out.println("X버튼눌렀을때!");
+		
+		JSONObject jso = new JSONObject(); // JASON 객체생성
+		
+		model.addAttribute("connum",connum);
+		
+		int count = comdao.commentcount(connum);
+		
+		int conlike = Dao.getConlike(connum);
+		session.setAttribute("conlike", conlike);
+		
+		jso.put("data", conlike); // jason은 map구조(키,값), data라는 key로 list데이터를 주입했다
+		jso.put("comment", count); // jason은 map구조(키,값), data라는 key로 list데이터를 주입했다
+		System.out.println("jso ::: "+jso);
+		
+		resp.setContentType("application/json;charset=utf-8");
+		PrintWriter out = resp.getWriter();
+		out.print(jso.toString());
+	}
+	
+	
 }
