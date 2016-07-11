@@ -39,7 +39,10 @@ body {
 	url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 
 @import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
-
+@import url(http://weloveiconfonts.com/api/?family=typicons);
+[class*="typicons-"]:before {
+  font-family: 'typicons', sans-serif;
+}
 h2 {
 	font-family: 'Bad Script', cursive;
 }
@@ -655,8 +658,16 @@ ul.menu:after {
 
 #pop_link {
 text-decoration: none;
+font-weight:bold;
+color:#FF809F;
+}
 
-	
+#pop_link:hover{
+color:#FF6088;
+	text-decoration: underline;
+}
+#pop_pop{
+	color:gray;
 }
 </style>
 
@@ -1417,7 +1428,11 @@ text-decoration: none;
 					<c:forEach var="pop_con" items="${popcontent }">
 						<div>
 							<a href="ContentView.hash?connum=${pop_con.connum}"
-								class="img_link" id="pop_link"> ${pop_con.content } </a>
+								class="img_link" id="pop_link"> ${pop_con.content } </a><br>
+								<span id="pop_pop">작성자 : ${pop_con.connickname} &nbsp;
+								<label class="typicons-thumbsUp"></label>${pop_con.conlike}
+								</span>
+								<hr align="center" style="border: dashed 0.5px #D8D8D8;">
 						</div>
 					</c:forEach>
 				</div>

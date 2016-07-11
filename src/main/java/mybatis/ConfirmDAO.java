@@ -33,6 +33,10 @@ public class ConfirmDAO {
 	public void unlike(int connum){
 		session.update("Confirm.unlike",connum);
 	}
+	public int commentcount(int connum)
+	{
+		return session.selectOne("commentcount", connum);
+	}
 /*	public void adminlike(String hashname){
 		session.update("Confirm.adminlike",hashname);
 	}

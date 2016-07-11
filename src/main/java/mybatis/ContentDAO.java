@@ -31,10 +31,11 @@ public class ContentDAO {
 	public ArrayList<ContentCommand> getContent() {
 		ArrayList photo = null;
 		ArrayList<ContentCommand> array = (ArrayList) session.selectList("writecontent.getContent");
-
+		
 		for (int i = 0; i < array.size(); i++) {
 			ContentCommand bean = array.get(i);
 			int connum = bean.getConnum();
+			bean.setCommentcount(session.selectOne("Comment.commentcount",connum));
 			photo = (ArrayList) session.selectList("writecontent.selectPhoto", connum);
 			bean.setPhotolist(photo);
 			array.set(i, bean);
