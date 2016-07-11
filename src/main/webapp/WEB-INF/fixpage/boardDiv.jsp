@@ -29,7 +29,7 @@ $(function() {
      });
        
 });
-/* $(function(){
+ $(function(){
    $(".like").click(function(){
       var index = $(".like").index(this);
       if($(".like:eq("+index+")").hasClass("hide")){
@@ -52,7 +52,7 @@ $(function(){
          $(".like:eq("+indexu+")").removeClass("hide");
       }
    });
-}); */
+});
 
 function readURL(input) {
     if (input.files && input.files[0]) {
@@ -906,10 +906,17 @@ function unlikeAjax(num,hash,like){
      <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="like"> ${con.conlike}</i></button>  
  	 <button type="button" class="w3-theme-d3 w3-margin-bottom" onclick="location.href='Board.hash'"><i class="fa fa-comment"></i>  Comment ${con.connum}</button>  --%>
  		
- 		<div align=center>
+ 	<!-- 	<div align=center>
  	 	<i class="fa fa-thumbs-up w3-theme-d2 w3-margin-bottom"  id="like">&nbsp Like ${con.conlike} &nbsp </i>&nbsp &nbsp
  	 	<i class="fa fa-comment w3-theme-d2 w3-margin-bottom">&nbsp Comment ${con.connum} &nbsp </i>  
-    	</div> 
+    	</div> -->
+    	 <!-- 보현 좋아요 되는거 -->   
+     <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"> Like <i id="${con.connum}like"> ${con.conlike} </i></i></button> 
+     <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"> Like <i  id="${con.connum}unlike"> ${con.conlike} </i></i></button>
+     
+     <button type="button" class="w3-theme-d3 w3-margin-bottom" onclick="location.href='ContentView.hash'"><i class="fa fa-comment"></i>  Comment ${con.connum} </button>
+   <!-- 보현 좋아요 되는거 -->
+    	
 
 	</div>
 
