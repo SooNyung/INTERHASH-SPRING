@@ -72,13 +72,19 @@ public class ReportController {
 	}
 
 	@RequestMapping("/ReportPro.hash")
-	public ModelAndView reportPro(@ModelAttribute("reportdto") ReportCommand reportdto, HttpServletRequest request) {
+	public ModelAndView reportPro(@ModelAttribute("reportdto") ReportCommand reportdto, HttpServletRequest request,
+			String report,String comnick) {
 		ModelAndView mav = new ModelAndView("content/ReportPro");
+		
+
+		char content = '1';
 		int connum = Integer.parseInt(request.getParameter("connum"));
 		String email = reportdto.getEmail();
 		reportdao.sendReport(reportdto);
 		int result = reportdao.reportCount(email);
+		System.out.println(result);
 		int result2 = reportdao.reportCountCon(email);
+		System.out.println(result2);
 		return mav;
 	}
 	
@@ -95,6 +101,8 @@ public class ReportController {
 	@RequestMapping("/ReportProCom.hash")
 	public ModelAndView reportProCom(@ModelAttribute("reportdto") ReportCommand reportdto, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("content/ReportPro");
+		
+		char comment = '2';
 		int comnum = Integer.parseInt(request.getParameter("comnum"));
 		String email = reportdto.getEmail();
 		reportdao.sendReportCom(reportdto);

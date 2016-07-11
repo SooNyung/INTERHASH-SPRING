@@ -453,10 +453,10 @@ public class MemberController {
 				int result = alarmdao.alarm_delete(alarmnum);;
 
 				List alarmList = alarmdao.AlarmAll(email);
-				
-				
 				mav.addObject("alarmList",alarmList);
-				mav.addObject("result",result);	
+				mav.addObject("result",result);				
+		
+
 				System.out.println("삭제성공");
 				return mav;
 	}

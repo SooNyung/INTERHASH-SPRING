@@ -8,10 +8,7 @@
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
-<link rel="stylesheet" href='<c:url value="modal/magnific-popup.css"/>' >
 
-
-<script src='<c:url value="modal/jquery.magnific-popup.min.js"/>'></script>
 
 
 <c:if test ="${sessionScope.memId==null}">
@@ -25,9 +22,7 @@ $(function() {
     $("#conphoto").on('change', function(){
          readURL(this); 
     });
-     $('.img_link').magnificPopup({
-        type:'ajax'
-     });
+    
        
 });
 $(function(){
@@ -132,12 +127,7 @@ function tagCheckUpdate() {
    newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 }
 
-function modal_close(){
-   var e = $.Event("keyup");
-   e.which = 27;
-   e.keyCode = 27;
-   $(document).trigger(e);
-}
+
 
 </script>
 <style type="text/css">

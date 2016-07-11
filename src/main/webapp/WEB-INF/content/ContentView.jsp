@@ -249,7 +249,7 @@ color:#5AAEFF;
 </div>
 
 <div id="view_right" class="box-shadow border-round white">
-	<input type=button onclick="location.href='Board.hash'" class="w3-theme-d1 w3-margin-bottom" value="X" style="float:right">
+	<input type=button onclick="modal_close()" class="w3-theme-d1 w3-margin-bottom" value="X" style="float:right">
 	
 	<form method="post" action="InsertComment.hash">
 	<input type=hidden name=connum value="${content.connum}">
