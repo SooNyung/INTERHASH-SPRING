@@ -75,7 +75,7 @@ public class ReportController {
 	public ModelAndView reportPro(@ModelAttribute("reportdto") ReportCommand reportdto, HttpServletRequest request,
 			String report,String comnick) {
 		ModelAndView mav = new ModelAndView("content/ReportPro");
-		System.out.println(comnick);
+		
 
 		char content = '1';
 		int connum = Integer.parseInt(request.getParameter("connum"));

@@ -29,6 +29,10 @@ body {
 <head>
 
 <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+<link rel="stylesheet" href='<c:url value="modal/magnific-popup.css"/>' >
+
+
+<script src='<c:url value="modal/jquery.magnific-popup.min.js"/>'></script>
 <decorator:head />
 <meta charset="utf-8">
 <title>에벌레</title>
@@ -766,11 +770,15 @@ color:#FF6088;
    
    function alarmList(){
          url="alarmlist.hash?check=y";
-         window.open(url,"post","toolbar=no ,width=500 ,height=400,directories=no,status=yes,menubar=no,scrollbars=no");
+         location.href="alarmlist.hash?check=y";
+         //window.open(url,"post","toolbar=no ,width=500 ,height=400,directories=no,status=yes,menubar=no,scrollbars=no");
          }
 
    $(document).ready(function() {
-      if ($('#jb-content').outerHeight(true) < 800) {
+	   $('.img_link').magnificPopup({
+	        type:'ajax'
+	     });
+	   if ($('#jb-content').outerHeight(true) < 800) {
          $("#jb-content").css("height", "800px");
       }else{
          var g = $('#jb-content').outerHeight(true);
@@ -944,7 +952,7 @@ color:#FF6088;
 						"post",
 						"toolbar=no ,width=400 ,height=350,directories=no,status=yes,menubar=no,scrollbars=no");
 	}
-
+/* 
 	function alarmList() {
 		url = "alarmlist.hash?check=y";
 		window
@@ -952,7 +960,7 @@ color:#FF6088;
 						url,
 						"post",
 						"toolbar=no ,width=500 ,height=400,directories=no,status=yes,menubar=no,scrollbars=no");
-	}
+	} */
 
 	$(document).ready(function() {
 		if ($('#jb-content').outerHeight(true) < 800) {
@@ -1027,7 +1035,12 @@ color:#FF6088;
 	/* $(window).load(function(){
 	    alert($('#jb-content').attr('height'));
 	}); */
-
+	function modal_close(){
+		   var e = $.Event("keyup");
+		   e.which = 27;
+		   e.keyCode = 27;
+		   $(document).trigger(e);
+		}
 </script>
 
 </head>
