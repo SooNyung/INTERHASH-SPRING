@@ -537,7 +537,7 @@ ul.menu:after {
 
 #up {
 	width: 90%;
-	height: 300px;
+	height: 350px;
 	margin-top: 10px;
 	padding: 10px 0px 20px 0px;
 }
@@ -1423,14 +1423,14 @@ color:#FF6088;
 		</div>
 
 		<div id="jb-right">
-			<div style="width: 100%; height: 350px;">
+			<div style="width: 100%; height: 400px;">
 				<div id="up" class="box-shadow border-round white padding"
 					style="position: fixed;">
 					<p>인기글</p>
 					<c:forEach var="pop_con" items="${popcontent }">
 						<div>
-							<a href="ContentView.hash?connum=${pop_con.connum}"
-								class="img_link" id="pop_link"> ${pop_con.content } </a><br>
+							<a style="display:inline;" href="ContentView.hash?connum=${pop_con.connum}"
+								class="img_link" id="pop_link"> ${pop_con.content } </a>
 								<span id="pop_pop">작성자 : ${pop_con.connickname} &nbsp;
 								<label class="typicons-thumbsUp"></label>${pop_con.conlike}
 								</span>
