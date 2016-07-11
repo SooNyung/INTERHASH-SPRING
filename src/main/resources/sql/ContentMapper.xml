@@ -83,7 +83,7 @@
 		and	to_date(TO_CHAR(sysdate, 'YYYYMMDD'),'yyyymmdd')+1) and connum = #{connum}
 	</update>
 	<select id="getpopularcontent" resultType="spring.model.ContentCommand">
-select connum,content,conhash,CONCREATEDDATE,conip,conreportcount,conblind,email,connickname,conlike from(
+select distinct connum,content,conhash,CONCREATEDDATE,conip,conreportcount,conblind,email,connickname,conlike from(
 select rownum as rn,connum,content,conhash,CONCREATEDDATE,conip,conreportcount,conblind,email,connickname,conlike from contents, 
 (select connum as connum1, mycol  from
 (select connum,sum(pop_count) ,sum(pop_like), pop_like, pop_count, mycol  from (
