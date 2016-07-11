@@ -861,7 +861,7 @@ function unlikeAjax(num,hash,like){
      <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}like"> ${con.conlike} </i></button>
      <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}unlike"> ${con.conlike} </i></button>  
      &nbsp&nbsp&nbsp
-     <i style="height:15px;" class="fa fa-comment ">  Comment ${con.connum} &nbsp</i> 
+     <i style="height:15px;" class="fa fa-comment " >  Comment <i id="${con.connum}commentcount"> ${con.commentcount} </i>&nbsp</i> 
 		    
     </div>
     

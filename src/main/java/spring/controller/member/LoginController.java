@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import mybatis.ConfirmDAO;
 import mybatis.MemberDAO;
 import spring.model.MemberCommand;
 import spring.model.VisitCommand;
@@ -53,7 +54,6 @@ public class LoginController {
 		
 		String pw = dao.findPassword(info);
 		System.out.println("pw ::: " + pw );
-		
 		
 		//System.out.println("dao.nick(info) ::: " + nick);
 		//System.out.println("dao.login(info) :: " + result);

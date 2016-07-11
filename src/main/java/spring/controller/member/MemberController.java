@@ -296,7 +296,7 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView("fixpage/boardDiv");
 		String email = (String) session.getAttribute("memId");
 		MemberCommand command = dao.getMemberInfo(email);
-		session.setAttribute("content", cdao.getContent());
+		model.addAttribute("content", cdao.getContent());
 		ArrayList<ContentCommand> content = cdao.getContent();
 		List listtt = dao.getPhotoPathMap();
 		List<Map<String, Object>> mapp = listtt;
@@ -307,7 +307,7 @@ public class MemberController {
 		List poplist = cdao.getPopContents();
 		mv.addObject("profilephoto", map2);
 		session.setAttribute("profilephoto", map2);
-
+		
 		session.setAttribute("memberinfo", command);
 		session.setAttribute("messagecount", mdao.getMessageCount(email));
 		String checked = dao.selectCheck(email); //Áø°æ

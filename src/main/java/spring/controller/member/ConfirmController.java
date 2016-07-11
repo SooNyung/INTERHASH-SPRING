@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import mybatis.AdminDAO;
+import mybatis.CommentDAO;
 import mybatis.ConfirmDAO;
 import mybatis.ContentDAO;
 import net.sf.json.JSONObject;
@@ -22,6 +23,14 @@ import spring.model.AlarmCommand;
 
 @Controller
 public class ConfirmController {
+	
+	@Autowired
+	CommentDAO comdao ;
+	
+	public void setComdao(CommentDAO comdao)
+	{
+		this.comdao = comdao;
+	}
 	
 	@Autowired
 	ConfirmDAO Dao;
@@ -116,7 +125,6 @@ public class ConfirmController {
 		dto.setComnick(comnick);
 		dto.setConnum(connum);
 		dto.setReceivedemail(receivedemail);
-		
 		
 		if(!((confirmemail).equals(receivedemail))){
 			int alarm = alarmdao.Alarm(dto);
