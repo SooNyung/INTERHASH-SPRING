@@ -868,18 +868,14 @@ height:50px;
                      <td colspan="2">
                      <c:forEach var="alarm"    items="${sessionScope.alarmlist}" begin="0" end="2">
                            <c:if test="${alarm.kinds == 0}">
-                           <li><a 
-                              href="#"
-                              onclick="window.open('ContentView.hash?connum=${alarm.connum}','new','width=1000 height=650');return false">
-                              <img  src="image/logo/img_avatar5.png" class="left-align circle "
+                           <li><a href="ContentView.hash?connum=${alarm.connum}" class= "img_link">
+                              <img  src="image/logo/img_avatar5.png" class="left-align circle " 
                                  width="15%" height="15%"><b>${alarm.comnick}</b>님이 회원님의 게시글에 댓글을 남겼습니다.</a></li>
                             </c:if>
                             
 						  <c:if test="${alarm.kinds == 1}">
-                           <li><a 
-                              href="#"
-                              onclick="window.open('ContentView.hash?connum=${alarm.connum}','new','width=1000 height=650');return false">
-                              <img  src="image/logo/img_avatar5.png" class="left-align circle "
+                           <li><a href="ContentView.hash?connum=${alarm.connum}" class= "img_link">
+                              <img  src="image/logo/img_avatar5.png" class="left-align circle" 
                                  width="15%" height="15%"><b>${alarm.comnick}</b>님이 회원님의 게시글을 좋아합니다.</a></li>
                             </c:if>
                         </c:forEach></td>

@@ -156,7 +156,7 @@ function modal_close(){
 }
    .background-color{color:#000 !important; background-color:#f5f7f8 !important}
    #board_div{
-      width:95%;
+      width:115%;
       height:230px;
 /*        background-color: black;  */
       
