@@ -304,6 +304,7 @@ public class MemberController {
 		for(int i=0;i<listtt.size();i++) {
 			map2.put(mapp.get(i).get("EMAIL"), mapp.get(i).get("PATH"));
 		}
+		//인기글
 		List poplist = cdao.getPopContents();
 		mv.addObject("profilephoto", map2);
 		session.setAttribute("profilephoto", map2);
@@ -459,4 +460,6 @@ public class MemberController {
 				System.out.println("삭제성공");
 				return mav;
 	}
+	
+
 }
