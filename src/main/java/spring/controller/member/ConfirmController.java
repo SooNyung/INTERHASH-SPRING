@@ -96,7 +96,7 @@ public class ConfirmController {
 		System.out.println(receivedemail);
 		String confirmemail = alarmdao.confirm(comnick);
 		System.out.println(confirmemail);
-		
+		cdao.update_like(connum);
 		model.addAttribute("connum",connum);
 		model.addAttribute("conhash",hashname);
 
@@ -143,7 +143,7 @@ public class ConfirmController {
 		Dao.unlike(connum);
 		int conlike = Dao.getConlike(connum);
 		session.setAttribute("conlike", conlike);
-		
+		cdao.update_likedown(connum);
 		jso.put("data", conlike); // jason은 map구조(키,값), data라는 key로 list데이터를 주입했다
 		System.out.println("jso ::: "+jso);
 		
