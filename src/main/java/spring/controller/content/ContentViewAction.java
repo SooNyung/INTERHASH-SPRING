@@ -108,7 +108,11 @@ public class ContentViewAction {
 		content.setConhash(conhash);
 		//content.setEmail(email);
 		//System.out.println(email);
-	
+		if(contentdao.getdate(connum)==1){
+			contentdao.update_count(connum);
+		}else{
+			contentdao.insertpop(connum);
+		}
 		ArrayList<CommentCommand> array = (ArrayList) commentdao.getComments(connum);
 		
 		int count = commentdao.commentcount(connum);

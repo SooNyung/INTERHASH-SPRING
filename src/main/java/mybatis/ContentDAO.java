@@ -91,6 +91,25 @@ public class ContentDAO {
 		return session.selectList("writecontent.search", searchname);
 	}
 	
+	//popular 테이블의 해당 날짜의 게시물 번호가 있는지 체크
+	public int getdate(int connum){
+		return session.selectOne("writecontent.search_date",connum);
+	}
+	//popular 테이블의 해당 날짜와 게시물 번호가 없을 경우 추가
+	public int insertpop(int connum){
+		return session.insert("writecontent.insert_pop",connum);
+	}
+	//popular 테이블의 조회수 +1
+	public int update_count(int connum){
+		return session.update("writecontent.update_count", connum);
+	}
+	//popular 테이블의 좋아요 수 +1
+	public int update_like(int connum){
+		return session.update("writecontent.update_like", connum);
+	}
+	public List getPopContents(){
+		return session.selectList("writecontent.getpopularcontent");
+	}
 /*	public ContentCommand getContent(int connum) throws Exception {
 		ContentCommand content = null;
 		
