@@ -51,6 +51,7 @@ function test() {
 	<input type="hidden" name="redistinction" value="1">
 	<input type="hidden" name="email" value="${content.email}">
 	<input type="hidden" name="connum" value="${content.connum}">
+	<%-- <input type="hidden" name="comnick" value="${content.connickname}"> --%>
 </div>
 <br>
 <div align="center">

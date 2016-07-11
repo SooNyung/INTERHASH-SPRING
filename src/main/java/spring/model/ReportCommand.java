@@ -7,7 +7,8 @@ public class ReportCommand {
 	int connum;
 	String email;
 	int comnum;
-	
+	String report;
+	String comnick;
 	
 	public int getRenum() {
 		return renum;
@@ -38,6 +39,18 @@ public class ReportCommand {
 	}
 	public void setComnum(int comnum) {
 		this.comnum = comnum;
+	}
+	public String getReport() {
+		return report;
+	}
+	public void setReport(String report) {
+		this.report = report;
+	}
+	public String getComnick() {
+		return comnick;
+	}
+	public void setComnick(String comnick) {
+		this.comnick = comnick;
 	}
 	
 	
