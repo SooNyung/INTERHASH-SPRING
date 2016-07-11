@@ -3,27 +3,20 @@ package spring.controller.member;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import java.util.Map;
-
-
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.poi.util.SystemOutLogger;
-import org.apache.tiles.request.jsp.extractor.SessionScopeExtractor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import mybatis.AdminDAO;
 import mybatis.ConfirmDAO;
+import mybatis.ContentDAO;
 import net.sf.json.JSONObject;
 import spring.model.AlarmCommand;
 
@@ -37,6 +30,12 @@ public class ConfirmController {
 		this.Dao = Dao;
 	}
 	
+	@Autowired
+	ContentDAO cdao;
+	
+	public void setCdao(ContentDAO cdao) {
+		this.cdao = cdao;
+	}
 	@Autowired
 	private AdminDAO alarmdao;
 	
@@ -77,7 +76,7 @@ public class ConfirmController {
 		
 		return "confirm/ConfirmNickname";
 	}
-
+	
 	@RequestMapping("/LikeCheck.hash")
 	public void like_check(@RequestParam("connum") int connum, @RequestParam("conhash") String hashname,
 			HttpSession session,Model model,HttpServletResponse resp,AlarmCommand dto,
