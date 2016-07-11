@@ -6,6 +6,7 @@
 
 <head>
 <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <style>
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
 [class*="fontawesome-"]:before {
@@ -72,6 +73,219 @@ text-align: center;
 }
 </style>
 
+<script type="text/javascript">
+$(function() {
+     $('.img_link').magnificPopup({
+        type:'ajax'
+     });
+       
+});
+</script>
+<!-- 좋아요 기능 function -->
+<script>
+function likeAjax(num,hash){
+
+   var url="/INTERHASH-SPRING/LikeCheck.hash";
+   var params ="connum="+num+"&conhash="+hash;
+   var like = "#"+num+"unlike";
+   
+   $.ajax({
+      type:"post"
+      ,url:url
+      ,data:params
+      ,dataType:"json"
+       ,success:function(args){
+          $(like).text(args.data);
+       }
+       ,error:function(request, status , err) {
+          alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
+       }
+   });
+}
+
+function unlikeAjax(num,hash,like){
+
+   var url="/INTERHASH-SPRING/Unlike.hash";
+   var params ="connum="+num+"&conhash="+hash;
+   var unlike = "#"+num+"like";
+   
+   $.ajax({
+      type:"post"
+      ,url:url
+      ,data:params
+      ,dataType:"json"
+       ,success:function(args){
+          $(unlike).text(args.data);
+       }
+       ,error:function(request, status , err) {
+          alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
+       }
+   });
+}
+
+//comment insert
+function insert1(connum){
+   var con = connum;
+   var url = "/INTERHASH-SPRING/InsertComment.hash";
+   var texta = $('#comment_textarea').val();
+   var params = "connum="+con+"&comcontent="+texta; 
+   $.ajax({
+      type:"post",
+      url:url,
+      data:params,
+      dataType:"json",
+      success:function(args){   
+         $("#test_div *").remove();
+         $("#comment_div *").remove();
+         for(var i=0;i<args.data.length;i++){
+            var check;
+            if(args.session==args.data[i].email){
+               $('#test_div').append(
+                  '<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
+                  '--!><span><label id="time'+i+'">'+args.time+'</label></span><!--'+
+                  '--!><span id="align_right"><a href="#" onclick="delete1('+args.data[i].comnum+','+args.data[i].connum+')">삭제</a><!--'+
+                  '--!><a href="#" onclick="modify('+args.data[i].comnum+','+args.data[i].connum+','+i+')">수정</a><!--'+
+                  '--!></span><br><div id="test"><textarea id="textaa'+i+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+         }else{
+            $('#test_div').append(
+                  '<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
+                  '--!><span><label id="time'+i+'">'+args.test+'</label></span><!--'+
+                  '--!><span id="align_right"><!--'+
+                  '--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></span><br><div id="test"><textarea id="textaa'+i+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+         }
+         }
+      }
+         ,error: function (xhr, status, err){
+            alert(err);
+         } 
+   });
+}
+
+
+
+function modifyCon(connum){
+   var connum = connum;
+   var url = "/INTERHASH-SPRING/ContentUpdate.hash";
+   var params = "connum="+connum;
+   
+   $.ajax({
+      type:"post",
+      url:url,
+      data:params,
+      dataType:"json",
+      success:function(args){
+         $("#content1").attr("type","textarea");
+         $("#content1").attr("readonly",false);
+         $("#content1").css("border","1px");
+         
+         $("#left_mod_del_rep *").remove();
+         $("#left_mod_del_rep").append("<input id='align_right' type='button' value='수정버튼' onclick='modifypro("+connum+")'>");
+      
+         $("#left_mod_del_rep").append("<img src ='image/logo/tag.png' width='25px' height='25px' onClick='tagCheckUpdate()'>");
+         $("#left_mod_del_rep").append("<img src ='image/logo/place.png' width='25px' height='25px' onClick='MapUpdate()'>");
+
+         
+         $("#test_div *").remove();
+         $("#comment_div *").remove();
+         for(var i=0;i<args.data.length;i++){
+            var check;
+            if(args.session==args.data[i].email){
+               $('#test_div').append(
+                  '<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
+                  '--!><span><label id="time'+i+'">'+args.time+'</label></span><!--'+
+                  '--!><span id="align_right"><a href="#" onclick="delete1('+args.data[i].comnum+','+args.data[i].connum+')">삭제</a><!--'+
+                  '--!><a href="#" onclick="modify('+args.data[i].comnum+','+args.data[i].connum+','+i+')">수정</a><!--'+
+                  '--!></span><br><div id="test"><textarea id="textaa'+i+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+         }else{
+            $('#test_div').append(
+                  '<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
+                  '--!><span><label id="time'+i+'">'+args.test+'</label></span><!--'+
+                  '--!><span id="align_right"><!--'+
+                  '--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></span><br><div id="test"><textarea id="textaa'+i+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+         }
+         }
+      }
+         ,error: function (xhr, status, err){
+            alert(err);
+         } 
+   });
+}
+
+function modifypro(connum){
+   var content1 = document.getElementsByName('content1')[0].value;
+   var conhash = document.getElementsByName('tag')[0].value;
+   var maptitle = document.getElementsByName('maptitle')[0].value;
+   var mapplace = document.getElementsByName('mapplace')[0].value;
+   
+   var connum = connum;
+   var url = "/INTERHASH-SPRING/ContentUpdatePro.hash";
+   var params = "content="+content1+"&connum="+connum+"&conhash="+conhash+"&maptitle="+maptitle+"&mapplace="+mapplace;
+   
+   $.ajax({
+      type:"post",
+      url:url,
+      data:params,
+      dataType:"json",
+      success:function(args){
+         alert('성공');
+         $("#content1").attr("type","textarea");
+         $("#content1").attr("readonly",true);
+         $("#content1").css("border","1px");
+         
+         $("#left_mod_del_rep *").remove();
+         $("#left_mod_del_rep").append("<span id='align_right'>/<a href='#' onclick='deleteCon("+connum+")'>삭제하기</a></span><!--"+
+               "--!><span id='align_right'><a href='#' onclick='modifyCon("+connum+")'>수정하기 </a></span>")
+               
+         /* $("#place").remove();
+         $("#place").append("<a href='#' onclick= 'javascript:mapopen("+${latitude}+","+${longtitude}+","+${maptitle}+")'>
+         '<font color="#666"><b>'+${maptitle}+'</b>에서</font></a>");
+ */
+
+      }
+         ,error: function (xhr, status, err){
+            alert(err);
+            alert('실패');
+         } 
+   });
+   
+}
+
+function delete1(comnum, connum){
+    var com = comnum;
+   var con = connum;
+   var url = "/INTERHASH-SPRING/deleteComment.hash";
+   var params = "comnum="+comnum+"&connum="+connum;
+   $.ajax({
+      type:"post"
+      ,url:url
+      ,data:params
+      ,dataType:"json"
+      ,success:function(args){   
+         $("#test_div *").remove();
+         $("#comment_div *").remove();
+         for(var i=0;i<args.data.length;i++){
+            var check;
+            if(args.session==args.data[i].email){
+               $('#test_div').append(
+                  '<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
+                  '--!><span><label id="time'+i+'">'+args.time+'</label></span><!--'+
+                  '--!><span id="align_right"><a href="#" onclick="delete1('+args.data[i].comnum+','+args.data[i].connum+')">삭제</a><!--'+
+                  '--!><a href="#" onclick="modify('+args.data[i].comnum+','+args.data[i].connum+','+i+')">수정</a><!--'+
+                  '--!></span><br><div id="test"><textarea id="textaa'+i+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+         }else{
+            $('#test_div').append(
+                  '<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
+                  '--!><span><label id="time'+i+'">'+args.time+'</label></span><!--'+
+                  '--!><span id="align_right"><!--'+
+                  '--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></span><br><div id="test"><textarea id="textaa'+i+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+         }
+         }
+      },error: function (xhr, status, err){
+          alert(err);
+      }    
+      });
+}   
+</script>
 </head>
 
 <body>
@@ -95,18 +309,17 @@ text-align: center;
 			</span><br><hr>
 			
 			<c:if test="${list.kinds == 0}">
-				<span>  <a href="ContentView.hash?connum=${list.connum}" 
-				onClick="window.open(this.href, '', 'width=1000, height=650'); return false;">
+				<span>  <a href="ContentView.hash?connum=${list.connum}" class= "img_link">
 				<b>${list.comnick}</b>님이 회원님의 게시글에 댓글을 남겼습니다.</a>			
 				<input type="button" id="buttonid" value="삭제" onclick="location.href='alarmdelete.hash?alarmnum=${list.alarmnum}'"> 
 			</span><br>
 			</c:if>
 			
 			<c:if test="${list.kinds == 1}">
-				<span>  <a href="ContentView.hash?connum=${list.connum}" 
-				onClick="window.open(this.href, '', 'width=1000, height=650'); return false;">
+				<span> <a href="ContentView.hash?connum=${list.connum}" class= "img_link">
 				<b>${list.comnick}</b>님이 회원님의 게시글을 좋아합니다.</a>		
 				<input type="button" id="buttonid" value="삭제" onclick="location.href='alarmdelete.hash?alarmnum=${list.alarmnum}'"> 
+			
 			</span><br>
 			</c:if>
 			

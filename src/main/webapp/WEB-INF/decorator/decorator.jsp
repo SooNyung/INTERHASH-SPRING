@@ -671,7 +671,184 @@ color:#FF6088;
 }
 </style>
 
-<script>
+    <script>
+    
+    /*
+       conphoto 는 contentInputForm.jsp 파일 안에 있는 파일 업로드 부분
+       이곳이 변경되면, 파일을 읽어 들이는 함수 동작
+    */
+    
+    
+    
+    $(function() {
+        $("#conphoto").on('change', function(){
+             readURL(this); 
+        });
+    });
+
+    /*
+       사진 미리 보기 부분
+       자바스립트의 FileReader() 를 통해 임시 경로에 사진을 업로드 함.
+       또한 attr 을 통해 사진의 크기를 강제로 조정함.
+    */
+
+    function fileUploadPreview(thisObj, preViewer) {
+
+      // 형식 체크
+      if (!/(\.gif|\.jpg|\.jpeg|\.png)$/i.test(thisObj.value)) {
+         alert("이미지 형식의 파일을 선택하십시오");
+         $(thisObj).val('');
+         return;
+      }
+
+      var preViewer = $('.preViewImg:last');//(typeof(preViewer) == "object") ? preViewer : document.getElementById(preViewer);
+      var ua = window.navigator.userAgent;
+
+      // 렌더링 버전 알아내기
+      var rv = -1;
+
+      // ie 브라우저이며 ie10 미만 버전
+      if (ua.indexOf("MSIE") > -1 && rv < 10) {
+         var img_path = "";
+         if (thisObj.value.indexOf("\\fakepath\\") < 0) {
+            img_path = thisObj.value;
+         } else {
+            thisObj.select();
+            var selectionRange = document.selection.createRange();
+            img_path = selectionRange.text.toString();
+            thisObj.blur();
+         }
+         $(preViewer).css(
+               'filter',
+               "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='fi"
+                     + "le://" + img_path + "', sizingMethod='scale')")
+               .show();
+
+         var cloneHtml = $('.photo_list:last').clone();
+         cloneHtml.find('input').val('');
+         cloneHtml.find('img').removeAttr('src', 'style').hide();
+         $(thisObj).parents('.photoBox:first').append(cloneHtml);
+      } else { // 그외 브라우저
+         var reader = new FileReader();
+         reader.readAsDataURL(thisObj.files[0]);
+         reader.onload = function(e) {
+            $('.preViewImg:last').attr('src', e.target.result).show();
+
+            var cloneHtml = $('.photo_list:last').clone();
+            cloneHtml.find('input').val('');
+            cloneHtml.find('img').attr('src', '').hide();
+            $(thisObj).parents('.photoBox:first').append(cloneHtml);
+         }
+      }
+   }
+
+   function tagCheck() {
+
+      url = "TagCheck.hash?check=y";
+      newwindow = window
+            .open(
+                  url,
+                  "post",
+                  "toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
+
+   }
+
+
+   function Message(){
+      url="MessageForm.hash";
+      window.open(url,"post","toolbar=no ,width=400 ,height=350,directories=no,status=yes,menubar=no,scrollbars=no");
+      } 
+   
+   function MessageList(){
+      url="MessageList.hash?check=y";
+      window.open(url,"post","toolbar=no ,width=400 ,height=350,directories=no,status=yes,menubar=no,scrollbars=no");
+      } 
+   
+   function alarmList(){
+         url="alarmlist.hash?check=y";
+         window.open(url,"post","toolbar=no ,width=500 ,height=400,directories=no,status=yes,menubar=no,scrollbars=no");
+         }
+
+   $(document).ready(function() {
+      if ($('#jb-content').outerHeight(true) < 800) {
+         $("#jb-content").css("height", "800px");
+      }else{
+         var g = $('#jb-content').outerHeight(true);
+         $('#main').css("height", g);
+         
+      }
+      /* alert($('#jb-content').outerHeight(true)); */
+      // alert(document.getElementById("main").currentStyle.width);
+   });
+   
+   
+   $(document).ready(function(){  
+         
+        $(".topnav").click(function() {                    //마우스를 topnav에 오버시
+         $(this).parent().find(".account").slideDown('normal').show();                   //subnav가 내려옴.
+         $(this).parent().hover(function() {  
+         }, function(){  
+          $(this).parent().find(".account").slideUp('fast');                 //subnav에서 마우스 벗어났을 시 원위치시킴  
+         });  
+        });  
+         
+       });  
+   
+
+   $(document).ready(function(){           
+        $(".message").click(function() {//마우스를 topnav에 오버시
+         $("a span").hide();      
+         $(this).parent().find(".sub").slideDown('normal').show();                   //subnav가 내려옴.
+         $(this).parent().hover(function() {  
+         }, function(){  
+          $(this).parent().find(".sub").slideUp('fast');                 //subnav에서 마우스 벗어났을 시 원위치시킴  
+         });  
+        });  
+        
+        $(".alarm").click(function() {//마우스를 topnav에 오버시
+            $(this).parent().find("a span").hide();      
+            $(this).parent().find(".al").slideDown('normal').show();                   //subnav가 내려옴.
+            $(this).parent().hover(function() {  
+            }, function(){  
+             $(this).parent().find(".al").slideUp('fast');                 //subnav에서 마우스 벗어났을 시 원위치시킴  
+            });  
+           });
+       }); 
+   
+   
+    $(document).ready(function(){  
+         var check = "${memberinfo.checked}";
+         
+             $('.profile').each(function() {
+               var tt = $(this).attr("id");
+              if(check.indexOf(tt)!=-1){ 
+                   $(this).attr("style","inline");
+             } 
+            });  
+      });
+      
+    $(document).ready(function(){  
+         
+         var check = "${memberinfo.checked}"; //hasharr에 저장됨
+         /* var hi = $(".pro").attr("id"); */
+         
+         $('.pro').each(function() {
+             var eachh = $(this).attr("id");
+             /* alert(eachh); */
+              if(check.indexOf(eachh)!=-1){
+                $(this).attr("type","font");
+             } 
+           });
+         
+          
+         });
+
+
+   /* $(window).load(function(){
+       alert($('#jb-content').attr('height'));
+   }); */
+
+
 	/*
 	   conphoto 는 contentInputForm.jsp 파일 안에 있는 파일 업로드 부분
 	   이곳이 변경되면, 파일을 읽어 들이는 함수 동작
@@ -850,12 +1027,118 @@ color:#FF6088;
 	/* $(window).load(function(){
 	    alert($('#jb-content').attr('height'));
 	}); */
+
 </script>
 
 </head>
 
 <body style="background-color: #f5f7f8">
 
+
+   <!-- navbar -->
+
+   <div id=head>
+      <ul class="navbar color1">
+         <li class="small"><a href="Board.hash"
+            class="padding-large margin-right"><h2>I N T E R H A S H #</h2></a></li>
+         <li class="small">
+         <div class="message">
+         <a href="#" 
+         class="padding-large margin-right"  title="Messages">
+           <img src ="image/logo/message .png" onmouseover="this.src='image/logo/message2.png'" onmouseout="this.src='image/logo/message .png'" width="30px" height="30px"/>
+           <span class="count badge right small circle pink">${messagecount}</span>
+         </a>
+         </div>
+      
+            <ul class="sub">
+               <table>   
+                  <tr>
+                     <td>쪽지</td>
+                     <td class="w3-right"><button id="buttonid" onclick="Message()">쪽지보내기</button></td>
+                  </tr>
+                  <tr class="left-align">
+                     <td colspan="2"><c:forEach var="message"
+                           items="${sessionScope.mesagelist}" begin="0" end="2">
+                           <li><a 
+                              href="#"
+                              onclick="window.open('MessageView.hash?messageNum=${message.messageNum}','new','width=400 height=350');return false"><img
+                                 src="image/logo/img_avatar5.png" class="left-align circle "
+                                 width="15%" height="15%">${message.sendNickname}:
+                                 ${message.messageContent}</a></li>
+                        </c:forEach></td>
+                  </tr>
+
+                  <tr>
+                     <Td colspan="2"><hr><button id="buttonid" onclick="MessageList()">모든 쪽지 보기</button></Td>
+                  </tr>
+               </table>
+            </ul></li>
+          
+         <li class="small">
+
+          <div class="alarm">
+          <a href="#" 
+          class="margin-right padding-large" title="Alarm">         
+           <img src="image/logo/alarm1.png" onmouseover="this.src='image/logo/alarm.png'" onmouseout="this.src='image/logo/alarm1.png'" width="30px" height="30px"/>
+           <span class="count badge right small circle pink">${count}</span></a>
+          </div>
+          <ul class="al">
+               <table>   
+                  <tr>
+                     <td style="color:#8C8C8C;">Alarm</td>
+                     
+                  </tr>
+                  <tr class="left-align">
+                     <td colspan="2">
+                     <c:forEach var="alarm"    items="${sessionScope.alarmlist}" begin="0" end="2">
+                           <c:if test="${alarm.kinds == 0}">
+                           <li><a href="ContentView.hash?connum=${alarm.connum}" class= "img_link">
+                              <img  src="image/logo/img_avatar5.png" class="left-align circle " 
+                                 width="15%" height="15%"><b>${alarm.comnick}</b>님이 회원님의 게시글에 댓글을 남겼습니다.</a></li>
+                            </c:if>
+                            
+						  <c:if test="${alarm.kinds == 1}">
+                           <li><a href="ContentView.hash?connum=${alarm.connum}" class= "img_link">
+                              <img  src="image/logo/img_avatar5.png" class="left-align circle" 
+                                 width="15%" height="15%"><b>${alarm.comnick}</b>님이 회원님의 게시글을 좋아합니다.</a></li>
+                            </c:if>
+                        </c:forEach></td>
+                  </tr>
+
+                  <tr>
+                     <Td colspan="2"><hr><button id="buttonid" onclick="alarmList()">All Alarm</button></Td>
+                  </tr>
+               </table>
+            </ul>
+          
+      </li>
+
+         <li class="small right">
+         <div class="topnav">   <a href="#" title="MyAccount"><img id ="profileImg" src='<c:url value="/upload/${sessionScope.profilePhoto}" />' class="circle" width="10%" height="10%">
+           ${memberinfo.nickname}님</a></div>
+            <ul class="account">
+               <li><a href="UserInfoModifyForm.hash">회원정보수정</a></li>
+               <li><a href="profile.hash">프로필수정</a></li>
+               <li><a href="LogOut.hash">로그아웃</a></li>
+            </ul></li>
+
+         <div id="jb_search">
+            <form method="post" action="Search.hash">
+              <div style="float:left">
+               <input type="text" name="searchname" />
+               </div>
+               <div style="float:right;">
+                <input type="image" src ="image/logo/search.png" class="circle" width="30px" height="30px"/>
+            </div>
+            </form>
+         </div>
+
+      </ul>
+   </div>
+
+
+                  <!-- <input type = "text"><br>
+=======
 	<!-- navbar -->
 
 	<div id=head>
@@ -976,6 +1259,7 @@ color:#FF6088;
 
 
 	<!-- <input type = "text"><br>
+>>>>>>> b5180d80a45a24cd95f9c43f18b718046d954b87
                <input type = "password"><br>
                <input type = "button" value="회원가입"><input type="submit" value="로그인">
                <input type="button" value="정보수정" onclick="window.location.href='UserInfoModifyForm.hash';"> -->

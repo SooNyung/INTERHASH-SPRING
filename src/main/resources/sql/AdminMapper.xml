@@ -29,7 +29,7 @@ values(num_seq.nextval, #{drawalemail}, #{drawalcause}, sysdate)
 </insert>
 
 <select id ="report" resultType="spring.model.ContentCommand">
-select * from contents where conreportcount >= 1
+select * from contents where conreportcount >= 1 
 </select>
 
 <select id="contentcount" resultType="int">

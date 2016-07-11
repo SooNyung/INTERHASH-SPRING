@@ -460,4 +460,6 @@ public class MemberController {
 				System.out.println("삭제성공");
 				return mav;
 	}
+	
+
 }

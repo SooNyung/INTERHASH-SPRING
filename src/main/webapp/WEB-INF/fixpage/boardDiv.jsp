@@ -320,7 +320,7 @@ function modal_close(){
    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
    box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
    color: white;
-	background-color: #FFCCCC;
+   background-color: #FFCCCC;
 }
 #button:hover {
 background-color: #FF9090;
@@ -729,7 +729,7 @@ function checkIt(){
                <div id="blah_img" >
                   <img id="blah" src="" alt="no image"/>
                </div>
-         	</div>
+            </div>
          </div>
           
          
@@ -862,7 +862,7 @@ function unlikeAjax(num,hash,like){
      <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}unlike"> ${con.conlike} </i></button>  
      &nbsp&nbsp&nbsp
      <i style="height:15px;" class="fa fa-comment ">  Comment ${con.connum} &nbsp</i> 
-		    
+          
     </div>
     
    <%-- <div id="board_img">
@@ -900,7 +900,7 @@ function unlikeAjax(num,hash,like){
      
      <button type="button" class="w3-theme-d3 w3-margin-bottom" onclick="location.href='Board.Hash'"><i class="fa fa-comment"></i>  Comment ${con.connum} </button> --%>
   
-    	
+       
  <%--       <div id="board_subject">
          <div id="subject">
          <label>'${con.connickname}'</label>
