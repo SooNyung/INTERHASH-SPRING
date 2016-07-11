@@ -61,8 +61,10 @@ function readURL(input) {
        reader.onload = function (e) {
 
              $('#blah').attr('src', e.target.result); 
-             $('#blah').attr('height', '80px');
+             $('#blah').attr('height', '100px');
              $('#blah').attr('width', '120px');
+             $('#photoBox').css('display','inline');
+             $('#board_div').css('height','250px');
         }
 
       reader.readAsDataURL(input.files[0]);
@@ -156,12 +158,12 @@ function modal_close(){
 }
    .background-color{color:#000 !important; background-color:#f5f7f8 !important}
    #board_div{
-      width:95%;
-      height:230px;
-/*        background-color: black;  */
-      
+      width:115%;
+      height:150px;
       padding:10px;
       margin:10px;
+      overflow:hidden;
+      
    }
    
    
@@ -317,6 +319,11 @@ function modal_close(){
    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
    box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+   color: white;
+	background-color: #FFCCCC;
+}
+#button:hover {
+background-color: #FF9090;
 }
 .hide { display: none; }
 .photoBox .fileData {
@@ -714,18 +721,19 @@ function checkIt(){
       <form action="ContentInputPro.hash" name="writeForm" method="post" enctype="multipart/form-data" onSubmit="return checkIt()"> 
       <div id="wrap" style="width: 500px; ">
          <textarea style="resize: none; width:460px; height:80px;" id="textfield" name="content" placeholder="내용을 입력하세요."></textarea>
-         <div class="photoBox" style="height: 100px; width: 100px;">
-         
-        <input type="text" name="tag" size="30" readonly style="border:0px; color:#FF73B8;" id="tag">
-      
-         
+         <div id="under">
+         <input type="text" name="tag" size="30" readonly style="border:0px; color:#FF73B8;" id="tag">
+         <div class="photoBox" id="photoBox" style="height: 100px; width: 100px; display: none;">
+        
             <input class='fileData' id = "conphoto" name="conphoto" type="file"/> 
                <div id="blah_img" >
                   <img id="blah" src="" alt="no image"/>
                </div>
-               <!-- <div id="staticMap" style="width:600px;height:350px;"></div>      -->      
+         	</div>
          </div>
-         <div style="clear: both;"></div>
+          
+         
+          <div style="clear: both;"></div> 
          <div id="sub">
             <span id="imageon" style="width: 50px; float: left;"> 
              <img src='<c:url value="/image/logo/photo.png" />' width="30px" height="30px" onclick="$('.fileData:last').click();" /> 
@@ -742,15 +750,16 @@ function checkIt(){
                
             </div>
              <div style="float:right">  
-               <img src ="image/logo/tag.png" width="25px" height="25px" onClick="tagCheck()">
+               <img src ="image/logo/tag.png" width="30px" height="30px" onClick="tagCheck()">
              </div>
             </div> 
                  
-             <span id="submit"> 
-               <!--      <input type="submit" id="button" value="submit"/>  -->
-               <input type="image" src="image/logo/post.PNG"> 
+        <!--      <span id="submit">  -->
+                  <input type="submit" id="button" value="submit"/>
+           <!--     <input type="image" src="image/logo/post.PNG">  -->
+               
          
-             </span>
+             
          </div>
       </div>
    </form>
@@ -884,6 +893,21 @@ function unlikeAjax(num,hash,like){
          <br/>
          <label> ${con.conhash} </label>
 
+     <%-- <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>Like <i id="like">${con.conlike}</i></button> 
+     <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="like"> ${con.conlike}</i></button>  
+ 	 <button type="button" class="w3-theme-d3 w3-margin-bottom" onclick="location.href='Board.hash'"><i class="fa fa-comment"></i>  Comment ${con.connum}</button>  --%>
+ 		
+ 	<!-- 	<div align=center>
+ 	 	<i class="fa fa-thumbs-up w3-theme-d2 w3-margin-bottom"  id="like">&nbsp Like ${con.conlike} &nbsp </i>&nbsp &nbsp
+ 	 	<i class="fa fa-comment w3-theme-d2 w3-margin-bottom">&nbsp Comment ${con.connum} &nbsp </i>  
+    	</div> -->
+    	 <!-- 보현 좋아요 되는거 -->   
+     <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"> Like <i id="${con.connum}like"> ${con.conlike} </i></i></button> 
+     <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"> Like <i  id="${con.connum}unlike"> ${con.conlike} </i></i></button>
+     
+     <button type="button" class="w3-theme-d3 w3-margin-bottom" onclick="location.href='ContentView.hash'"><i class="fa fa-comment"></i>  Comment ${con.connum} </button>
+   <!-- 보현 좋아요 되는거 -->
+    	
       </div>
        <div id="board_like">
          <div id="like">
@@ -906,7 +930,7 @@ function unlikeAjax(num,hash,like){
          </div>
       </div>  
       </a>
-   </div> --%> 
+   </div> 
    
 
  <%--       <div id="board_subject">
