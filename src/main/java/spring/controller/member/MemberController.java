@@ -304,6 +304,7 @@ public class MemberController {
 		for(int i=0;i<listtt.size();i++) {
 			map2.put(mapp.get(i).get("EMAIL"), mapp.get(i).get("PATH"));
 		}
+		//ÀÎ±â±Û
 		List poplist = cdao.getPopContents();
 		mv.addObject("profilephoto", map2);
 		session.setAttribute("profilephoto", map2);
