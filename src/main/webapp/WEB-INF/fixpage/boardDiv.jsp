@@ -849,7 +849,22 @@ function unlikeAjax(num,hash,like){
 
    </div>
 
+   <div class="w3-btn" align="left">
+   
+    <!-- 좋아요 보이는것만 -->
+    <!-- <div align=center>
+        <i class="fa fa-thumbs-up w3-theme-d2 w3-margin-bottom"  id="like">&nbsp Like ${con.conlike} &nbsp </i>&nbsp &nbsp
+        <i class="fa fa-comment w3-theme-d2 w3-margin-bottom">&nbsp Comment ${con.connum} &nbsp </i>  
+       </div> 
+     </div> -->
 
+     <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}like"> ${con.conlike} </i></button>
+     <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}unlike"> ${con.conlike} </i></button>  
+     &nbsp&nbsp&nbsp
+     <i style="height:15px;" class="fa fa-comment ">  Comment ${con.connum} &nbsp</i> 
+		    
+    </div>
+    
    <%-- <div id="board_img">
    <a href="ContentView.hash?connum=${con.connum}">
       <img id = "img" src='<c:url value="/upload/${con.photolist[0].realpath }" />' />
@@ -879,46 +894,13 @@ function unlikeAjax(num,hash,like){
          <br/>
          <label> ${con.conhash} </label>
 
-     <%-- <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i>Like <i id="like">${con.conlike}</i></button> 
-     <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="like"> ${con.conlike}</i></button>  
- 	 <button type="button" class="w3-theme-d3 w3-margin-bottom" onclick="location.href='Board.hash'"><i class="fa fa-comment"></i>  Comment ${con.connum}</button>  --%>
- 		
- 	<!-- 	<div align=center>
- 	 	<i class="fa fa-thumbs-up w3-theme-d2 w3-margin-bottom"  id="like">&nbsp Like ${con.conlike} &nbsp </i>&nbsp &nbsp
- 	 	<i class="fa fa-comment w3-theme-d2 w3-margin-bottom">&nbsp Comment ${con.connum} &nbsp </i>  
-    	</div> -->
-    	 <!-- 보현 좋아요 되는거 -->   
+     <%-- <!-- 보현 좋아요 되는거 -->   
      <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"> Like <i id="${con.connum}like"> ${con.conlike} </i></i></button> 
      <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"> Like <i  id="${con.connum}unlike"> ${con.conlike} </i></i></button>
      
-     <button type="button" class="w3-theme-d3 w3-margin-bottom" onclick="location.href='ContentView.hash'"><i class="fa fa-comment"></i>  Comment ${con.connum} </button>
-   <!-- 보현 좋아요 되는거 -->
+     <button type="button" class="w3-theme-d3 w3-margin-bottom" onclick="location.href='Board.Hash'"><i class="fa fa-comment"></i>  Comment ${con.connum} </button> --%>
+  
     	
-  <%--     </div>
-       <div id="board_like">
-         <div id="like">
-            <div id="like_img">
-            </div>
-            <div id="like_text">
-               <p>123</p>
-            </div>
-            <div id="like_alpha">
-            </div>
-         </div>
-         <div id="commnet">
-            <div id="commnet_img">
-            </div>
-            <div id="commnet_text">
-            
-               
-            </div>
-            <P><a href="ContentView.hash?connum=${con.connum}"></a></P>
-         </div>
-      </div>  
-      </a>
-   </div>  --%>
-   
-
  <%--       <div id="board_subject">
          <div id="subject">
          <label>'${con.connickname}'</label>
