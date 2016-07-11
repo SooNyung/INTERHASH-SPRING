@@ -50,8 +50,9 @@ color:#7A7A7A;
 <tr bgcolor="#ffcccc">
 <td><b>email</b></td>
 <td><b>nickname</b></td>
+<td><b>구분</b></td>
 <td><b>신고횟수</b></td>
-<td><b>회원삭제</b></td>
+
 </tr>
 
 <c:forEach var="member" items="${report}">
@@ -63,13 +64,15 @@ ${member.email}
 ${member.connickname}
 </td>
 <td width="150">
+
+</td>
+<td width="150">
 ${member.conreportcount}
 </td>
-<td width="150"><input type="checkbox" name="delete" value="${member.email}"></td>
 </tr>
 </c:forEach>
 </table>
-<div align="center"><input type="submit" value="회원삭제"></div>
+
 </form>
 
 </div>
