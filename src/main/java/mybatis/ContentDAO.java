@@ -107,6 +107,10 @@ public class ContentDAO {
 	public int update_like(int connum){
 		return session.update("writecontent.update_like", connum);
 	}
+	//popular 테이블의 좋아요 수 -1
+		public int update_likedown(int connum){
+			return session.update("writecontent.update_likedown", connum);
+		}
 	public List getPopContents(){
 		return session.selectList("writecontent.getpopularcontent");
 	}
