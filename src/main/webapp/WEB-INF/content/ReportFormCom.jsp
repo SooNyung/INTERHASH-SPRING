@@ -43,7 +43,7 @@ function test(){
 	<input type="hidden" name="email" value="${comment.email}">
 	<input type="hidden" name="comnum" value="${comment.comnum}">
 	<input type="hidden" name="connum" value="${comment.connum}">
-	
+	<input type="hidden" name="comnick" value="${comment.comnick}">
 </div>
 <br>
 <div align="center">

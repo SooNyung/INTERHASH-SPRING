@@ -6,12 +6,12 @@
 
 	<insert id="sendReport" parameterType="spring.model.ReportCommand">
 		insert into report
-		values(report_num.nextval,#{redistinction},#{connum},#{email},0,#{report},0)
+		values(report_num.nextval,#{redistinction},#{connum},#{email},0,#{report},#{comnick})
 	</insert>
 	
 	<insert id="sendReportCom" parameterType="spring.model.ReportCommand">
 		insert into report
-		values(report_num.nextval,#{redistinction},#{connum},#{email},#{comnum},#{report},0)
+		values(report_num.nextval,#{redistinction},#{connum},#{email},#{comnum},#{report},#{comnick})
 	</insert>
 
 	<update id="Reportcount" parameterType="String">

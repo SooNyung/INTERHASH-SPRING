@@ -58,6 +58,9 @@ public class MemberDAO {
 
 		return session.selectOne("member.login", info);
 	}
+	public int getAdmin(String email){
+		return session.selectOne("member.getAdmin",email);
+	}
 
 	public String nick(MemberCommand info) {
 		return session.selectOne("member.nick", info);

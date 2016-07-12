@@ -48,10 +48,10 @@ function test() {
 		<option value="5">이 계정이 해킹당했습니다.</option>
 		<option value="6">스팸성 게시물입니다.</option>
 	</select>
-	<input type="hidden" name="redistinction" value="1">
+	<input type="hidden" name="redistinction" value="0">
 	<input type="hidden" name="email" value="${content.email}">
 	<input type="hidden" name="connum" value="${content.connum}">
-	<%-- <input type="hidden" name="comnick" value="${content.connickname}"> --%>
+	<input type="hidden" name="comnick" value="${content.connickname}">
 </div>
 <br>
 <div align="center">

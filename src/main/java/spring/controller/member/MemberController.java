@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -20,8 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.lowagie.text.pdf.hyphenation.TernaryTree.Iterator;
 
 import mybatis.AdminDAO;
 import mybatis.ContentDAO;
@@ -306,6 +303,13 @@ public class MemberController {
 		}
 		//¿Œ±‚±€
 		List poplist = cdao.getPopContents();
+		for(int i = 0;i<poplist.size();i++){
+			ContentCommand com = (ContentCommand)poplist.get(i);
+			String tmp = com.getContent();
+			if(tmp.length()>15){
+				com.setContent(tmp.substring(0, 15)+"..");
+			}
+		}
 		mv.addObject("profilephoto", map2);
 		session.setAttribute("profilephoto", map2);
 		
