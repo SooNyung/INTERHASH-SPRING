@@ -72,14 +72,22 @@ public class ReportController {
 	}
 
 	@RequestMapping("/ReportPro.hash")
-	public ModelAndView reportPro(@ModelAttribute("reportdto") ReportCommand reportdto, HttpServletRequest request,
-			String report,String comnick) {
+	public ModelAndView reportPro(@ModelAttribute("reportdto") ReportCommand reportdto, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("content/ReportPro");
-		
-
-		char content = '1';
+		String [] value = {
+				"불쾌한 내용이 있거나 재미없습니다.",
+				"저속한 내용 또는 욕성이 포함되어 있습니다.",
+				"음란물 입니다.",
+				"타인을 괴롭히거나 편파적인 내용입니다.",
+				"마약 또는 성인 용품의 관련 게시물입니다.",
+				"이 계정이 해킹당했습니다.",
+				"스팸성 게시물입니다."
+		};
+		int report_num = Integer.parseInt(reportdto.getReport());
 		int connum = Integer.parseInt(request.getParameter("connum"));
 		String email = reportdto.getEmail();
+		reportdto.setReport(value[report_num]);
+		System.out.println("닉네임 ::: "+ reportdto.getComnick());
 		reportdao.sendReport(reportdto);
 		int result = reportdao.reportCount(email);
 		System.out.println(result);
@@ -102,13 +110,21 @@ public class ReportController {
 	public ModelAndView reportProCom(@ModelAttribute("reportdto") ReportCommand reportdto, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("content/ReportPro");
 		
-		char comment = '2';
+		String [] value = {
+				"불쾌한 내용이 있거나 재미없습니다.",
+				"저속한 내용 또는 욕성이 포함되어 있습니다.",
+				"음란물 입니다.",
+				"타인을 괴롭히거나 편파적인 내용입니다.",
+				"마약 또는 성인 용품의 관련 게시물입니다.",
+				"이 계정이 해킹당했습니다.",
+				"스팸성 게시물입니다."
+		};
+		int report_num = Integer.parseInt(reportdto.getReport());
 		int comnum = Integer.parseInt(request.getParameter("comnum"));
 		String email = reportdto.getEmail();
+		reportdto.setReport(value[report_num]);
+		System.out.println("신고내용 ::" +value[report_num]);
 		reportdao.sendReportCom(reportdto);
-		
-		int result = reportdao.reportCount(email);
-		int result2 = reportdao.reportCountCom(email);
 		return mav;
 	}
 

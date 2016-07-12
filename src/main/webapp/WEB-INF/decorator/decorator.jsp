@@ -1125,7 +1125,9 @@ color:#FF6088;
             </ul>
           
       </li>
-
+		<li>
+			<input type="button" value = "관리자" />
+		</li>
          <li class="small right">
          <div class="topnav">   <a href="#" title="MyAccount"><img id ="profileImg" src='<c:url value="/upload/${sessionScope.profilePhoto}" />' class="circle" width="10%" height="10%">
            ${memberinfo.nickname}님</a></div>
