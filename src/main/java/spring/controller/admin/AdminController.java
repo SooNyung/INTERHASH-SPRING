@@ -83,6 +83,8 @@ public class AdminController {
 		//String nickname = request.getParameter("connickname");//???
 
 		request.setAttribute("report", dao.report());
+	
+		
 		
 		return mv;
 	}

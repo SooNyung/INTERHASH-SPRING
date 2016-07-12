@@ -8,10 +8,7 @@
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
-<link rel="stylesheet" href='<c:url value="modal/magnific-popup.css"/>' >
 
-
-<script src='<c:url value="modal/jquery.magnific-popup.min.js"/>'></script>
 
 
 <c:if test ="${sessionScope.memId==null}">
@@ -25,9 +22,7 @@ $(function() {
     $("#conphoto").on('change', function(){
          readURL(this); 
     });
-     $('.img_link').magnificPopup({
-        type:'ajax'
-     });
+    
        
 });
 $(function(){
@@ -132,12 +127,7 @@ function tagCheckUpdate() {
    newwindow=window.open(url,"post","toolbar=no ,width=650 ,height=700 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
 }
 
-function modal_close(){
-   var e = $.Event("keyup");
-   e.which = 27;
-   e.keyCode = 27;
-   $(document).trigger(e);
-}
+
 
 </script>
 <style type="text/css">
@@ -810,6 +800,36 @@ function unlikeAjax(num,hash,like){
    });
 }
 </script>
+<script> // x버튼 눌렀을대 test
+function xclose(num){
+	
+ alert("요기 들어옴??");
+
+	   var url="/INTERHASH-SPRING/Xclose.hash";
+	   var params ="connum="+num ;
+	   var like = "#"+num+"like";
+	   var comment = "#"+num+"comment";
+	   
+	   $.ajax({
+	      type:"post"
+	      ,url:url
+	      ,data:params
+	      ,dataType:"json"
+	       ,success:function(args){
+	       	  alert("ajax들어옴?");
+	          $(like).text(args.data);
+	          $(comment).text(agrs.comment);
+	          modal_close();
+	       }
+	       ,error:function(request, status , err) {
+	          alert("code : "+request.status + "\n message : "+request.responseText+"\n error : "+err);
+	       }
+	   });
+	   
+	   
+	}
+
+</script>
 
 
 <form method='post' action='ContentView.hash'>
@@ -861,8 +881,8 @@ function unlikeAjax(num,hash,like){
      <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}like"> ${con.conlike} </i></button>
      <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${con.connum}','${con.conhash}')"><i class="fa fa-thumbs-up"></i> Like <i id="${con.connum}unlike"> ${con.conlike} </i></button>  
      &nbsp&nbsp&nbsp
-     <i style="height:15px;" class="fa fa-comment ">  Comment ${con.connum} &nbsp</i> 
-          
+     <i style="height:15px;" class="fa fa-comment " >  Comment <i id="${con.connum}comment"> ${con.commentcount} </i>&nbsp</i> 
+		    
     </div>
     
    <%-- <div id="board_img">
