@@ -256,6 +256,12 @@ font{
 .circle {
    border-radius: 50%;
 }
+#pdelete{
+	padding-left: 120px;
+	background-color: white;
+	color: gray;
+}
+
 </style>
 <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script> 
 <script>
@@ -298,7 +304,17 @@ function readURL(input) {
       reader.readAsDataURL(input.files[0]);
     }
 }
-
+function deletepro() {
+	var gender = "${gender}";
+	if(gender=="F"){
+		$('#blah').attr('src','<c:url value="/upload/women.png" />');
+		$('#flag').attr('value','1');
+	}
+	else{
+		$('#blah').attr('src','<c:url value="/upload/man.png" />');
+		$('#flag').attr('value','2');
+	}
+}
 
 
 </script>
@@ -311,14 +327,17 @@ function readURL(input) {
     <div class="grid__container">
     <form action="profilePro.hash" name="userinput" method="post" class="form form--login" onSubmit="return checkedIt()" enctype="multipart/form-data">
    		 <p class="center">
- 
+ 				<input type="button" onclick="deletepro()" id="pdelete"><label for="pdelete" class="fontawesome-remove"></label><br>
                <img id="blah" src='<c:url value="/upload/${sessionScope.profilePhoto}" />' 
                   style="height: 130px; width: 130px" class="circle"
                      alt="Avatar">
+                     
                    
                </p>
                <p class="center">
                <input type='file' id="imgInp" name="photo">
+               <input type="hidden" id="flag" name="file_flag" value="0">
+             
                
                </p>
                <hr color="#eee">

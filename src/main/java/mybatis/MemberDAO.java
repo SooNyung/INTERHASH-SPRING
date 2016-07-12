@@ -121,4 +121,8 @@ public class MemberDAO {
 		
 	}
 	
+	public String gender(String email){
+		return session.selectOne("member.gender", email);
+	}
+	
 }
