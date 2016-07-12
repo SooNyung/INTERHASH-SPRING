@@ -1153,7 +1153,6 @@ color:#FF6088;
 
 
                   <!-- <input type = "text"><br>
-=======
 	<!-- navbar -->
 
 	<div id=head>
