@@ -1128,16 +1128,7 @@ color:#FF6088;
 		<li>
 			<input type="button" value = "관리자" />
 		</li>
-         <li class="small right">
-         <div class="topnav">   <a href="#" title="MyAccount"><img id ="profileImg" src='<c:url value="/upload/${sessionScope.profilePhoto}" />' class="circle" width="10%" height="10%">
-           ${memberinfo.nickname}님</a></div>
-            <ul class="account">
-               <li><a href="UserInfoModifyForm.hash">회원정보수정</a></li>
-               <li><a href="profile.hash">프로필수정</a></li>
-               <li><a href="LogOut.hash">로그아웃</a></li>
-            </ul></li>
-
-         <div id="jb_search">
+           <div id="jb_search">
             <form method="post" action="Search.hash">
               <div style="float:left">
                <input type="text" name="searchname" />
