@@ -86,6 +86,11 @@ public class ReportController {
 		int report_num = Integer.parseInt(reportdto.getReport());
 		int connum = Integer.parseInt(request.getParameter("connum"));
 		String email = reportdto.getEmail();
+		if(reportdto.getRedistinction().equals("1")){
+			reportdto.setReportcontent(reportdao.getreportcomment(connum));
+		}else if(reportdto.getRedistinction().equals("0")){
+			reportdto.setReportcontent(reportdao.getreportcontent(connum));
+		}
 		reportdto.setReporter((String)request.getSession().getAttribute("memId"));
 		reportdto.setReport(value[report_num]);
 		System.out.println("´Ð³×ÀÓ ::: "+ reportdto.getComnick());

@@ -66,7 +66,7 @@ color:#7A7A7A;
 <a href="ContentView.hash?connum=${member.connum }" class="img_like" >${member.connum }</a>
 </td>
 <td width="150">
-내용이 들어갈 예정
+${member.reportcontent }
 </td>
 <td width="150">
 ${member.email}

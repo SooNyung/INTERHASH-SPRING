@@ -10,7 +10,14 @@ public class ReportCommand {
 	String report;
 	String comnick;
 	String reporter;
+	String reportcontent;
 	
+	public String getReportcontent() {
+		return reportcontent;
+	}
+	public void setReportcontent(String reportcontent) {
+		this.reportcontent = reportcontent;
+	}
 	public int getRenum() {
 		return renum;
 	}

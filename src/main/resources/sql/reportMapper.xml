@@ -25,6 +25,12 @@
 	<update id="Reportcountcom" parameterType="String">
 		update commenttable set comreportcount=comreportcount+1 where email= #{email}
 	</update>
+	<select id="getreportcontent" parameterType="int" resultType="String">
+		select content from contents where connum = #{connum}
+	</select>
+	<select id="getreportcomment" parameterType="int" resultType="String">
+		select comcontent from commenttable where comnum = #{comnum}
+	</select>
 
 
 	<!-- <insert id="sendreport" parameterType="board.ReportDataBean"> insert 
