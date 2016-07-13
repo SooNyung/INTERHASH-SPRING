@@ -28,8 +28,8 @@ insert into withdrawal
 values(num_seq.nextval, #{drawalemail}, #{drawalcause}, sysdate)
 </insert>
 
-<select id ="report" resultType="spring.model.ContentCommand">
-select * from contents where conreportcount >= 1 
+<select id ="report" resultType="spring.model.ReportCommand">
+select * from report order by renum desc 
 </select>
 
 <select id="contentcount" resultType="int">

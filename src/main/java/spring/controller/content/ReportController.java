@@ -86,6 +86,7 @@ public class ReportController {
 		int report_num = Integer.parseInt(reportdto.getReport());
 		int connum = Integer.parseInt(request.getParameter("connum"));
 		String email = reportdto.getEmail();
+		reportdto.setReporter((String)request.getSession().getAttribute("memId"));
 		reportdto.setReport(value[report_num]);
 		System.out.println("닉네임 ::: "+ reportdto.getComnick());
 		reportdao.sendReport(reportdto);
@@ -119,6 +120,7 @@ public class ReportController {
 				"이 계정이 해킹당했습니다.",
 				"스팸성 게시물입니다."
 		};
+		reportdto.setReporter((String)request.getSession().getAttribute("memId"));
 		int report_num = Integer.parseInt(reportdto.getReport());
 		int comnum = Integer.parseInt(request.getParameter("comnum"));
 		String email = reportdto.getEmail();

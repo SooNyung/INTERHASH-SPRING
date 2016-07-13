@@ -3,12 +3,13 @@ package spring.model;
 public class ReportCommand {
 
 	int renum;
-	char redistinction;
+	String redistinction;
 	int connum;
 	String email;
 	int comnum;
 	String report;
 	String comnick;
+	String reporter;
 	
 	public int getRenum() {
 		return renum;
@@ -16,10 +17,10 @@ public class ReportCommand {
 	public void setRenum(int renum) {
 		this.renum = renum;
 	}
-	public char getRedistinction() {
+	public String getRedistinction() {
 		return redistinction;
 	}
-	public void setRedistinction(char redistinction) {
+	public void setRedistinction(String redistinction) {
 		this.redistinction = redistinction;
 	}
 	public int getConnum() {
@@ -51,6 +52,12 @@ public class ReportCommand {
 	}
 	public void setComnick(String comnick) {
 		this.comnick = comnick;
+	}
+	public String getReporter() {
+		return reporter;
+	}
+	public void setReporter(String reporter) {
+		this.reporter = reporter;
 	}
 	
 	
