@@ -803,27 +803,6 @@ color:#FF6088;
        });  
    
 
-   $(document).ready(function(){           
-        $(".message").click(function() {//마우스를 topnav에 오버시
-         $("a span").hide();      
-         $(this).parent().find(".sub").slideDown('normal').show();                   //subnav가 내려옴.
-         $(this).parent().hover(function() {  
-         }, function(){  
-          $(this).parent().find(".sub").slideUp('fast');                 //subnav에서 마우스 벗어났을 시 원위치시킴  
-         });  
-        });  
-        
-        $(".alarm").click(function() {//마우스를 topnav에 오버시
-            $(this).parent().find("a span").hide();      
-            $(this).parent().find(".al").slideDown('normal').show();                   //subnav가 내려옴.
-            $(this).parent().hover(function() {  
-            }, function(){  
-             $(this).parent().find(".al").slideUp('fast');                 //subnav에서 마우스 벗어났을 시 원위치시킴  
-            });  
-           });
-       }); 
-   
-   
     $(document).ready(function(){  
          var check = "${memberinfo.checked}";
          
