@@ -75,7 +75,7 @@ function modifypro(comnum,connum){
 
 <div align="right">
 <!-- <input type="submit" value="수정하기" onsubmit="close();"/> -->
-<input type="button" onclick="modifypro(${article.comnum},${article.connum})" value="수정정하기">
+<input type="button" onclick="modifypro(${article.comnum},${article.connum})" value="수정">
 <input type="button" value="취소" onclick="testtt()">
 </div>
 </form>  
