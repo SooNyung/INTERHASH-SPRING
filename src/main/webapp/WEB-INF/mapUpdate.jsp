@@ -336,16 +336,7 @@ function selectInfo(marker,title,placePosition) {
      	
 	opener.document.getElementById("placea").remove();
 	place.innerHTML="<a href='#' onclick= 'javascript:mapopen("+latitude+","+","+longtitude+","+placePosition+")'><font color='#666'><b>'"+title+"'</b>에서</font></a>";
-	
-/* 	var maptitle =opener.document.getElementsByName('maptitle');
-	maptitle.innerHTML= title;
-	
-	var mapplace = document.getElementsByName('mapplace');
-	mapplace.innerHTML =latitude;
-	mapplace.innerHTML =longtitude;
- */
-	/* opener.document.getElementsByName('maptitle')[0].value; */
-	
+		
 	window.close();
 }
 

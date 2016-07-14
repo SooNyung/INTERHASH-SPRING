@@ -25,7 +25,7 @@
 		<pattern>/TagCheck.hash*</pattern>
 		<pattern>/MessageForm.hash*</pattern>
 		<pattern>/mapopen.hash*</pattern>
-		<pattern>/alarmlist.hash*</pattern>
+		<!-- <pattern>/alarmlist.hash*</pattern> -->
 		<!-- <pattern>/Logout.hash</pattern> -->
 		<pattern>/Logout.hash*</pattern>
 		<pattern>/LoginFailPro.hash*</pattern>
@@ -45,8 +45,6 @@
 		<pattern>/ProfileView.hash*</pattern>
 		
 		<!-- 좋아요 test -->
-		<pattern>/LikeCheck.hash*</pattern>
-		<pattern>/Unlike.hash*</pattern>
 		<pattern>/alarmdelete.hash*</pattern>
 	</excludes>
  

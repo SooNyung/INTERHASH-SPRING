@@ -1,5 +1,6 @@
 package mybatis;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -10,9 +11,7 @@ import spring.model.AdminCommand;
 import spring.model.AlarmCommand;
 import spring.model.ContentCommand;
 import spring.model.MemberCommand;
-import spring.model.MessageCommand;
 import spring.model.WithdrawalCommand;
-
 @Repository
 public class AdminDAO {
 	
@@ -24,8 +23,16 @@ public class AdminDAO {
 		this.session=session;
 	}
 	
-	public List<ContentCommand> selectHash(){
-		return session.selectList("admin.admincount");
+	public ArrayList selectHash(){
+		List hash = session.selectList("admin.hash");
+		ArrayList like = new ArrayList();
+		for (int i = 0 ; i < hash.size();i++){
+			String conhash =(String)hash.get(i);
+			AdminCommand command =(AdminCommand)session.selectOne("admin.admincount",conhash); 
+			command.setConhash((String)hash.get(i));
+			like.add(command);
+		}
+		return like;
 	}
 	
 	public void deleteMember(String value){
@@ -108,5 +115,9 @@ public class AdminDAO {
 	
 	public int alarm_delete(int connum) {
 		return session.delete("alarm.alarmdelete", connum);
+	}
+	
+	public String confirm(String comnick) {
+		return session.selectOne("alarm.confirm", comnick);
 	}
 }

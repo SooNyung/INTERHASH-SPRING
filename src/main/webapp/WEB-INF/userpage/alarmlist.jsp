@@ -6,6 +6,9 @@
 
 <head>
 <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<script src='<c:url value="modal/jquery.magnific-popup.min.js"/>'></script>
+<link rel="stylesheet" href='<c:url value="modal/magnific-popup.css"/>' >
 <style>
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
 [class*="fontawesome-"]:before {
@@ -70,12 +73,49 @@ text-align: center;
 	border-radius: 7px !important;
 	padding:5px;
 }
+
+.white {
+   color: #000 !important;
+   background-color: #fff !important;
+}
+
+.box-shadow {
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+      rgba(0, 0, 0, 0.19) !important;
+   margin-top: 0px;
+}
+
+.border-round {
+   border-radius: 7px !important
+}
+
+#view_div{
+	width:120%;
+	height:1100px;
+ 	/* background-color: black; */
+	/* border:1px solid; */
+	padding:5px;
+	margin-top:10px;
+	}
 </style>
+
+<script type="text/javascript">
+$('.img_link').magnificPopup({
+    type:'ajax'
+ });
+ 
+$(window).scroll(function(){
+	if($(window).scrollTop()==$(document).height()-$(winidow).height()){
+		lastAddedLiveFunc();
+		}
+	});
+</script>
+<!-- 좋아요 기능 function -->
 
 </head>
 
 <body>
-
+<div id ="view_div" class="box-shadow border-round white">
 <!-- <a id="rigth" href="MessageList.hash"><spen class="fontawesome-envelope"> Received messages </a>
 <br> 
 <h2><spen id="heart" class="fontawesome-heart"></spen>Send Message<spen id="heart" class="fontawesome-heart"/></h2>
@@ -93,12 +133,22 @@ text-align: center;
 			<span><b id="fontsize">From time |</b> 
 	<label id="fontsize"> ${list.alarmdate} </label>
 			</span><br><hr>
-				<span>  <a href="ContentView.hash?connum=${list.connum}" 
-				onClick="window.open(this.href, '', 'width=1000, height=650'); return false;">
-				<b>${list.comnick}</b>님이 회원님의 게시글에 댓글을 남겼습니다.</a>
 			
-				<input type="button" id="buttonid" value="삭제" onclick="location.href='alarmdelete.hash?connum=${list.connum}'"> 
+			<c:if test="${list.kinds == 0}">
+				<span>  <a href="ContentView.hash?connum=${list.connum}" class="img_link">
+				<b>${list.comnick}</b>님이 회원님의 게시글에 댓글을 남겼습니다.</a>			
+				<input type="button" id="buttonid" value="삭제" onclick="location.href='alarmdelete.hash?alarmnum=${list.alarmnum}'"> 
 			</span><br>
+			</c:if>
+			
+			<c:if test="${list.kinds == 1}">
+				<span> <a href="ContentView.hash?connum=${list.connum}" class="img_link">
+				<b>${list.comnick}</b>님이 회원님의 게시글을 좋아합니다.</a>		
+				<input type="button" id="buttonid" value="삭제" onclick="location.href='alarmdelete.hash?alarmnum=${list.alarmnum}'"> 
+			
+			</span><br>
+			</c:if>
+			
 		</div>
 		</c:if>
 		
@@ -106,6 +156,6 @@ text-align: center;
 		<div>알림이 없습니다.</div>
 		</c:if>
 	</c:forEach>
-
+</div>
 </body>
 </html>

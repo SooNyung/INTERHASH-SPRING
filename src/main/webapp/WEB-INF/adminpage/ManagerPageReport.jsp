@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false" %>
 <!DOCTYPE html>
@@ -9,6 +9,8 @@
 *{
 color:#7A7A7A;
 }
+
+
 
 #view_div{
 	width:120%;
@@ -48,28 +50,40 @@ color:#7A7A7A;
 <input type="button" value="관리자페이지" onclick="javascript:window.location='ManagerPage.hash'">
 <table id ="text">
 <tr bgcolor="#ffcccc">
-<td><b>email</b></td>
-<td><b>nickname</b></td>
-<td><b>신고횟수</b></td>
-<td><b>회원삭제</b></td>
+<td><b>구분</b></td>
+<td><b>게시물</b></td>
+<td><b>게시물내용</b></td>
+<td><b>게시물계정</b></td>
+<td><b>신고내용</b></td>
+<td><b>신고자</b></td>
 </tr>
 
 <c:forEach var="member" items="${report}">
 <tr>
 <td width="150">
+<c:if test="${ member.redistinction == '1' }" >댓글</c:if >
+<c:if test="${ member.redistinction == '0' }" >게시물</c:if >
+</td>
+<td width="150">
+
+<a onclick="window.open('ContentView.hash?connum=${member.connum }','new','width=1000 height=700') " >${member.connum }</a>
+</td>
+<td width="150">
+${member.reportcontent }
+</td>
+<td width="150">
 ${member.email}
 </td>
 <td width="150">
-${member.connickname}
+${member.report}
 </td>
 <td width="150">
-${member.conreportcount}
+${member.reporter}
 </td>
-<td width="150"><input type="checkbox" name="delete" value="${member.email}"></td>
 </tr>
 </c:forEach>
 </table>
-<div align="center"><input type="submit" value="회원삭제"></div>
+
 </form>
 
 </div>

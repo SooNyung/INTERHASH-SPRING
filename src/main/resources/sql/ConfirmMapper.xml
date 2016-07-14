@@ -22,6 +22,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="unlike" parameterType="int">
 		update contents set conlike=(conlike-1) where connum = #{connum}
 	</update>
+	<select id="commentcount" parameterType="int" resultType="int">
+		select count(*) from contents where connum = #{connum}
+	</select>
+	
 <!-- 	<update id="adminlike" parameterType="String">
 		update adminhash set hashlikecount=(hashlikecount+1) where hashname = #{hashname}
 	</update> 

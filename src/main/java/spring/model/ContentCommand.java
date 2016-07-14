@@ -20,9 +20,16 @@ public class ContentCommand {
 	String maptitle;	
 	ArrayList photolist;
 	String mapplace;
+	int commentcount;
 	
-	
-	
+	public int getCommentcount() {
+		return commentcount;
+	}
+
+	public void setCommentcount(int commentcount) {
+		this.commentcount = commentcount;
+	}
+
 	public String getMapplace() {
 		return mapplace;
 	}

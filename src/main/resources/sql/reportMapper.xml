@@ -6,12 +6,12 @@
 
 	<insert id="sendReport" parameterType="spring.model.ReportCommand">
 		insert into report
-		values(report_num.nextval,#{redistinction},#{connum},#{email},0)
+		values(report_num.nextval,#{redistinction},#{connum},#{email},0,#{report},#{comnick},#{reporter},#{reportcontent})
 	</insert>
 	
 	<insert id="sendReportCom" parameterType="spring.model.ReportCommand">
 		insert into report
-		values(report_num.nextval,#{redistinction},#{connum},#{email},#{comnum})
+		values(report_num.nextval,#{redistinction},#{connum},#{email},#{comnum},#{report},#{comnick},#{reporter},#{reportcontent})
 	</insert>
 
 	<update id="Reportcount" parameterType="String">
@@ -22,11 +22,16 @@
 		update contents set conreportcount=conreportcount+1 where email= #{email}
 	</update>
 	
-		<update id="Reportcountcom" parameterType="String">
+	<update id="Reportcountcom" parameterType="String">
 		update commenttable set comreportcount=comreportcount+1 where email= #{email}
 	</update>
+	<select id="getreportcontent" parameterType="int" resultType="String">
+		select content from contents where connum = #{connum}
+	</select>
+	<select id="getreportcomment" parameterType="int" resultType="String">
+		select comcontent from commenttable where comnum = #{comnum}
+	</select>
 
-	
 
 	<!-- <insert id="sendreport" parameterType="board.ReportDataBean"> insert 
 		into report values(report_num.nextval,#{redistinction},#{connum},#{email}) 

@@ -23,7 +23,7 @@
 		update commenttable set comcontent=#{comcontent}, comcreateddate=sysdate where comnum = #{comnum}
 	</update>
 	
-	<select id="commentcount" parameterType="integer" resultType="integer">
+	<select id="commentcount" parameterType="int" resultType="int">
 		select count(*) from commenttable where connum = #{connum}
 	</select>
 
