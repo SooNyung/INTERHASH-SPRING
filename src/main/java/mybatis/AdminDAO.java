@@ -49,9 +49,16 @@ public class AdminDAO {
 	}
 	
 	public void adminInsert(String value){
+		System.out.println(value);
+		try{
 		String [] tmp = value.substring(1, value.length()-1).trim().split(",");
 		for (int i = 0 ; i < tmp.length;i++){	
-			session.insert("admin.insert_content", tmp[i]);
+			session.insert("admin.admininsert", tmp[i]);
+		}
+		}catch(Exception e){
+			String email = value.substring(1,value.length()-1).trim();
+			System.out.println(email);
+			session.insert("admin.admininsert", email);
 		}
 	}
 	

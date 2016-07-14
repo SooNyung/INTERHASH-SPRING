@@ -81,15 +81,47 @@ public class ContentDAO {
 	
 	
 	public List<ContentCommand> myContent(String email){
-		return session.selectList("writecontent.myContent",email);
+		ArrayList photo = null;
+		ArrayList<ContentCommand> array = (ArrayList) session.selectList("writecontent.myContent",email);
+		
+		for (int i = 0; i < array.size(); i++) {
+			ContentCommand bean = array.get(i);
+			int connum = bean.getConnum();
+			photo = (ArrayList) session.selectList("writecontent.selectPhoto", connum);
+			bean.setPhotolist(photo);
+			array.set(i, bean);
+		}
+		return array;
 	}
 
 	public List<ContentCommand> hashLike(String conhash){
-		return session.selectList("writecontent.hashLike",conhash);
+		ArrayList photo = null;
+		ArrayList<ContentCommand> array = (ArrayList) session.selectList("writecontent.hashLike",conhash);
+		
+		for (int i = 0; i < array.size(); i++) {
+			ContentCommand bean = array.get(i);
+			int connum = bean.getConnum();
+			photo = (ArrayList) session.selectList("writecontent.selectPhoto", connum);
+			bean.setPhotolist(photo);
+			array.set(i, bean);
+		}
+		return array;
+
 	}
 	
 	public List<ContentCommand> search(String searchname) {
-		return session.selectList("writecontent.search", searchname);
+		ArrayList photo = null;
+		ArrayList<ContentCommand> array = (ArrayList) session.selectList("writecontent.search", searchname);
+		
+		for (int i = 0; i < array.size(); i++) {
+			ContentCommand bean = array.get(i);
+			int connum = bean.getConnum();
+			photo = (ArrayList) session.selectList("writecontent.selectPhoto", connum);
+			bean.setPhotolist(photo);
+			array.set(i, bean);
+		}
+		return array;
+	
 	}
 	
 

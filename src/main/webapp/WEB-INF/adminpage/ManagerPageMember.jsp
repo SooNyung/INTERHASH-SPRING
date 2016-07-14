@@ -64,7 +64,7 @@ a:link{text-decoration:none; }
 <tr bgcolor="#ffcccc">
 <td width="150"><b>email</b></td>
 <td width="150"><b>nickname</b></td>
-<td width="150"><b>신고횟수</b></td>
+<td width="150"><b>가입 날짜</b></td>
 <td width="100"><b>회원삭제</b></td>
 </tr>
 <c:forEach var="member" items="${array}">
@@ -77,7 +77,7 @@ ${member.email}
 
 </td>
 <td>
-${member.reportcount}
+${member.createddate}
 </td>
 <td><input type="checkbox" name="delete" value="${member.email}"></td>
 </tr>

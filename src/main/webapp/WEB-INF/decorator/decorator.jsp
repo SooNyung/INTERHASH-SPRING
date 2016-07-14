@@ -824,6 +824,7 @@ color:#FF6088;
        }); 
    
    
+
     $(document).ready(function(){  
          var check = "${memberinfo.checked}";
          
