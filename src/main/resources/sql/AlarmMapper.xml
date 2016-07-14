@@ -5,7 +5,7 @@
 <insert id="insert" parameterType="spring.model.AlarmCommand">
 		insert into alarm
 		values(#{receivedemail},#{comnick},#{connum},sysdate,alarmnum.nextval,#{kinds})
-	</insert>
+</insert>
 
 <select id="receivedemail" parameterType="spring.model.ContentCommand"  resultType="string">
 	select email from contents where connum=#{connum} 

@@ -32,6 +32,7 @@ import spring.model.ContentCommand;
 import spring.model.MemberCommand;
 import spring.model.MessageCommand;
 import spring.model.ProfilePhotoCommand;
+import spring.model.WithdrawalCommand;
 
 @Controller
 public class MemberController {
@@ -169,7 +170,7 @@ public class MemberController {
 	}
 
 	@RequestMapping("/WithdrawalPro.hash")
-	public ModelAndView deleteMemberPro(String passwd, HttpSession session) {
+	public ModelAndView deleteMemberPro(String passwd, String cause, HttpSession session) {
 		ModelAndView mv = new ModelAndView("userpage/WithdrawalPro");
 		String email = (String) session.getAttribute("memId");
 		String passwd1 = dao.checkDelete(email);
@@ -181,6 +182,12 @@ public class MemberController {
 			int a = dao.deleteMember(email);
 			System.out.println("delete성공여부  :" + a);
 			session.invalidate();
+			
+			WithdrawalCommand members = new WithdrawalCommand();
+			members.setDrawalcause(cause);
+			members.setDrawalemail(email);
+			System.out.println(cause);
+			alarmdao.insertMember(members);
 		} else {
 			check = 0;
 		}
@@ -443,7 +450,7 @@ public class MemberController {
 			@ModelAttribute("messagedto") MessageCommand messagedto,HttpSession session,
 			int alarmnum,
 			HttpServletRequest request){
-				ModelAndView mav = new ModelAndView("userpage/alarmlist");
+				ModelAndView mav = new ModelAndView("redirect:alarmlist.hash");
 				
 				String email = (String) request.getSession().getAttribute("memId");
 				SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:MM");

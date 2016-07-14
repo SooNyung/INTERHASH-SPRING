@@ -112,13 +112,15 @@ public class AdminController {
 		System.out.println("delete::" + Arrays.toString(check));
 		String member =  Arrays.toString(check);
 		
-		/*WithdrawalCommand members = new WithdrawalCommand();
+		WithdrawalCommand members = new WithdrawalCommand();
 		members.setDrawalemail(member);
-		dao.adminInsert(member);//
-*/		
+		dao.adminInsert(member);
+		System.out.println("탈퇴회원에 들어감");
+	
 		MemberCommand a = new MemberCommand();
 		a.setEmail(member);
 		dao.deleteMember(member);
+		System.out.println("삭제 성공");
 		
 		return mv;
 	}
@@ -132,7 +134,6 @@ public class AdminController {
 	//	WithdrawalCommand bean = (WithdrawalCommand)list.get(0);//?
 	
 		request.setAttribute("array", wdao.selectMember());
-	
 	
 		return mv;
 	}

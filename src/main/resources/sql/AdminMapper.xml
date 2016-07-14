@@ -20,7 +20,7 @@ values(num_seq.nextval, #{drawalemail}, '관리자에 의한 강제탈퇴', sysd
 </insert>
 
 <select id="withselect" resultType="spring.model.WithdrawalCommand">
-select * from WITHDRAWAL
+select * from WITHDRAWAL order by drawaldate desc
 </select>
 
 <insert id="withinsert" parameterType="spring.model.WithdrawalCommand">
