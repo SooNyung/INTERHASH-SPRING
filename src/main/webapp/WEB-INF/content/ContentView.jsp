@@ -95,9 +95,10 @@ color:#5AAEFF;
    #left_good_re{
    width:360px;
    heigt:20px;
-   float:auto;
+   float:right;
    margin:5px;
    background-color:white;   
+   
    }
    #right_nick{
    width:360px;
@@ -184,6 +185,10 @@ color:#5AAEFF;
 #time {
 	font-size: 11px;
 }
+
+#content1{
+width:350px;
+}
 	
 </style>
  
@@ -203,20 +208,29 @@ color:#5AAEFF;
  
 	<c:if test="${sessionScope.memId==content.email}">
 	<div id="left_mod_del_rep">
-		<span id="align_right">/<a href="#" onclick="deleteCon(${content.connum})">삭제하기</a></span>
-		<span id="align_right"><a href="#" onclick="modifyCon(${content.connum})">수정하기 </a></span>
+		<span id="align_right"><a href="#" id="com_delete" onclick="deleteCon(${content.connum})">
+			<label for="com_delete" class="fontawesome-trash"></label></a>&nbsp;</span>
+		<span id="align_right"><a href="#" id="com_modi" onclick="modifyCon(${content.connum})">
+			<label for="com_modi" class="fontawesome-pencil"></label></a>&nbsp;&nbsp;&nbsp;</span>
+
+
 	</div>
 	</c:if>
 		
 	<c:if test="${sessionScope.memId!=content.email}">
 	<div id="left_mod_del_rep">
-		<span id="align_right"><a onclick="report(${content.connum})">신고하기</a></span>
+		<span id="align_right"><a href="#" id="com_report" onclick="report(${content.connum})">
+			<label for="com_report" class="fontawesome-bullhorn"></label></a></span>
+		
+		
 	</div>
 	</c:if>	
 	
 	<div id="content_photo" style="height:490px; overflow-x:auto">
  
-		<input type="text" id="content1" name="content1" style="border:0px" readonly value="${content.content}"><br>
+		<input type="text" id="content1" name="content1" style="border:0px" readonly value="${content.content}"><br> 
+		
+		
 		<c:if test="${!empty content.maptitle}">
 				<div id="place">-<a id="placea" href="#" onclick= "javascript:mapopen('${content.latitude}','${content.longtitude}','${content.maptitle}')" >		
    <font color="#666"><b>${content.maptitle}</b>에서</font></a><br></div><br>
@@ -235,17 +249,16 @@ color:#5AAEFF;
 	</div>
 	
 	<div id="left_good_re">
+		<i class="fa fa-thumbs-up "> Like ${content.conlike}&nbsp&nbsp </i>&nbsp;
 		<label id="count">댓글 수: ${count}</label>
+
 		<!-- <label id="align_right">좋아요/</label> --> 
 	</div>
-	<div align=right>
-	  <%-- <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${content.connum}','${content.conhash}')"> --%>
-       <i class="fa fa-thumbs-up "> Like ${content.conlike}&nbsp&nbsp </i>
-        <%-- <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${content.connum}','${content.conhash}')">
-        <i class="fa fa-thumbs-up"></i> Like </button>  --%> 
-    
-     <%-- <i id="like">  ${content.conlike}</i> --%>
-     </div>
+<!-- 	<div align=right>
+	 
+      
+     
+     </div> -->
 	</form>
 </div>
  
@@ -305,13 +318,7 @@ color:#5AAEFF;
 	</div>	
 	</c:forEach>  
 	</div>
-	
-   <form>
-   <div id="left_nickndate">
-      <span id ="align_left"><b>${sessionScope.nickName}</b>님</span>
-   </div>      
-   </form>
- 
+	 
  
 </div>
  

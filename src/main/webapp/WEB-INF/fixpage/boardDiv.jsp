@@ -427,6 +427,21 @@ box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 -webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
  
 .na{font-weight:bold; font-size:15px;}
+
+#buttonid {
+	color: white;
+	background-color: #FFCCCC;
+	border-radius: 7px !important;
+	padding:5px;
+    float:right;
+}
+#buttonid:hover {
+	color: white;
+	background-color: #FF9090;
+	border-radius: 7px !important;
+	padding:5px;
+    float:right;
+}
 </style>
  
 <script>
@@ -499,15 +514,18 @@ function delete1(comnum, connum){
                $('#test_div').append(
                   '<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
                   '--!><span><label id="time'+args.data[i].comnum+'">'+args.time+'</label></span><!--'+
-                  '--!><span id="align_right"><a href="#" onclick="delete1('+args.data[i].comnum+','+args.data[i].connum+')">삭제</a><!--'+
-                  '--!><a href="#" onclick="modify('+args.data[i].comnum+','+args.data[i].connum+')">수정</a><!--'+
+                  '--!><span id="align_right"><a href="#" id="com_modi" onclick="modify('+args.data[i].comnum+','+args.data[i].connum+')"><label for="com_modi" class="fontawesome-pencil"></label></a>&nbsp;&nbsp;<!--'+
+					'--!><a href="#" id="com_delete" onclick="delete1('+args.data[i].comnum+','+args.data[i].connum+')"><label for="com_delete" class="fontawesome-trash"></label></a><!--'+
                   '--!></span><br><div id="test"><textarea id="textaa'+args.data[i].comnum+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+                  
+                  
          }else{
             $('#test_div').append(
                   '<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
                   '--!><span><label id="time'+i+'">'+args.time+'</label></span><!--'+
                   '--!><span id="align_right"><!--'+
-                  '--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></span><br><div id="test"><textarea id="textaa'+args.data[i].comnum+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+                  '--!><a href="#" id="com_report" onclick="reportCom('+args.data[i].comnum+')"><label for="com_report" class="fontawesome-bullhorn"></label></a></span><br><div id="test"><textarea id="textaa'+args.data[i].comnum+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+
          }
          }
       },error: function (xhr, status, err){
@@ -579,15 +597,18 @@ function insert1(connum){
 					$('#test_div').append(
 						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
 						'--!><span><label id="time'+args.data[i].comnum+'">'+args.arr[i]+'</label></span><!--'+
-						'--!><span id="align_right"><a href="#" onclick="delete1('+args.data[i].comnum+','+args.data[i].connum+')">삭제</a><!--'+
-						'--!><a href="#" onclick="modify('+args.data[i].comnum+','+args.data[i].connum+')">수정</a><!--'+
+						'--!><span id="align_right"><a href="#" id="com_modi" onclick="modify('+args.data[i].comnum+','+args.data[i].connum+')"><label for="com_modi" class="fontawesome-pencil"></label></a>&nbsp;&nbsp;<!--'+
+						'--!><a href="#" id="com_delete" onclick="delete1('+args.data[i].comnum+','+args.data[i].connum+')"><label for="com_delete" class="fontawesome-trash"></label></a><!--'+
 						'--!></span><br><div id="test"><textarea id="textaa'+args.data[i].comnum+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+	
 			}else{
 				$('#test_div').append(
 						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
 						'--!><span><label id="time'+i+'">'+args.test+'</label></span><!--'+
 						'--!><span id="align_right"><!--'+
-						'--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></span><br><div id="test"><textarea id="textaa'+i+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+						'--!><a href="#" id="com_report" onclick="reportCom('+args.data[i].comnum+')"><label for="com_report" class="fontawesome-bullhorn"></label></a></span><br><div id="test"><textarea id="textaa'+i+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+			
+					
 			}
 			}
 		}
@@ -616,7 +637,9 @@ function modifyCon(connum){
 			$("#content1").css("border","1px");
 			
 			$("#left_mod_del_rep *").remove();
-			$("#left_mod_del_rep").append("<input id='align_right' type='button' value='수정버튼' onclick='modifypro("+connum+")'>");
+			$("#left_mod_del_rep").append("<span id='align_right'><input id='buttonid' type='button' style='cursor:pointer' value='수정완료' onclick='modifypro("+connum+")'></span>");
+
+			
 			
 			$("#left_mod_del_rep").append("<img src ='image/logo/tag.png' width='25px' height='25px' onClick='tagCheckUpdate()'>");
 			$("#left_mod_del_rep").append("<img src ='image/logo/place.png' width='25px' height='25px' onClick='MapUpdate()'>");
@@ -635,14 +658,14 @@ function modifyCon(connum){
 				if(args.session==args.data[i].email){
 					$('#test_div').append(
 						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
-						'--!><span><label id="time'+args.data[i].comnum+'">'+args.time+'</label></span><!--'+
+						'--!><span><label id="time'+args.data[i].comnum+'">'+args.arr[i]+'</label></span><!--'+
 						'--!><span id="align_right"><a href="#" onclick="delete1('+args.data[i].comnum+','+args.data[i].connum+')">삭제</a><!--'+
-						'--!><a href="#" onclick="modify('+args.data[i].comnum+','+args.data[i].connum+','+i+')">수정</a><!--'+
+						'--!><a href="#" id="com_modi" onclick="modify('+args.data[i].comnum+','+args.data[i].connum+')"><label for="com_modi" class="fontawesome-pencil"></label></a><!--'+
 						'--!></span><br><div id="test"><textarea id="textaa'+args.data[i].comnum+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
 			}else{
 				$('#test_div').append(
 						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
-						'--!><span><label id="time'+args.data[i].comnum+'">'+args.test+'</label></span><!--'+
+						'--!><span><label id="time'+args.data[i].comnum+'">'+args.arr[i]+'</label></span><!--'+
 						'--!><span id="align_right"><!--'+
 						'--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></span><br><div id="test"><textarea id="textaa'+args.data[i].comnum+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
 			}
@@ -681,8 +704,11 @@ function modifypro(connum){
          $("#content1").css("border","1px");
          
          $("#left_mod_del_rep *").remove();
-         $("#left_mod_del_rep").append("<span id='align_right'>/<a href='#' onclick='deleteCon("+connum+")'>삭제하기</a></span><!--"+
-               "--!><span id='align_right'><a href='#' onclick='modifyCon("+connum+")'>수정하기 </a></span>")
+     
+               $("#left_mod_del_rep").append("<span id='align_right'><a href='#' id='com_delete' onclick='deleteCon("+connum+")'><!--"+
+				"--!><label for='com_delete' class='fontawesome-trash'></label></a>&nbsp;</span><!--"+
+				"--!><span id='align_right'><a href='#' id='com_modi' onclick='modifyCon("+connum+")'><!--"+
+				"--!><label for='com_modi' class='fontawesome-pencil'></label></a>&nbsp;&nbsp;&nbsp;</span>");
 
       }
          ,error: function (xhr, status, err){

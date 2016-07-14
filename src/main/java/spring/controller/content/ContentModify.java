@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -69,11 +70,20 @@ public class ContentModify {
 		request.setAttribute("count", count);
 
 		resp.setContentType("application/json;charset=utf-8");
+		
+		List<String> arr = new ArrayList();
+		
+		for (int i = 0; i < array.size(); i++) {
+			CommentCommand c = (CommentCommand) array.get(i);
+			arr.add(sdf.format(c.getComcreateddate()));			
+		}
+		
 
 		JSONObject jso = new JSONObject();
 
 		jso.put("data", array);
 
+		jso.put("arr",arr);
 		PrintWriter out = resp.getWriter();
 
 		out.print(jso.toString());
