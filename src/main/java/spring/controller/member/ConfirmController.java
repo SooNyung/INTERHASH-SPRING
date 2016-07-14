@@ -170,11 +170,13 @@ public class ConfirmController {
 		model.addAttribute("connum",connum);
 		
 		int count = comdao.commentcount(connum);
+		session.setAttribute("commentcount", count);
+		System.out.println("commentcount :: " + count);
 		
 		int conlike = Dao.getConlike(connum);
 		session.setAttribute("conlike", conlike);
 		
-		jso.put("data", conlike); // jason은 map구조(키,값), data라는 key로 list데이터를 주입했다
+		jso.put("like", conlike); // jason은 map구조(키,값), data라는 key로 list데이터를 주입했다
 		jso.put("comment", count); // jason은 map구조(키,값), data라는 key로 list데이터를 주입했다
 		System.out.println("jso ::: "+jso);
 		

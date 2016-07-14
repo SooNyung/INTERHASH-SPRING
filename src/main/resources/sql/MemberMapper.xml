@@ -51,7 +51,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="int">
 		select count(*) from usertable where email=#{email} and passwd=#{passwd}
 	</select>
-
+	<select id="getAdmin" parameterType= "String" resultType="int">
+		select DISTINCTION from usertable where email = #{email}
+	</select>
 	<select id="findPassword" parameterType="spring.model.MemberCommand"
 		resultType="String">
 		select passwd from usertable where email=#{email}
@@ -113,4 +115,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<select id ="today" resultType="int">
 	select count(*) from (select * from total_visit where visit_date between to_date(to_char(sysdate,'yyyymmdd'),'yyyymmdd') and to_date(to_char(sysdate,'yyyymmdd'),'yyyymmdd')+1)
 	</select> 
+	
+	<select id="gender" resultType="String" parameterType="String">
+	select gender from usertable where email=#{email}
+	</select>
 </mapper>

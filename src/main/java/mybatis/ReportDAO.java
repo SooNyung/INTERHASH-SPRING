@@ -34,5 +34,10 @@ public class ReportDAO {
 	public int reportCountCom(String email){
 		return session.update("Reportcountcom",email);
 	}
-	
+	public String getreportcontent(int connum){
+		return session.selectOne("Report.getreportcontent",connum);
+	}
+	public String getreportcomment(int comnum){
+		return session.selectOne("Report.getreportcomment",comnum);
+	}
 }

@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,12 +77,11 @@ public class AdminController {
 	
 
 	@RequestMapping(value="/ManagerPageReport.hash", method=RequestMethod.GET)
-	private ModelAndView adminReport(HttpServletRequest request){
+	private ModelAndView adminReport(HttpServletRequest request , HttpServletResponse response){
 		
 		ModelAndView mv = new ModelAndView("adminpage/ManagerPageReport");
-
+		response.setCharacterEncoding("UTF-8");
 		//String nickname = request.getParameter("connickname");//???
-
 		request.setAttribute("report", dao.report());
 	
 		

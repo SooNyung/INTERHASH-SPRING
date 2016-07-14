@@ -240,7 +240,7 @@ color:#5AAEFF;
 	</div>
 	<div align=right>
 	  <%-- <button type="button" class="w3-theme-d1 w3-margin-bottom like" onclick="javascript:likeAjax('${content.connum}','${content.conhash}')"> --%>
-        <i class="fa fa-thumbs-up ">Like  ${content.conlike}&nbsp&nbsp </i>  
+       <i class="fa fa-thumbs-up "> Like ${content.conlike}&nbsp&nbsp </i>
         <%-- <button type="button" class="w3-theme-d2 w3-margin-bottom unlike hide" onclick="javascript:unlikeAjax('${content.connum}','${content.conhash}')">
         <i class="fa fa-thumbs-up"></i> Like </button>  --%> 
     

@@ -49,9 +49,10 @@ public class LoginController {
 		ModelAndView mv = new ModelAndView("redirect:Board.hash");
 
 		int result = dao.login(info);
-
-		String nick = dao.nick(info) ;
 		
+		String nick = dao.nick(info) ;
+		int admin_check = dao.getAdmin(email);
+		session.setAttribute("admin_check", admin_check);
 		String pw = dao.findPassword(info);
 		System.out.println("pw ::: " + pw );
 		
@@ -61,6 +62,7 @@ public class LoginController {
 		// result가 1이면 로그인 성공 0이면 실패
 		if(result == 1)
 		{
+			if(admin_check==0){
 			String path = dao.selectPath(email);
 			
 			System.out.println("path ::: " + path);
@@ -74,6 +76,22 @@ public class LoginController {
 
 			System.out.println("로그인 성공");	
 			return mv;		
+			}else if(admin_check==4){
+				String path = dao.selectPath(email);
+				
+				System.out.println("path ::: " + path);
+				
+				dao.visitor(visit);
+
+				session.setAttribute("memId", info.getEmail());
+				session.setAttribute("nickName", nick);
+				session.setAttribute("profilePhoto", path);
+//				session.setAttribute("liketest", 0);
+				mv.setViewName("redirect:ManagerPage.hash");
+				return mv;
+			}else{
+				return mv;
+			}
 		} 
 		else
 		{

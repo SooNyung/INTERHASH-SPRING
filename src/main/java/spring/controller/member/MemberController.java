@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -20,8 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.lowagie.text.pdf.hyphenation.TernaryTree.Iterator;
 
 import mybatis.AdminDAO;
 import mybatis.ContentDAO;
@@ -78,6 +75,7 @@ public class MemberController {
 
 	@Autowired
 	MessageDAO mdao;
+
 
 	public void setMdao(MessageDAO mdao) {
 		this.mdao = mdao;
@@ -205,18 +203,18 @@ public class MemberController {
 	public ModelAndView profile(HttpSession session) {
 		ModelAndView mv = new ModelAndView("userpage/Profile");
 		String email = (String) session.getAttribute("memId");
-		/*
-		 * String path = dao.selectPath(email);
-		 * session.setAttribute("profilePhoto", path);
-		 */
+		String gender = dao.gender(email);
 		MemberCommand command = dao.modify(email);
+		
+		mv.addObject("gender", gender);
 		mv.addObject("c", command);
+		
 		return mv;
 	}
 
 	@RequestMapping("/profilePro.hash")
 	public String ProfilePro(@ModelAttribute("command") MemberCommand command, ProfilePhotoCommand Pcommand,
-			@RequestParam("photo") MultipartFile photo, String[] checked, String bloodgroups,
+			@RequestParam("photo") MultipartFile photo, String[] checked, String bloodgroups,int file_flag,
 			HttpServletRequest request) {
 		
 		System.out.println("photo 받아옴? : " + photo);
@@ -225,7 +223,7 @@ public class MemberController {
 		}
 
 			try {
-				upload(photo, request);
+				upload(photo, request,file_flag);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -241,7 +239,7 @@ public class MemberController {
 
 	String real_name;
 
-	private String upload(MultipartFile info, HttpServletRequest request) throws Exception {
+	private String upload(MultipartFile info, HttpServletRequest request, int file_flag) throws Exception {
 		System.out.println("upload 메소드로 넘어옴");
 
 		String user_home = (String) System.getProperties().get("user.home");
@@ -277,7 +275,27 @@ public class MemberController {
 		System.out.println("workspace : \n" + workspace_dir + real_name);
 		System.out.println("tmp_dir : \n" + upload_tmp_path + real_name);
 		if(name.equals("")||name==null||name.equals("null")){
+			if(file_flag==0){
 			name= (String)request.getSession().getAttribute("profilePhoto");
+			}
+			else if(file_flag==1){
+				fileinfo.setEmail(email);
+				fileinfo.setPath("women.png");	
+				int a = pdao.updateProfilePhoto(fileinfo);
+				System.out.println("사진 update 성공?" + a);
+				request.getSession().setAttribute("profilePhoto", "women.png");
+				info.transferTo(f);
+				info.transferTo(f1);
+			}
+			else{
+				fileinfo.setPath("man.png");
+				fileinfo.setEmail(email);
+				int a = pdao.updateProfilePhoto(fileinfo);
+				System.out.println("사진 update 성공?" + a);
+				request.getSession().setAttribute("profilePhoto", "man.png");
+				info.transferTo(f);
+				info.transferTo(f1);
+			}
 		}
 		else {
 			fileinfo.setEmail(email);
@@ -313,6 +331,13 @@ public class MemberController {
 		}
 		//인기글
 		List poplist = cdao.getPopContents();
+		for(int i = 0;i<poplist.size();i++){
+			ContentCommand com = (ContentCommand)poplist.get(i);
+			String tmp = com.getContent();
+			if(tmp.length()>15){
+				com.setContent(tmp.substring(0, 15)+"..");
+			}
+		}
 		mv.addObject("profilephoto", map2);
 		session.setAttribute("profilephoto", map2);
 		
