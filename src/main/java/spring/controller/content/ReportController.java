@@ -132,7 +132,7 @@ public class ReportController {
 		int comnum = Integer.parseInt(request.getParameter("comnum"));
 		if(reportdto.getRedistinction().equals("1")){
 			System.out.println("댓글 입력");
-			reportdto.setReportcontent(reportdao.getreportcomment(reportdto.getConnum()));
+			reportdto.setReportcontent(reportdao.getreportcomment(comnum));
 		}else if(reportdto.getRedistinction().equals("0")){
 			System.out.println("게시물 입력");
 			reportdto.setReportcontent(reportdao.getreportcontent(reportdto.getConnum()));
