@@ -87,8 +87,10 @@ public class ReportController {
 		int connum = Integer.parseInt(request.getParameter("connum"));
 		String email = reportdto.getEmail();
 		if(reportdto.getRedistinction().equals("1")){
+			System.out.println("댓글 입력");
 			reportdto.setReportcontent(reportdao.getreportcomment(connum));
 		}else if(reportdto.getRedistinction().equals("0")){
+			System.out.println("게시물 입력");
 			reportdto.setReportcontent(reportdao.getreportcontent(connum));
 		}
 		reportdto.setReporter((String)request.getSession().getAttribute("memId"));
@@ -128,6 +130,13 @@ public class ReportController {
 		reportdto.setReporter((String)request.getSession().getAttribute("memId"));
 		int report_num = Integer.parseInt(reportdto.getReport());
 		int comnum = Integer.parseInt(request.getParameter("comnum"));
+		if(reportdto.getRedistinction().equals("1")){
+			System.out.println("댓글 입력");
+			reportdto.setReportcontent(reportdao.getreportcomment(reportdto.getConnum()));
+		}else if(reportdto.getRedistinction().equals("0")){
+			System.out.println("게시물 입력");
+			reportdto.setReportcontent(reportdao.getreportcontent(reportdto.getConnum()));
+		}
 		String email = reportdto.getEmail();
 		reportdto.setReport(value[report_num]);
 		System.out.println("신고내용 ::" +value[report_num]);
