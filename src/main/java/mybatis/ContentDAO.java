@@ -91,6 +91,10 @@ public class ContentDAO {
 		return session.selectList("writecontent.search", searchname);
 	}
 	
+	public int updatePhoto(PhotoCommand photodto){
+		return session.update("writecontent.updatePhoto",photodto);
+	}
+	
 /*	public ContentCommand getContent(int connum) throws Exception {
 		ContentCommand content = null;
 		

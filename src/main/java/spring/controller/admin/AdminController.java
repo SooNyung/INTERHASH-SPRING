@@ -139,7 +139,7 @@ public class AdminController {
 	 public ModelAndView toExcel(HttpServletRequest req, HttpSession session) {
 	ModelAndView result = new ModelAndView();
 	
-	List<MemberCommand> list = dao.selectMember(); //쿼리
+	List<MemberCommand> list = dao.selectMember(); //荑쇰━
 	
 	return new ModelAndView("excelView", "member", list);
 	}
@@ -148,17 +148,22 @@ public class AdminController {
 	 public ModelAndView withdrawl(HttpServletRequest req, HttpSession session) {
 	ModelAndView result = new ModelAndView();
 	
-	List<WithdrawalCommand> list = wdao.selectMember(); //쿼리
+	List<WithdrawalCommand> list = wdao.selectMember(); //荑쇰━
 
 	return new ModelAndView("withdrawl", "Withdrawal", list);
 	}
 	
-	@RequestMapping(value="/template2.hash")//get방식으로 요청이 들어올때 다음생성자를 실행한다.
+	@RequestMapping(value="/template2.hash")//get諛⑹떇�쑝濡� �슂泥��씠 �뱾�뼱�삱�븣 �떎�쓬�깮�꽦�옄瑜� �떎�뻾�븳�떎.
 	public String form1() {
 		return "map";
 	}
 	
-	@RequestMapping(value="/map.hash")//get방식으로 요청이 들어올때 다음생성자를 실행한다.
+	@RequestMapping(value="/templateUpdate.hash")//get諛⑹떇�쑝濡� �슂泥��씠 �뱾�뼱�삱�븣 �떎�쓬�깮�꽦�옄瑜� �떎�뻾�븳�떎.
+	public String form2() {
+		return "mapUpdate";
+	}
+	
+	@RequestMapping(value="/map.hash")//get諛⑹떇�쑝濡� �슂泥��씠 �뱾�뼱�삱�븣 �떎�쓬�깮�꽦�옄瑜� �떎�뻾�븳�떎.
 	public String map(HttpServletRequest req) {
 	
 		return "adminpage/test";

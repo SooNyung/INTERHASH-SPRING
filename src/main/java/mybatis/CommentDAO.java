@@ -1,6 +1,10 @@
 package mybatis;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
+
+import javax.print.DocFlavor.STRING;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +24,7 @@ public class CommentDAO {
 		return session.insert("Comment.insertComment",dto);
 	}
 	
-	public List getComments(int connum){
+	public List<String> getComments(int connum){
 		return session.selectList("Comment.getComment",connum);
 	}
 	
@@ -44,8 +48,10 @@ public class CommentDAO {
 		return session.selectList("Comment.test");	
 	} 
 	
-	public List date(int connum){
-		return session.selectList("Comment.date",connum);
+	public String test(int comnum){
+		SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:mm");
+		String testdate = sdf.format(session.selectOne("Comment.date1",comnum));
+		return testdate;
 	}
 
 	

@@ -28,29 +28,23 @@ font-size:14px;
 
 
 
-function modifypro(comnum,connum,i){
+function modifypro(comnum,connum){
 	var com = comnum;
 	var con = connum;
-	var i = i;
-	var comcontent = $('#textA').val();
-
-
+	var comcontent = $("#textA").val();
 	var url ="/INTERHASH-SPRING/updateCommentPro.hash";
-	var params = "comnum="+com+"&connum="+con+"&comcontent="+comcontent+"&index="+i;
-	alert(params);
+	var params = "comnum="+com+"&connum="+con+"&comcontent="+comcontent;
+	
+
 	$.ajax({
 		type:"post",
 		url:url,
 		data:params,
 		dataType:"json",
 		success:function(args){
-			
-			opener.document.getElementById('textaa'+${index}).value= comcontent;
-			opener.document.getElementById('time'+${index}).value= args.time;                                                                                                                                                                                                                                                                                                                                                                                         ;
-/* 			opener.document.getElementById('test2_div'+i).
-			opener.document.getElementById('comment_textara'+i).value = 'ssssssss'; */
-			
-		alert("성공");
+			opener.document.getElementById('textaa'+com).value= comcontent;	
+			opener.document.getElementById('time'+com).innerHTML= args.dateone;
+
  		window.close();
 		},error: function (xhr, status, err){
 			 alert(err);
@@ -81,7 +75,7 @@ function modifypro(comnum,connum,i){
 
 <div align="right">
 <!-- <input type="submit" value="수정하기" onsubmit="close();"/> -->
-<input type="button" onclick="modifypro(${article.comnum},${article.connum},${index})" value="수정정하기">
+<input type="button" onclick="modifypro(${article.comnum},${article.connum})" value="수정정하기">
 <input type="button" value="취소" onclick="testtt()">
 </div>
 </form>  

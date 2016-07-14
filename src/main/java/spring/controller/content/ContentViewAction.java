@@ -1,5 +1,7 @@
 package spring.controller.content;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -16,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import mybatis.CommentDAO;
 import mybatis.ContentDAO;
+import net.sf.json.JSONObject;
 import spring.model.CommentCommand;
 import spring.model.ContentCommand;
 
@@ -60,45 +63,13 @@ public class ContentViewAction {
 		return new CommentCommand();
 	}
 
-	
-/*	@RequestMapping("/ContentView.hash")
-	public ModelAndView contentView(@ModelAttribute("contentdao") ContentCommand content,
-			@ModelAttribute("commentdto") CommentCommand comment, HttpServletRequest request,HttpServletResponse resp,@RequestParam("connum")int connum) throws Exception {
-		ModelAndView mav = new ModelAndView("content/ContentView");
-		int connum = Integer.parseInt(request.getParameter("connum"));
-	
-		SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:mm");
-		content = contentdao.getContent(connum);
-		String conhash = content.getConhash();
-		conhash = conhash.replaceAll(",", "");
-		content.setConhash(conhash);
-		
-		JSONObject jso = new JSONObject();
-		
-		PrintWriter out = resp.getWriter();
-		ArrayList<CommentCommand> array = (ArrayList) commentdao.getComments(connum);
-		
-		jso.put("data", array);
-		
-		out.print(jso.toString());
-		
-		int count = commentdao.commentcount(connum);
-		
-		mav.addObject("content", content);
-		mav.addObject("sdf", sdf);
-		mav.addObject("comment", array);
-		mav.addObject("conhash", conhash);
-		mav.addObject("count", count);
 
-		return mav;
-	}*/
-	
 	@RequestMapping("/ContentView.hash")
 	public ModelAndView contentView(@ModelAttribute("contentdao") ContentCommand content,
 			@ModelAttribute("commentdto") CommentCommand comment, HttpServletRequest request,HttpServletResponse resp,
 			@RequestParam("connum")int connum) throws Exception {
 		ModelAndView mav = new ModelAndView("content/ContentView");
-		/*int connum = Integer.parseInt(request.getParameter("connum"));*/
+		
 	
 		SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:mm");
 		content = contentdao.getContent(connum);
@@ -106,14 +77,16 @@ public class ContentViewAction {
 		String email = content.getEmail();
 		conhash = conhash.replaceAll(",", "");
 		content.setConhash(conhash);
-		//content.setEmail(email);
-		//System.out.println(email);
+
 	
 		ArrayList<CommentCommand> array = (ArrayList) commentdao.getComments(connum);
 		
 		int count = commentdao.commentcount(connum);
 		
 		
+		int size = array.size();
+		
+		mav.addObject("size",size);
 		mav.addObject("content", content);
 		mav.addObject("sdf", sdf);
 		mav.addObject("comment", array);
@@ -137,6 +110,29 @@ public class ContentViewAction {
 		mav.addObject("maptitle", maptitle);
 		
 		return mav;
+	}
+	
+	// °Ô½Ã±Û refresh
+	@RequestMapping("/refresh.hash")
+	public void refresh(
+			HttpServletResponse resp,
+			@RequestParam("connum") int connum
+			) throws IOException{
+		
+		ContentCommand c = new ContentCommand();
+		
+		c = contentdao.getContent(connum);
+		
+		JSONObject jso = new JSONObject();
+		
+		jso.put("data",c);
+		
+		PrintWriter out = resp.getWriter();
+		
+		out.print(jso.toString());
+		
+		System.out.println("jso.toString():::::"+jso.toString());
+		
 	}
 
 }

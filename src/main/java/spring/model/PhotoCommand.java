@@ -8,6 +8,7 @@ public class PhotoCommand {
 	private int connum;
 	private String email;
 	private String serverpath;
+	
 	public String getServerpath() {
 		return serverpath;
 	}
@@ -50,4 +51,12 @@ public class PhotoCommand {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	@Override
+	public String toString() {
+		return "PhotoCommand [photonum=" + photonum + ", photoname=" + photoname + ", realpath=" + realpath
+				+ ", photosize=" + photosize + ", connum=" + connum + ", email=" + email + ", serverpath=" + serverpath
+				+ "]";
+	}
+	
+	
 }

@@ -35,8 +35,8 @@
 		select email from commenttable
 	</select>
 	
-	<select id="date" parameterType="int" resultType="java.sql.Date">
-		select comcreateddate from commenttable where connum=#{connum}
+	<select id="date1" parameterType="int" resultType="Date">
+		select comcreateddate from commenttable where comnum = #{comnum}
 	</select>
 </mapper>
 

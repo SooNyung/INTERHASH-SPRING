@@ -123,6 +123,7 @@ public class ContentInput {
 		//String workspace_dir= (String)System.getProperties().get("user.dir");
 		
 		//사용자의 user 폴더 주소 C:\Users\jin_notebook
+		//
 		String user_home= (String)System.getProperties().get("user.home");
 		
 		// C:\Users\jin_notebook\Documents\workspace-sts-3.7.3.RELEASE\INTERHASH-SPRING\src\main\webapp\ upload\ 

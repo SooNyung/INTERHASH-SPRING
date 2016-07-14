@@ -17,7 +17,7 @@ html,body,h6{font-family: "Open Sans", sans-serif}
 .w3-theme {color:#fff !important; background-color:#607d8b !important}
 .white{color:#000!important;background-color:#fff!important;}
    
-   #img
+   #imgtag
    {
       width: 350px;
       height:300px;
@@ -81,6 +81,10 @@ color:#5AAEFF;
    }
    #align_right{
    float:right;}
+   
+   #count{
+   float:right;
+   }
    #left_nickndate{
    width:360px;
    height:20px;
@@ -144,7 +148,7 @@ color:#5AAEFF;
    }
    
    #test{border-bottom:1px solid;}
-	
+
 </style>
 
 </head>
@@ -153,9 +157,9 @@ color:#5AAEFF;
 <!-- <form name="view"> -->
 
 <div id="view_left" class="box-shadow border-round white">
-	<form name="jinkyung">
+
 	<div id="left_nickndate">
-		<span id ="align_left"><b>${sessionScope.nickName}</b>님</span>
+		<span id ="align_left"><b>${content.connickname}</b>님</span>
 		
 	<span id="align_right"><label id="time">${sdf.format(content.conmodifieddate)}</label></span>
 		
@@ -165,6 +169,7 @@ color:#5AAEFF;
 	<div id="left_mod_del_rep">
 		<span id="align_right">/<a href="#" onclick="deleteCon(${content.connum})">삭제하기</a></span>
 		<span id="align_right"><a href="#" onclick="modifyCon(${content.connum})">수정하기 </a></span>
+		
 	</div>
 	</c:if>
 		
@@ -173,12 +178,16 @@ color:#5AAEFF;
 		<span id="align_right"><a onclick="report(${content.connum})">신고하기</a></span>
 	</div>
 	</c:if>	
-	
+	<form name="jinkyung">
 	<div id="content_photo" style="height:490px; overflow-x:auto">
 
 		<input type="text" id="content1" name="content1" style="border:0px" readonly value="${content.content}"><br>
-		<div id="place">-<a href="#" onclick= "javascript:mapopen('${content.latitude}','${content.longtitude}','${content.maptitle}')" >
-   <font color="#666"><b>${content.maptitle}</b>에서</font></a><br></div><br>
+		<c:if test="${!empty content.maptitle}">
+		
+		<div id="place">-<a id="placea" href="#" onclick= "javascript:mapopen('${content.latitude}','${content.longtitude}','${content.maptitle}')" >		
+   		<font color="#666"><b><label>${content.maptitle}</b>에서</label></font></a><br></div><br>
+   		
+   		</c:if>
 
 		<div id="tagtest">
 		<input type="text" name="tag" size="30" readonly style="border:0px; color:#FF73B8;" id="tag" value="${content.conhash}"><br><br>
@@ -186,14 +195,15 @@ color:#5AAEFF;
 		
 		<c:forEach var="photo" items="${content.photolist}">
 		
-		<img id="img" src='<c:url value="/upload/${content.photolist[0].realpath }" />'/>
+		<img id="imgtag" src='<c:url value="/upload/${content.photolist[0].realpath }" />'/>
+
 
 		</c:forEach>
 
 	</div>
-	
+	</form>
 	<div id="left_good_re">
-		<label id="align_right">댓글 수: ${count}</label>
+		<label id="count">댓글 수: ${count}</label>
 		<!-- <label id="align_right">좋아요/</label> --> 
 	</div>
 	<div>
@@ -204,18 +214,21 @@ color:#5AAEFF;
     
      <i id="like"> ${content.conlike}</i>
      </div>
-	</form>
+
 </div>
 
 <div id="view_right" class="box-shadow border-round white">
-	<input type=button onclick="location.href='Board.hash'" class="w3-theme-d1 w3-margin-bottom" value="X" style="float:right">
+		<%-- <input id="align_right" type="button" value="X" onclick="re(${content.connum})"> --%>
+		
+	<!-- <input type=button onclick="location.href='Board.hash'" class="w3-theme-d1 w3-margin-bottom" value="X" style="float:right"> -->
 	
 	
 	<form method="post" action="InsertComment.hash">
 	<input type=hidden name=connum value="${content.connum}">
 	<input type=hidden name=comnick value="${sessionScope.nickName}">
-
-	
+	 <input type="hidden" id="innermaptitle" name="innermaptitle" value="${content.maptitle }" size="10px" readonly/>
+    <input type="hidden" id="innermaplatitude" name="innermaplatitude" value="${content.latitude }" /> 
+	<input type="hidden" id="innermaplongtitude" name="innermaplongtitude" value="${content.longtitude }" />
 	<div id="right_nick">
 		<span id ="align_left"><b>${sessionScope.nickName}</b>님</span>
 		<!-- <span id="align_right"><input type="button" onclick="back()" value="닫기버튼"></span> -->
@@ -235,34 +248,35 @@ color:#5AAEFF;
 	
 	<div id="test_div"></div>
  	<c:forEach var="comment" items="${comment}">
-		
+
 	<div id="comment_div">   
 	<input type=hidden name=comnum value="${comment.comnum}">
 	<span><b id="nickname">${comment.comnick}</b></span>
 	
-	<span><label id="time">${sdf.format(comment.commodifieddate)}</label></span>
+	<span><label id="time${comment.comnum}">${sdf.format(comment.commodifieddate)}</label></span>
 	
 	<span id="align_right">
 	
 		<c:if test="${sessionScope.memId==comment.email}">
 		<a href="#" onclick="delete1(${comment.comnum},${comment.connum})">삭제</a>
+		
 		<a href="#" onclick="modify(${comment.comnum},${comment.connum})">수정</a>
-		</c:if	>
+		
+		</c:if>
 		
 		<c:if test="${sessionScope.memId!=comment.email}">
 		<a onclick="reportCom(${comment.comnum})">신고</a>
 		</c:if>	
 	</span><br> 
-	<div id="test"><textarea id="comment_textara" borderStyle="none" cols=50 readonly="readonly" class="autosize">${comment.comcontent}</textarea></div>
+	<div id="test"><textarea id="textaa${comment.comnum}" borderStyle="none" cols=50 readonly="readonly" class="autosize">${comment.comcontent}</textarea></div>
+	
+	
 	</div>	
 	</c:forEach>  
 	</div>
 	
-   <form>
-   <div id="left_nickndate">
-      <span id ="align_left"><b>${sessionScope.nickName}</b>님</span>
-   </div>      
-   </form>
+  
+
 
 </div>
 

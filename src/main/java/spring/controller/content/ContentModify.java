@@ -1,5 +1,8 @@
 package spring.controller.content;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
@@ -14,216 +17,180 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import mybatis.CommentDAO;
 import mybatis.ContentDAO;
 import net.sf.json.JSONObject;
 import spring.model.CommentCommand;
 import spring.model.ContentCommand;
+import spring.model.PhotoCommand;
 
 @Controller
 public class ContentModify {
-	
+
 	@Autowired
 	private ContentDAO contentdao;
 
 	@Autowired
 	private CommentDAO commentdao;
-	
+
 	@ModelAttribute
-	public CommentCommand commentdto(){
+	public CommentCommand commentdto() {
 		return new CommentCommand();
 	}
-	
+
 	@ModelAttribute
-	public ContentCommand contentdto(){
+	public ContentCommand contentdto() {
 		return new ContentCommand();
 	}
 	
-
-	
-	@RequestMapping("/ContentUpdate.hash")
-	public void UpdateForm(HttpServletRequest request,
-			HttpServletResponse resp,
-			@RequestParam("connum") int connum
-			) throws IOException{
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:mm");
-		
-		ContentCommand contentdto =  contentdao.getContent(connum);
-		String conhash = contentdto.getConhash();
-		conhash = conhash.replaceAll(",", "");
-		contentdto.setConhash(conhash);
-		
-		ArrayList<CommentCommand> array = (ArrayList) commentdao.getComments(connum);
-		
-		int count = commentdao.commentcount(connum);
-		
-		request.setAttribute("count", count);
-		
-		resp.setContentType("application/json;charset=utf-8");
-		
-		JSONObject jso = new JSONObject();
-		
-		jso.put("data", array);
-		
-		
-		
-		PrintWriter out = resp.getWriter();
-		
-		out.print(jso.toString());
-		
+	@ModelAttribute
+	public PhotoCommand photodto(){
+		return new PhotoCommand();
 	}
-/*	@RequestMapping("/ContentUpdate.hash")
-	public ModelAndView UpdateForm(
-			ContentCommand contentdto,
-			HttpServletRequest request){
-		ModelAndView mav = new ModelAndView("content/UpdateContent");
-		
-		int connum = Integer.parseInt(request.getParameter("connum"));
+
+	@RequestMapping("/ContentUpdate.hash")
+	public void UpdateForm(HttpServletRequest request, HttpServletResponse resp, @RequestParam("connum") int connum)
+			throws IOException {
+
 		SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:mm");
-		
-		contentdto = contentdao.getContent(connum);
+
+		ContentCommand contentdto = contentdao.getContent(connum);
 		String conhash = contentdto.getConhash();
 		conhash = conhash.replaceAll(",", "");
 		contentdto.setConhash(conhash);
-		
+
 		ArrayList<CommentCommand> array = (ArrayList) commentdao.getComments(connum);
-		
+
 		int count = commentdao.commentcount(connum);
-		
-		mav.addObject("content", contentdto);
-		mav.addObject("sdf", sdf);
-		mav.addObject("comment", array);
-		mav.addObject("conhash", conhash);
-		mav.addObject("count", count);
-		
-		return mav;
-	}*/
-	
+
+		request.setAttribute("count", count);
+
+		resp.setContentType("application/json;charset=utf-8");
+
+		JSONObject jso = new JSONObject();
+
+		jso.put("data", array);
+
+		PrintWriter out = resp.getWriter();
+
+		out.print(jso.toString());
+
+	}
+
 	@RequestMapping("/UpdateTagCheck.hash")
-	private String tag_check(@RequestParam("check") String check,Model model){
-		model.addAttribute("check","y");
+	private String tag_check(@RequestParam("check") String check, Model model) {
+		model.addAttribute("check", "y");
 		return "userpage/TagCheckUpdate";
 	}
-	
-	
+
 	@RequestMapping("/ContentUpdatePro.hash")
-	public void updatePro(
-			HttpServletResponse resp,
-			@RequestParam("connum") int connum,
-			@RequestParam("content") String content,
-			@RequestParam("conhash") String conhash,
+	public void updatePro(HttpServletResponse resp, @RequestParam("connum") int connum,
+			@RequestParam("content") String content, @RequestParam("conhash") String conhash,
 			@RequestParam("maptitle") String maptitle,
-			@RequestParam("mapplace") String mapplace,HttpServletRequest request
-			) throws IOException{
+			@RequestParam("latitude") String latitude,
+			@RequestParam("longtitude") String longtitude,
+			HttpServletRequest request) throws IOException {
 
-		
-			ContentCommand contentdto = new ContentCommand();
 
-				contentdto.setContent(content);
-				contentdto.setConnum(connum);
-				contentdto.setConhash(conhash);
-				contentdto.setMaptitle(maptitle);
-		
-		//위치 
-				try {
-					
-					String map1 = mapplace;
-					try{
-						map1 = map1.substring(1,map1.length()-1);
-					}catch(Exception e){
-						map1 = "none";
-					}
-					
-					
-					String latitude="";
-					String longtitude="";
-					
-					System.out.println(map1);
-					if(map1.equals("none")){
-						latitude="";
-						longtitude="";
-					}else{
-						String[] map2 = map1.split(", ");
+		System.out.println(maptitle);
 
-/*						for(int i = 0; i <map2.length; i++)
-						{
-							System.out.println("위도,경도=" + map2[i].trim());
-						}
-*/
-						System.out.println(maptitle);
-						latitude= map2[0];
-						System.out.println("위도:"+latitude);
-						longtitude = map2[1].trim();
-						System.out.println("경도:"+longtitude);
-						
-						contentdto.setLatitude(latitude);
-						contentdto.setLongtitude(longtitude);
-						
-						request.setAttribute("latitude", latitude);
-						request.setAttribute("longtitude", longtitude);
-						request.setAttribute("maptitle", maptitle);
-					}
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		ContentCommand contentdto = new ContentCommand();
 
-		
-		
-		System.out.println("contentdto:::::::::::"+contentdto);
+		contentdto.setContent(content);
+		contentdto.setConnum(connum);
+		contentdto.setConhash(conhash);
+		contentdto.setMaptitle(maptitle);
+		contentdto.setLatitude(latitude);
+		contentdto.setLongtitude(longtitude);
+				
+
+
+		System.out.println("contentdto:::::::::::" + contentdto);
+
 		int result = contentdao.modifyContent(contentdto);
 
-
-
-		System.out.println("test3");
 		JSONObject jso = new JSONObject();
-		System.out.println("test4");
+
 		PrintWriter out = resp.getWriter();
-		System.out.println("test5");
-		/*jso.put("result", result);*/
-		System.out.println("test6");
+
+		/* jso.put("result", result); */
+
 		out.print(jso.toString());
-		System.out.println("test7");
 
 	}
-/*	
-	@RequestMapping("/ContentUpdatePro.hash")
-	public ModelAndView UpdatePro(
-			ContentCommand contentdto,
-			HttpServletRequest request
-			){
-		ModelAndView mav = new ModelAndView("content/ContentView");
-		
-		int connum = Integer.parseInt(request.getParameter("connum"));
-		SimpleDateFormat sdf = new SimpleDateFormat("YY-MM-dd HH:mm");
-		String updatetag = request.getParameter("updatetag");
-		
-		contentdto.setConhash(updatetag);
-		//글 수정을 위한 메서드
-		contentdao.modifyContent(contentdto);
-		
-		contentdto = contentdao.getContent(connum);
-		String conhash = contentdto.getConhash();
-		conhash = conhash.replaceAll(",", "");
-		contentdto.setConhash(conhash);
-		
-		ArrayList<CommentCommand> array = (ArrayList) commentdao.getComments(connum);
-		
-		int count = commentdao.commentcount(connum);
+
+	@RequestMapping("/FileUpdate.hash")
+	public void imageUpdate(MultipartHttpServletRequest request,
+			HttpServletResponse resp
 			
-		mav.addObject("content", contentdto);
-		mav.addObject("sdf", sdf);
-		mav.addObject("comment", array);
-		mav.addObject("conhash", conhash);
-		mav.addObject("count", count);
-		return mav;
-	}*/
+			) throws IOException {
 
 
-	
-	
-	
+		int connum = Integer.parseInt(request.getParameter("num"));
+
+		MultipartFile file = request.getFile("conphoto2");
+		String photoname = file.getOriginalFilename();
+
+
+		String user_home = (String) System.getProperties().get("user.home");
+		String workspace_dir=user_home+"\\Documents\\workspace-sts-3.7.3.RELEASE\\INTERHASH-SPRING\\src\\main\\webapp\\upload\\";
+		String tmp_dir = (String) System.getProperties().get("wtp.deploy");
+		String upload_tmp_path = tmp_dir + "\\INTERHASH-SPRING\\upload\\";
+		
+		String realpath= System.currentTimeMillis()+photoname;
+		
+		System.out.println("filename :: "+photoname);
+		File f = new File(workspace_dir + realpath);
+		System.out.println("workspace_dir ::: "+f.getAbsolutePath());
+		
+		File f1 = new File(upload_tmp_path + realpath);
+		System.out.println("upload_dir ::: "+f1.getAbsolutePath());		
+		file.transferTo(f);
+		System.out.println("error3");
+		
+		  try {
+			   FileInputStream fis = new FileInputStream(f);
+			   FileOutputStream fos = new FileOutputStream(f1);
+			   
+			   int data = 0;
+			   while((data=fis.read())!=-1) {
+			    fos.write(data);
+			   }
+			   fis.close();
+			   fos.close();
+			   
+			  } catch (IOException e) {
+			   // TODO Auto-generated catch block
+			   e.printStackTrace();
+			  }
+		
+		
+		
+		String photosize = Long.toString(file.getSize());
+		
+		System.out.println("error4");
+		PhotoCommand p = new PhotoCommand();
+		
+		p.setPhotoname(photoname);
+		p.setRealpath(realpath);
+		p.setPhotosize(photosize);
+		p.setConnum(connum);
+		
+
+		System.out.println("dto:::::::::"+p.toString());
+		
+		int photoresult = contentdao.updatePhoto(p);
+
+		System.out.println("result::::::::"+photoresult);
+		JSONObject jso = new JSONObject();
+
+		PrintWriter out = resp.getWriter();
+
+		out.print(jso.toString());
+
+	}
+
 }
