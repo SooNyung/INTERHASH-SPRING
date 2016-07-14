@@ -350,24 +350,14 @@ background-color: #FF9090;
    overflow: auto;
 }
 
-a {
-  color: #797D7F;
-  outline: 0;
+a{
+  color: #ffcccc;
   text-decoration: none;
 }
 
-#View {
-  color: #797D7F;
-  outline: 0;
-  /* text-decoration: none; */
-  font-weight: bold;
-}
 
-/* #View:hover{
-   color:#ffcccc;
-} */
 a:focus, a:hover {
- /*  text-decoration: underline;  */
+  text-decoration: none; 
   color:#ffcccc;
   
 }
@@ -840,7 +830,7 @@ function xclose(num){
 <img src='<c:url value="/upload/${profilephoto.get(temp)}"/>' alt="Avatar" class="left-align circle" style="width:50px; height:50px;">
 
 </td>
-<td width="65%"><a id="View" target="_blank" href="#" onclick="window.open('ProfileView.hash?nickname=${con.connickname}','new','resizable=no width=700 height=500');return false">${con.connickname}</a></td>
+<td width="65%"><a id="View" style="text-decoration:none; color:#F06292; font-size:25px; font-weight:bold;" class="pro1" target="_blank" href="#" onclick="window.open('ProfileView.hash?nickname=${con.connickname}','new','resizable=no width=700 height=500');return false">${con.connickname}</a></td>
 <td width="35%"><b class="right-align opacity"><font color="#b2b2b2">${con.conmodifieddate}</font></b></td>
 </tr>
 </table>
@@ -848,7 +838,7 @@ function xclose(num){
    <div class="content">
    <div class="write">${con.content}&nbsp;&nbsp;&nbsp;
    <c:if test="${!empty con.maptitle}">
-   -<a href="#" onclick= "javascript:mapopen('${con.latitude}','${con.longtitude}','${con.maptitle}')" >
+   -<a href="#" style="text-decoration:none; color:#ffcccc;" onclick= "javascript:mapopen('${con.latitude}','${con.longtitude}','${con.maptitle}')" >
    <font color="#666"><b>${con.maptitle}</b>에서</font></a>
    </c:if>
    </div>
