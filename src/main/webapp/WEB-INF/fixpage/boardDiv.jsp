@@ -442,6 +442,14 @@ box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 	padding:5px;
     float:right;
 }
+
+
+.back{
+ background-color: #FFFAFB;
+    	width: 95%;
+   	border: none;
+}
+	
 </style>
  
 <script>
@@ -513,18 +521,18 @@ function delete1(comnum, connum){
             if(args.session==args.data[i].email){
                $('#test_div').append(
                   '<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
-                  '--!><span><label id="time'+args.data[i].comnum+'">'+args.time+'</label></span><!--'+
+                  '--!><span><label id="time'+args.data[i].comnum+'">'+args.arr[i]+'</label></span><!--'+
                   '--!><span id="align_right"><a href="#" id="com_modi" onclick="modify('+args.data[i].comnum+','+args.data[i].connum+')"><label for="com_modi" class="fontawesome-pencil"></label></a>&nbsp;&nbsp;<!--'+
-					'--!><a href="#" id="com_delete" onclick="delete1('+args.data[i].comnum+','+args.data[i].connum+')"><label for="com_delete" class="fontawesome-trash"></label></a><!--'+
-                  '--!></span><br><div id="test"><textarea id="textaa'+args.data[i].comnum+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+				  '--!><a href="#" id="com_delete" onclick="delete1('+args.data[i].comnum+','+args.data[i].connum+')"><label for="com_delete" class="fontawesome-trash"></label></a><!--'+
+                  '--!></span><br><div id="test"><textarea id="textaa'+args.data[i].comnum+'" style="border:0px" cols=50 readonly="readonly" class="back">'+args.data[i].comcontent+'</textarea></div></div>')
                   
                   
          }else{
             $('#test_div').append(
                   '<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
-                  '--!><span><label id="time'+i+'">'+args.time+'</label></span><!--'+
+                  '--!><span><label id="time'+i+'">'+args.arr[i]+'</label></span><!--'+
                   '--!><span id="align_right"><!--'+
-                  '--!><a href="#" id="com_report" onclick="reportCom('+args.data[i].comnum+')"><label for="com_report" class="fontawesome-bullhorn"></label></a></span><br><div id="test"><textarea id="textaa'+args.data[i].comnum+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+                  '--!><a href="#" id="com_report" onclick="reportCom('+args.data[i].comnum+')"><label for="com_report" class="fontawesome-bullhorn"></label></a></span><br><div id="test"><textarea id="textaa'+args.data[i].comnum+'" borderStyle="none" cols=50 readonly="readonly" class="back">'+args.data[i].comcontent+'</textarea></div></div>')
 
          }
          }
@@ -599,14 +607,14 @@ function insert1(connum){
 						'--!><span><label id="time'+args.data[i].comnum+'">'+args.arr[i]+'</label></span><!--'+
 						'--!><span id="align_right"><a href="#" id="com_modi" onclick="modify('+args.data[i].comnum+','+args.data[i].connum+')"><label for="com_modi" class="fontawesome-pencil"></label></a>&nbsp;&nbsp;<!--'+
 						'--!><a href="#" id="com_delete" onclick="delete1('+args.data[i].comnum+','+args.data[i].connum+')"><label for="com_delete" class="fontawesome-trash"></label></a><!--'+
-						'--!></span><br><div id="test"><textarea id="textaa'+args.data[i].comnum+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+						'--!></span><br><div id="test"><textarea id="textaa'+args.data[i].comnum+'" style="border:0px" cols="50" readonly="readonly" class="back">'+args.data[i].comcontent+'</textarea></div></div>')
 	
 			}else{
 				$('#test_div').append(
 						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
-						'--!><span><label id="time'+i+'">'+args.test+'</label></span><!--'+
+						'--!><span><label id="time'+i+'">'+args.arr[i]+'</label></span><!--'+
 						'--!><span id="align_right"><!--'+
-						'--!><a href="#" id="com_report" onclick="reportCom('+args.data[i].comnum+')"><label for="com_report" class="fontawesome-bullhorn"></label></a></span><br><div id="test"><textarea id="textaa'+i+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+						'--!><a href="#" id="com_report" onclick="reportCom('+args.data[i].comnum+')"><label for="com_report" class="fontawesome-bullhorn"></label></a></span><br><div id="test"><textarea id="textaa'+i+'" borderStyle="none" cols=50 readonly="readonly" class="back">'+args.data[i].comcontent+'</textarea></div></div>')
 			
 					
 			}
@@ -661,13 +669,13 @@ function modifyCon(connum){
 						'--!><span><label id="time'+args.data[i].comnum+'">'+args.arr[i]+'</label></span><!--'+
 						'--!><span id="align_right"><a href="#" onclick="delete1('+args.data[i].comnum+','+args.data[i].connum+')">삭제</a><!--'+
 						'--!><a href="#" id="com_modi" onclick="modify('+args.data[i].comnum+','+args.data[i].connum+')"><label for="com_modi" class="fontawesome-pencil"></label></a><!--'+
-						'--!></span><br><div id="test"><textarea id="textaa'+args.data[i].comnum+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+						'--!></span><br><div id="test"><textarea id="textaa'+args.data[i].comnum+'" borderStyle="none" cols=50 readonly="readonly" class="back">'+args.data[i].comcontent+'</textarea></div></div>')
 			}else{
 				$('#test_div').append(
 						'<div  id="test2_div"><input type=hidden name=comnum value='+args.data[i].comnum+'><span><b id="nickname">'+args.data[i].comnick+'</b></span><!--'+
 						'--!><span><label id="time'+args.data[i].comnum+'">'+args.arr[i]+'</label></span><!--'+
 						'--!><span id="align_right"><!--'+
-						'--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></span><br><div id="test"><textarea id="textaa'+args.data[i].comnum+'" borderStyle="none" cols=50 readonly="readonly" class="autosize">'+args.data[i].comcontent+'</textarea></div></div>')
+						'--!><a onclick="reportCom('+args.data[i].comnum+')">신고</a></span><br><div id="test"><textarea id="textaa'+args.data[i].comnum+'" borderStyle="none" cols=50 readonly="readonly" class="back">'+args.data[i].comcontent+'</textarea></div></div>')
 			}
 			}
 		}

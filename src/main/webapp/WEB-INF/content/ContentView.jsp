@@ -189,6 +189,12 @@ color:#5AAEFF;
 #content1{
 width:350px;
 }
+
+.back{
+   	width: 95%;
+   	border: none;
+ background-color: #FFFAFB;
+}
 	
 </style>
  
@@ -314,7 +320,7 @@ width:350px;
 			<label for="com_report" class="fontawesome-bullhorn"></label></a>
 		</c:if>	
 	</span><br> 
-	<div id="test"><textarea id="textaa${comment.comnum}" borderStyle="none" cols=50 readonly="readonly" class="autosize">${comment.comcontent}</textarea></div>
+	<div id="test"><textarea id="textaa${comment.comnum}" style="border:0px" cols="50" readonly="readonly" class="back">${comment.comcontent}</textarea></div>
 	</div>	
 	</c:forEach>  
 	</div>
