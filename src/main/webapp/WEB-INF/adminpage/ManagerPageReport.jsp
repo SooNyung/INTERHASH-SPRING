@@ -10,6 +10,8 @@
 color:#7A7A7A;
 }
 
+
+
 #view_div{
 	width:120%;
 	height:90%;
@@ -63,7 +65,8 @@ color:#7A7A7A;
 <c:if test="${ member.redistinction == '0' }" >게시물</c:if >
 </td>
 <td width="150">
-<a href="ContentView.hash?connum=${member.connum }" class="img_like" >${member.connum }</a>
+
+<a onclick="window.open('ContentView.hash?connum=${member.connum }','new','width=1000 height=700') " >${member.connum }</a>
 </td>
 <td width="150">
 ${member.reportcontent }
