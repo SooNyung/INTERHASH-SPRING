@@ -690,14 +690,16 @@ function modifyCon(connum){
 function modifypro(connum){
    	var content1 = document.getElementsByName('content1')[0].value;
    	var conhash = document.getElementsByName('tag')[0].value;
-  	var maptitle =$('#innermaptitle').val();
-  	var longtitude = $('#longtitude').val();
-	var latitude = $('#latitude').val();
-    var formData = new FormData($('#imgform')[0]);
-    
-    
+  	
+   	var maptitle =$('#innermaptitle').val();
+   	
+  	var longtitude = $('#innermaplongtitude').val();
+	var latitude = $('#innermaplatitude').val();
+	
+	
+	var formData = new FormData($('#imgform')[0]);
    formData.append("num", $("#num").val());
- 
+   
    var connum = connum;
    var url = "/INTERHASH-SPRING/ContentUpdatePro.hash";
    var url2 = "/INTERHASH-SPRING/FileUpdate.hash";

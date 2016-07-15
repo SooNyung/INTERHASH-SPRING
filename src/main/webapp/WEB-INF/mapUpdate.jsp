@@ -335,12 +335,12 @@ function selectInfo(marker,title,placePosition) {
      
      	
 	opener.document.getElementById("placea").remove();
-	place.innerHTML="<a href='#' onclick= 'javascript:mapopen("+latitude+","+","+longtitude+","+placePosition+")'><font color='#666'><b>'"+title+"'</b>에서</font></a>";
+	place.innerHTML="<a href='#' onclick= 'javascript:mapopen("+latitude+","+","+longtitude+","+title+")'><font color='#666'><b>'"+title+"'</b>에서</font></a>";
 	
 	
 	opener.document.getElementById("innermaptitle").value= title;
-	opener.document.getElementById("innermaplatitude").value= latitude;
-	opener.document.getElementById("innermaplongtitude").value= longtitude;
+/* 	opener.document.getElementById("innermaplatitude").value= latitude;
+	opener.document.getElementById("innermaplongtitude").value= longtitude; */
 	
 	
 	

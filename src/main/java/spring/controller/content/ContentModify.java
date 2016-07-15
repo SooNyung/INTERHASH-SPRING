@@ -104,10 +104,9 @@ public class ContentModify {
 			@RequestParam("longtitude") String longtitude,
 			HttpServletRequest request) throws IOException {
 
-
-		System.out.println("update error1");
-		System.out.println(maptitle);
-
+		 
+		System.out.println("la:"+latitude);
+		System.out.println("long:"+longtitude);
 		ContentCommand contentdto = new ContentCommand();
 
 		contentdto.setContent(content);
@@ -117,14 +116,11 @@ public class ContentModify {
 		contentdto.setLatitude(latitude);
 		contentdto.setLongtitude(longtitude);
 				
-
-
-		System.out.println("contentdto:::::::::::" + contentdto);
-
-		System.out.println("update error2");
+		
+		System.out.println("latitude:::"+latitude);
+		System.out.println("longtitude:::"+longtitude);
 		int result = contentdao.modifyContent(contentdto);
 		
-		System.out.println("update error3");
 		JSONObject jso = new JSONObject();
 
 		PrintWriter out = resp.getWriter();
@@ -155,14 +151,13 @@ public class ContentModify {
 		
 		String realpath= System.currentTimeMillis()+photoname;
 		
-		System.out.println("filename :: "+photoname);
+
 		File f = new File(workspace_dir + realpath);
-		System.out.println("workspace_dir ::: "+f.getAbsolutePath());
+
 		
 		File f1 = new File(upload_tmp_path + realpath);
-		System.out.println("upload_dir ::: "+f1.getAbsolutePath());		
+	
 		file.transferTo(f);
-		System.out.println("error3");
 		
 		  try {
 			   FileInputStream fis = new FileInputStream(f);
@@ -192,12 +187,8 @@ public class ContentModify {
 		p.setPhotosize(photosize);
 		p.setConnum(connum);
 		
-
-		System.out.println("dto:::::::::"+p.toString());
-		
 		int photoresult = contentdao.updatePhoto(p);
 
-		System.out.println("result::::::::"+photoresult);
 		JSONObject jso = new JSONObject();
 
 		PrintWriter out = resp.getWriter();
