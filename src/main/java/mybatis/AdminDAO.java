@@ -127,4 +127,8 @@ public class AdminDAO {
 	public String confirm(String comnick) {
 		return session.selectOne("alarm.confirm", comnick);
 	}
+	
+	public int condel(int connum){
+		return session.delete("admin.condel",connum);
+	}
 }

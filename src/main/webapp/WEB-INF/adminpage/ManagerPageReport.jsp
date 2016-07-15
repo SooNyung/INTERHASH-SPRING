@@ -46,7 +46,7 @@ color:#7A7A7A;
 <center>
 <h3>신고 게시물</h3>
 <hr/>
-<form method="post" action="ManagerPageMemberPro.hash">
+<form method="post" action="ManagerPageReportPro.hash">
 <input type="button" value="관리자페이지" onclick="javascript:window.location='ManagerPage.hash'">
 <table id ="text">
 <tr bgcolor="#ffcccc">
@@ -56,6 +56,7 @@ color:#7A7A7A;
 <td><b>게시물계정</b></td>
 <td><b>신고내용</b></td>
 <td><b>신고자</b></td>
+<td><b>글삭제</b>
 </tr>
 
 <c:forEach var="member" items="${report}">
@@ -80,10 +81,12 @@ ${member.report}
 <td width="150">
 ${member.reporter}
 </td>
+<td>
+<input type="button" value="글삭제" onclick="location.href='ManagerPageReportPro.hash?connum=${member.connum }'">
+</td>
 </tr>
 </c:forEach>
 </table>
-
 </form>
 
 </div>
