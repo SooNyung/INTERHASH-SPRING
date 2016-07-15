@@ -105,6 +105,7 @@ public class ContentModify {
 			HttpServletRequest request) throws IOException {
 
 
+		System.out.println("update error1");
 		System.out.println(maptitle);
 
 		ContentCommand contentdto = new ContentCommand();
@@ -120,8 +121,10 @@ public class ContentModify {
 
 		System.out.println("contentdto:::::::::::" + contentdto);
 
+		System.out.println("update error2");
 		int result = contentdao.modifyContent(contentdto);
-
+		
+		System.out.println("update error3");
 		JSONObject jso = new JSONObject();
 
 		PrintWriter out = resp.getWriter();

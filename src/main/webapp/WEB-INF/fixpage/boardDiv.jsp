@@ -640,6 +640,8 @@ function modifyCon(connum){
 		data:params,
 		dataType:"json",
 		success:function(args){
+			
+			
 			$("#content1").attr("type","textarea");
 			$("#content1").attr("readonly",false);
 			$("#content1").css("border","1px");
@@ -691,9 +693,9 @@ function modifypro(connum){
   	var maptitle =$('#innermaptitle').val();
   	var longtitude = $('#longtitude').val();
 	var latitude = $('#latitude').val();
-   
-   
-   var formData = new FormData($('#imgform')[0]);
+    var formData = new FormData($('#imgform')[0]);
+    
+    
    formData.append("num", $("#num").val());
  
    var connum = connum;
@@ -707,6 +709,9 @@ function modifypro(connum){
       data:params,
       dataType:"json",
       success:function(args){   
+    	  
+    	  
+      alert('수정되었습니다.');
          $("#content1").attr("type","textarea");
          $("#content1").attr("readonly",true);
          $("#content1").css("border","1px");
@@ -717,6 +722,7 @@ function modifypro(connum){
 				"--!><label for='com_delete' class='fontawesome-trash'></label></a>&nbsp;</span><!--"+
 				"--!><span id='align_right'><a href='#' id='com_modi' onclick='modifyCon("+connum+")'><!--"+
 				"--!><label for='com_modi' class='fontawesome-pencil'></label></a>&nbsp;&nbsp;&nbsp;</span>");
+               
 
       }
          ,error: function (xhr, status, err){

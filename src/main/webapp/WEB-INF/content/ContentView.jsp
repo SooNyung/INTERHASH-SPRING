@@ -276,9 +276,9 @@ width:350px;
 <form method="post" action="InsertComment.hash">
 	<input type=hidden name=connum value="${content.connum}">
 	<input type=hidden name=comnick value="${sessionScope.nickName}">
-	 <input type="hidden" id="innermaptitle" name="innermaptitle" value="${content.maptitle }" size="10px" readonly/>
-    <input type="hidden" id="innermaplatitude" name="innermaplatitude" value="${content.latitude }" /> 
-	<input type="hidden" id="innermaplongtitude" name="innermaplongtitude" value="${content.longtitude }" />
+	 <input type="hidden" id="innermaptitle" name="innermaptitle" value="${content.maptitle}" size="10px" readonly/>
+    <input type="hidden" id="innermaplatitude" name="innermaplatitude" value="${content.latitude}" /> 
+	<input type="hidden" id="innermaplongtitude" name="innermaplongtitude" value="${content.longtitude}" />
 	<div id="right_nick">
 		<span id ="align_left"><b>${sessionScope.nickName}</b>님</span>
 		<!-- <span id="align_right"><input type="button" onclick="back()" value="닫기버튼"></span> -->
