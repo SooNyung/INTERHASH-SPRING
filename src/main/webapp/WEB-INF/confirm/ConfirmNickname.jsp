@@ -9,6 +9,18 @@
 *{
 color:#7A7A7A;
 }
+#buttonid {
+	color: white;
+	background-color: #FFCCCC;
+	border-radius: 7px !important;
+	padding:5px;
+}
+#buttonid:hover {
+	color: white;
+	background-color: #FF9090;
+	border-radius: 7px !important;
+	padding:5px;
+}
 </style>
 <script>
   function setNickname()
@@ -25,7 +37,7 @@ color:#7A7A7A;
   <tr>
     <p><td align="center">${nickname}은<br>이미 사용중인 닉네임입니다.</p>
     <p>다른 닉네임을 사용해주세요.</p>
-    <input type="button" value="닫기" onclick="self.close()">
+    <input type="button" id="buttonid" value="닫기" onclick="self.close()">
     </td>
     
   </tr>
@@ -37,7 +49,7 @@ color:#7A7A7A;
   <tr>
     <td align="center">
       <p>사용할수 있는 닉네임입니다.</p>
-      <input type="button" value="닫기" onclick="setNickname()">
+      <input type="button" id="buttonid" value="닫기" onclick="setNickname()">
     </td>
   </tr>
 </table>

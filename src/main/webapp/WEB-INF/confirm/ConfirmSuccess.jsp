@@ -9,6 +9,18 @@
 *{
 color:#7A7A7A;
 }
+#buttonid {
+	color: white;
+	background-color: #FFCCCC;
+	border-radius: 7px !important;
+	padding:5px;
+}
+#buttonid:hover {
+	color: white;
+	background-color: #FF9090;
+	border-radius: 7px !important;
+	padding:5px;
+}
 </style>
 <script>
 function setReadonly()
@@ -23,7 +35,7 @@ self.close();
 <table>
   <tr>
     <td align="center"><p>인증되었습니다.</p>
-    <input type="button" value="닫기" onclick="setReadonly();">
+    <input type="button" id="buttonid" value="닫기" onclick="setReadonly();">
     </td>
   </tr>
 </table>
@@ -32,7 +44,7 @@ self.close();
 <table>
   <tr>
     <td align="center"><p>인증번호가 틀렸습니다.</p>
-    <input type="button" value="닫기" onclick="self.close()">
+    <input type="button" id="buttonid" value="닫기" onclick="self.close()">
     </td>
   </tr>
 </table>

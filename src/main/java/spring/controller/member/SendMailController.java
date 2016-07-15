@@ -72,7 +72,7 @@ public class SendMailController {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("fksh90@gmail.com"));//
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
-			message.setContent("<h3>InterHash#</h3><hr/>인증번호는 "+key+" 입니다.<br>","text/html; charset=UTF-8;");//글내용을 html타입
+			message.setContent("<h3 style='color:#FF6088;'>♥ InterHash# ♥</h3><hr style='border: dashed 0.5px; color:#7A7A7A;'>인증번호는 <b style='color:#FF6088;'>"+key+"</b> 입니다:-)<br>","text/html; charset=UTF-8;");//글내용을 html타입
 			message.setSubject("InterHash#의 이메일 인증번호입니다");
 			//message.setText("<html><body><a href='http://www.naver.com'>naver</a> Dear Mail Crawler," + "\n\n No spam to my email, please!</body></html>");// 내용
 			System.out.println("send!!!");
