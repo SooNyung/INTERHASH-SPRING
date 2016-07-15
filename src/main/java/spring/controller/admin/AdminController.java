@@ -89,6 +89,19 @@ public class AdminController {
       return mv;
    }
    
+   @RequestMapping(value="/ManagerPageReportPro.hash")
+   private ModelAndView adminReportPro(HttpServletRequest request , HttpServletResponse response,int connum){
+	   
+	   ModelAndView mv = new ModelAndView("redirect:/ManagerPageReport.hash");
+	   response.setCharacterEncoding("UTF-8");
+	   request.setAttribute("report", dao.report());
+	   System.out.println("글번호 받아옴?: "+connum);
+	   int a = dao.condel(connum);
+	   System.out.println("글삭제 되었나? : " + a);
+	   
+	   return mv;
+   }
+   
 
    @RequestMapping(value="/ManagerPageMember.hash", method=RequestMethod.GET)
    private ModelAndView adminMember(HttpServletRequest request){
@@ -115,12 +128,11 @@ public class AdminController {
       WithdrawalCommand members = new WithdrawalCommand();
       members.setDrawalemail(member);
       dao.adminInsert(member);
-      System.out.println("탈퇴회원에 들어감");
    
       MemberCommand a = new MemberCommand();
       a.setEmail(member);
       dao.deleteMember(member);
-      System.out.println("삭제 성공");
+      System.out.println("�궘�젣 �꽦怨�");
       
       return mv;
    }
