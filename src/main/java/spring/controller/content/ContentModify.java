@@ -104,9 +104,7 @@ public class ContentModify {
 			@RequestParam("longtitude") String longtitude,
 			HttpServletRequest request) throws IOException {
 
-		 
-		System.out.println("la:"+latitude);
-		System.out.println("long:"+longtitude);
+
 		ContentCommand contentdto = new ContentCommand();
 
 		contentdto.setContent(content);
@@ -117,8 +115,8 @@ public class ContentModify {
 		contentdto.setLongtitude(longtitude);
 				
 		
-		System.out.println("latitude:::"+latitude);
-		System.out.println("longtitude:::"+longtitude);
+		System.out.println("latitude::::::"+latitude);
+		System.out.println("longtitude:::::::"+longtitude);
 		int result = contentdao.modifyContent(contentdto);
 		
 		JSONObject jso = new JSONObject();
@@ -179,7 +177,7 @@ public class ContentModify {
 		
 		String photosize = Long.toString(file.getSize());
 		
-		System.out.println("error4");
+
 		PhotoCommand p = new PhotoCommand();
 		
 		p.setPhotoname(photoname);

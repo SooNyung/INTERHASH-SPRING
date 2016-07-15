@@ -305,20 +305,23 @@ function selectInfo(marker,title,placePosition) {
 	ps.keywordSearch(title, placesSearchCB);
 
 	var place = opener.document.getElementById("place");
- 	opener.document.writeForm.maptitle.value = title;
-	opener.document.writeForm.mapplace.value = placePosition;
-	var latitude = "";
-	var longtitude="";
+/*  	opener.document.writeForm.maptitle.value = title;
+	opener.document.writeForm.mapplace.value = placePosition; */
+/* 	var latitude = "";
+	var longtitude=""; */
 	
 	try {
-       	var map1 = placePosition;
+       	var map1 = placePosition.toString();
+
         try{
-           map1 = map1.substring(1,map1.length()-1);
+           map1 = map1.substring(1,map1.length-1);
+           alert(map1);
         }catch(err){
            map1 = "none";
-        }       
-        latitude="";
-        longtitude="";
+        }    
+
+       var latitude="";
+       var longtitude="";
 
         if(map1 == "none"){
            latitude="";
@@ -327,23 +330,21 @@ function selectInfo(marker,title,placePosition) {
            var map2 = map1.split(", ");
            latitude= map2[0];
            longtitude = map2[1].trim();
+           
+    	
+        	opener.document.getElementById("innermaplatitude").value= latitude;
+        	opener.document.getElementById("innermaplongtitude").value= longtitude; 
         }
         
      } catch (err) {
        alert(err);
      }
      
-     	
 	opener.document.getElementById("placea").remove();
 	place.innerHTML="<a href='#' onclick= 'javascript:mapopen("+latitude+","+","+longtitude+","+title+")'><font color='#666'><b>'"+title+"'</b>에서</font></a>";
 	
-	
 	opener.document.getElementById("innermaptitle").value= title;
-/* 	opener.document.getElementById("innermaplatitude").value= latitude;
-	opener.document.getElementById("innermaplongtitude").value= longtitude; */
-	
-	
-	
+
 	window.close();
 }
 

@@ -692,10 +692,10 @@ function modifypro(connum){
    	var conhash = document.getElementsByName('tag')[0].value;
   	
    	var maptitle =$('#innermaptitle').val();
-   	
   	var longtitude = $('#innermaplongtitude').val();
 	var latitude = $('#innermaplatitude').val();
 	
+
 	
 	var formData = new FormData($('#imgform')[0]);
    formData.append("num", $("#num").val());
@@ -756,8 +756,7 @@ function Map(){
    window.open(url,"post","toolbar=no ,width=600 ,height=500,directories=no,status=yes,menubar=no,scrollbars=no");
    } 
  
-function mapopen(latitude,longtitude,maptitle ) {
-   
+function mapopen(latitude,longtitude,maptitle) {
    url = "mapopen.hash?latitude="+ latitude + "&longtitude="+longtitude+"&maptitle="+maptitle;
    newwindow=window.open(url,"post","toolbar=no ,width=500 ,height=400 ,directories=no ,status=yes ,scrollbars=no ,menubar=no");
  
