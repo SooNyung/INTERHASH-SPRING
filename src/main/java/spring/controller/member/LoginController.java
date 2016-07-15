@@ -210,7 +210,7 @@ public class LoginController {
 			message.setFrom(new InternetAddress(username)); //보내는 사람 Email
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));// 받는 사람 Email
 			//System.out.println("sendEmail() 안에 email ::: " + email);
-			message.setContent("<h3>InterHash#</h3><hr/>임시 비밀번호는 "+key+" 입니다.<br>","text/html; charset=UTF-8;");//글내용을 html타입
+			message.setContent("<h3 style='color:#FF6088;'>♥ InterHash# ♥</h3><hr style='border: dashed 0.5px; color:#7A7A7A;'>인증번호는 <b style='color:#FF6088;'>"+key+"</b> 입니다:-)<br>","text/html; charset=UTF-8;");//글내용을 html타입
 			message.setSubject("InterHash#의 이메일 임시 비밀번호입니다");
 			//message.setText("<html><body><a href='http://www.naver.com'>naver</a> Dear Mail Crawler," + "\n\n No spam to my email, please!</body></html>");// 내용
 			
