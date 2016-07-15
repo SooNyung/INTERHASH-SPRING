@@ -65,7 +65,7 @@
 </div>
 <p id="result"></p>
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9ee99f6f7e29a9a2459e7218773c63fe&libraries=services"></script>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=6f069c192b4fcc3cd686954943a90616"></script>
 <script>
 
 
